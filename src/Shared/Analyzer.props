@@ -1,0 +1,25 @@
+<Project>
+  <PropertyGroup>
+    <!-- Visual Studio hosts analyzers on .NET Framework, so they target netstandard2.0. -->
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- An analyzer assembly loads alone, so each compiles in the shared files it uses. -->
+  <ItemGroup>
+    <Compile
+      Include="@(TralysSharedFile->'$(MSBuildThisFileDirectory)%(Identity).cs')"
+      LinkBase="Shared"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="AnalyzerReleases.Shipped.md" />
+    <AdditionalFiles Include="AnalyzerReleases.Unshipped.md" />
+  </ItemGroup>
+</Project>

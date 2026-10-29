@@ -1,0 +1,34 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Tralys.Ui/Tralys.Ui.csproj" />
+    <Project Path="src/Tralys.Ui.Engine/Tralys.Ui.Engine.csproj" />
+    <Project Path="src/Tralys.Ui.Engine.Generators/Tralys.Ui.Engine.Generators.csproj" />
+    <Project Path="src/Tralys.Ui.Bgfx/Tralys.Ui.Bgfx.csproj" />
+    <Project Path="src/Tralys.Ui.FreeType/Tralys.Ui.FreeType.csproj" />
+    <Project Path="src/Tralys.Ui.Testing/Tralys.Ui.Testing.csproj" />
+    <Project Path="src/Tralys.Ui.DevTools/Tralys.Ui.DevTools.csproj" />
+    <Project Path="src/Tralys.Ui.Docking/Tralys.Ui.Docking.csproj" />
+    <Project Path="src/Tralys.Ui.Analyzers/Tralys.Ui.Analyzers.csproj" />
+    <Project Path="src/Tralys.Ui.Analyzers.CodeFixes/Tralys.Ui.Analyzers.CodeFixes.csproj" />
+    <Project Path="src/Tralys.Ui.Generators/Tralys.Ui.Generators.csproj" />
+    <Project Path="src/Tralys.Ui.Mvvm/Tralys.Ui.Mvvm.csproj" />
+    <Project Path="src/Tralys.Ui.Mvvm.Generators/Tralys.Ui.Mvvm.Generators.csproj" />
+    <Project Path="src/Tralys.Ui.Build/Tralys.Ui.Build.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/Tralys.Ui.Demo/Tralys.Ui.Demo.csproj" />
+    <Project Path="samples/Tralys.Ui.Demo.Gallery/Tralys.Ui.Demo.Gallery.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Tralys.Ui.Tests/Tralys.Ui.Tests.csproj" />
+    <Project Path="tests/Tralys.Ui.Engine.Tests/Tralys.Ui.Engine.Tests.csproj" />
+    <Project Path="tests/Tralys.Ui.AotSmoke/Tralys.Ui.AotSmoke.csproj" />
+    <Project Path="tests/Tralys.Ui.Bench/Tralys.Ui.Bench.csproj" />
+    <Project Path="tests/Tralys.Ui.Bgfx.Tests/Tralys.Ui.Bgfx.Tests.csproj" />
+    <Project Path="tests/Tralys.Ui.Generators.Tests/Tralys.Ui.Generators.Tests.csproj" />
+    <Project Path="tests/Tralys.Ui.Fonts.Tests/Tralys.Ui.Fonts.Tests.csproj" />
+    <Project Path="tests/Tralys.Ui.DevTools.Tests/Tralys.Ui.DevTools.Tests.csproj" />
+    <Project Path="tests/Tralys.Ui.Demo.Tests/Tralys.Ui.Demo.Tests.csproj" />
+    <Project Path="tests/Tralys.Ui.Docking.Tests/Tralys.Ui.Docking.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,20 @@
+<Project>
+  <PropertyGroup>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackTralysAnalyzers</TargetsForTfmSpecificContentInPackage>
+  </PropertyGroup>
+
+  <!-- A generator packed into two packages would run twice for a consumer of both, so each names its one package. -->
+  <Target Name="PackTralysAnalyzers">
+    <MSBuild
+      Projects="@(ProjectReference)"
+      Condition="'%(ProjectReference.TralysPackage)' == '$(PackageId)'"
+      Targets="GetTargetPath"
+      RemoveProperties="TargetFramework;RuntimeIdentifier"
+    >
+      <Output TaskParameter="TargetOutputs" ItemName="_TralysAnalyzerAssembly" />
+    </MSBuild>
+    <ItemGroup>
+      <TfmSpecificPackageFile Include="@(_TralysAnalyzerAssembly)" PackagePath="analyzers/dotnet/cs" />
+    </ItemGroup>
+  </Target>
+</Project>

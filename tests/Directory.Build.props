@@ -1,0 +1,14 @@
+<Project>
+  <Import Project="../Directory.Build.props" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <!-- A background GC counts the unused rest of a thread's allocation context as allocated: a 0-byte frame can read as ~8 KB. -->
+    <ConcurrentGarbageCollection>false</ConcurrentGarbageCollection>
+    <NoWarn>$(NoWarn);TRL5001</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Tests'))">
+    <PackageReference Include="TUnit" />
+  </ItemGroup>
+</Project>
