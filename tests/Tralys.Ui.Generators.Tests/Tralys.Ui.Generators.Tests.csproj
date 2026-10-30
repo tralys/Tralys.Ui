@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/Tralys.Ui/Tralys.Ui.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.Analyzers/Tralys.Ui.Analyzers.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.Analyzers.CodeFixes/Tralys.Ui.Analyzers.CodeFixes.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.Generators/Tralys.Ui.Generators.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.Engine.Generators/Tralys.Ui.Engine.Generators.csproj" />
+    <ProjectReference
+      Include="../../src/Tralys.Ui.Mvvm.Generators/Tralys.Ui.Mvvm.Generators.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="true"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None
+      Include="../../src/Tralys.Ui.Engine/Theming/Tokens/**/*.json"
+      Link="Tokens/%(RecursiveDir)%(Filename)%(Extension)"
+      CopyToOutputDirectory="PreserveNewest"
+    />
+  </ItemGroup>
+
+  <Target Name="WriteHarnessReferences" AfterTargets="FindReferenceAssembliesForReferences">
+    <ItemGroup>
+      <_HarnessReference
+        Include="@(ReferencePathWithRefAssemblies)"
+        Condition="'%(ReferencePathWithRefAssemblies.FrameworkReferenceName)' == 'Microsoft.NETCore.App' or '%(ReferencePathWithRefAssemblies.Filename)' == 'Tralys.Ui' or '%(ReferencePathWithRefAssemblies.Filename)' == 'Tralys.Ui.Engine' or '%(ReferencePathWithRefAssemblies.Filename)' == 'Tralys.Ui.Mvvm'"
+      />
+    </ItemGroup>
+    <MakeDir Directories="$(OutDir)" />
+    <WriteLinesToFile
+      File="$(OutDir)harness.references"
+      Lines="@(_HarnessReference->'%(FullPath)')"
+      Overwrite="true"
+      WriteOnlyWhenDifferent="true"
+    />
+    <ItemGroup>
+      <FileWrites Include="$(OutDir)harness.references" />
+    </ItemGroup>
+  </Target>
+</Project>

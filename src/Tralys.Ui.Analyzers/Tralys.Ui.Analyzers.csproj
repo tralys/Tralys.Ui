@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <TralysSharedFile Include="Descriptors" />
+    <TralysSharedFile Include="SymbolText" />
+    <TralysSharedFile Include="UiShapes" />
+  </ItemGroup>
+
+  <Import Project="../Shared/Analyzer.props" />
+</Project>
