@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsAotCompatible>true</IsAotCompatible>
+    <IsPackable>true</IsPackable>
+    <Description>Commands, observable objects and filtered row sources for Tralys.Ui view models, with the generators that emit their [DelegateCommand]s and [ObservableProperty]s.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference
+      Include="../Tralys.Ui.Analyzers/Tralys.Ui.Analyzers.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+      PrivateAssets="all"
+    />
+    <ProjectReference
+      Include="../Tralys.Ui.Mvvm.Generators/Tralys.Ui.Mvvm.Generators.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+      PrivateAssets="all"
+      TralysPackage="Tralys.Ui.Mvvm"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Tralys.Ui.Demo.Tests" />
+  </ItemGroup>
+
+  <Import Project="../Shared/PackAnalyzers.targets" />
+</Project>

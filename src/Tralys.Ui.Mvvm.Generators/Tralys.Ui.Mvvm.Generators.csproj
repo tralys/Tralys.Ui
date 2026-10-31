@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <TralysSharedFile Include="CodeWriter" />
+    <TralysSharedFile Include="Descriptors" />
+    <TralysSharedFile Include="EquatableArray" />
+    <TralysSharedFile Include="GeneratedMembers" />
+    <TralysSharedFile Include="IsExternalInitPolyfill" />
+    <TralysSharedFile Include="Literals" />
+    <TralysSharedFile Include="LocationInfo" />
+    <TralysSharedFile Include="Output" />
+    <TralysSharedFile Include="Owner" />
+    <TralysSharedFile Include="OwnerOutput" />
+    <TralysSharedFile Include="PropertyShape" />
+    <TralysSharedFile Include="SymbolText" />
+  </ItemGroup>
+
+  <Import Project="../Shared/Analyzer.props" />
+</Project>

@@ -1,0 +1,162 @@
+#nullable enable
+override Tralys.Ui.Mvvm.ObservableText.ToString() -> string!
+Tralys.Ui.Mvvm.Command
+Tralys.Ui.Mvvm.Command.CanRun.get -> bool
+Tralys.Ui.Mvvm.Command.Command(System.Action! run, System.Func<bool>? canRun = null) -> void
+Tralys.Ui.Mvvm.Command.Command(System.Func<System.Threading.Tasks.ValueTask>! run, System.Func<bool>? canRun = null) -> void
+Tralys.Ui.Mvvm.Command.IsRunning.get -> bool
+Tralys.Ui.Mvvm.Command.Run() -> void
+Tralys.Ui.Mvvm.Command<T>
+Tralys.Ui.Mvvm.Command<T>.CanRun(T parameter) -> bool
+Tralys.Ui.Mvvm.Command<T>.Command(System.Action<T>! run, System.Func<T, bool>? canRun = null) -> void
+Tralys.Ui.Mvvm.Command<T>.Command(System.Func<T, System.Threading.Tasks.ValueTask>! run, System.Func<T, bool>? canRun = null) -> void
+Tralys.Ui.Mvvm.Command<T>.IsRunning.get -> bool
+Tralys.Ui.Mvvm.Command<T>.Run(T parameter) -> void
+Tralys.Ui.Mvvm.DelegateCommandAttribute
+Tralys.Ui.Mvvm.DelegateCommandAttribute.DelegateCommandAttribute() -> void
+Tralys.Ui.Mvvm.Dependencies
+Tralys.Ui.Mvvm.Dependencies.Clear() -> void
+Tralys.Ui.Mvvm.Dependencies.Count.get -> int
+Tralys.Ui.Mvvm.Dependencies.Dependencies() -> void
+Tralys.Ui.Mvvm.Dependencies.Dependencies(Tralys.Ui.Mvvm.IUiDispatcher? dispatcher) -> void
+Tralys.Ui.Mvvm.Dependencies.Dispatcher.get -> Tralys.Ui.Mvvm.IUiDispatcher?
+Tralys.Ui.Mvvm.Dependencies.MaskAt(int index) -> ulong
+Tralys.Ui.Mvvm.Dependencies.SourceAt(int index) -> Tralys.Ui.Mvvm.IObservable!
+Tralys.Ui.Mvvm.IChangeObserver
+Tralys.Ui.Mvvm.IChangeObserver.Dependencies.get -> Tralys.Ui.Mvvm.Dependencies
+Tralys.Ui.Mvvm.IChangeObserver.OnChanged(object! source, int property) -> void
+Tralys.Ui.Mvvm.IFilteredRows
+Tralys.Ui.Mvvm.IFilteredRows.Changed -> Tralys.Ui.Mvvm.RowsChangedHandler?
+Tralys.Ui.Mvvm.IFilteredRows.IsShown(int index) -> bool
+Tralys.Ui.Mvvm.IFilteredRows.Rows.get -> System.Collections.Generic.IReadOnlyList<object!>!
+Tralys.Ui.Mvvm.IFilteredRows.ShownCount.get -> int
+Tralys.Ui.Mvvm.IObservable
+Tralys.Ui.Mvvm.IObservable.Observers.get -> Tralys.Ui.Mvvm.ObserverSet
+Tralys.Ui.Mvvm.IReadOnlyObservableList<T>
+Tralys.Ui.Mvvm.IReadOnlyObservableList<T>.Subscribe(Tralys.Ui.Mvvm.ListChangedHandler<T>! handler) -> System.IDisposable!
+Tralys.Ui.Mvvm.IUiDispatcher
+Tralys.Ui.Mvvm.IUiDispatcher.CheckAccess() -> bool
+Tralys.Ui.Mvvm.IUiDispatcher.Post<TState>(TState state, System.Action<TState>! action) -> void
+Tralys.Ui.Mvvm.ListChange<T>
+Tralys.Ui.Mvvm.ListChange<T>.Count.get -> int
+Tralys.Ui.Mvvm.ListChange<T>.Kind.get -> Tralys.Ui.Mvvm.ListChangeKind
+Tralys.Ui.Mvvm.ListChange<T>.ListChange() -> void
+Tralys.Ui.Mvvm.ListChange<T>.NewIndex.get -> int
+Tralys.Ui.Mvvm.ListChange<T>.NewItems.get -> System.ReadOnlySpan<T>
+Tralys.Ui.Mvvm.ListChange<T>.OldIndex.get -> int
+Tralys.Ui.Mvvm.ListChange<T>.OldItems.get -> System.ReadOnlySpan<T>
+Tralys.Ui.Mvvm.ListChangedHandler<T>
+virtual Tralys.Ui.Mvvm.ListChangedHandler<T>.Invoke(Tralys.Ui.Mvvm.ObservableList<T>! list, in Tralys.Ui.Mvvm.ListChange<T> change) -> void
+Tralys.Ui.Mvvm.ListChangeKind
+Tralys.Ui.Mvvm.ListChangeKind.Add = 0 -> Tralys.Ui.Mvvm.ListChangeKind
+Tralys.Ui.Mvvm.ListChangeKind.Move = 3 -> Tralys.Ui.Mvvm.ListChangeKind
+Tralys.Ui.Mvvm.ListChangeKind.Remove = 1 -> Tralys.Ui.Mvvm.ListChangeKind
+Tralys.Ui.Mvvm.ListChangeKind.Replace = 2 -> Tralys.Ui.Mvvm.ListChangeKind
+Tralys.Ui.Mvvm.ListChangeKind.Reset = 4 -> Tralys.Ui.Mvvm.ListChangeKind
+Tralys.Ui.Mvvm.NotifyPropertyChangedForAttribute
+Tralys.Ui.Mvvm.NotifyPropertyChangedForAttribute.NotifyPropertyChangedForAttribute(string! propertyName) -> void
+Tralys.Ui.Mvvm.NotifyPropertyChangedForAttribute.PropertyName.get -> string!
+Tralys.Ui.Mvvm.ObservableList<T>
+Tralys.Ui.Mvvm.ObservableList<T>.Add(T item) -> void
+Tralys.Ui.Mvvm.ObservableList<T>.AddRange(System.Collections.Generic.IEnumerable<T>! items) -> void
+Tralys.Ui.Mvvm.ObservableList<T>.AddRange(System.ReadOnlySpan<T> items) -> void
+Tralys.Ui.Mvvm.ObservableList<T>.Clear() -> void
+Tralys.Ui.Mvvm.ObservableList<T>.Contains(T item) -> bool
+Tralys.Ui.Mvvm.ObservableList<T>.CopyTo(T[]! array, int arrayIndex) -> void
+Tralys.Ui.Mvvm.ObservableList<T>.Count.get -> int
+Tralys.Ui.Mvvm.ObservableList<T>.Enumerator
+Tralys.Ui.Mvvm.ObservableList<T>.Enumerator.Current.get -> T
+Tralys.Ui.Mvvm.ObservableList<T>.Enumerator.Dispose() -> void
+Tralys.Ui.Mvvm.ObservableList<T>.Enumerator.Enumerator() -> void
+Tralys.Ui.Mvvm.ObservableList<T>.Enumerator.MoveNext() -> bool
+Tralys.Ui.Mvvm.ObservableList<T>.Enumerator.Reset() -> void
+Tralys.Ui.Mvvm.ObservableList<T>.GetEnumerator() -> Tralys.Ui.Mvvm.ObservableList<T>.Enumerator
+Tralys.Ui.Mvvm.ObservableList<T>.IndexOf(T item) -> int
+Tralys.Ui.Mvvm.ObservableList<T>.Insert(int index, T item) -> void
+Tralys.Ui.Mvvm.ObservableList<T>.InsertRange(int index, System.ReadOnlySpan<T> items) -> void
+Tralys.Ui.Mvvm.ObservableList<T>.Move(int from, int to) -> void
+Tralys.Ui.Mvvm.ObservableList<T>.ObservableList() -> void
+Tralys.Ui.Mvvm.ObservableList<T>.ObservableList(int capacity) -> void
+Tralys.Ui.Mvvm.ObservableList<T>.Remove(T item) -> bool
+Tralys.Ui.Mvvm.ObservableList<T>.RemoveAt(int index) -> void
+Tralys.Ui.Mvvm.ObservableList<T>.RemoveRange(int index, int count) -> void
+Tralys.Ui.Mvvm.ObservableList<T>.ReplaceAll(System.Collections.Generic.IEnumerable<T>! items) -> void
+Tralys.Ui.Mvvm.ObservableList<T>.ReplaceAll(System.ReadOnlySpan<T> items) -> void
+Tralys.Ui.Mvvm.ObservableList<T>.Subscribe(Tralys.Ui.Mvvm.ListChangedHandler<T>! handler) -> System.IDisposable!
+Tralys.Ui.Mvvm.ObservableList<T>.Sync<TKey>(System.ReadOnlySpan<T> desired, System.Func<T, TKey>! keyOf, System.Action<T, T>? update = null) -> void
+Tralys.Ui.Mvvm.ObservableList<T>.this[int index].get -> T
+Tralys.Ui.Mvvm.ObservableList<T>.this[int index].set -> void
+Tralys.Ui.Mvvm.ObservableListView
+static Tralys.Ui.Mvvm.ObservableListView.ToView<T>(this Tralys.Ui.Mvvm.ObservableList<T!>! items, Tralys.Ui.Mvvm.IUiDispatcher? dispatcher = null) -> Tralys.Ui.Mvvm.ObservableListView<T!, T!>!
+static Tralys.Ui.Mvvm.ObservableListView.ToView<TItem, TRow>(this Tralys.Ui.Mvvm.ObservableList<TItem>! items, System.Func<TItem, TRow!>! transform, Tralys.Ui.Mvvm.IUiDispatcher? dispatcher = null) -> Tralys.Ui.Mvvm.ObservableListView<TItem, TRow!>!
+Tralys.Ui.Mvvm.ObservableListView<TItem, TRow>
+Tralys.Ui.Mvvm.ObservableListView<TItem, TRow>.Changed -> Tralys.Ui.Mvvm.RowsChangedHandler?
+Tralys.Ui.Mvvm.ObservableListView<TItem, TRow>.Dispose() -> void
+Tralys.Ui.Mvvm.ObservableListView<TItem, TRow>.Filter(System.Func<TItem, bool>? filter) -> Tralys.Ui.Mvvm.ObservableListView<TItem, TRow!>!
+Tralys.Ui.Mvvm.ObservableListView<TItem, TRow>.IsShown(int index) -> bool
+Tralys.Ui.Mvvm.ObservableListView<TItem, TRow>.IsShown(TRow! row) -> bool
+Tralys.Ui.Mvvm.ObservableListView<TItem, TRow>.Refresh() -> void
+Tralys.Ui.Mvvm.ObservableListView<TItem, TRow>.Refresh(int index) -> void
+Tralys.Ui.Mvvm.ObservableListView<TItem, TRow>.Rows.get -> System.Collections.Generic.IReadOnlyList<TRow!>!
+Tralys.Ui.Mvvm.ObservableListView<TItem, TRow>.ShownCount.get -> int
+Tralys.Ui.Mvvm.ObservableObject
+Tralys.Ui.Mvvm.ObservableObject.NotifyObservers(int property) -> void
+Tralys.Ui.Mvvm.ObservableObject.ObservableObject() -> void
+Tralys.Ui.Mvvm.ObservableObject.OnPropertyChanged(string! propertyName = "") -> void
+Tralys.Ui.Mvvm.ObservableObject.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs! args) -> void
+Tralys.Ui.Mvvm.ObservableObject.PropertyChanged -> System.ComponentModel.PropertyChangedEventHandler?
+Tralys.Ui.Mvvm.ObservableObject.SetProperty<T>(ref T field, T value, string! propertyName = "") -> bool
+Tralys.Ui.Mvvm.ObservableObject.SetProperty<T>(ref T field, T value, System.ComponentModel.PropertyChangedEventArgs! args) -> bool
+Tralys.Ui.Mvvm.ObservableObject.SetProperty<T>(ref T field, T value, System.ReadOnlySpan<string!> dependents, string! propertyName = "") -> bool
+Tralys.Ui.Mvvm.ObservablePropertyAttribute
+Tralys.Ui.Mvvm.ObservablePropertyAttribute.ObservablePropertyAttribute() -> void
+Tralys.Ui.Mvvm.Observation
+static Tralys.Ui.Mvvm.Observation.Defers<TOwner, T>(TOwner! owner, T value, System.Action<TOwner!, T>! write) -> bool
+static Tralys.Ui.Mvvm.Observation.Read(Tralys.Ui.Mvvm.IObservable! source, int property) -> void
+static Tralys.Ui.Mvvm.Observation.Track(Tralys.Ui.Mvvm.IChangeObserver! observer) -> Tralys.Ui.Mvvm.ObservationScope
+static Tralys.Ui.Mvvm.Observation.Untracked<TState, T>(TState state, System.Func<TState, T>! read) -> T
+static Tralys.Ui.Mvvm.Observation.Watch<T>(System.Func<T>! select, System.Action<T>! react, Tralys.Ui.Mvvm.IUiDispatcher? dispatcher = null, bool now = true, System.Action<System.Exception!>? onFault = null) -> System.IDisposable!
+Tralys.Ui.Mvvm.ObservableText
+Tralys.Ui.Mvvm.ObservableText.Caret.get -> System.Index?
+Tralys.Ui.Mvvm.ObservableText.Changed -> System.Action?
+Tralys.Ui.Mvvm.ObservableText.Clear() -> void
+Tralys.Ui.Mvvm.ObservableText.IsEmpty.get -> bool
+Tralys.Ui.Mvvm.ObservableText.Length.get -> int
+Tralys.Ui.Mvvm.ObservableText.ObservableText() -> void
+Tralys.Ui.Mvvm.ObservableText.ObservableText(System.ReadOnlySpan<char> text) -> void
+Tralys.Ui.Mvvm.ObservableText.Set(System.ReadOnlySpan<char> text) -> void
+Tralys.Ui.Mvvm.ObservableText.Set(System.ReadOnlySpan<char> text, System.Index caret) -> void
+Tralys.Ui.Mvvm.ObservableText.Span.get -> System.ReadOnlySpan<char>
+Tralys.Ui.Mvvm.ObservationScope
+Tralys.Ui.Mvvm.ObservationScope.Complete(bool keepDropped) -> void
+Tralys.Ui.Mvvm.ObservationScope.Dispose() -> void
+Tralys.Ui.Mvvm.ObservationScope.ObservationScope() -> void
+Tralys.Ui.Mvvm.ObserverSet
+Tralys.Ui.Mvvm.ObserverSet.Clear() -> void
+Tralys.Ui.Mvvm.ObserverSet.Count.get -> int
+Tralys.Ui.Mvvm.ObserverSet.Notify(object! source, int property) -> void
+Tralys.Ui.Mvvm.ObserverSet.ObserverSet() -> void
+Tralys.Ui.Mvvm.PropertyChangedArgs
+static Tralys.Ui.Mvvm.PropertyChangedArgs.For(string! propertyName) -> System.ComponentModel.PropertyChangedEventArgs!
+Tralys.Ui.Mvvm.RowChange
+static Tralys.Ui.Mvvm.RowChange.Added(int index, int count) -> Tralys.Ui.Mvvm.RowChange
+Tralys.Ui.Mvvm.RowChange.Count.get -> int
+Tralys.Ui.Mvvm.RowChange.Kind.get -> Tralys.Ui.Mvvm.RowChangeKind
+static Tralys.Ui.Mvvm.RowChange.Matched(int index, int count) -> Tralys.Ui.Mvvm.RowChange
+static Tralys.Ui.Mvvm.RowChange.Moved(int oldIndex, int newIndex, int count) -> Tralys.Ui.Mvvm.RowChange
+Tralys.Ui.Mvvm.ObservableText.Version.get -> int
+Tralys.Ui.Mvvm.RowChange.NewIndex.get -> int
+Tralys.Ui.Mvvm.RowChange.OldIndex.get -> int
+static Tralys.Ui.Mvvm.RowChange.Removed(int index, int count) -> Tralys.Ui.Mvvm.RowChange
+static Tralys.Ui.Mvvm.RowChange.Replaced(int index, int count) -> Tralys.Ui.Mvvm.RowChange
+static Tralys.Ui.Mvvm.RowChange.Reset.get -> Tralys.Ui.Mvvm.RowChange
+Tralys.Ui.Mvvm.RowChange.RowChange() -> void
+Tralys.Ui.Mvvm.RowChangeKind
+Tralys.Ui.Mvvm.RowChangeKind.Add = 0 -> Tralys.Ui.Mvvm.RowChangeKind
+Tralys.Ui.Mvvm.RowChangeKind.Match = 4 -> Tralys.Ui.Mvvm.RowChangeKind
+Tralys.Ui.Mvvm.RowChangeKind.Move = 3 -> Tralys.Ui.Mvvm.RowChangeKind
+Tralys.Ui.Mvvm.RowChangeKind.Remove = 1 -> Tralys.Ui.Mvvm.RowChangeKind
+Tralys.Ui.Mvvm.RowChangeKind.Replace = 2 -> Tralys.Ui.Mvvm.RowChangeKind
+Tralys.Ui.Mvvm.RowChangeKind.Reset = 5 -> Tralys.Ui.Mvvm.RowChangeKind
+Tralys.Ui.Mvvm.RowsChangedHandler
+virtual Tralys.Ui.Mvvm.RowsChangedHandler.Invoke(Tralys.Ui.Mvvm.IFilteredRows! rows, in Tralys.Ui.Mvvm.RowChange change) -> void
