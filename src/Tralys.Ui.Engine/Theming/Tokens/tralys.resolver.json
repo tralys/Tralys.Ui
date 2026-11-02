@@ -1,0 +1,33 @@
+{
+  "version": "2025.10",
+  "name": "Tralys.Ui",
+  "description": "The demo's design tokens: a dark and a light theme, a pointer and a touch density.",
+  "sets": {
+    "base": {
+      "sources": [{"$ref": "palettes/base.tokens.json"}, {"$ref": "semantic.tokens.json"}, {"$ref": "dimension.tokens.json"}, {"$ref": "motion.tokens.json"}]
+    }
+  },
+  "modifiers": {
+    "platform": {
+      "contexts": {
+        "desktop": [{"$ref": "platforms/desktop.tokens.json"}]
+      },
+      "default": "desktop"
+    },
+    "density": {
+      "contexts": {
+        "pointer": [],
+        "touch": [{"$ref": "platforms/touch.tokens.json"}]
+      },
+      "default": "pointer"
+    },
+    "theme": {
+      "contexts": {
+        "dark": [],
+        "light": [{"$ref": "palettes/light.tokens.json"}]
+      },
+      "default": "dark"
+    }
+  },
+  "resolutionOrder": [{"$ref": "#/sets/base"}, {"$ref": "#/modifiers/platform"}, {"$ref": "#/modifiers/density"}, {"$ref": "#/modifiers/theme"}]
+}

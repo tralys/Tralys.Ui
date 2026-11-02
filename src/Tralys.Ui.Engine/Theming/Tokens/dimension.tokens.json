@@ -1,0 +1,7 @@
+{
+  "$schema": "https://tr.designtokens.org/format/2025.10/schema.json",
+  "spacing": {
+    "$type": "dimension",
+    "base": {"$value": {"value": 4, "unit": "px"}}
+  }
+}

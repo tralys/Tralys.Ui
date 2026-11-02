@@ -1,0 +1,131 @@
+{
+  "$schema": "https://tr.designtokens.org/format/2025.10/schema.json",
+  "text": {
+    "$type": "dimension",
+    "badge": {
+      "font-size": {"$value": {"value": 11, "unit": "px"}}
+    },
+    "caption": {
+      "font-size": {"$value": {"value": 12, "unit": "px"}}
+    },
+    "body": {
+      "font-size": {"$value": {"value": 14, "unit": "px"}}
+    },
+    "heading": {
+      "font-size": {"$value": {"value": 16, "unit": "px"}}
+    },
+    "title": {
+      "font-size": {"$value": {"value": 18, "unit": "px"}}
+    },
+    "headline": {
+      "font-size": {"$value": {"value": 22, "unit": "px"}}
+    },
+    "display": {
+      "font-size": {"$value": {"value": 28, "unit": "px"}}
+    }
+  },
+  "size": {
+    "$type": "dimension",
+    "xxs": {
+      "height": {"$value": {"value": 20, "unit": "px"}},
+      "pad-x": {"$value": {"value": 6, "unit": "px"}},
+      "field-pad-x": {"$value": {"value": 4, "unit": "px"}},
+      "pad-y": {"$value": {"value": 2, "unit": "px"}},
+      "gap": {"$value": {"value": 2, "unit": "px"}},
+      "font-size": {"$value": "{text.caption.font-size}"},
+      "icon-size": {"$value": {"value": 12, "unit": "px"}},
+      "measure": {"$value": {"value": 160, "unit": "px"}}
+    },
+    "xs": {
+      "height": {"$value": {"value": 24, "unit": "px"}},
+      "pad-x": {"$value": {"value": 8, "unit": "px"}},
+      "field-pad-x": {"$value": {"value": 6, "unit": "px"}},
+      "pad-y": {"$value": {"value": 4, "unit": "px"}},
+      "gap": {"$value": {"value": 3, "unit": "px"}},
+      "font-size": {"$value": "{text.caption.font-size}"},
+      "icon-size": {"$value": {"value": 12, "unit": "px"}},
+      "measure": {"$value": {"value": 200, "unit": "px"}}
+    },
+    "sm": {
+      "height": {"$value": {"value": 28, "unit": "px"}},
+      "pad-x": {"$value": {"value": 12, "unit": "px"}},
+      "field-pad-x": {"$value": {"value": 8, "unit": "px"}},
+      "pad-y": {"$value": {"value": 5, "unit": "px"}},
+      "gap": {"$value": {"value": 4, "unit": "px"}},
+      "font-size": {"$value": "{text.body.font-size}"},
+      "icon-size": {"$value": {"value": 16, "unit": "px"}},
+      "measure": {"$value": {"value": 240, "unit": "px"}}
+    },
+    "md": {
+      "height": {"$value": {"value": 32, "unit": "px"}},
+      "pad-x": {"$value": {"value": 12, "unit": "px"}},
+      "field-pad-x": {"$value": {"value": 12, "unit": "px"}},
+      "pad-y": {"$value": {"value": 7, "unit": "px"}},
+      "gap": {"$value": {"value": 5, "unit": "px"}},
+      "font-size": {"$value": "{text.body.font-size}"},
+      "icon-size": {"$value": {"value": 16, "unit": "px"}},
+      "measure": {"$value": {"value": 320, "unit": "px"}}
+    },
+    "lg": {
+      "height": {"$value": {"value": 40, "unit": "px"}},
+      "pad-x": {"$value": {"value": 16, "unit": "px"}},
+      "field-pad-x": {"$value": {"value": 16, "unit": "px"}},
+      "pad-y": {"$value": {"value": 9, "unit": "px"}},
+      "gap": {"$value": {"value": 6, "unit": "px"}},
+      "font-size": {"$value": "{text.heading.font-size}"},
+      "icon-size": {"$value": {"value": 20, "unit": "px"}},
+      "measure": {"$value": {"value": 400, "unit": "px"}}
+    }
+  },
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "body": {"$value": "Inter"},
+      "code": {"$value": "Cascadia Code"}
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "interface": {"$value": 700},
+      "link": {"$value": 600},
+      "content": {"$value": 500}
+    }
+  },
+  "radius": {
+    "$type": "dimension",
+    "sm": {"$value": {"value": 2, "unit": "px"}},
+    "md": {"$value": {"value": 3, "unit": "px"}},
+    "lg": {"$value": {"value": 6, "unit": "px"}}
+  },
+  "grip": {
+    "$type": "dimension",
+    "band": {"$value": {"value": 8, "unit": "px"}},
+    "corner": {"$value": {"value": 16, "unit": "px"}}
+  },
+  "component": {
+    "$type": "color",
+    "row": {
+      "bg": {
+        "selected": {"$value": "{color.neutral.20}"}
+      }
+    },
+    "card": {
+      "bg": {
+        "top": {"$value": "{color.neutral.16}"},
+        "bottom": {"$value": "{color.bg.default}"}
+      }
+    },
+    "slot": {
+      "bg": {
+        "empty": {"$value": "{color.neutral.12}"},
+        "filled": {"$value": "{color.neutral.32}"},
+        "edge": {"$value": "{color.bg.sunken}"}
+      }
+    },
+    "scoreboard": {
+      "border": {
+        "default": {"$value": "{color.brand.48}"},
+        "own": {"$value": "{color.brand.72}"}
+      }
+    }
+  }
+}

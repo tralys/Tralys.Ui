@@ -1,0 +1,14 @@
+{
+  "$schema": "https://tr.designtokens.org/format/2025.10/schema.json",
+  "$description": "Settle is a cubic ease-out, 1 - (1 - t)^3, which this curve draws exactly.",
+  "motion": {
+    "duration": {
+      "$type": "duration",
+      "disclosure": {"$value": {"value": 200, "unit": "ms"}}
+    },
+    "easing": {
+      "$type": "cubicBezier",
+      "settle": {"$value": [0.333333, 1, 0.666667, 1]}
+    }
+  }
+}

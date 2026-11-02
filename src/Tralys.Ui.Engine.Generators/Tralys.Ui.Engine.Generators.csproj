@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <TralysSharedFile Include="CodeWriter" />
+    <TralysSharedFile Include="Descriptors" />
+    <TralysSharedFile Include="EquatableArray" />
+    <TralysSharedFile Include="HexColor" />
+    <TralysSharedFile Include="IsExternalInitPolyfill" />
+    <TralysSharedFile Include="Json" />
+    <TralysSharedFile Include="Literals" />
+    <TralysSharedFile Include="Output" />
+    <TralysSharedFile Include="SymbolText" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource
+      Include="../Tralys.Ui.Engine/Theming/Tokens/**/*.json"
+      LogicalName="Tralys.Ui.Tokens/%(RecursiveDir)%(Filename)%(Extension)"
+    />
+  </ItemGroup>
+
+  <Import Project="../Shared/Analyzer.props" />
+</Project>

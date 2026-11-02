@@ -1,0 +1,26 @@
+{
+  "$schema": "https://tr.designtokens.org/format/2025.10/schema.json",
+  "size": {
+    "$type": "dimension",
+    "xxs": {
+      "height": {"$value": {"value": 28, "unit": "px"}}
+    },
+    "xs": {
+      "height": {"$value": {"value": 40, "unit": "px"}}
+    },
+    "sm": {
+      "height": {"$value": {"value": 40, "unit": "px"}}
+    },
+    "md": {
+      "height": {"$value": {"value": 44, "unit": "px"}}
+    },
+    "lg": {
+      "height": {"$value": {"value": 48, "unit": "px"}}
+    }
+  },
+  "grip": {
+    "$type": "dimension",
+    "band": {"$value": {"value": 16, "unit": "px"}},
+    "corner": {"$value": {"value": 32, "unit": "px"}}
+  }
+}
