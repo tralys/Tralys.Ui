@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsAotCompatible>true</IsAotCompatible>
+    <IsPackable>true</IsPackable>
+    <Description>The Tralys.Ui UI core: components rendered from C#, layout, input, text, lists, overlays, theming and the built-in components, with the generators and analyzers its consumers build with.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- None private: a consumer of this package alone still gets Tralys.Ui.Mvvm's generators. -->
+    <ProjectReference Include="../Tralys.Ui.Mvvm/Tralys.Ui.Mvvm.csproj" PrivateAssets="none" />
+    <!-- None private: a consumer of this package alone still gets the engine's token compiler. -->
+    <ProjectReference
+      Include="../Tralys.Ui.Engine/Tralys.Ui.Engine.csproj"
+      PrivateAssets="none"
+      ExactVersion="true"
+    />
+    <ProjectReference
+      Include="../Tralys.Ui.Analyzers/Tralys.Ui.Analyzers.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+      PrivateAssets="all"
+      TralysPackage="Tralys.Ui"
+    />
+    <ProjectReference
+      Include="../Tralys.Ui.Generators/Tralys.Ui.Generators.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+      PrivateAssets="all"
+      TralysPackage="Tralys.Ui"
+    />
+    <!-- Not referenced, only built first: the package carries it as a tool. -->
+    <ProjectReference
+      Include="../Tralys.Ui.Build/Tralys.Ui.Build.csproj"
+      ReferenceOutputAssembly="false"
+      PrivateAssets="all"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Tralys.Ui.Testing" />
+    <InternalsVisibleTo Include="Tralys.Ui.Tests" />
+    <InternalsVisibleTo Include="Tralys.Ui.DevTools" />
+    <InternalsVisibleTo Include="Tralys.Ui.Demo.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="buildTransitive/**" Pack="true" PackagePath="buildTransitive/" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackTralysCallerPathTool</TargetsForTfmSpecificContentInPackage>
+  </PropertyGroup>
+
+  <Target Name="PackTralysCallerPathTool">
+    <MSBuild
+      Projects="../Tralys.Ui.Build/Tralys.Ui.Build.csproj"
+      Targets="GetTargetPath"
+      RemoveProperties="TargetFramework;RuntimeIdentifier"
+    >
+      <Output TaskParameter="TargetOutputs" ItemName="_TralysCallerPathTool" />
+    </MSBuild>
+    <ItemGroup>
+      <TfmSpecificPackageFile
+        Include="@(_TralysCallerPathTool);@(_TralysCallerPathTool->'%(RootDir)%(Directory)%(Filename).runtimeconfig.json')"
+        PackagePath="tools/net11.0"
+      />
+    </ItemGroup>
+  </Target>
+
+  <Import Project="../Shared/PackAnalyzers.targets" />
+</Project>

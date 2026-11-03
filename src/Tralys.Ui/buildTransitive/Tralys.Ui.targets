@@ -1,0 +1,49 @@
+<Project>
+  <PropertyGroup>
+    <TralysCallerPathTool Condition="'$(TralysCallerPathTool)' == ''"
+      >$(MSBuildThisFileDirectory)../tools/net11.0/Tralys.Ui.Build.dll</TralysCallerPathTool>
+  </PropertyGroup>
+
+  <!-- Turning the strip off must recompile, or the stripped assembly would stay. -->
+  <Target
+    Name="_TralysCallerPathStamp"
+    BeforeTargets="CoreCompile"
+    Condition="'$(DesignTimeBuild)' != 'true'"
+  >
+    <PropertyGroup>
+      <_TralysCallerPathStamp>$(IntermediateOutputPath)$(TargetName).tralys-callerpaths</_TralysCallerPathStamp>
+    </PropertyGroup>
+    <WriteLinesToFile
+      Condition="'$(TralysStripCallerPaths)' == 'true' or Exists('$(_TralysCallerPathStamp)')"
+      File="$(_TralysCallerPathStamp)"
+      Lines="$(TralysStripCallerPaths)"
+      Overwrite="true"
+      WriteOnlyWhenDifferent="true"
+    />
+    <ItemGroup Condition="Exists('$(_TralysCallerPathStamp)')">
+      <CustomAdditionalCompileInputs Include="$(_TralysCallerPathStamp)" />
+      <FileWrites Include="$(_TralysCallerPathStamp)" />
+    </ItemGroup>
+  </Target>
+
+  <Target
+    Name="StripTralysCallerPaths"
+    AfterTargets="CoreCompile"
+    Condition="'$(TralysStripCallerPaths)' == 'true' and '$(DesignTimeBuild)' != 'true'"
+    Inputs="@(IntermediateAssembly)"
+    Outputs="$(IntermediateOutputPath)$(TargetName).callerpaths.txt"
+  >
+    <PropertyGroup>
+      <_TralysCallerPathMap>$([MSBuild]::NormalizePath('$(MSBuildProjectDirectory)', '$(IntermediateOutputPath)', '$(TargetName).callerpaths.txt'))</_TralysCallerPathMap>
+      <_TralysDotnet>$(DOTNET_HOST_PATH)</_TralysDotnet>
+      <_TralysDotnet Condition="'$(_TralysDotnet)' == ''">dotnet</_TralysDotnet>
+    </PropertyGroup>
+    <Exec
+      Command="&quot;$(_TralysDotnet)&quot; &quot;$(TralysCallerPathTool)&quot; &quot;@(IntermediateAssembly->'%(FullPath)')&quot; &quot;$(_TralysCallerPathMap)&quot;"
+      StandardOutputImportance="low"
+    />
+    <ItemGroup>
+      <FileWrites Include="$(_TralysCallerPathMap)" />
+    </ItemGroup>
+  </Target>
+</Project>
