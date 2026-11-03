@@ -1,0 +1,48 @@
+#nullable enable
+override Tralys.Ui.Bgfx.BgfxRenderTarget.Height.get -> int
+override Tralys.Ui.Bgfx.BgfxRenderTarget.IsPremultiplied.get -> bool
+override Tralys.Ui.Bgfx.BgfxRenderTarget.Width.get -> int
+override Tralys.Ui.Bgfx.BgfxTextureArray.Height.get -> int
+override Tralys.Ui.Bgfx.BgfxTextureArray.IsPremultiplied.get -> bool
+override Tralys.Ui.Bgfx.BgfxTextureArray.LayerCount.get -> int
+override Tralys.Ui.Bgfx.BgfxTextureArray.Width.get -> int
+override Tralys.Ui.Bgfx.BgfxWritableTexture.Dispose() -> void
+override Tralys.Ui.Bgfx.BgfxWritableTexture.Height.get -> int
+override Tralys.Ui.Bgfx.BgfxWritableTexture.Width.get -> int
+override Tralys.Ui.Bgfx.BgfxWritableTexture.Write(int x, int y, int width, int height, System.ReadOnlySpan<byte> texels, int stride) -> void
+static Tralys.Ui.Bgfx.BgfxImage.CreateTexture(int width, int height, System.ReadOnlySpan<byte> straightRgba) -> Bgfx.Net.TextureHandle
+Tralys.Ui.Bgfx.BgfxImage
+Tralys.Ui.Bgfx.BgfxRenderDevice
+Tralys.Ui.Bgfx.BgfxRenderDevice.BeginFrame() -> void
+Tralys.Ui.Bgfx.BgfxRenderDevice.BgfxRenderDevice(int rampRows = 128) -> void
+Tralys.Ui.Bgfx.BgfxRenderDevice.Dispose() -> void
+Tralys.Ui.Bgfx.BgfxRenderTarget
+Tralys.Ui.Bgfx.BgfxRenderTarget.BgfxRenderTarget(int width, int height, bool mips = false, bool depth = false, bool premultiplied = true) -> void
+Tralys.Ui.Bgfx.BgfxRenderTarget.Color.get -> Bgfx.Net.TextureHandle
+Tralys.Ui.Bgfx.BgfxRenderTarget.Dispose() -> void
+Tralys.Ui.Bgfx.BgfxRenderTarget.FrameBuffer.get -> Bgfx.Net.FrameBufferHandle
+Tralys.Ui.Bgfx.BgfxRenderTarget.Handle.get -> Bgfx.Net.TextureHandle
+Tralys.Ui.Bgfx.BgfxTextureArray
+Tralys.Ui.Bgfx.BgfxTextureArray.BgfxTextureArray(int width, int height, int layers) -> void
+Tralys.Ui.Bgfx.BgfxTextureArray.Dispose() -> void
+Tralys.Ui.Bgfx.BgfxTextureArray.Handle.get -> Bgfx.Net.TextureHandle
+Tralys.Ui.Bgfx.BgfxTextureArray.Write(int layer, System.ReadOnlySpan<byte> texels, int stride) -> void
+Tralys.Ui.Bgfx.BgfxTextureFactory
+Tralys.Ui.Bgfx.BgfxTextureFactory.BgfxTextureFactory() -> void
+Tralys.Ui.Bgfx.BgfxTextureFactory.CreateWritable(int width, int height) -> Tralys.Ui.Rendering.WritableTexture!
+Tralys.Ui.Bgfx.BgfxViewRenderer
+Tralys.Ui.Bgfx.BgfxViewRenderer.BgfxViewRenderer(Tralys.Ui.Bgfx.BgfxRenderDevice! device) -> void
+Tralys.Ui.Bgfx.BgfxViewRenderer.Dispose() -> void
+Tralys.Ui.Bgfx.BgfxViewRenderer.DrawCalls.get -> int
+Tralys.Ui.Bgfx.BgfxViewRenderer.DrawList.get -> Tralys.Ui.Rendering.DrawList!
+Tralys.Ui.Bgfx.BgfxViewRenderer.DroppedLayers.get -> int
+Tralys.Ui.Bgfx.BgfxViewRenderer.LayerPasses.get -> int
+Tralys.Ui.Bgfx.BgfxViewRenderer.Submit(ushort viewId, int width, int height, ushort firstLayerView, ushort layerViews) -> void
+Tralys.Ui.Bgfx.BgfxViewRenderer.UploadedBytes.get -> int
+Tralys.Ui.Bgfx.BgfxWritableTexture
+Tralys.Ui.Bgfx.BgfxWritableTexture.BgfxWritableTexture(int width, int height) -> void
+Tralys.Ui.Bgfx.BgfxWritableTexture.Handle.get -> Bgfx.Net.TextureHandle
+Tralys.Ui.Bgfx.IBgfxTexture
+Tralys.Ui.Bgfx.IBgfxTexture.Handle.get -> Bgfx.Net.TextureHandle
+Tralys.Ui.Bgfx.BgfxViewRenderer.Render(Tralys.Ui.Rendering.IRenderedView! view, ushort viewId, ushort firstLayerView = 0, ushort layerViews = 0) -> void
+Tralys.Ui.Bgfx.BgfxViewRenderer.RenderTo(Tralys.Ui.Rendering.IRenderedView! view, Tralys.Ui.Bgfx.BgfxRenderTarget! target, ushort viewId, ushort firstLayerView = 0, ushort layerViews = 0, bool force = false) -> bool

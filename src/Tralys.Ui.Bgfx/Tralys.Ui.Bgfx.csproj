@@ -1,0 +1,90 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <IsAotCompatible>true</IsAotCompatible>
+    <IsPackable>true</IsPackable>
+    <NoWarn>$(NoWarn);TRL5001</NoWarn>
+    <Description>Draws Tralys.Ui views through bgfx, with the Tralys.Ui shaders compiled for SPIR-V, D3D11, Metal and WGSL and embedded.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bgfx.Net" />
+    <PackageReference Include="Bgfx.Net.Tools" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Tralys.Ui.Engine/Tralys.Ui.Engine.csproj" />
+    <ProjectReference
+      Include="../Tralys.Ui.Analyzers/Tralys.Ui.Analyzers.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+      PrivateAssets="all"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_TralysShaderSource Include="Shaders/vs_*.sc" Type="vertex" />
+    <_TralysShaderSource Include="Shaders/fs_*.sc" Type="fragment" />
+    <_TralysShaderDependency Include="Shaders/varying.def.sc;Shaders/*.sh" />
+
+    <BgfxShader
+      Include="@(_TralysShaderSource)"
+      Platform="linux"
+      Profile="spirv"
+      Out="$(IntermediateOutputPath)shaders/spirv/%(Filename).bin"
+    />
+    <!-- shaderc on macOS has no HLSL compiler, and D3D11 never runs there. -->
+    <BgfxShader
+      Condition="!$([MSBuild]::IsOSPlatform('OSX'))"
+      Include="@(_TralysShaderSource)"
+      Platform="windows"
+      Profile="s_5_0"
+      Out="$(IntermediateOutputPath)shaders/s_5_0/%(Filename).bin"
+    />
+    <BgfxShader
+      Include="@(_TralysShaderSource)"
+      Platform="osx"
+      Profile="metal"
+      Out="$(IntermediateOutputPath)shaders/metal/%(Filename).bin"
+    />
+    <BgfxShader
+      Include="@(_TralysShaderSource)"
+      Platform="linux"
+      Profile="wgsl"
+      Out="$(IntermediateOutputPath)shaders/wgsl/%(Filename).bin"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The transform copies the shader stage in as Type, which on a resource drops it unless Type says Non-Resx. -->
+    <EmbeddedResource
+      Include="@(BgfxShader->'%(Out)')"
+      Type="Non-Resx"
+      LogicalName="%(Profile)/%(Filename)%(Extension)"
+    />
+  </ItemGroup>
+
+  <!-- The package's target sees only the .sc file, so a change to what it includes would recompile nothing. -->
+  <Target
+    Name="InvalidateTralysShaders"
+    BeforeTargets="BgfxCompileShaders"
+    Inputs="@(_TralysShaderDependency)"
+    Outputs="@(BgfxShader->'%(Out)')"
+  >
+    <Delete Files="@(BgfxShader->'%(Out)')" />
+  </Target>
+
+  <Target
+    Name="RefuseToPackWithoutD3D11"
+    BeforeTargets="GenerateNuspec"
+    Condition="$([MSBuild]::IsOSPlatform('OSX'))"
+  >
+    <Error Text="A macOS build has no D3D11 shaders, so it cannot pack Tralys.Ui.Bgfx. Pack on Windows, or on Linux with wine." />
+  </Target>
+
+  <Target Name="KeepTralysShadersEmbeddedOnly" AfterTargets="BgfxCompileShaders">
+    <ItemGroup>
+      <Content Remove="@(BgfxShader->'%(Out)')" />
+    </ItemGroup>
+  </Target>
+</Project>
