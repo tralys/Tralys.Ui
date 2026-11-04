@@ -1,0 +1,1182 @@
+{
+  "None": {
+    "cp": 0,
+    "font": "lucide"
+  },
+  "Activity": {
+    "cp": 57400,
+    "font": "lucide"
+  },
+  "Airplay": {
+    "cp": 57401,
+    "font": "lucide"
+  },
+  "AlertCircle": {
+    "cp": 57463,
+    "font": "lucide"
+  },
+  "AlertOctagon": {
+    "cp": 57639,
+    "font": "lucide"
+  },
+  "AlertTriangle": {
+    "cp": 57747,
+    "font": "lucide"
+  },
+  "AlignCenter": {
+    "cp": 57730,
+    "font": "lucide"
+  },
+  "AlignJustify": {
+    "cp": 57732,
+    "font": "lucide"
+  },
+  "AlignLeft": {
+    "cp": 57733,
+    "font": "lucide"
+  },
+  "AlignRight": {
+    "cp": 57731,
+    "font": "lucide"
+  },
+  "Anchor": {
+    "cp": 57407,
+    "font": "lucide"
+  },
+  "Aperture": {
+    "cp": 57408,
+    "font": "lucide"
+  },
+  "Archive": {
+    "cp": 57409,
+    "font": "lucide"
+  },
+  "ArrowDown": {
+    "cp": 57410,
+    "font": "lucide"
+  },
+  "ArrowDownCircle": {
+    "cp": 57464,
+    "font": "lucide"
+  },
+  "ArrowDownLeft": {
+    "cp": 57411,
+    "font": "lucide"
+  },
+  "ArrowDownRight": {
+    "cp": 57413,
+    "font": "lucide"
+  },
+  "ArrowLeft": {
+    "cp": 57416,
+    "font": "lucide"
+  },
+  "ArrowLeftCircle": {
+    "cp": 57465,
+    "font": "lucide"
+  },
+  "ArrowRight": {
+    "cp": 57417,
+    "font": "lucide"
+  },
+  "ArrowRightCircle": {
+    "cp": 57466,
+    "font": "lucide"
+  },
+  "ArrowUp": {
+    "cp": 57418,
+    "font": "lucide"
+  },
+  "ArrowUpCircle": {
+    "cp": 57467,
+    "font": "lucide"
+  },
+  "ArrowUpDown": {
+    "cp": 58237,
+    "font": "lucide"
+  },
+  "ArrowUpLeft": {
+    "cp": 57419,
+    "font": "lucide"
+  },
+  "ArrowUpRight": {
+    "cp": 57421,
+    "font": "lucide"
+  },
+  "AtSign": {
+    "cp": 57422,
+    "font": "lucide"
+  },
+  "Award": {
+    "cp": 57423,
+    "font": "lucide"
+  },
+  "BarChart": {
+    "cp": 58019,
+    "font": "lucide"
+  },
+  "BarChart2": {
+    "cp": 57448,
+    "font": "lucide"
+  },
+  "Battery": {
+    "cp": 57427,
+    "font": "lucide"
+  },
+  "BatteryCharging": {
+    "cp": 57428,
+    "font": "lucide"
+  },
+  "Bell": {
+    "cp": 57433,
+    "font": "lucide"
+  },
+  "BellOff": {
+    "cp": 57434,
+    "font": "lucide"
+  },
+  "Bluetooth": {
+    "cp": 57436,
+    "font": "lucide"
+  },
+  "Bold": {
+    "cp": 57437,
+    "font": "lucide"
+  },
+  "Book": {
+    "cp": 57438,
+    "font": "lucide"
+  },
+  "Bookmark": {
+    "cp": 57440,
+    "font": "lucide"
+  },
+  "BookOpen": {
+    "cp": 57439,
+    "font": "lucide"
+  },
+  "Box": {
+    "cp": 57441,
+    "font": "lucide"
+  },
+  "Briefcase": {
+    "cp": 57442,
+    "font": "lucide"
+  },
+  "Calendar": {
+    "cp": 57443,
+    "font": "lucide"
+  },
+  "Camera": {
+    "cp": 57444,
+    "font": "lucide"
+  },
+  "CameraOff": {
+    "cp": 57445,
+    "font": "lucide"
+  },
+  "Cast": {
+    "cp": 57446,
+    "font": "lucide"
+  },
+  "Check": {
+    "cp": 57452,
+    "font": "lucide"
+  },
+  "CheckCircle": {
+    "cp": 57894,
+    "font": "lucide"
+  },
+  "CheckSquare": {
+    "cp": 58713,
+    "font": "lucide"
+  },
+  "ChevronDown": {
+    "cp": 57453,
+    "font": "lucide"
+  },
+  "ChevronLeft": {
+    "cp": 57454,
+    "font": "lucide"
+  },
+  "ChevronRight": {
+    "cp": 57455,
+    "font": "lucide"
+  },
+  "ChevronsDown": {
+    "cp": 57457,
+    "font": "lucide"
+  },
+  "ChevronsLeft": {
+    "cp": 57458,
+    "font": "lucide"
+  },
+  "ChevronsRight": {
+    "cp": 57459,
+    "font": "lucide"
+  },
+  "ChevronsUp": {
+    "cp": 57460,
+    "font": "lucide"
+  },
+  "ChevronUp": {
+    "cp": 57456,
+    "font": "lucide"
+  },
+  "Chrome": {
+    "cp": 57461,
+    "font": "lucide"
+  },
+  "Circle": {
+    "cp": 57462,
+    "font": "lucide"
+  },
+  "Clipboard": {
+    "cp": 57477,
+    "font": "lucide"
+  },
+  "Clock": {
+    "cp": 57479,
+    "font": "lucide"
+  },
+  "Cloud": {
+    "cp": 57480,
+    "font": "lucide"
+  },
+  "CloudDrizzle": {
+    "cp": 57482,
+    "font": "lucide"
+  },
+  "CloudLightning": {
+    "cp": 57484,
+    "font": "lucide"
+  },
+  "CloudOff": {
+    "cp": 57485,
+    "font": "lucide"
+  },
+  "CloudRain": {
+    "cp": 57486,
+    "font": "lucide"
+  },
+  "CloudSnow": {
+    "cp": 57488,
+    "font": "lucide"
+  },
+  "Code": {
+    "cp": 57491,
+    "font": "lucide"
+  },
+  "Codepen": {
+    "cp": 57492,
+    "font": "lucide"
+  },
+  "Codesandbox": {
+    "cp": 57493,
+    "font": "lucide"
+  },
+  "Coffee": {
+    "cp": 57494,
+    "font": "lucide"
+  },
+  "Columns": {
+    "cp": 57496,
+    "font": "lucide"
+  },
+  "Command": {
+    "cp": 57498,
+    "font": "lucide"
+  },
+  "Compass": {
+    "cp": 57499,
+    "font": "lucide"
+  },
+  "Copy": {
+    "cp": 57502,
+    "font": "lucide"
+  },
+  "CornerDownLeft": {
+    "cp": 57505,
+    "font": "lucide"
+  },
+  "CornerDownRight": {
+    "cp": 57506,
+    "font": "lucide"
+  },
+  "CornerLeftDown": {
+    "cp": 57507,
+    "font": "lucide"
+  },
+  "CornerLeftUp": {
+    "cp": 57508,
+    "font": "lucide"
+  },
+  "CornerRightDown": {
+    "cp": 57509,
+    "font": "lucide"
+  },
+  "CornerRightUp": {
+    "cp": 57510,
+    "font": "lucide"
+  },
+  "CornerUpLeft": {
+    "cp": 57511,
+    "font": "lucide"
+  },
+  "CornerUpRight": {
+    "cp": 57512,
+    "font": "lucide"
+  },
+  "Cpu": {
+    "cp": 57513,
+    "font": "lucide"
+  },
+  "CreditCard": {
+    "cp": 57514,
+    "font": "lucide"
+  },
+  "Crop": {
+    "cp": 57515,
+    "font": "lucide"
+  },
+  "Crosshair": {
+    "cp": 57516,
+    "font": "lucide"
+  },
+  "Database": {
+    "cp": 57517,
+    "font": "lucide"
+  },
+  "Delete": {
+    "cp": 57518,
+    "font": "lucide"
+  },
+  "Disc": {
+    "cp": 57519,
+    "font": "lucide"
+  },
+  "Divide": {
+    "cp": 57520,
+    "font": "lucide"
+  },
+  "DivideCircle": {
+    "cp": 57469,
+    "font": "lucide"
+  },
+  "DivideSquare": {
+    "cp": 57709,
+    "font": "lucide"
+  },
+  "DollarSign": {
+    "cp": 57521,
+    "font": "lucide"
+  },
+  "Download": {
+    "cp": 57522,
+    "font": "lucide"
+  },
+  "DownloadCloud": {
+    "cp": 57481,
+    "font": "lucide"
+  },
+  "Dribbble": {
+    "cp": 57523,
+    "font": "lucide"
+  },
+  "Droplet": {
+    "cp": 57524,
+    "font": "lucide"
+  },
+  "Edit": {
+    "cp": 57714,
+    "font": "lucide"
+  },
+  "Edit2": {
+    "cp": 57849,
+    "font": "lucide"
+  },
+  "Edit3": {
+    "cp": 57648,
+    "font": "lucide"
+  },
+  "ExternalLink": {
+    "cp": 57529,
+    "font": "lucide"
+  },
+  "Eye": {
+    "cp": 57530,
+    "font": "lucide"
+  },
+  "EyeOff": {
+    "cp": 57531,
+    "font": "lucide"
+  },
+  "Facebook": {
+    "cp": 57532,
+    "font": "lucide"
+  },
+  "FastForward": {
+    "cp": 57533,
+    "font": "lucide"
+  },
+  "Feather": {
+    "cp": 57534,
+    "font": "lucide"
+  },
+  "Figma": {
+    "cp": 57535,
+    "font": "lucide"
+  },
+  "File": {
+    "cp": 57536,
+    "font": "lucide"
+  },
+  "FileMinus": {
+    "cp": 57542,
+    "font": "lucide"
+  },
+  "FilePlus": {
+    "cp": 57545,
+    "font": "lucide"
+  },
+  "FileText": {
+    "cp": 57548,
+    "font": "lucide"
+  },
+  "Film": {
+    "cp": 57552,
+    "font": "lucide"
+  },
+  "Filter": {
+    "cp": 57564,
+    "font": "lucide"
+  },
+  "Flag": {
+    "cp": 57553,
+    "font": "lucide"
+  },
+  "FlipHorizontal2": {
+    "cp": 58206,
+    "font": "lucide"
+  },
+  "FlipVertical2": {
+    "cp": 58208,
+    "font": "lucide"
+  },
+  "Folder": {
+    "cp": 57559,
+    "font": "lucide"
+  },
+  "FolderMinus": {
+    "cp": 57560,
+    "font": "lucide"
+  },
+  "FolderPlus": {
+    "cp": 57561,
+    "font": "lucide"
+  },
+  "Framer": {
+    "cp": 57562,
+    "font": "lucide"
+  },
+  "Frown": {
+    "cp": 57563,
+    "font": "lucide"
+  },
+  "Gift": {
+    "cp": 57569,
+    "font": "lucide"
+  },
+  "GitBranch": {
+    "cp": 57570,
+    "font": "lucide"
+  },
+  "GitCommit": {
+    "cp": 57571,
+    "font": "lucide"
+  },
+  "Github": {
+    "cp": 57574,
+    "font": "lucide"
+  },
+  "Gitlab": {
+    "cp": 57575,
+    "font": "lucide"
+  },
+  "GitMerge": {
+    "cp": 57572,
+    "font": "lucide"
+  },
+  "GitPullRequest": {
+    "cp": 57573,
+    "font": "lucide"
+  },
+  "Globe": {
+    "cp": 57576,
+    "font": "lucide"
+  },
+  "Grid": {
+    "cp": 57577,
+    "font": "lucide"
+  },
+  "HardDrive": {
+    "cp": 57581,
+    "font": "lucide"
+  },
+  "Hash": {
+    "cp": 57583,
+    "font": "lucide"
+  },
+  "Headphones": {
+    "cp": 57585,
+    "font": "lucide"
+  },
+  "Heart": {
+    "cp": 57586,
+    "font": "lucide"
+  },
+  "HelpCircle": {
+    "cp": 57474,
+    "font": "lucide"
+  },
+  "Hexagon": {
+    "cp": 57587,
+    "font": "lucide"
+  },
+  "Home": {
+    "cp": 57589,
+    "font": "lucide"
+  },
+  "Image": {
+    "cp": 57590,
+    "font": "lucide"
+  },
+  "Inbox": {
+    "cp": 57591,
+    "font": "lucide"
+  },
+  "Info": {
+    "cp": 57593,
+    "font": "lucide"
+  },
+  "Instagram": {
+    "cp": 57594,
+    "font": "lucide"
+  },
+  "Italic": {
+    "cp": 57595,
+    "font": "lucide"
+  },
+  "Key": {
+    "cp": 57597,
+    "font": "lucide"
+  },
+  "Layers": {
+    "cp": 58665,
+    "font": "lucide"
+  },
+  "Layout": {
+    "cp": 57644,
+    "font": "lucide"
+  },
+  "LifeBuoy": {
+    "cp": 57601,
+    "font": "lucide"
+  },
+  "Link": {
+    "cp": 57602,
+    "font": "lucide"
+  },
+  "Link2": {
+    "cp": 57603,
+    "font": "lucide"
+  },
+  "Linkedin": {
+    "cp": 57605,
+    "font": "lucide"
+  },
+  "List": {
+    "cp": 57606,
+    "font": "lucide"
+  },
+  "Loader": {
+    "cp": 57609,
+    "font": "lucide"
+  },
+  "Lock": {
+    "cp": 57611,
+    "font": "lucide"
+  },
+  "LogIn": {
+    "cp": 57613,
+    "font": "lucide"
+  },
+  "LogOut": {
+    "cp": 57614,
+    "font": "lucide"
+  },
+  "Mail": {
+    "cp": 57615,
+    "font": "lucide"
+  },
+  "Map": {
+    "cp": 57616,
+    "font": "lucide"
+  },
+  "MapPin": {
+    "cp": 57617,
+    "font": "lucide"
+  },
+  "Mars": {
+    "cp": 58945,
+    "font": "lucide"
+  },
+  "Maximize": {
+    "cp": 57618,
+    "font": "lucide"
+  },
+  "Maximize2": {
+    "cp": 57619,
+    "font": "lucide"
+  },
+  "Meh": {
+    "cp": 57620,
+    "font": "lucide"
+  },
+  "Menu": {
+    "cp": 57621,
+    "font": "lucide"
+  },
+  "MessageCircle": {
+    "cp": 57622,
+    "font": "lucide"
+  },
+  "MessageSquare": {
+    "cp": 57623,
+    "font": "lucide"
+  },
+  "Mic": {
+    "cp": 57624,
+    "font": "lucide"
+  },
+  "MicOff": {
+    "cp": 57625,
+    "font": "lucide"
+  },
+  "Minimize": {
+    "cp": 57626,
+    "font": "lucide"
+  },
+  "Minimize2": {
+    "cp": 57627,
+    "font": "lucide"
+  },
+  "Minus": {
+    "cp": 57628,
+    "font": "lucide"
+  },
+  "MinusCircle": {
+    "cp": 57470,
+    "font": "lucide"
+  },
+  "MinusSquare": {
+    "cp": 57713,
+    "font": "lucide"
+  },
+  "Monitor": {
+    "cp": 57629,
+    "font": "lucide"
+  },
+  "Moon": {
+    "cp": 57630,
+    "font": "lucide"
+  },
+  "MoreHorizontal": {
+    "cp": 57526,
+    "font": "lucide"
+  },
+  "MoreVertical": {
+    "cp": 57527,
+    "font": "lucide"
+  },
+  "MousePointer": {
+    "cp": 57631,
+    "font": "lucide"
+  },
+  "Move": {
+    "cp": 57633,
+    "font": "lucide"
+  },
+  "Music": {
+    "cp": 57634,
+    "font": "lucide"
+  },
+  "Navigation": {
+    "cp": 57635,
+    "font": "lucide"
+  },
+  "Navigation2": {
+    "cp": 57636,
+    "font": "lucide"
+  },
+  "Octagon": {
+    "cp": 57638,
+    "font": "lucide"
+  },
+  "Package": {
+    "cp": 57641,
+    "font": "lucide"
+  },
+  "Paperclip": {
+    "cp": 57645,
+    "font": "lucide"
+  },
+  "Pause": {
+    "cp": 57646,
+    "font": "lucide"
+  },
+  "PauseCircle": {
+    "cp": 57471,
+    "font": "lucide"
+  },
+  "PenTool": {
+    "cp": 57649,
+    "font": "lucide"
+  },
+  "Percent": {
+    "cp": 57650,
+    "font": "lucide"
+  },
+  "Phone": {
+    "cp": 57651,
+    "font": "lucide"
+  },
+  "PhoneCall": {
+    "cp": 57652,
+    "font": "lucide"
+  },
+  "PhoneForwarded": {
+    "cp": 57653,
+    "font": "lucide"
+  },
+  "PhoneIncoming": {
+    "cp": 57654,
+    "font": "lucide"
+  },
+  "PhoneMissed": {
+    "cp": 57655,
+    "font": "lucide"
+  },
+  "PhoneOff": {
+    "cp": 57656,
+    "font": "lucide"
+  },
+  "PhoneOutgoing": {
+    "cp": 57657,
+    "font": "lucide"
+  },
+  "PieChart": {
+    "cp": 57451,
+    "font": "lucide"
+  },
+  "Pipette": {
+    "cp": 57659,
+    "font": "lucide"
+  },
+  "Play": {
+    "cp": 57660,
+    "font": "lucide"
+  },
+  "PlayCircle": {
+    "cp": 57472,
+    "font": "lucide"
+  },
+  "Plus": {
+    "cp": 57661,
+    "font": "lucide"
+  },
+  "PlusCircle": {
+    "cp": 57473,
+    "font": "lucide"
+  },
+  "PlusSquare": {
+    "cp": 57715,
+    "font": "lucide"
+  },
+  "Pocket": {
+    "cp": 57662,
+    "font": "lucide"
+  },
+  "Power": {
+    "cp": 57664,
+    "font": "lucide"
+  },
+  "Printer": {
+    "cp": 57665,
+    "font": "lucide"
+  },
+  "Radio": {
+    "cp": 57666,
+    "font": "lucide"
+  },
+  "RefreshCcw": {
+    "cp": 57668,
+    "font": "lucide"
+  },
+  "RefreshCw": {
+    "cp": 57669,
+    "font": "lucide"
+  },
+  "Repeat": {
+    "cp": 57670,
+    "font": "lucide"
+  },
+  "Rewind": {
+    "cp": 57671,
+    "font": "lucide"
+  },
+  "RotateCcw": {
+    "cp": 57672,
+    "font": "lucide"
+  },
+  "RotateCw": {
+    "cp": 57673,
+    "font": "lucide"
+  },
+  "Rss": {
+    "cp": 57674,
+    "font": "lucide"
+  },
+  "Save": {
+    "cp": 57677,
+    "font": "lucide"
+  },
+  "Scissors": {
+    "cp": 57678,
+    "font": "lucide"
+  },
+  "Search": {
+    "cp": 57681,
+    "font": "lucide"
+  },
+  "Send": {
+    "cp": 57682,
+    "font": "lucide"
+  },
+  "Server": {
+    "cp": 57683,
+    "font": "lucide"
+  },
+  "Settings": {
+    "cp": 57684,
+    "font": "lucide"
+  },
+  "Share": {
+    "cp": 57685,
+    "font": "lucide"
+  },
+  "Share2": {
+    "cp": 57686,
+    "font": "lucide"
+  },
+  "Shield": {
+    "cp": 57688,
+    "font": "lucide"
+  },
+  "ShieldOff": {
+    "cp": 57690,
+    "font": "lucide"
+  },
+  "ShoppingBag": {
+    "cp": 57691,
+    "font": "lucide"
+  },
+  "ShoppingCart": {
+    "cp": 57692,
+    "font": "lucide"
+  },
+  "Shuffle": {
+    "cp": 57694,
+    "font": "lucide"
+  },
+  "Sidebar": {
+    "cp": 57642,
+    "font": "lucide"
+  },
+  "SkipBack": {
+    "cp": 57695,
+    "font": "lucide"
+  },
+  "SkipForward": {
+    "cp": 57696,
+    "font": "lucide"
+  },
+  "Skull": {
+    "cp": 57889,
+    "font": "lucide"
+  },
+  "Slack": {
+    "cp": 57697,
+    "font": "lucide"
+  },
+  "Slash": {
+    "cp": 58653,
+    "font": "lucide"
+  },
+  "Sliders": {
+    "cp": 57698,
+    "font": "lucide"
+  },
+  "Smartphone": {
+    "cp": 57699,
+    "font": "lucide"
+  },
+  "Smile": {
+    "cp": 57700,
+    "font": "lucide"
+  },
+  "Speaker": {
+    "cp": 57702,
+    "font": "lucide"
+  },
+  "Square": {
+    "cp": 57703,
+    "font": "lucide"
+  },
+  "Star": {
+    "cp": 57718,
+    "font": "lucide"
+  },
+  "StopCircle": {
+    "cp": 57475,
+    "font": "lucide"
+  },
+  "Sun": {
+    "cp": 57720,
+    "font": "lucide"
+  },
+  "Sunrise": {
+    "cp": 57721,
+    "font": "lucide"
+  },
+  "Sunset": {
+    "cp": 57722,
+    "font": "lucide"
+  },
+  "Table": {
+    "cp": 57725,
+    "font": "lucide"
+  },
+  "Tablet": {
+    "cp": 57726,
+    "font": "lucide"
+  },
+  "Tag": {
+    "cp": 57727,
+    "font": "lucide"
+  },
+  "Target": {
+    "cp": 57728,
+    "font": "lucide"
+  },
+  "Terminal": {
+    "cp": 57729,
+    "font": "lucide"
+  },
+  "Thermometer": {
+    "cp": 57734,
+    "font": "lucide"
+  },
+  "ThumbsDown": {
+    "cp": 57737,
+    "font": "lucide"
+  },
+  "ThumbsUp": {
+    "cp": 57738,
+    "font": "lucide"
+  },
+  "ToggleLeft": {
+    "cp": 57739,
+    "font": "lucide"
+  },
+  "ToggleRight": {
+    "cp": 57740,
+    "font": "lucide"
+  },
+  "Tool": {
+    "cp": 57777,
+    "font": "lucide"
+  },
+  "Trash": {
+    "cp": 57741,
+    "font": "lucide"
+  },
+  "Trash2": {
+    "cp": 57742,
+    "font": "lucide"
+  },
+  "Trello": {
+    "cp": 57743,
+    "font": "lucide"
+  },
+  "TrendingDown": {
+    "cp": 57744,
+    "font": "lucide"
+  },
+  "TrendingUp": {
+    "cp": 57745,
+    "font": "lucide"
+  },
+  "Triangle": {
+    "cp": 57746,
+    "font": "lucide"
+  },
+  "Truck": {
+    "cp": 57748,
+    "font": "lucide"
+  },
+  "Tv": {
+    "cp": 57749,
+    "font": "lucide"
+  },
+  "Twitch": {
+    "cp": 57750,
+    "font": "lucide"
+  },
+  "Twitter": {
+    "cp": 57751,
+    "font": "lucide"
+  },
+  "Type": {
+    "cp": 57752,
+    "font": "lucide"
+  },
+  "Umbrella": {
+    "cp": 57753,
+    "font": "lucide"
+  },
+  "Underline": {
+    "cp": 57754,
+    "font": "lucide"
+  },
+  "Unlock": {
+    "cp": 57612,
+    "font": "lucide"
+  },
+  "Upload": {
+    "cp": 57758,
+    "font": "lucide"
+  },
+  "UploadCloud": {
+    "cp": 57489,
+    "font": "lucide"
+  },
+  "User": {
+    "cp": 57759,
+    "font": "lucide"
+  },
+  "UserCheck": {
+    "cp": 57760,
+    "font": "lucide"
+  },
+  "UserMinus": {
+    "cp": 57761,
+    "font": "lucide"
+  },
+  "UserPlus": {
+    "cp": 57762,
+    "font": "lucide"
+  },
+  "Users": {
+    "cp": 57764,
+    "font": "lucide"
+  },
+  "UserX": {
+    "cp": 57763,
+    "font": "lucide"
+  },
+  "Venus": {
+    "cp": 58949,
+    "font": "lucide"
+  },
+  "Video": {
+    "cp": 57765,
+    "font": "lucide"
+  },
+  "VideoOff": {
+    "cp": 57766,
+    "font": "lucide"
+  },
+  "Voicemail": {
+    "cp": 57768,
+    "font": "lucide"
+  },
+  "Volume": {
+    "cp": 57769,
+    "font": "lucide"
+  },
+  "Volume1": {
+    "cp": 57770,
+    "font": "lucide"
+  },
+  "Volume2": {
+    "cp": 57771,
+    "font": "lucide"
+  },
+  "VolumeX": {
+    "cp": 57772,
+    "font": "lucide"
+  },
+  "Watch": {
+    "cp": 57773,
+    "font": "lucide"
+  },
+  "Wifi": {
+    "cp": 57774,
+    "font": "lucide"
+  },
+  "WifiOff": {
+    "cp": 57775,
+    "font": "lucide"
+  },
+  "Wind": {
+    "cp": 57776,
+    "font": "lucide"
+  },
+  "X": {
+    "cp": 57778,
+    "font": "lucide"
+  },
+  "XCircle": {
+    "cp": 57476,
+    "font": "lucide"
+  },
+  "XOctagon": {
+    "cp": 57640,
+    "font": "lucide"
+  },
+  "XSquare": {
+    "cp": 57717,
+    "font": "lucide"
+  },
+  "Youtube": {
+    "cp": 57779,
+    "font": "lucide"
+  },
+  "Zap": {
+    "cp": 57780,
+    "font": "lucide"
+  },
+  "ZapOff": {
+    "cp": 57781,
+    "font": "lucide"
+  },
+  "ZoomIn": {
+    "cp": 57782,
+    "font": "lucide"
+  },
+  "ZoomOut": {
+    "cp": 57783,
+    "font": "lucide"
+  }
+}
