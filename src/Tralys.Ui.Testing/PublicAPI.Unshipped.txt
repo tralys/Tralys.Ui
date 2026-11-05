@@ -1,0 +1,111 @@
+#nullable enable
+override Tralys.Ui.Testing.DrawCommandStream.Equals(object? obj) -> bool
+override Tralys.Ui.Testing.DrawCommandStream.GetHashCode() -> int
+override Tralys.Ui.Testing.DrawCommandStream.ToString() -> string!
+override Tralys.Ui.Testing.FrameStats.GetHashCode() -> int
+override Tralys.Ui.Testing.TextInputState.GetHashCode() -> int
+static Tralys.Ui.Testing.DrawCommandStream.Of(Tralys.Ui.UiView! view) -> Tralys.Ui.Testing.DrawCommandStream!
+static Tralys.Ui.Testing.DrawCommandStream.operator !=(Tralys.Ui.Testing.DrawCommandStream? a, Tralys.Ui.Testing.DrawCommandStream? b) -> bool
+static Tralys.Ui.Testing.DrawCommandStream.operator ==(Tralys.Ui.Testing.DrawCommandStream? a, Tralys.Ui.Testing.DrawCommandStream? b) -> bool
+static Tralys.Ui.Testing.FrameStats.operator !=(Tralys.Ui.Testing.FrameStats left, Tralys.Ui.Testing.FrameStats right) -> bool
+static Tralys.Ui.Testing.FrameStats.operator ==(Tralys.Ui.Testing.FrameStats left, Tralys.Ui.Testing.FrameStats right) -> bool
+static Tralys.Ui.Testing.TextInputState.operator !=(Tralys.Ui.Testing.TextInputState left, Tralys.Ui.Testing.TextInputState right) -> bool
+static Tralys.Ui.Testing.TextInputState.operator ==(Tralys.Ui.Testing.TextInputState left, Tralys.Ui.Testing.TextInputState right) -> bool
+static Tralys.Ui.Testing.UiDriver.Render(System.Action<Tralys.Ui.Ui>! root, Tralys.Ui.Size size = default(Tralys.Ui.Size), Tralys.Ui.Theming.Theme? theme = null, Tralys.Ui.Theming.Density density = Tralys.Ui.Theming.Density.Pointer, float scale = 1, Tralys.Ui.Rendering.ITextureProvider? textures = null, Tralys.Ui.Fonts.TextServices? text = null) -> Tralys.Ui.Testing.UiDriver!
+static Tralys.Ui.Testing.UiDriver.Run(System.Action<Tralys.Ui.Ui>! root, System.Func<Tralys.Ui.Testing.UiDriver!, System.Threading.Tasks.Task!>! test, Tralys.Ui.Size size = default(Tralys.Ui.Size), Tralys.Ui.Theming.Theme? theme = null, Tralys.Ui.Theming.Density density = Tralys.Ui.Theming.Density.Pointer, float scale = 1, Tralys.Ui.Rendering.ITextureProvider? textures = null, Tralys.Ui.Fonts.TextServices? text = null) -> System.Threading.Tasks.Task!
+Tralys.Ui.Testing.DrawCommandStream
+Tralys.Ui.Testing.DrawCommandStream.Equals(Tralys.Ui.Testing.DrawCommandStream? other) -> bool
+Tralys.Ui.Testing.DrawCommandStream.Lines.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Tralys.Ui.Testing.FrameStats
+Tralys.Ui.Testing.FrameStats.Deconstruct(out int Renders, out int NodeWrites, out int Mounts, out int Unmounts, out int Layouts, out int Paints, out bool DrawListRebuilt) -> void
+Tralys.Ui.Testing.FrameStats.DrawListRebuilt.get -> bool
+Tralys.Ui.Testing.FrameStats.DrawListRebuilt.init -> void
+Tralys.Ui.Testing.FrameStats.Equals(Tralys.Ui.Testing.FrameStats other) -> bool
+Tralys.Ui.Testing.FrameStats.FrameStats() -> void
+Tralys.Ui.Testing.FrameStats.FrameStats(int Renders, int NodeWrites, int Mounts, int Unmounts, int Layouts, int Paints, bool DrawListRebuilt) -> void
+Tralys.Ui.Testing.FrameStats.Layouts.get -> int
+Tralys.Ui.Testing.FrameStats.Layouts.init -> void
+Tralys.Ui.Testing.FrameStats.Mounts.get -> int
+Tralys.Ui.Testing.FrameStats.Mounts.init -> void
+Tralys.Ui.Testing.FrameStats.NodeWrites.get -> int
+Tralys.Ui.Testing.FrameStats.NodeWrites.init -> void
+Tralys.Ui.Testing.FrameStats.Paints.get -> int
+Tralys.Ui.Testing.FrameStats.Paints.init -> void
+Tralys.Ui.Testing.FrameStats.Renders.get -> int
+Tralys.Ui.Testing.FrameStats.Renders.init -> void
+Tralys.Ui.Testing.FrameStats.RendersOf<TComponent>() -> int
+Tralys.Ui.Testing.FrameStats.Unmounts.get -> int
+Tralys.Ui.Testing.FrameStats.Unmounts.init -> void
+Tralys.Ui.Testing.HeldPointer
+Tralys.Ui.Testing.HeldPointer.Button.get -> Tralys.Ui.MouseButton
+Tralys.Ui.Testing.HeldPointer.Cancel(bool settle = true) -> void
+Tralys.Ui.Testing.HeldPointer.IsDown.get -> bool
+Tralys.Ui.Testing.HeldPointer.LoseRelease(bool settle = true) -> void
+Tralys.Ui.Testing.HeldPointer.MoveBy(System.Numerics.Vector2 by, int steps = 1, float seconds = 0, bool settle = true) -> void
+Tralys.Ui.Testing.HeldPointer.MoveTo(Tralys.Ui.Node! target, bool settle = true) -> void
+Tralys.Ui.Testing.HeldPointer.Pointer.get -> Tralys.Ui.Pointer
+Tralys.Ui.Testing.HeldPointer.Position.get -> System.Numerics.Vector2
+Tralys.Ui.Testing.HeldPointer.Release(bool settle = true) -> void
+Tralys.Ui.Testing.TextInputState
+Tralys.Ui.Testing.TextInputState.Area.get -> Tralys.Ui.Rect
+Tralys.Ui.Testing.TextInputState.Area.init -> void
+Tralys.Ui.Testing.TextInputState.ByContact.get -> bool
+Tralys.Ui.Testing.TextInputState.ByContact.init -> void
+Tralys.Ui.Testing.TextInputState.Deconstruct(out Tralys.Ui.TextInputKind Kind, out Tralys.Ui.Rect Area, out bool ByContact, out int Starts) -> void
+Tralys.Ui.Testing.TextInputState.Equals(Tralys.Ui.Testing.TextInputState other) -> bool
+Tralys.Ui.Testing.TextInputState.Kind.get -> Tralys.Ui.TextInputKind
+Tralys.Ui.Testing.TextInputState.Kind.init -> void
+Tralys.Ui.Testing.TextInputState.Starts.get -> int
+Tralys.Ui.Testing.TextInputState.Starts.init -> void
+Tralys.Ui.Testing.TextInputState.TextInputState() -> void
+Tralys.Ui.Testing.TextInputState.TextInputState(Tralys.Ui.TextInputKind Kind, Tralys.Ui.Rect Area, bool ByContact, int Starts) -> void
+Tralys.Ui.Testing.UiDriver
+Tralys.Ui.Testing.UiDriver.All<TComponent>() -> System.Collections.Generic.IReadOnlyList<Tralys.Ui.Node!>!
+Tralys.Ui.Testing.UiDriver.Click(System.Numerics.Vector2 viewPoint, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.Click(Tralys.Ui.Node! target, System.Numerics.Vector2 offset, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.Click(Tralys.Ui.Node! target, Tralys.Ui.MouseButton button = Tralys.Ui.MouseButton.Left, Tralys.Ui.ModifierKeys modifiers = Tralys.Ui.ModifierKeys.None, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.Clipboard.get -> string?
+Tralys.Ui.Testing.UiDriver.Clipboard.set -> void
+Tralys.Ui.Testing.UiDriver.Cursor.get -> Tralys.Ui.Cursor?
+Tralys.Ui.Testing.UiDriver.Dispose() -> void
+Tralys.Ui.Testing.UiDriver.DoubleClick(Tralys.Ui.Node! target, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.Drag(Tralys.Ui.Node! from, System.Numerics.Vector2 by, Tralys.Ui.PointerKind kind = Tralys.Ui.PointerKind.Mouse, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.Draw() -> Tralys.Ui.Testing.DrawCommandStream!
+Tralys.Ui.Testing.UiDriver.Fling(Tralys.Ui.Node! from, System.Numerics.Vector2 by, float seconds = 0.1, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.Focus(Tralys.Ui.Node! target, bool settle = true) -> bool
+Tralys.Ui.Testing.UiDriver.Focused.get -> Tralys.Ui.Node?
+Tralys.Ui.Testing.UiDriver.ForceStates(Tralys.Ui.Node! node, Tralys.Ui.InputStates states, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.Frame(float seconds = 0.016666668) -> void
+Tralys.Ui.Testing.UiDriver.Get(string! id) -> Tralys.Ui.Node!
+Tralys.Ui.Testing.UiDriver.Get<TComponent>(string? id = null) -> Tralys.Ui.Node!
+Tralys.Ui.Testing.UiDriver.GetText(string! text) -> Tralys.Ui.Node!
+Tralys.Ui.Testing.UiDriver.Hold(System.Numerics.Vector2 at, Tralys.Ui.PointerKind kind = Tralys.Ui.PointerKind.Mouse, Tralys.Ui.MouseButton button = Tralys.Ui.MouseButton.Left, bool settle = true, int clicks = 1) -> Tralys.Ui.Testing.HeldPointer!
+Tralys.Ui.Testing.UiDriver.Hold(Tralys.Ui.Node! target, Tralys.Ui.PointerKind kind = Tralys.Ui.PointerKind.Mouse, Tralys.Ui.MouseButton button = Tralys.Ui.MouseButton.Left, bool settle = true, int clicks = 1) -> Tralys.Ui.Testing.HeldPointer!
+Tralys.Ui.Testing.UiDriver.Hover(Tralys.Ui.Node! target, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.KeyDown(Tralys.Ui.Key key, Tralys.Ui.ModifierKeys modifiers = Tralys.Ui.ModifierKeys.None, bool repeat = false, bool settle = true) -> bool
+Tralys.Ui.Testing.UiDriver.KeyUp(Tralys.Ui.Key key, Tralys.Ui.ModifierKeys modifiers = Tralys.Ui.ModifierKeys.None, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.LongPress(Tralys.Ui.Node! target, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.MountId(Tralys.Ui.Node! componentNode) -> long
+Tralys.Ui.Testing.UiDriver.Press(Tralys.Ui.GamepadButton button, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.Press(Tralys.Ui.Key key, Tralys.Ui.ModifierKeys modifiers = Tralys.Ui.ModifierKeys.None, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.Rerender() -> void
+Tralys.Ui.Testing.UiDriver.Root.get -> Tralys.Ui.Node!
+Tralys.Ui.Testing.UiDriver.Settle(int maxFrames = 600) -> void
+Tralys.Ui.Testing.UiDriver.Stats.get -> Tralys.Ui.Testing.FrameStats
+Tralys.Ui.Testing.UiDriver.Stick(Tralys.Ui.GamepadStick stick, System.Numerics.Vector2 value, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.Tab(bool shift = false, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.Tap(Tralys.Ui.Node! target, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.TextInput.get -> Tralys.Ui.Testing.TextInputState?
+Tralys.Ui.Testing.UiDriver.Type(string! text, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.Unhover(bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.View.get -> Tralys.Ui.UiView!
+Tralys.Ui.Testing.UiDriver.Wheel(Tralys.Ui.Node! over, System.Numerics.Vector2 notches, bool settle = true) -> bool
+Tralys.Ui.Testing.UiDriver.WindowFocus(bool focused, bool settle = true) -> void
+Tralys.Ui.Testing.UiDriver.WorstFrameBytes(System.Action<Tralys.Ui.Testing.UiDriver!>! frame) -> long
+Tralys.Ui.Testing.UiDriver.WorstFrameBytes<TState>(TState state, System.Action<Tralys.Ui.Testing.UiDriver!, TState>! frame) -> long
+~override Tralys.Ui.Testing.FrameStats.Equals(object obj) -> bool
+~override Tralys.Ui.Testing.FrameStats.ToString() -> string
+~override Tralys.Ui.Testing.TextInputState.Equals(object obj) -> bool
+~override Tralys.Ui.Testing.TextInputState.ToString() -> string
+Tralys.Ui.Testing.UiDriver.SystemGestureExclusions.get -> System.ReadOnlySpan<Tralys.Ui.Rect>
+Tralys.Ui.Testing.UiDriver.SystemGestureExclusionsSent.get -> int

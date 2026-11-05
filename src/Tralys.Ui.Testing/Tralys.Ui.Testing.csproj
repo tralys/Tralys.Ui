@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <NoWarn>$(NoWarn);TRL5001</NoWarn>
+    <Description>A driver that mounts Tralys.Ui UI headless and works it as its user would.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- None private: a package consumer of this one alone still gets Tralys.Ui's generators and analyzers. -->
+    <ProjectReference Include="../Tralys.Ui/Tralys.Ui.csproj" PrivateAssets="none" ExactVersion="true" />
+    <ProjectReference Include="../Tralys.Ui.FreeType/Tralys.Ui.FreeType.csproj" />
+    <ProjectReference
+      Include="../Tralys.Ui.Analyzers/Tralys.Ui.Analyzers.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+      PrivateAssets="all"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="../../tests/Fonts/Inter-Regular.otf" LogicalName="Tralys.Ui.Testing.Inter-Regular.otf" />
+  </ItemGroup>
+</Project>
