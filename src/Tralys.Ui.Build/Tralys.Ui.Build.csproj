@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RollForward>Major</RollForward>
+    <!-- A RID-specific build of Tralys.Ui must not make the tool it packs RID-specific. -->
+    <IsRidAgnostic>true</IsRidAgnostic>
+  </PropertyGroup>
+</Project>
