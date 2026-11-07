@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Tralys.Ui.Gallery</RootNamespace>
+    <IsAotCompatible>true</IsAotCompatible>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TralysIconFonts>lucide=lucide</TralysIconFonts>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <CompilerVisibleProperty Include="TralysIconFonts" />
+    <AdditionalFiles Include="../../tests/Icons/IconCodepoints.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StbImageSharp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/Tralys.Ui/Tralys.Ui.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.Bgfx/Tralys.Ui.Bgfx.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.DevTools/Tralys.Ui.DevTools.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.Docking/Tralys.Ui.Docking.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.FreeType/Tralys.Ui.FreeType.csproj" />
+    <ProjectReference
+      Include="../../src/Tralys.Ui.Analyzers/Tralys.Ui.Analyzers.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+      PrivateAssets="all"
+    />
+    <ProjectReference
+      Include="../../src/Tralys.Ui.Generators/Tralys.Ui.Generators.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+      PrivateAssets="all"
+    />
+    <ProjectReference
+      Include="../../src/Tralys.Ui.Mvvm.Generators/Tralys.Ui.Mvvm.Generators.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+      PrivateAssets="all"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource
+      Include="../../tests/Fonts/Inter-*.otf;../../tests/Fonts/CascadiaCode-Regular.otf;../../tests/Fonts/Lucide.ttf"
+      LogicalName="%(Filename)%(Extension)"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets/**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
