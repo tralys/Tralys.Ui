@@ -1,0 +1,64 @@
+{
+  "version": "2",
+  "panelSizes": {
+    "leftWidth": 0,
+    "rightWidth": 0,
+    "topHeight": 0,
+    "bottomHeight": 0
+  },
+  "left": {
+    "orientation": 0,
+    "sizeProportion": 1,
+    "elements": [],
+    "children": []
+  },
+  "right": {
+    "orientation": 0,
+    "sizeProportion": 1,
+    "elements": [],
+    "children": []
+  },
+  "top": {
+    "orientation": 0,
+    "sizeProportion": 1,
+    "elements": [],
+    "children": []
+  },
+  "bottom": {
+    "orientation": 0,
+    "sizeProportion": 1,
+    "elements": [],
+    "children": []
+  },
+  "center": {
+    "orientation": 0,
+    "sizeProportion": 1,
+    "elements": [],
+    "children": []
+  },
+  "floatingWindows": [
+    {
+      "x": 50,
+      "y": 60,
+      "width": 320,
+      "height": 240,
+      "elements": [
+        "c",
+        "a",
+        "b"
+      ],
+      "activeElementId": "c"
+    },
+    {
+      "x": 77,
+      "y": 2.25,
+      "width": 333.3,
+      "height": 99.9,
+      "elements": [
+        "d"
+      ],
+      "activeElementId": "d"
+    }
+  ],
+  "hiddenElements": []
+}

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../../src/Tralys.Ui.Docking/Tralys.Ui.Docking.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.Testing/Tralys.Ui.Testing.csproj" />
+    <ProjectReference
+      Include="../../src/Tralys.Ui.Mvvm.Generators/Tralys.Ui.Mvvm.Generators.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+    />
+    <ProjectReference
+      Include="../../src/Tralys.Ui.Analyzers/Tralys.Ui.Analyzers.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+    />
+    <ProjectReference
+      Include="../../src/Tralys.Ui.Generators/Tralys.Ui.Generators.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Layouts/*.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

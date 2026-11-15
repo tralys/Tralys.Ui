@@ -1,0 +1,53 @@
+{
+  "version": "2",
+  "panelSizes": {
+    "leftWidth": 0,
+    "rightWidth": 0,
+    "topHeight": 0,
+    "bottomHeight": 0
+  },
+  "left": {
+    "orientation": 0,
+    "sizeProportion": 1,
+    "elements": [
+      "a"
+    ],
+    "children": [],
+    "activeElementId": "a"
+  },
+  "right": {
+    "orientation": 0,
+    "sizeProportion": 1,
+    "elements": [],
+    "children": []
+  },
+  "top": {
+    "orientation": 0,
+    "sizeProportion": 1,
+    "elements": [],
+    "children": []
+  },
+  "bottom": {
+    "orientation": 0,
+    "sizeProportion": 1,
+    "elements": [],
+    "children": []
+  },
+  "center": {
+    "orientation": 0,
+    "sizeProportion": 1,
+    "elements": [],
+    "children": []
+  },
+  "floatingWindows": [],
+  "hiddenElements": [
+    {
+      "id": "b",
+      "position": 2
+    },
+    {
+      "id": "c",
+      "position": 4
+    }
+  ]
+}
