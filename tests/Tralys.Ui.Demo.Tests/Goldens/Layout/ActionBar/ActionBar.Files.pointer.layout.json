@@ -1,0 +1,19 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]","x":0,"y":0,"width":420,"height":164},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]","x":0,"y":0,"width":420,"height":120},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Text[0]","x":194,"y":52,"width":32,"height":17,"text":"Files"},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/ActionBar[1]/Box[0]","x":0,"y":144,"width":420,"height":20},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/ActionBar[1]/Box[0]/ActionPrompt[0]/Box[0]","x":37,"y":144,"width":91,"height":20},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/ActionBar[1]/Box[0]/ActionPrompt[0]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]","x":37,"y":144,"width":46,"height":20},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/ActionBar[1]/Box[0]/ActionPrompt[0]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]/Text[0]","x":44,"y":146,"width":32,"height":15,"text":"Enter"},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/ActionBar[1]/Box[0]/ActionPrompt[0]/Box[0]/Text[1]","x":91,"y":146,"width":37,"height":17,"text":"Open"},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/ActionBar[1]/Box[0]/ActionPrompt[1]/Box[0]","x":152,"y":144,"width":83,"height":20},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/ActionBar[1]/Box[0]/ActionPrompt[1]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]","x":152,"y":144,"width":36,"height":20},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/ActionBar[1]/Box[0]/ActionPrompt[1]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]/Text[0]","x":159,"y":146,"width":22,"height":15,"text":"Esc"},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/ActionBar[1]/Box[0]/ActionPrompt[1]/Box[0]/Text[1]","x":196,"y":146,"width":39,"height":17,"text":"Close"},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/ActionBar[1]/Box[0]/ActionPrompt[2]/Box[0]","x":259,"y":144,"width":161,"height":20},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/ActionBar[1]/Box[0]/ActionPrompt[2]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]","x":259,"y":144,"width":76,"height":20},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/ActionBar[1]/Box[0]/ActionPrompt[2]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]/Text[0]","x":266,"y":146,"width":62,"height":15,"text":"Ctrl\u002BPgDn"},
+{"path":"RootComponent[0]/Box[0]/ActionScope[0]/Box[0]/ActionBar[1]/Box[0]/ActionPrompt[2]/Box[0]/Text[1]","x":343,"y":146,"width":77,"height":17,"text":"Next folder"}
+],"consume":["11111111111000000000000000000000","11111111111000000000000000000000","11111111111000000000000000000000","11111111111000000000000000000000","11111111111000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

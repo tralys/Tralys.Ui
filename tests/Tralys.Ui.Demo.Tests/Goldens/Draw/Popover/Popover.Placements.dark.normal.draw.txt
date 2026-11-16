@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Tooltip[0]/Box[0]/Popover[0]/Box[0]/Trigger[0]/Box[0]/Box[0]/Box[0]: box 0,0 44x27 radius 3,3,3,3 fill #121820 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Tooltip[0]/Box[0]/Popover[0]/Box[0]/Trigger[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 3 in -0.78,2.16 26.95x15.56 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Popover[1]/Box[0]/Trigger[0]/Box[0]/Box[0]/Box[0]: box 0,0 94x27 radius 3,3,3,3 fill #121820 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Popover[1]/Box[0]/Trigger[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 9 in -0.26,2.16 75.73x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Popover[2]/Box[0]/Trigger[0]/Box[0]/Box[0]/Box[0]: box 0,0 78x27 radius 3,3,3,3 fill #121820 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Popover[2]/Box[0]/Trigger[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 9 in -0.26,1.64 61.09x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Tooltip[3]/Box[0]/Popover[0]/Box[0]/Trigger[0]/Box[0]/Box[0]/Box[0]: box 0,0 88x27 radius 3,3,3,3 fill #121820 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Tooltip[3]/Box[0]/Popover[0]/Box[0]/Trigger[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 10 in -0.26,1.64 70.36x16.07 #bfc7d2

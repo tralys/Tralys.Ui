@@ -1,0 +1,7 @@
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 400x32
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Text[0]: glyphs 4 in -0.78,2.16 35.59x12.7 #454c55
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[1]/Box[0]/Text[0]: glyphs 4 in -0.78,2.16 38.7x12.7 #454c55
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[2]/Box[0]/Text[0]: glyphs 4 in -0.78,2.16 38.96x12.7 #454c55
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[3]/Box[0]/Text[0]: glyphs 4 in -0.78,2.16 39.48x12.7 #454c55
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[4]/Box[0]/Text[0]: glyphs 4 in -0.78,2.16 38.7x12.7 #454c55
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[5]/Box[0]/Text[0]: glyphs 4 in -0.78,2.16 38.96x12.7 #454c55

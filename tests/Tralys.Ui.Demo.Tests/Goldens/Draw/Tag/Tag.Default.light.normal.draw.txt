@@ -1,0 +1,9 @@
+RootComponent[0]/Box[0]/Box[0]/Tag[0]/Box[0]: box 0,0 63x16 radius 3,3,3,3 fill #cad2de
+RootComponent[0]/Box[0]/Box[0]/Tag[0]/Box[0]/Text[0]: glyphs 6 in -0.22,1.85 49.99x10.89 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Tag[1]/Box[0]: box 0,0 53x16 radius 3,3,3,3 fill #bad3ff
+RootComponent[0]/Box[0]/Box[0]/Tag[1]/Box[0]/Text[0]: glyphs 5 in -0.44,1.85 40.29x10.89 #113478
+RootComponent[0]/Box[0]/Box[0]/Tag[2]/Box[0]: box 0,0 76x16 radius 3,3,3,3 fill #ffd0cb
+RootComponent[0]/Box[0]/Box[0]/Tag[2]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.56,0.08 10.93x10.74 #a20017
+RootComponent[0]/Box[0]/Box[0]/Tag[2]/Box[0]/Text[1]: glyphs 7 in -0.22,1.85 47.45x10.89 #a20017
+RootComponent[0]/Box[0]/Box[0]/Tag[3]/Box[0]: box 0,0 61x16 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #005121
+RootComponent[0]/Box[0]/Box[0]/Tag[3]/Box[0]/Text[0]: glyphs 8 in -0.67,1.4 47.29x11.33 #003c17

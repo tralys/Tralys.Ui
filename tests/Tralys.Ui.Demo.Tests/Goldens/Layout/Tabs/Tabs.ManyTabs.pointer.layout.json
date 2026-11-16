@@ -1,0 +1,22 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]","x":0,"y":0,"width":400,"height":65},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]","x":0,"y":0,"width":400,"height":65},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]","x":0,"y":0,"width":400,"height":32},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]","x":0,"y":0,"width":400,"height":32},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]","x":0,"y":0,"width":59,"height":32},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Text[0]","x":12,"y":8,"width":35,"height":17,"text":"Tab 1"},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Box[1]","x":0,"y":30,"width":59,"height":2},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[1]/Box[0]","x":59,"y":0,"width":62,"height":32},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[1]/Box[0]/Text[0]","x":71,"y":8,"width":38,"height":17,"text":"Tab 2"},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[2]/Box[0]","x":121,"y":0,"width":62,"height":32},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[2]/Box[0]/Text[0]","x":133,"y":8,"width":38,"height":17,"text":"Tab 3"},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[3]/Box[0]","x":183,"y":0,"width":63,"height":32},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[3]/Box[0]/Text[0]","x":195,"y":8,"width":39,"height":17,"text":"Tab 4"},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[4]/Box[0]","x":246,"y":0,"width":62,"height":32},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[4]/Box[0]/Text[0]","x":258,"y":8,"width":38,"height":17,"text":"Tab 5"},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[5]/Box[0]","x":308,"y":0,"width":62,"height":32},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[5]/Box[0]/Text[0]","x":320,"y":8,"width":38,"height":17,"text":"Tab 6"},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/Panel[1]/Box[0]","x":0,"y":32,"width":400,"height":33},
+{"path":"RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/Panel[1]/Box[0]/Text[0]","x":8,"y":40,"width":384,"height":17,"text":"Content 1"}
+],"consume":["11111111110000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

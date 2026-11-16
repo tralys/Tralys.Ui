@@ -1,0 +1,20 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 23 in -0.78,1.64 179.64x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]: box 0,0 64x48 radius 3,3,3,3 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]: clip 0,0 64x48 radius 3,3,3,3
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]/Fragment[0]/Box[0]: box 0,0 64x48 fill #dbe3ef
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]/Fragment[0]/Box[0]/Text[0]: glyphs 4 in -0.52,2.16 32.48x12.7 #113478
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]/Box[1]: layer 0
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]/Box[1]: box 0,0 64x48 fill #00000080
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]/Box[2]: box 0,0 64x48 radius 3,3,3,3 fill none border 2,2,2,2 #113478
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]: box 0,0 64x48 radius 3,3,3,3 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]: clip 0,0 64x48 radius 3,3,3,3
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]/Fragment[0]/Box[0]: box 0,0 64x48 fill #dbe3ef
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]/Fragment[0]/Box[0]/Text[0]: glyphs 6 in -0.52,1.64 40.64x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]/Box[1]: box 0,0 64x48 fill #00000080
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]/Box[2]: box 0,0 64x48 radius 3,3,3,3 fill none border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]: box 0,0 64x48 radius 3,3,3,3 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]: clip 0,0 64x48 radius 3,3,3,3
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]/Fragment[0]/Box[0]: box 0,0 64x48 fill #dbe3ef
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]/Fragment[0]/Box[0]/Text[0]: glyphs 6 in -0.26,2.16 49x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]/Box[1]: box 0,0 64x48 fill #00000080
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]/Box[2]: box 0,0 64x48 radius 3,3,3,3 fill none border 1,1,1,1 #bfc7d2

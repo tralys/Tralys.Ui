@@ -1,0 +1,20 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 35 in -0.52,1.64 283.7x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]: box 0,0 320x93 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 58x27 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Text[0]: glyphs 5 in -0.26,2.16 41.19x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 62x27 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Text[0]: glyphs 6 in -0.26,2.16 44.36x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: box 0,0 173x27 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Text[0]: glyphs 18 in -0.26,1.64 155.94x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]: box 0,0 52x27 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]/Text[0]: glyphs 4 in -0.78,2.16 35.12x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[4]: box 0,0 63x27 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[4]/Text[0]: glyphs 6 in -0.26,1.64 45.94x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[5]: box 0,0 53x27 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[5]/Text[0]: glyphs 5 in -0.52,1.64 35.84x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[6]: box 0,0 50x27 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[6]/Text[0]: glyphs 4 in -0.52,2.16 32.61x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[7]: box 0,0 89x27 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[7]/Text[0]: glyphs 9 in -0.26,2.16 71.82x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[8]: box 0,0 63x27 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[8]/Text[0]: glyphs 5 in -0.52,2.16 45.12x15.56 #2a313a

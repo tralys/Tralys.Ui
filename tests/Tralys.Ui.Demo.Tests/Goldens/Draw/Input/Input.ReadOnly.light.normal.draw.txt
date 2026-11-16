@@ -1,0 +1,4 @@
+RootComponent[0]/Box[0]/Box[0]/Input[0]/Box[0]: box 0,0 320x32 radius 3,3,3,3 fill #ecf4ff border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: clip 0,0 296x17
+RootComponent[0]/Box[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: glyphs 32 in -0.26,1.64 239.03x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: pop

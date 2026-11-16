@@ -1,0 +1,50 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[0]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[0]/Box[0]/Text[1]: glyphs 1 in -0.67,1.85 10.44x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[1]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[1]/Box[0]/Text[1]: glyphs 1 in -0.22,1.85 8.67x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[2]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[2]/Box[0]/Text[1]: glyphs 1 in -0.67,1.85 10.22x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[3]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[3]/Box[0]/Text[1]: glyphs 1 in -0.67,1.85 10.22x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[4]/Box[0]/Canvas[0]: box 0,0 27x22 radius 11,11,11,11 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[4]/Box[0]/Text[1]: glyphs 2 in -0.22,1.85 15.45x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[5]/Box[0]/Canvas[0]: box 0,0 28x22 radius 11,11,11,11 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[5]/Box[0]/Text[1]: glyphs 2 in -0.22,1.85 16.77x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[6]/Box[0]/Canvas[0]: box 0,0 46x22 radius 11,11,11,11 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/GamepadGlyph[6]/Box[0]/Text[1]: glyphs 4 in -0.22,1.85 33.8x10.89 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[0]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[0]/Box[0]/Canvas[0]: path 6.38,6.38 9.24x9.24 4 verbs 4 points #d37fc26d even-odd fill none stroke 1.5 #e0e9f4 round round round miter 10
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[1]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[1]/Box[0]/Canvas[0]: ellipse 6.38,6.38 9.24x9.24 fill none stroke 1.5 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[2]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[2]/Box[0]/Canvas[0]: path 6.38,6.38 9.24x9.24 5 verbs 4 points #b75039fc even-odd fill none stroke 1.5 #e0e9f4 round round round miter 10
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[3]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[3]/Box[0]/Canvas[0]: path 6.38,6.38 9.24x7.39 4 verbs 3 points #7739cacd even-odd fill none stroke 1.5 #e0e9f4 round round round miter 10
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[4]/Box[0]/Canvas[0]: box 0,0 24x22 radius 11,11,11,11 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[4]/Box[0]/Text[1]: glyphs 2 in -0.22,1.85 11.8x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[5]/Box[0]/Canvas[0]: box 0,0 28x22 radius 11,11,11,11 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[5]/Box[0]/Text[1]: glyphs 2 in -0.22,1.85 16.1x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[6]/Box[0]/Canvas[0]: box 0,0 59x22 radius 11,11,11,11 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/GamepadGlyph[6]/Box[0]/Text[1]: glyphs 7 in -0.44,1.4 47.06x13.78 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[0]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[0]/Box[0]/Text[1]: glyphs 1 in -0.22,1.85 8.67x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[1]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[1]/Box[0]/Text[1]: glyphs 1 in -0.67,1.85 10.44x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[2]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[2]/Box[0]/Text[1]: glyphs 1 in -0.67,1.85 10.22x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[3]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[3]/Box[0]/Text[1]: glyphs 1 in -0.67,1.85 10.22x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[4]/Box[0]/Canvas[0]: box 0,0 22x22 radius 11,11,11,11 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[4]/Box[0]/Text[1]: glyphs 1 in -0.22,1.85 7.56x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[5]/Box[0]/Canvas[0]: box 0,0 28x22 radius 11,11,11,11 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[5]/Box[0]/Text[1]: glyphs 2 in -0.44,1.85 17.08x10.67 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[6]/Box[0]/Canvas[0]: box 0,0 22x22 radius 11,11,11,11 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[2]/GamepadGlyph[6]/Box[0]/Text[1]: glyphs 1 in 0,4.07 8x8 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[3]/GamepadGlyph[0]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[3]/GamepadGlyph[0]/Box[0]/Canvas[0]: path 6.38,6.38 9.24x7.39 4 verbs 3 points #7739cacd even-odd fill #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[3]/GamepadGlyph[1]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[3]/GamepadGlyph[1]/Box[0]/Canvas[0]: path 6.38,8.23 9.24x7.39 4 verbs 3 points #7254fb39 even-odd fill #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[3]/GamepadGlyph[2]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[3]/GamepadGlyph[2]/Box[0]/Canvas[0]: path 6.38,6.38 7.39x9.24 4 verbs 3 points #cb4940e5 even-odd fill #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[3]/GamepadGlyph[3]/Box[0]/Canvas[0]: ellipse 0,0 22x22 fill #090f16 stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[3]/GamepadGlyph[3]/Box[0]/Canvas[0]: path 8.23,6.38 7.39x9.24 4 verbs 3 points #4833b4b1 even-odd fill #e0e9f4

@@ -1,0 +1,11 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 90 in -0.26,1.64 734.13x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: matrix 0.99,0.1,-0.1,0.99,3.08,-2.77
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 56x56 radius 3,3,3,3 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: opacity 0.96
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 56x56 radius 28,28,28,28 fill #005121
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: matrix 0.97,0,0,1,160.93,0
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: box 0,0 56x56 radius 3,3,3,3 fill #764900
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]: box 0,0 56x56 radius 4.53,4.53,4.53,4.53 fill #c01925
+RootComponent[0]/Box[0]/Box[0]/Box[2]: box 0,0 420x28 radius 14,14,14,14 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Box[0]: box 0,0 20x20 radius 10,10,10,10 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Box[3]: box 0,0 46x12 radius 6,6,6,6 fill #113478

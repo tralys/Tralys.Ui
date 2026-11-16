@@ -1,0 +1,24 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 8 in -0.78,1.64 54.26x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 10,10,10,10 fill #113478 border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]/Fragment[0]/Box[0]/Box[1]: box 0,0 10x10 radius 5,5,5,5 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]/Fragment[1]/Text[0]: glyphs 8 in -0.26,1.64 62.25x16.07 #113478
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 10,10,10,10 fill #e0e9f4 border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]/Fragment[0]/Box[0]/Box[1]: matrix 0,0,0,0,10,10
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]/Fragment[0]/Box[0]/Box[1]: box 0,0 10x10 radius 5,5,5,5 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]/Fragment[1]/Text[0]: glyphs 8 in -0.26,1.64 62.99x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 10,10,10,10 fill #e0e9f4 border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]/Fragment[0]/Box[0]/Box[1]: matrix 0,0,0,0,10,10
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]/Fragment[0]/Box[0]/Box[1]: box 0,0 10x10 radius 5,5,5,5 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]/Fragment[1]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Text[2]: glyphs 10 in -0.26,1.64 71.37x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[3]/Box[0]/Radio[0]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 10,10,10,10 fill #113478 border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[3]/Box[0]/Radio[0]/Box[0]/Fragment[0]/Box[0]/Box[1]: box 0,0 10x10 radius 5,5,5,5 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[3]/Box[0]/Radio[0]/Box[0]/Fragment[1]/Text[0]: glyphs 4 in -0.52,2.16 32.48x12.7 #113478
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[3]/Box[0]/Radio[1]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 10,10,10,10 fill #e0e9f4 border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[3]/Box[0]/Radio[1]/Box[0]/Fragment[0]/Box[0]/Box[1]: matrix 0,0,0,0,10,10
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[3]/Box[0]/Radio[1]/Box[0]/Fragment[0]/Box[0]/Box[1]: box 0,0 10x10 radius 5,5,5,5 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[3]/Box[0]/Radio[1]/Box[0]/Fragment[1]/Text[0]: glyphs 6 in -0.52,1.64 40.64x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[3]/Box[0]/Radio[2]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 10,10,10,10 fill #e0e9f4 border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[3]/Box[0]/Radio[2]/Box[0]/Fragment[0]/Box[0]/Box[1]: matrix 0,0,0,0,10,10
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[3]/Box[0]/Radio[2]/Box[0]/Fragment[0]/Box[0]/Box[1]: box 0,0 10x10 radius 5,5,5,5 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[3]/Box[0]/Radio[2]/Box[0]/Fragment[1]/Text[0]: glyphs 6 in -0.26,2.16 49x12.7 #2a313a

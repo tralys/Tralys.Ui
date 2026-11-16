@@ -1,0 +1,3 @@
+RootComponent[0]/Box[0]/Box[0]/MenuButton[0]/Box[1]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/MenuButton[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 4 in -0.26,2.16 39.79x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/MenuButton[0]/Box[1]/Box[0]/Icon[1]/Box[0]/Text[0]: glyphs 1 in 1.81,4.26 10.37x6.74 #bfc7d2

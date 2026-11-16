@@ -1,0 +1,4 @@
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]: box 0,0 1272x808 fill #00000080
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]: box 0,0 274x122 radius 3,3,3,3 fill #121820 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Title[0]/Box[0]/Text[0]: glyphs 9 in -0.33,2.1 92.56x20.67 #97bcff
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Text[1]: glyphs 33 in -0.78,1.64 182.94x33.07 #9fa7b1

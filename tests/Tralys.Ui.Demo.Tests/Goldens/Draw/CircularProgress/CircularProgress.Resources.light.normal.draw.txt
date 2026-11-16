@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]/Canvas[0]: arc 0,0 72x72 width 6 from -90 sweep 360 #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]/Canvas[0]: arc 0,0 72x72 width 6 from -90 sweep 262.8 #c01925
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]/Box[1]/Box[0]/Text[0]: glyphs 3 in -0.13,2.46 37.77x14.52 #121820
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]/Box[1]/Box[0]/Text[1]: glyphs 3 in -0.44,1.85 25.99x10.89 #454c55
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]/Canvas[0]: arc 0,0 72x72 width 6 from -90 sweep 360 #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]/Canvas[0]: arc 0,0 72x72 width 6 from -90 sweep 169.2 #113478
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]/Box[1]/Box[0]/Text[0]: glyphs 3 in -0.59,2.46 38.23x14.52 #121820
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]/Box[1]/Box[0]/Text[1]: glyphs 3 in -0.22,1.85 28.4x10.67 #454c55

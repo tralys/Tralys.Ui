@@ -1,0 +1,10 @@
+RootComponent[0]/Box[0]/Grid[0]/Text[0]: glyphs 2 in -0.52,2.16 22.64x12.44 #454c55
+RootComponent[0]/Box[0]/Grid[0]/Canvas[1]: path 0,14 320x0 2 verbs 2 points #112345fa even-odd fill none stroke 3 #2a313a miter flat flat miter 10 dashes 12,6 offset 0 flat
+RootComponent[0]/Box[0]/Grid[0]/Text[2]: glyphs 17 in -0.52,2.16 145.32x15.56 #454c55
+RootComponent[0]/Box[0]/Grid[0]/Canvas[3]: path 4,14 316x0 2 verbs 2 points #8bff4f6a even-odd fill none stroke 4 #2a313a miter flat flat miter 10 dashes 0,8 offset 0 round
+RootComponent[0]/Box[0]/Grid[0]/Text[4]: glyphs 4 in -0.52,2.16 43.74x12.7 #454c55
+RootComponent[0]/Box[0]/Grid[0]/Canvas[5]: path 0,14 320x0 2 verbs 2 points #112345fa even-odd fill none stroke 3 #2a313a miter flat flat miter 10 dashes 18,6,3,6 offset 0 flat
+RootComponent[0]/Box[0]/Grid[0]/Text[6]: glyphs 10 in -0.52,1.64 82.79x15.81 #454c55
+RootComponent[0]/Box[0]/Grid[0]/Canvas[7]: path 0,14 320x0 2 verbs 2 points #112345fa even-odd fill none stroke 3 #2a313a miter flat flat miter 10 dashes 12,6 offset 9 flat
+RootComponent[0]/Box[0]/Grid[0]/Text[8]: glyphs 23 in -0.26,1.64 180.55x16.07 #454c55
+RootComponent[0]/Box[0]/Grid[0]/Canvas[9]: path 0,14 320x0 2 verbs 2 points #112345fa even-odd fill none stroke 3 #113478 miter flat flat miter 10 dashes 12,6 offset -1.2 flat

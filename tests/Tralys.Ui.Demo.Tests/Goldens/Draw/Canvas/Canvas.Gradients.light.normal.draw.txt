@@ -1,0 +1,6 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 71 in -0.52,1.64 517.04x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Canvas[0]: box 0,0 120x80 radius 6,6,6,6 fill #3b82f6
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Canvas[1]: box 0,0 120x80 radius 6,6,6,6 fill linear 0,0.5 1,0.5 0 #0ea5e9 1 #6366f1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Canvas[2]: box 0,0 120x80 radius 6,6,6,6 fill linear 0,0 1,1 0 #f59e0b 0.5 #ef4444 1 #7c3aed
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Canvas[3]: box 0,0 120x80 radius 6,6,6,6 fill radial 0.5,0.5 0.5,0.5 0 #fde68a 1 #b45309
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Canvas[4]: box 0,0 120x80 radius 6,6,6,6 fill radial 0.25,0.3 0.8,0.9 0 #ffffff 0.4 #22c55e 1 #16653400

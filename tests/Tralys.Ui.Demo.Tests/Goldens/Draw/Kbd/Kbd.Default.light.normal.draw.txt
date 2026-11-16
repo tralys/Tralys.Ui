@@ -1,0 +1,6 @@
+RootComponent[0]/Box[0]/Box[0]/Kbd[0]/Box[0]: box 0,0 36x20 radius 3,3,3,3 fill #ecf4ff border 1,1,1,2 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Kbd[0]/Box[0]/Text[0]: glyphs 4 in -0.44,1.85 22.35x10.89 #121820
+RootComponent[0]/Box[0]/Box[0]/Kbd[1]/Box[0]: box 0,0 42x20 radius 3,3,3,3 fill #ecf4ff border 1,1,1,2 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Kbd[1]/Box[0]/Text[0]: glyphs 5 in -0.44,1.4 28.44x11.33 #121820
+RootComponent[0]/Box[0]/Box[0]/Kbd[2]/Box[0]: box 0,0 22x20 radius 3,3,3,3 fill #ecf4ff border 1,1,1,2 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Kbd[2]/Box[0]/Text[0]: glyphs 1 in -0.22,1.85 7.78x10.67 #121820

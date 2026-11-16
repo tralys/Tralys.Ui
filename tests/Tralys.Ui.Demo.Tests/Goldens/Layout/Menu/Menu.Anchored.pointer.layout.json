@@ -1,0 +1,15 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":320,"height":220},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]","x":16,"y":16,"width":120,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]","x":0,"y":60,"width":201,"height":74},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]","x":0,"y":60,"width":201,"height":74},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]","x":0,"y":60,"width":201,"height":74},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]","x":5,"y":65,"width":191,"height":64},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[0]/Box[0]","x":5,"y":65,"width":191,"height":32},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[0]/Box[0]/Box[0]","x":17,"y":73,"width":167,"height":17},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[0]/Box[0]/Box[0]/Text[0]","x":17,"y":73,"width":167,"height":17,"text":"Opens below the anchor"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[1]/Box[0]","x":5,"y":97,"width":191,"height":32},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[1]/Box[0]/Box[0]","x":17,"y":105,"width":167,"height":17},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[1]/Box[0]/Box[0]/Text[0]","x":17,"y":105,"width":139,"height":17,"text":"Right edges lined up"}
+],"consume":["11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111","11111111111111111111111111111111"]}

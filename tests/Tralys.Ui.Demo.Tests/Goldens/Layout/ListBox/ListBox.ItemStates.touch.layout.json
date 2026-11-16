@@ -1,0 +1,18 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":899,"height":253},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[0]","x":0,"y":0,"width":899,"height":17,"text":"A container template reading IsSelected, :pointerover, :pressed, :focus and :disabled; the every-state toggle above holds each state"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]","x":0,"y":25,"width":260,"height":228},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/ListBox[0]/Box[0]","x":4,"y":29,"width":252,"height":220},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/ListBox[0]/Box[0]/VirtualList[0]","x":4,"y":29,"width":252,"height":220},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]","x":4,"y":29,"width":252,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]/Text[0]","x":16,"y":43,"width":75,"height":17,"text":"Field guide"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]","x":4,"y":73,"width":252,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]/Text[0]","x":16,"y":87,"width":65,"height":17,"text":"City atlas"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Row[0]/Box[0]","x":4,"y":117,"width":252,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Row[0]/Box[0]/Text[0]","x":16,"y":131,"width":108,"height":17,"text":"Morning edition"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Row[0]/Box[0]","x":4,"y":161,"width":252,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Row[0]/Box[0]/Text[0]","x":16,"y":175,"width":110,"height":17,"text":"Harbour at dusk"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Row[0]/Box[0]","x":4,"y":205,"width":252,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Row[0]/Box[0]/Text[0]","x":16,"y":219,"width":81,"height":17,"text":"Jazz record"}
+],"consume":["11111111111111111111111000000000","11111110000000000000000000000000","11111110000000000000000000000000","11111110000000000000000000000000","11111110000000000000000000000000","11111110000000000000000000000000","11111110000000000000000000000000","11111110000000000000000000000000","11111110000000000000000000000000","11111110000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

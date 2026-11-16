@@ -1,0 +1,3 @@
+RootComponent[0]/Box[0]/Box[0]/MenuButton[0]/Box[1]: box 0,0 95x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/MenuButton[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 7 in -0.78,1.64 53.92x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/MenuButton[0]/Box[1]/Box[0]/Icon[1]/Box[0]/Text[0]: glyphs 1 in 1.81,4.26 10.37x6.74 #bfc7d2

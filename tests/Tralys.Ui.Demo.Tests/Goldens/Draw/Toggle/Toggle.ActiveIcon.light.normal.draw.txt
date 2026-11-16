@@ -1,0 +1,4 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Toggle[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.48x17.19 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Toggle[1]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.48x17.19 #003c17
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Toggle[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.19x16.59 #616973
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Toggle[1]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.19x16.59 #113478

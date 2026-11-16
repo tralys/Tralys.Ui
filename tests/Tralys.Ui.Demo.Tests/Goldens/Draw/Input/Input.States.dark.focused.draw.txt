@@ -1,0 +1,24 @@
+RootComponent[0]/Box[0]/Box[0]/Input[0]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: clip 0,0 216x17
+RootComponent[0]/Box[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: glyphs 6 in -0.26,1.64 51.68x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]/Box[0]/EditableText[0]: clip 0,0 216x17
+RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]/Box[0]/EditableText[0]: glyphs 15 in -1.04,2.16 133.22x15.56 #7f8791
+RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]/Box[0]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Box[0]/Input[2]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #e54545
+RootComponent[0]/Box[0]/Box[0]/Input[2]/Box[0]/Box[0]/EditableText[0]: clip 0,0 216x17
+RootComponent[0]/Box[0]/Box[0]/Input[2]/Box[0]/Box[0]/EditableText[0]: glyphs 10 in -0.26,1.64 83.35x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Input[2]/Box[0]/Box[0]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Box[0]/Input[3]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #222831
+RootComponent[0]/Box[0]/Box[0]/Input[3]/Box[0]/Box[0]/EditableText[0]: clip 0,0 216x17
+RootComponent[0]/Box[0]/Box[0]/Input[3]/Box[0]/Box[0]/EditableText[0]: glyphs 8 in -0.26,2.16 68.6x15.56 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Input[3]/Box[0]/Box[0]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Box[0]/Input[4]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #1a2028
+RootComponent[0]/Box[0]/Box[0]/Input[4]/Box[0]/Box[0]/EditableText[0]: clip 0,0 216x17
+RootComponent[0]/Box[0]/Box[0]/Input[4]/Box[0]/Box[0]/EditableText[0]: glyphs 8 in -0.26,1.64 60.17x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Input[4]/Box[0]/Box[0]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Box[0]/Input[5]/Box[0]: box 0,0 240x32 fill #ffffff00 border 0,0,0,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Input[5]/Box[0]/Box[0]/EditableText[0]: clip 0,0 216x17
+RootComponent[0]/Box[0]/Box[0]/Input[5]/Box[0]/Box[0]/EditableText[0]: glyphs 5 in -0.26,2.16 37.9x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Input[5]/Box[0]/Box[0]/EditableText[0]: pop

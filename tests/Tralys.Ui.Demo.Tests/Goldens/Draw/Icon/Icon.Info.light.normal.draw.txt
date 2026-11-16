@@ -1,0 +1,4 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 20 in -0.26,1.64 152.33x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Icon[1]/Box[0]/Text[0]: glyphs 1 in -0.52,0.11 15.3x15.04 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 12 in -0.78,1.64 90.45x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Icon[1]/Box[0]/Text[0]: glyphs 1 in -0.52,0.11 15.3x15.04 #454c55

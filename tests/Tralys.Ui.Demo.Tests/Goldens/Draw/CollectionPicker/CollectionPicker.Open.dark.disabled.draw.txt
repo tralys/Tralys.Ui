@@ -1,0 +1,4 @@
+RootComponent[0]/Box[0]/Box[0]/CollectionPicker[0]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #1a2028
+RootComponent[0]/Box[0]/Box[0]/CollectionPicker[0]/Box[0]/Box[0]/Text[0]: glyphs 7 in -0.52,2.16 60.75x12.7 #454c55
+RootComponent[0]/Box[0]/Box[0]/CollectionPicker[0]/Box[0]/Box[0]/Text[1]: glyphs 10 in -0.26,1.64 79.41x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/CollectionPicker[0]/Box[0]/Box[0]/Box[2]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #2a313a

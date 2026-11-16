@@ -1,0 +1,10 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Cooldown[0]/Box[0]/Box[0]/Box[0]: box 0,0 48x48 radius 3,3,3,3 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Cooldown[0]/Box[0]/Shade[1]/Canvas[0]: path -1.93,0 25.93x45.38 5 verbs 8 points #7ea616a3 even-odd fill #00000080
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Cooldown[0]/Box[0]/Box[2]/Text[0]: glyphs 1 in -0.59,2.46 12.15x14.22 #121820
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[1]: glyphs 4 in -0.44,1.85 28.12x10.89 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Cooldown[0]/Box[0]/Box[0]/Box[0]: box 0,0 48x48 radius 3,3,3,3 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Cooldown[0]/Box[0]/Shade[1]/Canvas[0]: path 13.1,0 10.9x24 4 verbs 5 points #0e7cb0da even-odd fill #00000080
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Cooldown[0]/Box[0]/Box[2]/Text[0]: glyphs 3 in -0.58,2.46 27.92x14.52 #121820
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[1]: glyphs 4 in -0.44,1.85 28.12x10.89 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Cooldown[0]/Box[0]/Box[0]/Box[0]: box 0,0 48x48 radius 3,3,3,3 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Text[1]: glyphs 4 in -0.44,1.85 28.12x10.89 #454c55

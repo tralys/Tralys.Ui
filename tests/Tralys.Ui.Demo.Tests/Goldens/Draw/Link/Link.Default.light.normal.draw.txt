@@ -1,0 +1,6 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 12 in -0.78,1.64 89.68x13.22 #113478
+RootComponent[0]/Box[0]/Box[0]/Text[0]: box 0,16.42 88.16x1.3 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Text[1]: glyphs 6 in -0.52,2.16 52.63x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Text[1]: glyphs 13 in 54.18,1.64 104.62x13.22 #113478
+RootComponent[0]/Box[0]/Box[0]/Text[1]: glyphs 15 in 160.71,1.64 112.87x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Text[1]: box 54.69,16.42 103.74x1.3 fill #113478

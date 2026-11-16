@@ -1,0 +1,14 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 54 in -0.52,1.64 424.79x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 120x100 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[0]: box 0,0 64x40 fill #113478 border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 120x100 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[0]: opacity 0.6
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[0]: box 0,0 64x40 fill #113478 border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: box 0,0 120x100 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Box[0]: opacity 0.3
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Box[0]: box 0,0 64x40 fill #113478 border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]: box 0,0 120x100 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]/Box[0]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]/Box[0]: box 0,0 100x80 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]/Box[0]/Box[0]: opacity 0.5
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]/Box[0]/Box[0]: box 0,0 64x40 fill #c01925 border 1,1,1,1 #113478

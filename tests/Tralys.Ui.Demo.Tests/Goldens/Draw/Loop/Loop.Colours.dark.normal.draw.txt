@@ -1,0 +1,4 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 100 in -0.52,1.64 822.12x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 120x40 radius 3,3,3,3 fill none border 2,2,2,2 #383a39
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 120x40 radius 3,3,3,3 fill linear 0,0 1,0 0 #1e293b 0.5 #212e41 1 #1e293b
+RootComponent[0]/Box[0]/Box[0]/Box[2]: box 0,0 420x12 radius 6,6,6,6 fill #29c45b

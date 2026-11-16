@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[0]/Text[0]: glyphs 7 in -0.26,2.16 55.67x15.56 #454c55
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[0]: box 0,0 210x2 fill #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[1]: box 0,0 53x2 fill #113478
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]/Box[0]/SliderThumb[2]/Box[0]: box 0,0 16x16 radius 8,8,8,8 fill #113478
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]: box 0,0 65x24 radius 3,3,3,3 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: clip 0,0 53x15
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: glyphs 7 in -0.44,1.85 52.89x10.89 #2a313a
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: pop

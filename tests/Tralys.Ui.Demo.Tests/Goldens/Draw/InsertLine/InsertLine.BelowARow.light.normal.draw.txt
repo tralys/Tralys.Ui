@@ -1,0 +1,5 @@
+RootComponent[0]/Box[0]/Box[0]/InsertLine[0]/Box[0]/Row[0]/Box[0]/Text[0]: glyphs 8 in -0.26,1.64 62.25x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/InsertLine[1]/Box[0]/Row[0]/Box[0]/Text[0]: glyphs 8 in -0.26,1.64 62.99x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/InsertLine[1]/Box[0]/Box[1]: box 0,0 200x2 fill #113478
+RootComponent[0]/Box[0]/Box[0]/InsertLine[2]/Box[0]/Row[0]/Box[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/InsertLine[3]/Box[0]/Row[0]/Box[0]/Text[0]: glyphs 6 in -0.78,2.16 45.28x12.7 #2a313a

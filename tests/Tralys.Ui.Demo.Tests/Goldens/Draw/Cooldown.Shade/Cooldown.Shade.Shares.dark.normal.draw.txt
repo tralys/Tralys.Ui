@@ -1,0 +1,4 @@
+RootComponent[0]/Box[0]/Box[0]/Shade[0]/Canvas[0]: path 0,0 42x42 6 verbs 13 points #47c6ff49 even-odd fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Shade[1]/Canvas[0]: path 0,0 42x42 6 verbs 11 points #4379e69f even-odd fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Shade[2]/Canvas[0]: path -1.78,0 22.78x37.99 5 verbs 8 points #1c5d3ef1 even-odd fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Shade[3]/Canvas[0]: path 8.66,0 12.34x21 4 verbs 5 points #f14760b5 even-odd fill #97bcff

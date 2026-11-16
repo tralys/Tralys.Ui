@@ -1,0 +1,9 @@
+RootComponent[0]/Box[0]/Box[0]/Button[0]/Box[1]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.52,0.11 15.04x15.04 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Button[0]/Box[1]/Fragment[0]/Text[1]: glyphs 5 in -0.52,2.16 37.82x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Button[0]/Box[1]/Box[1]: box 0,0 60x24 radius 4,4,4,4 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Button[1]/Box[1]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.52,0.11 15.04x15.04 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Button[1]/Box[1]/Fragment[0]/Text[1]: glyphs 6 in -0.26,1.64 55.13x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Button[1]/Box[1]/Box[1]: box 0,0 77x24 radius 4,4,4,4 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Button[2]/Box[1]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.67,0.14 19.33x19.33 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Button[2]/Box[1]/Fragment[0]/Text[1]: glyphs 5 in -0.3,2.46 44.61x17.78 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Button[2]/Box[1]/Box[1]: box 0,0 70x24 radius 4,4,4,4 fill none border 2,2,2,2 #97bcff

@@ -1,0 +1,10 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 49 in -0.78,1.64 384.17x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Button[0]/Box[1]: box 0,0 115x32 radius 3,3,3,3 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Button[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.52,2.16 92.25x15.56 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]: box 0,0 480x240 fill #00000080
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]: box 0,0 205x76 radius 3,3,3,3 fill #121820 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 12 in -0.26,2.16 98.98x15.56 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Text[1]: glyphs 21 in -0.52,1.64 171.82x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]/CloseButton[1]/Box[0]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]/CloseButton[1]/Box[0]: box 0,0 24x24 radius 12,12,12,12 fill #000000 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]/CloseButton[1]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.56,2.1 8.89x8.89 #9fa7b1

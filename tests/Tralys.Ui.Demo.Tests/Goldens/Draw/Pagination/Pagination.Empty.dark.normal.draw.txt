@@ -1,0 +1,1 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 31 in -0.52,1.64 262.15x16.07 #9fa7b1

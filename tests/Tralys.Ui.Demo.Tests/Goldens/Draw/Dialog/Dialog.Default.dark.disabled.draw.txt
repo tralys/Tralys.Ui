@@ -1,0 +1,15 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 44 in -0.78,1.64 347.88x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Button[0]/Box[1]: box 0,0 106x32 radius 3,3,3,3 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Button[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 10 in -0.52,1.64 82.7x16.07 #000000
+RootComponent[0]/Box[0]/Box[0]/Dialog[2]/Layer[0]/Scrim[0]/Box[0]: box 0,0 1272x808 fill #00000080
+RootComponent[0]/Box[0]/Box[0]/Dialog[2]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]: box 0,0 314x178 radius 3,3,3,3 fill #121820 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Dialog[2]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Title[0]/Box[0]/Text[0]: glyphs 13 in -0.67,2.1 134.36x17 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Dialog[2]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Text[1]: glyphs 47 in -0.78,1.64 275.24x30.22 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Dialog[2]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Footer[2]/Box[0]/Box[1]/Close[0]/Button[0]/Box[1]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/Dialog[2]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Footer[2]/Box[0]/Box[1]/Close[0]/Button[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 6 in -0.52,2.16 48.44x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Dialog[2]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Footer[2]/Box[0]/Box[1]/Submit[1]/Button[0]/Box[1]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/Dialog[2]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Footer[2]/Box[0]/Box[1]/Submit[1]/Button[0]/Box[1]: box 0,0 80x32 radius 3,3,3,3 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Dialog[2]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Footer[2]/Box[0]/Box[1]/Submit[1]/Button[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 7 in -0.52,1.64 56.42x13.22 #000000
+RootComponent[0]/Box[0]/Box[0]/Dialog[2]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/CloseButton[1]/Box[0]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/Dialog[2]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/CloseButton[1]/Box[0]: box 0,0 24x24 radius 12,12,12,12 fill #000000 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/Dialog[2]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/CloseButton[1]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.56,2.1 8.89x8.89 #9fa7b1

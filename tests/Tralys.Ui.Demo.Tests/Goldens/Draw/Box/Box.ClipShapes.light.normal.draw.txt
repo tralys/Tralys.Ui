@@ -1,0 +1,12 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 85 in -0.78,1.64 691.87x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 120x100 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: clip 1,1 118x98
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[0]: box 0,0 160x140 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 120x100 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Canvas[0]: clip path 0,0 100x80 6 verbs 13 points #cadc23c5 even-odd
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Canvas[0]: box 0,0 100x80 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Canvas[0]: pop
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: box 0,0 120x100 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Canvas[0]: clip path 0,0 100x80 106 verbs 104 points #6ea71c7f nonzero
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Canvas[0]: box 0,0 100x80 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Canvas[0]: pop

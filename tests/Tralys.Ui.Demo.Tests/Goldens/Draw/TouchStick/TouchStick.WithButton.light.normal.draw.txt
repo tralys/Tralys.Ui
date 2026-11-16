@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/TouchStick[0]/Grid[0]: box 0,0 120x120 radius 999,999,999,999 fill #00000080 border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/TouchStick[0]/Grid[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #454c55
+RootComponent[0]/Box[0]/Box[0]/TouchStick[0]/Grid[0]/Icon[1]/Box[0]/Text[0]: glyphs 1 in 4.15,2.79 7.7x11.85 #454c55
+RootComponent[0]/Box[0]/Box[0]/TouchStick[0]/Grid[0]/Icon[2]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #454c55
+RootComponent[0]/Box[0]/Box[0]/TouchStick[0]/Grid[0]/Icon[3]/Box[0]/Text[0]: glyphs 1 in 4.15,2.79 7.7x11.85 #454c55
+RootComponent[0]/Box[0]/Box[0]/TouchStick[0]/Grid[0]/Box[4]: box 0,0 52x52 radius 999,999,999,999 fill #cad2de border 1,1,1,1 #a9b1bc
+RootComponent[0]/Box[0]/Box[0]/TouchButton[1]/Grid[0]/Box[0]: box 0,0 76x76 radius 999,999,999,999 fill #00000080 border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/TouchButton[1]/Grid[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -1.04,0.22 30.59x30.07 #113478

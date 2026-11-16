@@ -1,0 +1,7 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.48x17.19 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Marquee[1]/Box[0]: mask 0,0 198x18 linear 0,0 1,0 0 #ffffff00 0.06 #ffffff 0.94 #ffffff 1 #ffffff00
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Marquee[1]/Box[0]: clip 0,0 198x18
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Marquee[1]/Box[0]/Box[0]/Text[0]: glyphs 47 in -0.78,1.64 398.46x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.48x17.19 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Marquee[1]/Box[0]: clip 0,0 198x18
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Marquee[1]/Box[0]/Box[0]/Text[0]: glyphs 10 in -0.26,2.16 81.18x15.56 #2a313a

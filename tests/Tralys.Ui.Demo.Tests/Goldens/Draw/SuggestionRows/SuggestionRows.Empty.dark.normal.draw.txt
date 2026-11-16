@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/Input[0]/Box[0]: box 0,0 268x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: clip 0,0 244x17
+RootComponent[0]/Box[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: glyphs 2 in -0.52,2.16 18.11x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Layer[1]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]: shadow 0,0 268x37 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
+RootComponent[0]/Box[0]/Layer[1]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]: box 0,0 268x37 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Layer[1]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]: clip 0,0 258x27
+RootComponent[0]/Box[0]/Layer[1]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]/Box[0]/Text[0]: glyphs 18 in 0,2.16 158.12x12.7 #9fa7b1

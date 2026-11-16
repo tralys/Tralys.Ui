@@ -1,0 +1,13 @@
+RootComponent[0]/Box[0]/Box[0]/NumberInput[0]/Box[0]/Input[0]/Box[0]: box 0,0 200x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[0]/NumberStepper[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0.89,4.98 10x3.11 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[1]/EditableText[0]: clip 0,0 120x17
+RootComponent[0]/Box[0]/Box[0]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[1]/EditableText[0]: glyphs 1 in 54.63,2.16 9.85x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[1]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Box[0]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[2]/NumberStepper[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0.89,1.43 10x10 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/NumberInput[1]/Box[0]/Input[0]/Box[0]: box 0,0 200x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/NumberInput[1]/Box[0]/Input[0]/Box[0]/Box[0]/NumberStepper[0]/Box[1]: opacity 0.5
+RootComponent[0]/Box[0]/Box[0]/NumberInput[1]/Box[0]/Input[0]/Box[0]/Box[0]/NumberStepper[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0.89,4.98 10x3.11 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/NumberInput[1]/Box[0]/Input[0]/Box[0]/Box[1]/EditableText[0]: clip 0,0 120x17
+RootComponent[0]/Box[0]/Box[0]/NumberInput[1]/Box[0]/Input[0]/Box[0]/Box[1]/EditableText[0]: glyphs 3 in -0.52,2.16 23.67x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/NumberInput[1]/Box[0]/Input[0]/Box[0]/Box[1]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Box[0]/NumberInput[1]/Box[0]/Input[0]/Box[0]/Box[2]/NumberStepper[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0.89,1.43 10x10 #bfc7d2

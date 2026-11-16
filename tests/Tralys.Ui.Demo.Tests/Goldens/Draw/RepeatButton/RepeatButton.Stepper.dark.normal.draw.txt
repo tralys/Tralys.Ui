@@ -1,0 +1,9 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 67 in -0.26,1.64 540.37x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/RepeatButton[0]/Box#minus: box 0,0 40x32 radius 3,3,3,3 fill #161c24 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/RepeatButton[0]/Box#minus/Box[0]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.04,5.82 11.67x3.63 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 64x32 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Text#count: glyphs 1 in -0.59,2.46 11.85x14.52 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/RepeatButton[2]/Box#plus: box 0,0 40x32 radius 3,3,3,3 fill #161c24 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/RepeatButton[2]/Box#plus/Box[0]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.04,1.67 11.67x11.67 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/RepeatButton[3]/Box#every: box 0,0 128x32 radius 3,3,3,3 fill #161c24 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/RepeatButton[3]/Box#every/Box[0]/Fragment[0]/Text[0]: glyphs 12 in 0,2.16 110.65x15.56 #bfc7d2

@@ -1,0 +1,18 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":612,"height":263},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[0]","x":0,"y":0,"width":612,"height":17,"text":"Quarter turns turn a box before layout, so its neighbours make room; a transform does not"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]","x":0,"y":25,"width":612,"height":133},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]","x":0,"y":25,"width":27,"height":133},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Text[0]","x":5,"y":34,"width":17,"height":115,"text":"Turned a quarter"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]","x":43,"y":25,"width":95,"height":27},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Text[0]","x":52,"y":30,"width":77,"height":17,"text":"Turned 30\u00B0"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]","x":154,"y":25,"width":131,"height":27},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Text[0]","x":163,"y":30,"width":113,"height":17,"text":"Half again as big"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]","x":301,"y":25,"width":129,"height":27},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]/Text[0]","x":310,"y":30,"width":111,"height":17,"text":"Rendered at 30\u00B0"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[2]","x":0,"y":166,"width":612,"height":17,"text":"A stretched box turned a quarter fills its 160\u00D772 slot at 72\u00D7160"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[3]","x":0,"y":191,"width":160,"height":72},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[3]/Box[0]","x":1,"y":192,"width":158,"height":70},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[3]/Box[0]/Text[0]","x":6,"y":201,"width":148,"height":40,"text":"Down"}
+],"consume":["11111111111111100000000000000000","10111111110000000000000000000000","10000000001000000000000000000000","10000000000000000000000000000000","10000000000000000000000000000000","10000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","11110000000000000000000000000000","11110000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

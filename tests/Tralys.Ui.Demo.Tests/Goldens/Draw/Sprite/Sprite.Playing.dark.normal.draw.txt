@@ -1,0 +1,5 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 78 in -0.52,1.64 694.47x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Image[0]: nine-slice 0,0 64x64 from 0,64 64x64 of 512x320 slice 0,0,0,0 scale 1 inset 0.5
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Image[1]: nine-slice 0,0 64x64 from 0,192 64x64 of 512x320 slice 0,0,0,0 scale 1 inset 0.5
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Image[2]: nine-slice 0,0 64x64 from 0,0 64x64 of 512x320 slice 0,0,0,0 scale 1 inset 0.5
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Image[3]: nine-slice 0,0 64x64 from 0,256 64x64 of 512x320 slice 0,0,0,0 scale 1 inset 0.5

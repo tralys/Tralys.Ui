@@ -1,0 +1,14 @@
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[0]/Box[0]: box 0,0 64x40 radius 3,3,3,3 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[1]/Box[0]: box 0,0 64x40 radius 3,3,3,3 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[2]/Box[0]: box 0,0 64x40 radius 3,3,3,3 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[3]/Box[0]: box 0,0 64x40 radius 3,3,3,3 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[4]/Box[0]: box 0,0 64x40 radius 3,3,3,3 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[5]/Box[0]: box 0,0 64x40 radius 3,3,3,3 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[6]/Box[0]: box 0,0 64x40 radius 3,3,3,3 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[7]/Box[0]: box 0,0 64x40 radius 3,3,3,3 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[8]/Box[0]: box 0,0 64x40 radius 3,3,3,3 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[9]/Box[0]: box 0,0 64x40 radius 3,3,3,3 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[10]/Box[0]: box 0,0 64x40 radius 3,3,3,3 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[11]/Box[0]: box 0,0 64x40 radius 3,3,3,3 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Box[1]/EmptyState[0]/Box[0]/Box[0]: box 0,0 231x81 fill radial 0.5,0.5 0.5,0.5 0 #121820f2 0.65 #121820d9 1 #12182000
+RootComponent[0]/Box[0]/Box[0]/Box[1]/EmptyState[0]/Box[0]/Text[1]: glyphs 16 in -0.11,1.64 127.8x16.07 #9fa7b1

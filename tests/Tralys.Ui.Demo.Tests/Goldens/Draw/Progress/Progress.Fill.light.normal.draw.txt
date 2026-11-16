@@ -1,0 +1,11 @@
+RootComponent[0]/Box[0]/Box[0]/Progress[0]/Box[0]: box 0,0 300x10 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Progress[0]/Box[0]: clip 0,0 300x10
+RootComponent[0]/Box[0]/Box[0]/Progress[0]/Box[0]/Box[0]: clip 0,0 300x10
+RootComponent[0]/Box[0]/Box[0]/Progress[1]/Box[0]: box 0,0 300x10 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Progress[1]/Box[0]: clip 0,0 300x10
+RootComponent[0]/Box[0]/Box[0]/Progress[1]/Box[0]/Box[0]: clip 0,0 300x10
+RootComponent[0]/Box[0]/Box[0]/Progress[1]/Box[0]/Box[0]/Box[0]: box 0,0 105x10 fill #4177df
+RootComponent[0]/Box[0]/Box[0]/Progress[2]/Box[0]: box 0,0 300x10 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Progress[2]/Box[0]: clip 0,0 300x10
+RootComponent[0]/Box[0]/Box[0]/Progress[2]/Box[0]/Box[0]: clip 0,0 300x10
+RootComponent[0]/Box[0]/Box[0]/Progress[2]/Box[0]/Box[0]/Box[0]: box 0,0 300x10 fill #4177df

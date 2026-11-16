@@ -1,0 +1,2 @@
+RootComponent[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]: clip 0,0 240x160
+RootComponent[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/SlotHost[0]/Box[0]/EmptyState[0]/Box[0]/Text[0]: glyphs 21 in 0.21,1.64 165.23x16.07 #454c55

@@ -1,0 +1,12 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 2 in -0.78,2.16 20.3x12.44 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 15 in 22.22,1.64 107.59x13.22 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 14 in 131.4,1.64 111.57x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Text[0]: box 22.48,16.42 106.12x1.3 fill #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Text[1]: glyphs 23 in -0.78,1.64 177.5x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Text[1]: glyphs 4 in 179.53,2.16 32.48x12.7 #e0a040
+RootComponent[0]/Box[0]/Box[0]/Text[1]: box 180.04,16.42 31.71x1.3 fill #e0a040
+RootComponent[0]/Box[0]/Box[0]/Text[2]: glyphs 14 in -0.78,1.64 118.46x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Text[2]: glyphs 34 in -0.52,1.64 150.73x47.22 #113478
+RootComponent[0]/Box[0]/Box[0]/Text[2]: box 120.29,16.42 29.57x1.3 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Text[2]: box 0,33.42 147.98x1.3 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Text[2]: box 0,50.42 77.51x1.3 fill #113478

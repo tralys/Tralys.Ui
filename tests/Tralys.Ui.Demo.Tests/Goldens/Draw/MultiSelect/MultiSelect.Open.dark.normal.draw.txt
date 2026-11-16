@@ -1,0 +1,20 @@
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Box[0]: box 0,0 220x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Box[0]/Box[0]/Text[0]: glyphs 6 in -0.78,2.16 52.12x12.7 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Box[0]/Box[0]/Box[1]: clip 0,0 119x18
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Box[0]/Box[0]/Box[1]/Box[0]/Text[0]: glyphs 5 in -0.78,1.64 38.45x13.22 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Box[0]/Box[0]/Box[1]/Text[1]: glyphs 2 in 0,2.16 15.72x12.44 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Box[0]/Box[0]/Box[2]/Icon[0]/Box[0]: matrix 1,0,0,-1,0,18
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Box[0]/Box[0]/Box[2]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #7f8791
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Layer[1]/MultiSelectPopup[0]/Box[0]/Frame[0]/Box[0]: shadow 0,0 220x165 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Layer[1]/MultiSelectPopup[0]/Box[0]/Frame[0]/Box[0]: box 0,0 220x165 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Layer[1]/MultiSelectPopup[0]/Box[0]/Frame[0]/Box[0]/Box[0]/VirtualList[0]: clip 0,0 210x155
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Layer[1]/MultiSelectPopup[0]/Box[0]/Frame[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]: box 0,0 210x31 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Layer[1]/MultiSelectPopup[0]/Box[0]/Frame[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]/Text[1]: glyphs 4 in -0.26,2.16 34.96x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Layer[1]/MultiSelectPopup[0]/Box[0]/Frame[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]: box 0,0 210x31 radius 3,3,3,3 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Layer[1]/MultiSelectPopup[0]/Box[0]/Frame[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0.52,2.44 12.96x9.85 #97bcff
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Layer[1]/MultiSelectPopup[0]/Box[0]/Frame[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]/Text[1]: glyphs 5 in -0.78,1.64 38.45x13.22 #97bcff
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Layer[1]/MultiSelectPopup[0]/Box[0]/Frame[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Row[0]/Box[0]/Text[1]: glyphs 6 in -0.26,1.64 50.67x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Layer[1]/MultiSelectPopup[0]/Box[0]/Frame[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Row[0]/Box[0]: box 0,0 210x31 radius 3,3,3,3 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Layer[1]/MultiSelectPopup[0]/Box[0]/Frame[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Row[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0.52,2.44 12.96x9.85 #97bcff
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Layer[1]/MultiSelectPopup[0]/Box[0]/Frame[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Row[0]/Box[0]/Text[1]: glyphs 15 in -0.26,1.64 123.33x16.07 #97bcff
+RootComponent[0]/Box[0]/Box[0]/MultiSelect[0]/Layer[1]/MultiSelectPopup[0]/Box[0]/Frame[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Row[0]/Box[0]/Text[1]: glyphs 5 in -0.78,1.64 45.38x13.22 #bfc7d2

@@ -1,0 +1,5 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 111 in -0.26,1.64 890.51x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]: box 0,0 420x28 radius 14,14,14,14 fill #090f16
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 20x20 radius 10,10,10,10 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0,0.25 32x34.37 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Image[1]: nine-slice 0,0 64x64 from 0,0 64x64 of 512x320 slice 0,0,0,0 scale 1 inset 0.5

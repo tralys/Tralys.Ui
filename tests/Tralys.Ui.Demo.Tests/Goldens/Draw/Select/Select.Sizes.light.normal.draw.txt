@@ -1,0 +1,12 @@
+RootComponent[0]/Box[0]/Box[0]/Select[0]/Box[0]: box 0,0 200x24 radius 3,3,3,3 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Select[0]/Box[0]/Box[0]/Text[0]: glyphs 8 in -0.22,1.4 53.36x13.78 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Select[0]/Box[0]/Box[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.56,3.65 8.89x5.78 #616973
+RootComponent[0]/Box[0]/Box[0]/Select[1]/Box[0]: box 0,0 200x28 radius 3,3,3,3 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Select[1]/Box[0]/Box[0]/Text[0]: glyphs 8 in -0.26,1.64 62.25x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Select[1]/Box[0]/Box[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #616973
+RootComponent[0]/Box[0]/Box[0]/Select[2]/Box[0]: box 0,0 200x32 radius 3,3,3,3 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Select[2]/Box[0]/Box[0]/Text[0]: glyphs 8 in -0.26,1.64 62.25x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Select[2]/Box[0]/Box[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #616973
+RootComponent[0]/Box[0]/Box[0]/Select[3]/Box[0]: box 0,0 200x40 radius 3,3,3,3 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Select[3]/Box[0]/Box[0]/Text[0]: glyphs 8 in -0.3,1.87 71.15x18.37 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Select[3]/Box[0]/Box[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.59,6.09 14.81x9.63 #616973

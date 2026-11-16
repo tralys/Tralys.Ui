@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]: box 0,0 120x40 fill #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 2 in -0.26,2.16 18.6x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]: box 0,0 120x40 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 8 in -0.26,2.16 67.99x15.56 #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Box[2]: box 0,0 120x40 fill #c01925
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Text[0]: glyphs 8 in -0.26,2.16 69.25x15.56 #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Box[3]: box 0,0 120x40 fill #005121
+RootComponent[0]/Box[0]/Box[0]/Box[3]/Text[0]: glyphs 9 in -0.26,2.16 77.46x15.56 #ecf4ff

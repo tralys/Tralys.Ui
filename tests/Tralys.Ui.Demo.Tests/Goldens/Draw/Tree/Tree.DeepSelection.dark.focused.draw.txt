@@ -1,0 +1,18 @@
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]: clip 0,0 240x200
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]: clip 0,0 240x200
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]: matrix 0,1,-1,0,16,1
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.63,2.44 6.74x10.37 #7f8791
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]/Box[2]/Text[0]: glyphs 6 in -0.26,1.64 46.3x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]/Box[3]: box 0,0 240x32 radius 3,3,3,3 fill none border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]: matrix 0,1,-1,0,16,1
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.63,2.44 6.74x10.37 #7f8791
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/Box[2]/Text[0]: glyphs 5 in -0.26,1.64 37.83x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/Box[3]: box 0,0 240x32 radius 3,3,3,3 fill none border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]: matrix 0,1,-1,0,16,1
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.63,2.44 6.74x10.37 #7f8791
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Item[0]/Box[0]/Box[2]/Text[0]: glyphs 5 in -0.52,2.16 44.37x15.56 #bfc7d2
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Item[0]/Box[0]/Box[3]: box 0,0 240x32 radius 3,3,3,3 fill none border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Item[0]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #2a313a
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Item[0]/Box[0]/Box[2]/Text[0]: glyphs 6 in -0.26,2.16 49.05x15.56 #97bcff
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Item[0]/Box[0]/Box[2]/Text[0]: glyphs 8 in -0.26,2.16 70.2x15.56 #bfc7d2
+RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Item[0]/Box[0]/Box[3]: box 0,0 240x32 radius 3,3,3,3 fill none border 1,1,1,1 #97bcff

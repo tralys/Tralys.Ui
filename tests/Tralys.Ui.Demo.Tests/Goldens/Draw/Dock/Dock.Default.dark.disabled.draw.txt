@@ -1,0 +1,21 @@
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[0]/DockTabGroup[0]/Box[0]: box 0,0 300x468 fill #121820
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[0]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 300x32
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[0]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/DockTab[0]/Box[0]/ContextMenu[0]/Box[0]/Tab[0]/Box[0]/DockTabLabel[0]/Grid[0]/Text[0]: glyphs 16 in -0.52,1.64 118.59x16.07 #454c55
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[0]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/DockTab[0]/Box[0]/ContextMenu[0]/Box[0]/Tab[0]/Box[0]/Box[1]: box 0,0 172x2 fill #97bcff
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[0]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/Panel[1]/Box[0]/DockPanel[0]/Box[0]/Box[0]/Text[0]: glyphs 16 in -0.52,1.64 118.59x16.07 #454c55
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/Box[2]/DockSplit[0]/DockTabGroup[0]/Box[0]: box 0,0 368x468 fill #121820
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/Box[2]/DockSplit[0]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 368x32
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/Box[2]/DockSplit[0]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/DockTab[0]/Box[0]/ContextMenu[0]/Box[0]/Tab[0]/Box[0]/DockTabLabel[0]/Grid[0]/Text[0]: glyphs 9 in -0.26,2.16 80.41x12.7 #454c55
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/Box[2]/DockSplit[0]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/DockTab[1]/Box[0]/ContextMenu[0]/Box[0]/Tab[0]/Box[0]/DockTabLabel[0]/Grid[0]/Text[0]: glyphs 9 in -0.26,2.16 83.52x12.7 #454c55
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/Box[2]/DockSplit[0]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/DockTab[1]/Box[0]/ContextMenu[0]/Box[0]/Tab[0]/Box[0]/Box[1]: box 0,0 137x2 fill #97bcff
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/Box[2]/DockSplit[0]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/Panel[1]/Box[0]/DockPanel[0]/Box[0]/Box[0]/Text[0]: glyphs 9 in -0.26,2.16 83.52x12.7 #454c55
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[4]/DockTabGroup[0]/Box[0]: box 0,0 300x468 fill #121820
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[4]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 300x32
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[4]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/DockTab[0]/Box[0]/ContextMenu[0]/Box[0]/Tab[0]/Box[0]/DockTabLabel[0]/Grid[0]/Text[0]: glyphs 10 in -0.26,1.64 72.23x16.07 #454c55
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[4]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/DockTab[0]/Box[0]/ContextMenu[0]/Box[0]/Tab[0]/Box[0]/Box[1]: box 0,0 126x2 fill #97bcff
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[4]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/Panel[1]/Box[0]/DockPanel[0]/Box[0]/Box[0]/Text[0]: glyphs 10 in -0.26,1.64 72.23x16.07 #454c55
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[6]/DockTabGroup[0]/Box[0]: box 0,0 988x150 fill #121820
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[6]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 988x32
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[6]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/DockTab[0]/Box[0]/ContextMenu[0]/Box[0]/Tab[0]/Box[0]/DockTabLabel[0]/Grid[0]/Text[0]: glyphs 6 in -0.52,2.16 48.65x15.56 #454c55
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[6]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/DockTab[0]/Box[0]/ContextMenu[0]/Box[0]/Tab[0]/Box[0]/Box[1]: box 0,0 102x2 fill #97bcff
+RootComponent[0]/Box[0]/Dock[0]/Box[0]/Grid[0]/DockSplit[6]/DockTabGroup[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/Panel[1]/Box[0]/DockPanel[0]/Box[0]/Box[0]/Text[0]: glyphs 6 in -0.52,2.16 48.65x15.56 #454c55

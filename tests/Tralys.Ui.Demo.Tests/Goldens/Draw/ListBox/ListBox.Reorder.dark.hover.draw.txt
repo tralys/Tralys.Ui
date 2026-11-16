@@ -1,0 +1,9 @@
+RootComponent[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]: clip 0,0 200x128
+RootComponent[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]: box 0,0 200x32 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]/Text[0]: glyphs 8 in -0.26,1.64 62.25x16.07 #bfc7d2
+RootComponent[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]: box 0,0 200x32 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]/Text[0]: glyphs 8 in -0.26,1.64 62.99x16.07 #bfc7d2
+RootComponent[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Row[0]/Box[0]: box 0,0 200x32 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Row[0]/Box[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #bfc7d2
+RootComponent[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Row[0]/Box[0]: box 0,0 200x32 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Row[0]/Box[0]/Text[0]: glyphs 6 in -0.78,2.16 45.28x12.7 #bfc7d2

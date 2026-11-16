@@ -1,0 +1,6 @@
+RootComponent[0]/Box[0]/Box[0]/Card[0]/Box[0]: box 0,0 120x80 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/Card[0]/Box[0]/Text[0]: glyphs 4 in -0.26,2.16 31.43x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Card[1]/Box[0]: box 0,0 120x80 radius 3,3,3,3 fill linear 0,0 0,1 0 #bac2cd 1 #cdd6e1 border 1,1,1,1 #a9b1bc
+RootComponent[0]/Box[0]/Box[0]/Card[1]/Box[0]/Text[0]: glyphs 11 in -0.26,1.64 79.63x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Card[2]/Box[0]: box 0,0 120x80 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Card[2]/Box[0]/Text[0]: glyphs 8 in -0.52,2.16 60.8x12.7 #2a313a

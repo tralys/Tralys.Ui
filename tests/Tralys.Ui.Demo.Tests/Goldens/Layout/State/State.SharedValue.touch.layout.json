@@ -1,0 +1,15 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":1047,"height":198},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[0]","x":0,"y":0,"width":1047,"height":17,"text":"Two fields controlled by one state: each edit reaches the state and the other field. The third takes it up only as it commits, on Enter or as it loses the focus."},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]","x":0,"y":25,"width":240,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]/Box[0]","x":1,"y":39,"width":238,"height":17},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]/Box[0]/EditableText[0]","x":12,"y":39,"width":216,"height":17,"text":"Aria Vell"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Input[2]/Box[0]","x":0,"y":77,"width":240,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Input[2]/Box[0]/Box[0]","x":1,"y":91,"width":238,"height":17},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Input[2]/Box[0]/Box[0]/EditableText[0]","x":12,"y":91,"width":216,"height":17,"text":"Aria Vell"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Input[3]/Box[0]","x":0,"y":129,"width":240,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Input[3]/Box[0]/Box[0]","x":1,"y":143,"width":238,"height":17},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Input[3]/Box[0]/Box[0]/EditableText[0]","x":12,"y":143,"width":216,"height":17,"text":"Aria Vell"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[4]","x":0,"y":181,"width":1047,"height":17,"text":"The state holds: Aria Vell"}
+],"consume":["11111111111111111111111111000000","11111100000000000000000000000000","11111100000000000000000000000000","11111100000000000000000000000000","11111100000000000000000000000000","11111100000000000000000000000000","11111100000000000000000000000000","11111111111111111111111111000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

@@ -1,0 +1,9 @@
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 144x32
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Text[0]: glyphs 7 in -0.26,1.64 52.17x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[1]/Box[0]/Text[0]: glyphs 6 in -0.78,1.64 45.28x13.22 #113478
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[1]/Box[0]/Box[1]: box 0,0 68x2 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 106x32
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Text[0]: glyphs 9 in -0.52,2.16 82.86x12.7 #c01925
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Box[1]: box 0,0 106x2 fill #c01925
+RootComponent[0]/Box[0]/Box[0]/Tabs[2]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 84x32
+RootComponent[0]/Box[0]/Box[0]/Tabs[2]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Text[0]: glyphs 8 in -0.26,1.64 60.17x13.22 #9fa7b1

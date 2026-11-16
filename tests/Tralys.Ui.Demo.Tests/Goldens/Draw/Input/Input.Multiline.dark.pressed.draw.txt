@@ -1,0 +1,5 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 82 in -0.78,1.64 668.99x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]: box 0,0 280x96 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]/Box[0]/EditableText[0]: clip 0,0 256x82
+RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]/Box[0]/EditableText[0]: glyphs 33 in -0.26,1.64 155x33.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]/Box[0]/EditableText[0]: pop

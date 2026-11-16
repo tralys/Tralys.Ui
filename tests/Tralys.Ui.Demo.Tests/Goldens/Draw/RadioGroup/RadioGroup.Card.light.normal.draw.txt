@@ -1,0 +1,13 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 42 in -0.52,1.64 195.56x33.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[0]/Box[0]: box 0,0 75x35 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[0]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 6.74x12.44 #2a313a
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[1]/Box[0]: box 0,0 74x35 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[1]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 9.85x12.44 #113478
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[2]/Box[0]: box 0,0 75x35 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[2]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 10.11x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[3]/Box[0]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[3]/Box[0]: box 0,0 75x35 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[3]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 10.63x12.44 #2a313a
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[4]/Box[0]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[4]/Box[0]: box 0,0 74x35 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[4]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 9.85x12.7 #2a313a

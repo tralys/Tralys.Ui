@@ -1,0 +1,21 @@
+RootComponent[0]/Box[0]/Box[0]/Switch[0]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 44x20 radius 10,10,10,10 fill #121820 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Switch[0]/Box[0]/Fragment[0]/Box[0]/Fragment[1]/Box[0]: box 0,0 10x10 radius 5,5,5,5 fill #7f8791
+RootComponent[0]/Box[0]/Box[0]/Switch[0]/Box[0]/Text[1]: glyphs 14 in -0.52,2.16 117.61x15.56 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]: clip 0,0 200x140
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]: box 0,0 184x32 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]/Text[0]: glyphs 5 in -0.78,2.16 40.86x15.56 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]: box 0,0 184x32 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]/Text[0]: glyphs 4 in -0.26,2.16 31.35x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[2]/Row[0]/Box[0]: box 0,0 184x32 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[2]/Row[0]/Box[0]/Text[0]: glyphs 5 in -0.52,2.16 53x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[3]/Row[0]/Box[0]: box 0,0 184x32 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[3]/Row[0]/Box[0]/Text[0]: glyphs 5 in -0.26,2.16 36.2x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[4]/Row[0]/Box[0]: box 0,0 184x32 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[4]/Row[0]/Box[0]/Text[0]: glyphs 7 in -0.26,1.64 50.68x16.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[5]/Row[0]/Box[0]: box 0,0 184x32 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[5]/Row[0]/Box[0]/Text[0]: glyphs 4 in -0.52,2.16 31.65x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[6]/Row[0]/Box[0]: box 0,0 184x32 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[6]/Row[0]/Box[0]/Text[0]: glyphs 3 in -0.26,2.16 22.25x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #835e94f7 even-odd fill #949ca7
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]: box 0,0 8x63 radius 3,3,3,3 fill #949ca7
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #da92b547 even-odd fill #949ca7

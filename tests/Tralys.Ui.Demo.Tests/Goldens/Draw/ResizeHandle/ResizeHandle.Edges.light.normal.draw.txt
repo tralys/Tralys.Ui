@@ -1,0 +1,20 @@
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Box[0]: box 0,0 240x160 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/Box[0]/Text[0]: glyphs 18 in -0.26,2.16 158.02x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[1]/Box[0]/Box[0]: layer 0
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[1]/Box[0]/Box[0]: box 0,0 240x8 fill none border 0,2,0,0 #113478
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[2]/Box[0]/Box[0]: layer 0
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[2]/Box[0]/Box[0]: box 0,0 240x8 fill none border 0,0,0,2 #113478
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[3]/Box[0]/Box[0]: layer 0
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[3]/Box[0]/Box[0]: box 0,0 8x160 fill none border 2,0,0,0 #113478
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[4]/Box[0]/Box[0]: layer 0
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[4]/Box[0]/Box[0]: box 0,0 8x160 fill none border 0,0,2,0 #113478
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[5]/Box[0]/Box[1]: layer 0
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[5]/Box[0]/Box[1]: box 0,0 16x16 fill none border 2,2,0,0 #113478
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[6]/Box[0]/Box[1]: layer 0
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[6]/Box[0]/Box[1]: box 0,0 16x16 fill none border 0,2,2,0 #113478
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[7]/Box[0]/Box[1]: layer 0
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[7]/Box[0]/Box[1]: box 0,0 16x16 fill none border 2,0,0,2 #113478
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[8]/Box[0]/Box[1]: layer 0
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[8]/Box[0]/Box[1]: box 0,0 16x16 fill none border 0,0,2,2 #113478
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[8]/Box[0]/Canvas[2]: layer 0.6
+RootComponent[0]/Box[0]/Box[0]/Grid[0]/ResizeHandle[8]/Box[0]/Canvas[2]: path 1,1 10x10 6 verbs 6 points #594c2602 even-odd fill none stroke 1.5 #113478 miter round round miter 10

@@ -1,0 +1,16 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":272,"height":176},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[0]","x":16,"y":16,"width":240,"height":34,"text":"Cards in three columns, with unavailable options"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]","x":16,"y":82,"width":240,"height":78},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[0]/Box[0]","x":16,"y":82,"width":75,"height":35},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[0]/Box[0]/Fragment[0]/Text[0]","x":50,"y":91,"width":7,"height":17,"text":"1"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[1]/Box[0]","x":99,"y":82,"width":74,"height":35},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[1]/Box[0]/Fragment[0]/Text[0]","x":132,"y":91,"width":9,"height":17,"text":"2"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[2]/Box[0]","x":181,"y":82,"width":75,"height":35},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[2]/Box[0]/Fragment[0]/Text[0]","x":214,"y":91,"width":10,"height":17,"text":"3"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[3]/Box[0]","x":16,"y":125,"width":75,"height":35},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[3]/Box[0]/Fragment[0]/Text[0]","x":49,"y":134,"width":10,"height":17,"text":"4"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[4]/Box[0]","x":99,"y":125,"width":74,"height":35},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Grid[0]/Radio[4]/Box[0]/Fragment[0]/Text[0]","x":132,"y":134,"width":9,"height":17,"text":"5"}
+],"consume":["00000000000000000000000000000000","11111100000000000000000000000000","00000000000000000000000000000000","11110100000000000000000000000000","11110100000000000000000000000000","11110000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

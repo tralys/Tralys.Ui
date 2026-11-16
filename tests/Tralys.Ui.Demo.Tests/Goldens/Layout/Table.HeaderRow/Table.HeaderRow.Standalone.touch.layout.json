@@ -1,0 +1,21 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":360,"height":73},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[0]","x":0,"y":0,"width":360,"height":34,"text":"A header row on its own, over a table\u0027s columns; Level sizes to its header"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]","x":0,"y":42,"width":360,"height":31},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[0]/Box[0]","x":0,"y":42,"width":160,"height":30},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]","x":0,"y":42,"width":160,"height":30},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]/Box[0]","x":0,"y":42,"width":47,"height":30},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]/Box[0]/Text[0]","x":6,"y":50,"width":35,"height":15,"text":"Name"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]/Box[0]/Icon[1]/Box[0]","x":0,"y":0,"width":0,"height":0,"collapsed":true},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[1]/Box[0]","x":160,"y":42,"width":100,"height":30},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]","x":160,"y":42,"width":100,"height":30},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]/Box[0]","x":160,"y":42,"width":38,"height":30},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]/Box[0]/Text[0]","x":166,"y":50,"width":26,"height":15,"text":"Role"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]/Box[0]/Icon[1]/Box[0]","x":0,"y":0,"width":0,"height":0,"collapsed":true},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[2]/Box[0]","x":260,"y":42,"width":44,"height":30},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[2]/Box[0]/Box[0]","x":260,"y":42,"width":44,"height":30},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[2]/Box[0]/Box[0]/Box[0]","x":260,"y":42,"width":44,"height":30},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[2]/Box[0]/Box[0]/Box[0]/Text[0]","x":266,"y":50,"width":32,"height":15,"text":"Level"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[2]/Box[0]/Box[0]/Box[0]/Icon[1]/Box[0]","x":0,"y":0,"width":0,"height":0,"collapsed":true}
+],"consume":["11111111100000000000000000000000","00000000000000000000000000000000","11111111100000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

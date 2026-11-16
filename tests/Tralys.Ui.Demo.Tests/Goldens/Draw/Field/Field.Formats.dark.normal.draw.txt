@@ -1,0 +1,10 @@
+RootComponent[0]/Box[0]/Box[0]/Field[0]/Grid[0]/Box[0]/Text[0]: glyphs 7 in -0.26,2.16 65.84x12.7 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Field[0]/Grid[0]/Text[1]: glyphs 5 in -0.52,2.16 38.75x15.3 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Field[1]/Grid[0]/Box[0]/Text[0]: glyphs 5 in -0.26,2.16 44.1x12.7 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Field[1]/Grid[0]/Text[1]: glyphs 4 in 0,2.16 38.25x12.7 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Field[2]/Grid[0]/Box[0]/Text[0]: glyphs 7 in -0.78,1.64 58.83x13.22 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Field[2]/Grid[0]/Text[1]: glyphs 5 in -0.52,2.16 44.75x12.7 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Field[3]/Grid[0]/Box[0]/Text[0]: glyphs 10 in -0.26,1.64 77.97x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Field[3]/Grid[0]/Text[1]: glyphs 12 in -0.52,1.64 102.49x15.81 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Field[4]/Grid[0]/Box[0]/Text[0]: glyphs 6 in -0.78,1.64 47.47x13.22 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Field[4]/Grid[0]/Text[1]: glyphs 6 in -0.26,2.16 50.44x15.56 #7f8791

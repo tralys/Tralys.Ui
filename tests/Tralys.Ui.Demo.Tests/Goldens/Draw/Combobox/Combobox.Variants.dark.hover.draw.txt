@@ -1,0 +1,12 @@
+RootComponent[0]/Box[0]/Box[0]/Combobox[0]/Box[0]: box 0,0 200x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/Box[0]/Combobox[0]/Box[0]/Text[0]: glyphs 4 in -0.26,2.16 30.74x12.7 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Combobox[0]/Box[0]/EditableText[1]: clip 0,0 120x17
+RootComponent[0]/Box[0]/Box[0]/Combobox[0]/Box[0]/EditableText[1]: glyphs 8 in -0.26,1.64 62.25x16.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Combobox[0]/Box[0]/EditableText[1]: pop
+RootComponent[0]/Box[0]/Box[0]/Combobox[0]/Box[0]/Box[2]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #7f8791
+RootComponent[0]/Box[0]/Box[0]/Combobox[1]/Box[0]: box 0,0 200x32 fill #ffffff00 border 0,0,0,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Combobox[1]/Box[0]/Text[0]: glyphs 4 in -0.26,2.16 30.74x12.7 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Combobox[1]/Box[0]/EditableText[1]: clip 0,0 122x17
+RootComponent[0]/Box[0]/Box[0]/Combobox[1]/Box[0]/EditableText[1]: glyphs 8 in -0.26,1.64 62.25x16.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Combobox[1]/Box[0]/EditableText[1]: pop
+RootComponent[0]/Box[0]/Box[0]/Combobox[1]/Box[0]/Box[2]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #7f8791

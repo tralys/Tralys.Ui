@@ -1,0 +1,11 @@
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]: box 0,0 1272x808 fill #00000080
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]: box 0,0 298x161 radius 3,3,3,3 fill #121820 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Title[0]/Box[0]/Text[0]: glyphs 9 in -0.33,2.1 92.56x20.67 #97bcff
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Box[1]/Fragment[0]/Box[0]: matrix 0.98,0.21,-0.21,0.98,1.84,-1.49
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Box[1]/Fragment[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.19x17.19 #97bcff
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Box[1]/Text[1]: glyphs 27 in -0.52,1.64 220.15x16.07 #e0e9f4
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Footer[2]/Box[0]/Box[1]/Close[0]/Button[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 6 in -0.52,2.16 48.44x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Footer[2]/Box[0]/Box[1]/Close[0]/Button[0]/Box[1]/Box[1]: box 0,0 74x34 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/CloseButton[1]/Box[0]: box 0,0 24x24 radius 12,12,12,12 fill #000000 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/CloseButton[1]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.56,2.1 8.89x8.89 #9fa7b1
+RootComponent[0]/Box[0]/Dialog[1]/Layer[0]/Scrim[0]/Box[0]/ActionScope[0]/Box[0]/CloseButton[1]/Box[0]/Box[1]: box 0,0 26x26 radius 14,14,14,14 fill none border 2,2,2,2 #97bcff

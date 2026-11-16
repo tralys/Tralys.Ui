@@ -1,0 +1,16 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":208,"height":72},
+{"path":"RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]","x":0,"y":0,"width":72,"height":72},
+{"path":"RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]/Canvas[0]","x":0,"y":0,"width":72,"height":72},
+{"path":"RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]/Box[1]","x":17,"y":19,"width":38,"height":35},
+{"path":"RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]/Box[1]/Box[0]","x":17,"y":19,"width":38,"height":35},
+{"path":"RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]/Box[1]/Box[0]/Text[0]","x":17,"y":19,"width":38,"height":20,"text":"73%"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]/Box[1]/Box[0]/Text[1]","x":23,"y":39,"width":26,"height":15,"text":"CPU"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]","x":136,"y":0,"width":72,"height":72},
+{"path":"RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]/Canvas[0]","x":136,"y":0,"width":72,"height":72},
+{"path":"RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]/Box[1]","x":153,"y":19,"width":38,"height":35},
+{"path":"RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]/Box[1]/Box[0]","x":153,"y":19,"width":38,"height":35},
+{"path":"RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]/Box[1]/Box[0]/Text[0]","x":153,"y":19,"width":38,"height":20,"text":"47%"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]/Box[1]/Box[0]/Text[1]","x":158,"y":39,"width":29,"height":15,"text":"RAM"}
+],"consume":["00000000000000000000000000000000","10001000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

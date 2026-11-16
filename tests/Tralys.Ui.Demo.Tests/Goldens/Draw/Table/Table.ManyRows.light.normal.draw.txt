@@ -1,0 +1,113 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 78 in -0.78,1.64 639.81x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]: clip 0,0 380x320
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]: box 0,0 380x32 fill none border 0,0,0,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[2]/Box[0]/Box[0]: clip 0,0 60x31
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[2]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 5 in -0.22,1.85 31.62x10.89 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[2]/Box[0]/Box[0]/Box[0]/Icon[1]/Box[0]/Text[0]: glyphs 1 in 0.93,1.19 8.15x8.33 #113478
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]: clip 0,0 120x31
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 4 in -0.22,1.85 26.35x10.89 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]/Box[0]/Tooltip[2]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.52,0.11 15.3x15.04 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]: clip 0,0 182x31
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 4 in -0.22,1.85 35.06x10.89 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]: clip 0,0 380x288
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[0]/Row[0]/Box[0]: box 0,0 364x28 radius 3,3,3,3 fill #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[0]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[0]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 104.26x12.7 #113478
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[0]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[0]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #113478
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[0]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[0]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #113478
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[1]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[1]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 102.43x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[1]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[1]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[1]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[1]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[2]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[2]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 106.36x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[2]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[2]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[2]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[2]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[3]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[3]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 106.31x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[3]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[3]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[3]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[3]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[4]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[4]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 102.32x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[4]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[4]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[4]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[4]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[5]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[5]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 104.81x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[5]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[5]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[5]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[5]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[6]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[6]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 102.72x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[6]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[6]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[6]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[6]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[7]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[7]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 107x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[7]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[7]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[7]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[7]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[8]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[8]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 105.76x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[8]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[8]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[8]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[8]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[9]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[9]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 103.96x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[9]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[9]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[9]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[9]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[10]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[10]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 105.86x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[10]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[10]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[10]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[10]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[11]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[11]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 106.71x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[11]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[11]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[11]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[11]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[12]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[12]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 105.84x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[12]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[12]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[12]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[12]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[13]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[13]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 105.78x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[13]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[13]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[13]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[13]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[14]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[14]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 106.18x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[14]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[14]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[14]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[14]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[15]/Row[0]/Box[0]/Fragment[0]/Box[0]: clip 0,0 182x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[15]/Row[0]/Box[0]/Fragment[0]/Box[0]/Fragment[0]/Text[0]: glyphs 11 in -0.26,2.16 106.16x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[15]/Row[0]/Box[0]/Fragment[0]/Box[1]: clip 0,0 120x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[15]/Row[0]/Box[0]/Fragment[0]/Box[1]/Fragment[0]/Text[0]: glyphs 6 in -0.78,1.64 44.45x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[15]/Row[0]/Box[0]/Fragment[0]/Box[2]: clip 0,0 60x18
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/Box[0]/VirtualList[1]/VirtualListRow[15]/Row[0]/Box[0]/Fragment[0]/Box[2]/Fragment[0]/Text[0]: glyphs 3 in -0.52,2.16 25.12x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/ScrollAreaBar[1]/Box[0]: layer 0.35
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #835e94f7 even-odd fill #616973
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]: box 0,0 8x24 radius 3,3,3,3 fill #616973
+RootComponent[0]/Box[0]/Box[0]/Table[1]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #da92b547 even-odd fill #616973

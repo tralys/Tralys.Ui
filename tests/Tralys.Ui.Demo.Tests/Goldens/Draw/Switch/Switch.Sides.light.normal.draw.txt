@@ -1,0 +1,6 @@
+RootComponent[0]/Box[0]/Box[0]/Switch[0]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 44x20 radius 10,10,10,10 fill #e0e9f4 border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Switch[0]/Box[0]/Fragment[0]/Box[0]/Fragment[1]/Box[0]: box 0,0 10x10 radius 5,5,5,5 fill #616973
+RootComponent[0]/Box[0]/Box[0]/Switch[0]/Box[0]/Text[1]: glyphs 15 in -0.52,1.64 119.9x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Switch[1]/Box[0]/Text[0]: glyphs 16 in -0.52,1.64 129.87x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Switch[1]/Box[0]/Fragment[1]/Box[0]/Box[0]: box 0,0 44x20 radius 10,10,10,10 fill #113478 border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Switch[1]/Box[0]/Fragment[1]/Box[0]/Fragment[1]/Box[0]: box 0,0 10x10 radius 5,5,5,5 fill #ecf4ff

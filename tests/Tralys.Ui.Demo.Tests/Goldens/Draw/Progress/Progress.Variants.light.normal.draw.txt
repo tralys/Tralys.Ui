@@ -1,0 +1,10 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 7 in -0.22,1.4 43.55x11.33 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Progress[1]/Box[0]: box 0,0 300x4 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Progress[1]/Box[0]: clip 0,0 300x4
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Progress[1]/Box[0]/Box[0]: clip 0,0 300x4
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Progress[1]/Box[0]/Box[0]/Box[0]: box 0,0 180x4 fill #4177df
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 13 in -0.22,1.4 82.87x11.33 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Progress[1]/Box[0]: box 0,0 300x4 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Progress[1]/Box[0]: clip 0,0 300x4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Progress[1]/Box[0]/Box[0]: clip 0,0 300x4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Progress[1]/Box[0]/Box[0]/Canvas[0]: box -80.71,0 90x4 fill #4177df

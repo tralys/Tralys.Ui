@@ -1,0 +1,12 @@
+RootComponent[0]/Box[0]/Box[0]/SearchInput[0]/Input[0]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/Box[0]/SearchInput[0]/Input[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0,0.63 14x14 #7f8791
+RootComponent[0]/Box[0]/Box[0]/SearchInput[0]/Input[0]/Box[0]/Box[0]/EditableText[1]: clip 0,0 197x17
+RootComponent[0]/Box[0]/Box[0]/SearchInput[0]/Input[0]/Box[0]/Box[0]/EditableText[1]: glyphs 9 in -0.52,2.16 62.62x12.7 #7f8791
+RootComponent[0]/Box[0]/Box[0]/SearchInput[0]/Input[0]/Box[0]/Box[0]/EditableText[1]: pop
+RootComponent[0]/Box[0]/Box[0]/SearchInput[1]/Input[0]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/Box[0]/SearchInput[1]/Input[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0,0.63 14x14 #7f8791
+RootComponent[0]/Box[0]/Box[0]/SearchInput[1]/Input[0]/Box[0]/Box[0]/EditableText[1]: clip 0,0 165x17
+RootComponent[0]/Box[0]/Box[0]/SearchInput[1]/Input[0]/Box[0]/Box[0]/EditableText[1]: glyphs 6 in -0.26,2.93 43.31x14.78 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/SearchInput[1]/Input[0]/Box[0]/Box[0]/EditableText[1]: pop
+RootComponent[0]/Box[0]/Box[0]/SearchInput[1]/Input[0]/Box[0]/InputClear[1]/Box[1]: box 0,0 24x24 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/Box[0]/SearchInput[1]/Input[0]/Box[0]/InputClear[1]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.56,2.1 8.89x8.89 #bfc7d2

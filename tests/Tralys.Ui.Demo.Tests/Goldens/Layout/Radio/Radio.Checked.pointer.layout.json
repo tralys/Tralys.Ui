@@ -1,0 +1,20 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":118,"height":124},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]","x":16,"y":16,"width":86,"height":92},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[0]/Box[0]","x":16,"y":16,"width":86,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[0]/Box[0]/Fragment[0]/Box[0]","x":16,"y":16,"width":20,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[0]/Box[0]/Fragment[0]/Box[0]/Box[0]","x":16,"y":16,"width":20,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[0]/Box[0]/Fragment[0]/Box[0]/Box[1]","x":21,"y":21,"width":10,"height":10},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[0]/Box[0]/Fragment[1]/Text[0]","x":42,"y":18,"width":60,"height":17,"text":"Option A"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[1]/Box[0]","x":16,"y":52,"width":85,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[1]/Box[0]/Fragment[0]/Box[0]","x":16,"y":52,"width":20,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[1]/Box[0]/Fragment[0]/Box[0]/Box[0]","x":16,"y":52,"width":20,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[1]/Box[0]/Fragment[0]/Box[0]/Box[1]","x":21,"y":57,"width":10,"height":10},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[1]/Box[0]/Fragment[1]/Text[0]","x":42,"y":54,"width":59,"height":17,"text":"Option B"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[2]/Box[0]","x":16,"y":88,"width":86,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[2]/Box[0]/Fragment[0]/Box[0]","x":16,"y":88,"width":20,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[2]/Box[0]/Fragment[0]/Box[0]/Box[0]","x":16,"y":88,"width":20,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[2]/Box[0]/Fragment[0]/Box[0]/Box[1]","x":21,"y":93,"width":10,"height":10},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[0]/Box[0]/Radio[2]/Box[0]/Fragment[1]/Text[0]","x":42,"y":90,"width":60,"height":17,"text":"Option C"}
+],"consume":["00000000000000000000000000000000","00000000000000000000000000000000","11100000000000000000000000000000","11100000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

@@ -1,0 +1,15 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":480,"height":106},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[0]","x":0,"y":0,"width":480,"height":17,"text":"Spans set their own colour, weight and size; a line break starts a line"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]","x":0,"y":25,"width":480,"height":81},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]","x":9,"y":34,"width":462,"height":63,"text":"Upgrade:\nStorage increased by 50 gigabytes, and Backups kept for the rest of the year."},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]/Span[0]","x":0,"y":0,"width":0,"height":0,"text":"Upgrade:\n"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]/Span[1]","x":0,"y":0,"width":0,"height":0,"text":"Storage"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]/Span[2]","x":0,"y":0,"width":0,"height":0,"text":" increased by "},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]/Span[3]","x":0,"y":0,"width":0,"height":0,"text":"50"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]/Span[4]","x":0,"y":0,"width":0,"height":0,"text":" gigabytes, and "},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]/Span[5]","x":0,"y":0,"width":0,"height":0,"text":"Backups"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]/Span[6]","x":0,"y":0,"width":0,"height":0,"text":" kept for the rest of the "},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]/Span[7]","x":0,"y":0,"width":0,"height":0,"text":"year."}
+],"consume":["11111111111100000000000000000000","11111111111100000000000000000000","11111111111100000000000000000000","11111111111100000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

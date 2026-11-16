@@ -1,0 +1,41 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 60 in -0.52,1.64 488.29x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Text[0]: glyphs 36 in -0.67,1.4 252.97x13.78 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]: box 0,0 390x164 radius 6,6,6,6 fill none border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[0]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[0]/Box[0]/Text[0]: glyphs 1 in -0.52,2.16 6.74x12.44 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[1]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[1]/Box[0]/Text[0]: glyphs 1 in -0.52,2.16 9.85x12.44 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[2]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[2]/Box[0]/Text[0]: glyphs 1 in -0.52,2.16 10.11x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[3]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[3]/Box[0]/Text[0]: glyphs 1 in -0.52,2.16 10.63x12.44 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[4]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[4]/Box[0]/Text[0]: glyphs 1 in -0.52,2.16 9.85x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[5]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[5]/Box[0]/Text[0]: glyphs 1 in -0.52,2.16 10.11x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[6]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[6]/Box[0]/Text[0]: glyphs 1 in -0.78,2.16 9.59x12.44 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[7]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[7]/Box[0]/Text[0]: glyphs 1 in -0.52,2.16 10.11x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[8]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[8]/Box[0]/Text[0]: glyphs 1 in -0.52,2.16 10.11x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[9]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[9]/Box[0]/Text[0]: glyphs 2 in -0.52,2.16 16.41x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[10]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[10]/Box[0]/Text[0]: glyphs 2 in -0.52,2.16 12.78x12.44 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[11]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[1]/Grid[0]/FocusTile[11]/Box[0]/Text[0]: glyphs 2 in -0.52,2.16 15.89x12.44 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Text[0]: glyphs 25 in -0.44,1.4 176.21x13.78 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[1]: box 0,0 296x114 radius 6,6,6,6 fill none border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[1]/Grid[0]/FocusTile[0]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[1]/Grid[0]/FocusTile[0]/Box[0]/Text[0]: glyphs 1 in -0.78,2.16 12.19x12.44 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[1]/Grid[0]/FocusTile[1]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[1]/Grid[0]/FocusTile[1]/Box[0]/Text[0]: glyphs 1 in -0.26,2.16 10.11x12.44 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[1]/Grid[0]/FocusTile[2]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[1]/Grid[0]/FocusTile[2]/Box[0]/Text[0]: glyphs 1 in -0.52,2.16 11.41x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[1]/Grid[0]/FocusTile[3]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[1]/Grid[0]/FocusTile[3]/Box[0]/Text[0]: glyphs 1 in -0.26,2.16 10.89x12.44 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[1]/Grid[0]/FocusTile[4]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[1]/Grid[0]/FocusTile[4]/Box[0]/Text[0]: glyphs 1 in -0.26,2.16 9.07x12.44 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[1]/Grid[0]/FocusTile[5]/Box[0]: box 0,0 88x44 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[1]/Grid[0]/FocusTile[5]/Box[0]/Text[0]: glyphs 1 in -0.26,2.16 9.07x12.44 #2a313a

@@ -1,0 +1,33 @@
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]: clip 0,0 220x240
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[0]/Box[0]/Text[0]: glyphs 5 in -0.22,1.4 36.48x11.33 #454c55
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[0]/Box[0]/Checkbox[1]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 2,2,2,2 fill #113478 border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[0]/Box[0]/Checkbox[1]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: path 0,1 14x11.5 7 verbs 6 points #ab8b9220 even-odd fill #ecf4ff
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[0]/Box[0]/Checkbox[1]/Box[0]/Text[1]: glyphs 6 in -0.26,2.16 50.84x15.56 #2a313a
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[1]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 2,2,2,2 fill #e0e9f4 border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[1]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: matrix 0,0,0,0,10,10
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[1]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: path 0,1 14x11.5 7 verbs 6 points #ab8b9220 even-odd fill #ecf4ff
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[1]/Box[0]/Checkbox[0]/Box[0]/Text[1]: glyphs 5 in -0.78,1.64 41.64x13.22 #2a313a
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[2]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 2,2,2,2 fill #113478 border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[2]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: path 0,1 14x11.5 7 verbs 6 points #ab8b9220 even-odd fill #ecf4ff
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[2]/Box[0]/Checkbox[0]/Box[0]/Text[1]: glyphs 5 in -0.78,1.64 41.26x13.22 #2a313a
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[3]/Box[0]/Text[0]: glyphs 9 in -0.22,1.85 67.99x10.89 #454c55
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[3]/Box[0]/Checkbox[1]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 2,2,2,2 fill #e0e9f4 border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[3]/Box[0]/Checkbox[1]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: matrix 0,0,0,0,10,10
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[3]/Box[0]/Checkbox[1]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: path 0,1 14x11.5 7 verbs 6 points #ab8b9220 even-odd fill #ecf4ff
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[3]/Box[0]/Checkbox[1]/Box[0]/Text[1]: glyphs 4 in -0.78,2.16 31.37x12.7 #2a313a
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[4]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 2,2,2,2 fill #113478 border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[4]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: path 0,1 14x11.5 7 verbs 6 points #ab8b9220 even-odd fill #ecf4ff
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[4]/Box[0]/Checkbox[0]/Box[0]/Text[1]: glyphs 6 in -0.52,2.16 48.66x12.7 #2a313a
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[5]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 2,2,2,2 fill #e0e9f4 border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[5]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: matrix 0,0,0,0,10,10
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[5]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: path 0,1 14x11.5 7 verbs 6 points #ab8b9220 even-odd fill #ecf4ff
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[5]/Box[0]/Checkbox[0]/Box[0]/Text[1]: glyphs 6 in -0.52,1.64 42.99x13.22 #2a313a
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[6]/Box[0]/Text[0]: glyphs 4 in -0.44,1.85 32.02x10.89 #454c55
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[6]/Box[0]/Checkbox[1]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 2,2,2,2 fill #e0e9f4 border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[6]/Box[0]/Checkbox[1]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: matrix 0,0,0,0,10,10
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[6]/Box[0]/Checkbox[1]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: path 0,1 14x11.5 7 verbs 6 points #ab8b9220 even-odd fill #ecf4ff
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[6]/Box[0]/Checkbox[1]/Box[0]/Text[1]: glyphs 7 in -0.52,1.64 49.88x16.07 #2a313a
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[7]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Box[0]: box 0,0 20x20 radius 2,2,2,2 fill #e0e9f4 border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[7]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: matrix 0,0,0,0,10,10
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[7]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: path 0,1 14x11.5 7 verbs 6 points #ab8b9220 even-odd fill #ecf4ff
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[7]/Box[0]/Checkbox[0]/Box[0]/Text[1]: glyphs 7 in -0.52,2.16 57.95x12.7 #2a313a

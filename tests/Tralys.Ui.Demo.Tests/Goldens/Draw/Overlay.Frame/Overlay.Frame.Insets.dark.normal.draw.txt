@@ -1,0 +1,12 @@
+RootComponent[0]/Box[0]/Box[0]/Frame[0]/Box[0]: shadow 0,0 180x76 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
+RootComponent[0]/Box[0]/Box[0]/Frame[0]/Box[0]: box 0,0 180x76 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/Frame[0]/Box[0]/StoryRow[0]/Box[0]/Text[0]: glyphs 11 in -0.78,1.64 85.1x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Frame[0]/Box[0]/StoryRow[1]/Box[0]: box 0,0 170x34 radius 2,2,2,2 fill #bfc7d21a
+RootComponent[0]/Box[0]/Box[0]/Frame[0]/Box[0]/StoryRow[1]/Box[0]/Text[0]: glyphs 20 in -0.52,1.64 104.89x33.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Frame[1]/Box[0]: shadow 0,0 180x67 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
+RootComponent[0]/Box[0]/Box[0]/Frame[1]/Box[0]: box 0,0 180x67 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/Frame[1]/Box[0]/Text[0]: glyphs 46 in -1.04,1.64 146.45x47.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Frame[2]/Box[0]: shadow 0,0 180x84 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
+RootComponent[0]/Box[0]/Box[0]/Frame[2]/Box[0]: box 0,0 180x84 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/Frame[2]/Box[0]/Box[0]/Text[0]: glyphs 6 in -0.89,2.46 60.94x14.52 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Frame[2]/Box[0]/Box[0]/Text[1]: glyphs 23 in -0.52,2.16 122.37x32.56 #9fa7b1

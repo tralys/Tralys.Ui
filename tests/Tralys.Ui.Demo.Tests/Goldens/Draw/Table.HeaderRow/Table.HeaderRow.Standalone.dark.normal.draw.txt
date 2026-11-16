@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 60 in -0.78,1.64 330.84x30.22 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]: box 0,0 360x31 fill none border 0,0,0,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[2]/Box[0]/Box[0]: clip 0,0 44x30
+RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[2]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 5 in -0.22,1.85 31.62x10.89 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]: clip 0,0 100x30
+RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 4 in -0.22,1.85 26.35x10.89 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]: clip 0,0 160x30
+RootComponent[0]/Box[0]/Box[0]/HeaderRow[1]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 4 in -0.22,1.85 35.06x10.89 #9fa7b1

@@ -1,0 +1,2 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 33 in -0.52,1.64 259.38x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Image[1]: nine-slice 0,0 360x220 from 0,0 144x144 of 144x144 slice 48,48,48,48 scale 1

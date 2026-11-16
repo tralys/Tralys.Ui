@@ -1,0 +1,4 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 56 in -0.78,1.64 442.83x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]: box 0,0 320x120 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 288x88 fill #bad3ff border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Text[0]: glyphs 5 in -0.52,1.64 36.25x13.22 #2a313a

@@ -1,0 +1,12 @@
+RootComponent[0]/Box[0]/Box[0]: box 0,0 360x240 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Floating[0]/Box[0]/Box[0]/Box[0]/Box[0]: box 0,0 200x140 radius 3,3,3,3 fill #121820 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Floating[0]/Box[0]/Box[0]/Box[0]/Box[0]/Handle[0]/Box[0]/Box[0]/Text[0]: glyphs 6 in -0.26,2.16 58.02x15.56 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Floating[0]/Box[0]/Box[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 16 in -0.26,1.64 120.57x16.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Floating[0]/Box[0]/Box[0]/Fragment[1]/ResizeHandle[0]/Box[0]/Box[0]: box 0,0 8x140 fill none border 2,0,0,0 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Floating[0]/Box[0]/Box[0]/Fragment[1]/ResizeHandle[1]/Box[0]/Box[0]: box 0,0 200x8 fill none border 0,2,0,0 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Floating[0]/Box[0]/Box[0]/Fragment[1]/ResizeHandle[2]/Box[0]/Box[0]: box 0,0 8x140 fill none border 0,0,2,0 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Floating[0]/Box[0]/Box[0]/Fragment[1]/ResizeHandle[3]/Box[0]/Box[0]: box 0,0 200x8 fill none border 0,0,0,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Floating[0]/Box[0]/Box[0]/Fragment[1]/ResizeHandle[4]/Box[0]/Box[1]: box 0,0 16x16 fill none border 2,2,0,0 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Floating[0]/Box[0]/Box[0]/Fragment[1]/ResizeHandle[5]/Box[0]/Box[1]: box 0,0 16x16 fill none border 0,2,2,0 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Floating[0]/Box[0]/Box[0]/Fragment[1]/ResizeHandle[6]/Box[0]/Box[1]: box 0,0 16x16 fill none border 2,0,0,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Floating[0]/Box[0]/Box[0]/Fragment[1]/ResizeHandle[7]/Box[0]/Box[1]: box 0,0 16x16 fill none border 0,0,2,2 #97bcff

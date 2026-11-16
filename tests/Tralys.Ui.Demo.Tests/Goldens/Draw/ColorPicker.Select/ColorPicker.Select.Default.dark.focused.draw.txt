@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/Select[0]/Popover[0]/Box[0]/Box[0]/Box[0]: box 0,0 20x20 radius 6,6,6,6 fill #ff5500 border 1,1,1,1 #222831
+RootComponent[0]/Box[0]/Box[0]/Select[0]/Popover[0]/Box[0]/Box[0]/Box[1]: box 0,0 24x24 radius 8,8,8,8 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Select[1]/Popover[0]/Box[0]/Box[0]/Box[0]: box 0,0 20x20 radius 6,6,6,6 fill linear 0,0 0,1 0 #b4b4b4 0.5 #b4b4b4 0.5 #5a5a5a 1 #5a5a5a
+RootComponent[0]/Box[0]/Box[0]/Select[1]/Popover[0]/Box[0]/Box[0]/Box[1]: box 0,0 20x20 radius 6,6,6,6 fill #3399ff80 border 1,1,1,1 #222831
+RootComponent[0]/Box[0]/Box[0]/Select[1]/Popover[0]/Box[0]/Box[0]/Box[2]: box 0,0 24x24 radius 8,8,8,8 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Select[2]/Popover[0]/Box[0]/Box[0]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/Select[2]/Popover[0]/Box[0]/Box[0]/Box[0]: box 0,0 20x20 radius 6,6,6,6 fill #66cc66 border 1,1,1,1 #222831
+RootComponent[0]/Box[0]/Box[0]/Select[2]/Popover[0]/Box[0]/Box[0]/Box[1]: box 0,0 24x24 radius 8,8,8,8 fill none border 2,2,2,2 #97bcff

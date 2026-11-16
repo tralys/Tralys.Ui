@@ -1,0 +1,9 @@
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Canvas[0]: matrix 0,1,-1,0,14,2
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Canvas[0]: path 5.25,3.5 3.5x7 3 verbs 3 points #22913692 even-odd fill none stroke 1.17 #616973 round round round miter 10
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Fragment[1]/Text[0]: glyphs 5 in -0.52,2.16 40.09x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]: clip 0,0 280x81
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Canvas[0]: matrix 0,1,-1,0,14,2
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Canvas[0]: path 5.25,3.5 3.5x7 3 verbs 3 points #22913692 even-odd fill none stroke 1.17 #616973 round round round miter 10
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Fragment[1]/Text[0]: glyphs 5 in -0.26,2.16 36.7x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]/Collapsible[0]/Box[0]/Box[1]: clip 0,0 238x33
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]/Text[0]: glyphs 13 in -0.26,2.16 106.13x12.7 #2a313a

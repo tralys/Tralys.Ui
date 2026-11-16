@@ -1,0 +1,4 @@
+RootComponent[0]/Box[0]/Box[0]/Row[0]/Box[0]/Text[0]: glyphs 3 in -0.67,1.85 23.82x10.89 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Row[1]/Box[0]/Text[0]: glyphs 2 in -0.52,2.16 22.65x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Row[2]/Box[0]/Text[0]: glyphs 13 in -0.26,1.64 104.49x15.81 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Row[3]/Box[0]/Text[0]: glyphs 2 in -0.3,2.46 19.71x17.78 #2a313a

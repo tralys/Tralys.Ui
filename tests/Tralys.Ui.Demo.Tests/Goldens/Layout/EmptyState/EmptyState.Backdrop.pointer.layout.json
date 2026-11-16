@@ -1,0 +1,21 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":360,"height":200},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[0]","x":0,"y":0,"width":360,"height":200},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[0]/Box[0]","x":13,"y":14,"width":64,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[1]/Box[0]","x":103,"y":14,"width":64,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[2]/Box[0]","x":193,"y":14,"width":64,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[3]/Box[0]","x":283,"y":14,"width":64,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[4]/Box[0]","x":13,"y":80,"width":64,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[5]/Box[0]","x":103,"y":80,"width":64,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[6]/Box[0]","x":193,"y":80,"width":64,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[7]/Box[0]","x":283,"y":80,"width":64,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[8]/Box[0]","x":13,"y":147,"width":64,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[9]/Box[0]","x":103,"y":147,"width":64,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[10]/Box[0]","x":193,"y":147,"width":64,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[0]/Skeleton[11]/Box[0]","x":283,"y":147,"width":64,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]","x":0,"y":0,"width":360,"height":200},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/EmptyState[0]/Box[0]","x":105,"y":84,"width":151,"height":33},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/EmptyState[0]/Box[0]/Box[0]","x":65,"y":60,"width":231,"height":81},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/EmptyState[0]/Box[0]/Text[1]","x":117,"y":92,"width":127,"height":17,"text":"Nothing stored yet"}
+],"consume":["00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

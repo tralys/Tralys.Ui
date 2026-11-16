@@ -1,0 +1,13 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 65 in -1.04,2.16 237.11x49.56 #454c55
+RootComponent[0]/Box[0]/Box[0]/HealthBar[1]/Canvas[0]: box 0,0 240x8 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/HealthBar[1]/Canvas[0]: box 0,0 240x8 fill #764900
+RootComponent[0]/Box[0]/Box[0]/HealthBar[1]/Canvas[0]: box 0,0 240x8 fill #005121
+RootComponent[0]/Box[0]/Box[0]/HealthBar[2]/Canvas[0]: box 0,0 240x8 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/HealthBar[2]/Canvas[0]: box 0,0 148.8x8 fill #764900
+RootComponent[0]/Box[0]/Box[0]/HealthBar[2]/Canvas[0]: box 0,0 148.8x8 fill #005121
+RootComponent[0]/Box[0]/Box[0]/HealthBar[3]/Canvas[0]: box 0,0 240x8 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/HealthBar[3]/Canvas[0]: box 0,0 43.2x8 fill #764900
+RootComponent[0]/Box[0]/Box[0]/HealthBar[3]/Canvas[0]: box 0,0 43.2x8 fill #005121 opacity 0.97
+RootComponent[0]/Box[0]/Box[0]/HealthBar[4]/Canvas[0]: box 0,0 8x60 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/HealthBar[4]/Canvas[0]: box 0,33 8x27 fill #764900
+RootComponent[0]/Box[0]/Box[0]/HealthBar[4]/Canvas[0]: box 0,33 8x27 fill #005121

@@ -1,0 +1,6 @@
+RootComponent[0]/Box[0]/Box[0]/Editable[0]/Box[0]/Box[0]: box 0,0 240x24 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/Box[0]/Editable[0]/Box[0]/Box[0]/Text[0]: glyphs 10 in -0.22,1.85 65.01x10.89 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Editable[1]/Box[0]/Box[0]: box 0,0 240x28 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/Box[0]/Editable[1]/Box[0]/Box[0]/Text[0]: glyphs 5 in -0.52,2.16 38.53x12.7 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Editable[2]/Box[0]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/Box[0]/Editable[2]/Box[0]/Box[0]/Text[0]: glyphs 6 in -0.26,1.64 55.94x13.22 #e0e9f4

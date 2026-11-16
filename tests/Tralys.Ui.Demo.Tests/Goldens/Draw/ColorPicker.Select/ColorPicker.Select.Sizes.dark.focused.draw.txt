@@ -1,0 +1,10 @@
+RootComponent[0]/Box[0]/Box[0]/Select[0]/Popover[0]/Box[0]/Box[0]/Box[0]: box 0,0 20x20 radius 6,6,6,6 fill #ff5500 border 1,1,1,1 #222831
+RootComponent[0]/Box[0]/Box[0]/Select[0]/Popover[0]/Box[0]/Box[0]/Box[1]: box 0,0 24x24 radius 8,8,8,8 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Select[1]/Popover[0]/Box[0]/Box[0]/Box[0]: box 0,0 24x24 radius 6,6,6,6 fill #ff5500 border 1,1,1,1 #222831
+RootComponent[0]/Box[0]/Box[0]/Select[1]/Popover[0]/Box[0]/Box[0]/Box[1]: box 0,0 28x28 radius 8,8,8,8 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Select[2]/Popover[0]/Box[0]/Box[0]/Box[0]: box 0,0 28x28 radius 6,6,6,6 fill #ff5500 border 1,1,1,1 #222831
+RootComponent[0]/Box[0]/Box[0]/Select[2]/Popover[0]/Box[0]/Box[0]/Box[1]: box 0,0 32x32 radius 8,8,8,8 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Select[3]/Popover[0]/Box[0]/Box[0]/Box[0]: box 0,0 32x32 radius 6,6,6,6 fill #ff5500 border 1,1,1,1 #222831
+RootComponent[0]/Box[0]/Box[0]/Select[3]/Popover[0]/Box[0]/Box[0]/Box[1]: box 0,0 36x36 radius 8,8,8,8 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Select[4]/Popover[0]/Box[0]/Box[0]/Box[0]: box 0,0 40x40 radius 6,6,6,6 fill #ff5500 border 1,1,1,1 #222831
+RootComponent[0]/Box[0]/Box[0]/Select[4]/Popover[0]/Box[0]/Box[0]/Box[1]: box 0,0 44x44 radius 8,8,8,8 fill none border 2,2,2,2 #97bcff

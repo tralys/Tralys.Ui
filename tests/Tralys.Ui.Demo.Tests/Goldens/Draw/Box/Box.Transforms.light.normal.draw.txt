@@ -1,0 +1,24 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 78 in -0.78,1.64 614.34x15.81 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 120x100 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[0]: matrix 0.87,0.5,-0.5,0.87,42.29,16.68
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[0]: box 0,0 64x40 fill #bad3ff border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[0]/Text[0]: glyphs 3 in -0.52,2.16 25.74x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 120x100 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[0]: matrix 1.5,0,0,0.75,12,35
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[0]: box 0,0 64x40 fill #bad3ff border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[0]/Text[0]: glyphs 8 in -0.52,2.16 60.04x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: box 0,0 120x100 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Box[0]: matrix 1,0,0.36,1,20.72,30
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Box[0]: box 0,0 64x40 fill #bad3ff border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Box[0]/Text[0]: glyphs 6 in -0.52,2.16 59.53x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]: box 0,0 120x100 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]/Box[0]: box 0,0 64x40 fill #bad3ff border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]/Box[0]/Text[0]: glyphs 7 in 0,2.16 56.64x15.3 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[4]: box 0,0 120x100 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[4]/Box[0]: matrix 0.57,-0.57,0.57,0.57,30.58,56.79
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[4]/Box[0]: box 0,0 64x40 fill #bad3ff border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[4]/Box[0]/Text[0]: glyphs 5 in -0.52,2.16 43.02x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[5]: box 0,0 120x100 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[5]/Box[0]: matrix 1,0.3,0,1,28,20.4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[5]/Box[0]: box 0,0 64x40 fill #bad3ff border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[5]/Box[0]/Text[0]: glyphs 6 in -0.26,1.64 45.19x13.22 #2a313a

@@ -1,0 +1,4 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]: box 0,0 120x100 radius 3,3,3,3 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/CloseButton[0]/Box[0]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/Box[0]/CloseButton[0]/Box[0]: box 0,0 32x32 radius 16,16,16,16 fill #000000 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/Box[0]/CloseButton[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,2.79 11.85x11.85 #9fa7b1

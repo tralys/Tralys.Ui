@@ -1,0 +1,5 @@
+RootComponent[0]/Box[0]/Box[0]/Canvas[0]: box 0,0 120x80 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Canvas[1]: box 0,0 120x80 fill none border 3,3,3,3 #113478
+RootComponent[0]/Box[0]/Box[0]/Canvas[2]: box 0,0 120x80 radius 17,17,17,17 fill #dbe3ef border 2,2,2,2 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Canvas[3]: path 0,0 120x80 10 verbs 17 points #11a5b2d9 even-odd fill #005121
+RootComponent[0]/Box[0]/Box[0]/Canvas[4]: path 1,1 118x78 5 verbs 4 points #e2c11fac even-odd fill none stroke 2 #2a313a miter flat flat miter 10 dashes 8,4 offset 0 flat

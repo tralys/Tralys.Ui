@@ -1,0 +1,11 @@
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]: clip 0,0 264x144
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]/Box[0]: box 0,0 480x320 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]/Box[0]/Text[0]: glyphs 99 in -0.78,1.64 428.93x33.07 #2a313a
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/ScrollAreaBar[1]/Box[0]: layer 0.35
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #835e94f7 even-odd fill #616973
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]: box 0,0 8x54 radius 3,3,3,3 fill #616973
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #da92b547 even-odd fill #616973
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/ScrollAreaBar[2]/Box[0]: layer 0.35
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 4x8 4 verbs 3 points #ce3b4617 even-odd fill #616973
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]: box 0,0 132x8 radius 3,3,3,3 fill #616973
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 4x8 4 verbs 3 points #41b78e87 even-odd fill #616973

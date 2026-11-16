@@ -1,0 +1,10 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 39 in -0.78,1.64 328.82x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Text[0]: glyphs 8 in -0.26,1.64 73.94x16.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[0]/Box[1]: opacity 0.5
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.56,2.54 8.89x8 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[1]/Box[1]: opacity 0.5
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[1]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.11,2.1 5.78x8.89 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[2]/Box[1]: box 0,0 24x24 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[2]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.11,2.1 5.78x8.89 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[3]/Box[1]: box 0,0 24x24 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[3]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.56,2.54 8.89x8 #bfc7d2

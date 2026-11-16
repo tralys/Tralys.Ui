@@ -1,0 +1,22 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":983,"height":132},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[0]","x":0,"y":0,"width":983,"height":17,"text":"The size ramp under the context\u0027s density: the density menu above switches Pointer and Touch, and every height, padding and gap here follows"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]","x":0,"y":23,"width":983,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]","x":0,"y":23,"width":53,"height":28},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Text[0]","x":6,"y":30,"width":41,"height":15,"text":"Xxs 28"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]","x":61,"y":23,"width":51,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Text[0]","x":69,"y":36,"width":35,"height":15,"text":"Xs 40"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]","x":120,"y":23,"width":69,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Text[0]","x":132,"y":35,"width":45,"height":17,"text":"Sm 40"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]","x":197,"y":23,"width":69,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]/Text[0]","x":209,"y":37,"width":45,"height":17,"text":"Md 44"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[4]","x":274,"y":23,"width":77,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[4]/Text[0]","x":290,"y":37,"width":45,"height":20,"text":"Lg 48"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[2]","x":0,"y":85,"width":983,"height":17,"text":"A box\u0027s gap stays in layout units, which density leaves alone"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[3]","x":0,"y":108,"width":983,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[3]/Box[0]","x":0,"y":108,"width":48,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[3]/Box[1]","x":56,"y":108,"width":48,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[3]/Box[2]","x":112,"y":108,"width":48,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[3]/Box[3]","x":168,"y":108,"width":48,"height":24}
+],"consume":["11111111111111111111111110000000","10111111100000000000000000000000","00000111100000000000000000000000","11111111111111111111111110000000","11111000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

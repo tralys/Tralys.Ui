@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]: box 0,0 46x20 radius 3,3,3,3 fill #ecf4ff border 1,1,1,2 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]/Text[0]: glyphs 5 in -0.22,1.85 32.19x10.89 #121820
+RootComponent[0]/Box[0]/Box[0]/InputGlyph[1]/Kbd[0]/Box[0]: box 0,0 36x20 radius 3,3,3,3 fill #ecf4ff border 1,1,1,2 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/InputGlyph[1]/Kbd[0]/Box[0]/Text[0]: glyphs 3 in -0.22,1.85 21.79x10.89 #121820
+RootComponent[0]/Box[0]/Box[0]/InputGlyph[2]/Kbd[0]/Box[0]: box 0,0 76x20 radius 3,3,3,3 fill #ecf4ff border 1,1,1,2 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/InputGlyph[2]/Kbd[0]/Box[0]/Text[0]: glyphs 9 in -0.44,1.85 62.23x13.33 #121820
+RootComponent[0]/Box[0]/Box[0]/InputGlyph[3]/Kbd[0]/Box[0]: box 0,0 76x20 radius 3,3,3,3 fill #ecf4ff border 1,1,1,2 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/InputGlyph[3]/Kbd[0]/Box[0]/Text[0]: glyphs 9 in -0.44,1.85 61.89x13.33 #121820

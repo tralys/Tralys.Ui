@@ -1,0 +1,51 @@
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]: clip 0,0 260x180
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Box[0]/Card[0]/Box[0]: box 0,0 66x66 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Box[0]/Card[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0.89,0.19 22.22x25.78 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Box[0]/Card[0]/Box[0]/Box[0]/Text[1]: glyphs 6 in -0.44,1.4 37.2x11.33 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Box[0]/Card[0]/Box[0]: box 0,0 66x66 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Box[0]/Card[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -1.33,0.19 25.78x24.89 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Box[0]/Card[0]/Box[0]/Box[0]/Text[1]: glyphs 3 in -0.22,1.85 23.31x13.33 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Box[0]/Card[0]/Box[0]: box 0,0 66x66 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Box[0]/Card[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0,1.52 24x23.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Box[0]/Card[0]/Box[0]/Box[0]/Text[1]: glyphs 3 in -0.22,1.85 26.37x13.33 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Box[0]/Card[0]/Box[0]: box 0,0 66x66 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Box[0]/Card[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0,0.19 24x24.89 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Box[0]/Card[0]/Box[0]/Box[0]/Text[1]: glyphs 4 in -0.44,1.4 22.11x11.33 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Box[0]/Card[0]/Box[0]: box 0,0 66x66 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Box[0]/Card[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -1.33,1.97 26.22x23.11 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Box[0]/Card[0]/Box[0]/Box[0]/Text[1]: glyphs 5 in -0.22,1.85 33.65x10.89 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[5]/Box[0]/Card[0]/Box[0]: box 0,0 66x66 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[5]/Box[0]/Card[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0,0.19 24x25.78 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[5]/Box[0]/Card[0]/Box[0]/Box[0]/Text[1]: glyphs 7 in -0.22,1.85 51.16x13.33 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[6]/Box[0]/Card[0]/Box[0]: box 0,0 66x66 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[6]/Box[0]/Card[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.89,0.19 25.78x24.89 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[6]/Box[0]/Card[0]/Box[0]/Box[0]/Text[1]: glyphs 4 in -0.44,1.85 25.5x10.89 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[7]/Box[0]/Card[0]/Box[0]: box 0,0 66x66 radius 3,3,3,3 fill linear 0,0 0,1 0 #cad2de 1 #e0e9f4 border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[7]/Box[0]/Card[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0,0.19 24x25.78 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[7]/Box[0]/Card[0]/Box[0]/Box[0]/Text[1]: glyphs 3 in -0.22,1.85 23.06x10.89 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/ScrollAreaBar[1]/Box[0]: layer 0.35
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #835e94f7 even-odd fill #616973
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]: box 0,0 8x126 radius 3,3,3,3 fill #616973
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #da92b547 even-odd fill #616973
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]: clip 0,0 200x180
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0.59,0.13 14.81x17.19 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]/Box[0]/Text[1]: glyphs 6 in -0.52,1.64 43.4x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]: box 0,0 184x32 radius 3,3,3,3 fill #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.89,0.13 17.19x16.59 #113478
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]/Box[0]/Text[1]: glyphs 3 in -0.26,2.16 27.2x15.56 #113478
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[2]/Row[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0,1.02 16x15.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[2]/Row[0]/Box[0]/Box[0]/Text[1]: glyphs 3 in -0.26,2.16 30.76x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[3]/Row[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0,0.13 16x16.59 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[3]/Row[0]/Box[0]/Box[0]/Text[1]: glyphs 4 in -0.52,1.64 25.8x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[4]/Row[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.89,1.31 17.48x15.41 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[4]/Row[0]/Box[0]/Box[0]/Text[1]: glyphs 5 in -0.26,2.16 39.26x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[5]/Row[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0,0.13 16x17.19 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[5]/Row[0]/Box[0]/Box[0]/Text[1]: glyphs 7 in -0.26,2.16 59.69x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[6]/Row[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.19x16.59 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[6]/Row[0]/Box[0]/Box[0]/Text[1]: glyphs 4 in -0.52,2.16 29.75x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[7]/Row[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0,0.13 16x17.19 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[7]/Row[0]/Box[0]/Box[0]/Text[1]: glyphs 3 in -0.26,2.16 26.9x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/ScrollAreaBar[1]/Box[0]: layer 0.35
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #835e94f7 even-odd fill #616973
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]: box 0,0 8x110 radius 3,3,3,3 fill #616973
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #da92b547 even-odd fill #616973

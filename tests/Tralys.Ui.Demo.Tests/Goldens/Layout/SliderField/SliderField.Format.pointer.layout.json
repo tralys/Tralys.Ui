@@ -1,0 +1,19 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":360,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]","x":0,"y":0,"width":360,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[0]","x":0,"y":4,"width":55,"height":17},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[0]/Text[0]","x":0,"y":4,"width":55,"height":17,"text":"Latency"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]","x":63,"y":0,"width":297,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]","x":63,"y":0,"width":297,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]","x":63,"y":2,"width":226,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]/Box[0]","x":71,"y":2,"width":210,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[0]","x":71,"y":11,"width":210,"height":2},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[1]","x":71,"y":11,"width":53,"height":2},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]/Box[0]/SliderThumb[2]/Box[0]","x":116,"y":4,"width":16,"height":16},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]","x":295,"y":0,"width":65,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]","x":295,"y":0,"width":65,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]","x":295,"y":0,"width":65,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[0]","x":296,"y":5,"width":63,"height":15},
+{"path":"RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]","x":301,"y":5,"width":53,"height":15,"text":"125.5 ms"}
+],"consume":["10111111100000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

@@ -1,0 +1,6 @@
+RootComponent[0]/Box[0]/Box[0]/Card[0]/Box[0]: box 0,0 120x80 radius 3,3,3,3 fill linear 0,0 0,1 0 #222831 1 #121820 border 1,1,1,1 #222831
+RootComponent[0]/Box[0]/Box[0]/Card[0]/Box[0]/Text[0]: glyphs 4 in -0.26,2.16 31.43x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Card[1]/Box[0]: box 0,0 120x80 radius 3,3,3,3 fill linear 0,0 0,1 0 #323841 1 #242a32 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/Box[0]/Card[1]/Box[0]/Text[0]: glyphs 11 in -0.26,1.64 79.63x16.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Card[2]/Box[0]: box 0,0 120x80 radius 3,3,3,3 fill linear 0,0 0,1 0 #222831 1 #121820 border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Card[2]/Box[0]/Text[0]: glyphs 8 in -0.52,2.16 60.8x12.7 #bfc7d2

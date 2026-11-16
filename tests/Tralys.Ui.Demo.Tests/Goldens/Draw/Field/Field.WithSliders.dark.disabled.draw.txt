@@ -1,0 +1,24 @@
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[0]/Text[0]: glyphs 5 in -0.26,1.64 42.47x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[0]: box 0,0 167x2 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[1]: box 0,0 67x2 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]/Box[0]/SliderThumb[2]/Box[0]: box 0,0 16x16 radius 8,8,8,8 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]: box 0,0 44x24 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #1a2028
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: clip 0,0 32x15
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: glyphs 2 in -0.44,1.85 17x10.89 #454c55
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Box[0]/SliderField[0]/Field[0]/Grid[0]/Box[1]/Box[0]/Text[2]: glyphs 1 in 0,2.16 14x12.7 #454c55
+RootComponent[0]/Box[0]/Box[0]/SliderField[1]/Field[0]/Grid[0]/Box[0]/Text[0]: glyphs 14 in -0.26,1.64 102.74x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/SliderField[1]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[0]: box 0,0 167x2 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/SliderField[1]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[1]: box 0,0 56x2 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/SliderField[1]/Field[0]/Grid[0]/Box[1]/Box[0]/Slider[0]/Box[0]/Box[0]/SliderThumb[2]/Box[0]: box 0,0 16x16 radius 8,8,8,8 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/SliderField[1]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]: box 0,0 44x24 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #1a2028
+RootComponent[0]/Box[0]/Box[0]/SliderField[1]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: clip 0,0 32x15
+RootComponent[0]/Box[0]/Box[0]/SliderField[1]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: glyphs 3 in -0.44,1.85 22.15x10.89 #454c55
+RootComponent[0]/Box[0]/Box[0]/SliderField[1]/Field[0]/Grid[0]/Box[1]/Box[0]/Box[1]/NumberInput[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Box[0]/SliderField[1]/Field[0]/Grid[0]/Box[1]/Box[0]/Text[2]: glyphs 1 in 0,2.16 14x12.7 #454c55
+RootComponent[0]/Box[0]/Box[0]/Field[2]/Grid[0]/Box[0]/Text[0]: glyphs 7 in -0.52,1.64 50.59x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Field[2]/Grid[0]/Box[1]/Combobox[0]/Box[0]: box 0,0 250x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #1a2028
+RootComponent[0]/Box[0]/Box[0]/Field[2]/Grid[0]/Box[1]/Combobox[0]/Box[0]/EditableText[0]: clip 0,0 204x17
+RootComponent[0]/Box[0]/Box[0]/Field[2]/Grid[0]/Box[1]/Combobox[0]/Box[0]/EditableText[0]: glyphs 4 in -0.26,1.64 32.43x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Field[2]/Grid[0]/Box[1]/Combobox[0]/Box[0]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Box[0]/Field[2]/Grid[0]/Box[1]/Combobox[0]/Box[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #2a313a

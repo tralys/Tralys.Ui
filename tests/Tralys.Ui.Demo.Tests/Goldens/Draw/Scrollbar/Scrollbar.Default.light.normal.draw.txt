@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 8 in -0.78,1.64 54.26x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Scrollbar[1]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #835e94f7 even-odd fill #616973
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Scrollbar[1]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]: box 0,0 8x24 radius 3,3,3,3 fill #616973
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Scrollbar[1]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #da92b547 even-odd fill #616973
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 10 in -0.26,1.64 71.37x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Scrollbar[1]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 4x8 4 verbs 3 points #ce3b4617 even-odd fill #616973
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Scrollbar[1]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]: box 0,0 29x8 radius 3,3,3,3 fill #616973
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Scrollbar[1]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 4x8 4 verbs 3 points #41b78e87 even-odd fill #616973

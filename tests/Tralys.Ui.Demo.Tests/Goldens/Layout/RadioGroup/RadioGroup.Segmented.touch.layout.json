@@ -1,0 +1,22 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":284,"height":125},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[0]","x":16,"y":16,"width":252,"height":17,"text":"Segmented, with unavailable options"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]","x":16,"y":65,"width":252,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]","x":17,"y":66,"width":250,"height":42},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[0]/Box[0]","x":17,"y":66,"width":50,"height":42},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[0]/Box[0]/Box[0]","x":18,"y":67,"width":48,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[0]/Box[0]/Box[0]/Fragment[0]/Text[0]","x":39,"y":79,"width":7,"height":17,"text":"1"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[1]/Box[0]","x":67,"y":66,"width":50,"height":42},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[1]/Box[0]/Box[0]","x":68,"y":67,"width":48,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[1]/Box[0]/Box[0]/Fragment[0]/Text[0]","x":88,"y":79,"width":9,"height":17,"text":"2"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[2]/Box[0]","x":117,"y":66,"width":50,"height":42},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[2]/Box[0]/Box[0]","x":118,"y":67,"width":48,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[2]/Box[0]/Box[0]/Fragment[0]/Text[0]","x":137,"y":79,"width":10,"height":17,"text":"3"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[3]/Box[0]","x":167,"y":66,"width":50,"height":42},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[3]/Box[0]/Box[0]","x":168,"y":67,"width":48,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[3]/Box[0]/Box[0]/Fragment[0]/Text[0]","x":187,"y":79,"width":10,"height":17,"text":"4"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[4]/Box[0]","x":217,"y":66,"width":50,"height":42},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[4]/Box[0]/Box[0]","x":218,"y":67,"width":48,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Grid[0]/Radio[4]/Box[0]/Box[0]/Fragment[0]/Text[0]","x":238,"y":79,"width":9,"height":17,"text":"5"}
+],"consume":["00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","11111110000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

@@ -1,0 +1,10 @@
+RootComponent[0]/Box[0]/Box[0]/StatusBadge[0]/Tag[0]/Box[0]: box 0,0 63x16 radius 3,3,3,3 fill #cad2de
+RootComponent[0]/Box[0]/Box[0]/StatusBadge[0]/Tag[0]/Box[0]/Text[0]: glyphs 7 in -0.22,1.4 48.58x13.78 #2a313a
+RootComponent[0]/Box[0]/Box[0]/StatusBadge[1]/Tag[0]/Box[0]: box 0,0 80x16 radius 3,3,3,3 fill #bad3ff
+RootComponent[0]/Box[0]/Box[0]/StatusBadge[1]/Tag[0]/Box[0]/Text[0]: glyphs 10 in -0.22,1.85 66.8x13.33 #113478
+RootComponent[0]/Box[0]/Box[0]/StatusBadge[2]/Tag[0]/Box[0]: box 0,0 85x16 radius 3,3,3,3 fill #c0e9c7
+RootComponent[0]/Box[0]/Box[0]/StatusBadge[2]/Tag[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0.37,1.75 9.26x7.04 #003c17
+RootComponent[0]/Box[0]/Box[0]/StatusBadge[2]/Tag[0]/Box[0]/Text[1]: glyphs 8 in -0.44,1.85 57.65x13.33 #003c17
+RootComponent[0]/Box[0]/Box[0]/StatusBadge[3]/Tag[0]/Box[0]: box 0,0 71x16 radius 3,3,3,3 fill #cad2de
+RootComponent[0]/Box[0]/Box[0]/StatusBadge[3]/Tag[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0,0.08 10x10.74 #2a313a
+RootComponent[0]/Box[0]/Box[0]/StatusBadge[3]/Tag[0]/Box[0]/Text[1]: glyphs 6 in -0.22,1.85 43.04x10.89 #2a313a

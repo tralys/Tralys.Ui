@@ -1,0 +1,5 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 63 in -0.78,1.64 508.94x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 150x150 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Canvas[0]: path 2,0 96x90 6 verbs 5 points #a5ebf47d even-odd fill #97bcff stroke 1 #bfc7d2 miter flat flat miter 10
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 150x150 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Canvas[0]: path 2,0 96x90 6 verbs 5 points #a5ebf47d nonzero fill #97bcff stroke 1 #bfc7d2 miter flat flat miter 10

@@ -1,0 +1,17 @@
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Canvas[0]: matrix -1,0,0,-1,14,16
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Canvas[0]: path 5.25,3.5 3.5x7 3 verbs 3 points #22913692 even-odd fill none stroke 1.17 #7f8791 round round round miter 10
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Fragment[1]/Text[0]: glyphs 7 in -0.26,1.64 43.86x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[1]: box 0,0 93x36 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]: clip 0,0 139x54
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]/Box[0]/Text[0]: glyphs 15 in -0.52,1.64 123.85x16.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]/Box[0]/Text[1]: glyphs 11 in -0.52,1.64 87.19x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/Box[0]: clip 0,0 129x54
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 14 in -0.52,1.64 113.88x16.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/Box[0]/Box[0]/Box[0]/Text[1]: glyphs 11 in -0.52,1.64 87.19x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[1]/Box[0]/Box[0]/Canvas[0]: matrix -1,0,0,-1,14,16
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[1]/Box[0]/Box[0]/Canvas[0]: path 5.25,3.5 3.5x7 3 verbs 3 points #17c1c31c even-odd fill none stroke 1.17 #7f8791 round round round miter 10
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[1]/Box[0]/Box[0]/Fragment[1]/Text[0]: glyphs 7 in -0.26,1.64 48.18x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[1]/Box[0]/Box[1]: box 0,0 98x36 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Collapsible[2]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Canvas[0]: path 5.25,3.5 3.5x7 3 verbs 3 points #22913692 even-odd fill none stroke 1.17 #7f8791 round round round miter 10
+RootComponent[0]/Box[0]/Box[0]/Collapsible[2]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Fragment[1]/Text[0]: glyphs 6 in -0.52,2.16 48.51x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Collapsible[2]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[1]: box 0,0 98x36 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff

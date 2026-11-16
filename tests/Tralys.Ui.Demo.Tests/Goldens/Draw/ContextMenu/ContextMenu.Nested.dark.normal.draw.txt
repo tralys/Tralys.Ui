@@ -1,0 +1,2 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 59 in -0.26,1.64 493.03x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/ContextMenu[1]/Box[0]/Box[0]: box 0,0 320x160 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #2a313a

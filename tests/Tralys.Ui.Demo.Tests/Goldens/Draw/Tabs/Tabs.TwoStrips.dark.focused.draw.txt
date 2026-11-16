@@ -1,0 +1,14 @@
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 340x32
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Text[0]: glyphs 5 in -0.26,2.16 39.11x12.7 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Box[1]: box 0,0 62x2 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Box[2]: box 0,0 62x32 radius 2,2,2,2 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[1]/Box[0]/Text[0]: glyphs 6 in -0.26,1.64 42.6x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[1]/Box[0]/Box[1]: box 0,0 66x32 radius 2,2,2,2 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/Panel[1]/Box[0]/Text[0]: glyphs 25 in -0.26,1.64 204.48x16.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 340x32
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Text[0]: glyphs 4 in -0.52,2.16 32.7x12.7 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Box[1]: box 0,0 56x2 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Box[2]: box 0,0 56x32 radius 2,2,2,2 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[1]/Box[0]/Text[0]: glyphs 7 in -0.78,1.64 54.55x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[1]/Box[0]/Box[1]: box 0,0 78x32 radius 2,2,2,2 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/Panel[1]/Box[0]/Text[0]: glyphs 11 in -0.52,2.16 88.73x12.7 #bfc7d2

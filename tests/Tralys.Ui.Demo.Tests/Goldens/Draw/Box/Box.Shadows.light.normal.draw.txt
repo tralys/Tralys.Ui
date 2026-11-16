@@ -1,0 +1,9 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]: shadow 0,0 140x90 radius 3,3,3,3 offset 0,4 blur 12 spread 0 #00000080
+RootComponent[0]/Box[0]/Box[0]/Box[0]: box 0,0 140x90 radius 3,3,3,3 fill #dbe3ef
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 10 in -0.26,2.16 91.32x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]: shadow 0,0 140x90 radius 3,3,3,3 offset 0,0 blur 0 spread 3 #4c8df6
+RootComponent[0]/Box[0]/Box[0]/Box[1]: box 0,0 140x90 radius 3,3,3,3 fill #dbe3ef
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 10 in -0.52,1.64 79.96x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[2]: box 0,0 140x90 radius 3,3,3,3 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Box[2]: inset-shadow 0,0 140x90 radius 3,3,3,3 offset 0,2 blur 8 spread 2 #000000a0
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Text[0]: glyphs 11 in -0.26,2.16 92.4x12.7 #2a313a

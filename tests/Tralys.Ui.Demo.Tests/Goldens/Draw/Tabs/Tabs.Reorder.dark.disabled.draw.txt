@@ -1,0 +1,4 @@
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 340x32
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Text[0]: glyphs 8 in -0.52,1.64 67.01x13.22 #454c55
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[1]/Box[0]/Text[0]: glyphs 5 in -0.52,2.16 36.59x12.7 #454c55
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[2]/Box[0]/Text[0]: glyphs 7 in -0.26,1.64 51.18x16.07 #454c55

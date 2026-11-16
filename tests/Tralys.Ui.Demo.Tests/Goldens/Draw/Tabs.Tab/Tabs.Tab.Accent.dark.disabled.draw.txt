@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 62x32
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Text[0]: glyphs 4 in -0.78,2.16 38.6x12.7 #454c55
+RootComponent[0]/Box[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Box[1]: box 0,0 62x2 fill #1191c8
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 109x32
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Box[0]/Text[0]: glyphs 8 in -0.26,1.64 65.14x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Box[0]/Badge[1]/Box[0]: box 0,0 16x14 radius 7,7,7,7 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Box[0]/Badge[1]/Box[0]/Text[0]: glyphs 1 in -0.44,1.85 8.67x10.89 #000000
+RootComponent[0]/Box[0]/Box[0]/Tabs[1]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Box[1]: box 0,0 109x2 fill #75c687

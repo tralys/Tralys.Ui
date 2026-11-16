@@ -1,0 +1,14 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 130 in -0.78,1.64 1046.84x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]/Box[0]/EditableText[0]: clip 0,0 216x17
+RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]/Box[0]/EditableText[0]: glyphs 8 in -0.78,1.64 58.11x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Input[1]/Box[0]/Box[0]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Box[0]/Input[2]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Input[2]/Box[0]/Box[0]/EditableText[0]: clip 0,0 216x17
+RootComponent[0]/Box[0]/Box[0]/Input[2]/Box[0]/Box[0]/EditableText[0]: glyphs 8 in -0.78,1.64 58.11x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Input[2]/Box[0]/Box[0]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Box[0]/Input[3]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Input[3]/Box[0]/Box[0]/EditableText[0]: clip 0,0 216x17
+RootComponent[0]/Box[0]/Box[0]/Input[3]/Box[0]/Box[0]/EditableText[0]: glyphs 8 in -0.78,1.64 58.11x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Input[3]/Box[0]/Box[0]/EditableText[0]: pop
+RootComponent[0]/Box[0]/Box[0]/Text[4]: glyphs 22 in -0.78,1.64 171.39x13.22 #2a313a

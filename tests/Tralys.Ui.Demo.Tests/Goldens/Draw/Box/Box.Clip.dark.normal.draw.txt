@@ -1,0 +1,5 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]: box 0,0 120x80 radius 6,6,6,6 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Box[0]: box 0,0 158x118 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Box[1]: box 0,0 120x80 radius 6,6,6,6 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]: clip 1,1 118x78 radius 5,5,5,5
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 158x118 fill #97bcff

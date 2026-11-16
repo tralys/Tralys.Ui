@@ -1,0 +1,21 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":240,"height":129},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[0]","x":16,"y":16,"width":208,"height":17,"text":"Tiles, dimmed until picked"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]","x":16,"y":65,"width":208,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]","x":16,"y":65,"width":64,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]/Fragment[0]/Box[0]","x":16,"y":65,"width":64,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]/Fragment[0]/Box[0]/Text[0]","x":32,"y":81,"width":32,"height":17,"text":"Gold"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]/Box[1]","x":16,"y":65,"width":64,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[0]/Box[0]/Box[2]","x":16,"y":65,"width":64,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]","x":88,"y":65,"width":64,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]/Fragment[0]/Box[0]","x":88,"y":65,"width":64,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]/Fragment[0]/Box[0]/Text[0]","x":100,"y":81,"width":40,"height":17,"text":"Silver"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]/Box[1]","x":88,"y":65,"width":64,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[1]/Box[0]/Box[2]","x":88,"y":65,"width":64,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]","x":160,"y":65,"width":64,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]/Fragment[0]/Box[0]","x":160,"y":65,"width":64,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]/Fragment[0]/Box[0]/Text[0]","x":168,"y":81,"width":49,"height":17,"text":"Bronze"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]/Box[1]","x":160,"y":65,"width":64,"height":48},
+{"path":"RootComponent[0]/Box[0]/Box[0]/RadioGroup[1]/Box[0]/Radio[2]/Box[0]/Box[2]","x":160,"y":65,"width":64,"height":48}
+],"consume":["00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","11111100000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

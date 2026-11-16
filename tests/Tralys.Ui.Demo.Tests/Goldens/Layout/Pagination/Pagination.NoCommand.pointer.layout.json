@@ -1,0 +1,20 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":328,"height":49},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[0]","x":0,"y":0,"width":328,"height":17,"text":"Turns its own page: nothing handles the change"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]","x":0,"y":25,"width":320,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Text[0]","x":0,"y":29,"width":74,"height":17,"text":"Page 1 of 5"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]","x":74,"y":25,"width":246,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[0]/Box[1]","x":200,"y":25,"width":24,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[0]/Box[1]/Icon[0]/Box[0]","x":206,"y":30,"width":12,"height":14},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[0]/Box[1]/Icon[0]/Box[0]/Text[0]","x":206,"y":30,"width":12,"height":14,"text":"\uE072"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[1]/Box[1]","x":232,"y":25,"width":24,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[1]/Box[1]/Icon[0]/Box[0]","x":238,"y":30,"width":12,"height":14},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[1]/Box[1]/Icon[0]/Box[0]/Text[0]","x":238,"y":30,"width":12,"height":14,"text":"\uE06E"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[2]/Box[1]","x":264,"y":25,"width":24,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[2]/Box[1]/Icon[0]/Box[0]","x":270,"y":30,"width":12,"height":14},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[2]/Box[1]/Icon[0]/Box[0]/Text[0]","x":270,"y":30,"width":12,"height":14,"text":"\uE06F"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[3]/Box[1]","x":296,"y":25,"width":24,"height":24},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[3]/Box[1]/Icon[0]/Box[0]","x":302,"y":30,"width":12,"height":14},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[3]/Box[1]/Icon[0]/Box[0]/Text[0]","x":302,"y":30,"width":12,"height":14,"text":"\uE073"}
+],"consume":["11111111000000000000000000000000","11000101000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

@@ -1,0 +1,9 @@
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]/Canvas[0]: ellipse 0,0 64x64 fill none stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]/Canvas[0]: clip 0,17.28 64x46.72
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]/Canvas[0]: ellipse 0,0 64x64 fill #e54545
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[0]/Box[0]/Canvas[0]: pop
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]/Canvas[0]: ellipse 0,0 64x64 fill none stroke 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]/Canvas[0]: clip 0,33.92 64x30.08
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]/Canvas[0]: ellipse 0,0 64x64 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[1]/Box[0]/Canvas[0]: pop
+RootComponent[0]/Box[0]/Box[0]/CircularProgress[2]/Box[0]/Canvas[0]: ellipse 0,0 64x64 fill none stroke 1 #2a313a

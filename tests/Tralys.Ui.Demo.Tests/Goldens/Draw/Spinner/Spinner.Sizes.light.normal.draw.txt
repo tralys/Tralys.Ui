@@ -1,0 +1,6 @@
+RootComponent[0]/Box[0]/Box[0]/Spinner[0]/Box[0]: matrix 0.98,0.21,-0.21,0.98,1.38,2.88
+RootComponent[0]/Box[0]/Box[0]/Spinner[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.44,0.1 12.89x12.89 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Spinner[1]/Box[0]: matrix 0.98,0.21,-0.21,0.98,29.84,0.51
+RootComponent[0]/Box[0]/Box[0]/Spinner[1]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.19x17.19 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Spinner[2]/Box[0]: matrix 0.98,0.21,-0.21,0.98,62.3,-1.86
+RootComponent[0]/Box[0]/Box[0]/Spinner[2]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.74,0.16 21.48x21.48 #2a313a

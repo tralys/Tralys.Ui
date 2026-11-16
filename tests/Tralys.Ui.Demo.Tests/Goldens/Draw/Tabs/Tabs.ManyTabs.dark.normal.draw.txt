@@ -1,0 +1,9 @@
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]: clip 0,0 400x32
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Text[0]: glyphs 4 in -0.78,2.16 35.59x12.7 #97bcff
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[0]/Box[0]/Box[1]: box 0,0 59x2 fill #97bcff
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[1]/Box[0]/Text[0]: glyphs 4 in -0.78,2.16 38.7x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[2]/Box[0]/Text[0]: glyphs 4 in -0.78,2.16 38.96x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[3]/Box[0]/Text[0]: glyphs 4 in -0.78,2.16 39.48x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[4]/Box[0]/Text[0]: glyphs 4 in -0.78,2.16 38.7x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/List[0]/Box[0]/Box[0]/Tab[5]/Box[0]/Text[0]: glyphs 4 in -0.78,2.16 38.96x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Tabs[0]/Box[0]/Box[0]/Panel[1]/Box[0]/Text[0]: glyphs 8 in -0.52,2.16 64.89x12.7 #bfc7d2

@@ -1,0 +1,3 @@
+RootComponent[0]/Box[0]/Box[0]/Editable[0]/Box[0]/Box[0]/Text[0]: glyphs 13 in -0.52,1.64 107.42x13.22 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Editable[1]/Box[0]/Box[0]/Text[0]: glyphs 9 in -0.78,2.16 87.95x12.7 #7f8791
+RootComponent[0]/Box[0]/Box[0]/Editable[2]/Box[0]/Box[0]/Text[0]: glyphs 8 in -0.26,1.64 60.17x13.22 #454c55

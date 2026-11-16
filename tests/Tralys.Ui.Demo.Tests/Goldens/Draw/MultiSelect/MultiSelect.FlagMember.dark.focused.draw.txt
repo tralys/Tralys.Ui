@@ -1,0 +1,5 @@
+RootComponent[0]/Box[0]/MultiSelect[0]/Box[0]: box 0,0 200x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/MultiSelect[0]/Box[0]/Box[0]/Text[0]: glyphs 6 in -0.78,2.16 52.12x12.7 #9fa7b1
+RootComponent[0]/Box[0]/MultiSelect[0]/Box[0]/Box[0]/Text[1]: glyphs 10 in -0.78,1.64 92.83x16.07 #7f8791
+RootComponent[0]/Box[0]/MultiSelect[0]/Box[0]/Box[0]/Box[2]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #7f8791
+RootComponent[0]/Box[0]/MultiSelect[0]/Box[0]/Box[1]: box 0,0 202x34 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff

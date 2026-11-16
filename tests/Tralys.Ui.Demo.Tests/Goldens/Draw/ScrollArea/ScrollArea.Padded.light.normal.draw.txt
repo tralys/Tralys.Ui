@@ -1,0 +1,5 @@
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]: clip 0,0 240x136
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]/Text[0]: glyphs 78 in -1.04,1.64 236.35x50.07 #2a313a
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/ScrollAreaBar[1]/Box[0]: layer 0.35
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #835e94f7 even-odd fill #616973
+RootComponent[0]/Box[0]/ScrollArea[0]/Grid[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #da92b547 even-odd fill #616973

@@ -1,0 +1,31 @@
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]: box 0,0 230x166 radius 3,3,3,3 fill #161c24 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Grid[0]/Key[0]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Grid[0]/Key[0]/Box[1]/Box[0]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.04,5.82 11.67x3.63 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Grid[0]/Key[1]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Grid[0]/Key[1]/Box[1]/Box[0]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.04,1.67 11.67x11.67 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[0]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 6.74x12.44 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[1]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[1]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 9.85x12.44 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[2]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[2]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 10.11x12.7 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[3]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[3]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 10.63x12.44 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[4]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[4]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 9.85x12.7 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[5]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[5]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 10.11x12.7 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[6]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[6]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.78,2.16 9.59x12.44 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[7]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[7]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 10.11x12.7 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[8]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[8]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 10.11x12.7 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[9]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[9]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 11.41x12.7 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[10]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[10]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 1 in -0.52,2.16 10.37x12.7 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[11]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #3c434c
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[11]/Box[1]/Box[0]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.52,1.67 15.04x11.93 #e0e9f4
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Key[1]/Box[1]: box 0,0 52x124 radius 3,3,3,3 fill #85b0ff
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Key[1]/Box[1]/Box[0]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0.52,2.44 12.96x9.85 #000000

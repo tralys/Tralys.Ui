@@ -1,0 +1,21 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]","x":0,"y":0,"width":300,"height":120},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]","x":0,"y":0,"width":300,"height":120},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]","x":0,"y":0,"width":300,"height":31},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]","x":0,"y":0,"width":300,"height":31},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[0]/Box[0]","x":0,"y":0,"width":160,"height":30},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]","x":0,"y":0,"width":160,"height":30},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]/Box[0]","x":0,"y":0,"width":47,"height":30},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]/Box[0]/Text[0]","x":6,"y":8,"width":35,"height":15,"text":"Name"},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]/Box[0]/Icon[1]/Box[0]","x":0,"y":0,"width":0,"height":0,"collapsed":true},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[1]/Box[0]","x":160,"y":0,"width":120,"height":30},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]","x":160,"y":0,"width":120,"height":30},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]/Box[0]","x":160,"y":0,"width":38,"height":30},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]/Box[0]/Text[0]","x":166,"y":8,"width":26,"height":15,"text":"Role"},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]/Box[0]/Icon[1]/Box[0]","x":0,"y":0,"width":0,"height":0,"collapsed":true},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/VirtualList[1]","x":0,"y":31,"width":300,"height":89},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[2]","x":0,"y":0,"width":300,"height":120},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[2]/EmptyState[0]/Box[0]","x":62,"y":44,"width":177,"height":33},
+{"path":"RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[2]/EmptyState[0]/Box[0]/Text[0]","x":74,"y":52,"width":153,"height":17,"text":"Nobody has joined yet"}
+],"consume":["11111111000000000000000000000000","11111111000000000000000000000000","11111111000000000000000000000000","11111111000000000000000000000000","11111111000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

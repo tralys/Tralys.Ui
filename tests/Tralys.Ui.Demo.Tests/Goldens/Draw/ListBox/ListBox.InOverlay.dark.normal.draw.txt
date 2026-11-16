@@ -1,0 +1,7 @@
+RootComponent[0]/Box[0]/Box[0]: shadow 0,0 200x106 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
+RootComponent[0]/Box[0]/Box[0]: box 0,0 200x106 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]: clip 0,0 190x96
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]: box 0,0 190x32 radius 3,3,3,3 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]/Text[0]: glyphs 12 in -0.52,2.16 102.78x12.7 #97bcff
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]/Text[0]: glyphs 14 in -0.78,2.16 116.35x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Row[0]/Box[0]/Text[0]: glyphs 12 in -0.78,1.64 96.72x13.22 #bfc7d2

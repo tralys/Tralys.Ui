@@ -1,0 +1,9 @@
+RootComponent[0]/Box[0]/Box[0]/ActionPrompt[0]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]: box 0,0 46x20 radius 3,3,3,3 fill #ecf4ff border 1,1,1,2 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ActionPrompt[0]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]/Text[0]: glyphs 5 in -0.22,1.85 32.19x10.89 #121820
+RootComponent[0]/Box[0]/Box[0]/ActionPrompt[0]/Box[0]/Text[1]: glyphs 5 in -0.26,1.64 39.43x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ActionPrompt[1]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]: box 0,0 36x20 radius 3,3,3,3 fill #ecf4ff border 1,1,1,2 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ActionPrompt[1]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]/Text[0]: glyphs 3 in -0.22,1.85 21.79x10.89 #121820
+RootComponent[0]/Box[0]/Box[0]/ActionPrompt[1]/Box[0]/Text[1]: glyphs 5 in -0.52,2.16 40.17x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ActionPrompt[2]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]: box 0,0 76x20 radius 3,3,3,3 fill #ecf4ff border 1,1,1,2 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ActionPrompt[2]/Box[0]/InputGlyph[0]/Kbd[0]/Box[0]/Text[0]: glyphs 9 in -0.44,1.85 62.23x13.33 #121820
+RootComponent[0]/Box[0]/Box[0]/ActionPrompt[2]/Box[0]/Text[1]: glyphs 11 in -0.26,1.64 89.59x16.07 #2a313a

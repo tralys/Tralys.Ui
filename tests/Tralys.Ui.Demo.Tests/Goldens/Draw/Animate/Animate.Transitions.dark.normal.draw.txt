@@ -1,0 +1,12 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 100 in -0.78,1.64 802.13x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 60x60 radius 3,3,3,3 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 60x60 radius 3,3,3,3 fill #75c687
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: box 0,0 60x60 radius 3,3,3,3 fill #d4880a
+RootComponent[0]/Box[0]/Box[0]/Box[2]/HoverTile[0]/Box[0]: opacity 0.6
+RootComponent[0]/Box[0]/Box[0]/Box[2]/HoverTile[0]/Box[0]: box 0,0 72x48 radius 3,3,3,3 fill #0c2554 border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Box[2]/HoverTile[1]/Box[0]: opacity 0.6
+RootComponent[0]/Box[0]/Box[0]/Box[2]/HoverTile[1]/Box[0]: box 0,0 72x48 radius 3,3,3,3 fill #0c2554 border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Box[2]/HoverTile[2]/Box[0]: opacity 0.6
+RootComponent[0]/Box[0]/Box[0]/Box[2]/HoverTile[2]/Box[0]: box 0,0 72x48 radius 3,3,3,3 fill #0c2554 border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Box[2]/HoverTile[3]/Box[0]: opacity 0.6
+RootComponent[0]/Box[0]/Box[0]/Box[2]/HoverTile[3]/Box[0]: box 0,0 72x48 radius 3,3,3,3 fill #0c2554 border 1,1,1,1 #97bcff

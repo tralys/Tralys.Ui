@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/Toggle[0]/Box[1]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/Toggle[0]/Box[1]: box 0,0 165x32 radius 3,3,3,3 fill #161c24 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Toggle[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 17 in -0.26,1.64 140.95x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Toggle[0]/Box[1]/Box[1]: box 0,0 167x34 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Toggle[1]/Box[1]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/Toggle[1]/Box[1]: box 0,0 148x32 radius 3,3,3,3 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Toggle[1]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 15 in -0.52,1.64 124.36x13.22 #000000
+RootComponent[0]/Box[0]/Box[0]/Toggle[1]/Box[1]/Box[1]: box 0,0 150x34 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff

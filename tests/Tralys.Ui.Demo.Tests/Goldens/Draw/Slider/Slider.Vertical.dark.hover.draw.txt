@@ -1,0 +1,31 @@
+RootComponent[0]/Box[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[0]: box 0,0 2x184 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[1]: box 0,0 2x92 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Slider[0]/Box[0]/Box[0]/SliderThumb[2]/Box[0]: box 0,0 16x16 radius 8,8,8,8 fill #949ca7
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Box[0]: box 0,0 2x184 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Box[1]: box 0,0 2x55 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[2]: line 4,184 0,184 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[2]: line 4,0 0,0 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[2]: line 4,165.6 1,165.6 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[2]: line 4,147.2 1,147.2 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[2]: line 4,128.8 1,128.8 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[2]: line 4,110.4 1,110.4 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[2]: line 4,92 1,92 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[2]: line 4,73.6 1,73.6 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[2]: line 4,55.2 1,55.2 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[2]: line 4,36.8 1,36.8 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[2]: line 4,18.4 1,18.4 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[3]: line 0,184 4,184 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[3]: line 0,0 4,0 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[3]: line 0,165.6 3,165.6 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[3]: line 0,147.2 3,147.2 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[3]: line 0,128.8 3,128.8 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[3]: line 0,110.4 3,110.4 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[3]: line 0,92 3,92 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[3]: line 0,73.6 3,73.6 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[3]: line 0,55.2 3,55.2 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[3]: line 0,36.8 3,36.8 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Canvas[3]: line 0,18.4 3,18.4 width 1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/SliderThumb[4]/Box[0]: box 0,0 16x16 radius 8,8,8,8 fill #949ca7
+RootComponent[0]/Box[0]/Box[0]/Slider[2]/Box[0]/Box[0]/Box[0]: box 0,0 2x184 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/Slider[2]/Box[0]/Box[0]/Box[1]: box 0,0 2x138 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Slider[2]/Box[0]/Box[0]/SliderThumb[2]/Box[0]: box 0,0 16x16 radius 8,8,8,8 fill #1a2028

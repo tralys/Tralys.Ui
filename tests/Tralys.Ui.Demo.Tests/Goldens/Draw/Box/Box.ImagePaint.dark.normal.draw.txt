@@ -1,0 +1,7 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 144 in -0.78,1.64 1168.08x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 160x96 fill image backdrop.jpg viewbox 0,0 1x1 Fill Center Center border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 96x96 fill image backdrop.jpg viewbox 0,0 1x1 Uniform Center Bottom border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: box 0,0 96x96 fill image atlas.png viewbox 64,0 64x64 absolute Fill Center Center border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Canvas[3]: ellipse 0,0 96x96 fill image backdrop.jpg viewbox 0,0 1x1 UniformToFill Center Center
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[4]: box 0,0 96x96 radius 16,16,16,16 fill none border 12,12,12,12 image backdrop.jpg viewbox 0,0 1x1 UniformToFill Center Center
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[5]: glyphs 7 in -2.22,6.16 154.63x36.3 image backdrop.jpg viewbox 0,0 1x1 UniformToFill Center Center

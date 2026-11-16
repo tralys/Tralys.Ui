@@ -1,0 +1,22 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":312,"height":189},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]","x":16,"y":16,"width":280,"height":109},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]","x":16,"y":16,"width":280,"height":32},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]","x":28,"y":24,"width":145,"height":17},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Canvas[0]","x":28,"y":26,"width":14,"height":14},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Fragment[1]/Text[0]","x":50,"y":24,"width":123,"height":17,"text":"Expanded section"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]","x":16,"y":48,"width":280,"height":77},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]","x":16,"y":48,"width":280,"height":77},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]/Box[0]","x":50,"y":56,"width":238,"height":61},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]/Box[0]/Text[0]","x":50,"y":56,"width":149,"height":17,"text":"This content is visible"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]/Box[0]/Button[1]/Box[1]","x":50,"y":89,"width":182,"height":28},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]/Box[0]/Button[1]/Box[1]/Box[0]","x":62,"y":95,"width":158,"height":17},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]/Box[0]/Box[0]/Button[1]/Box[1]/Box[0]/Fragment[0]/Text[0]","x":62,"y":95,"width":158,"height":17,"text":"Action inside expander"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]","x":16,"y":141,"width":280,"height":32},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[0]/Box[0]","x":16,"y":141,"width":280,"height":32},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]","x":28,"y":149,"width":145,"height":17},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Canvas[0]","x":28,"y":151,"width":14,"height":14},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Fragment[1]/Text[0]","x":50,"y":149,"width":123,"height":17,"text":"Collapsed section"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/Box[1]","x":16,"y":173,"width":280,"height":0,"hidden":true,"collapsed":true}
+],"consume":["00000000000000000000000000000000","11111110000000000000000000000000","01111000000000000000000000000000","00000000000000000000000000000000","01111100000000000000000000000000","00000000000000000000000000000000","11111110000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

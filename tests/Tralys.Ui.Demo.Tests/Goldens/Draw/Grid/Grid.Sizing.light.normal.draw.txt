@@ -1,0 +1,19 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 64 in -0.52,1.64 545.47x15.81 #454c55
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[0]: box 0,0 80x31 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[0]/Text[0]: glyphs 2 in -0.52,2.16 19.48x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[1]: box 0,0 127x31 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[1]/Text[0]: glyphs 15 in -0.78,1.64 109.81x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[2]: box 0,0 118x31 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[2]/Text[0]: glyphs 3 in -0.52,1.64 18.87x12.96 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[3]: box 0,0 235x31 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[3]/Text[0]: glyphs 3 in -0.52,1.64 21.65x12.96 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[4]: box 0,0 80x48 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[4]/Text[0]: glyphs 2 in -0.52,2.16 19.58x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[5]: box 0,0 127x48 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[6]: box 0,0 118x48 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[7]: box 0,0 235x48 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[8]: box 0,0 80x121 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[8]/Text[0]: glyphs 3 in -0.52,1.64 18.87x12.96 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[9]: box 0,0 127x121 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[10]: box 0,0 118x121 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Grid[1]/Box[11]: box 0,0 235x121 fill #dbe3ef border 1,1,1,1 #bfc7d2

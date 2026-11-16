@@ -1,0 +1,9 @@
+RootComponent[0]/Box[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[0]: box 0,0 304x2 fill #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[1]: box 0,0 152x2 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Slider[0]/Box[0]/Box[0]/SliderThumb[2]/Box[0]: box 0,0 16x16 radius 8,8,8,8 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Box[0]: box 0,0 304x2 fill #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/Box[1]: box 0,0 76x2 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Slider[1]/Box[0]/Box[0]/SliderThumb[2]/Box[0]: box 0,0 16x16 radius 8,8,8,8 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Slider[2]/Box[0]/Box[0]/Box[0]: box 0,0 304x2 fill #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Slider[2]/Box[0]/Box[0]/Box[1]: box 0,0 228x2 fill #d5dee9
+RootComponent[0]/Box[0]/Box[0]/Slider[2]/Box[0]/Box[0]/SliderThumb[2]/Box[0]: box 0,0 16x16 radius 8,8,8,8 fill #d5dee9

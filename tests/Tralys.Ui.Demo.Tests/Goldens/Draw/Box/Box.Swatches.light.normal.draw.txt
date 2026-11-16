@@ -1,0 +1,6 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 78 in -1.04,2.16 269.02x46.7 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 24x24 fill #ff9900
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 24x24 radius 6,6,6,6 fill #66ccff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: box 0,0 24x24 radius 6,6,6,6 fill #66ff66 border 1,1,1,1 #cad2de
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]: box 0,0 16x16 radius 999,999,999,999 fill #c05028 border 2,2,2,2 #ffffff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[4]: box 0,0 36x16 radius 999,999,999,999 fill #ff55ff80

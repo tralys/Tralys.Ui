@@ -1,0 +1,3 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 44 in -0.78,1.64 346.55x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Popover[1]/Box[0]/Trigger[0]/Box[0]/Box[0]/Box[0]: box 0,0 112x27 radius 3,3,3,3 fill #e0e9f4 border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Popover[1]/Box[0]/Trigger[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 11 in -0.78,2.16 95.04x15.56 #2a313a

@@ -1,0 +1,14 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 6 in -0.52,2.16 48.51x12.7 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Reveal[1]/Box[0]: clip 0,0 100x0
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Reveal[1]/Box[0]/Box[0]/Box[0]: box 0,0 100x60 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[2]: glyphs 5 in -0.26,2.16 43.01x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 8 in -0.26,1.64 69.72x13.22 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Reveal[1]/Box[0]: clip 0,0 100x30
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Reveal[1]/Box[0]/Box[0]/Box[0]: box 0,0 100x60 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Reveal[1]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 10 in -0.26,2.16 87.84x15.56 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[2]: glyphs 5 in -0.26,2.16 43.01x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Text[0]: glyphs 6 in -0.26,1.64 49.58x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Reveal[1]/Box[0]: clip 0,0 100x30
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Reveal[1]/Box[0]/Box[0]/Box[0]: box 0,0 100x60 fill #1a2028
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Reveal[1]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 10 in -0.26,2.16 87.84x15.56 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Text[2]: glyphs 5 in -0.26,2.16 43.01x12.7 #bfc7d2

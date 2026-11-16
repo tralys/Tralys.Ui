@@ -1,0 +1,31 @@
+RootComponent[0]/Box[0]/Box[0]/Pagination[0]/Box[0]/Text[0]: glyphs 9 in -0.26,1.64 80.49x16.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[0]/Box[0]/Box[1]/IconButton[0]/Box[1]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/Pagination[0]/Box[0]/Box[1]/IconButton[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.56,2.54 8.89x8 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[0]/Box[0]/Box[1]/IconButton[0]/Box[1]/Box[1]: box 0,0 26x26 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Pagination[0]/Box[0]/Box[1]/IconButton[1]/Box[1]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/Pagination[0]/Box[0]/Box[1]/IconButton[1]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.11,2.1 5.78x8.89 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[0]/Box[0]/Box[1]/IconButton[1]/Box[1]/Box[1]: box 0,0 26x26 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Pagination[0]/Box[0]/Box[1]/IconButton[2]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.11,2.1 5.78x8.89 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[0]/Box[0]/Box[1]/IconButton[2]/Box[1]/Box[1]: box 0,0 26x26 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Pagination[0]/Box[0]/Box[1]/IconButton[3]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.56,2.54 8.89x8 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[0]/Box[0]/Box[1]/IconButton[3]/Box[1]/Box[1]: box 0,0 26x26 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Text[0]: glyphs 9 in -0.26,1.64 83.49x16.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.56,2.54 8.89x8 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[0]/Box[1]/Box[1]: box 0,0 26x26 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[1]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.11,2.1 5.78x8.89 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[1]/Box[1]/Box[1]: box 0,0 26x26 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[2]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.11,2.1 5.78x8.89 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[2]/Box[1]/Box[1]: box 0,0 26x26 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[3]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.56,2.54 8.89x8 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[1]/Box[0]/Box[1]/IconButton[3]/Box[1]/Box[1]: box 0,0 26x26 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Pagination[2]/Box[0]/Text[0]: glyphs 10 in -0.26,1.64 89.93x16.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[2]/Box[0]/Box[1]/IconButton[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.56,2.54 8.89x8 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[2]/Box[0]/Box[1]/IconButton[0]/Box[1]/Box[1]: box 0,0 26x26 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Pagination[2]/Box[0]/Box[1]/IconButton[1]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.11,2.1 5.78x8.89 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[2]/Box[0]/Box[1]/IconButton[1]/Box[1]/Box[1]: box 0,0 26x26 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Pagination[2]/Box[0]/Box[1]/IconButton[2]/Box[1]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/Pagination[2]/Box[0]/Box[1]/IconButton[2]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.11,2.1 5.78x8.89 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[2]/Box[0]/Box[1]/IconButton[2]/Box[1]/Box[1]: box 0,0 26x26 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Pagination[2]/Box[0]/Box[1]/IconButton[3]/Box[1]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/Pagination[2]/Box[0]/Box[1]/IconButton[3]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 1.56,2.54 8.89x8 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Pagination[2]/Box[0]/Box[1]/IconButton[3]/Box[1]/Box[1]: box 0,0 26x26 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff

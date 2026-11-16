@@ -1,0 +1,6 @@
+RootComponent[0]/Box[0]/Box[0]/Button[0]/Box[1]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.52,0.11 15.04x15.04 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Button[0]/Box[1]/Fragment[0]/Text[1]: glyphs 5 in -0.52,2.16 37.82x12.7 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Button[1]/Box[1]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.52,0.11 15.04x15.04 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Button[1]/Box[1]/Fragment[0]/Text[1]: glyphs 6 in -0.26,1.64 55.13x13.22 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Button[2]/Box[1]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.67,0.14 19.33x19.33 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Button[2]/Box[1]/Fragment[0]/Text[1]: glyphs 5 in -0.3,2.46 44.61x17.78 #97bcff

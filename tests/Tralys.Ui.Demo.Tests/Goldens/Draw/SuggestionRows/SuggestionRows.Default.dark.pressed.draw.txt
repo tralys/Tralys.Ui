@@ -1,0 +1,11 @@
+RootComponent[0]/Box[0]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]: shadow 0,0 240x118 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
+RootComponent[0]/Box[0]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]: box 0,0 240x118 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]: clip 0,0 230x108
+RootComponent[0]/Box[0]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]/Box[0]/SuggestionRow[0]/Box[0]/Box[0]: box 0,0 230x27 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]/Box[0]/SuggestionRow[0]/Box[0]/Box[0]/Text[0]: glyphs 9 in -0.26,1.64 70.49x13.22 #bfc7d2
+RootComponent[0]/Box[0]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]/Box[0]/SuggestionRow[1]/Box[0]/Box[0]: box 0,0 230x27 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]/Box[0]/SuggestionRow[1]/Box[0]/Box[0]/Text[0]: glyphs 9 in -0.26,2.16 74.82x12.7 #bfc7d2
+RootComponent[0]/Box[0]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]/Box[0]/SuggestionRow[2]/Box[0]/Box[0]: box 0,0 230x27 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]/Box[0]/SuggestionRow[2]/Box[0]/Box[0]/Text[0]: glyphs 9 in -0.26,1.64 68.31x13.22 #bfc7d2
+RootComponent[0]/Box[0]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]/Box[0]/SuggestionRow[3]/Box[0]/Box[0]: box 0,0 230x27 radius 3,3,3,3 fill #bfc7d229
+RootComponent[0]/Box[0]/SuggestionRows[0]/Box[0]/Frame[0]/Box[0]/ScrollArea[0]/Grid[0]/Box[0]/Box[0]/SuggestionRow[3]/Box[0]/Box[0]/Text[0]: glyphs 6 in -0.26,1.64 53.6x13.22 #bfc7d2

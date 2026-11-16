@@ -1,0 +1,16 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 67 in -1.04,2.16 267.04x32.3 #454c55
+RootComponent[0]/Box[0]/Box[0]/Button[1]/Box[1]: box 0,0 110x32 radius 3,3,3,3 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Button[1]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 10 in -0.26,2.16 86.52x15.56 #000000
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/VirtualList[0]: clip 0,0 280x160
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]/Text[0]: glyphs 7 in -0.26,2.16 58.68x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]/Text[0]: glyphs 7 in -0.26,2.16 58.98x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/VirtualList[0]/VirtualListRow[2]/Row[0]/Box[0]/Text[0]: glyphs 7 in -0.26,2.16 58.42x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/VirtualList[0]/VirtualListRow[3]/Row[0]/Box[0]/Text[0]: glyphs 7 in -0.26,2.16 58.68x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/VirtualList[0]/VirtualListRow[4]/Row[0]/Box[0]/Text[0]: glyphs 7 in -0.26,2.16 57.9x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/VirtualList[0]/VirtualListRow[5]/Row[0]/Box[0]/Text[0]: glyphs 7 in -0.26,2.16 58.68x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/VirtualList[0]/VirtualListRow[6]/Row[0]/Box[0]/Text[0]: glyphs 7 in -0.26,2.16 58.68x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/VirtualList[0]/VirtualListRow[7]/Row[0]/Box[0]/Text[0]: glyphs 7 in -0.26,2.16 59.16x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/ScrollAreaBar[1]/Box[0]: layer 0.35
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #835e94f7 even-odd fill #616973
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]: box 0,0 8x24 radius 3,3,3,3 fill #616973
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #da92b547 even-odd fill #616973

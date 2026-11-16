@@ -1,0 +1,9 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 57 in -0.52,1.64 471.71x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]: box 0,0 560x63 fill linear 0,0 1,1 0 #f8fafc 0.5 #38bdf8 1 #0f172a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 5 in -1.19,4.93 94.8x34.96 #f0c83c
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[1]: glyphs 5 in -1.78,4.33 95.98x36.15 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[1]: glyphs 5 in -1.19,4.93 94.8x34.96 #f0c83c
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[2]: glyphs 5 in -2.37,3.74 97.17x37.33 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[2]: glyphs 5 in -1.19,4.93 94.8x34.96 #f0c83c
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[3]: glyphs 5 in -2.96,3.15 98.35x37.93 #b91c1c
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[3]: glyphs 5 in -1.19,4.93 94.8x34.96 #ffffff

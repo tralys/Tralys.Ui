@@ -1,0 +1,19 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 64 in -0.26,1.64 523.56x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 140x90 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: clip 1,1 138x88
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/ScaleToFit[0]/Layout[0]/Box[0]/Box[0]: box 0,0 51x23 fill #bad3ff border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/ScaleToFit[0]/Layout[0]/Box[0]/Box[0]/Text[0]: glyphs 5 in -0.52,2.16 37.21x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 140x90 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: clip 1,1 138x88
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/ScaleToFit[0]/Layout[0]/Box[0]: matrix 0.35,0,0,0.35,0,23
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/ScaleToFit[0]/Layout[0]/Box[0]/Box[0]: box 0,0 400x120 fill #bad3ff border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/ScaleToFit[0]/Layout[0]/Box[0]/Box[0]/Text[0]: glyphs 14 in -0.52,1.64 117.49x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: box 0,0 140x90 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: clip 1,1 138x88
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/ScaleToFit[0]/Layout[0]/Box[0]: matrix 1.44,0,0,1.44,0,27
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/ScaleToFit[0]/Layout[0]/Box[0]/Box[0]: box 0,0 96x23 fill #bad3ff border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/ScaleToFit[0]/Layout[0]/Box[0]/Box[0]/Text[0]: glyphs 10 in -0.52,2.16 83.22x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]: box 0,0 140x90 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]: clip 1,1 138x88
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]/ScaleToFit[0]/Layout[0]/Box[0]/Box[0]: box 0,0 400x120 fill #bad3ff border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]/ScaleToFit[0]/Layout[0]/Box[0]/Box[0]/Text[0]: glyphs 12 in -0.52,2.16 103.89x15.56 #2a313a

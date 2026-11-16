@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]: clip 0,0 300x120
+RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]: box 0,0 300x31 fill none border 0,0,0,1 #bfc7d2
+RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]: clip 0,0 120x30
+RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[1]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 4 in -0.22,1.85 26.35x10.89 #454c55
+RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]: clip 0,0 160x30
+RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 4 in -0.22,1.85 35.06x10.89 #454c55
+RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/VirtualList[1]: clip 0,0 300x89
+RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[2]/EmptyState[0]/Box[0]/Text[0]: glyphs 18 in 0.04,1.64 153.49x16.07 #454c55

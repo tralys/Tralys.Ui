@@ -1,0 +1,9 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 44 in -0.52,1.64 371.66x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]: box 0,0 200x118 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/VirtualList[0]: clip 0,0 184x102
+RootComponent[0]/Box[0]/Box[0]/Box[1]/VirtualList[0]/VirtualListRow[0]/Text[0]: glyphs 5 in 0,2.16 38.41x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/VirtualList[0]/VirtualListRow[1]/Text[0]: glyphs 6 in 0,2.16 44.79x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/VirtualList[0]/VirtualListRow[2]/Text[0]: glyphs 6 in 0,2.16 47.34x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/VirtualList[0]/VirtualListRow[3]/Text[0]: glyphs 5 in 0,2.16 43.88x12.7 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/VirtualList[0]/VirtualListRow[4]/Text[0]: glyphs 6 in 0,1.9 51.64x12.96 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/VirtualList[0]/VirtualListRow[5]/Text[0]: glyphs 6 in -0.52,1.9 51.32x12.96 #2a313a

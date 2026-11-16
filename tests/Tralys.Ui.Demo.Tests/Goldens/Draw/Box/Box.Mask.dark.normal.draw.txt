@@ -1,0 +1,12 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 179 in -0.78,1.64 1234.98x33.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 240x136 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[0]: mask 0,0 238x134 radial 0.5,0.5 0.5,0.5 0 #000000 0.6 #000000 1 #00000000
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Box[0]/Image[0]: image 0,0 238x134 from 0,0 1280x720 of 1280x720
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 240x136 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[0]: mask 0,0 238x134 linear 0,0 1,0 0 #00000000 0.2 #000000 0.8 #000000 1 #00000000
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[0]/Box[0]: mask 0,0 238x134 linear 0,0 0,1 0 #00000000 0.25 #000000 0.75 #000000 1 #00000000
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Box[0]/Box[0]/Image[0]: image 0,0 238x134 from 0,0 1280x720 of 1280x720
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: box 0,0 240x136 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Box[0]: mask 0,0 160x64 linear 0,0 1,0 0 #000000 0.5 #000000f8 1 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Box[0]: box 0,0 160x64 radius 3,3,3,3 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Box[0]/Text[0]: glyphs 19 in -0.52,2.16 125.92x29.7 #e0e9f4

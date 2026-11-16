@@ -1,0 +1,5 @@
+RootComponent[0]/Box[0]/Box[0]/Canvas[0]: ellipse 0,0 80x80 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Canvas[1]: ellipse 0,0 140x80 fill #161c24 stroke 2 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Canvas[2]: ellipse 0,0 80x80 fill none stroke 6 #e54545
+RootComponent[0]/Box[0]/Box[0]/Canvas[3]: path 1.5,1.5 77x77 6 verbs 13 points #3a1d770f even-odd fill none stroke 3 #bfc7d2 miter flat flat miter 10 dashes 3,6 offset 0 round
+RootComponent[0]/Box[0]/Box[0]/Canvas[4]: ellipse 0,0 80x80 fill radial 0.35,0.35 0.65,0.65 0 #e0f2fe 1 #0369a1

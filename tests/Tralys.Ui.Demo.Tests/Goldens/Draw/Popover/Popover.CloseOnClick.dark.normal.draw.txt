@@ -1,0 +1,6 @@
+RootComponent[0]/Box[0]/Box[0]/Popover[0]/Box[0]/Trigger[0]/Box[0]/Box[0]/Text[0]: glyphs 4 in 0,2.16 37.98x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Popover[0]/Layer[1]/Frame[0]/Box[0]: shadow 0,0 206x130 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
+RootComponent[0]/Box[0]/Box[0]/Popover[0]/Layer[1]/Frame[0]/Box[0]: box 0,0 206x130 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/Popover[0]/Layer[1]/Frame[0]/Box[0]/Box[0]/Close[0]/Box[0]/Box[0]/StoryRow[0]/Box[0]/Text[0]: glyphs 14 in -0.52,2.16 120.41x15.56 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Popover[0]/Layer[1]/Frame[0]/Box[0]/Box[0]/Close[1]/Box[0]/Box[0]/StoryRow[0]/Box[0]/Text[0]: glyphs 13 in -0.52,1.64 113.7x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Popover[0]/Layer[1]/Frame[0]/Box[0]/Box[0]/StoryRow[2]/Box[0]/Text[0]: glyphs 18 in -0.78,1.64 154.27x16.07 #9fa7b1

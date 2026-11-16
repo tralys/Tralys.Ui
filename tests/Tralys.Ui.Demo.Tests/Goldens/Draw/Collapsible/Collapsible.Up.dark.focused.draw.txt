@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 24 in -0.52,1.64 208x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/Box[0]: clip 0,0 280x54
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 12 in -0.26,1.64 81.94x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/Box[0]/Box[0]/Box[0]/Text[1]: glyphs 12 in -0.26,1.64 85.05x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[1]/Box[0]/Box[0]/Canvas[0]: matrix 0,-1,1,0,0,16
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[1]/Box[0]/Box[0]/Canvas[0]: path 5.25,3.5 3.5x7 3 verbs 3 points #22913692 even-odd fill none stroke 1.17 #7f8791 round round round miter 10
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[1]/Box[0]/Box[0]/Fragment[1]/Text[0]: glyphs 13 in -0.52,2.16 111.95x15.56 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[1]/Box[0]/Box[1]: box 0,0 284x36 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff

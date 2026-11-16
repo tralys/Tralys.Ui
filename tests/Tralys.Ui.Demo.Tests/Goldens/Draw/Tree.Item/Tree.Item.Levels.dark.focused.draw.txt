@@ -1,0 +1,13 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 49 in -0.78,1.64 389.75x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Tree[1]/Box[0]/Box[0]: clip 0,0 240x120
+RootComponent[0]/Box[0]/Box[0]/Tree[1]/Box[0]/Box[0]/VirtualList[0]: clip 0,0 240x120
+RootComponent[0]/Box[0]/Box[0]/Tree[1]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]: matrix 0,1,-1,0,16,1
+RootComponent[0]/Box[0]/Box[0]/Tree[1]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.63,2.44 6.74x10.37 #7f8791
+RootComponent[0]/Box[0]/Box[0]/Tree[1]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]/Box[2]/Text[0]: glyphs 10 in -0.26,1.64 66.76x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Tree[1]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]/Box[3]: box 0,0 240x32 radius 3,3,3,3 fill none border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Tree[1]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]: matrix 0,1,-1,0,16,1
+RootComponent[0]/Box[0]/Box[0]/Tree[1]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.63,2.44 6.74x10.37 #7f8791
+RootComponent[0]/Box[0]/Box[0]/Tree[1]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/Box[2]/Text[0]: glyphs 11 in -0.52,2.16 88.22x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Tree[1]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/Box[3]: box 0,0 240x32 radius 3,3,3,3 fill none border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Tree[1]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Item[0]/Box[0]/Box[2]/Text[0]: glyphs 10 in -0.78,1.64 72.64x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Tree[1]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Item[0]/Box[0]/Box[3]: box 0,0 240x32 radius 3,3,3,3 fill none border 1,1,1,1 #97bcff

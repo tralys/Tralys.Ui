@@ -1,0 +1,18 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":312,"height":157},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]","x":16,"y":16,"width":280,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]","x":16,"y":16,"width":280,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]","x":28,"y":30,"width":126,"height":17},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Canvas[0]","x":28,"y":32,"width":14,"height":14},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Fragment[1]/Text[0]","x":50,"y":30,"width":104,"height":17,"text":"Locked section"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[0]/Box[0]/Box[1]","x":16,"y":60,"width":280,"height":0,"hidden":true,"collapsed":true},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]","x":16,"y":64,"width":280,"height":77},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[0]/Box[0]","x":16,"y":64,"width":280,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]","x":28,"y":78,"width":110,"height":17},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Canvas[0]","x":28,"y":80,"width":14,"height":14},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/CollapsibleHeader[0]/Box[0]/Box[0]/Fragment[1]/Text[0]","x":50,"y":78,"width":88,"height":17,"text":"Locked open"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/Box[1]","x":16,"y":108,"width":280,"height":33},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/Box[1]/Box[0]","x":16,"y":108,"width":280,"height":33},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Collapsible[1]/Box[0]/Box[1]/Box[0]/Text[0]","x":50,"y":116,"width":238,"height":17,"text":"Shown, but cannot be closed"}
+],"consume":["00000000000000000000000000000000","11111110000000000000000000000000","00000000000000000000000000000000","11111110000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

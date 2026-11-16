@@ -1,0 +1,17 @@
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[0]/ColorPickerSwatch[0]/Box[0]: box 0,0 24x24 fill #ff9900
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[0]/ColorPickerSwatch[1]/Box[0]: box 0,0 24x24 fill #ff5555
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[0]/ColorPickerSwatch[2]/Box[0]: box 0,0 24x24 fill #ff99cc
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[0]/ColorPickerSwatch[3]/Box[0]: box 0,0 24x24 fill #66ff66
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[0]/ColorPickerSwatch[4]/Box[0]: box 0,0 24x24 fill #ffff66
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[0]/ColorPickerSwatch[5]/Box[0]: box 0,0 24x24 fill #66ccff
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[0]/ColorPickerSwatch[6]/Box[0]: box 0,0 24x24 fill #ffffff
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[1]/Box[0]: box 0,0 160x132 fill #ffff00
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[1]/Box[0]/Box[0]: box 0,0 160x132 fill linear 0,0 1,0 0 #ffffff 1 #ffffff00
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[1]/Box[0]/Box[1]: box 0,0 160x132 fill linear 0,0 0,1 0 #ffffff00 1 #000000
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[1]/Box[0]/Box[2]/Box[0]: box 0,0 16x16 radius 8,8,8,8 fill #00000000 border 2,2,2,2 #ffffff
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[1]/Box[1]: box 0,0 160x12 radius 3,3,3,3 fill linear 0,0 1,0 0 #ff0000 0.17 #ffff00 0.33 #00ff00 0.5 #00ffff 0.67 #0000ff 0.83 #ff00ff 1 #ff0000
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[1]/Box[1]/Box[0]/Box[0]: box 0,0 16x16 radius 8,8,8,8 fill #00000000 border 2,2,2,2 #ffffff
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[1]/Box[2]/ColorPickerHex[0]/Box[0]/Input[0]/Box[0]: box 0,0 160x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[1]/Box[2]/ColorPickerHex[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: clip 0,0 136x17
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[1]/Box[2]/ColorPickerHex[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: glyphs 7 in -1.04,2.16 67.18x12.7 #bfc7d2
+RootComponent[0]/Box[0]/ColorPicker[0]/Box[0]/Box[1]/Box[2]/ColorPickerHex[0]/Box[0]/Input[0]/Box[0]/Box[0]/EditableText[0]: pop

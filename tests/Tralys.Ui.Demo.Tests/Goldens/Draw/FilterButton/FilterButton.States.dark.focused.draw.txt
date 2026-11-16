@@ -1,0 +1,11 @@
+RootComponent[0]/Box[0]/Box[0]/FilterButton[0]/Popover[0]/Box[0]/Tooltip[0]/Box[0]/IconButton[0]/Box[1]: box 0,0 28x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/FilterButton[0]/Popover[0]/Box[0]/Tooltip[0]/Box[0]/IconButton[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.72 17.19x16.59 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/FilterButton[0]/Popover[0]/Box[0]/Tooltip[0]/Box[0]/IconButton[0]/Box[1]/Box[1]: box 0,0 30x30 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/FilterButton[1]/Popover[0]/Box[0]/Tooltip[0]/Box[0]/IconButton[0]/Box[1]: box 0,0 28x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/FilterButton[1]/Popover[0]/Box[0]/Tooltip[0]/Box[0]/IconButton[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.72 17.19x16.59 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/FilterButton[1]/Popover[0]/Box[0]/Tooltip[0]/Box[0]/IconButton[0]/Box[1]/Box[1]: box 0,0 30x30 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/FilterButton[1]/Popover[0]/Box[0]/Box[1]: box 0,0 6x6 radius 3,3,3,3 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/FilterButton[2]/Popover[0]/Box[0]/Tooltip[0]/Box[0]/IconButton[0]/Box[1]: layer 0.5
+RootComponent[0]/Box[0]/Box[0]/FilterButton[2]/Popover[0]/Box[0]/Tooltip[0]/Box[0]/IconButton[0]/Box[1]: box 0,0 28x28 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/FilterButton[2]/Popover[0]/Box[0]/Tooltip[0]/Box[0]/IconButton[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.72 17.19x16.59 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/FilterButton[2]/Popover[0]/Box[0]/Tooltip[0]/Box[0]/IconButton[0]/Box[1]/Box[1]: box 0,0 30x30 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff

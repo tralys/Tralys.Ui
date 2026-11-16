@@ -1,0 +1,16 @@
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]: clip 0,0 140x80
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]: box 0,0 140x24 radius 3,3,3,3 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]/Text[0]: glyphs 5 in -0.67,1.85 41.99x10.89 #97bcff
+RootComponent[0]/Box[0]/Box[0]/ListBox[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]/Text[0]: glyphs 5 in -0.67,1.85 41.99x10.89 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]: clip 0,0 140x80
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]: box 0,0 140x28 radius 3,3,3,3 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]/Text[0]: glyphs 5 in -0.52,2.16 52.49x12.7 #97bcff
+RootComponent[0]/Box[0]/Box[0]/ListBox[1]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]/Text[0]: glyphs 5 in -0.52,2.16 52.49x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/VirtualList[0]: clip 0,0 140x80
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]: box 0,0 140x32 radius 3,3,3,3 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]/Text[0]: glyphs 5 in -0.26,2.16 52.16x12.7 #97bcff
+RootComponent[0]/Box[0]/Box[0]/ListBox[2]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]/Text[0]: glyphs 5 in -0.26,2.16 52.16x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/ListBox[3]/Box[0]/VirtualList[0]: clip 0,0 140x80
+RootComponent[0]/Box[0]/Box[0]/ListBox[3]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]: box 0,0 140x40 radius 3,3,3,3 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/ListBox[3]/Box[0]/VirtualList[0]/VirtualListRow[0]/Row[0]/Box[0]/Text[0]: glyphs 5 in -0.3,2.46 53.78x17.78 #97bcff
+RootComponent[0]/Box[0]/Box[0]/ListBox[3]/Box[0]/VirtualList[0]/VirtualListRow[1]/Row[0]/Box[0]/Text[0]: glyphs 5 in -0.3,2.46 53.78x17.78 #bfc7d2

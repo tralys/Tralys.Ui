@@ -1,0 +1,18 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":400,"height":88},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[0]/Box[0]","x":16,"y":16,"width":368,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]","x":16,"y":16,"width":20,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Box[0]","x":16,"y":16,"width":20,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Canvas[1]","x":19,"y":19,"width":14,"height":14},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[0]/Box[0]/Text[1]","x":42,"y":18,"width":342,"height":17,"text":"Click through checked, undecided and unchecked"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[1]/Box[0]","x":16,"y":52,"width":368,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[1]/Box[0]/Fragment[0]/Box[0]","x":16,"y":52,"width":20,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[1]/Box[0]/Fragment[0]/Box[0]/Box[0]","x":16,"y":52,"width":20,"height":20},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[1]/Box[0]/Fragment[0]/Box[0]/Canvas[1]","x":19,"y":55,"width":14,"height":14},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[1]/Box[0]/Box[1]","x":42,"y":54,"width":126,"height":17},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[1]/Box[0]/Box[1]/Text[0]","x":42,"y":54,"width":104,"height":17,"text":"With an info tip"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[1]/Box[0]/Box[1]/Tooltip[1]/Box[0]","x":154,"y":55,"width":14,"height":16},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[1]/Box[0]/Box[1]/Tooltip[1]/Box[0]/Icon[0]/Box[0]","x":154,"y":55,"width":14,"height":16},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Checkbox[1]/Box[0]/Box[1]/Tooltip[1]/Box[0]/Icon[0]/Box[0]/Text[0]","x":154,"y":55,"width":14,"height":16,"text":"\uE0F9"}
+],"consume":["00000000000000000000000000000000","00000000000000000000000000000000","11111111110000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

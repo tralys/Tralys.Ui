@@ -1,0 +1,6 @@
+RootComponent[0]/Box[0]/Box[0]/ImageButton[0]/Box[0]/Image[0]: image 0,0 64x64 from 0,0 64x64 of 64x64
+RootComponent[0]/Box[0]/Box[0]/ImageButton[0]/Box[0]/Box[1]: box 0,0 68x68 radius 2,2,2,2 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/ImageButton[1]/Box[0]/Image[0]: image 0,0 50x50 from 0,0 50x50 of 50x50
+RootComponent[0]/Box[0]/Box[0]/ImageButton[1]/Box[0]/Box[1]: box 0,0 54x54 radius 2,2,2,2 fill none border 2,2,2,2 #97bcff
+RootComponent[0]/Box[0]/Box[0]/ImageButton[2]/Box[0]/Image[0]: image 0,0 50x50 from 0,0 50x50 of 50x50
+RootComponent[0]/Box[0]/Box[0]/ImageButton[2]/Box[0]/Box[1]: box 0,0 54x54 radius 2,2,2,2 fill none border 2,2,2,2 #97bcff

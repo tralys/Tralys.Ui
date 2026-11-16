@@ -1,0 +1,6 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 76 in -0.78,1.64 634.15x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ActionTile[0]/Box[0]: box 0,0 107x35 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ActionTile[0]/Box[0]/Text[0]: glyphs 10 in -0.26,1.64 80.62x13.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ActionTile[1]/Box[0]: box 0,0 342x35 radius 3,3,3,3 fill #dbe3ef border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ActionTile[1]/Box[0]/Text[0]: glyphs 37 in -0.26,2.16 316.15x15.56 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Text[2]: glyphs 6 in -0.74,3.08 78.84x18.15 #2a313a

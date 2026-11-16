@@ -1,0 +1,5 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 87 in -0.78,1.64 732.91x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]: box 0,0 480x240 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Box[1]: clip 0,0 480x240
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Thumb[0]/Box#first: box 0,0 64x64 fill #113478 border 1,1,1,1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Thumb[1]/Box#second: box 0,0 120x48 fill #dbe3ef border 2,2,2,2 #bfc7d2

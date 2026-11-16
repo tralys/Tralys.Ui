@@ -1,0 +1,7 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 73 in -0.78,1.64 568.97x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 200x100 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Canvas[0]: ellipse 0,0 200x100 fill #bad3ff stroke 1 #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 200x100 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Canvas[0]: ellipse 0,0 40x40 fill #113478
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: box 0,0 200x100 fill #ecf4ff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Canvas[0]: ellipse 0,0 100x100 fill #bad3ff stroke 1 #113478

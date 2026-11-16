@@ -1,0 +1,19 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 75 in -0.78,1.64 621.78x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 180x110 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: clip 1,1 178x108
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Image[0]: image 0,0 178x108 from 85,3.5 178x108 of 348x115
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 180x110 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: clip 1,1 178x108
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Image[0]: image 0,0 178x108 from 0,0 348x115 of 348x115
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: box 0,0 180x110 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: clip 1,1 178x108
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Image[0]: image 0,24.59 178x58.82 from 0,0 348x115 of 348x115
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]: box 0,0 180x110 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]: clip 1,1 178x108
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]/Image[0]: image 0,0 178x108 from 79.23,0 189.54x115 of 348x115
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Box[0]: box 0,0 180x110 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Box[0]: clip 1,1 178x108
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Box[0]/Image[0]: image 35,0 108x108 from 0,0 42x42 of 42x42
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Box[1]: box 0,0 180x110 fill #090f16 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Box[1]: clip 1,1 178x108
+RootComponent[0]/Box[0]/Box[0]/Box[2]/Box[1]/Image[0]: image 68,33 42x42 from 0,0 42x42 of 42x42

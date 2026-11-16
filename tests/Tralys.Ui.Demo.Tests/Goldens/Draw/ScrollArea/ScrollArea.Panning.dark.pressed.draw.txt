@@ -1,0 +1,84 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 25 in -0.78,1.64 160.01x30.22 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]: clip 0,0 184x160
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[0]/Box[1]: box 0,0 63x32 radius 3,3,3,3 fill #73a4ff
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 4 in -0.26,2.16 39.12x12.7 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[1]/Box[1]: box 0,0 66x32 radius 3,3,3,3 fill #73a4ff
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[1]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 4 in -0.26,2.16 42.23x12.7 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[2]/Box[1]: box 0,0 66x32 radius 3,3,3,3 fill #73a4ff
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[2]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 4 in -0.26,2.16 42.49x12.7 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[3]/Box[1]: box 0,0 67x32 radius 3,3,3,3 fill #73a4ff
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[3]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 4 in -0.26,2.16 43.01x12.7 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[4]/Box[1]: box 0,0 66x32 radius 3,3,3,3 fill #73a4ff
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[4]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 4 in -0.26,2.16 42.23x12.7 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[5]/Box[1]: box 0,0 66x32 radius 3,3,3,3 fill #73a4ff
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[5]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 4 in -0.26,2.16 42.49x12.7 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[6]/Box[1]: box 0,0 65x32 radius 3,3,3,3 fill #73a4ff
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[6]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 4 in -0.26,2.16 41.71x12.7 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[7]/Box[1]: box 0,0 66x32 radius 3,3,3,3 fill #73a4ff
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/Box[0]/Box[0]/Button[7]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 4 in -0.26,2.16 42.49x12.7 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #835e94f7 even-odd fill #949ca7
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]: box 0,0 8x77 radius 3,3,3,3 fill #949ca7
+RootComponent[0]/Box[0]/Box[0]/Box[0]/ScrollArea[1]/Grid#list/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #da92b547 even-odd fill #949ca7
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 39 in -1.04,1.64 278.67x30.22 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[1]/Grid#header/Box[0]: clip 0,0 280x20
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[1]/Grid#header/Box[0]/Box[0]/Text[0]: glyphs 1 in -0.78,2.16 12.19x12.44 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[1]/Grid#header/Box[0]/Box[0]/Text[1]: glyphs 1 in -0.26,2.16 10.11x12.44 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[1]/Grid#header/Box[0]/Box[0]/Text[2]: glyphs 1 in -0.52,2.16 11.41x12.7 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[1]/Grid#header/Box[0]/Box[0]/Text[3]: glyphs 1 in -0.26,2.16 10.89x12.44 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[1]/Grid#header/Box[0]/Box[0]/Text[4]: glyphs 1 in -0.26,2.16 9.07x12.44 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[1]/Grid#header/Box[0]/Box[0]/Text[5]: glyphs 1 in -0.26,2.16 9.07x12.44 #e0e9f4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]: clip 0,0 264x144
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[0]: box 0,0 100x100 fill #1a2028 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[0]/Text[0]: glyphs 2 in -0.78,2.16 16.75x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[1]: box 0,0 100x100 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[1]/Text[0]: glyphs 2 in -0.26,2.16 15.74x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[2]: box 0,0 100x100 fill #1a2028 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[2]/Text[0]: glyphs 2 in -0.52,2.16 17.1x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[3]: box 0,0 100x100 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[3]/Text[0]: glyphs 2 in -0.26,2.16 16.59x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[4]: box 0,0 100x100 fill #1a2028 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[4]/Text[0]: glyphs 2 in -0.26,2.16 14.99x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[5]: box 0,0 100x100 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[5]/Text[0]: glyphs 2 in -0.26,2.16 14.7x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[6]: box 0,0 100x100 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[6]/Text[0]: glyphs 2 in -0.78,2.16 20.56x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[7]: box 0,0 100x100 fill #1a2028 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[7]/Text[0]: glyphs 2 in -0.26,2.16 18.86x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[8]: box 0,0 100x100 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[8]/Text[0]: glyphs 2 in -0.52,2.16 20.21x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[9]: box 0,0 100x100 fill #1a2028 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[9]/Text[0]: glyphs 2 in -0.26,2.16 19.7x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[10]: box 0,0 100x100 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[10]/Text[0]: glyphs 2 in -0.26,2.16 18.1x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[11]: box 0,0 100x100 fill #1a2028 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[11]/Text[0]: glyphs 2 in -0.26,2.16 17.81x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[12]: box 0,0 100x100 fill #1a2028 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[12]/Text[0]: glyphs 2 in -0.78,2.16 20.82x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[13]: box 0,0 100x100 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[13]/Text[0]: glyphs 2 in -0.26,2.16 19.11x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[14]: box 0,0 100x100 fill #1a2028 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[14]/Text[0]: glyphs 2 in -0.52,2.16 20.47x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[15]: box 0,0 100x100 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[15]/Text[0]: glyphs 2 in -0.26,2.16 19.96x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[16]: box 0,0 100x100 fill #1a2028 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[16]/Text[0]: glyphs 2 in -0.26,2.16 18.36x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[17]: box 0,0 100x100 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[17]/Text[0]: glyphs 2 in -0.26,2.16 18.07x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[18]: box 0,0 100x100 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[18]/Text[0]: glyphs 2 in -0.78,2.16 21.34x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[19]: box 0,0 100x100 fill #1a2028 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[19]/Text[0]: glyphs 2 in -0.26,2.16 19.63x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[20]: box 0,0 100x100 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[20]/Text[0]: glyphs 2 in -0.52,2.16 20.99x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[21]: box 0,0 100x100 fill #1a2028 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[21]/Text[0]: glyphs 2 in -0.26,2.16 20.48x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[22]: box 0,0 100x100 fill none border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[22]/Text[0]: glyphs 2 in -0.26,2.16 18.87x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[23]: box 0,0 100x100 fill #1a2028 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/Box[0]/Grid[0]/Box[23]/Text[0]: glyphs 2 in -0.26,2.16 18.59x12.44 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #835e94f7 even-odd fill #949ca7
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]: box 0,0 8x43 radius 3,3,3,3 fill #949ca7
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #da92b547 even-odd fill #949ca7
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 4x8 4 verbs 3 points #ce3b4617 even-odd fill #949ca7
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]: box 0,0 106x8 radius 3,3,3,3 fill #949ca7
+RootComponent[0]/Box[0]/Box[0]/Box[1]/ScrollArea[2]/Grid#board/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 4x8 4 verbs 3 points #41b78e87 even-odd fill #949ca7

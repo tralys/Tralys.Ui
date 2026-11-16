@@ -1,0 +1,10 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 58 in -0.52,1.64 465.36x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]: box 0,0 480x81 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 8 in -0.28,2.31 68.19x16.67 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 7 in -0.56,26.15 58.73x16.67 #f0c83c
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 11 in 60.39,25.6 95.85x17.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 2 in 158.08,22.08 27.26x18.15 #4ade80
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 13 in 187.74,25.6 109.31x17.22 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 7 in 300.34,26.15 62.32x16.67 #60a5fa
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 19 in -0.28,25.6 450.85x34.37 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]: glyphs 5 in 77.09,49.14 37.83x13.89 #2a313a

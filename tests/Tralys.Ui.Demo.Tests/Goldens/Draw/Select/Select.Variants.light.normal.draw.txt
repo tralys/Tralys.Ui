@@ -1,0 +1,8 @@
+RootComponent[0]/Box[0]/Box[0]/Select[0]/Box[0]: box 0,0 200x32 radius 3,3,3,3 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Select[0]/Box[0]/Box[0]/Text[0]: glyphs 4 in -0.26,2.16 30.74x12.7 #454c55
+RootComponent[0]/Box[0]/Box[0]/Select[0]/Box[0]/Box[0]/Text[1]: glyphs 8 in -0.26,1.64 62.25x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Select[0]/Box[0]/Box[0]/Box[2]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #616973
+RootComponent[0]/Box[0]/Box[0]/Select[1]/Box[0]: box 0,0 200x32 fill #ffffff00 border 0,0,0,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Select[1]/Box[0]/Box[0]/Text[0]: glyphs 4 in -0.26,2.16 30.74x12.7 #454c55
+RootComponent[0]/Box[0]/Box[0]/Select[1]/Box[0]/Box[0]/Text[1]: glyphs 8 in -0.26,1.64 62.25x16.07 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Select[1]/Box[0]/Box[0]/Box[2]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #616973

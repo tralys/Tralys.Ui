@@ -1,0 +1,13 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 86 in -0.26,1.64 668.37x16.07 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]: box 0,0 150x150 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]/Canvas[0]: path 0,0 100x100 4 verbs 3 points #c692891f even-odd fill #bad3ff stroke 2 #113478 miter flat flat miter 10
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]: box 0,0 150x150 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[1]/Canvas[0]: path 0,0 100x100 7 verbs 6 points #587fc6b6 even-odd fill #bad3ff stroke 2 #113478 miter flat flat miter 10
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]: box 0,0 150x150 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[2]/Canvas[0]: path 0,0 100x100 3 verbs 7 points #f2a4a42d even-odd fill none stroke 3 #2a313a miter flat flat miter 10
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]: box 0,0 150x150 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[3]/Canvas[0]: path 0,0 100x100 3 verbs 5 points #35d8b80f even-odd fill none stroke 3 #2a313a miter flat flat miter 10
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[4]: box 0,0 150x150 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[4]/Canvas[0]: path 10,10 80x60 6 verbs 13 points #9a6cfed5 even-odd fill #c0e9c7 stroke 2 #005121 miter flat flat miter 10
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[5]: box 0,0 150x150 fill #ecf4ff border 1,1,1,1 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[5]/Canvas[0]: path 0,0 100x100 15 verbs 12 points #2b13c59a even-odd fill #113478

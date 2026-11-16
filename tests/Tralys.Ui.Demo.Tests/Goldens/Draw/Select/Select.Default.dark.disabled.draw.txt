@@ -1,0 +1,3 @@
+RootComponent[0]/Box[0]/Select[0]/Box[0]: box 0,0 200x32 radius 3,3,3,3 fill #090f16 border 1,1,1,1 #1a2028
+RootComponent[0]/Box[0]/Select[0]/Box[0]/Box[0]/Text[0]: glyphs 7 in -0.52,1.64 61.08x16.07 #454c55
+RootComponent[0]/Box[0]/Select[0]/Box[0]/Box[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #2a313a

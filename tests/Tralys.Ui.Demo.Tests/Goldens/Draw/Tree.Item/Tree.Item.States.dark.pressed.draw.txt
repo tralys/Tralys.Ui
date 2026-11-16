@@ -1,0 +1,16 @@
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]: clip 0,0 240x200
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]: clip 0,0 240x200
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]: matrix 0,1,-1,0,16,1
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.63,2.44 6.74x10.37 #949ca7
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]/Box[2]/Text[0]: glyphs 22 in -0.52,1.64 177.98x16.07 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/Box[2]/Text[0]: glyphs 12 in -0.52,1.64 90.75x13.22 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[2]/Item[0]/Box[0]/Box[2]/Text[0]: glyphs 12 in -0.26,1.64 90.11x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Item[0]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 3.63,2.44 6.74x10.37 #949ca7
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[3]/Item[0]/Box[0]/Box[2]/Text[0]: glyphs 15 in -0.52,1.64 117.89x15.81 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Item[0]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Item[0]/Box[0]/Box[2]/Box[0]/Text[0]: glyphs 15 in -0.78,2.16 131.24x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Item[0]/Box[0]/Box[2]/Box[0]/Badge[1]/Box[0]: box 0,0 16x14 radius 7,7,7,7 fill #97bcff
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Item[0]/Box[0]/Box[2]/Box[0]/Badge[1]/Box[0]/Text[0]: glyphs 1 in -0.44,1.85 8.44x10.67 #000000

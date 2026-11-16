@@ -1,0 +1,13 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 109 in -0.78,1.64 861.83x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Pill[0]/Box[0]: layer 0.4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Pill[0]/Box[0]: box 0,0 160x40 radius 20,20,20,20 fill #161c24 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Pill[0]/Box[0]/Box[0]: box 0,0 10x10 radius 5,5,5,5 fill #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Pill[0]/Box[0]/Text[1]: glyphs 8 in -0.26,1.64 60.17x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Pill[1]/Box[0]: layer 0.4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Pill[1]/Box[0]: box 0,0 160x40 radius 20,20,20,20 fill #0c2554 border 1,1,1,1 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Pill[1]/Box[0]/Box[0]: box 0,0 10x10 radius 5,5,5,5 fill #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Pill[1]/Box[0]/Text[1]: glyphs 8 in -0.26,1.64 60.17x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Pill[2]/Box[0]: layer 0.4
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Pill[2]/Box[0]: box 0,0 160x40 radius 20,20,20,20 fill #161c24 border 1,1,1,1 #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Pill[2]/Box[0]/Box[0]: box 0,0 10x10 radius 5,5,5,5 fill #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[1]/Pill[2]/Box[0]/Text[1]: glyphs 8 in -0.26,1.64 60.17x13.22 #bfc7d2

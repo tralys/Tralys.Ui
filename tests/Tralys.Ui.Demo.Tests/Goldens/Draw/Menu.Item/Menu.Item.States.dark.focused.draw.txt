@@ -1,0 +1,20 @@
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]: shadow 0,0 202x215 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]: box 0,0 202x215 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]: clip 0,0 192x205
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[0]/Box[0]: box 0,0 192x32 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[0]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.19x16.59 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[0]/Box[0]/Box[1]/Text[0]: glyphs 10 in -0.78,1.64 86.14x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[0]/Box[0]/Text[2]: glyphs 6 in -0.52,2.16 39.37x12.7 #9fa7b1
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[1]/Box[0]: box 0,0 192x32 radius 3,3,3,3 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[1]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0.59,2.79 14.81x11.26 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[1]/Box[0]/Box[1]/Text[0]: glyphs 7 in -0.52,2.16 61.39x12.7 #97bcff
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[2]/Box[0]: box 0,0 192x32 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[2]/Box[0]/Box[1]/Text[0]: glyphs 9 in -0.52,2.16 74.11x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[3]/Box[0]/Box[1]/Text[0]: glyphs 8 in -0.26,1.64 60.17x13.22 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[3]/Box[0]/Text[2]: glyphs 6 in -0.52,2.16 45.85x12.7 #454c55
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[4]/Box[0]: box 0,0 192x32 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[4]/Box[0]/Box[1]/Text[0]: glyphs 13 in -0.52,2.16 124.07x15.56 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[4]/Box[0]/Icon[2]/Box[0]/Text[0]: glyphs 1 in 3.11,2.1 5.78x8.89 #7f8791
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Separator[5]/Box[0]/Box[0]: box 0,0 192x1 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[6]/Box[0]: box 0,0 192x32 radius 3,3,3,3 fill #bfc7d21a
+RootComponent[0]/Box[0]/Box[0]/Box[0]/Menu[0]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]/Box[0]/Item[6]/Box[0]/Box[1]/Text[0]: glyphs 11 in -0.26,1.64 80.47x13.22 #f8635e

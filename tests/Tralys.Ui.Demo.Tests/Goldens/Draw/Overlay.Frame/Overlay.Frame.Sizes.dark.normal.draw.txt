@@ -1,0 +1,12 @@
+RootComponent[0]/Box[0]/Box[0]/Frame[0]/Box[0]: shadow 0,0 37x27 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
+RootComponent[0]/Box[0]/Box[0]/Frame[0]/Box[0]: box 0,0 37x27 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/Frame[0]/Box[0]/Text[0]: glyphs 2 in -0.78,2.16 19.67x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Frame[1]/Box[0]: shadow 0,0 48x29 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
+RootComponent[0]/Box[0]/Box[0]/Frame[1]/Box[0]: box 0,0 48x29 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/Frame[1]/Box[0]/Text[0]: glyphs 2 in -0.52,2.16 22.65x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Frame[2]/Box[0]: shadow 0,0 48x33 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
+RootComponent[0]/Box[0]/Box[0]/Frame[2]/Box[0]: box 0,0 48x33 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/Frame[2]/Box[0]/Text[0]: glyphs 2 in -0.26,2.16 22.38x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Frame[3]/Box[0]: shadow 0,0 51x37 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
+RootComponent[0]/Box[0]/Box[0]/Frame[3]/Box[0]: box 0,0 51x37 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69
+RootComponent[0]/Box[0]/Box[0]/Frame[3]/Box[0]/Text[0]: glyphs 2 in -0.26,2.16 17.25x15.56 #bfc7d2

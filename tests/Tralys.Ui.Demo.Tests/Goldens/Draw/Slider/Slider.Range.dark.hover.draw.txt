@@ -1,0 +1,14 @@
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[0]: box 0,0 304x2 fill #2a313a
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Box[1]: box 0,0 152x2 fill #97bcff
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Canvas[2]: line 0,0 0,4 width 1 #2a313a
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Canvas[2]: line 304,0 304,4 width 1 #2a313a
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Canvas[2]: line 30.4,0 30.4,3 width 1 #2a313a
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Canvas[2]: line 60.8,0 60.8,3 width 1 #2a313a
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Canvas[2]: line 91.2,0 91.2,3 width 1 #2a313a
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Canvas[2]: line 121.6,0 121.6,3 width 1 #2a313a
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Canvas[2]: line 152,0 152,3 width 1 #2a313a
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Canvas[2]: line 182.4,0 182.4,3 width 1 #2a313a
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Canvas[2]: line 212.8,0 212.8,3 width 1 #2a313a
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Canvas[2]: line 243.2,0 243.2,3 width 1 #2a313a
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/Canvas[2]: line 273.6,0 273.6,3 width 1 #2a313a
+RootComponent[0]/Box[0]/Slider[0]/Box[0]/Box[0]/SliderThumb[3]/Box[0]: box 0,0 16x16 radius 8,8,8,8 fill #949ca7

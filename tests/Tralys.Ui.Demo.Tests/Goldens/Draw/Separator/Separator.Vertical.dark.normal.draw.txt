@@ -1,0 +1,5 @@
+RootComponent[0]/Box[0]/Box[0]/Text[0]: glyphs 4 in -0.26,1.64 27.5x13.22 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Separator[1]/Box[0]/Box[0]: box 0,0 1x17 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/Text[2]: glyphs 6 in -0.52,2.16 48x12.7 #bfc7d2
+RootComponent[0]/Box[0]/Box[0]/Separator[3]/Box[0]/Box[0]: box 0,0 1x17 fill #2a313a
+RootComponent[0]/Box[0]/Box[0]/Text[4]: glyphs 5 in -0.26,1.64 36.77x16.07 #bfc7d2

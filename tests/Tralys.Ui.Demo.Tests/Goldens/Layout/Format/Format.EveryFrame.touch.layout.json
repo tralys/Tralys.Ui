@@ -1,0 +1,21 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":790,"height":169},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[0]","x":0,"y":0,"width":790,"height":17,"text":"Values that change every frame, formatted straight into each text: a format string, two values, a function, and spans"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]","x":0,"y":27,"width":400,"height":12},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Box[0]","x":0,"y":27,"width":4,"height":12},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]","x":0,"y":49,"width":790,"height":120},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]/Text[0]","x":0,"y":53,"width":220,"height":17,"text":"A format string"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]/Text[1]","x":220,"y":53,"width":570,"height":17,"text":"4.4 px"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]/Text[2]","x":0,"y":77,"width":220,"height":17,"text":"Two values"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]/Text[3]","x":220,"y":77,"width":570,"height":17,"text":"4 of 400"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]/Text[4]","x":0,"y":101,"width":220,"height":17,"text":"A function, then a format"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]/Text[5]","x":220,"y":101,"width":570,"height":17,"text":"1%"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]/Text[6]","x":0,"y":125,"width":220,"height":17,"text":"A function writing text"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]/Fragment[7]/Text[0]","x":220,"y":125,"width":570,"height":17,"text":"5.0s"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]/Text[8]","x":0,"y":149,"width":220,"height":17,"text":"Spans"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]/Text[9]","x":220,"y":149,"width":570,"height":17,"text":"Loading 4 / 400"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]/Text[9]/Span[0]","x":0,"y":0,"width":0,"height":0,"text":"Loading "},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]/Text[9]/Span[1]","x":0,"y":0,"width":0,"height":0,"text":"4"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Grid[2]/Text[9]/Span[2]","x":0,"y":0,"width":0,"height":0,"text":" / 400"}
+],"consume":["11111111111111111111000000000000","11111111110000000000000000000000","11111111111111111111000000000000","11111111111111111111000000000000","11111111111111111111000000000000","11111111111111111111000000000000","11111111111111111111000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

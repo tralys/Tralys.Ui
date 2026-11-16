@@ -1,0 +1,21 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":421,"height":126},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]","x":0,"y":0,"width":421,"height":39},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[0]","x":0,"y":24,"width":13,"height":15,"text":"12"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[1]","x":29,"y":22,"width":16,"height":17,"text":"14"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[2]","x":61,"y":17,"width":20,"height":22,"text":"18"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[3]","x":97,"y":9,"width":31,"height":30,"text":"24"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[0]/Text[4]","x":144,"y":0,"width":41,"height":39,"text":"32"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]","x":0,"y":45,"width":421,"height":22},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[0]","x":0,"y":45,"width":65,"height":22,"text":"Regular"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[1]","x":81,"y":45,"width":70,"height":22,"text":"Medium"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[2]","x":167,"y":45,"width":83,"height":22,"text":"SemiBold"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Text[3]","x":266,"y":45,"width":40,"height":22,"text":"Bold"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[2]","x":0,"y":73,"width":421,"height":22},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[2]/Text[0]","x":0,"y":73,"width":83,"height":22,"text":"Body font"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[2]/Text[1]","x":99,"y":73,"width":159,"height":22,"text":"Code font 0O1lI"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[2]/Text[2]","x":274,"y":73,"width":147,"height":22,"text":"Inter, the fallback"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[3]","x":0,"y":101,"width":421,"height":25},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[3]/Text[0]","x":8,"y":105,"width":351,"height":17,"text":"Foreground, padding and the theme\u0027s strong colour"}
+],"consume":["00101000000000000000000000000000","00101000000000000000000000000000","11111101000000000000000000000000","11111101111000000000000000000000","11111111100000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

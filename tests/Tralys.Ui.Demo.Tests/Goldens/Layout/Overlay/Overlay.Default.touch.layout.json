@@ -1,0 +1,18 @@
+{"view":{"width":1272,"height":808,"scale":1},"nodes":[
+{"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
+{"path":"RootComponent[0]/Box[0]/Box[0]","x":0,"y":0,"width":480,"height":273},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Text[0]","x":0,"y":0,"width":480,"height":17,"text":"An overlay scrims the area it fills and centres its content"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]","x":0,"y":33,"width":480,"height":240},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Button[0]/Box[1]","x":183,"y":131,"width":115,"height":44},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Button[0]/Box[1]/Box[0]","x":195,"y":145,"width":91,"height":17},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Button[0]/Box[1]/Box[0]/Fragment[0]/Text[0]","x":195,"y":145,"width":91,"height":17,"text":"Open overlay"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]","x":0,"y":33,"width":480,"height":240},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]","x":138,"y":115,"width":205,"height":76},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]/Box[0]","x":139,"y":116,"width":203,"height":74},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]","x":155,"y":132,"width":171,"height":42},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Text[0]","x":155,"y":132,"width":171,"height":17,"text":"Modal Overlay"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]/Box[0]/Box[0]/Text[1]","x":155,"y":157,"width":171,"height":17,"text":"Content displayed on top"},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]/CloseButton[1]/Box[0]","x":312,"y":106,"width":40,"height":40},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]/CloseButton[1]/Box[0]/Icon[0]/Box[0]","x":326,"y":119,"width":12,"height":14},
+{"path":"RootComponent[0]/Box[0]/Box[0]/Box[1]/Overlay[1]/Box[0]/ActionScope[0]/Box[0]/CloseButton[1]/Box[0]/Icon[0]/Box[0]/Text[0]","x":326,"y":119,"width":12,"height":14,"text":"\uE1B2"}
+],"consume":["11111111111100000000000000000000","11111111111100000000000000000000","11111111111100000000000000000000","11111111111100000000000000000000","11111111111100000000000000000000","11111111111100000000000000000000","11111111111100000000000000000000","11111111111100000000000000000000","11111111111100000000000000000000","11111111111100000000000000000000","11111111111100000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}
