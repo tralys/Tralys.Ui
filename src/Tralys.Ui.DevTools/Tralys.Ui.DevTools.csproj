@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsAotCompatible>true</IsAotCompatible>
+    <IsPackable>true</IsPackable>
+    <Description>An inspector over a running Tralys.Ui view: its node tree with components and their props, render counts and what they read, layout, held states, picking, and overlays of the selected box, its gaps and environment, and what repainted.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- None private: a package consumer of this one alone still gets Tralys.Ui's generators and analyzers. -->
+    <ProjectReference Include="../Tralys.Ui/Tralys.Ui.csproj" PrivateAssets="none" ExactVersion="true" />
+    <ProjectReference
+      Include="../Tralys.Ui.Mvvm.Generators/Tralys.Ui.Mvvm.Generators.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+      PrivateAssets="all"
+    />
+    <ProjectReference
+      Include="../Tralys.Ui.Analyzers/Tralys.Ui.Analyzers.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+      PrivateAssets="all"
+    />
+    <ProjectReference
+      Include="../Tralys.Ui.Generators/Tralys.Ui.Generators.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+      PrivateAssets="all"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Tralys.Ui.DevTools.Tests" />
+    <InternalsVisibleTo Include="Tralys.Ui.Demo.Gallery" />
+  </ItemGroup>
+</Project>
