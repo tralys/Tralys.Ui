@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefaultItemExcludes>$(DefaultItemExcludes);ViewModels/**</DefaultItemExcludes>
+    <TralysStripCallerPaths>true</TralysStripCallerPaths>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Tralys.Ui" Version="$(TralysUiVersion)" />
+    <PackageReference Include="Tralys.Ui.Bgfx" Version="$(TralysUiVersion)" />
+    <PackageReference Include="Tralys.Ui.FreeType" Version="$(TralysUiVersion)" />
+    <PackageReference Include="Tralys.Ui.Mvvm" Version="$(TralysUiVersion)" />
+    <PackageReference Include="Tralys.Ui.Testing" Version="$(TralysUiVersion)" />
+    <PackageReference Include="Tralys.Ui.DevTools" Version="$(TralysUiVersion)" />
+    <PackageReference Include="Tralys.Ui.Docking" Version="$(TralysUiVersion)" />
+  </ItemGroup>
+
+  <!-- References Tralys.Ui.Mvvm alone, so the view models build with no Tralys.Ui package's generators. -->
+  <ItemGroup>
+    <ProjectReference Include="ViewModels/Tralys.Ui.PackageSmoke.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="../Fonts/Inter-Regular.otf" LogicalName="Inter-Regular.otf" />
+  </ItemGroup>
+
+  <!-- Restore keeps a version this project's package folder already holds, so a new pack at the same version would never arrive. -->
+  <Target Name="ForgetPackedTralys" BeforeTargets="Restore">
+    <ItemGroup Condition="Exists('$(MSBuildProjectDirectory)/obj/packages')">
+      <_PackedTralys Include="$([System.IO.Directory]::GetDirectories('$(MSBuildProjectDirectory)/obj/packages', 'tralys*'))" />
+    </ItemGroup>
+    <RemoveDir Directories="@(_PackedTralys)" />
+  </Target>
+</Project>

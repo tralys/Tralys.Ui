@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Tralys.Ui.Mvvm" Version="$(TralysUiVersion)" />
+  </ItemGroup>
+</Project>

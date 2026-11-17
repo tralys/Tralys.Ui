@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PublishAot>true</PublishAot>
+    <PublishDocumentationFile>false</PublishDocumentationFile>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <!-- A background GC counts the unused rest of a thread's allocation context as allocated: a 0-byte frame can read as ~8 KB. -->
+    <ConcurrentGarbageCollection>false</ConcurrentGarbageCollection>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/Tralys.Ui/Tralys.Ui.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.DevTools/Tralys.Ui.DevTools.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.Docking/Tralys.Ui.Docking.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.Bgfx/Tralys.Ui.Bgfx.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.FreeType/Tralys.Ui.FreeType.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.Mvvm/Tralys.Ui.Mvvm.csproj" />
+    <ProjectReference
+      Include="../../src/Tralys.Ui.Mvvm.Generators/Tralys.Ui.Mvvm.Generators.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+    />
+    <ProjectReference
+      Include="../../src/Tralys.Ui.Analyzers/Tralys.Ui.Analyzers.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+    />
+    <ProjectReference
+      Include="../../src/Tralys.Ui.Generators/Tralys.Ui.Generators.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="../../tests/Fonts/Inter-Regular.otf" LogicalName="Inter-Regular.otf" />
+  </ItemGroup>
+</Project>

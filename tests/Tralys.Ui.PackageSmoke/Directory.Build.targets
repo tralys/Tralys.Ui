@@ -1,0 +1,8 @@
+<Project>
+  <Target Name="RequireTralysUiVersion" BeforeTargets="CollectPackageReferences">
+    <Error
+      Condition="'$(TralysUiVersion)' == ''"
+      Text="Pass the version packed into artifacts/packages as -p:TralysUiVersion=..."
+    />
+  </Target>
+</Project>
