@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
+  <PropertyGroup>
+    <TargetFramework>net12.0</TargetFramework>
+    <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
+    <UseMonoRuntime>false</UseMonoRuntime>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <WasmBuildNative>true</WasmBuildNative>
+    <!-- dotnet.js carries an inline SRI manifest, so one cached from an earlier deploy fails every check it makes. -->
+    <WasmFingerprintAssets>true</WasmFingerprintAssets>
+    <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
+    <CompressionEnabled>false</CompressionEnabled>
+    <TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
+    <_TralysArtifacts>$([MSBuild]::NormalizeDirectory('$(MSBuildThisFileDirectory)..', '..', 'artifacts'))</_TralysArtifacts>
+    <PublishDir>$(_TralysArtifacts)gallery/</PublishDir>
+    <!-- The workload's own cache is read-only, and the ports compile into whichever is set. -->
+    <WasmCachePath>$(_TralysArtifacts)emcache/</WasmCachePath>
+    <EmccExtraLDFlags>$(EmccExtraLDFlags) --use-port=$(MSBuildThisFileDirectory)ports/tralys_freetype.py</EmccExtraLDFlags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Tralys.Ui.Demo.Gallery/Tralys.Ui.Demo.Gallery.csproj" />
+    <ProjectReference Include="../../src/Tralys.Ui.Bgfx/Tralys.Ui.Bgfx.csproj" />
+    <ProjectReference
+      Include="../../src/Tralys.Ui.Analyzers/Tralys.Ui.Analyzers.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource
+      Include="../Tralys.Ui.Demo.Gallery/Assets/**"
+      LogicalName="Assets/%(RecursiveDir)%(Filename)%(Extension)"
+    />
+    <NativeFileReference Include="native/freetype.c" />
+  </ItemGroup>
+
+  <!-- PublishDir outlives a publish, and the fingerprinted names of an earlier one would ride along. -->
+  <Target Name="ClearStaleSite" BeforeTargets="PrepareForPublish">
+    <RemoveDir Directories="$(PublishDir)" />
+  </Target>
+
+  <!-- Emscripten clears a cache with another machine's sanity stamp after unpacking a port, deleting the port mid-link. -->
+  <Target
+    Name="SeedEmscriptenCache"
+    BeforeTargets="_CoreCLRCompileNativeSources"
+    Condition="'$(EmscriptenCacheSdkCacheDir)' != '' and !Exists('$(WasmCachePath)sanity.txt')"
+  >
+    <ItemGroup>
+      <_FrozenCacheFile Include="$(EmscriptenCacheSdkCacheDir)**\*" />
+    </ItemGroup>
+    <Copy
+      SourceFiles="@(_FrozenCacheFile)"
+      DestinationFiles="@(_FrozenCacheFile->'$(WasmCachePath)%(RecursiveDir)%(Filename)%(Extension)')"
+      SkipUnchangedFiles="true"
+    />
+
+    <PropertyGroup>
+      <_CacheStampSource>$(IntermediateOutputPath)emcache-sanity.c</_CacheStampSource>
+    </PropertyGroup>
+    <!-- No semicolon: MSBuild would read Lines as two items and write broken C. -->
+    <WriteLinesToFile File="$(_CacheStampSource)" Lines="int main(){}" Overwrite="true" WriteOnlyWhenDifferent="true" />
+    <Exec
+      Command="&quot;$(EmscriptenSdkToolsPath)emscripten/emcc&quot; &quot;$(_CacheStampSource)&quot; -c -o &quot;$(_CacheStampSource).o&quot;"
+      EnvironmentVariables="EM_CACHE=$(WasmCachePath);FROZEN_CACHE=0;EM_FROZEN_CACHE=0;DOTNET_EMSCRIPTEN_LLVM_ROOT=$(EmscriptenSdkToolsPath)bin;DOTNET_EMSCRIPTEN_BINARYEN_ROOT=$(EmscriptenSdkToolsPath);DOTNET_EMSCRIPTEN_NODE_JS=$(EmscriptenNodeToolsPath)bin/node"
+    />
+    <Delete Files="$(_CacheStampSource);$(_CacheStampSource).o" />
+  </Target>
+</Project>

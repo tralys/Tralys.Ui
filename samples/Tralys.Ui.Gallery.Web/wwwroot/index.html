@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" data-page="loading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tralys.Ui gallery</title>
+<link rel="icon" href="data:,">
+<script type="importmap"></script>
+<style>
+ :root{color-scheme:dark}
+ html,body{margin:0;height:100%;overflow:hidden;background:#1b2029;color:#e6e9ef;
+           font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+ canvas{display:block;width:100vw;height:100vh;touch-action:none;outline:0}
+ .sheet{position:fixed;inset:0;display:grid;place-items:center;padding:24px;text-align:center;background:#1b2029}
+ .sheet[hidden]{display:none}
+ h1{margin:0;font-size:1.25rem;font-weight:600}
+ p{margin:8px 0 0;color:#a3acbd;white-space:pre-wrap}
+</style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <div class="sheet" id="loading"><div><h1>Loading the Tralys.Ui gallery</h1><p id="progress"></p></div></div>
+  <div class="sheet" id="unsupported" hidden><h1>Unsupported browser</h1></div>
+  <div class="sheet" id="failed" hidden><div><h1>The gallery stopped</h1><p id="failure"></p></div></div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

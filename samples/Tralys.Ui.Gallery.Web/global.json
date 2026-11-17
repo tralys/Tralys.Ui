@@ -1,0 +1,9 @@
+{
+  "sdk": {
+    "version": "12.0.100-alpha.1.26556.115",
+    "rollForward": "disable",
+    "allowPrerelease": true,
+    "paths": ["../../.dotnet", "$host$"],
+    "errorMessage": "The web gallery builds on the .NET 12 SDK this file pins. Run install-sdk.sh beside it."
+  }
+}
