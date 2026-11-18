@@ -1,0 +1,66 @@
+name: pages
+
+on:
+  push:
+    tags: ['v*']
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    env:
+      DOTNET_NOLOGO: true
+      WINEDEBUG: -all
+    steps:
+      - uses: actions/checkout@v7
+
+      # wine runs shaderc's d3dcompiler for the D3D11 shaders.
+      - name: Install wine
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends wine wine64
+
+      - name: Install the SDK and wasm workload the gallery pins
+        working-directory: samples/Tralys.Ui.Gallery.Web
+        run: ./install-sdk.sh
+
+      - uses: actions/cache@v6
+        with:
+          path: artifacts/emcache
+          key: emcache-${{ hashFiles('samples/Tralys.Ui.Gallery.Web/global.json', 'samples/Tralys.Ui.Gallery.Web/ports/**') }}
+
+      # The runner's own dotnet predates global.json's SDK paths, so the pinned one runs itself.
+      - name: Publish
+        working-directory: samples/Tralys.Ui.Gallery.Web
+        env:
+          DOTNET_ROOT: ${{ github.workspace }}/.dotnet
+        run: ../../.dotnet/dotnet publish -c Release --artifacts-path ../../artifacts/web
+
+      - uses: actions/upload-pages-artifact@v5
+        if: github.event_name != 'schedule'
+        with:
+          path: artifacts/gallery/wwwroot
+
+  # The schedule only proves the gallery still builds, so the site keeps showing the last release.
+  deploy:
+    if: github.event_name != 'schedule'
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,133 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  workflow_call:
+    inputs:
+      version:
+        description: Package version; empty packs VersionPrefix with a ci suffix
+        required: false
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      DOTNET_NOLOGO: true
+      WINEDEBUG: -all
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - name: Format
+        run: |
+          dotnet tool restore
+          dotnet csharpier check .
+
+      # wine runs shaderc's d3dcompiler for the D3D11 shaders; lavapipe is Tralys.Ui.Bgfx.Tests' Vulkan device.
+      - name: Install wine and lavapipe
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends wine wine64 mesa-vulkan-drivers
+
+      - name: Version
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          if [ -n "$VERSION" ]; then
+            echo "VERSION_ARGS=-p:Version=$VERSION" >> "$GITHUB_ENV"
+          else
+            echo "VERSION_ARGS=-p:VersionSuffix=ci.$GITHUB_RUN_NUMBER" >> "$GITHUB_ENV"
+          fi
+
+      - run: dotnet restore Tralys.Ui.slnx
+
+      - run: dotnet build Tralys.Ui.slnx -c Release --no-restore "$VERSION_ARGS"
+
+      - name: Test
+        run: |
+          for project in tests/*.Tests; do
+            echo "::group::$project"
+            dotnet run --project "$project" -c Release --no-build
+            echo "::endgroup::"
+          done
+
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: goldens
+          path: artifacts/goldens/
+          retention-days: 7
+
+      - name: AOT smoke
+        run: |
+          dotnet publish tests/Tralys.Ui.AotSmoke -c Release "$VERSION_ARGS"
+          tests/Tralys.Ui.AotSmoke/bin/Release/net11.0/linux-x64/publish/Tralys.Ui.AotSmoke
+
+      - run: dotnet pack Tralys.Ui.slnx -c Release --no-build -o artifacts/packages "$VERSION_ARGS"
+
+      - name: Package smoke
+        run: |
+          version=$(dotnet msbuild src/Tralys.Ui/Tralys.Ui.csproj -getProperty:Version "$VERSION_ARGS")
+          dotnet run --project tests/Tralys.Ui.PackageSmoke -c Release "-p:TralysUiVersion=$version"
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: packages
+          path: artifacts/packages/
+          retention-days: 7
+
+  platforms:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2025, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    env:
+      DOTNET_NOLOGO: true
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - run: dotnet build Tralys.Ui.slnx -c Release
+
+      - name: Test
+        run: |
+          for project in tests/*.Tests; do
+            echo "::group::$project"
+            dotnet run --project "$project" -c Release --no-build
+            echo "::endgroup::"
+          done
+
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: goldens-${{ matrix.os }}
+          path: artifacts/goldens/
+          retention-days: 7
+
+      - name: AOT smoke
+        run: |
+          dotnet publish tests/Tralys.Ui.AotSmoke -c Release -o artifacts/aot
+          artifacts/aot/Tralys.Ui.AotSmoke
