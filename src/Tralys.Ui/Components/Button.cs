@@ -124,8 +124,8 @@ public sealed class Button : Component<ButtonProps>
         {
             var pulse = ui.Loop(0.5f, alternate: true);
             var accent = t.Color(ColorToken.BorderAccent);
-            color = ButtonParts.Mix(color, accent, pulse);
-            outline = ButtonParts.Mix(outline, accent, pulse);
+            color = Color.Mix(color, accent, pulse);
+            outline = Color.Mix(outline, accent, pulse);
         }
         var art =
             scheme == ColorScheme.Primary && variant == ComponentVariant.Filled

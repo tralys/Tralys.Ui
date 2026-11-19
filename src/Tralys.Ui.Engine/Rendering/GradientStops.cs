@@ -43,8 +43,8 @@ public sealed class GradientStops
         Version++;
     }
 
-    // Interpolates in sRGB, as WPF does.
-    internal (float R, float G, float B, float A) Sample(float t)
+    // In sRGB as WPF does, but premultiplied so a transparent stop adds no tint.
+    internal (float R, float G, float B, float A) SamplePremultiplied(float t)
     {
         if (t <= _stops[0].Offset)
             return Channels(_stops[0].Color);
@@ -79,6 +79,9 @@ public sealed class GradientStops
         }
     }
 
-    static (float R, float G, float B, float A) Channels(Color color) =>
-        (color.R / 255f, color.G / 255f, color.B / 255f, color.A / 255f);
+    static (float R, float G, float B, float A) Channels(Color color)
+    {
+        var a = color.A / 255f;
+        return (color.R / 255f * a, color.G / 255f * a, color.B / 255f * a, a);
+    }
 }

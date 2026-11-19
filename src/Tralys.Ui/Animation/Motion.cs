@@ -55,43 +55,10 @@ internal readonly struct FloatBlend : IBlend<float>
 [FramePath]
 internal readonly struct ColorBlend : IBlend<Color>
 {
-    static readonly float[] Linear = BuildLinear();
-
     public static Color Blend(Color from, Color to, float progress) =>
-        new(
-            Channel(from.A + (to.A - from.A) * progress),
-            Encode(Linear[from.R] + (Linear[to.R] - Linear[from.R]) * progress),
-            Encode(Linear[from.G] + (Linear[to.G] - Linear[from.G]) * progress),
-            Encode(Linear[from.B] + (Linear[to.B] - Linear[from.B]) * progress)
-        );
+        Color.Mix(from, to, progress);
 
     public static bool Same(Color a, Color b) => a == b;
-
-    static byte Channel(float value) => (byte)Math.Clamp(MathF.Round(value), 0f, 255f);
-
-    static byte Encode(float linear)
-    {
-        var clamped = Math.Clamp(linear, 0f, 1f);
-        var encoded =
-            clamped <= 0.0031308f
-                ? clamped * 12.92f
-                : 1.055f * MathF.Pow(clamped, 1f / 2.4f) - 0.055f;
-        return Channel(encoded * 255f);
-    }
-
-    static float[] BuildLinear()
-    {
-        var table = new float[256];
-        for (var i = 0; i < table.Length; i++)
-        {
-            var encoded = i / 255f;
-            table[i] =
-                encoded <= 0.04045f
-                    ? encoded / 12.92f
-                    : MathF.Pow((encoded + 0.055f) / 1.055f, 2.4f);
-        }
-        return table;
-    }
 }
 
 [FramePath]

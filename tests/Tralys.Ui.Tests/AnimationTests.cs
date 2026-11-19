@@ -129,6 +129,28 @@ public sealed class AnimationTests
     }
 
     [Test]
+    public async Task A_colour_fading_in_from_transparent_takes_no_tint_from_its_channels()
+    {
+        var model = new Model();
+        var probe = new Probe();
+        using var driver = UiDriver.Render(ui =>
+            ui.Mover(
+                color: model.Count == 0
+                    ? Color.FromArgb(0, 255, 255, 255)
+                    : Color.FromRgb(32, 48, 64),
+                transition: new(1f, Linear),
+                probe: probe
+            )
+        );
+
+        model.Count = 1;
+        driver.Frame(0.1f);
+        driver.Frame(0.5f);
+
+        await Assert.That(probe.Color).IsEqualTo(Color.FromArgb(128, 32, 48, 64));
+    }
+
+    [Test]
     public async Task Animation_speed_scales_time_and_reduced_motion_lands_a_transition_at_once()
     {
         var model = new Model();

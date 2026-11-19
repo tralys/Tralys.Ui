@@ -114,15 +114,4 @@ internal static class ButtonParts
             MathF.Max(0f, padding.Right - border.Right),
             MathF.Max(0f, padding.Bottom - border.Bottom)
         );
-
-    public static Color Mix(Color from, Color to, float amount) =>
-        Color.FromArgb(
-            Step(from.A, to.A, amount),
-            Step(from.R, to.R, amount),
-            Step(from.G, to.G, amount),
-            Step(from.B, to.B, amount)
-        );
-
-    static byte Step(byte from, byte to, float amount) =>
-        (byte)MathF.Round(from + (to - from) * Math.Clamp(amount, 0f, 1f));
 }

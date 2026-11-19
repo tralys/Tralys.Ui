@@ -6,7 +6,7 @@ namespace Tralys.Ui.Engine.Tests;
 public sealed class GradientRampAtlasTests
 {
     [Test]
-    public async Task ARamp_InterpolatesStraightColour_ThenPremultiplies()
+    public async Task ARamp_InterpolatesPremultiplied_SoATransparentStopAddsNoTint()
     {
         var atlas = new GradientRampAtlas();
         var stops = new GradientStops([
@@ -20,7 +20,7 @@ public sealed class GradientRampAtlasTests
         var texel = atlas.Pixels.Slice((row * GradientRampAtlas.Width + 51) * 4, 4).ToArray();
         await Assert
             .That(texel)
-            .IsEquivalentTo(new byte[] { 51, 41, 41, 51 }, CollectionOrdering.Matching);
+            .IsEquivalentTo(new byte[] { 51, 0, 0, 51 }, CollectionOrdering.Matching);
     }
 
     [Test]

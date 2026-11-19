@@ -110,10 +110,10 @@ public sealed class GradientRampAtlas
         var texels = _pixels.AsSpan(row * Width * 4, Width * 4);
         for (var x = 0; x < Width; x++)
         {
-            var (r, g, b, a) = stops.Sample(x / (float)(Width - 1));
-            texels[x * 4] = (byte)Color.ToByte(r * a);
-            texels[x * 4 + 1] = (byte)Color.ToByte(g * a);
-            texels[x * 4 + 2] = (byte)Color.ToByte(b * a);
+            var (r, g, b, a) = stops.SamplePremultiplied(x / (float)(Width - 1));
+            texels[x * 4] = (byte)Color.ToByte(r);
+            texels[x * 4 + 1] = (byte)Color.ToByte(g);
+            texels[x * 4 + 2] = (byte)Color.ToByte(b);
             texels[x * 4 + 3] = (byte)Color.ToByte(a);
         }
 

@@ -35,6 +35,56 @@ public readonly record struct Color(byte A, byte R, byte G, byte B)
         return true;
     }
 
+    static readonly float[] LinearOf = BuildLinear();
+
+    /// <summary>The colour <paramref name="amount"/> of the way from <paramref name="from"/> to <paramref name="to"/>,
+    /// blended premultiplied in linear light, so a transparent end adds no tint of its colour channels.</summary>
+    [FramePath]
+    internal static Color Mix(Color from, Color to, float amount)
+    {
+        if (amount <= 0f)
+            return from;
+        if (amount >= 1f)
+            return to;
+        var fromA = from.A / 255f;
+        var toA = to.A / 255f;
+        var a = fromA + (toA - fromA) * amount;
+        if (a <= 0f)
+            return Transparent;
+        return new Color(
+            (byte)ToByte(a),
+            Encode(Lerp(LinearOf[from.R] * fromA, LinearOf[to.R] * toA, amount) / a),
+            Encode(Lerp(LinearOf[from.G] * fromA, LinearOf[to.G] * toA, amount) / a),
+            Encode(Lerp(LinearOf[from.B] * fromA, LinearOf[to.B] * toA, amount) / a)
+        );
+    }
+
+    static float Lerp(float from, float to, float amount) => from + (to - from) * amount;
+
+    static byte Encode(float linear)
+    {
+        var clamped = Math.Clamp(linear, 0f, 1f);
+        var encoded =
+            clamped <= 0.0031308f
+                ? clamped * 12.92f
+                : 1.055f * MathF.Pow(clamped, 1f / 2.4f) - 0.055f;
+        return (byte)ToByte(encoded);
+    }
+
+    static float[] BuildLinear()
+    {
+        var table = new float[256];
+        for (var i = 0; i < table.Length; i++)
+        {
+            var encoded = i / 255f;
+            table[i] =
+                encoded <= 0.04045f
+                    ? encoded / 12.92f
+                    : MathF.Pow((encoded + 0.055f) / 1.055f, 2.4f);
+        }
+        return table;
+    }
+
     /// <summary>This colour laid over the opaque <paramref name="below"/>, as a state layer is laid over a surface.</summary>
     public Color Over(Color below)
     {

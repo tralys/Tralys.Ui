@@ -428,8 +428,8 @@ public sealed class ButtonTests
             .That(halfway)
             .IsEqualTo(
                 (
-                    (Paint)ButtonParts.Mix(rest.Border, accent, 0.5f),
-                    (Paint)ButtonParts.Mix(rest.Foreground, accent, 0.5f)
+                    (Paint)ColorBlend.Blend(rest.Border, accent, 0.5f),
+                    (Paint)ColorBlend.Blend(rest.Foreground, accent, 0.5f)
                 )
             );
         await Assert.That(peak).IsEqualTo((Paint)Themes.Light.Color(ColorToken.BorderAccent));
