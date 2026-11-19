@@ -200,8 +200,10 @@ public sealed partial class UiView
             parentDisabled
             || node.Inherit.Disabled
             || node.CommandRefusals > 0
-            || ((node.Inherit.ForcedInside | node.ForcedByView | node.ForcedByScope) & InputStates.Disabled)
-                != 0;
+            || (
+                (node.Inherit.ForcedInside | node.ForcedByView | node.ForcedByScope)
+                & InputStates.Disabled
+            ) != 0;
         node.SetStates(
             disabled ? node._states | InputStates.Disabled : node._states & ~InputStates.Disabled
         );

@@ -235,7 +235,9 @@ public static partial class ListBox
                 ui.Box(
                     align: Align.Center,
                     minHeight: p.MinHeight ?? m.Height,
-                    padding: ringed ? ButtonParts.Inside(m.Padding, FocusRingCalls.Width) : m.Padding,
+                    padding: ringed
+                        ? ButtonParts.Inside(m.Padding, FocusRingCalls.Width)
+                        : m.Padding,
                     background: fill,
                     border: ringed
                         ? new Border(FocusRingCalls.Width, t.Color(ColorToken.BorderFocus))
