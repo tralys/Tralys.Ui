@@ -1,1 +1,1283 @@
 #nullable enable
+[TRL5001]const Tralys.Ui.Rendering.UiPaint.FillImage = 32 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPaint.LinearGradient = 2 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPaint.None = 0 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPaint.PremultipliedTexture = 16 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPaint.RadialGradient = 3 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPaint.Solid = 1 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPaint.StrokeImage = 64 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.Arc = 2 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.ArrayImage = 7 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.Blur = 10 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.Box = 0 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.BoxShadow = 5 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.ClipLayer = 11 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.Ellipse = 1 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.Glyph = 4 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.Image = 3 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.InsetBoxShadow = 6 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.Layer = 9 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.Mesh = 8 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.MeshClipLayer = 12 -> float
+[TRL5001]const Tralys.Ui.Rendering.UiPrimitive.Rect = 13 -> float
+[TRL5001]Tralys.Ui.Rendering.DrawBatch
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.ArrayTexture.get -> Tralys.Ui.Rendering.RenderTextureArray?
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.ArrayTexture.init -> void
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.Deconstruct(out Tralys.Ui.Rendering.RenderTexture? Texture, out int FirstVertex, out int VertexCount, out int FirstIndex, out int IndexCount, out short Target, out short Source) -> void
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.DrawBatch() -> void
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.DrawBatch(Tralys.Ui.Rendering.RenderTexture? Texture, int FirstVertex, int VertexCount, int FirstIndex, int IndexCount, short Target = -1, short Source = -1) -> void
+~[TRL5001]override Tralys.Ui.Rendering.DrawBatch.Equals(object obj) -> bool
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.Equals(Tralys.Ui.Rendering.DrawBatch other) -> bool
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.FirstIndex.get -> int
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.FirstIndex.init -> void
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.FirstVertex.get -> int
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.FirstVertex.init -> void
+[TRL5001]override Tralys.Ui.Rendering.DrawBatch.GetHashCode() -> int
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.GlyphTexture.get -> Tralys.Ui.Rendering.RenderTexture?
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.GlyphTexture.init -> void
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.IndexCount.get -> int
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.IndexCount.init -> void
+[TRL5001]static Tralys.Ui.Rendering.DrawBatch.operator !=(Tralys.Ui.Rendering.DrawBatch left, Tralys.Ui.Rendering.DrawBatch right) -> bool
+[TRL5001]static Tralys.Ui.Rendering.DrawBatch.operator ==(Tralys.Ui.Rendering.DrawBatch left, Tralys.Ui.Rendering.DrawBatch right) -> bool
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.PaintTexture.get -> Tralys.Ui.Rendering.RenderTexture?
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.PaintTexture.init -> void
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.Rare.get -> bool
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.Rare.init -> void
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.Source.get -> short
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.Source.init -> void
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.Target.get -> short
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.Target.init -> void
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.Texture.get -> Tralys.Ui.Rendering.RenderTexture?
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.Texture.init -> void
+~[TRL5001]override Tralys.Ui.Rendering.DrawBatch.ToString() -> string
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.VertexCount.get -> int
+[TRL5001]Tralys.Ui.Rendering.DrawBatch.VertexCount.init -> void
+[TRL5001]Tralys.Ui.Rendering.DrawLayer
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Deconstruct(out int X, out int Y, out int Width, out int Height, out int Pass, out int Parent, out int Input) -> void
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.DrawLayer() -> void
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.DrawLayer(int X, int Y, int Width, int Height, int Pass, int Parent, int Input = -1) -> void
+~[TRL5001]override Tralys.Ui.Rendering.DrawLayer.Equals(object obj) -> bool
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Equals(Tralys.Ui.Rendering.DrawLayer other) -> bool
+[TRL5001]override Tralys.Ui.Rendering.DrawLayer.GetHashCode() -> int
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Height.get -> int
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Height.init -> void
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Input.get -> int
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Input.init -> void
+[TRL5001]static Tralys.Ui.Rendering.DrawLayer.operator !=(Tralys.Ui.Rendering.DrawLayer left, Tralys.Ui.Rendering.DrawLayer right) -> bool
+[TRL5001]static Tralys.Ui.Rendering.DrawLayer.operator ==(Tralys.Ui.Rendering.DrawLayer left, Tralys.Ui.Rendering.DrawLayer right) -> bool
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Parent.get -> int
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Parent.init -> void
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Pass.get -> int
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Pass.init -> void
+~[TRL5001]override Tralys.Ui.Rendering.DrawLayer.ToString() -> string
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Width.get -> int
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Width.init -> void
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.X.get -> int
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.X.init -> void
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Y.get -> int
+[TRL5001]Tralys.Ui.Rendering.DrawLayer.Y.init -> void
+[TRL5001]Tralys.Ui.Rendering.DrawList.Batches.get -> System.ReadOnlySpan<Tralys.Ui.Rendering.DrawBatch>
+[TRL5001]Tralys.Ui.Rendering.DrawList.ClearPatchedRanges() -> void
+[TRL5001]Tralys.Ui.Rendering.DrawList.Indices.get -> System.ReadOnlySpan<ushort>
+[TRL5001]Tralys.Ui.Rendering.DrawList.Layers.get -> System.ReadOnlySpan<Tralys.Ui.Rendering.DrawLayer>
+[TRL5001]Tralys.Ui.Rendering.DrawList.PatchedRanges.get -> System.ReadOnlySpan<Tralys.Ui.Rendering.VertexRange>
+[TRL5001]Tralys.Ui.Rendering.DrawList.Vertices.get -> System.ReadOnlySpan<Tralys.Ui.Rendering.UiVertex>
+[TRL5001]Tralys.Ui.Rendering.UiPaint
+[TRL5001]Tralys.Ui.Rendering.UiPrimitive
+[TRL5001]Tralys.Ui.Rendering.UiVertex
+[TRL5001]Tralys.Ui.Rendering.UiVertex.Bounds -> System.Numerics.Vector4
+[TRL5001]Tralys.Ui.Rendering.UiVertex.Clip -> System.Numerics.Vector4
+[TRL5001]Tralys.Ui.Rendering.UiVertex.Fill -> uint
+[TRL5001]Tralys.Ui.Rendering.UiVertex.FillGradient -> System.Numerics.Vector4
+[TRL5001]Tralys.Ui.Rendering.UiVertex.ImageSample -> System.Numerics.Vector3
+[TRL5001]Tralys.Ui.Rendering.UiVertex.ImageWindow -> System.Numerics.Vector4
+[TRL5001]Tralys.Ui.Rendering.UiVertex.Inner -> System.Numerics.Vector4
+[TRL5001]Tralys.Ui.Rendering.UiVertex.InnerRadii -> System.Numerics.Vector4
+[TRL5001]Tralys.Ui.Rendering.UiVertex.Local -> System.Numerics.Vector4
+[TRL5001]Tralys.Ui.Rendering.UiVertex.Params -> System.Numerics.Vector4
+[TRL5001]Tralys.Ui.Rendering.UiVertex.Position -> System.Numerics.Vector2
+[TRL5001]Tralys.Ui.Rendering.UiVertex.Shape -> System.Numerics.Vector4
+[TRL5001]Tralys.Ui.Rendering.UiVertex.Stroke -> uint
+[TRL5001]Tralys.Ui.Rendering.UiVertex.StrokeGradient -> System.Numerics.Vector4
+[TRL5001]Tralys.Ui.Rendering.UiVertex.UiVertex() -> void
+[TRL5001]Tralys.Ui.Rendering.VertexRange
+[TRL5001]Tralys.Ui.Rendering.VertexRange.Count.get -> int
+[TRL5001]Tralys.Ui.Rendering.VertexRange.Count.init -> void
+[TRL5001]Tralys.Ui.Rendering.VertexRange.Deconstruct(out int First, out int Count) -> void
+~[TRL5001]override Tralys.Ui.Rendering.VertexRange.Equals(object obj) -> bool
+[TRL5001]Tralys.Ui.Rendering.VertexRange.Equals(Tralys.Ui.Rendering.VertexRange other) -> bool
+[TRL5001]Tralys.Ui.Rendering.VertexRange.First.get -> int
+[TRL5001]Tralys.Ui.Rendering.VertexRange.First.init -> void
+[TRL5001]override Tralys.Ui.Rendering.VertexRange.GetHashCode() -> int
+[TRL5001]static Tralys.Ui.Rendering.VertexRange.operator !=(Tralys.Ui.Rendering.VertexRange left, Tralys.Ui.Rendering.VertexRange right) -> bool
+[TRL5001]static Tralys.Ui.Rendering.VertexRange.operator ==(Tralys.Ui.Rendering.VertexRange left, Tralys.Ui.Rendering.VertexRange right) -> bool
+~[TRL5001]override Tralys.Ui.Rendering.VertexRange.ToString() -> string
+[TRL5001]Tralys.Ui.Rendering.VertexRange.VertexRange() -> void
+[TRL5001]Tralys.Ui.Rendering.VertexRange.VertexRange(int First, int Count) -> void
+const Tralys.Ui.Fonts.GlyphAtlas.DefaultMaxPages = 4 -> int
+const Tralys.Ui.Fonts.GlyphAtlas.EmSize = 54 -> float
+const Tralys.Ui.Fonts.GlyphAtlas.Inset = 0 -> int
+const Tralys.Ui.GestureSlop.DoubleTap = 24 -> float
+const Tralys.Ui.GestureSlop.PointerDrag = 4 -> float
+const Tralys.Ui.GestureSlop.Tap = 8 -> float
+const Tralys.Ui.Rendering.GradientRampAtlas.DefaultRows = 128 -> int
+const Tralys.Ui.Rendering.GradientRampAtlas.Width = 256 -> int
+readonly Tralys.Ui.Fonts.TextRun.Style -> Tralys.Ui.Fonts.TextStyle
+static readonly Tralys.Ui.Pointer.Mouse -> Tralys.Ui.Pointer
+Tralys.Ui.AlignmentX
+Tralys.Ui.AlignmentX.Center = 1 -> Tralys.Ui.AlignmentX
+Tralys.Ui.AlignmentX.Left = 0 -> Tralys.Ui.AlignmentX
+Tralys.Ui.AlignmentX.Right = 2 -> Tralys.Ui.AlignmentX
+Tralys.Ui.AlignmentY
+Tralys.Ui.AlignmentY.Bottom = 2 -> Tralys.Ui.AlignmentY
+Tralys.Ui.AlignmentY.Center = 1 -> Tralys.Ui.AlignmentY
+Tralys.Ui.AlignmentY.Top = 0 -> Tralys.Ui.AlignmentY
+Tralys.Ui.ColdPathAttribute
+Tralys.Ui.ColdPathAttribute.ColdPathAttribute() -> void
+Tralys.Ui.Color
+Tralys.Ui.Color.A.get -> byte
+Tralys.Ui.Color.A.init -> void
+Tralys.Ui.Color.B.get -> byte
+Tralys.Ui.Color.B.init -> void
+Tralys.Ui.Color.Color() -> void
+Tralys.Ui.Color.Color(byte A, byte R, byte G, byte B) -> void
+Tralys.Ui.Color.Deconstruct(out byte A, out byte R, out byte G, out byte B) -> void
+~override Tralys.Ui.Color.Equals(object obj) -> bool
+Tralys.Ui.Color.Equals(Tralys.Ui.Color other) -> bool
+static Tralys.Ui.Color.FromArgb(byte a, byte r, byte g, byte b) -> Tralys.Ui.Color
+static Tralys.Ui.Color.FromRgb(byte r, byte g, byte b) -> Tralys.Ui.Color
+Tralys.Ui.Color.G.get -> byte
+Tralys.Ui.Color.G.init -> void
+override Tralys.Ui.Color.GetHashCode() -> int
+static Tralys.Ui.Color.operator !=(Tralys.Ui.Color left, Tralys.Ui.Color right) -> bool
+static Tralys.Ui.Color.operator ==(Tralys.Ui.Color left, Tralys.Ui.Color right) -> bool
+Tralys.Ui.Color.Over(Tralys.Ui.Color below) -> Tralys.Ui.Color
+static Tralys.Ui.Color.Parse(System.ReadOnlySpan<char> hex) -> Tralys.Ui.Color
+Tralys.Ui.Color.R.get -> byte
+Tralys.Ui.Color.R.init -> void
+Tralys.Ui.Color.ToPremultipliedRgba(float opacity) -> uint
+~override Tralys.Ui.Color.ToString() -> string
+static Tralys.Ui.Color.Transparent.get -> Tralys.Ui.Color
+static Tralys.Ui.Color.TryParse(System.ReadOnlySpan<char> hex, out Tralys.Ui.Color color) -> bool
+Tralys.Ui.Color.WithOpacity(float opacity) -> Tralys.Ui.Color
+Tralys.Ui.Controls.RowFilter
+abstract Tralys.Ui.Controls.RowFilter.Matches(object? row) -> bool
+Tralys.Ui.Controls.RowFilter.Refresh() -> void
+Tralys.Ui.Controls.RowFilter.RowFilter() -> void
+Tralys.Ui.Controls.RowFilter<TRow>
+override Tralys.Ui.Controls.RowFilter<TRow>.Matches(object? row) -> bool
+Tralys.Ui.Controls.RowFilter<TRow>.RowFilter(System.Func<TRow!, bool>! matches) -> void
+Tralys.Ui.CornerRadius
+Tralys.Ui.CornerRadius.BottomLeft.get -> float
+Tralys.Ui.CornerRadius.BottomLeft.init -> void
+Tralys.Ui.CornerRadius.BottomRight.get -> float
+Tralys.Ui.CornerRadius.BottomRight.init -> void
+Tralys.Ui.CornerRadius.CornerRadius() -> void
+Tralys.Ui.CornerRadius.CornerRadius(float TopLeft, float TopRight, float BottomRight, float BottomLeft) -> void
+Tralys.Ui.CornerRadius.CornerRadius(float uniform) -> void
+Tralys.Ui.CornerRadius.Deconstruct(out float TopLeft, out float TopRight, out float BottomRight, out float BottomLeft) -> void
+~override Tralys.Ui.CornerRadius.Equals(object obj) -> bool
+Tralys.Ui.CornerRadius.Equals(Tralys.Ui.CornerRadius other) -> bool
+override Tralys.Ui.CornerRadius.GetHashCode() -> int
+static Tralys.Ui.CornerRadius.implicit operator Tralys.Ui.CornerRadius(float uniform) -> Tralys.Ui.CornerRadius
+static Tralys.Ui.CornerRadius.operator !=(Tralys.Ui.CornerRadius left, Tralys.Ui.CornerRadius right) -> bool
+static Tralys.Ui.CornerRadius.operator ==(Tralys.Ui.CornerRadius left, Tralys.Ui.CornerRadius right) -> bool
+Tralys.Ui.CornerRadius.TopLeft.get -> float
+Tralys.Ui.CornerRadius.TopLeft.init -> void
+Tralys.Ui.CornerRadius.TopRight.get -> float
+Tralys.Ui.CornerRadius.TopRight.init -> void
+~override Tralys.Ui.CornerRadius.ToString() -> string
+Tralys.Ui.Cursor
+Tralys.Ui.Cursor.Cursor(string! name) -> void
+override Tralys.Ui.Cursor.Equals(object? obj) -> bool
+Tralys.Ui.Cursor.Equals(Tralys.Ui.Cursor? other) -> bool
+override Tralys.Ui.Cursor.GetHashCode() -> int
+Tralys.Ui.Cursor.Name.get -> string?
+override Tralys.Ui.Cursor.ToString() -> string!
+Tralys.Ui.Cursor.Type.get -> Tralys.Ui.CursorType
+Tralys.Ui.Cursors
+static Tralys.Ui.Cursors.Arrow.get -> Tralys.Ui.Cursor!
+static Tralys.Ui.Cursors.Crosshair.get -> Tralys.Ui.Cursor!
+static Tralys.Ui.Cursors.Hand.get -> Tralys.Ui.Cursor!
+static Tralys.Ui.Cursors.IBeam.get -> Tralys.Ui.Cursor!
+static Tralys.Ui.Cursors.No.get -> Tralys.Ui.Cursor!
+static Tralys.Ui.Cursors.ScrollAll.get -> Tralys.Ui.Cursor!
+static Tralys.Ui.Cursors.SizeAll.get -> Tralys.Ui.Cursor!
+static Tralys.Ui.Cursors.SizeNeSw.get -> Tralys.Ui.Cursor!
+static Tralys.Ui.Cursors.SizeNs.get -> Tralys.Ui.Cursor!
+static Tralys.Ui.Cursors.SizeNwSe.get -> Tralys.Ui.Cursor!
+static Tralys.Ui.Cursors.SizeWe.get -> Tralys.Ui.Cursor!
+static Tralys.Ui.Cursors.Wait.get -> Tralys.Ui.Cursor!
+static Tralys.Ui.Cursors.WaitArrow.get -> Tralys.Ui.Cursor!
+Tralys.Ui.CursorType
+Tralys.Ui.CursorType.Arrow = 0 -> Tralys.Ui.CursorType
+Tralys.Ui.CursorType.Crosshair = 3 -> Tralys.Ui.CursorType
+Tralys.Ui.CursorType.Custom = 13 -> Tralys.Ui.CursorType
+Tralys.Ui.CursorType.Hand = 11 -> Tralys.Ui.CursorType
+Tralys.Ui.CursorType.IBeam = 1 -> Tralys.Ui.CursorType
+Tralys.Ui.CursorType.No = 10 -> Tralys.Ui.CursorType
+Tralys.Ui.CursorType.ScrollAll = 12 -> Tralys.Ui.CursorType
+Tralys.Ui.CursorType.SizeAll = 9 -> Tralys.Ui.CursorType
+Tralys.Ui.CursorType.SizeNeSw = 6 -> Tralys.Ui.CursorType
+Tralys.Ui.CursorType.SizeNs = 8 -> Tralys.Ui.CursorType
+Tralys.Ui.CursorType.SizeNwSe = 5 -> Tralys.Ui.CursorType
+Tralys.Ui.CursorType.SizeWe = 7 -> Tralys.Ui.CursorType
+Tralys.Ui.CursorType.Wait = 2 -> Tralys.Ui.CursorType
+Tralys.Ui.CursorType.WaitArrow = 4 -> Tralys.Ui.CursorType
+Tralys.Ui.DeferredRefresh
+Tralys.Ui.DeferredRefresh.DeferredRefresh() -> void
+Tralys.Ui.DeferredRefresh.Dispose() -> void
+Tralys.Ui.DragThreshold
+static Tralys.Ui.DragThreshold.IsCrossed(Tralys.Ui.PointerKind kind, System.Numerics.Vector2 offset) -> bool
+Tralys.Ui.Fonts.AtlasGlyph
+Tralys.Ui.Fonts.AtlasGlyph.AtlasGlyph() -> void
+Tralys.Ui.Fonts.AtlasGlyph.AtlasGlyph(Tralys.Ui.Rendering.RenderTexture! page, int generation, Tralys.Ui.Rect source, int left, int top) -> void
+Tralys.Ui.Fonts.AtlasGlyph.Generation.get -> int
+Tralys.Ui.Fonts.AtlasGlyph.Left.get -> int
+Tralys.Ui.Fonts.AtlasGlyph.Page.get -> Tralys.Ui.Rendering.RenderTexture!
+Tralys.Ui.Fonts.AtlasGlyph.Source.get -> Tralys.Ui.Rect
+Tralys.Ui.Fonts.AtlasGlyph.Top.get -> int
+Tralys.Ui.Fonts.FaceMetrics
+Tralys.Ui.Fonts.FaceMetrics.Ascent.get -> float
+Tralys.Ui.Fonts.FaceMetrics.Ascent.init -> void
+Tralys.Ui.Fonts.FaceMetrics.Deconstruct(out float Ascent, out float Descent, out float LineGap, out float UnderlinePosition, out float UnderlineThickness) -> void
+Tralys.Ui.Fonts.FaceMetrics.Descent.get -> float
+Tralys.Ui.Fonts.FaceMetrics.Descent.init -> void
+~override Tralys.Ui.Fonts.FaceMetrics.Equals(object obj) -> bool
+Tralys.Ui.Fonts.FaceMetrics.Equals(Tralys.Ui.Fonts.FaceMetrics other) -> bool
+Tralys.Ui.Fonts.FaceMetrics.FaceMetrics() -> void
+Tralys.Ui.Fonts.FaceMetrics.FaceMetrics(float Ascent, float Descent, float LineGap, float UnderlinePosition, float UnderlineThickness) -> void
+override Tralys.Ui.Fonts.FaceMetrics.GetHashCode() -> int
+Tralys.Ui.Fonts.FaceMetrics.LineGap.get -> float
+Tralys.Ui.Fonts.FaceMetrics.LineGap.init -> void
+static Tralys.Ui.Fonts.FaceMetrics.operator !=(Tralys.Ui.Fonts.FaceMetrics left, Tralys.Ui.Fonts.FaceMetrics right) -> bool
+static Tralys.Ui.Fonts.FaceMetrics.operator ==(Tralys.Ui.Fonts.FaceMetrics left, Tralys.Ui.Fonts.FaceMetrics right) -> bool
+~override Tralys.Ui.Fonts.FaceMetrics.ToString() -> string
+Tralys.Ui.Fonts.FaceMetrics.UnderlinePosition.get -> float
+Tralys.Ui.Fonts.FaceMetrics.UnderlinePosition.init -> void
+Tralys.Ui.Fonts.FaceMetrics.UnderlineThickness.get -> float
+Tralys.Ui.Fonts.FaceMetrics.UnderlineThickness.init -> void
+Tralys.Ui.Fonts.Font
+Tralys.Ui.Fonts.Font.Collection.get -> Tralys.Ui.Fonts.FontCollection!
+Tralys.Ui.Fonts.Font.Face.get -> Tralys.Ui.Fonts.IFontFace!
+Tralys.Ui.Fonts.Font.FamilyName.get -> string!
+Tralys.Ui.Fonts.Font.GetAdvance(int glyph, float pixelSize) -> float
+Tralys.Ui.Fonts.Font.GetKerning(int left, int right, float pixelSize) -> float
+Tralys.Ui.Fonts.Font.GetMetrics(float pixelSize) -> Tralys.Ui.Fonts.FaceMetrics
+Tralys.Ui.Fonts.Font.IsItalic.get -> bool
+Tralys.Ui.Fonts.Font.Weight.get -> int
+Tralys.Ui.Fonts.FontCollection
+Tralys.Ui.Fonts.FontCollection.Add(System.ReadOnlyMemory<byte> fontData, int faceIndex = 0) -> Tralys.Ui.Fonts.Font!
+Tralys.Ui.Fonts.FontCollection.AddFallback(Tralys.Ui.Fonts.Font! font) -> void
+Tralys.Ui.Fonts.FontCollection.Dispose() -> void
+Tralys.Ui.Fonts.FontCollection.Find(string! familyName, int weight = 400, bool italic = false) -> Tralys.Ui.Fonts.Font?
+Tralys.Ui.Fonts.FontCollection.FontCollection(Tralys.Ui.Fonts.IFontBackend! backend) -> void
+Tralys.Ui.Fonts.FontCollection.Resolve(Tralys.Ui.Fonts.Font! font, System.Text.Rune rune, out int glyph) -> Tralys.Ui.Fonts.Font!
+Tralys.Ui.Fonts.FontStyle
+Tralys.Ui.Fonts.FontStyle.Italic = 1 -> Tralys.Ui.Fonts.FontStyle
+Tralys.Ui.Fonts.FontStyle.Normal = 0 -> Tralys.Ui.Fonts.FontStyle
+Tralys.Ui.Fonts.FontStyle.Oblique = 2 -> Tralys.Ui.Fonts.FontStyle
+Tralys.Ui.Fonts.FontWeight
+Tralys.Ui.Fonts.FontWeight.Black = 900 -> Tralys.Ui.Fonts.FontWeight
+Tralys.Ui.Fonts.FontWeight.Bold = 700 -> Tralys.Ui.Fonts.FontWeight
+Tralys.Ui.Fonts.FontWeight.ExtraBold = 800 -> Tralys.Ui.Fonts.FontWeight
+Tralys.Ui.Fonts.FontWeight.ExtraLight = 200 -> Tralys.Ui.Fonts.FontWeight
+Tralys.Ui.Fonts.FontWeight.Light = 300 -> Tralys.Ui.Fonts.FontWeight
+Tralys.Ui.Fonts.FontWeight.Medium = 500 -> Tralys.Ui.Fonts.FontWeight
+Tralys.Ui.Fonts.FontWeight.Normal = 400 -> Tralys.Ui.Fonts.FontWeight
+Tralys.Ui.Fonts.FontWeight.SemiBold = 600 -> Tralys.Ui.Fonts.FontWeight
+Tralys.Ui.Fonts.FontWeight.Thin = 100 -> Tralys.Ui.Fonts.FontWeight
+Tralys.Ui.Fonts.GlyphAtlas
+Tralys.Ui.Fonts.GlyphAtlas.BeginFrame() -> void
+Tralys.Ui.Fonts.GlyphAtlas.Dispose() -> void
+Tralys.Ui.Fonts.GlyphAtlas.GlyphAtlas(Tralys.Ui.Rendering.ITextureFactory! factory, int pageSize = 2048, int maxPages = 4) -> void
+Tralys.Ui.Fonts.GlyphAtlas.MissCount.get -> int
+Tralys.Ui.Fonts.GlyphAtlas.PageCount.get -> int
+Tralys.Ui.Fonts.GlyphAtlas.PageSize.get -> int
+Tralys.Ui.Fonts.GlyphAtlas.ResetCount.get -> int
+Tralys.Ui.Fonts.GlyphAtlas.TryGet(Tralys.Ui.Fonts.Font! font, int glyph, float size, float strokeWidth, out Tralys.Ui.Fonts.AtlasGlyph result) -> bool
+Tralys.Ui.Fonts.IFontBackend
+Tralys.Ui.Fonts.IFontBackend.LoadFace(System.ReadOnlyMemory<byte> fontData, int faceIndex = 0) -> Tralys.Ui.Fonts.IFontFace!
+Tralys.Ui.Fonts.IFontFace
+Tralys.Ui.Fonts.IFontFace.FamilyName.get -> string!
+Tralys.Ui.Fonts.IFontFace.GetAdvance(int glyph) -> float
+Tralys.Ui.Fonts.IFontFace.GetGlyphIndex(System.Text.Rune rune) -> int
+Tralys.Ui.Fonts.IFontFace.GetTable(uint tag) -> System.ReadOnlyMemory<byte>
+Tralys.Ui.Fonts.IFontFace.IsItalic.get -> bool
+Tralys.Ui.Fonts.IFontFace.Metrics.get -> Tralys.Ui.Fonts.FaceMetrics
+Tralys.Ui.Fonts.IFontFace.TryReadOutline<TSink>(int glyph, ref TSink sink) -> bool
+Tralys.Ui.Fonts.IFontFace.UnitsPerEm.get -> int
+Tralys.Ui.Fonts.IFontFace.Weight.get -> int
+Tralys.Ui.Fonts.IGlyphOutlineSink
+Tralys.Ui.Fonts.IGlyphOutlineSink.CubicTo(System.Numerics.Vector2 control1, System.Numerics.Vector2 control2, System.Numerics.Vector2 point) -> void
+Tralys.Ui.Fonts.IGlyphOutlineSink.LineTo(System.Numerics.Vector2 point) -> void
+Tralys.Ui.Fonts.IGlyphOutlineSink.MoveTo(System.Numerics.Vector2 point) -> void
+Tralys.Ui.Fonts.IGlyphOutlineSink.QuadraticTo(System.Numerics.Vector2 control, System.Numerics.Vector2 point) -> void
+Tralys.Ui.Fonts.LayoutGlyph
+Tralys.Ui.Fonts.LayoutGlyph.Font.get -> Tralys.Ui.Fonts.Font!
+Tralys.Ui.Fonts.LayoutGlyph.Glyph.get -> int
+Tralys.Ui.Fonts.LayoutGlyph.LayoutGlyph() -> void
+Tralys.Ui.Fonts.LayoutGlyph.LayoutGlyph(Tralys.Ui.Fonts.Font! font, int glyph, float x, float y, int run) -> void
+Tralys.Ui.Fonts.LayoutGlyph.Run.get -> int
+Tralys.Ui.Fonts.LayoutGlyph.X.get -> float
+Tralys.Ui.Fonts.LayoutGlyph.Y.get -> float
+Tralys.Ui.Fonts.TextAlignment
+Tralys.Ui.Fonts.TextAlignment.Center = 1 -> Tralys.Ui.Fonts.TextAlignment
+Tralys.Ui.Fonts.TextAlignment.Left = 0 -> Tralys.Ui.Fonts.TextAlignment
+Tralys.Ui.Fonts.TextAlignment.Right = 2 -> Tralys.Ui.Fonts.TextAlignment
+Tralys.Ui.Fonts.TextBuffer
+Tralys.Ui.Fonts.TextBuffer.Append(System.ReadOnlySpan<char> text, in Tralys.Ui.Fonts.TextStyle style) -> void
+Tralys.Ui.Fonts.TextBuffer.Clear() -> void
+Tralys.Ui.Fonts.TextBuffer.Runs.get -> System.ReadOnlySpan<Tralys.Ui.Fonts.TextRun>
+Tralys.Ui.Fonts.TextBuffer.SetText(System.ReadOnlySpan<char> text) -> void
+Tralys.Ui.Fonts.TextBuffer.Style.get -> Tralys.Ui.Fonts.TextStyle
+Tralys.Ui.Fonts.TextBuffer.Style.set -> void
+Tralys.Ui.Fonts.TextBuffer.Text.get -> System.ReadOnlySpan<char>
+Tralys.Ui.Fonts.TextBuffer.TextBuffer(Tralys.Ui.Fonts.TextStyle style) -> void
+Tralys.Ui.Fonts.TextBuffer.Version.get -> int
+Tralys.Ui.Fonts.TextLayout
+Tralys.Ui.Fonts.TextLayout.Alignment.get -> Tralys.Ui.Fonts.TextAlignment
+Tralys.Ui.Fonts.TextLayout.Alignment.set -> void
+Tralys.Ui.Fonts.TextLayout.Draw(Tralys.Ui.Rendering.DrawingContext context, Tralys.Ui.Fonts.GlyphAtlas! atlas, System.Numerics.Vector2 origin = default(System.Numerics.Vector2)) -> void
+Tralys.Ui.Fonts.TextLayout.GetCaretRect(int index, bool atLineEnd = false) -> Tralys.Ui.Rect
+Tralys.Ui.Fonts.TextLayout.GetLineAt(int index, bool atLineEnd = false) -> int
+Tralys.Ui.Fonts.TextLayout.GetLineEnd(int line) -> int
+Tralys.Ui.Fonts.TextLayout.GetSelectionRects(int start, int end, System.Span<Tralys.Ui.Rect> destination) -> int
+Tralys.Ui.Fonts.TextLayout.Glyphs.get -> System.ReadOnlySpan<Tralys.Ui.Fonts.LayoutGlyph>
+Tralys.Ui.Fonts.TextLayout.HitTest(System.Numerics.Vector2 point, out bool atLineEnd) -> int
+Tralys.Ui.Fonts.TextLayout.LineHeight.get -> float
+Tralys.Ui.Fonts.TextLayout.LineHeight.set -> void
+Tralys.Ui.Fonts.TextLayout.Lines.get -> System.ReadOnlySpan<Tralys.Ui.Fonts.TextLine>
+Tralys.Ui.Fonts.TextLayout.MaxHeight.get -> float
+Tralys.Ui.Fonts.TextLayout.MaxHeight.set -> void
+Tralys.Ui.Fonts.TextLayout.MaxWidth.get -> float
+Tralys.Ui.Fonts.TextLayout.MaxWidth.set -> void
+Tralys.Ui.Fonts.TextLayout.Scale.get -> float
+Tralys.Ui.Fonts.TextLayout.Scale.set -> void
+Tralys.Ui.Fonts.TextLayout.Size.get -> Tralys.Ui.Size
+Tralys.Ui.Fonts.TextLayout.TextLayout() -> void
+Tralys.Ui.Fonts.TextLayout.Trimming.get -> Tralys.Ui.Fonts.TextTrimming
+Tralys.Ui.Fonts.TextLayout.Trimming.set -> void
+Tralys.Ui.Fonts.TextLayout.Update(Tralys.Ui.Fonts.TextBuffer! buffer) -> bool
+Tralys.Ui.Fonts.TextLayout.Wrapping.get -> Tralys.Ui.Fonts.TextWrapping
+Tralys.Ui.Fonts.TextLayout.Wrapping.set -> void
+Tralys.Ui.Fonts.TextLine
+Tralys.Ui.Fonts.TextLine.Baseline.get -> float
+Tralys.Ui.Fonts.TextLine.DrawnLength.get -> int
+Tralys.Ui.Fonts.TextLine.Height.get -> float
+Tralys.Ui.Fonts.TextLine.Length.get -> int
+Tralys.Ui.Fonts.TextLine.Start.get -> int
+Tralys.Ui.Fonts.TextLine.TextLine() -> void
+Tralys.Ui.Fonts.TextLine.TextLine(int start, int length, int drawnLength, float x, float top, float baseline, float height) -> void
+Tralys.Ui.Fonts.TextLine.Top.get -> float
+Tralys.Ui.Fonts.TextLine.X.get -> float
+Tralys.Ui.Fonts.TextRun
+Tralys.Ui.Fonts.TextRun.Length.get -> int
+Tralys.Ui.Fonts.TextRun.Start.get -> int
+Tralys.Ui.Fonts.TextRun.TextRun() -> void
+Tralys.Ui.Fonts.TextRun.TextRun(int start, int length, Tralys.Ui.Fonts.TextStyle style) -> void
+Tralys.Ui.Fonts.TextServices
+Tralys.Ui.Fonts.TextServices.Atlas.get -> Tralys.Ui.Fonts.GlyphAtlas!
+Tralys.Ui.Fonts.TextServices.Dispose() -> void
+Tralys.Ui.Fonts.TextServices.Resolve(string? family, Tralys.Ui.Fonts.FontWeight weight, Tralys.Ui.Fonts.FontStyle style) -> Tralys.Ui.Fonts.Font!
+Tralys.Ui.Fonts.TextServices.TextServices(Tralys.Ui.Fonts.FontCollection! fonts, Tralys.Ui.Fonts.Font! defaultFont, Tralys.Ui.Rendering.ITextureFactory! textures, int atlasPageSize = 2048, int atlasMaxPages = 4) -> void
+Tralys.Ui.Fonts.TextStyle
+Tralys.Ui.Fonts.TextStyle.CharacterSpacing.get -> int
+Tralys.Ui.Fonts.TextStyle.Fill.get -> Tralys.Ui.Rendering.Paint
+Tralys.Ui.Fonts.TextStyle.Font.get -> Tralys.Ui.Fonts.Font!
+Tralys.Ui.Fonts.TextStyle.HasStroke.get -> bool
+Tralys.Ui.Fonts.TextStyle.Size.get -> float
+Tralys.Ui.Fonts.TextStyle.Stroke.get -> Tralys.Ui.Rendering.Paint
+Tralys.Ui.Fonts.TextStyle.StrokeWidth.get -> float
+Tralys.Ui.Fonts.TextStyle.TabularDigits.get -> bool
+Tralys.Ui.Fonts.TextStyle.TextStyle() -> void
+Tralys.Ui.Fonts.TextStyle.TextStyle(Tralys.Ui.Fonts.Font! font, float size, Tralys.Ui.Rendering.Paint fill, float strokeWidth = 0, Tralys.Ui.Rendering.Paint stroke = default(Tralys.Ui.Rendering.Paint), bool tabularDigits = false, int characterSpacing = 0) -> void
+Tralys.Ui.Fonts.TextTrimming
+Tralys.Ui.Fonts.TextTrimming.CharacterEllipsis = 1 -> Tralys.Ui.Fonts.TextTrimming
+Tralys.Ui.Fonts.TextTrimming.None = 0 -> Tralys.Ui.Fonts.TextTrimming
+Tralys.Ui.Fonts.TextTrimming.WordEllipsis = 2 -> Tralys.Ui.Fonts.TextTrimming
+Tralys.Ui.Fonts.TextWrapping
+Tralys.Ui.Fonts.TextWrapping.NoWrap = 0 -> Tralys.Ui.Fonts.TextWrapping
+Tralys.Ui.Fonts.TextWrapping.Wrap = 1 -> Tralys.Ui.Fonts.TextWrapping
+Tralys.Ui.FramePathAttribute
+Tralys.Ui.FramePathAttribute.FramePathAttribute() -> void
+Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.Back = 4 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.DPadDown = 14 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.DPadLeft = 15 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.DPadRight = 16 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.DPadUp = 13 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.East = 1 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.Guide = 5 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.LeftShoulder = 9 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.LeftStick = 7 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.LeftTrigger = 11 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.North = 3 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.RightShoulder = 10 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.RightStick = 8 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.RightTrigger = 12 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.South = 0 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.Start = 6 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadButton.West = 2 -> Tralys.Ui.GamepadButton
+Tralys.Ui.GamepadStick
+Tralys.Ui.GamepadStick.Left = 0 -> Tralys.Ui.GamepadStick
+Tralys.Ui.GamepadStick.Right = 1 -> Tralys.Ui.GamepadStick
+Tralys.Ui.GamepadStyle
+Tralys.Ui.GamepadStyle.Generic = 0 -> Tralys.Ui.GamepadStyle
+Tralys.Ui.GamepadStyle.Nintendo = 3 -> Tralys.Ui.GamepadStyle
+Tralys.Ui.GamepadStyle.PlayStation = 2 -> Tralys.Ui.GamepadStyle
+Tralys.Ui.GamepadStyle.Xbox = 1 -> Tralys.Ui.GamepadStyle
+Tralys.Ui.GestureSlop
+Tralys.Ui.HapticFeedback
+Tralys.Ui.HapticFeedback.LongPress = 0 -> Tralys.Ui.HapticFeedback
+Tralys.Ui.IEasingFunction
+Tralys.Ui.IEasingFunction.Ease(double normalizedTime) -> double
+Tralys.Ui.IItemsSource
+Tralys.Ui.IItemsSource.AddListener(Tralys.Ui.IItemsSourceListener! listener) -> void
+Tralys.Ui.IItemsSource.Count.get -> int
+Tralys.Ui.IItemsSource.IndexOf(object? item) -> int
+Tralys.Ui.IItemsSource.RemoveListener(Tralys.Ui.IItemsSourceListener! listener) -> void
+Tralys.Ui.IItemsSource.this[int index].get -> object?
+Tralys.Ui.IItemsSource<T>
+Tralys.Ui.IItemsSource<T>.ItemAt(int index) -> T
+Tralys.Ui.IItemsSourceListener
+Tralys.Ui.IItemsSourceListener.OnItemsChanged(Tralys.Ui.IItemsSource! source, in Tralys.Ui.ItemsChange change) -> void
+Tralys.Ui.InputDevice
+Tralys.Ui.InputDevice.Gamepad = 2 -> Tralys.Ui.InputDevice
+Tralys.Ui.InputDevice.KeyboardMouse = 0 -> Tralys.Ui.InputDevice
+Tralys.Ui.InputDevice.Touch = 1 -> Tralys.Ui.InputDevice
+Tralys.Ui.ItemsChange
+static Tralys.Ui.ItemsChange.Added(int index, int count) -> Tralys.Ui.ItemsChange
+Tralys.Ui.ItemsChange.Count.get -> int
+Tralys.Ui.ItemsChange.ItemsChange() -> void
+Tralys.Ui.ItemsChange.Kind.get -> Tralys.Ui.ItemsChangeKind
+static Tralys.Ui.ItemsChange.Moved(int oldIndex, int newIndex, int count) -> Tralys.Ui.ItemsChange
+Tralys.Ui.ItemsChange.NewIndex.get -> int
+Tralys.Ui.ItemsChange.OldIndex.get -> int
+static Tralys.Ui.ItemsChange.Removed(int index, int count) -> Tralys.Ui.ItemsChange
+static Tralys.Ui.ItemsChange.Replaced(int index, int count) -> Tralys.Ui.ItemsChange
+static Tralys.Ui.ItemsChange.Reset.get -> Tralys.Ui.ItemsChange
+Tralys.Ui.ItemsChangeKind
+Tralys.Ui.ItemsChangeKind.Add = 0 -> Tralys.Ui.ItemsChangeKind
+Tralys.Ui.ItemsChangeKind.Move = 3 -> Tralys.Ui.ItemsChangeKind
+Tralys.Ui.ItemsChangeKind.Remove = 1 -> Tralys.Ui.ItemsChangeKind
+Tralys.Ui.ItemsChangeKind.Replace = 2 -> Tralys.Ui.ItemsChangeKind
+Tralys.Ui.ItemsChangeKind.Reset = 4 -> Tralys.Ui.ItemsChangeKind
+Tralys.Ui.ItemsSource
+static Tralys.Ui.ItemsSource.From<T>(System.Collections.Generic.IReadOnlyList<T>! items) -> Tralys.Ui.IItemsSource<T>!
+static Tralys.Ui.ItemsSource.FromValues<T>(System.Collections.Generic.IReadOnlyList<T>! items) -> Tralys.Ui.IItemsSource!
+static Tralys.Ui.ItemsSource.Matching(Tralys.Ui.Mvvm.IFilteredRows? source) -> Tralys.Ui.IItemsSource?
+static Tralys.Ui.ItemsSource.Matching<T>(Tralys.Ui.Mvvm.IFilteredRows? source) -> Tralys.Ui.IItemsSource<T!>?
+Tralys.Ui.ItemsSourceListeners
+Tralys.Ui.ItemsSourceListeners.Add(Tralys.Ui.IItemsSourceListener! listener) -> void
+Tralys.Ui.ItemsSourceListeners.ItemsSourceListeners() -> void
+Tralys.Ui.ItemsSourceListeners.Raise(Tralys.Ui.IItemsSource! source, in Tralys.Ui.ItemsChange change) -> void
+Tralys.Ui.ItemsSourceListeners.Remove(Tralys.Ui.IItemsSourceListener! listener) -> void
+Tralys.Ui.ITreeChildren<T>
+Tralys.Ui.ITreeChildren<T>.ChildAt(T? parent, int index) -> T!
+Tralys.Ui.ITreeChildren<T>.ChildCount(T? parent) -> int
+Tralys.Ui.IViewHost
+Tralys.Ui.IViewHost.GetClipboardText() -> string?
+Tralys.Ui.IViewHost.MoveTextInput(Tralys.Ui.Rect area) -> void
+Tralys.Ui.IViewHost.PerformHaptic(Tralys.Ui.HapticFeedback feedback) -> void
+Tralys.Ui.IViewHost.SetClipboardText(System.ReadOnlySpan<char> text) -> void
+Tralys.Ui.IViewHost.SetCursor(Tralys.Ui.Cursor? cursor) -> void
+Tralys.Ui.IViewHost.SetSystemGestureExclusions(System.ReadOnlySpan<Tralys.Ui.Rect> rects) -> void
+Tralys.Ui.IViewHost.StartTextInput(Tralys.Ui.TextInputKind kind, Tralys.Ui.Rect area, bool byContact) -> void
+Tralys.Ui.IViewHost.StopTextInput() -> void
+Tralys.Ui.Key
+Tralys.Ui.Key.A = 65 -> Tralys.Ui.Key
+Tralys.Ui.Key.Add = 107 -> Tralys.Ui.Key
+Tralys.Ui.Key.AltLeft = 164 -> Tralys.Ui.Key
+Tralys.Ui.Key.AltRight = 165 -> Tralys.Ui.Key
+Tralys.Ui.Key.B = 66 -> Tralys.Ui.Key
+Tralys.Ui.Key.BackSpace = 8 -> Tralys.Ui.Key
+Tralys.Ui.Key.C = 67 -> Tralys.Ui.Key
+Tralys.Ui.Key.CapsLock = 20 -> Tralys.Ui.Key
+Tralys.Ui.Key.ControlLeft = 162 -> Tralys.Ui.Key
+Tralys.Ui.Key.ControlRight = 163 -> Tralys.Ui.Key
+Tralys.Ui.Key.D = 68 -> Tralys.Ui.Key
+Tralys.Ui.Key.D0 = 48 -> Tralys.Ui.Key
+Tralys.Ui.Key.D1 = 49 -> Tralys.Ui.Key
+Tralys.Ui.Key.D2 = 50 -> Tralys.Ui.Key
+Tralys.Ui.Key.D3 = 51 -> Tralys.Ui.Key
+Tralys.Ui.Key.D4 = 52 -> Tralys.Ui.Key
+Tralys.Ui.Key.D5 = 53 -> Tralys.Ui.Key
+Tralys.Ui.Key.D6 = 54 -> Tralys.Ui.Key
+Tralys.Ui.Key.D7 = 55 -> Tralys.Ui.Key
+Tralys.Ui.Key.D8 = 56 -> Tralys.Ui.Key
+Tralys.Ui.Key.D9 = 57 -> Tralys.Ui.Key
+Tralys.Ui.Key.Decimal = 110 -> Tralys.Ui.Key
+Tralys.Ui.Key.Delete = 46 -> Tralys.Ui.Key
+Tralys.Ui.Key.Divide = 111 -> Tralys.Ui.Key
+Tralys.Ui.Key.Down = 40 -> Tralys.Ui.Key
+Tralys.Ui.Key.E = 69 -> Tralys.Ui.Key
+Tralys.Ui.Key.End = 35 -> Tralys.Ui.Key
+Tralys.Ui.Key.Enter = 13 -> Tralys.Ui.Key
+Tralys.Ui.Key.Escape = 27 -> Tralys.Ui.Key
+Tralys.Ui.Key.F = 70 -> Tralys.Ui.Key
+Tralys.Ui.Key.F1 = 112 -> Tralys.Ui.Key
+Tralys.Ui.Key.F10 = 121 -> Tralys.Ui.Key
+Tralys.Ui.Key.F11 = 122 -> Tralys.Ui.Key
+Tralys.Ui.Key.F12 = 123 -> Tralys.Ui.Key
+Tralys.Ui.Key.F13 = 124 -> Tralys.Ui.Key
+Tralys.Ui.Key.F14 = 125 -> Tralys.Ui.Key
+Tralys.Ui.Key.F15 = 126 -> Tralys.Ui.Key
+Tralys.Ui.Key.F16 = 127 -> Tralys.Ui.Key
+Tralys.Ui.Key.F17 = 128 -> Tralys.Ui.Key
+Tralys.Ui.Key.F18 = 129 -> Tralys.Ui.Key
+Tralys.Ui.Key.F19 = 130 -> Tralys.Ui.Key
+Tralys.Ui.Key.F2 = 113 -> Tralys.Ui.Key
+Tralys.Ui.Key.F20 = 131 -> Tralys.Ui.Key
+Tralys.Ui.Key.F21 = 132 -> Tralys.Ui.Key
+Tralys.Ui.Key.F22 = 133 -> Tralys.Ui.Key
+Tralys.Ui.Key.F23 = 134 -> Tralys.Ui.Key
+Tralys.Ui.Key.F24 = 135 -> Tralys.Ui.Key
+Tralys.Ui.Key.F3 = 114 -> Tralys.Ui.Key
+Tralys.Ui.Key.F4 = 115 -> Tralys.Ui.Key
+Tralys.Ui.Key.F5 = 116 -> Tralys.Ui.Key
+Tralys.Ui.Key.F6 = 117 -> Tralys.Ui.Key
+Tralys.Ui.Key.F7 = 118 -> Tralys.Ui.Key
+Tralys.Ui.Key.F8 = 119 -> Tralys.Ui.Key
+Tralys.Ui.Key.F9 = 120 -> Tralys.Ui.Key
+Tralys.Ui.Key.G = 71 -> Tralys.Ui.Key
+Tralys.Ui.Key.H = 72 -> Tralys.Ui.Key
+Tralys.Ui.Key.Home = 36 -> Tralys.Ui.Key
+Tralys.Ui.Key.I = 73 -> Tralys.Ui.Key
+Tralys.Ui.Key.Insert = 45 -> Tralys.Ui.Key
+Tralys.Ui.Key.J = 74 -> Tralys.Ui.Key
+Tralys.Ui.Key.K = 75 -> Tralys.Ui.Key
+Tralys.Ui.Key.L = 76 -> Tralys.Ui.Key
+Tralys.Ui.Key.Left = 37 -> Tralys.Ui.Key
+Tralys.Ui.Key.M = 77 -> Tralys.Ui.Key
+Tralys.Ui.Key.Menu = 93 -> Tralys.Ui.Key
+Tralys.Ui.Key.Multiply = 106 -> Tralys.Ui.Key
+Tralys.Ui.Key.N = 78 -> Tralys.Ui.Key
+Tralys.Ui.Key.None = 0 -> Tralys.Ui.Key
+Tralys.Ui.Key.NumLock = 144 -> Tralys.Ui.Key
+Tralys.Ui.Key.NumPad0 = 96 -> Tralys.Ui.Key
+Tralys.Ui.Key.NumPad1 = 97 -> Tralys.Ui.Key
+Tralys.Ui.Key.NumPad2 = 98 -> Tralys.Ui.Key
+Tralys.Ui.Key.NumPad3 = 99 -> Tralys.Ui.Key
+Tralys.Ui.Key.NumPad4 = 100 -> Tralys.Ui.Key
+Tralys.Ui.Key.NumPad5 = 101 -> Tralys.Ui.Key
+Tralys.Ui.Key.NumPad6 = 102 -> Tralys.Ui.Key
+Tralys.Ui.Key.NumPad7 = 103 -> Tralys.Ui.Key
+Tralys.Ui.Key.NumPad8 = 104 -> Tralys.Ui.Key
+Tralys.Ui.Key.NumPad9 = 105 -> Tralys.Ui.Key
+Tralys.Ui.Key.O = 79 -> Tralys.Ui.Key
+Tralys.Ui.Key.OemBracketLeft = 219 -> Tralys.Ui.Key
+Tralys.Ui.Key.OemBracketRight = 221 -> Tralys.Ui.Key
+Tralys.Ui.Key.OemComma = 188 -> Tralys.Ui.Key
+Tralys.Ui.Key.OemMinus = 189 -> Tralys.Ui.Key
+Tralys.Ui.Key.OemPeriod = 190 -> Tralys.Ui.Key
+Tralys.Ui.Key.OemPipe = 220 -> Tralys.Ui.Key
+Tralys.Ui.Key.OemPlus = 187 -> Tralys.Ui.Key
+Tralys.Ui.Key.OemQuestion = 191 -> Tralys.Ui.Key
+Tralys.Ui.Key.OemQuotes = 222 -> Tralys.Ui.Key
+Tralys.Ui.Key.OemSemicolon = 186 -> Tralys.Ui.Key
+Tralys.Ui.Key.OemTilde = 192 -> Tralys.Ui.Key
+Tralys.Ui.Key.P = 80 -> Tralys.Ui.Key
+Tralys.Ui.Key.PageDown = 34 -> Tralys.Ui.Key
+Tralys.Ui.Key.PageUp = 33 -> Tralys.Ui.Key
+Tralys.Ui.Key.Pause = 19 -> Tralys.Ui.Key
+Tralys.Ui.Key.PrintScreen = 44 -> Tralys.Ui.Key
+Tralys.Ui.Key.Q = 81 -> Tralys.Ui.Key
+Tralys.Ui.Key.R = 82 -> Tralys.Ui.Key
+Tralys.Ui.Key.Right = 39 -> Tralys.Ui.Key
+Tralys.Ui.Key.S = 83 -> Tralys.Ui.Key
+Tralys.Ui.Key.ScrollLock = 145 -> Tralys.Ui.Key
+Tralys.Ui.Key.ShiftLeft = 160 -> Tralys.Ui.Key
+Tralys.Ui.Key.ShiftRight = 161 -> Tralys.Ui.Key
+Tralys.Ui.Key.Space = 32 -> Tralys.Ui.Key
+Tralys.Ui.Key.Subtract = 109 -> Tralys.Ui.Key
+Tralys.Ui.Key.T = 84 -> Tralys.Ui.Key
+Tralys.Ui.Key.Tab = 9 -> Tralys.Ui.Key
+Tralys.Ui.Key.U = 85 -> Tralys.Ui.Key
+Tralys.Ui.Key.Up = 38 -> Tralys.Ui.Key
+Tralys.Ui.Key.V = 86 -> Tralys.Ui.Key
+Tralys.Ui.Key.W = 87 -> Tralys.Ui.Key
+Tralys.Ui.Key.WindowsLeft = 91 -> Tralys.Ui.Key
+Tralys.Ui.Key.WindowsRight = 92 -> Tralys.Ui.Key
+Tralys.Ui.Key.X = 88 -> Tralys.Ui.Key
+Tralys.Ui.Key.Y = 89 -> Tralys.Ui.Key
+Tralys.Ui.Key.Z = 90 -> Tralys.Ui.Key
+Tralys.Ui.KeySpline
+Tralys.Ui.KeySpline.Ease(double normalizedTime) -> double
+Tralys.Ui.KeySpline.KeySpline() -> void
+Tralys.Ui.KeySpline.KeySpline(float x1, float y1, float x2, float y2) -> void
+Tralys.Ui.Media.ImageSource
+override Tralys.Ui.Media.ImageSource.Equals(object? obj) -> bool
+Tralys.Ui.Media.ImageSource.Equals(Tralys.Ui.Media.ImageSource other) -> bool
+override Tralys.Ui.Media.ImageSource.GetHashCode() -> int
+Tralys.Ui.Media.ImageSource.ImageSource() -> void
+Tralys.Ui.Media.ImageSource.ImageSource(string! key) -> void
+Tralys.Ui.Media.ImageSource.ImageSource(Tralys.Ui.Rendering.RenderTexture! texture) -> void
+static Tralys.Ui.Media.ImageSource.implicit operator Tralys.Ui.Media.ImageSource(string? key) -> Tralys.Ui.Media.ImageSource
+static Tralys.Ui.Media.ImageSource.implicit operator Tralys.Ui.Media.ImageSource(Tralys.Ui.Rendering.RenderTexture? texture) -> Tralys.Ui.Media.ImageSource
+Tralys.Ui.Media.ImageSource.IsEmpty.get -> bool
+Tralys.Ui.Media.ImageSource.Key.get -> string?
+static Tralys.Ui.Media.ImageSource.operator !=(Tralys.Ui.Media.ImageSource left, Tralys.Ui.Media.ImageSource right) -> bool
+static Tralys.Ui.Media.ImageSource.operator ==(Tralys.Ui.Media.ImageSource left, Tralys.Ui.Media.ImageSource right) -> bool
+Tralys.Ui.Media.ImageSource.Texture.get -> Tralys.Ui.Rendering.RenderTexture?
+override Tralys.Ui.Media.ImageSource.ToString() -> string!
+Tralys.Ui.ModifierKeys
+Tralys.Ui.ModifierKeys.Alt = 1 -> Tralys.Ui.ModifierKeys
+Tralys.Ui.ModifierKeys.Control = 2 -> Tralys.Ui.ModifierKeys
+Tralys.Ui.ModifierKeys.Gui = 8 -> Tralys.Ui.ModifierKeys
+Tralys.Ui.ModifierKeys.None = 0 -> Tralys.Ui.ModifierKeys
+Tralys.Ui.ModifierKeys.Shift = 4 -> Tralys.Ui.ModifierKeys
+Tralys.Ui.MouseButton
+Tralys.Ui.MouseButton.Button1 = 3 -> Tralys.Ui.MouseButton
+Tralys.Ui.MouseButton.Button2 = 4 -> Tralys.Ui.MouseButton
+Tralys.Ui.MouseButton.Left = 0 -> Tralys.Ui.MouseButton
+Tralys.Ui.MouseButton.Middle = 1 -> Tralys.Ui.MouseButton
+Tralys.Ui.MouseButton.Right = 2 -> Tralys.Ui.MouseButton
+Tralys.Ui.MouseButtons
+Tralys.Ui.MouseButtons.Button1 = 8 -> Tralys.Ui.MouseButtons
+Tralys.Ui.MouseButtons.Button2 = 16 -> Tralys.Ui.MouseButtons
+Tralys.Ui.MouseButtons.Left = 1 -> Tralys.Ui.MouseButtons
+Tralys.Ui.MouseButtons.Middle = 2 -> Tralys.Ui.MouseButtons
+Tralys.Ui.MouseButtons.None = 0 -> Tralys.Ui.MouseButtons
+Tralys.Ui.MouseButtons.Right = 4 -> Tralys.Ui.MouseButtons
+Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.Absolute = 13 -> Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.Bottom = 0 -> Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.BottomEnd = 2 -> Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.BottomStart = 1 -> Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.Left = 6 -> Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.LeftEnd = 8 -> Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.LeftStart = 7 -> Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.Pointer = 12 -> Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.Right = 9 -> Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.RightEnd = 11 -> Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.RightStart = 10 -> Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.Top = 3 -> Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.TopEnd = 5 -> Tralys.Ui.PlacementMode
+Tralys.Ui.PlacementMode.TopStart = 4 -> Tralys.Ui.PlacementMode
+Tralys.Ui.Pointer
+Tralys.Ui.Pointer.Deconstruct(out Tralys.Ui.PointerKind Kind, out ulong Id) -> void
+~override Tralys.Ui.Pointer.Equals(object obj) -> bool
+Tralys.Ui.Pointer.Equals(Tralys.Ui.Pointer other) -> bool
+override Tralys.Ui.Pointer.GetHashCode() -> int
+Tralys.Ui.Pointer.Id.get -> ulong
+Tralys.Ui.Pointer.Id.init -> void
+Tralys.Ui.Pointer.Kind.get -> Tralys.Ui.PointerKind
+Tralys.Ui.Pointer.Kind.init -> void
+static Tralys.Ui.Pointer.operator !=(Tralys.Ui.Pointer left, Tralys.Ui.Pointer right) -> bool
+static Tralys.Ui.Pointer.operator ==(Tralys.Ui.Pointer left, Tralys.Ui.Pointer right) -> bool
+Tralys.Ui.Pointer.Pointer() -> void
+Tralys.Ui.Pointer.Pointer(Tralys.Ui.PointerKind Kind, ulong Id) -> void
+~override Tralys.Ui.Pointer.ToString() -> string
+Tralys.Ui.PointerKind
+Tralys.Ui.PointerKind.Mouse = 0 -> Tralys.Ui.PointerKind
+Tralys.Ui.PointerKind.Pen = 2 -> Tralys.Ui.PointerKind
+Tralys.Ui.PointerKind.Touch = 1 -> Tralys.Ui.PointerKind
+Tralys.Ui.Rect
+Tralys.Ui.Rect.Bottom.get -> float
+Tralys.Ui.Rect.Contains(System.Numerics.Vector2 point) -> bool
+Tralys.Ui.Rect.Deconstruct(out float X, out float Y, out float Width, out float Height) -> void
+Tralys.Ui.Rect.Deflate(Tralys.Ui.Thickness thickness) -> Tralys.Ui.Rect
+~override Tralys.Ui.Rect.Equals(object obj) -> bool
+Tralys.Ui.Rect.Equals(Tralys.Ui.Rect other) -> bool
+static Tralys.Ui.Rect.FromEdges(float left, float top, float right, float bottom) -> Tralys.Ui.Rect
+override Tralys.Ui.Rect.GetHashCode() -> int
+Tralys.Ui.Rect.Height.get -> float
+Tralys.Ui.Rect.Height.init -> void
+Tralys.Ui.Rect.Inflate(float dx, float dy) -> Tralys.Ui.Rect
+Tralys.Ui.Rect.Intersect(Tralys.Ui.Rect other) -> Tralys.Ui.Rect
+Tralys.Ui.Rect.IsEmpty.get -> bool
+static Tralys.Ui.Rect.operator !=(Tralys.Ui.Rect left, Tralys.Ui.Rect right) -> bool
+static Tralys.Ui.Rect.operator ==(Tralys.Ui.Rect left, Tralys.Ui.Rect right) -> bool
+Tralys.Ui.Rect.Rect() -> void
+Tralys.Ui.Rect.Rect(float X, float Y, float Width, float Height) -> void
+Tralys.Ui.Rect.Rect(Tralys.Ui.Size size) -> void
+Tralys.Ui.Rect.Right.get -> float
+Tralys.Ui.Rect.Size.get -> Tralys.Ui.Size
+~override Tralys.Ui.Rect.ToString() -> string
+Tralys.Ui.Rect.TransformedBy(in System.Numerics.Matrix3x2 transform) -> Tralys.Ui.Rect
+Tralys.Ui.Rect.Union(Tralys.Ui.Rect other) -> Tralys.Ui.Rect
+Tralys.Ui.Rect.Width.get -> float
+Tralys.Ui.Rect.Width.init -> void
+Tralys.Ui.Rect.X.get -> float
+Tralys.Ui.Rect.X.init -> void
+Tralys.Ui.Rect.Y.get -> float
+Tralys.Ui.Rect.Y.init -> void
+Tralys.Ui.Rendering.BoxShadow
+Tralys.Ui.Rendering.BoxShadow.Blur.get -> float
+Tralys.Ui.Rendering.BoxShadow.Blur.init -> void
+Tralys.Ui.Rendering.BoxShadow.BoxShadow() -> void
+Tralys.Ui.Rendering.BoxShadow.BoxShadow(float OffsetX, float OffsetY, float Blur, float Spread, Tralys.Ui.Color Color, bool IsInset = false) -> void
+Tralys.Ui.Rendering.BoxShadow.Color.get -> Tralys.Ui.Color
+Tralys.Ui.Rendering.BoxShadow.Color.init -> void
+Tralys.Ui.Rendering.BoxShadow.Deconstruct(out float OffsetX, out float OffsetY, out float Blur, out float Spread, out Tralys.Ui.Color Color, out bool IsInset) -> void
+~override Tralys.Ui.Rendering.BoxShadow.Equals(object obj) -> bool
+Tralys.Ui.Rendering.BoxShadow.Equals(Tralys.Ui.Rendering.BoxShadow other) -> bool
+override Tralys.Ui.Rendering.BoxShadow.GetHashCode() -> int
+Tralys.Ui.Rendering.BoxShadow.IsInset.get -> bool
+Tralys.Ui.Rendering.BoxShadow.IsInset.init -> void
+Tralys.Ui.Rendering.BoxShadow.OffsetX.get -> float
+Tralys.Ui.Rendering.BoxShadow.OffsetX.init -> void
+Tralys.Ui.Rendering.BoxShadow.OffsetY.get -> float
+Tralys.Ui.Rendering.BoxShadow.OffsetY.init -> void
+static Tralys.Ui.Rendering.BoxShadow.operator !=(Tralys.Ui.Rendering.BoxShadow left, Tralys.Ui.Rendering.BoxShadow right) -> bool
+static Tralys.Ui.Rendering.BoxShadow.operator ==(Tralys.Ui.Rendering.BoxShadow left, Tralys.Ui.Rendering.BoxShadow right) -> bool
+Tralys.Ui.Rendering.BoxShadow.Spread.get -> float
+Tralys.Ui.Rendering.BoxShadow.Spread.init -> void
+~override Tralys.Ui.Rendering.BoxShadow.ToString() -> string
+Tralys.Ui.Rendering.ColorStop
+Tralys.Ui.Rendering.ColorStop.Color.get -> Tralys.Ui.Color
+Tralys.Ui.Rendering.ColorStop.Color.init -> void
+Tralys.Ui.Rendering.ColorStop.ColorStop() -> void
+Tralys.Ui.Rendering.ColorStop.ColorStop(float Offset, Tralys.Ui.Color Color) -> void
+Tralys.Ui.Rendering.ColorStop.Deconstruct(out float Offset, out Tralys.Ui.Color Color) -> void
+~override Tralys.Ui.Rendering.ColorStop.Equals(object obj) -> bool
+Tralys.Ui.Rendering.ColorStop.Equals(Tralys.Ui.Rendering.ColorStop other) -> bool
+override Tralys.Ui.Rendering.ColorStop.GetHashCode() -> int
+Tralys.Ui.Rendering.ColorStop.Offset.get -> float
+Tralys.Ui.Rendering.ColorStop.Offset.init -> void
+static Tralys.Ui.Rendering.ColorStop.operator !=(Tralys.Ui.Rendering.ColorStop left, Tralys.Ui.Rendering.ColorStop right) -> bool
+static Tralys.Ui.Rendering.ColorStop.operator ==(Tralys.Ui.Rendering.ColorStop left, Tralys.Ui.Rendering.ColorStop right) -> bool
+~override Tralys.Ui.Rendering.ColorStop.ToString() -> string
+Tralys.Ui.Rendering.DashArray
+Tralys.Ui.Rendering.DashArray.DashArray(params System.ReadOnlySpan<float> lengths) -> void
+Tralys.Ui.Rendering.DashArray.Lengths.get -> System.ReadOnlySpan<float>
+Tralys.Ui.Rendering.DashArray.Period.get -> float
+Tralys.Ui.Rendering.DrawingContext
+Tralys.Ui.Rendering.DrawingContext.DrawArc(System.Numerics.Vector2 center, float radius, float thickness, float startAngle, float sweepAngle, Tralys.Ui.Rendering.Paint paint) -> void
+Tralys.Ui.Rendering.DrawingContext.DrawBox(Tralys.Ui.Rect rect, Tralys.Ui.CornerRadius radius, Tralys.Ui.Thickness border, Tralys.Ui.Rendering.Paint fill, Tralys.Ui.Rendering.Paint borderPaint) -> void
+Tralys.Ui.Rendering.DrawingContext.DrawBoxShadow(Tralys.Ui.Rect rect, Tralys.Ui.CornerRadius radius, Tralys.Ui.Rendering.BoxShadow shadow) -> void
+Tralys.Ui.Rendering.DrawingContext.DrawEllipse(Tralys.Ui.Rect bounds, Tralys.Ui.Rendering.Paint fill, float strokeThickness, Tralys.Ui.Rendering.Paint stroke) -> void
+Tralys.Ui.Rendering.DrawingContext.DrawGlyphs(Tralys.Ui.Rendering.RenderTexture! atlas, System.ReadOnlySpan<Tralys.Ui.Rendering.GlyphQuad> glyphs, Tralys.Ui.Rendering.Paint paint) -> void
+Tralys.Ui.Rendering.DrawingContext.DrawImage(Tralys.Ui.Rendering.RenderTexture! texture, Tralys.Ui.Rect destination, float opacity = 1) -> void
+Tralys.Ui.Rendering.DrawingContext.DrawImage(Tralys.Ui.Rendering.RenderTexture! texture, Tralys.Ui.Rect destination, Tralys.Ui.Rect source, float opacity = 1) -> void
+Tralys.Ui.Rendering.DrawingContext.DrawImage(Tralys.Ui.Rendering.RenderTexture! texture, Tralys.Ui.Rect destination, Tralys.Ui.Rect source, Tralys.Ui.Rendering.NineSlice slice, float opacity = 1) -> void
+Tralys.Ui.Rendering.DrawingContext.DrawingContext() -> void
+Tralys.Ui.Rendering.DrawingContext.DrawLine(System.Numerics.Vector2 from, System.Numerics.Vector2 to, float thickness, Tralys.Ui.Rendering.Paint paint) -> void
+Tralys.Ui.Rendering.DrawingContext.DrawPath(Tralys.Ui.Rendering.PathBuilder! path, Tralys.Ui.Rendering.Paint fill, Tralys.Ui.Rendering.Pen stroke) -> void
+Tralys.Ui.Rendering.DrawingContext.DrawRectangle(Tralys.Ui.Rendering.Paint fill, Tralys.Ui.Rect rect) -> void
+Tralys.Ui.Rendering.DrawingContext.DrawRoundedRectangle(Tralys.Ui.Rendering.Paint fill, Tralys.Ui.Rect rect, Tralys.Ui.CornerRadius radius) -> void
+Tralys.Ui.Rendering.DrawingContext.HoldRectangle(Tralys.Ui.Rect rect) -> void
+Tralys.Ui.Rendering.DrawingContext.Pop() -> void
+Tralys.Ui.Rendering.DrawingContext.PushClip(Tralys.Ui.Rect clip) -> void
+Tralys.Ui.Rendering.DrawingContext.PushClip(Tralys.Ui.Rect clip, Tralys.Ui.CornerRadius radius) -> void
+Tralys.Ui.Rendering.DrawingContext.PushClip(Tralys.Ui.Rendering.PathBuilder! path) -> void
+Tralys.Ui.Rendering.DrawingContext.PushOpacity(float opacity) -> void
+Tralys.Ui.Rendering.DrawingContext.PushTransform(System.Numerics.Matrix3x2 transform) -> void
+Tralys.Ui.Rendering.DrawList
+Tralys.Ui.Rendering.DrawList.Begin(float width, float height) -> void
+Tralys.Ui.Rendering.DrawList.Draw(Tralys.Ui.Rendering.RenderCommandBuffer! buffer) -> void
+Tralys.Ui.Rendering.DrawList.DrawList(Tralys.Ui.Rendering.GradientRampAtlas! ramps) -> void
+Tralys.Ui.Rendering.DrawList.Generation.get -> long
+Tralys.Ui.Rendering.DrawList.Pop() -> void
+Tralys.Ui.Rendering.DrawList.PushClip(Tralys.Ui.Rect clip) -> void
+Tralys.Ui.Rendering.DrawList.PushClip(Tralys.Ui.Rect clip, Tralys.Ui.CornerRadius radius) -> void
+Tralys.Ui.Rendering.DrawList.PushClip(Tralys.Ui.Rendering.PathBuilder! path) -> void
+Tralys.Ui.Rendering.DrawList.PushDropShadow(Tralys.Ui.Rendering.DropShadow shadow) -> void
+Tralys.Ui.Rendering.DrawList.PushLayer(float opacity) -> void
+Tralys.Ui.Rendering.DrawList.PushOpacity(float opacity) -> void
+Tralys.Ui.Rendering.DrawList.PushOpacityMask(Tralys.Ui.Rendering.Paint mask, Tralys.Ui.Rect bounds) -> void
+Tralys.Ui.Rendering.DrawList.PushTransform(System.Numerics.Matrix3x2 transform) -> void
+Tralys.Ui.Rendering.DrawList.QuadCount.get -> int
+Tralys.Ui.Rendering.DrawList.RetainRamps() -> bool
+Tralys.Ui.Rendering.DrawList.ShadowDownsample.get -> int
+Tralys.Ui.Rendering.DrawList.ShadowDownsample.set -> void
+Tralys.Ui.Rendering.DropShadow
+Tralys.Ui.Rendering.DropShadow.BlurRadius.get -> float
+Tralys.Ui.Rendering.DropShadow.BlurRadius.init -> void
+Tralys.Ui.Rendering.DropShadow.Color.get -> Tralys.Ui.Color
+Tralys.Ui.Rendering.DropShadow.Color.init -> void
+Tralys.Ui.Rendering.DropShadow.Deconstruct(out Tralys.Ui.Color Color, out float Direction, out float ShadowDepth, out float BlurRadius, out float Opacity) -> void
+Tralys.Ui.Rendering.DropShadow.Direction.get -> float
+Tralys.Ui.Rendering.DropShadow.Direction.init -> void
+Tralys.Ui.Rendering.DropShadow.DropShadow() -> void
+Tralys.Ui.Rendering.DropShadow.DropShadow(Tralys.Ui.Color Color, float Direction = 315, float ShadowDepth = 5, float BlurRadius = 5, float Opacity = 1) -> void
+~override Tralys.Ui.Rendering.DropShadow.Equals(object obj) -> bool
+Tralys.Ui.Rendering.DropShadow.Equals(Tralys.Ui.Rendering.DropShadow other) -> bool
+override Tralys.Ui.Rendering.DropShadow.GetHashCode() -> int
+Tralys.Ui.Rendering.DropShadow.Opacity.get -> float
+Tralys.Ui.Rendering.DropShadow.Opacity.init -> void
+static Tralys.Ui.Rendering.DropShadow.operator !=(Tralys.Ui.Rendering.DropShadow left, Tralys.Ui.Rendering.DropShadow right) -> bool
+static Tralys.Ui.Rendering.DropShadow.operator ==(Tralys.Ui.Rendering.DropShadow left, Tralys.Ui.Rendering.DropShadow right) -> bool
+Tralys.Ui.Rendering.DropShadow.ShadowDepth.get -> float
+Tralys.Ui.Rendering.DropShadow.ShadowDepth.init -> void
+~override Tralys.Ui.Rendering.DropShadow.ToString() -> string
+Tralys.Ui.Rendering.FillRule
+Tralys.Ui.Rendering.FillRule.EvenOdd = 0 -> Tralys.Ui.Rendering.FillRule
+Tralys.Ui.Rendering.FillRule.Nonzero = 1 -> Tralys.Ui.Rendering.FillRule
+Tralys.Ui.Rendering.GeometryCombineMode
+Tralys.Ui.Rendering.GeometryCombineMode.Exclude = 3 -> Tralys.Ui.Rendering.GeometryCombineMode
+Tralys.Ui.Rendering.GeometryCombineMode.Intersect = 1 -> Tralys.Ui.Rendering.GeometryCombineMode
+Tralys.Ui.Rendering.GeometryCombineMode.Union = 0 -> Tralys.Ui.Rendering.GeometryCombineMode
+Tralys.Ui.Rendering.GeometryCombineMode.Xor = 2 -> Tralys.Ui.Rendering.GeometryCombineMode
+Tralys.Ui.Rendering.GlyphQuad
+Tralys.Ui.Rendering.GlyphQuad.Deconstruct(out Tralys.Ui.Rect Destination, out Tralys.Ui.Rect Source) -> void
+Tralys.Ui.Rendering.GlyphQuad.Destination.get -> Tralys.Ui.Rect
+Tralys.Ui.Rendering.GlyphQuad.Destination.init -> void
+~override Tralys.Ui.Rendering.GlyphQuad.Equals(object obj) -> bool
+Tralys.Ui.Rendering.GlyphQuad.Equals(Tralys.Ui.Rendering.GlyphQuad other) -> bool
+override Tralys.Ui.Rendering.GlyphQuad.GetHashCode() -> int
+Tralys.Ui.Rendering.GlyphQuad.GlyphQuad() -> void
+Tralys.Ui.Rendering.GlyphQuad.GlyphQuad(Tralys.Ui.Rect Destination, Tralys.Ui.Rect Source) -> void
+static Tralys.Ui.Rendering.GlyphQuad.operator !=(Tralys.Ui.Rendering.GlyphQuad left, Tralys.Ui.Rendering.GlyphQuad right) -> bool
+static Tralys.Ui.Rendering.GlyphQuad.operator ==(Tralys.Ui.Rendering.GlyphQuad left, Tralys.Ui.Rendering.GlyphQuad right) -> bool
+Tralys.Ui.Rendering.GlyphQuad.Source.get -> Tralys.Ui.Rect
+Tralys.Ui.Rendering.GlyphQuad.Source.init -> void
+~override Tralys.Ui.Rendering.GlyphQuad.ToString() -> string
+Tralys.Ui.Rendering.GradientRampAtlas
+Tralys.Ui.Rendering.GradientRampAtlas.Acquire(Tralys.Ui.Rendering.GradientStops! stops) -> int
+Tralys.Ui.Rendering.GradientRampAtlas.BeginFrame() -> void
+Tralys.Ui.Rendering.GradientRampAtlas.GradientRampAtlas(int rows = 128) -> void
+Tralys.Ui.Rendering.GradientRampAtlas.Pixels.get -> System.ReadOnlySpan<byte>
+Tralys.Ui.Rendering.GradientRampAtlas.Rows.get -> int
+Tralys.Ui.Rendering.GradientRampAtlas.TryTakeDirtyRows(out int firstRow, out int rowCount) -> bool
+Tralys.Ui.Rendering.GradientSpace
+Tralys.Ui.Rendering.GradientSpace.Absolute = 1 -> Tralys.Ui.Rendering.GradientSpace
+Tralys.Ui.Rendering.GradientSpace.RelativeToBounds = 0 -> Tralys.Ui.Rendering.GradientSpace
+Tralys.Ui.Rendering.GradientStops
+Tralys.Ui.Rendering.GradientStops.GradientStops(System.ReadOnlySpan<Tralys.Ui.Rendering.ColorStop> stops) -> void
+Tralys.Ui.Rendering.GradientStops.Set(System.ReadOnlySpan<Tralys.Ui.Rendering.ColorStop> stops) -> void
+Tralys.Ui.Rendering.GradientStops.Stops.get -> System.ReadOnlySpan<Tralys.Ui.Rendering.ColorStop>
+Tralys.Ui.Rendering.GradientStops.Version.get -> int
+Tralys.Ui.Rendering.IRenderedView
+Tralys.Ui.Rendering.IRenderedView.PixelHeight.get -> int
+Tralys.Ui.Rendering.IRenderedView.PixelWidth.get -> int
+Tralys.Ui.Rendering.IRenderedView.Render(Tralys.Ui.Rendering.DrawList! list) -> bool
+Tralys.Ui.Rendering.ITextureFactory
+Tralys.Ui.Rendering.ITextureFactory.CreateWritable(int width, int height) -> Tralys.Ui.Rendering.WritableTexture!
+Tralys.Ui.Rendering.ITextureProvider
+Tralys.Ui.Rendering.ITextureProvider.Resolve(string! source) -> Tralys.Ui.Rendering.RenderTexture?
+Tralys.Ui.Rendering.NineSlice
+Tralys.Ui.Rendering.NineSlice.Deconstruct(out Tralys.Ui.Thickness Slice, out float Scale, out Tralys.Ui.Rendering.SliceFill Fill, out float TexelInset) -> void
+~override Tralys.Ui.Rendering.NineSlice.Equals(object obj) -> bool
+Tralys.Ui.Rendering.NineSlice.Equals(Tralys.Ui.Rendering.NineSlice other) -> bool
+Tralys.Ui.Rendering.NineSlice.Fill.get -> Tralys.Ui.Rendering.SliceFill
+Tralys.Ui.Rendering.NineSlice.Fill.init -> void
+override Tralys.Ui.Rendering.NineSlice.GetHashCode() -> int
+Tralys.Ui.Rendering.NineSlice.NineSlice() -> void
+Tralys.Ui.Rendering.NineSlice.NineSlice(Tralys.Ui.Thickness Slice, float Scale = 1, Tralys.Ui.Rendering.SliceFill Fill = Tralys.Ui.Rendering.SliceFill.Stretch, float TexelInset = 0) -> void
+static Tralys.Ui.Rendering.NineSlice.operator !=(Tralys.Ui.Rendering.NineSlice left, Tralys.Ui.Rendering.NineSlice right) -> bool
+static Tralys.Ui.Rendering.NineSlice.operator ==(Tralys.Ui.Rendering.NineSlice left, Tralys.Ui.Rendering.NineSlice right) -> bool
+Tralys.Ui.Rendering.NineSlice.Scale.get -> float
+Tralys.Ui.Rendering.NineSlice.Scale.init -> void
+Tralys.Ui.Rendering.NineSlice.Slice.get -> Tralys.Ui.Thickness
+Tralys.Ui.Rendering.NineSlice.Slice.init -> void
+Tralys.Ui.Rendering.NineSlice.TexelInset.get -> float
+Tralys.Ui.Rendering.NineSlice.TexelInset.init -> void
+~override Tralys.Ui.Rendering.NineSlice.ToString() -> string
+Tralys.Ui.Rendering.Paint
+Tralys.Ui.Rendering.Paint.Color.get -> Tralys.Ui.Color
+Tralys.Ui.Rendering.Paint.End.get -> System.Numerics.Vector2
+override Tralys.Ui.Rendering.Paint.Equals(object? obj) -> bool
+Tralys.Ui.Rendering.Paint.Equals(Tralys.Ui.Rendering.Paint other) -> bool
+static Tralys.Ui.Rendering.Paint.FromImage(Tralys.Ui.Rendering.PaintImage! image, float opacity = 1) -> Tralys.Ui.Rendering.Paint
+override Tralys.Ui.Rendering.Paint.GetHashCode() -> int
+Tralys.Ui.Rendering.Paint.Image.get -> Tralys.Ui.Rendering.PaintImage?
+static Tralys.Ui.Rendering.Paint.implicit operator Tralys.Ui.Rendering.Paint(Tralys.Ui.Color color) -> Tralys.Ui.Rendering.Paint
+Tralys.Ui.Rendering.Paint.IsVisible.get -> bool
+Tralys.Ui.Rendering.Paint.Kind.get -> Tralys.Ui.Rendering.PaintKind
+static Tralys.Ui.Rendering.Paint.Linear(Tralys.Ui.Rendering.GradientStops! stops, System.Numerics.Vector2 start, System.Numerics.Vector2 end, Tralys.Ui.Rendering.GradientSpace space = Tralys.Ui.Rendering.GradientSpace.RelativeToBounds, float opacity = 1) -> Tralys.Ui.Rendering.Paint
+Tralys.Ui.Rendering.Paint.Opacity.get -> float
+static Tralys.Ui.Rendering.Paint.operator !=(Tralys.Ui.Rendering.Paint left, Tralys.Ui.Rendering.Paint right) -> bool
+static Tralys.Ui.Rendering.Paint.operator ==(Tralys.Ui.Rendering.Paint left, Tralys.Ui.Rendering.Paint right) -> bool
+Tralys.Ui.Rendering.Paint.Paint() -> void
+static Tralys.Ui.Rendering.Paint.Radial(Tralys.Ui.Rendering.GradientStops! stops, System.Numerics.Vector2 center, System.Numerics.Vector2 radius, Tralys.Ui.Rendering.GradientSpace space = Tralys.Ui.Rendering.GradientSpace.RelativeToBounds, float opacity = 1) -> Tralys.Ui.Rendering.Paint
+static Tralys.Ui.Rendering.Paint.Solid(Tralys.Ui.Color color, float opacity = 1) -> Tralys.Ui.Rendering.Paint
+Tralys.Ui.Rendering.Paint.Space.get -> Tralys.Ui.Rendering.GradientSpace
+Tralys.Ui.Rendering.Paint.Start.get -> System.Numerics.Vector2
+Tralys.Ui.Rendering.Paint.Stops.get -> Tralys.Ui.Rendering.GradientStops?
+Tralys.Ui.Rendering.PaintImage
+Tralys.Ui.Rendering.PaintImage.AlignmentX.get -> Tralys.Ui.AlignmentX
+Tralys.Ui.Rendering.PaintImage.AlignmentX.init -> void
+Tralys.Ui.Rendering.PaintImage.AlignmentY.get -> Tralys.Ui.AlignmentY
+Tralys.Ui.Rendering.PaintImage.AlignmentY.init -> void
+Tralys.Ui.Rendering.PaintImage.PaintImage(Tralys.Ui.Media.ImageSource source) -> void
+Tralys.Ui.Rendering.PaintImage.Source.get -> Tralys.Ui.Media.ImageSource
+Tralys.Ui.Rendering.PaintImage.Stretch.get -> Tralys.Ui.Stretch
+Tralys.Ui.Rendering.PaintImage.Stretch.init -> void
+Tralys.Ui.Rendering.PaintImage.Viewbox.get -> Tralys.Ui.Rect
+Tralys.Ui.Rendering.PaintImage.Viewbox.init -> void
+Tralys.Ui.Rendering.PaintImage.ViewboxUnits.get -> Tralys.Ui.Rendering.GradientSpace
+Tralys.Ui.Rendering.PaintImage.ViewboxUnits.init -> void
+Tralys.Ui.Rendering.PaintKind
+Tralys.Ui.Rendering.PaintKind.Image = 4 -> Tralys.Ui.Rendering.PaintKind
+Tralys.Ui.Rendering.PaintKind.LinearGradient = 2 -> Tralys.Ui.Rendering.PaintKind
+Tralys.Ui.Rendering.PaintKind.None = 0 -> Tralys.Ui.Rendering.PaintKind
+Tralys.Ui.Rendering.PaintKind.RadialGradient = 3 -> Tralys.Ui.Rendering.PaintKind
+Tralys.Ui.Rendering.PaintKind.Solid = 1 -> Tralys.Ui.Rendering.PaintKind
+Tralys.Ui.Rendering.PathBuilder
+Tralys.Ui.Rendering.PathBuilder.AddEllipse(Tralys.Ui.Rect bounds) -> void
+Tralys.Ui.Rendering.PathBuilder.AddRectangle(Tralys.Ui.Rect rect) -> void
+Tralys.Ui.Rendering.PathBuilder.AddRoundedRectangle(Tralys.Ui.Rect rect, System.Numerics.Vector2 radius) -> void
+Tralys.Ui.Rendering.PathBuilder.ArcTo(System.Numerics.Vector2 end, System.Numerics.Vector2 radius, float rotation, bool isLargeArc, bool clockwise) -> void
+Tralys.Ui.Rendering.PathBuilder.Clear() -> void
+Tralys.Ui.Rendering.PathBuilder.Close() -> void
+Tralys.Ui.Rendering.PathBuilder.Combine(Tralys.Ui.Rendering.PathBuilder! other, Tralys.Ui.Rendering.GeometryCombineMode mode) -> void
+Tralys.Ui.Rendering.PathBuilder.CubicTo(System.Numerics.Vector2 control1, System.Numerics.Vector2 control2, System.Numerics.Vector2 end) -> void
+Tralys.Ui.Rendering.PathBuilder.FillRule.get -> Tralys.Ui.Rendering.FillRule
+Tralys.Ui.Rendering.PathBuilder.FillRule.set -> void
+Tralys.Ui.Rendering.PathBuilder.IsEmpty.get -> bool
+Tralys.Ui.Rendering.PathBuilder.LineTo(System.Numerics.Vector2 point) -> void
+Tralys.Ui.Rendering.PathBuilder.MoveTo(System.Numerics.Vector2 point) -> void
+Tralys.Ui.Rendering.PathBuilder.PathBuilder() -> void
+Tralys.Ui.Rendering.PathBuilder.QuadraticTo(System.Numerics.Vector2 control, System.Numerics.Vector2 end) -> void
+Tralys.Ui.Rendering.Pen
+Tralys.Ui.Rendering.Pen.DashArray.get -> Tralys.Ui.Rendering.DashArray?
+Tralys.Ui.Rendering.Pen.DashArray.init -> void
+Tralys.Ui.Rendering.Pen.DashCap.get -> Tralys.Ui.Rendering.PenLineCap
+Tralys.Ui.Rendering.Pen.DashCap.init -> void
+Tralys.Ui.Rendering.Pen.DashOffset.get -> float
+Tralys.Ui.Rendering.Pen.DashOffset.init -> void
+Tralys.Ui.Rendering.Pen.Deconstruct(out Tralys.Ui.Rendering.Paint Paint, out float Thickness, out Tralys.Ui.Rendering.PenLineJoin LineJoin, out Tralys.Ui.Rendering.PenLineCap StartLineCap, out Tralys.Ui.Rendering.PenLineCap EndLineCap, out float MiterLimit) -> void
+Tralys.Ui.Rendering.Pen.EndLineCap.get -> Tralys.Ui.Rendering.PenLineCap
+Tralys.Ui.Rendering.Pen.EndLineCap.init -> void
+~override Tralys.Ui.Rendering.Pen.Equals(object obj) -> bool
+Tralys.Ui.Rendering.Pen.Equals(Tralys.Ui.Rendering.Pen other) -> bool
+override Tralys.Ui.Rendering.Pen.GetHashCode() -> int
+Tralys.Ui.Rendering.Pen.IsDashed.get -> bool
+Tralys.Ui.Rendering.Pen.IsVisible.get -> bool
+Tralys.Ui.Rendering.Pen.LineJoin.get -> Tralys.Ui.Rendering.PenLineJoin
+Tralys.Ui.Rendering.Pen.LineJoin.init -> void
+Tralys.Ui.Rendering.Pen.MiterLimit.get -> float
+Tralys.Ui.Rendering.Pen.MiterLimit.init -> void
+static Tralys.Ui.Rendering.Pen.operator !=(Tralys.Ui.Rendering.Pen left, Tralys.Ui.Rendering.Pen right) -> bool
+static Tralys.Ui.Rendering.Pen.operator ==(Tralys.Ui.Rendering.Pen left, Tralys.Ui.Rendering.Pen right) -> bool
+Tralys.Ui.Rendering.Pen.Paint.get -> Tralys.Ui.Rendering.Paint
+Tralys.Ui.Rendering.Pen.Paint.init -> void
+Tralys.Ui.Rendering.Pen.Pen() -> void
+Tralys.Ui.Rendering.Pen.Pen(Tralys.Ui.Rendering.Paint Paint, float Thickness, Tralys.Ui.Rendering.PenLineJoin LineJoin = Tralys.Ui.Rendering.PenLineJoin.Miter, Tralys.Ui.Rendering.PenLineCap StartLineCap = Tralys.Ui.Rendering.PenLineCap.Flat, Tralys.Ui.Rendering.PenLineCap EndLineCap = Tralys.Ui.Rendering.PenLineCap.Flat, float MiterLimit = 10) -> void
+Tralys.Ui.Rendering.Pen.StartLineCap.get -> Tralys.Ui.Rendering.PenLineCap
+Tralys.Ui.Rendering.Pen.StartLineCap.init -> void
+Tralys.Ui.Rendering.Pen.Thickness.get -> float
+Tralys.Ui.Rendering.Pen.Thickness.init -> void
+~override Tralys.Ui.Rendering.Pen.ToString() -> string
+Tralys.Ui.Rendering.PenLineCap
+Tralys.Ui.Rendering.PenLineCap.Flat = 0 -> Tralys.Ui.Rendering.PenLineCap
+Tralys.Ui.Rendering.PenLineCap.Round = 2 -> Tralys.Ui.Rendering.PenLineCap
+Tralys.Ui.Rendering.PenLineCap.Square = 1 -> Tralys.Ui.Rendering.PenLineCap
+Tralys.Ui.Rendering.PenLineCap.Triangle = 3 -> Tralys.Ui.Rendering.PenLineCap
+Tralys.Ui.Rendering.PenLineJoin
+Tralys.Ui.Rendering.PenLineJoin.Bevel = 1 -> Tralys.Ui.Rendering.PenLineJoin
+Tralys.Ui.Rendering.PenLineJoin.Miter = 0 -> Tralys.Ui.Rendering.PenLineJoin
+Tralys.Ui.Rendering.PenLineJoin.Round = 2 -> Tralys.Ui.Rendering.PenLineJoin
+Tralys.Ui.Rendering.RenderCommandBuffer
+Tralys.Ui.Rendering.RenderCommandBuffer.Clear() -> void
+Tralys.Ui.Rendering.RenderCommandBuffer.IsEmpty.get -> bool
+Tralys.Ui.Rendering.RenderCommandBuffer.IsStale.get -> bool
+Tralys.Ui.Rendering.RenderCommandBuffer.Open() -> Tralys.Ui.Rendering.DrawingContext
+Tralys.Ui.Rendering.RenderCommandBuffer.RenderCommandBuffer() -> void
+Tralys.Ui.Rendering.RenderTexture
+virtual Tralys.Ui.Rendering.RenderTexture.Bind(out int layer) -> Tralys.Ui.Rendering.RenderTexture!
+Tralys.Ui.Rendering.RenderTexture.BumpGeneration() -> void
+Tralys.Ui.Rendering.RenderTexture.Generation.get -> int
+abstract Tralys.Ui.Rendering.RenderTexture.Height.get -> int
+virtual Tralys.Ui.Rendering.RenderTexture.IsPremultiplied.get -> bool
+Tralys.Ui.Rendering.RenderTexture.RenderTexture() -> void
+abstract Tralys.Ui.Rendering.RenderTexture.Width.get -> int
+Tralys.Ui.Rendering.RenderTextureArray
+abstract Tralys.Ui.Rendering.RenderTextureArray.LayerCount.get -> int
+Tralys.Ui.Rendering.RenderTextureArray.RenderTextureArray() -> void
+Tralys.Ui.Rendering.RenderTextureLayer
+Tralys.Ui.Rendering.RenderTextureLayer.Array.get -> Tralys.Ui.Rendering.RenderTextureArray!
+override Tralys.Ui.Rendering.RenderTextureLayer.Bind(out int layer) -> Tralys.Ui.Rendering.RenderTexture!
+override Tralys.Ui.Rendering.RenderTextureLayer.Height.get -> int
+Tralys.Ui.Rendering.RenderTextureLayer.Layer.get -> int
+Tralys.Ui.Rendering.RenderTextureLayer.RenderTextureLayer(Tralys.Ui.Rendering.RenderTextureArray! array, int layer) -> void
+override Tralys.Ui.Rendering.RenderTextureLayer.Width.get -> int
+Tralys.Ui.Rendering.SliceFill
+Tralys.Ui.Rendering.SliceFill.Stretch = 0 -> Tralys.Ui.Rendering.SliceFill
+Tralys.Ui.Rendering.SliceFill.Tile = 1 -> Tralys.Ui.Rendering.SliceFill
+Tralys.Ui.Rendering.WritableTexture
+abstract Tralys.Ui.Rendering.WritableTexture.Dispose() -> void
+Tralys.Ui.Rendering.WritableTexture.WritableTexture() -> void
+abstract Tralys.Ui.Rendering.WritableTexture.Write(int x, int y, int width, int height, System.ReadOnlySpan<byte> texels, int stride) -> void
+Tralys.Ui.RowList<T>
+Tralys.Ui.RowList<T>.Add(T row) -> void
+Tralys.Ui.RowList<T>.AddListener(Tralys.Ui.IItemsSourceListener! listener) -> void
+Tralys.Ui.RowList<T>.Apply() -> bool
+Tralys.Ui.RowList<T>.Count.get -> int
+Tralys.Ui.RowList<T>.GetEnumerator() -> System.Collections.Generic.List<T>.Enumerator
+Tralys.Ui.RowList<T>.IndexOf(object? item) -> int
+Tralys.Ui.RowList<T>.RemoveListener(Tralys.Ui.IItemsSourceListener! listener) -> void
+Tralys.Ui.RowList<T>.RowList() -> void
+Tralys.Ui.RowList<T>.this[int index].get -> T
+Tralys.Ui.Size
+Tralys.Ui.Size.Deconstruct(out float Width, out float Height) -> void
+~override Tralys.Ui.Size.Equals(object obj) -> bool
+Tralys.Ui.Size.Equals(Tralys.Ui.Size other) -> bool
+override Tralys.Ui.Size.GetHashCode() -> int
+Tralys.Ui.Size.Height.get -> float
+Tralys.Ui.Size.Height.init -> void
+static Tralys.Ui.Size.operator !=(Tralys.Ui.Size left, Tralys.Ui.Size right) -> bool
+static Tralys.Ui.Size.operator ==(Tralys.Ui.Size left, Tralys.Ui.Size right) -> bool
+Tralys.Ui.Size.Size() -> void
+Tralys.Ui.Size.Size(float Width, float Height) -> void
+~override Tralys.Ui.Size.ToString() -> string
+Tralys.Ui.Size.Width.get -> float
+Tralys.Ui.Size.Width.init -> void
+Tralys.Ui.Stretch
+Tralys.Ui.Stretch.Fill = 1 -> Tralys.Ui.Stretch
+Tralys.Ui.Stretch.None = 0 -> Tralys.Ui.Stretch
+Tralys.Ui.Stretch.Uniform = 2 -> Tralys.Ui.Stretch
+Tralys.Ui.Stretch.UniformToFill = 3 -> Tralys.Ui.Stretch
+Tralys.Ui.StretchDirection
+Tralys.Ui.StretchDirection.Both = 2 -> Tralys.Ui.StretchDirection
+Tralys.Ui.StretchDirection.DownOnly = 1 -> Tralys.Ui.StretchDirection
+Tralys.Ui.StretchDirection.UpOnly = 0 -> Tralys.Ui.StretchDirection
+Tralys.Ui.Testing.AllocationGate
+static Tralys.Ui.Testing.AllocationGate.WorstFrameBytes(System.Action! frame, int frames = 120, int windows = 4, int warmup = 4) -> long
+Tralys.Ui.TextInputKind
+Tralys.Ui.TextInputKind.Name = 1 -> Tralys.Ui.TextInputKind
+Tralys.Ui.TextInputKind.None = 4 -> Tralys.Ui.TextInputKind
+Tralys.Ui.TextInputKind.Number = 2 -> Tralys.Ui.TextInputKind
+Tralys.Ui.TextInputKind.Password = 3 -> Tralys.Ui.TextInputKind
+Tralys.Ui.TextInputKind.Text = 0 -> Tralys.Ui.TextInputKind
+Tralys.Ui.Themes
+static Tralys.Ui.Themes.All.get -> System.Collections.Generic.IReadOnlyList<Tralys.Ui.Theming.Theme!>!
+static Tralys.Ui.Themes.Dark.get -> Tralys.Ui.Theming.Theme!
+static Tralys.Ui.Themes.Default.get -> Tralys.Ui.Theming.Theme!
+static Tralys.Ui.Themes.Light.get -> Tralys.Ui.Theming.Theme!
+Tralys.Ui.Theming.ColorScheme
+Tralys.Ui.Theming.ColorScheme.Danger = 2 -> Tralys.Ui.Theming.ColorScheme
+Tralys.Ui.Theming.ColorScheme.Primary = 0 -> Tralys.Ui.Theming.ColorScheme
+Tralys.Ui.Theming.ColorScheme.Secondary = 1 -> Tralys.Ui.Theming.ColorScheme
+Tralys.Ui.Theming.ColorScheme.Success = 3 -> Tralys.Ui.Theming.ColorScheme
+Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.Bg = 0 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgAccent = 1 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgAccentHover = 2 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgAccentMuted = 4 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgAccentPressed = 3 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgBackdrop = 5 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgBase = 6 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgCanvas = 7 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgDanger = 8 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgDangerHover = 9 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgDangerMuted = 11 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgDangerPressed = 10 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgDisabled = 12 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgInfo = 13 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgMuted = 14 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgOverlay = 15 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgProgress = 16 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgRaised = 17 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgScrim = 18 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgSelected = 19 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgShadow = 20 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgSubtle = 21 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgSuccess = 22 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgSuccessHover = 23 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgSuccessMuted = 25 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgSuccessPressed = 24 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgSunken = 26 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgTextSelection = 27 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgTranslucent = 28 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BgWarning = 29 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.Border = 48 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderAccent = 49 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderAccentHover = 50 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderDanger = 51 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderDangerHover = 52 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderDisabled = 53 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderFocus = 54 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderHover = 55 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderInfo = 56 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderMuted = 57 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderOnMedia = 58 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderOverlay = 59 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderPressed = 60 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderSelected = 61 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderSuccess = 62 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.BorderSuccessHover = 63 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.Fg = 30 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgAccent = 31 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgAccentHover = 32 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgDanger = 33 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgDisabled = 34 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgFilledAccent = 35 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgFilledDanger = 36 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgFilledSuccess = 37 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgFilledWarning = 38 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgHover = 39 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgInfo = 40 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgMuted = 41 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgOnAccent = 42 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgOnMedia = 43 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgPlaceholder = 44 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgStrong = 45 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgSuccess = 46 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.FgWarning = 47 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.Icon = 64 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.IconDisabled = 65 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.IconHover = 66 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.IconOnAccent = 67 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.IconPressed = 68 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.StateHover = 69 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.StatePressed = 70 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ColorToken.Transparent = 71 -> Tralys.Ui.Theming.ColorToken
+Tralys.Ui.Theming.ComponentColor
+Tralys.Ui.Theming.ComponentColor.CardBgBottom = 1 -> Tralys.Ui.Theming.ComponentColor
+Tralys.Ui.Theming.ComponentColor.CardBgTop = 0 -> Tralys.Ui.Theming.ComponentColor
+Tralys.Ui.Theming.ComponentColor.RowBgSelected = 2 -> Tralys.Ui.Theming.ComponentColor
+Tralys.Ui.Theming.ComponentMetrics
+Tralys.Ui.Theming.ComponentMetrics.ComponentMetrics(float height, float padX, float padY, float fieldPadX, float gap, float fontSize, float iconSize, float measure) -> void
+Tralys.Ui.Theming.ComponentMetrics.FieldPadding.get -> Tralys.Ui.Thickness
+Tralys.Ui.Theming.ComponentMetrics.FieldPaddingX.get -> Tralys.Ui.Thickness
+Tralys.Ui.Theming.ComponentMetrics.FieldPadX.get -> float
+Tralys.Ui.Theming.ComponentMetrics.FontSize.get -> float
+Tralys.Ui.Theming.ComponentMetrics.Gap.get -> float
+Tralys.Ui.Theming.ComponentMetrics.GapEnd.get -> Tralys.Ui.Thickness
+Tralys.Ui.Theming.ComponentMetrics.GapStart.get -> Tralys.Ui.Thickness
+Tralys.Ui.Theming.ComponentMetrics.Height.get -> float
+Tralys.Ui.Theming.ComponentMetrics.IconSize.get -> float
+Tralys.Ui.Theming.ComponentMetrics.Inset.get -> Tralys.Ui.Thickness
+Tralys.Ui.Theming.ComponentMetrics.Measure.get -> float
+Tralys.Ui.Theming.ComponentMetrics.Padding.get -> Tralys.Ui.Thickness
+Tralys.Ui.Theming.ComponentMetrics.PaddingX.get -> Tralys.Ui.Thickness
+Tralys.Ui.Theming.ComponentMetrics.PaddingY.get -> Tralys.Ui.Thickness
+Tralys.Ui.Theming.ComponentMetrics.PadX.get -> float
+Tralys.Ui.Theming.ComponentMetrics.PadY.get -> float
+Tralys.Ui.Theming.ComponentPalette
+Tralys.Ui.Theming.ComponentPalette.Background.get -> Tralys.Ui.Color
+Tralys.Ui.Theming.ComponentPalette.Background.init -> void
+Tralys.Ui.Theming.ComponentPalette.Border.get -> Tralys.Ui.Color
+Tralys.Ui.Theming.ComponentPalette.Border.init -> void
+Tralys.Ui.Theming.ComponentPalette.ComponentPalette() -> void
+Tralys.Ui.Theming.ComponentPalette.ComponentPalette(Tralys.Ui.Color Background, Tralys.Ui.Color Foreground, Tralys.Ui.Color Border) -> void
+Tralys.Ui.Theming.ComponentPalette.Deconstruct(out Tralys.Ui.Color Background, out Tralys.Ui.Color Foreground, out Tralys.Ui.Color Border) -> void
+~override Tralys.Ui.Theming.ComponentPalette.Equals(object obj) -> bool
+Tralys.Ui.Theming.ComponentPalette.Equals(Tralys.Ui.Theming.ComponentPalette other) -> bool
+Tralys.Ui.Theming.ComponentPalette.Foreground.get -> Tralys.Ui.Color
+Tralys.Ui.Theming.ComponentPalette.Foreground.init -> void
+override Tralys.Ui.Theming.ComponentPalette.GetHashCode() -> int
+static Tralys.Ui.Theming.ComponentPalette.operator !=(Tralys.Ui.Theming.ComponentPalette left, Tralys.Ui.Theming.ComponentPalette right) -> bool
+static Tralys.Ui.Theming.ComponentPalette.operator ==(Tralys.Ui.Theming.ComponentPalette left, Tralys.Ui.Theming.ComponentPalette right) -> bool
+~override Tralys.Ui.Theming.ComponentPalette.ToString() -> string
+Tralys.Ui.Theming.ComponentSize
+Tralys.Ui.Theming.ComponentSize.Lg = 4 -> Tralys.Ui.Theming.ComponentSize
+Tralys.Ui.Theming.ComponentSize.Md = 3 -> Tralys.Ui.Theming.ComponentSize
+Tralys.Ui.Theming.ComponentSize.Sm = 2 -> Tralys.Ui.Theming.ComponentSize
+Tralys.Ui.Theming.ComponentSize.Xs = 1 -> Tralys.Ui.Theming.ComponentSize
+Tralys.Ui.Theming.ComponentSize.Xxs = 0 -> Tralys.Ui.Theming.ComponentSize
+Tralys.Ui.Theming.ComponentState
+Tralys.Ui.Theming.ComponentState.Disabled = 4 -> Tralys.Ui.Theming.ComponentState
+Tralys.Ui.Theming.ComponentState.Focused = 3 -> Tralys.Ui.Theming.ComponentState
+Tralys.Ui.Theming.ComponentState.Hover = 1 -> Tralys.Ui.Theming.ComponentState
+Tralys.Ui.Theming.ComponentState.Normal = 0 -> Tralys.Ui.Theming.ComponentState
+Tralys.Ui.Theming.ComponentState.Pressed = 2 -> Tralys.Ui.Theming.ComponentState
+Tralys.Ui.Theming.ComponentVariant
+Tralys.Ui.Theming.ComponentVariant.Filled = 0 -> Tralys.Ui.Theming.ComponentVariant
+Tralys.Ui.Theming.ComponentVariant.Ghost = 2 -> Tralys.Ui.Theming.ComponentVariant
+Tralys.Ui.Theming.ComponentVariant.GhostOutlined = 3 -> Tralys.Ui.Theming.ComponentVariant
+Tralys.Ui.Theming.ComponentVariant.Link = 6 -> Tralys.Ui.Theming.ComponentVariant
+Tralys.Ui.Theming.ComponentVariant.Outlined = 1 -> Tralys.Ui.Theming.ComponentVariant
+Tralys.Ui.Theming.ComponentVariant.Subtle = 5 -> Tralys.Ui.Theming.ComponentVariant
+Tralys.Ui.Theming.ComponentVariant.Text = 4 -> Tralys.Ui.Theming.ComponentVariant
+Tralys.Ui.Theming.Density
+Tralys.Ui.Theming.Density.Pointer = 0 -> Tralys.Ui.Theming.Density
+Tralys.Ui.Theming.Density.Touch = 1 -> Tralys.Ui.Theming.Density
+Tralys.Ui.Theming.DurationToken
+Tralys.Ui.Theming.DurationToken.Disclosure = 0 -> Tralys.Ui.Theming.DurationToken
+Tralys.Ui.Theming.EasingToken
+Tralys.Ui.Theming.EasingToken.Settle = 0 -> Tralys.Ui.Theming.EasingToken
+Tralys.Ui.Theming.FieldVariant
+Tralys.Ui.Theming.FieldVariant.Default = 0 -> Tralys.Ui.Theming.FieldVariant
+Tralys.Ui.Theming.FieldVariant.Flush = 1 -> Tralys.Ui.Theming.FieldVariant
+Tralys.Ui.Theming.FontToken
+Tralys.Ui.Theming.FontToken.Body = 0 -> Tralys.Ui.Theming.FontToken
+Tralys.Ui.Theming.FontToken.Code = 1 -> Tralys.Ui.Theming.FontToken
+Tralys.Ui.Theming.GripToken
+Tralys.Ui.Theming.GripToken.Band = 0 -> Tralys.Ui.Theming.GripToken
+Tralys.Ui.Theming.GripToken.Corner = 1 -> Tralys.Ui.Theming.GripToken
+Tralys.Ui.Theming.RadiusToken
+Tralys.Ui.Theming.RadiusToken.Lg = 2 -> Tralys.Ui.Theming.RadiusToken
+Tralys.Ui.Theming.RadiusToken.Md = 1 -> Tralys.Ui.Theming.RadiusToken
+Tralys.Ui.Theming.RadiusToken.Sm = 0 -> Tralys.Ui.Theming.RadiusToken
+Tralys.Ui.Theming.TextVariant
+Tralys.Ui.Theming.TextVariant.Badge = 0 -> Tralys.Ui.Theming.TextVariant
+Tralys.Ui.Theming.TextVariant.Body = 2 -> Tralys.Ui.Theming.TextVariant
+Tralys.Ui.Theming.TextVariant.Caption = 1 -> Tralys.Ui.Theming.TextVariant
+Tralys.Ui.Theming.TextVariant.Display = 6 -> Tralys.Ui.Theming.TextVariant
+Tralys.Ui.Theming.TextVariant.Heading = 3 -> Tralys.Ui.Theming.TextVariant
+Tralys.Ui.Theming.TextVariant.Headline = 5 -> Tralys.Ui.Theming.TextVariant
+Tralys.Ui.Theming.TextVariant.Title = 4 -> Tralys.Ui.Theming.TextVariant
+Tralys.Ui.Theming.Theme
+Tralys.Ui.Theming.Theme.Color(Tralys.Ui.Theming.ColorToken token) -> Tralys.Ui.Color
+Tralys.Ui.Theming.Theme.Color(Tralys.Ui.Theming.ComponentColor token) -> Tralys.Ui.Color
+Tralys.Ui.Theming.Theme.Colors(Tralys.Ui.Theming.ColorScheme scheme, Tralys.Ui.Theming.ComponentVariant variant, Tralys.Ui.Theming.ComponentState state) -> Tralys.Ui.Theming.ComponentPalette
+Tralys.Ui.Theming.Theme.Dimensions(Tralys.Ui.Theming.Density density) -> Tralys.Ui.Theming.ThemeDimensions!
+Tralys.Ui.Theming.Theme.Duration(Tralys.Ui.Theming.DurationToken token) -> float
+Tralys.Ui.Theming.Theme.Easing(Tralys.Ui.Theming.EasingToken token) -> Tralys.Ui.KeySpline!
+Tralys.Ui.Theming.Theme.FieldColors(Tralys.Ui.Theming.FieldVariant variant, Tralys.Ui.Theming.ComponentState state) -> Tralys.Ui.Theming.ComponentPalette
+Tralys.Ui.Theming.Theme.FontFamily(Tralys.Ui.Theming.FontToken token) -> string!
+Tralys.Ui.Theming.Theme.Name.get -> string!
+override Tralys.Ui.Theming.Theme.ToString() -> string!
+Tralys.Ui.Theming.Theme.Weight(Tralys.Ui.Theming.WeightToken token) -> Tralys.Ui.Fonts.FontWeight
+Tralys.Ui.Theming.ThemeBuilder
+Tralys.Ui.Theming.ThemeBuilder.Build() -> Tralys.Ui.Theming.Theme!
+Tralys.Ui.Theming.ThemeBuilder.Color(Tralys.Ui.Theming.ColorToken token, Tralys.Ui.Color color) -> void
+Tralys.Ui.Theming.ThemeBuilder.Color(Tralys.Ui.Theming.ComponentColor token, Tralys.Ui.Color color) -> void
+Tralys.Ui.Theming.ThemeBuilder.Duration(Tralys.Ui.Theming.DurationToken token, float seconds) -> void
+Tralys.Ui.Theming.ThemeBuilder.Easing(Tralys.Ui.Theming.EasingToken token, Tralys.Ui.KeySpline! curve) -> void
+Tralys.Ui.Theming.ThemeBuilder.Field(Tralys.Ui.Theming.FieldVariant variant, Tralys.Ui.Theming.ComponentState state, Tralys.Ui.Color background, Tralys.Ui.Color foreground, Tralys.Ui.Color border) -> void
+Tralys.Ui.Theming.ThemeBuilder.Font(Tralys.Ui.Theming.FontToken token, string! family) -> void
+Tralys.Ui.Theming.ThemeBuilder.FontSize(Tralys.Ui.Theming.Density density, Tralys.Ui.Theming.TextVariant variant, float size) -> void
+Tralys.Ui.Theming.ThemeBuilder.Grip(Tralys.Ui.Theming.Density density, Tralys.Ui.Theming.GripToken token, float size) -> void
+Tralys.Ui.Theming.ThemeBuilder.Palette(Tralys.Ui.Theming.ColorScheme scheme, Tralys.Ui.Theming.ComponentVariant variant, Tralys.Ui.Theming.ComponentState state, Tralys.Ui.Color background, Tralys.Ui.Color foreground, Tralys.Ui.Color border) -> void
+Tralys.Ui.Theming.ThemeBuilder.Radius(Tralys.Ui.Theming.Density density, Tralys.Ui.Theming.RadiusToken token, float radius) -> void
+Tralys.Ui.Theming.ThemeBuilder.Size(Tralys.Ui.Theming.Density density, Tralys.Ui.Theming.ComponentSize size, Tralys.Ui.Theming.ComponentMetrics! metrics) -> void
+Tralys.Ui.Theming.ThemeBuilder.Spacing(Tralys.Ui.Theming.Density density, float spacing) -> void
+Tralys.Ui.Theming.ThemeBuilder.ThemeBuilder(string! name) -> void
+Tralys.Ui.Theming.ThemeBuilder.Weight(Tralys.Ui.Theming.WeightToken token, int weight) -> void
+Tralys.Ui.Theming.ThemeDimensions
+Tralys.Ui.Theming.ThemeDimensions.Density.get -> Tralys.Ui.Theming.Density
+Tralys.Ui.Theming.ThemeDimensions.FontSize(Tralys.Ui.Theming.TextVariant variant) -> float
+Tralys.Ui.Theming.ThemeDimensions.Grip(Tralys.Ui.Theming.GripToken token) -> float
+Tralys.Ui.Theming.ThemeDimensions.Radius(Tralys.Ui.Theming.RadiusToken token) -> Tralys.Ui.CornerRadius
+Tralys.Ui.Theming.ThemeDimensions.Size(Tralys.Ui.Theming.ComponentSize size) -> Tralys.Ui.Theming.ComponentMetrics!
+Tralys.Ui.Theming.ThemeDimensions.Spacing.get -> float
+Tralys.Ui.Theming.WeightToken
+Tralys.Ui.Theming.WeightToken.Content = 0 -> Tralys.Ui.Theming.WeightToken
+Tralys.Ui.Theming.WeightToken.Interface = 1 -> Tralys.Ui.Theming.WeightToken
+Tralys.Ui.Theming.WeightToken.Link = 2 -> Tralys.Ui.Theming.WeightToken
+Tralys.Ui.Thickness
+Tralys.Ui.Thickness.Bottom.get -> float
+Tralys.Ui.Thickness.Bottom.init -> void
+Tralys.Ui.Thickness.Deconstruct(out float Left, out float Top, out float Right, out float Bottom) -> void
+~override Tralys.Ui.Thickness.Equals(object obj) -> bool
+Tralys.Ui.Thickness.Equals(Tralys.Ui.Thickness other) -> bool
+override Tralys.Ui.Thickness.GetHashCode() -> int
+static Tralys.Ui.Thickness.implicit operator Tralys.Ui.Thickness(float uniform) -> Tralys.Ui.Thickness
+Tralys.Ui.Thickness.IsZero.get -> bool
+Tralys.Ui.Thickness.Left.get -> float
+Tralys.Ui.Thickness.Left.init -> void
+static Tralys.Ui.Thickness.operator !=(Tralys.Ui.Thickness left, Tralys.Ui.Thickness right) -> bool
+static Tralys.Ui.Thickness.operator ==(Tralys.Ui.Thickness left, Tralys.Ui.Thickness right) -> bool
+Tralys.Ui.Thickness.Right.get -> float
+Tralys.Ui.Thickness.Right.init -> void
+Tralys.Ui.Thickness.Thickness() -> void
+Tralys.Ui.Thickness.Thickness(float Left, float Top, float Right, float Bottom) -> void
+Tralys.Ui.Thickness.Thickness(float uniform) -> void
+Tralys.Ui.Thickness.Top.get -> float
+Tralys.Ui.Thickness.Top.init -> void
+~override Tralys.Ui.Thickness.ToString() -> string
+Tralys.Ui.TreeRow
+Tralys.Ui.TreeRow.Depth.get -> int
+Tralys.Ui.TreeRow.HasChildren.get -> bool
+Tralys.Ui.TreeRow.IsExpanded.get -> bool
+Tralys.Ui.TreeRow.IsExpanded.set -> void
+Tralys.Ui.TreeRow.TreeRow() -> void
+Tralys.Ui.TreeRows<T>
+Tralys.Ui.TreeRows<T>.AddListener(Tralys.Ui.IItemsSourceListener! listener) -> void
+Tralys.Ui.TreeRows<T>.Comparer.get -> System.Collections.Generic.IComparer<T!>?
+Tralys.Ui.TreeRows<T>.Comparer.set -> void
+Tralys.Ui.TreeRows<T>.Count.get -> int
+Tralys.Ui.TreeRows<T>.DeferRefresh() -> Tralys.Ui.DeferredRefresh
+Tralys.Ui.TreeRows<T>.Filter.get -> Tralys.Ui.Controls.RowFilter?
+Tralys.Ui.TreeRows<T>.Filter.set -> void
+Tralys.Ui.TreeRows<T>.GetEnumerator() -> System.Collections.Generic.List<T!>.Enumerator
+Tralys.Ui.TreeRows<T>.IndexOf(object? item) -> int
+Tralys.Ui.TreeRows<T>.Refresh() -> bool
+Tralys.Ui.TreeRows<T>.RemoveListener(Tralys.Ui.IItemsSourceListener! listener) -> void
+Tralys.Ui.TreeRows<T>.this[int index].get -> T!
+Tralys.Ui.TreeRows<T>.TreeRows(Tralys.Ui.ITreeChildren<T!>! children) -> void

@@ -1,5 +1,1 @@
 #nullable enable
-Tralys.Ui.FreeType.FreeTypeBackend
-Tralys.Ui.FreeType.FreeTypeBackend.Dispose() -> void
-Tralys.Ui.FreeType.FreeTypeBackend.FreeTypeBackend() -> void
-Tralys.Ui.FreeType.FreeTypeBackend.LoadFace(System.ReadOnlyMemory<byte> fontData, int faceIndex = 0) -> Tralys.Ui.Fonts.IFontFace!

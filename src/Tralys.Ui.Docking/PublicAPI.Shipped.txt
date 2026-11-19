@@ -1,1 +1,228 @@
 #nullable enable
+Tralys.Ui.Docking.ActiveElementChangedEventArgs
+Tralys.Ui.Docking.ActiveElementChangedEventArgs.ActiveElementChangedEventArgs(Tralys.Ui.Docking.DockElement? newElement) -> void
+Tralys.Ui.Docking.ActiveElementChangedEventArgs.NewElement.get -> Tralys.Ui.Docking.DockElement?
+Tralys.Ui.Docking.Dock
+Tralys.Ui.Docking.Dock.Dock() -> void
+Tralys.Ui.Docking.DockCalls
+static Tralys.Ui.Docking.DockCalls.Dock(this Tralys.Ui.Ui ui, Tralys.Ui.Docking.DockManager? manager = null, Tralys.Ui.Slot<Tralys.Ui.Docking.DockElement!> content = default(Tralys.Ui.Slot<Tralys.Ui.Docking.DockElement!>), Tralys.Ui.Slot emptyCenter = default(Tralys.Ui.Slot), bool? centerDockable = null, Tralys.Ui.Docking.IDockWindowHost? windowHost = null, Tralys.Ui.Callback onResize = default(Tralys.Ui.Callback), Tralys.Ui.Length width = default(Tralys.Ui.Length), Tralys.Ui.Length height = default(Tralys.Ui.Length), float grow = 0, float? shrink = null, Tralys.Ui.Length basis = default(Tralys.Ui.Length), Tralys.Ui.AlignSelf alignSelf = Tralys.Ui.AlignSelf.Auto, Tralys.Ui.AlignSelf justifySelf = Tralys.Ui.AlignSelf.Auto, Tralys.Ui.Thickness margin = default(Tralys.Ui.Thickness), Tralys.Ui.Position position = Tralys.Ui.Position.Relative, Tralys.Ui.Length left = default(Tralys.Ui.Length), Tralys.Ui.Length top = default(Tralys.Ui.Length), Tralys.Ui.Length right = default(Tralys.Ui.Length), Tralys.Ui.Length bottom = default(Tralys.Ui.Length), int zIndex = 0, int column = 0, int row = 0, int columnSpan = 0, int rowSpan = 0, bool hidden = false, bool collapsed = false, string? id = null, Tralys.Ui.UiKey key = default(Tralys.Ui.UiKey), string! file = "", int line = 0) -> void
+Tralys.Ui.Docking.DockDirection
+Tralys.Ui.Docking.DockDirection.Bottom = 3 -> Tralys.Ui.Docking.DockDirection
+Tralys.Ui.Docking.DockDirection.Center = 4 -> Tralys.Ui.Docking.DockDirection
+Tralys.Ui.Docking.DockDirection.Left = 0 -> Tralys.Ui.Docking.DockDirection
+Tralys.Ui.Docking.DockDirection.Right = 1 -> Tralys.Ui.Docking.DockDirection
+Tralys.Ui.Docking.DockDirection.Top = 2 -> Tralys.Ui.Docking.DockDirection
+Tralys.Ui.Docking.DockElement
+Tralys.Ui.Docking.DockElement.Activate() -> void
+Tralys.Ui.Docking.DockElement.CanClose.get -> bool
+Tralys.Ui.Docking.DockElement.CanClose.set -> void
+Tralys.Ui.Docking.DockElement.Close() -> bool
+Tralys.Ui.Docking.DockElement.Content.get -> object?
+Tralys.Ui.Docking.DockElement.Content.set -> void
+Tralys.Ui.Docking.DockElement.DockElement(string! id, string! title, Tralys.Ui.Docking.DockType type = Tralys.Ui.Docking.DockType.Tool) -> void
+Tralys.Ui.Docking.DockElement.DockElement(string! title, Tralys.Ui.Docking.DockType type = Tralys.Ui.Docking.DockType.Tool) -> void
+Tralys.Ui.Docking.DockElement.DockType.get -> Tralys.Ui.Docking.DockType
+Tralys.Ui.Docking.DockElement.Hide() -> void
+Tralys.Ui.Docking.DockElement.Id.get -> string!
+Tralys.Ui.Docking.DockElement.IsDirty.get -> bool
+Tralys.Ui.Docking.DockElement.IsDirty.set -> void
+Tralys.Ui.Docking.DockElement.Manager.get -> Tralys.Ui.Docking.DockManager?
+Tralys.Ui.Docking.DockElement.Parent.get -> Tralys.Ui.Docking.DockGroup?
+Tralys.Ui.Docking.DockElement.Position.get -> Tralys.Ui.Docking.DockPosition
+Tralys.Ui.Docking.DockElement.PropertyChanged -> System.ComponentModel.PropertyChangedEventHandler?
+Tralys.Ui.Docking.DockElement.Show() -> void
+Tralys.Ui.Docking.DockElement.Source.get -> Tralys.Ui.Docking.IDockSource?
+Tralys.Ui.Docking.DockElement.State.get -> Tralys.Ui.Docking.DockState
+Tralys.Ui.Docking.DockElement.Title.get -> string!
+Tralys.Ui.Docking.DockElement.Title.set -> void
+override Tralys.Ui.Docking.DockElement.ToString() -> string!
+Tralys.Ui.Docking.DockElementsChange
+Tralys.Ui.Docking.DockElementsChange.Added = 0 -> Tralys.Ui.Docking.DockElementsChange
+Tralys.Ui.Docking.DockElementsChange.Moved = 2 -> Tralys.Ui.Docking.DockElementsChange
+Tralys.Ui.Docking.DockElementsChange.Removed = 1 -> Tralys.Ui.Docking.DockElementsChange
+Tralys.Ui.Docking.DockElementsChange.Reset = 3 -> Tralys.Ui.Docking.DockElementsChange
+Tralys.Ui.Docking.DockElementsChangedEventArgs
+Tralys.Ui.Docking.DockElementsChangedEventArgs.Change.get -> Tralys.Ui.Docking.DockElementsChange
+Tralys.Ui.Docking.DockElementsChangedEventArgs.DockElementsChangedEventArgs(Tralys.Ui.Docking.DockElementsChange change, Tralys.Ui.Docking.DockElement? element = null, int index = -1, int oldIndex = -1) -> void
+Tralys.Ui.Docking.DockElementsChangedEventArgs.Element.get -> Tralys.Ui.Docking.DockElement?
+Tralys.Ui.Docking.DockElementsChangedEventArgs.Index.get -> int
+Tralys.Ui.Docking.DockElementsChangedEventArgs.OldIndex.get -> int
+Tralys.Ui.Docking.DockGroup
+Tralys.Ui.Docking.DockGroup.ActiveElement.get -> Tralys.Ui.Docking.DockElement?
+Tralys.Ui.Docking.DockGroup.ActiveElement.set -> void
+Tralys.Ui.Docking.DockGroup.ActiveElementChanged -> System.EventHandler<Tralys.Ui.Docking.ActiveElementChangedEventArgs!>?
+Tralys.Ui.Docking.DockGroup.Add(Tralys.Ui.Docking.DockElement! element) -> void
+Tralys.Ui.Docking.DockGroup.AddChild(Tralys.Ui.Docking.DockGroup! group) -> void
+Tralys.Ui.Docking.DockGroup.Children.get -> System.Collections.Generic.IReadOnlyList<Tralys.Ui.Docking.DockGroup!>!
+Tralys.Ui.Docking.DockGroup.DockGroup(Tralys.Ui.Docking.DockPosition position = Tralys.Ui.Docking.DockPosition.None) -> void
+Tralys.Ui.Docking.DockGroup.Elements.get -> System.Collections.Generic.IReadOnlyList<Tralys.Ui.Docking.DockElement!>!
+Tralys.Ui.Docking.DockGroup.ElementsChanged -> System.EventHandler<Tralys.Ui.Docking.DockElementsChangedEventArgs!>?
+Tralys.Ui.Docking.DockGroup.InsertAt(Tralys.Ui.Docking.DockElement! element, int index) -> void
+Tralys.Ui.Docking.DockGroup.IsSplitGroup.get -> bool
+Tralys.Ui.Docking.DockGroup.IsTabbedGroup.get -> bool
+Tralys.Ui.Docking.DockGroup.Manager.get -> Tralys.Ui.Docking.DockManager?
+Tralys.Ui.Docking.DockGroup.MoveTo(Tralys.Ui.Docking.DockElement! element, int index) -> void
+Tralys.Ui.Docking.DockGroup.Orientation.get -> Tralys.Ui.Docking.SplitOrientation
+Tralys.Ui.Docking.DockGroup.Parent.get -> Tralys.Ui.Docking.DockGroup?
+Tralys.Ui.Docking.DockGroup.Position.get -> Tralys.Ui.Docking.DockPosition
+Tralys.Ui.Docking.DockGroup.Remove(Tralys.Ui.Docking.DockElement! element) -> bool
+Tralys.Ui.Docking.DockGroup.RemoveChild(Tralys.Ui.Docking.DockGroup! group) -> bool
+Tralys.Ui.Docking.DockGroup.SizeProportion.get -> float
+Tralys.Ui.Docking.DockGroup.SizeProportion.set -> void
+override Tralys.Ui.Docking.DockGroup.ToString() -> string!
+Tralys.Ui.Docking.DockGroup.Window.get -> Tralys.Ui.Docking.FloatingWindow?
+Tralys.Ui.Docking.DockManager
+Tralys.Ui.Docking.DockManager.ActiveElement.get -> Tralys.Ui.Docking.DockElement?
+Tralys.Ui.Docking.DockManager.ActiveElementChanged -> System.EventHandler<Tralys.Ui.Docking.ActiveElementChangedEventArgs!>?
+Tralys.Ui.Docking.DockManager.BottomGroup.get -> Tralys.Ui.Docking.DockGroup!
+Tralys.Ui.Docking.DockManager.CenterGroup.get -> Tralys.Ui.Docking.DockGroup!
+Tralys.Ui.Docking.DockManager.Close(System.Collections.Generic.IReadOnlyList<Tralys.Ui.Docking.DockElement!>! elements) -> bool
+Tralys.Ui.Docking.DockManager.CloseHandler.get -> Tralys.Ui.Docking.IDockCloseHandler?
+Tralys.Ui.Docking.DockManager.CloseHandler.set -> void
+Tralys.Ui.Docking.DockManager.Dock(Tralys.Ui.Docking.DockElement! element, Tralys.Ui.Docking.DockPosition position) -> void
+Tralys.Ui.Docking.DockManager.DockBySplit(Tralys.Ui.Docking.DockElement! element, Tralys.Ui.Docking.DockGroup! targetGroup, Tralys.Ui.Docking.DockDirection side) -> void
+Tralys.Ui.Docking.DockManager.DockManager() -> void
+Tralys.Ui.Docking.DockManager.DockRelativeTo(Tralys.Ui.Docking.DockElement! element, Tralys.Ui.Docking.DockElement! target, Tralys.Ui.Docking.DockDirection direction) -> void
+Tralys.Ui.Docking.DockManager.DockToGroup(Tralys.Ui.Docking.DockElement! element, Tralys.Ui.Docking.DockGroup! group, int? index = null) -> void
+Tralys.Ui.Docking.DockManager.Elements.get -> Tralys.Ui.Mvvm.IReadOnlyObservableList<Tralys.Ui.Docking.DockElement!>!
+Tralys.Ui.Docking.DockManager.Float(Tralys.Ui.Docking.DockElement! element, float x = 100, float y = 100, float width = 400, float height = 300) -> Tralys.Ui.Docking.FloatingWindow!
+Tralys.Ui.Docking.DockManager.FloatingWindowAdded -> System.EventHandler<Tralys.Ui.Docking.FloatingWindowEventArgs!>?
+Tralys.Ui.Docking.DockManager.FloatingWindowRemoved -> System.EventHandler<Tralys.Ui.Docking.FloatingWindowEventArgs!>?
+Tralys.Ui.Docking.DockManager.FloatingWindows.get -> System.Collections.Generic.IReadOnlyList<Tralys.Ui.Docking.FloatingWindow!>!
+Tralys.Ui.Docking.DockManager.GetElement(string! id) -> Tralys.Ui.Docking.DockElement?
+Tralys.Ui.Docking.DockManager.LayoutChanged -> System.EventHandler?
+Tralys.Ui.Docking.DockManager.LeftGroup.get -> Tralys.Ui.Docking.DockGroup!
+Tralys.Ui.Docking.DockManager.LoadLayout(string! layout) -> void
+Tralys.Ui.Docking.DockManager.PanelSizes.get -> Tralys.Ui.Docking.DockPanelSizes
+Tralys.Ui.Docking.DockManager.Register(Tralys.Ui.Docking.DockElement! element) -> void
+Tralys.Ui.Docking.DockManager.Register(Tralys.Ui.Docking.IDockSource! source, Tralys.Ui.Docking.DockType type = Tralys.Ui.Docking.DockType.Tool) -> Tralys.Ui.Docking.DockElement!
+Tralys.Ui.Docking.DockManager.ResetLayout() -> void
+Tralys.Ui.Docking.DockManager.RightGroup.get -> Tralys.Ui.Docking.DockGroup!
+Tralys.Ui.Docking.DockManager.RootGroup(Tralys.Ui.Docking.DockPosition position) -> Tralys.Ui.Docking.DockGroup?
+Tralys.Ui.Docking.DockManager.SaveLayout() -> string!
+Tralys.Ui.Docking.DockManager.TopGroup.get -> Tralys.Ui.Docking.DockGroup!
+Tralys.Ui.Docking.DockManager.Unregister(Tralys.Ui.Docking.DockElement! element) -> bool
+Tralys.Ui.Docking.DockPanelSizes
+Tralys.Ui.Docking.DockPanelSizes.BottomHeight.get -> float
+Tralys.Ui.Docking.DockPanelSizes.BottomHeight.set -> void
+Tralys.Ui.Docking.DockPanelSizes.DockPanelSizes() -> void
+~override Tralys.Ui.Docking.DockPanelSizes.Equals(object obj) -> bool
+Tralys.Ui.Docking.DockPanelSizes.Equals(Tralys.Ui.Docking.DockPanelSizes other) -> bool
+override Tralys.Ui.Docking.DockPanelSizes.GetHashCode() -> int
+Tralys.Ui.Docking.DockPanelSizes.LeftWidth.get -> float
+Tralys.Ui.Docking.DockPanelSizes.LeftWidth.set -> void
+static Tralys.Ui.Docking.DockPanelSizes.operator !=(Tralys.Ui.Docking.DockPanelSizes left, Tralys.Ui.Docking.DockPanelSizes right) -> bool
+static Tralys.Ui.Docking.DockPanelSizes.operator ==(Tralys.Ui.Docking.DockPanelSizes left, Tralys.Ui.Docking.DockPanelSizes right) -> bool
+Tralys.Ui.Docking.DockPanelSizes.RightWidth.get -> float
+Tralys.Ui.Docking.DockPanelSizes.RightWidth.set -> void
+Tralys.Ui.Docking.DockPanelSizes.TopHeight.get -> float
+Tralys.Ui.Docking.DockPanelSizes.TopHeight.set -> void
+~override Tralys.Ui.Docking.DockPanelSizes.ToString() -> string
+Tralys.Ui.Docking.DockPosition
+Tralys.Ui.Docking.DockPosition.Bottom = 4 -> Tralys.Ui.Docking.DockPosition
+Tralys.Ui.Docking.DockPosition.Center = 5 -> Tralys.Ui.Docking.DockPosition
+Tralys.Ui.Docking.DockPosition.Floating = 6 -> Tralys.Ui.Docking.DockPosition
+Tralys.Ui.Docking.DockPosition.Left = 1 -> Tralys.Ui.Docking.DockPosition
+Tralys.Ui.Docking.DockPosition.None = 0 -> Tralys.Ui.Docking.DockPosition
+Tralys.Ui.Docking.DockPosition.Right = 2 -> Tralys.Ui.Docking.DockPosition
+Tralys.Ui.Docking.DockPosition.Top = 3 -> Tralys.Ui.Docking.DockPosition
+Tralys.Ui.Docking.DockPositionExtensions
+static Tralys.Ui.Docking.DockPositionExtensions.IsRootRegion(this Tralys.Ui.Docking.DockPosition position) -> bool
+Tralys.Ui.Docking.DockProps
+Tralys.Ui.Docking.DockProps.CenterDockable.get -> bool?
+Tralys.Ui.Docking.DockProps.CenterDockable.init -> void
+Tralys.Ui.Docking.DockProps.Content.get -> Tralys.Ui.Slot<Tralys.Ui.Docking.DockElement!>
+Tralys.Ui.Docking.DockProps.Content.init -> void
+Tralys.Ui.Docking.DockProps.DockProps() -> void
+Tralys.Ui.Docking.DockProps.EmptyCenter.get -> Tralys.Ui.Slot
+Tralys.Ui.Docking.DockProps.EmptyCenter.init -> void
+~override Tralys.Ui.Docking.DockProps.Equals(object obj) -> bool
+Tralys.Ui.Docking.DockProps.Equals(Tralys.Ui.Docking.DockProps other) -> bool
+override Tralys.Ui.Docking.DockProps.GetHashCode() -> int
+Tralys.Ui.Docking.DockProps.Height.get -> Tralys.Ui.Length
+Tralys.Ui.Docking.DockProps.Height.init -> void
+Tralys.Ui.Docking.DockProps.Manager.get -> Tralys.Ui.Docking.DockManager?
+Tralys.Ui.Docking.DockProps.Manager.init -> void
+Tralys.Ui.Docking.DockProps.OnResize.get -> Tralys.Ui.Callback
+Tralys.Ui.Docking.DockProps.OnResize.init -> void
+static Tralys.Ui.Docking.DockProps.operator !=(Tralys.Ui.Docking.DockProps left, Tralys.Ui.Docking.DockProps right) -> bool
+static Tralys.Ui.Docking.DockProps.operator ==(Tralys.Ui.Docking.DockProps left, Tralys.Ui.Docking.DockProps right) -> bool
+~override Tralys.Ui.Docking.DockProps.ToString() -> string
+Tralys.Ui.Docking.DockProps.Width.get -> Tralys.Ui.Length
+Tralys.Ui.Docking.DockProps.Width.init -> void
+Tralys.Ui.Docking.DockProps.WindowHost.get -> Tralys.Ui.Docking.IDockWindowHost?
+Tralys.Ui.Docking.DockProps.WindowHost.init -> void
+Tralys.Ui.Docking.DockSource
+Tralys.Ui.Docking.DockSource.Content.get -> object!
+Tralys.Ui.Docking.DockSource.ContentId.get -> string!
+abstract Tralys.Ui.Docking.DockSource.DefaultPosition.get -> Tralys.Ui.Docking.DockPosition
+Tralys.Ui.Docking.DockSource.DockElement.get -> Tralys.Ui.Docking.DockElement?
+Tralys.Ui.Docking.DockSource.DockSource(string! contentId, string! title) -> void
+Tralys.Ui.Docking.DockSource.IsDirty.get -> bool
+Tralys.Ui.Docking.DockSource.IsDirty.set -> void
+Tralys.Ui.Docking.DockSource.IsVisible.get -> bool
+Tralys.Ui.Docking.DockSource.IsVisible.set -> void
+virtual Tralys.Ui.Docking.DockSource.OnClosed() -> void
+virtual Tralys.Ui.Docking.DockSource.OnReopened() -> void
+Tralys.Ui.Docking.DockSource.SetIsDirty.get -> Tralys.Ui.Callback<bool>
+Tralys.Ui.Docking.DockSource.SetTitle.get -> Tralys.Ui.Callback<string!>
+Tralys.Ui.Docking.DockSource.Title.get -> string!
+Tralys.Ui.Docking.DockSource.Title.set -> void
+Tralys.Ui.Docking.DockSource<TContent>
+Tralys.Ui.Docking.DockSource<TContent>.Content.get -> TContent!
+Tralys.Ui.Docking.DockSource<TContent>.DockSource(string! contentId, string! title, TContent! content) -> void
+Tralys.Ui.Docking.DockState
+Tralys.Ui.Docking.DockState.Docked = 0 -> Tralys.Ui.Docking.DockState
+Tralys.Ui.Docking.DockState.Floating = 1 -> Tralys.Ui.Docking.DockState
+Tralys.Ui.Docking.DockState.Hidden = 2 -> Tralys.Ui.Docking.DockState
+Tralys.Ui.Docking.DockType
+Tralys.Ui.Docking.DockType.Document = 1 -> Tralys.Ui.Docking.DockType
+Tralys.Ui.Docking.DockType.Tool = 0 -> Tralys.Ui.Docking.DockType
+Tralys.Ui.Docking.FloatingWindow
+Tralys.Ui.Docking.FloatingWindow.BoundsChanged -> System.EventHandler?
+Tralys.Ui.Docking.FloatingWindow.BoundsHeight.get -> float
+Tralys.Ui.Docking.FloatingWindow.BoundsWidth.get -> float
+Tralys.Ui.Docking.FloatingWindow.ClampHeight(float height) -> float
+Tralys.Ui.Docking.FloatingWindow.ClampWidth(float width) -> float
+Tralys.Ui.Docking.FloatingWindow.FloatingWindow(Tralys.Ui.Docking.DockGroup! group, float x, float y, float width, float height) -> void
+Tralys.Ui.Docking.FloatingWindow.Group.get -> Tralys.Ui.Docking.DockGroup!
+Tralys.Ui.Docking.FloatingWindow.Height.get -> float
+Tralys.Ui.Docking.FloatingWindow.Height.set -> void
+Tralys.Ui.Docking.FloatingWindow.RequestClose() -> void
+override Tralys.Ui.Docking.FloatingWindow.ToString() -> string!
+Tralys.Ui.Docking.FloatingWindow.Width.get -> float
+Tralys.Ui.Docking.FloatingWindow.Width.set -> void
+Tralys.Ui.Docking.FloatingWindow.X.get -> float
+Tralys.Ui.Docking.FloatingWindow.X.set -> void
+Tralys.Ui.Docking.FloatingWindow.Y.get -> float
+Tralys.Ui.Docking.FloatingWindow.Y.set -> void
+Tralys.Ui.Docking.FloatingWindowEventArgs
+Tralys.Ui.Docking.FloatingWindowEventArgs.FloatingWindowEventArgs(Tralys.Ui.Docking.FloatingWindow! window) -> void
+Tralys.Ui.Docking.FloatingWindowEventArgs.Window.get -> Tralys.Ui.Docking.FloatingWindow!
+Tralys.Ui.Docking.IDockCloseHandler
+Tralys.Ui.Docking.IDockCloseHandler.Handles(Tralys.Ui.Docking.DockElement! element) -> bool
+Tralys.Ui.Docking.IDockCloseHandler.RequestClose(System.Collections.Generic.IReadOnlyList<Tralys.Ui.Docking.DockElement!>! elements) -> void
+Tralys.Ui.Docking.IDockSource
+Tralys.Ui.Docking.IDockSource.Content.get -> object!
+Tralys.Ui.Docking.IDockSource.ContentId.get -> string!
+Tralys.Ui.Docking.IDockSource.DefaultPosition.get -> Tralys.Ui.Docking.DockPosition
+Tralys.Ui.Docking.IDockSource.DockElement.get -> Tralys.Ui.Docking.DockElement?
+Tralys.Ui.Docking.IDockSource.DockElement.set -> void
+Tralys.Ui.Docking.IDockSource.IsDirty.get -> bool
+Tralys.Ui.Docking.IDockSource.OnClosed() -> void
+Tralys.Ui.Docking.IDockSource.OnReopened() -> void
+Tralys.Ui.Docking.IDockSource.Title.get -> string!
+Tralys.Ui.Docking.IDockWindow
+Tralys.Ui.Docking.IDockWindow.Close() -> void
+Tralys.Ui.Docking.IDockWindow.Closed -> System.Action?
+Tralys.Ui.Docking.IDockWindow.Position.get -> System.Numerics.Vector2
+Tralys.Ui.Docking.IDockWindow.Position.set -> void
+Tralys.Ui.Docking.IDockWindow.Size.get -> System.Numerics.Vector2
+Tralys.Ui.Docking.IDockWindowHost
+Tralys.Ui.Docking.IDockWindowHost.CursorPosition.get -> System.Numerics.Vector2
+Tralys.Ui.Docking.IDockWindowHost.MainWindowBounds.get -> Tralys.Ui.Rect
+Tralys.Ui.Docking.IDockWindowHost.MainWindowDensity.get -> float
+Tralys.Ui.Docking.IDockWindowHost.Open(Tralys.Ui.Docking.FloatingWindow! window, System.Numerics.Vector2 position, Tralys.Ui.Slot content) -> Tralys.Ui.Docking.IDockWindow!
+Tralys.Ui.Docking.SplitOrientation
+Tralys.Ui.Docking.SplitOrientation.Horizontal = 0 -> Tralys.Ui.Docking.SplitOrientation
+Tralys.Ui.Docking.SplitOrientation.Vertical = 1 -> Tralys.Ui.Docking.SplitOrientation
