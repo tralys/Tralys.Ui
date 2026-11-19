@@ -150,6 +150,10 @@ internal sealed class Builder
     )
     {
         ref var frame = ref _frames[_frames.Count - 1];
+#if DEBUG
+        if (frame.Mode == FrameMode.Outlet)
+            throw Faults.InChildren(CurrentHost!.ComponentType, file, line);
+#endif
         mounted = false;
         Node? node = null;
         if (!frame.Slow)
@@ -534,6 +538,10 @@ internal sealed class Builder
         if (Discarding || CurrentHost is not { } host)
             return;
         ref var frame = ref _frames[_frames.Count - 1];
+#if DEBUG
+        if (frame.Prev is { } own)
+            throw Faults.InChildren(host.ComponentType, own.File, own.Line);
+#endif
         frame.Mode = FrameMode.Outlet;
         host.Outlet = frame.Parent;
     }
@@ -679,6 +687,11 @@ static class Faults
 
     public static InvalidOperationException DuplicateKey(UiKey key, string file, int line) =>
         new($"Two siblings share the key '{key}' at {file}:{line}.");
+
+    public static InvalidOperationException InChildren(Type component, string? file, int line) =>
+        new(
+            $"{NameOf(component)} renders a node at {file}:{line} into the box that holds its caller's children, where the caller's next render removes it; render it outside that box."
+        );
 
     public static InvalidOperationException PlacementOnRoot(Type component) =>
         new($"{component.Name} sets placement on its root; placement belongs to its caller.");

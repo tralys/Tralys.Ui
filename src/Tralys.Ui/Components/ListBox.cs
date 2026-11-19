@@ -222,6 +222,7 @@ public static partial class ListBox
                 disabled ? t.Color(ColorToken.FgDisabled)
                 : selected ? t.Color(ColorToken.FgAccent)
                 : default(Paint);
+            var ringed = ui.IsFocusVisible && p.Light == RowLight.Hover;
             ui.Provide(RowContext, new ListBoxRowContext(selected, lit));
             var root = ui.Ref();
             if (spot is not null)
@@ -230,8 +231,11 @@ public static partial class ListBox
                 ui.Box(
                     align: Align.Center,
                     minHeight: p.MinHeight ?? m.Height,
-                    padding: m.Padding,
+                    padding: ringed ? ButtonParts.Inside(m.Padding, FocusRingCalls.Width) : m.Padding,
                     background: fill,
+                    border: ringed
+                        ? new Border(FocusRingCalls.Width, t.Color(ColorToken.BorderFocus))
+                        : default,
                     radius: radius,
                     color: color,
                     fontSize: m.FontSize,
@@ -253,11 +257,7 @@ public static partial class ListBox
                     nodeRef: root
                 )
             )
-            {
                 ui.Children();
-                if (ui.IsFocusVisible && p.Light == RowLight.Hover)
-                    ui.FocusRing(radius: radius, inset: 0f);
-            }
         }
 
         // A row the list scrolls under a resting pointer isn't the pointer moving, so only a move focuses it.

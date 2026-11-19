@@ -6,6 +6,8 @@ namespace Tralys.Ui.Components;
 [FramePath]
 public static class FocusRingCalls
 {
+    internal const float Width = 2f;
+
     /// <summary>A focus ring around the open node: a 2-unit <see cref="ColorToken.BorderFocus"/> outline
     /// <paramref name="inset"/> outside it, rounded to its <paramref name="radius"/> plus the inset, taking no
     /// input.</summary>
@@ -31,7 +33,7 @@ public static class FocusRingCalls
                     radius.BottomRight + inset,
                     radius.BottomLeft + inset
                 ),
-                border: new Border(2f, ui.Theme.Color(ColorToken.BorderFocus)),
+                border: new Border(Width, ui.Theme.Color(ColorToken.BorderFocus)),
                 pointerEvents: PointerEvents.None,
                 key: key,
                 file: file,
