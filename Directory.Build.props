@@ -30,6 +30,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>ui;components;mvvm;bgfx;game-ui;gamedev;zero-allocation</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -41,6 +42,12 @@
     <AdditionalFiles Include="PublicAPI.Shipped.txt;PublicAPI.Unshipped.txt" />
     <None
       Include="$(MSBuildThisFileDirectory)README.md"
+      Pack="true"
+      PackagePath="/"
+      Visible="false"
+    />
+    <None
+      Include="$(MSBuildThisFileDirectory)icon.png"
       Pack="true"
       PackagePath="/"
       Visible="false"
