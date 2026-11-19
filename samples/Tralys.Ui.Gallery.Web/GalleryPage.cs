@@ -64,7 +64,6 @@ static unsafe partial class GalleryPage
         _previousFrame = seconds;
         _now += TimeSpan.FromSeconds(Math.Clamp(elapsed, 0, LongestFrameSeconds));
         _context.Advance(_now);
-        _model.HoldStates(_view);
         _images.Pump();
         _view.Update();
         _device.BeginFrame();

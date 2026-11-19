@@ -20,9 +20,10 @@ sealed class StoryStage : IDisposable
     readonly Action<UiView>? _draw;
     readonly GradientRampAtlas? _ramps;
     readonly DrawList? _list;
+    readonly Slot[] _held = new Slot[StoryStates.All.Length];
     TimeSpan _now;
-    Type? _subject;
-    InputStates _held;
+    bool _showing;
+    StoryState _shown;
 
     /// <summary>A stage that lays out and records without a GPU, its images known only by their size.</summary>
     public StoryStage()
@@ -56,14 +57,17 @@ sealed class StoryStage : IDisposable
 
     public UiView View { get; }
 
-    /// <summary>The state every frame holds the shown story's components in, from the next frame on.</summary>
+    /// <summary>The state the shown story's components are held in, from the next frame on.</summary>
     public StoryState State { get; set; }
 
     /// <summary>Mounts <paramref name="story"/> as the view's root, in place of the one shown.</summary>
     public void Show(Story story)
     {
-        _subject = story.Component;
-        View.Mount(StoryFrame.Of(story));
+        for (var i = 0; i < _held.Length; i++)
+            _held[i] = StoryFrame.Of(story, StoryStates.All[i]);
+        _showing = true;
+        _shown = State;
+        View.Mount(_held[(int)_shown]);
     }
 
     /// <summary>Moves the clock on by <paramref name="seconds"/>, holds the story's components in
@@ -73,10 +77,11 @@ sealed class StoryStage : IDisposable
     {
         _now += TimeSpan.FromSeconds(seconds);
         Context.Advance(_now);
-        var held = State.Forced();
-        if (_subject is { } subject && (held | _held) != InputStates.None)
-            Hold(View.Root, subject, held);
-        _held = held;
+        if (_showing && State != _shown)
+        {
+            _shown = State;
+            View.Mount(_held[(int)_shown]);
+        }
         View.Update();
         if (_draw is { } draw)
         {
@@ -111,18 +116,6 @@ sealed class StoryStage : IDisposable
 
     /// <summary>What the view draws as it stands.</summary>
     public DrawCommandStream Draw() => DrawCommandStream.Of(View);
-
-    // Parts mount after the story shows, so each frame holds every component of the story's type again.
-    [FramePath]
-    void Hold(Node node, Type subject, InputStates states)
-    {
-        foreach (var child in node.Children)
-        {
-            if (child.Component == subject)
-                View.ForceStates(child, states);
-            Hold(child, subject, states);
-        }
-    }
 
     public void Dispose()
     {

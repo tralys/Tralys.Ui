@@ -47,7 +47,6 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
     readonly GalleryEntry?[] _componentOf;
     readonly List<int> _shownStories = [];
     List<GalleryEntry> _roots;
-    bool _held;
 
     /// <param name="story">The key of the story shown first, ignoring case; the first story when it names
     /// none.</param>
@@ -78,8 +77,6 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
             DensityNames.Length,
             static (m, i) => m.View?.Context.Density = (Density)i
         );
-        for (var i = 0; i < Columns.Length; i++)
-            Columns[i] = new NodeRef();
         Select(IndexOf(story));
         Rows.Refresh();
     }
@@ -96,8 +93,6 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
     public UiView? View { get; set; }
 
     public NodeRef Search { get; } = new();
-
-    public NodeRef[] Columns { get; } = new NodeRef[StateNames.Length];
 
     [ObservableProperty]
     public partial int Shown { get; private set; }
@@ -142,35 +137,6 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
         var at = _shownStories.IndexOf(Shown);
         var next = at < 0 ? (by > 0 ? 0 : _shownStories.Count - 1) : at + by;
         Select(_shownStories[Math.Clamp(next, 0, _shownStories.Count - 1)]);
-    }
-
-    /// <summary>While <see cref="States"/> is on, forces each column's state on the shown story's components in
-    /// <paramref name="view"/>, and lets them go once it turns off. A host calls it every frame, before the view
-    /// updates.</summary>
-    [FramePath]
-    public void HoldStates(UiView view)
-    {
-        if (!States && !_held)
-            return;
-        _held = States;
-        // Parts mount after the story shows, so each frame holds every component of the story's type again.
-        var subject = Stories[Shown].Component;
-        for (var i = 0; i < Columns.Length; i++)
-        {
-            if (Columns[i].Node is { } column)
-                Hold(view, column, subject, _held ? StoryStates.All[i].Forced() : InputStates.None);
-        }
-    }
-
-    [FramePath]
-    static void Hold(UiView view, Node node, Type subject, InputStates states)
-    {
-        foreach (var child in node.Children)
-        {
-            if (child.Component == subject)
-                view.ForceStates(child, states);
-            Hold(view, child, subject, states);
-        }
     }
 
     int IndexOf(string? key)

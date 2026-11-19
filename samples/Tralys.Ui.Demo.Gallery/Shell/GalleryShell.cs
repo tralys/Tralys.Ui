@@ -301,7 +301,7 @@ sealed class GalleryStage : Component<GalleryPartProps>
         using (ui.ScrollArea(horizontal: ScrollbarVisibility.Disabled, grow: 1))
         using (ui.Box(wrap: FlexWrap.Wrap, align: Align.Start))
         {
-            for (var i = 0; i < model.Columns.Length; i++)
+            for (var i = 0; i < StoryStates.All.Length; i++)
             {
                 using (
                     ui.Box(
@@ -309,7 +309,8 @@ sealed class GalleryStage : Component<GalleryPartProps>
                         gap: 8,
                         align: Align.Start,
                         margin: new Thickness(0f, 0f, 24f, 24f),
-                        nodeRef: model.Columns[i],
+                        forceStates: StoryStates.All[i].Forced(),
+                        forceStatesOn: story.Component,
                         key: i
                     )
                 )

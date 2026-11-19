@@ -87,7 +87,7 @@ public sealed partial class UiView
     {
         var held = InputStates.None;
         for (var n = node; n is not null; n = n._parent)
-            held |= n.Inherit.ForceStates | n.ForcedByView;
+            held |= n.Inherit.ForcedInside | n.ForcedByView | n.ForcedByScope;
         if ((held & InputStates.Focused) != 0)
             held |= InputStates.FocusVisible;
         if ((held & InputStates.Pressed) != 0)
@@ -101,13 +101,59 @@ public sealed partial class UiView
     {
         ArgumentNullException.ThrowIfNull(node);
         VerifyAccess();
-        if (node.ForcedByView == states)
+        var before = node.ForcedByView;
+        if (before == states)
             return;
-        var disables = ((node.ForcedByView ^ states) & InputStates.Disabled) != 0;
         node.ForcedByView = states;
+        Forced(node, before ^ states);
+    }
+
+    void Forced(Node node, InputStates changed)
+    {
         HeldChanged(node);
-        if (disables)
+        if ((changed & InputStates.Disabled) != 0)
             UpdateDisabled(node);
+    }
+
+    internal static void ComponentMounted(Node node, Type component)
+    {
+        var held = ScopeHeld(node._parent, component);
+        node.ForcedByScope = held;
+        if ((held & InputStates.Disabled) != 0)
+            node._states |= InputStates.Disabled;
+    }
+
+    internal void ScopeChanged(Node scope)
+    {
+        for (var child = scope._first; child is not null; child = child._next)
+            Rescope(child);
+    }
+
+    void Rescope(Node node)
+    {
+        if (node.Component is { } component)
+        {
+            var before = node.ForcedByScope;
+            var held = ScopeHeld(node._parent, component);
+            if (held != before)
+            {
+                node.ForcedByScope = held;
+                Forced(node, before ^ held);
+            }
+        }
+        for (var child = node._first; child is not null; child = child._next)
+            Rescope(child);
+    }
+
+    static InputStates ScopeHeld(Node? from, Type component)
+    {
+        var held = InputStates.None;
+        for (var n = from; n is not null; n = n._parent)
+        {
+            if (n.Inherit.ForceStatesOn == component)
+                held |= n.Inherit.ForceStates;
+        }
+        return held;
     }
 
     internal void HeldChanged(Node node)
@@ -154,7 +200,8 @@ public sealed partial class UiView
             parentDisabled
             || node.Inherit.Disabled
             || node.CommandRefusals > 0
-            || ((node.Inherit.ForceStates | node.ForcedByView) & InputStates.Disabled) != 0;
+            || ((node.Inherit.ForcedInside | node.ForcedByView | node.ForcedByScope) & InputStates.Disabled)
+                != 0;
         node.SetStates(
             disabled ? node._states | InputStates.Disabled : node._states & ~InputStates.Disabled
         );

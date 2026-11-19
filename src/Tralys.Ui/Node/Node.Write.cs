@@ -94,11 +94,15 @@ public sealed partial class Node
             changed |= EnvReads.Theme;
         if (old.Density != style.Density)
             changed |= EnvReads.Density;
-        if (old.ForceStates != style.ForceStates)
+        if (old.ForceStates != style.ForceStates || old.ForceStatesOn != style.ForceStatesOn)
+        {
             view.HeldChanged(this);
+            if (old.ForceStatesOn is not null || style.ForceStatesOn is not null)
+                view.ScopeChanged(this);
+        }
         if (
             old.Disabled != style.Disabled
-            || ((old.ForceStates ^ style.ForceStates) & InputStates.Disabled) != 0
+            || ((old.ForcedInside ^ style.ForcedInside) & InputStates.Disabled) != 0
         )
         {
             changed |= EnvReads.Disabled;

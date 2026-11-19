@@ -38,6 +38,7 @@ public sealed partial class Node
     internal bool PaintQueued;
     internal InputStates _states;
     internal InputStates ForcedByView;
+    internal InputStates ForcedByScope;
     internal byte HoverCount;
     internal byte PressCount;
     internal byte CommandRefusals;
@@ -198,6 +199,7 @@ public sealed partial class Node
         PaintQueued = false;
         _states = InputStates.None;
         ForcedByView = InputStates.None;
+        ForcedByScope = InputStates.None;
         HoverCount = 0;
         PressCount = 0;
         CommandRefusals = 0;

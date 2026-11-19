@@ -19,7 +19,7 @@ sealed class GalleryScene : IScene
     public void Mount(UiView view) => view.Mount(Slot.Of(Model, GalleryShell.Root));
 
     [FramePath]
-    public void Frame(UiView view, string renderer, in FrameTiming last) => Model.HoldStates(view);
+    public void Frame(UiView view, string renderer, in FrameTiming last) { }
 
     public bool Shortcut(UiView view, Key key) => false;
 

@@ -116,10 +116,17 @@ internal record struct InheritStyle
     public Theme? Theme;
     public Density? Density;
     public InputStates ForceStates;
+    public Type? ForceStatesOn;
+
+    public readonly InputStates ForcedInside =>
+        ForceStatesOn is null ? ForceStates : InputStates.None;
 
     /// <summary>What <c>Equals</c> says, without copying either style.</summary>
     public readonly bool Same(in InheritStyle other) =>
-        StylesLike(other) && Disabled == other.Disabled && ForceStates == other.ForceStates;
+        StylesLike(other)
+        && Disabled == other.Disabled
+        && ForceStates == other.ForceStates
+        && ForceStatesOn == other.ForceStatesOn;
 
     public readonly bool StylesLike(in InheritStyle other) =>
         Color == other.Color

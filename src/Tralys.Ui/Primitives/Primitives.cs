@@ -46,6 +46,7 @@ public static class Primitives
         Theme? theme = null,
         Density? density = null,
         InputStates forceStates = default,
+        Type? forceStatesOn = null,
         Callback onClick = default,
         Callback onDoubleClick = default,
         Callback onLongPress = default,
@@ -269,6 +270,7 @@ public static class Primitives
                 Theme = theme,
                 Density = density,
                 ForceStates = forceStates,
+                ForceStatesOn = forceStatesOn,
             },
             new Placement
             {
@@ -343,6 +345,7 @@ public static class Primitives
         Theme? theme = null,
         Density? density = null,
         InputStates forceStates = default,
+        Type? forceStatesOn = null,
         Callback onClick = default,
         Callback onDoubleClick = default,
         Callback onLongPress = default,
@@ -574,6 +577,7 @@ public static class Primitives
                 Theme = theme,
                 Density = density,
                 ForceStates = forceStates,
+                ForceStatesOn = forceStatesOn,
             },
             new Placement
             {

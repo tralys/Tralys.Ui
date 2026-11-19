@@ -1,3 +1,4 @@
+using Tralys.Ui.Components;
 using Tralys.Ui.Testing;
 using Tralys.Ui.Theming;
 
@@ -27,6 +28,43 @@ public sealed class EnvironmentTests
         driver.Settle();
 
         await Assert.That(Seen(driver, "disabled")).IsEqualTo((false, false));
+    }
+
+    [Test]
+    public async Task States_forced_on_a_component_type_reach_only_that_type()
+    {
+        using var driver = UiDriver.Render(ui =>
+        {
+            using (ui.Box(direction: Direction.Column))
+            {
+                using (ui.Box(forceStates: InputStates.Pressed, forceStatesOn: typeof(StateProbe)))
+                    ui.StateProbe(name: "named", id: "named");
+                using (ui.Box(forceStates: InputStates.Pressed, forceStatesOn: typeof(Button)))
+                    ui.StateProbe(name: "other", id: "other");
+            }
+        });
+
+        await Assert.That(Seen(driver, "named")).IsEqualTo((false, true));
+        await Assert.That(Seen(driver, "other")).IsEqualTo((false, false));
+    }
+
+    [Test]
+    public async Task A_component_type_forced_disabled_takes_no_click()
+    {
+        var clicks = new Counter();
+        using var driver = UiDriver.Render(ui =>
+        {
+            using (ui.Box(forceStates: InputStates.Disabled, forceStatesOn: typeof(Button)))
+                ui.Button(
+                    text: "Save",
+                    onClick: Callback.Of(clicks, static c => c.Value++),
+                    id: "save"
+                );
+        });
+
+        driver.Click(driver.Get("save"));
+
+        await Assert.That(clicks.Value).IsEqualTo(0);
     }
 
     [Test]

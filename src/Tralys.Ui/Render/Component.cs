@@ -130,6 +130,7 @@ internal abstract partial class ComponentHost : IChangeObserver
         Caller = caller;
         IsMounted = true;
         MountId = Interlocked.Increment(ref s_mounts);
+        UiView.ComponentMounted(node, ComponentType);
         if (!ReferenceEquals(_dependencies.Dispatcher, view.Context.Dispatcher))
             _dependencies = new Dependencies(view.Context.Dispatcher);
     }
