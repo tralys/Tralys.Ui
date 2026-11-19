@@ -86,8 +86,9 @@ public static partial class CheckList
 }
 
 /// <summary>A column of check boxes, one per item, that scrolls once it reaches
-/// <see cref="CheckListProps{TItem}.MaxHeight"/>, and never sideways. <see cref="CheckListProps{TItem}.Value"/> holds the
-/// checked items' keys, and a press reports a toggle through <see cref="CheckListProps{TItem}.OnValueChange"/>;
+/// <see cref="CheckListProps{TItem}.MaxHeight"/>, under a bar down its right edge, and never sideways.
+/// <see cref="CheckListProps{TItem}.Value"/> holds the checked items' keys, and a press reports a toggle through
+/// <see cref="CheckListProps{TItem}.OnValueChange"/>;
 /// <see cref="CheckListFilter"/> keeps them for a filter that applies at once or on commit.</summary>
 public sealed partial class CheckList<TItem> : Component<CheckListProps<TItem>>
 {
@@ -104,6 +105,7 @@ public sealed partial class CheckList<TItem> : Component<CheckListProps<TItem>>
             CheckList.Context,
             new CheckListContext(model.Toggle, p.Size ?? ComponentSize.Md)
         );
+        var scroll = ui.ScrollHandle();
         using (
             ui.Box(
                 direction: Direction.Column,
@@ -112,33 +114,43 @@ public sealed partial class CheckList<TItem> : Component<CheckListProps<TItem>>
                 maxHeight: p.MaxHeight
             )
         )
-        using (
-            ui.Box(
-                direction: Direction.Column,
-                gap: 8f,
-                overflow: Overflow.ScrollY,
-                panning: Panning.VerticalOnly,
-                grow: 1f
-            )
-        )
         {
-            TextValue previous = default;
-            for (var i = 0; i < items.Count; i++)
+            using (
+                ui.Box(
+                    direction: Direction.Column,
+                    gap: 8f,
+                    padding: new Thickness(
+                        0f,
+                        0f,
+                        ListBarParts.Space(scroll, ScrollbarVisibility.Auto),
+                        0f
+                    ),
+                    overflow: Overflow.ScrollY,
+                    scroll: scroll,
+                    panning: Panning.VerticalOnly,
+                    grow: 1f
+                )
+            )
             {
-                var item = items.ItemAt(i);
-                var key = itemKey(item);
-                var group = p.ItemGroup is { } of ? of(item) : default;
-                ui.CheckListItem(
-                    value: key,
-                    label: p.ItemText is { } text ? text(item) : default,
-                    @checked: p.Value?.Contains(key) == true,
-                    group: !group.IsNull && !group.Span.SequenceEqual(previous.Span)
-                        ? group
-                        : default,
-                    key: key
-                );
-                previous = group;
+                TextValue previous = default;
+                for (var i = 0; i < items.Count; i++)
+                {
+                    var item = items.ItemAt(i);
+                    var key = itemKey(item);
+                    var group = p.ItemGroup is { } of ? of(item) : default;
+                    ui.CheckListItem(
+                        value: key,
+                        label: p.ItemText is { } text ? text(item) : default,
+                        @checked: p.Value?.Contains(key) == true,
+                        group: !group.IsNull && !group.Span.SequenceEqual(previous.Span)
+                            ? group
+                            : default,
+                        key: key
+                    );
+                    previous = group;
+                }
             }
+            ui.ListBar(scroll: scroll, visibility: ScrollbarVisibility.Auto);
         }
     }
 

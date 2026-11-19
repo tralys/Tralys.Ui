@@ -43,6 +43,10 @@ public readonly record struct TreeProps<TRow>
     /// <summary>When the bar down the tree's right edge shows; while it does, the rows stop short of it.</summary>
     public ScrollbarVisibility VerticalScrollbar { get; init; }
 
+    /// <summary>When the bar along the tree's bottom edge shows, while rows wider than the tree scroll sideways; while it
+    /// does, the rows stop short of it.</summary>
+    public ScrollbarVisibility HorizontalScrollbar { get; init; }
+
     public Length Width { get; init; }
 
     public Length Height { get; init; }
@@ -197,7 +201,9 @@ public sealed partial class Tree<TRow> : Component<TreeProps<TRow>>
         var selects = p.SelectionMode != SelectionMode.None;
         model.Selects = selects;
         ui.Provide(Tree.Context, new TreeContext(model, size));
+        var sideways = ui.ScrollHandle();
         var bar = ListBarParts.Space(model.Scroll, p.VerticalScrollbar);
+        var under = ListBarParts.SidewaysSpace(sideways, p.HorizontalScrollbar);
         using (
             ui.Box(
                 direction: Direction.Column,
@@ -213,6 +219,7 @@ public sealed partial class Tree<TRow> : Component<TreeProps<TRow>>
                     grow: 1f,
                     basis: 0f,
                     overflow: Overflow.ScrollX,
+                    scroll: sideways,
                     panning: Panning.HorizontalOnly
                 )
             )
@@ -230,7 +237,8 @@ public sealed partial class Tree<TRow> : Component<TreeProps<TRow>>
                     tabIndex: -1,
                     minWidth: Length.Full
                 );
-            ui.ListBar(scroll: model.Scroll, visibility: p.VerticalScrollbar);
+            ui.ListBar(scroll: model.Scroll, visibility: p.VerticalScrollbar, bottom: under);
+            ui.SidewaysListBar(scroll: sideways, visibility: p.HorizontalScrollbar, right: bar);
         }
     }
 

@@ -86,7 +86,7 @@ internal readonly record struct MenuContext(
 /// Right, Enter or Space on a row with items opens its submenu on its first row, and Left or Escape shuts the submenu
 /// the focus is in. Enter or Space clicks the focused row. Resting the pointer on a row focuses it, and after 400 ms
 /// opens its submenu, shutting any other its menu has open. Presses on its frame stop at it, and its rows scroll past
-/// <see cref="MenuProps.MaxHeight"/>.</remarks>
+/// <see cref="MenuProps.MaxHeight"/>, under a bar down their right edge.</remarks>
 public sealed class Menu : Component<MenuProps>
 {
     internal static readonly ContextKey<MenuContext> Context = new(
@@ -445,6 +445,7 @@ internal sealed class MenuPanel : Component<MenuPanelProps>
         level.Panel = ui.Ref();
         level.FocusFirst = p.FocusFirst;
         level.TakesFocus = p.TakesFocus;
+        var scroll = ui.ScrollHandle();
         ui.Effect(level, 0, static (l, _, cx) => l.Shown(cx.View));
         ui.Provide(
             Menu.Context,
@@ -463,16 +464,27 @@ internal sealed class MenuPanel : Component<MenuPanelProps>
         using (ui.OverlayFrame(size: p.Size))
         {
             p.Caption.Render(ui);
-            using (
-                ui.Box(
-                    direction: Direction.Column,
-                    grow: 1,
-                    overflow: Overflow.ScrollY,
-                    maxHeight: p.MaxHeight,
-                    panning: Panning.VerticalOnly
+            using (ui.Box(direction: Direction.Column, grow: 1, minHeight: 0f))
+            {
+                using (
+                    ui.Box(
+                        direction: Direction.Column,
+                        grow: 1,
+                        padding: new Thickness(
+                            0f,
+                            0f,
+                            ListBarParts.Space(scroll, ScrollbarVisibility.Auto),
+                            0f
+                        ),
+                        overflow: Overflow.ScrollY,
+                        scroll: scroll,
+                        maxHeight: p.MaxHeight,
+                        panning: Panning.VerticalOnly
+                    )
                 )
-            )
-                p.Content.Render(ui);
+                    p.Content.Render(ui);
+                ui.ListBar(scroll: scroll, visibility: ScrollbarVisibility.Auto);
+            }
         }
     }
 }

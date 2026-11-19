@@ -101,6 +101,10 @@ public readonly record struct TableProps<TItem>
     /// of it.</summary>
     public ScrollbarVisibility VerticalScrollbar { get; init; }
 
+    /// <summary>When the bar along the table's bottom edge shows, while <see cref="ScrollsSideways"/> columns wider than
+    /// the table scroll; while it does, the rows stop short of it.</summary>
+    public ScrollbarVisibility HorizontalScrollbar { get; init; }
+
     /// <summary>The rows' size; <see cref="ComponentSize.Sm"/> by default.</summary>
     public ComponentSize? Size { get; init; }
 
@@ -439,18 +443,15 @@ public sealed partial class Table<TItem> : Component<TableProps<TItem>>
         layout.ScrollsSideways = p.ScrollsSideways ?? true;
         layout.OnSort = model.SortClicked;
         var rows = layout.Rows;
-        var bar = ScrollAreaBar.Shows(rows, p.VerticalScrollbar, vertical: true);
+        var sideways = p.ScrollsSideways ?? true;
+        var sidewaysBar = sideways ? p.HorizontalScrollbar : ScrollbarVisibility.Disabled;
+        var bar = ListBarParts.Space(rows, p.VerticalScrollbar);
+        var under = ListBarParts.SidewaysSpace(layout.Sideways, sidewaysBar);
         ui.Provide(
             Table.Context,
-            new TableContext(
-                layout,
-                layout.Version.Value,
-                model.RowsVersion(p),
-                bar ? ScrollAreaBar.Space : 0f
-            )
+            new TableContext(layout, layout.Version.Value, model.RowsVersion(p), bar)
         );
         var m = t.Metrics(p.Size ?? ComponentSize.Sm);
-        var sideways = p.ScrollsSideways ?? true;
         var across = sideways ? Length.Auto : Length.Full;
         using (ui.Box(direction: Direction.Column, width: p.Width, height: p.Height))
         {
@@ -484,7 +485,7 @@ public sealed partial class Table<TItem> : Component<TableProps<TItem>>
                     selection: model,
                     onSelectionChange: model.Selected,
                     onAction: p.OnRowActivate,
-                    padding: bar ? ListBarParts.Room : default(Thickness),
+                    padding: new Thickness(0f, 0f, bar, 0f),
                     grow: 1f,
                     width: across,
                     minWidth: Length.Full
@@ -493,8 +494,10 @@ public sealed partial class Table<TItem> : Component<TableProps<TItem>>
             ui.ListBar(
                 scroll: rows,
                 visibility: p.VerticalScrollbar,
-                top: layout.HeaderRow.Size.Height
+                top: layout.HeaderRow.Size.Height,
+                bottom: under
             );
+            ui.SidewaysListBar(scroll: layout.Sideways, visibility: sidewaysBar, right: bar);
             if (items.Count == 0 && !p.EmptyText.IsNull)
                 using (
                     ui.Box(

@@ -39,6 +39,21 @@ static class ListBoxStories
     }
 
     [FramePath]
+    public static void Horizontal(Ui ui)
+    {
+        var value = ui.State<UiKey>(default);
+        ui.ListBox(
+            items: Words.Letters,
+            itemKey: Words.ByText,
+            itemText: Words.Text,
+            layout: ListLayout.Horizontal,
+            value: value.Value,
+            onValueChange: value.Setter,
+            width: 280
+        );
+    }
+
+    [FramePath]
     public static void Filtered(Ui ui)
     {
         var words = ui.Remember(static () => new FilteredWords());

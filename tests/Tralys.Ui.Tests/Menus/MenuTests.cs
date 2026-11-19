@@ -564,7 +564,7 @@ public sealed class MenuTests
     });
 
     [Test]
-    public async Task A_menu_and_its_submenus_scroll_their_rows_past_the_height_its_caller_caps_them_at()
+    public async Task A_menu_and_its_submenus_scroll_their_rows_past_the_height_its_caller_caps_them_at_short_of_a_bar_beside_them()
     {
         var rows = Slot.Of(static ui =>
         {
@@ -576,9 +576,13 @@ public sealed class MenuTests
             .WithIcons();
 
         driver.Click(Menus.RootOf(driver.All<Components.Menu.Item>()[0]));
+        var row = Menus.RootOf(driver.All<Components.Menu.Item>()[0]).ViewBounds;
+        var bar = driver.All<Scrollbar>().Min(b => Bars.Root(b).ViewBounds.X);
 
         await Assert
             .That((Menus.Panel(driver).ViewBounds.Height, Menus.Panel(driver, 1).ViewBounds.Height))
             .IsEqualTo((130f, 130f));
+        await Assert.That(Bars.Shown(driver)).IsEqualTo(2);
+        await Assert.That(row.Right).IsEqualTo(bar);
     }
 }

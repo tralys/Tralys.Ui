@@ -121,6 +121,10 @@ public readonly record struct ListBoxProps<TItem>
     /// <summary>When the bar down the list's right edge shows; while it does, the rows stop short of it.</summary>
     public ScrollbarVisibility VerticalScrollbar { get; init; }
 
+    /// <summary>When the bar along the bottom edge of a <see cref="ListLayout.Horizontal"/> list shows; while it does,
+    /// the items stop short of it.</summary>
+    public ScrollbarVisibility HorizontalScrollbar { get; init; }
+
     /// <summary>Binds the list's own node, which holds its rows, so code can focus it; its arrows then step from the
     /// first row.</summary>
     public NodeRef? NodeRef { get; init; }
@@ -377,7 +381,9 @@ public sealed partial class ListBox<TItem> : Component<ListBoxProps<TItem>>
                 grow: 1f,
                 nodeRef: p.NodeRef
             );
-            if (!sideways)
+            if (sideways)
+                ui.SidewaysListBar(scroll: scroll, visibility: p.HorizontalScrollbar);
+            else
                 ui.ListBar(
                     scroll: scroll,
                     visibility: shows ? ScrollbarVisibility.Visible : ScrollbarVisibility.Hidden

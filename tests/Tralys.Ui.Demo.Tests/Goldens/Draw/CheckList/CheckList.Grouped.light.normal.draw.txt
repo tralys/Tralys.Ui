@@ -31,3 +31,7 @@ RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[7]/Box[0]/Checkbox[0]/Bo
 RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[7]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: matrix 0,0,0,0,10,10
 RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[7]/Box[0]/Checkbox[0]/Box[0]/Fragment[0]/Box[0]/Canvas[1]: path 0,1 14x11.5 7 verbs 6 points #ab8b9220 even-odd fill #ecf4ff
 RootComponent[0]/Box[0]/CheckList[0]/Box[0]/Box[0]/Item[7]/Box[0]/Checkbox[0]/Box[0]/Text[1]: glyphs 7 in -0.52,2.16 57.95x12.7 #2a313a
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/ScrollAreaBar[1]/Box[0]: layer 0.35
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #835e94f7 even-odd fill #616973
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]: box 0,0 8x156 radius 3,3,3,3 fill #616973
+RootComponent[0]/Box[0]/CheckList[0]/Box[0]/ScrollAreaBar[1]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]: path 0,0 8x4 4 verbs 3 points #da92b547 even-odd fill #616973

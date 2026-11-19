@@ -2,8 +2,8 @@
 {"path":"RootComponent[0]/Box[0]","x":0,"y":0,"width":1272,"height":808},
 {"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]","x":0,"y":0,"width":232,"height":192},
 {"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]","x":16,"y":16,"width":200,"height":160},
-{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]","x":16,"y":16,"width":200,"height":160},
-{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]","x":16,"y":16,"width":397,"height":160},
+{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]","x":16,"y":16,"width":200,"height":144},
+{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]","x":16,"y":16,"width":397,"height":144},
 {"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]","x":16,"y":16,"width":397,"height":44},
 {"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]/Box[0]","x":28,"y":38,"width":0,"height":0},
 {"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[0]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]","x":28,"y":30,"width":16,"height":16},
@@ -19,5 +19,15 @@
 {"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]/Icon[0]/Box[0]","x":45,"y":74,"width":14,"height":16},
 {"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/TreeDisclosure[1]/Box[0]/Box[0]/Icon[0]/Box[0]/Text[0]","x":45,"y":74,"width":14,"height":16,"text":"\uE06F"},
 {"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/Box[2]","x":64,"y":74,"width":300,"height":17},
-{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/Box[2]/Text[0]","x":64,"y":74,"width":300,"height":17,"text":"A child whose name also runs past the edge"}
+{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[1]/Item[0]/Box[0]/Box[2]/Text[0]","x":64,"y":74,"width":300,"height":17,"text":"A child whose name also runs past the edge"},
+{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/ScrollAreaBar[2]/Box[0]","x":16,"y":160,"width":200,"height":16},
+{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]","x":16,"y":160,"width":200,"height":16},
+{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]","x":16,"y":168,"width":12,"height":8},
+{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[0]/Box[0]/Canvas[0]","x":20,"y":168,"width":4,"height":8},
+{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/Box[1]","x":28,"y":168,"width":176,"height":8},
+{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/Box[0]","x":28,"y":168,"width":0,"height":8},
+{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/ScrollbarThumb[1]/Box[0]","x":28,"y":168,"width":89,"height":8},
+{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/Box[1]/Box[2]","x":117,"y":168,"width":87,"height":8},
+{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]","x":204,"y":168,"width":12,"height":8},
+{"path":"RootComponent[0]/Box[0]/Fragment[0]/Box[0]/Tree[0]/Box[0]/ScrollAreaBar[2]/Box[0]/Scrollbar[0]/Box[0]/ScrollbarArrow[2]/Box[0]/Canvas[0]","x":208,"y":168,"width":4,"height":8}
 ],"consume":["00000000000000000000000000000000","11111000000000000000000000000000","11111000000000000000000000000000","11111000000000000000000000000000","11111000000000000000000000000000","11111000000000000000000000000000","11111000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000","00000000000000000000000000000000"]}

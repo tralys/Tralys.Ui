@@ -5,4 +5,4 @@ RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableH
 RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]: clip 0,0 160x30
 RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/Box[0]/HeaderRow[0]/Box[0]/TableHeaderCell[0]/Box[0]/Box[0]/Box[0]/Text[0]: glyphs 4 in -0.22,1.85 35.06x10.89 #9fa7b1
 RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[0]/VirtualList[1]: clip 0,0 300x89
-RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[2]/EmptyState[0]/Box[0]/Text[0]: glyphs 18 in 0.04,1.64 153.49x16.07 #9fa7b1
+RootComponent[0]/Box[0]/Table[0]/Box[0]/Box[3]/EmptyState[0]/Box[0]/Text[0]: glyphs 18 in 0.04,1.64 153.49x16.07 #9fa7b1

@@ -38,16 +38,18 @@ internal static class ListEnds
 [FramePath]
 internal static class ListBarParts
 {
-    public static readonly Thickness Room = new(0f, 0f, ScrollAreaBar.Space, 0f);
-
     public static float Space(ScrollHandle scroll, ScrollbarVisibility visibility) =>
         ScrollAreaBar.Shows(scroll, visibility, vertical: true) ? ScrollAreaBar.Space : 0f;
+
+    public static float SidewaysSpace(ScrollHandle scroll, ScrollbarVisibility visibility) =>
+        ScrollAreaBar.Shows(scroll, visibility, vertical: false) ? ScrollAreaBar.Space : 0f;
 
     public static void ListBar(
         this Ui ui,
         ScrollHandle scroll,
         ScrollbarVisibility visibility,
         float top = 0f,
+        float bottom = 0f,
         UiKey key = default,
         [CallerFilePath] string file = "",
         [CallerLineNumber] int line = 0
@@ -60,7 +62,28 @@ internal static class ListBarParts
             position: Position.Absolute,
             top: top,
             right: 0f,
-            bottom: 0f,
+            bottom: bottom,
+            key: key,
+            file: file,
+            line: line
+        );
+
+    // In flow under the scroller, so the bar shortens the viewport rather than covering the last row in view.
+    public static void SidewaysListBar(
+        this Ui ui,
+        ScrollHandle scroll,
+        ScrollbarVisibility visibility,
+        float right = 0f,
+        UiKey key = default,
+        [CallerFilePath] string file = "",
+        [CallerLineNumber] int line = 0
+    ) =>
+        ui.ScrollAreaBar(
+            handle: scroll,
+            vertical: false,
+            visibility: visibility,
+            shown: ui.IsHovered || ui.IsFocusWithin || ui.IsCapturing,
+            margin: new Thickness(0f, 0f, right, 0f),
             key: key,
             file: file,
             line: line

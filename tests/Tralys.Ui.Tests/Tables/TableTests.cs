@@ -798,6 +798,30 @@ public sealed class TableTests
     }
 
     [Test]
+    public async Task Its_horizontal_bar_runs_under_columns_wider_than_the_table_up_to_its_vertical_bar_and_scrolls_them()
+    {
+        using var driver = UiDriver.Render(ui =>
+            ui.Table(
+                items: ItemsSource.From(Team.Many(40)),
+                itemKey: Team.ByName,
+                columns: Team.Columns(name: 800),
+                width: 200,
+                height: 200
+            )
+        );
+        driver.View.Context.SmoothScrolling = false;
+        var table = Root(driver.Get<Table<Member>>()).ViewBounds;
+        var down = Root(driver.All<Scrollbar>()[0]).ViewBounds;
+        var across = Root(driver.All<Scrollbar>()[1]).ViewBounds;
+
+        driver.Click(Bars.Arrow(driver, forward: true, bar: 1));
+
+        await Assert.That((across.Bottom, across.Right)).IsEqualTo((table.Bottom, down.X));
+        await Assert.That(down.Bottom).IsEqualTo(across.Y);
+        await Assert.That(Sideways(driver).Offset.X).IsEqualTo(16f);
+    }
+
+    [Test]
     public async Task An_empty_table_wider_than_itself_still_scrolls_its_header_row_sideways()
     {
         using var driver = UiDriver.Render(ui =>

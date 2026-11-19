@@ -287,8 +287,29 @@ static class VirtualListStories
             ui.Caption(
                 "A horizontal list: ten thousand tiles across, realized only around the viewport"
             );
-            using (ui.Box(width: 560, height: 112, background: t.Color(ColorToken.BgSunken)))
-                ui.VirtualList(items: Many, itemKey: ByName, row: Tile, horizontal: true, grow: 1);
+            var scroll = ui.ScrollHandle();
+            using (
+                ui.Box(
+                    direction: Direction.Column,
+                    width: 560,
+                    height: 112,
+                    background: t.Color(ColorToken.BgSunken)
+                )
+            )
+            {
+                ui.VirtualList(
+                    items: Many,
+                    itemKey: ByName,
+                    row: Tile,
+                    horizontal: true,
+                    scroll: scroll,
+                    grow: 1
+                );
+                ui.ScrollAreaBar(
+                    handle: scroll,
+                    shown: ui.IsHovered || ui.IsFocusWithin || ui.IsCapturing
+                );
+            }
         }
     }
 }

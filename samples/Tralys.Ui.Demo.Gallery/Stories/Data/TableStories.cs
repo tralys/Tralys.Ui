@@ -571,7 +571,7 @@ static class TableRowStories
         using (ui.Box(direction: Direction.Column, width: 360, height: 200))
         {
             ui.TableHeaderRow(columns: Pooled);
-            using (ui.Box(direction: Direction.Column, grow: 1, overflow: Overflow.ScrollY))
+            using (ui.ScrollArea(horizontal: ScrollbarVisibility.Disabled, grow: 1))
                 foreach (var member in TeamRows.Ranked)
                     ui.TableRow(item: member, columns: Pooled, key: member.Name);
         }

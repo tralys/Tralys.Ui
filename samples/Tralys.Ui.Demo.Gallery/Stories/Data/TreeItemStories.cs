@@ -86,13 +86,22 @@ static class TreeItemStories
                 ui,
                 "A thousand places as one virtualized list, each row indented by its depth"
             );
-            ui.VirtualList(
-                items: forest.Rows,
-                itemKey: Branch.Key,
-                row: FlatRow,
-                width: 240,
-                height: 240
-            );
+            var scroll = ui.ScrollHandle();
+            using (ui.Box(width: 240, height: 240))
+            {
+                ui.VirtualList(
+                    items: forest.Rows,
+                    itemKey: Branch.Key,
+                    row: FlatRow,
+                    scroll: scroll,
+                    grow: 1
+                );
+                ui.ScrollAreaBar(
+                    handle: scroll,
+                    vertical: true,
+                    shown: ui.IsHovered || ui.IsFocusWithin || ui.IsCapturing
+                );
+            }
         }
     }
 

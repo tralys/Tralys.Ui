@@ -41,15 +41,14 @@ static class IconStories
         var t = ui.Theme;
         var all = Icons.All;
         using (
-            ui.Box(
-                wrap: FlexWrap.Wrap,
-                overflow: Overflow.ScrollY,
-                grow: 1,
+            ui.ScrollArea(
+                horizontal: ScrollbarVisibility.Disabled,
                 width: Length.Full,
                 maxHeight: 400,
-                fontWeight: t.Weight(WeightToken.Interface)
+                grow: 1
             )
         )
+        using (ui.Box(wrap: FlexWrap.Wrap, fontWeight: t.Weight(WeightToken.Interface)))
             for (var i = 0; i < all.Count; i++)
                 using (
                     ui.Box(
@@ -71,7 +70,6 @@ static class IconStories
                         all[i].Key,
                         color: t.Color(ColorToken.FgMuted),
                         variant: TextVariant.Badge,
-                        wrap: true,
                         trimming: TextTrimming.CharacterEllipsis
                     );
                 }
