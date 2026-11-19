@@ -129,6 +129,7 @@ public sealed partial class ListsAllocationTests
     public async Task Wheeling_a_thousand_card_grid_a_notch_every_frame_allocates_nothing()
     {
         var items = Ids(1000);
+        var scroll = new ScrollHandle();
         using var driver = UiDriver.Render(
             ui =>
                 ui.ListBox(
@@ -140,12 +141,24 @@ public sealed partial class ListsAllocationTests
                     itemWidth: 60,
                     itemHeight: 60,
                     fillWidth: true,
+                    scroll: scroll,
                     width: 400,
                     height: 300
                 ),
             new Size(600, 400)
         );
         var walk = new Walk { List = Nodes.Find(driver.Root, NodeKind.VirtualList) };
+        // Recycled cards grow text storage to their longest label; warm until every card has shown each one.
+        while (scroll.Offset.Y < scroll.Extent.Height - scroll.Viewport.Height - 0.5f)
+        {
+            driver.Wheel(walk.List!, new Vector2(0, -1), settle: false);
+            driver.Frame();
+        }
+        while (scroll.Offset.Y > 0.5f)
+        {
+            driver.Wheel(walk.List!, new Vector2(0, 1), settle: false);
+            driver.Frame();
+        }
 
         var bytes = driver.WorstFrameBytes(
             walk,
