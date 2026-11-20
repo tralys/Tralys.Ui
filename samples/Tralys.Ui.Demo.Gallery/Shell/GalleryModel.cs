@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Reflection;
 using Tralys.Ui.Components;
 using Tralys.Ui.Docking;
 using Tralys.Ui.Mvvm;
@@ -27,6 +28,9 @@ public sealed class GalleryEntry(int id, string label, int story, List<GalleryEn
     public List<GalleryEntry> Children { get; } = children;
 
     public string? Match { get; init; }
+
+    /// <summary>How many stories a category row holds; 0 on the rows beneath one.</summary>
+    public int Count { get; set; }
 }
 
 /// <summary>The gallery a host shows with <see cref="GalleryShell.Root"/>: every story by category, searchable, beside
@@ -37,6 +41,22 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
     public static readonly string[] DensityNames = ["Pointer", "Touch"];
     public static readonly string[] StateNames = Enum.GetNames<StoryState>();
 
+    /// <summary>The Tralys.Ui repository's address, from the library's <c>RepositoryUrl</c> metadata.</summary>
+    public static readonly string Repository = RepositoryOf(typeof(Story).Assembly);
+
+    static readonly string Built =
+        typeof(Story)
+            .Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+            ?.InformationalVersion
+        ?? "";
+
+    /// <summary>The library's version, without the commit it was built from.</summary>
+    public static readonly string Version = Built.Split('+')[0];
+
+    static readonly string Commit = Built.Contains('+', StringComparison.Ordinal)
+        ? Built[(Built.IndexOf('+', StringComparison.Ordinal) + 1)..]
+        : "";
+
     const int CategoryIds = -1;
     const int ComponentIds = -1000;
     const int FoundIds = -100000;
@@ -45,6 +65,8 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
     readonly List<GalleryEntry> _found = [];
     readonly GalleryEntry[] _categoryOf;
     readonly GalleryEntry?[] _componentOf;
+    readonly GalleryEntry[] _entryOf;
+    readonly string?[] _sources;
     readonly List<int> _shownStories = [];
     List<GalleryEntry> _roots;
 
@@ -58,6 +80,8 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
         Stories = Ordered();
         _categoryOf = new GalleryEntry[Stories.Length];
         _componentOf = new GalleryEntry?[Stories.Length];
+        _entryOf = new GalleryEntry[Stories.Length];
+        _sources = new string?[Stories.Length];
         Fold();
         _roots = _folded;
         Rows = new TreeRows<GalleryEntry>(this);
@@ -68,6 +92,10 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
         Submitted = Callback.Of(this, static m => m.PickFirstFound());
         Cleared = Callback.Of(this, static m => m.Query.Clear());
         CopyKey = Callback.Of(this, static m => m.Copy?.Invoke(m.Stories[m.Shown].Key));
+        OpenRepository = Callback.Of(this, static m => m.OpenLink?.Invoke(Repository));
+        OpenSource = Callback.Of(this, static m => m.ShowSource());
+        Previous = Callback.Of(this, static m => m.Step(-1));
+        Next = Callback.Of(this, static m => m.Step(1));
         Keys = Handler<KeyEvent>.Of(this, static (m, ref e) => m.KeyDown(ref e));
         ThemePicks = Picks(
             ThemeNames.Length,
@@ -90,6 +118,12 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
     /// <summary>Where the bar's copy button puts the shown story's key: the host's clipboard.</summary>
     public Action<string>? Copy { get; set; }
 
+    /// <summary>Where the gallery's links go, such as the repository and a story's source: the host's browser. The link
+    /// buttons show only while it is set.</summary>
+    public Action<string>? OpenLink { get; set; }
+
+    public bool Linked => OpenLink is not null && Repository.Length > 0;
+
     public UiView? View { get; set; }
 
     public NodeRef Search { get; } = new();
@@ -111,6 +145,14 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
     public Callback Cleared { get; }
 
     public Callback CopyKey { get; }
+
+    public Callback OpenRepository { get; }
+
+    public Callback OpenSource { get; }
+
+    public Callback Previous { get; }
+
+    public Callback Next { get; }
 
     public Handler<KeyEvent> Keys { get; }
 
@@ -137,6 +179,55 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
         var at = _shownStories.IndexOf(Shown);
         var next = at < 0 ? (by > 0 ? 0 : _shownStories.Count - 1) : at + by;
         Select(_shownStories[Math.Clamp(next, 0, _shownStories.Count - 1)]);
+    }
+
+    internal void Reveal(ScrollHandle scroll)
+    {
+        var row = Rows.IndexOf(RowOf(Shown));
+        if (row >= 0)
+            scroll.ScrollToIndex(row, ScrollAlign.Nearest);
+    }
+
+    GalleryEntry? RowOf(int story)
+    {
+        if (Query.Length == 0)
+            return _entryOf[story];
+        foreach (var category in _found)
+        {
+            foreach (var entry in category.Children)
+            {
+                if (entry.Story == story)
+                    return entry;
+            }
+        }
+        return null;
+    }
+
+    void ShowSource()
+    {
+        if (Stories[Shown].SourcePath is not null)
+            OpenLink?.Invoke(_sources[Shown] ??= SourceOf(Stories[Shown]));
+    }
+
+    [ColdPath]
+    static string SourceOf(Story story)
+    {
+        var file = string.Join('/', story.SourcePath!.Split('/').Select(Uri.EscapeDataString));
+        var at = Commit.Length > 0 ? Commit : "HEAD";
+        return string.Create(
+            CultureInfo.InvariantCulture,
+            $"{Repository}/blob/{at}/{file}#L{story.SourceLine}"
+        );
+    }
+
+    static string RepositoryOf(Assembly assembly)
+    {
+        foreach (var data in assembly.GetCustomAttributes<AssemblyMetadataAttribute>())
+        {
+            if (data.Key == "RepositoryUrl" && data.Value is { } url)
+                return url.TrimEnd('/');
+        }
+        return "";
     }
 
     int IndexOf(string? key)
@@ -185,6 +276,7 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
                     _found.Add(category);
                 }
                 category.Children.Add(new GalleryEntry(i, key, i, []) { Match = query });
+                category.Count++;
                 _shownStories.Add(i);
             }
             _roots = _found;
@@ -234,7 +326,10 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
                 while (end < Stories.Length && ComponentOf(Stories[end]).SequenceEqual(component))
                     end++;
                 if (end - i == 1)
-                    category.Children.Add(new GalleryEntry(i, component.ToString(), i, []));
+                {
+                    _entryOf[i] = new GalleryEntry(i, component.ToString(), i, []);
+                    category.Children.Add(_entryOf[i]);
+                }
                 else
                 {
                     var parent = new GalleryEntry(ComponentIds - i, component.ToString(), -1, []);
@@ -242,14 +337,19 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
                     for (var story = i; story < end; story++)
                     {
                         var key = Stories[story].Key;
-                        parent.Children.Add(
-                            new GalleryEntry(story, key[(key.LastIndexOf('.') + 1)..], story, [])
+                        _entryOf[story] = new GalleryEntry(
+                            story,
+                            key[(key.LastIndexOf('.') + 1)..],
+                            story,
+                            []
                         );
+                        parent.Children.Add(_entryOf[story]);
                         _componentOf[story] = parent;
                     }
                 }
                 for (var story = i; story < end; story++)
                     _categoryOf[story] = category;
+                category.Count += end - i;
                 i = end;
             }
         }

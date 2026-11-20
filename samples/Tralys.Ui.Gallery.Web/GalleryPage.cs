@@ -36,6 +36,9 @@ static unsafe partial class GalleryPage
     [JSImport("showStory", "main.js")]
     private static partial void ShowStory(string key);
 
+    [JSImport("openLink", "main.js")]
+    private static partial void OpenTab(string url);
+
     [JSExport]
     internal static void Start(int width, int height, double scale, string? story)
     {
@@ -50,6 +53,7 @@ static unsafe partial class GalleryPage
         _model = new GalleryModel(story, states: false, windows: null)
         {
             Copy = static text => Host.SetClipboardText(text),
+            OpenLink = static url => OpenTab(url),
         };
         Resize(width, height, scale);
         _context.Advance(_now);

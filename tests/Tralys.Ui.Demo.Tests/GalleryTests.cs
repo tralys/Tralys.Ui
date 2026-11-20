@@ -1,3 +1,4 @@
+using Tralys.Ui.Components;
 using Tralys.Ui.Gallery;
 using Tralys.Ui.Testing;
 
@@ -90,8 +91,39 @@ public sealed class GalleryTests
         await Assert.That(driver.GetText("Light")).IsNotNull();
     }
 
+    [Test]
+    public async Task Opening_at_the_last_story_scrolls_the_tree_to_show_its_row()
+    {
+        var stories = new GalleryModel(null, false, null).Stories;
+        var model = new GalleryModel(stories[^1].Key, false, null);
+        using var driver = UiDriver.Render(
+            ui => GalleryShell.Root(ui, model),
+            size: new Size(1280, 480)
+        );
+
+        var tree = driver.Get<Tree<GalleryEntry>>();
+        var shown = tree.Children[0].ViewBounds;
+        var row = Selected(tree);
+
+        await Assert.That(row).IsNotNull();
+        await Assert.That(row!.ViewBounds.Y).IsGreaterThanOrEqualTo(shown.Y);
+        await Assert.That(row.ViewBounds.Bottom).IsLessThanOrEqualTo(shown.Bottom);
+    }
+
     static UiDriver Open(GalleryModel model) =>
         UiDriver.Render(ui => GalleryShell.Root(ui, model), size: new Size(1280, 720));
+
+    static Node? Selected(Node node)
+    {
+        foreach (var child in node.Children)
+        {
+            if ((child.States & InputStates.Selected) != 0)
+                return child;
+            if (Selected(child) is { } found)
+                return found;
+        }
+        return null;
+    }
 
     static Node? Field(Node node, string text)
     {

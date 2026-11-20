@@ -58,20 +58,23 @@ sealed class GallerySidebar : Component<GalleryPartProps>
 {
     static readonly Slot<GalleryEntry> Row = Slot<GalleryEntry>.Of(
         static (ui, entry, _) =>
-        {
-            if (entry.Match is null)
-                ui.TreeItem(text: entry.Label);
-            else
-                ui.TreeItem(content: Slot.Of(entry, static (ui, e) => Matched(ui, e)));
-        }
+            ui.TreeItem(content: Slot.Of(entry, static (ui, e) => Label(ui, e)))
     );
 
-    static readonly Slot SearchKey = Slot.Of(static ui => ui.Kbd(text: "/"));
+    static readonly Slot SearchKey = Slot.Of(static ui =>
+        ui.Kbd(text: "/", margin: new Thickness(0f, 0f, 8f, 0f))
+    );
+
+    static readonly Slot GitHub = Slot.Of(static ui =>
+        ui.GitHubMark(size: ui.Theme.Metrics(ComponentSize.Sm).IconSize)
+    );
 
     protected override void Render(Ui ui, in GalleryPartProps p)
     {
         var model = p.Model!;
         var t = ui.Theme;
+        var scroll = ui.ScrollHandle();
+        ui.Effect(model, (Scroll: scroll, model.Shown), static (m, at, _) => m.Reveal(at.Scroll));
         using (
             ui.Box(
                 direction: Direction.Column,
@@ -81,6 +84,39 @@ sealed class GallerySidebar : Component<GalleryPartProps>
             )
         )
         {
+            using (
+                ui.Box(
+                    align: Align.Center,
+                    gap: 8,
+                    height: GalleryShell.BarHeight,
+                    padding: new Thickness(14f, 0f, 8f, 0f),
+                    border: new Border(new Thickness(0f, 0f, 0f, 1f), t.Color(ColorToken.Border))
+                )
+            )
+            {
+                ui.TralysMark(size: 20f);
+                ui.Text("Tralys.Ui", variant: TextVariant.Heading);
+                ui.Text(
+                    GalleryModel.Version,
+                    variant: TextVariant.Caption,
+                    color: t.Color(ColorToken.FgMuted),
+                    grow: 1
+                );
+                if (model.Linked)
+                {
+                    var m = t.Metrics(ComponentSize.Sm);
+                    using (ui.Tooltip(text: "Tralys.Ui on GitHub"))
+                        ui.Button(
+                            content: GitHub,
+                            scheme: ColorScheme.Secondary,
+                            variant: ComponentVariant.Ghost,
+                            size: ComponentSize.Sm,
+                            width: m.Height,
+                            padding: default(Thickness),
+                            onClick: model.OpenRepository
+                        );
+                }
+            }
             using (ui.Box(direction: Direction.Column, padding: 12))
                 ui.SearchInput(
                     text: model.Query,
@@ -130,26 +166,50 @@ sealed class GallerySidebar : Component<GalleryPartProps>
                     onValueChange: model.Picked,
                     onExpandedChange: GalleryEntry.Expand,
                     size: ComponentSize.Xs,
+                    scroll: scroll,
                     grow: 1
                 );
         }
     }
 
     [FramePath]
-    static void Matched(
+    static void Label(
         Ui ui,
         GalleryEntry entry,
         [CallerFilePath] string file = "",
         [CallerLineNumber] int line = 0
-    ) =>
-        ui.Text(
-            entry.Label,
-            highlight: entry.Match,
-            highlightColor: ui.Theme.Color(ColorToken.FgAccent),
-            trimming: TextTrimming.CharacterEllipsis,
-            file: file,
-            line: line
-        );
+    )
+    {
+        var t = ui.Theme;
+        using (ui.Fragment(file: file, line: line))
+        {
+            if (entry.Depth == 0)
+            {
+                using (ui.Box(align: Align.Center, gap: 8))
+                {
+                    ui.Text(
+                        entry.Label,
+                        variant: TextVariant.Caption,
+                        color: t.Color(ColorToken.FgMuted)
+                    );
+                    ui.Text(
+                        ui.Format($"{entry.Count}"),
+                        variant: TextVariant.Caption,
+                        color: t.Color(ColorToken.FgMuted),
+                        tabularDigits: true
+                    );
+                }
+            }
+            else
+                ui.Text(
+                    entry.Label,
+                    fontWeight: t.Weight(WeightToken.Content),
+                    highlight: entry.Match,
+                    highlightColor: t.Color(ColorToken.FgAccent),
+                    trimming: TextTrimming.CharacterEllipsis
+                );
+        }
+    }
 }
 
 sealed class GalleryBar : Component<GalleryPartProps>
@@ -181,12 +241,32 @@ sealed class GalleryBar : Component<GalleryPartProps>
             )
         )
         {
+            using (ui.Box(gap: 2, align: Align.Center, margin: new Thickness(0f, 0f, 12f, 0f)))
+            {
+                using (ui.Tooltip(text: "Previous story (↑)"))
+                    ui.IconButton(
+                        icon: Icons.ChevronUp,
+                        scheme: ColorScheme.Secondary,
+                        variant: ComponentVariant.Ghost,
+                        size: ComponentSize.Sm,
+                        onClick: model.Previous
+                    );
+                using (ui.Tooltip(text: "Next story (↓)"))
+                    ui.IconButton(
+                        icon: Icons.ChevronDown,
+                        scheme: ColorScheme.Secondary,
+                        variant: ComponentVariant.Ghost,
+                        size: ComponentSize.Sm,
+                        onClick: model.Next
+                    );
+            }
             using (ui.Box(gap: 8, align: Align.Center, grow: 1))
             {
-                ui.Text(
-                    ui.Format($"{GalleryModel.ComponentOf(story)}"),
-                    color: t.Color(ColorToken.FgMuted)
-                );
+                var muted = t.Color(ColorToken.FgMuted);
+                ui.Text(story.Category, color: muted);
+                ui.Icon(glyph: Icons.ChevronRight, color: muted);
+                ui.Text(ui.Format($"{GalleryModel.ComponentOf(story)}"), color: muted);
+                ui.Icon(glyph: Icons.ChevronRight, color: muted);
                 ui.Text(ui.Format($"{GalleryModel.NameOf(story)}"), variant: TextVariant.Heading);
                 using (ui.Tooltip(text: "Copy the story's key"))
                     ui.IconButton(
@@ -196,6 +276,15 @@ sealed class GalleryBar : Component<GalleryPartProps>
                         size: ComponentSize.Sm,
                         onClick: model.CopyKey
                     );
+                if (model.Linked && story.SourcePath is not null)
+                    using (ui.Tooltip(text: "View source on GitHub"))
+                        ui.IconButton(
+                            icon: Icons.Code,
+                            scheme: ColorScheme.Secondary,
+                            variant: ComponentVariant.Ghost,
+                            size: ComponentSize.Sm,
+                            onClick: model.OpenSource
+                        );
             }
             using (ui.Box(gap: 4, align: Align.Center))
             {
@@ -277,10 +366,13 @@ sealed class GalleryBar : Component<GalleryPartProps>
 
 sealed class GalleryStage : Component<GalleryPartProps>
 {
+    const float DescriptionWidth = 720f;
+
     protected override void Render(Ui ui, in GalleryPartProps p)
     {
         var model = p.Model!;
         var story = model.Stories[model.Shown];
+        var t = ui.Theme;
         if (!model.States)
         {
             // A story pads itself by 16, so it lands 24 in.
@@ -292,35 +384,56 @@ sealed class GalleryStage : Component<GalleryPartProps>
                     containsLayers: true
                 )
             )
+            {
+                if (story.Description is { } description)
+                    ui.Text(
+                        description,
+                        color: t.Color(ColorToken.FgMuted),
+                        fontWeight: t.Weight(WeightToken.Content),
+                        wrap: true,
+                        margin: new Thickness(16f, 16f, 16f, 0f),
+                        maxWidth: DescriptionWidth
+                    );
                 ui.GalleryStory(story: story, key: story.Key);
+            }
             return;
         }
 
-        var t = ui.Theme;
         using (ui.Box(direction: Direction.Column, padding: 24, minHeight: 0, containsLayers: true))
-        using (ui.ScrollArea(horizontal: ScrollbarVisibility.Disabled, grow: 1))
-        using (ui.Box(wrap: FlexWrap.Wrap, align: Align.Start))
         {
-            for (var i = 0; i < StoryStates.All.Length; i++)
+            if (story.Description is { } description)
+                ui.Text(
+                    description,
+                    color: t.Color(ColorToken.FgMuted),
+                    fontWeight: t.Weight(WeightToken.Content),
+                    wrap: true,
+                    margin: new Thickness(0f, 0f, 0f, 16f),
+                    maxWidth: DescriptionWidth
+                );
+            using (ui.ScrollArea(horizontal: ScrollbarVisibility.Disabled, grow: 1))
+            using (ui.Box(wrap: FlexWrap.Wrap, align: Align.Start))
             {
-                using (
-                    ui.Box(
-                        direction: Direction.Column,
-                        gap: 8,
-                        align: Align.Start,
-                        margin: new Thickness(0f, 0f, 24f, 24f),
-                        forceStates: StoryStates.All[i].Forced(),
-                        forceStatesOn: story.Component,
-                        key: i
-                    )
-                )
+                for (var i = 0; i < StoryStates.All.Length; i++)
                 {
-                    ui.Text(
-                        GalleryModel.StateNames[i],
-                        variant: TextVariant.Caption,
-                        color: t.Color(ColorToken.FgMuted)
-                    );
-                    ui.GalleryStory(story: story, key: story.Key);
+                    using (
+                        ui.Box(
+                            direction: Direction.Column,
+                            gap: 8,
+                            align: Align.Start,
+                            margin: new Thickness(0f, 0f, 24f, 24f),
+                            forceStates: StoryStates.All[i].Forced(),
+                            forceStatesOn: story.Component,
+                            key: i
+                        )
+                    )
+                    {
+                        ui.Text(
+                            GalleryModel.StateNames[i],
+                            variant: TextVariant.Caption,
+                            color: t.Color(ColorToken.FgMuted)
+                        );
+                        ui.GalleryStory(story: story, key: story.Key);
+                    }
                 }
             }
         }

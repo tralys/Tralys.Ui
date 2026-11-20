@@ -184,6 +184,9 @@ const start = async () => {
     writeClipboard: text => {
       navigator.clipboard?.writeText(text).catch(console.warn);
     },
+    openLink: url => {
+      window.open(url, '_blank', 'noopener');
+    },
     textInput: on => {
       canvas.dataset.typing = on;
     },

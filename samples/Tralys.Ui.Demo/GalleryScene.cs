@@ -1,3 +1,4 @@
+using SDL;
 using Tralys.Ui.Docking;
 using Tralys.Ui.Gallery;
 
@@ -7,7 +8,10 @@ sealed class GalleryScene : IScene
 {
     public GalleryScene(string? story, bool states, IDockWindowHost? windows, SdlWindow? window)
     {
-        Model = new GalleryModel(story, states, windows);
+        Model = new GalleryModel(story, states, windows)
+        {
+            OpenLink = static link => SDL3.SDL_OpenURL(link),
+        };
         if (window is not null)
             Model.Copy = text => window.SetClipboardText(text);
     }
