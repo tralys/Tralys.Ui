@@ -223,10 +223,6 @@
     "cp": 57456,
     "font": "lucide"
   },
-  "Chrome": {
-    "cp": 57461,
-    "font": "lucide"
-  },
   "Circle": {
     "cp": 57462,
     "font": "lucide"
@@ -265,14 +261,6 @@
   },
   "Code": {
     "cp": 57491,
-    "font": "lucide"
-  },
-  "Codepen": {
-    "cp": 57492,
-    "font": "lucide"
-  },
-  "Codesandbox": {
-    "cp": 57493,
     "font": "lucide"
   },
   "Coffee": {
@@ -379,10 +367,6 @@
     "cp": 57481,
     "font": "lucide"
   },
-  "Dribbble": {
-    "cp": 57523,
-    "font": "lucide"
-  },
   "Droplet": {
     "cp": 57524,
     "font": "lucide"
@@ -411,20 +395,12 @@
     "cp": 57531,
     "font": "lucide"
   },
-  "Facebook": {
-    "cp": 57532,
-    "font": "lucide"
-  },
   "FastForward": {
     "cp": 57533,
     "font": "lucide"
   },
   "Feather": {
     "cp": 57534,
-    "font": "lucide"
-  },
-  "Figma": {
-    "cp": 57535,
     "font": "lucide"
   },
   "File": {
@@ -475,10 +451,6 @@
     "cp": 57561,
     "font": "lucide"
   },
-  "Framer": {
-    "cp": 57562,
-    "font": "lucide"
-  },
   "Frown": {
     "cp": 57563,
     "font": "lucide"
@@ -493,14 +465,6 @@
   },
   "GitCommit": {
     "cp": 57571,
-    "font": "lucide"
-  },
-  "Github": {
-    "cp": 57574,
-    "font": "lucide"
-  },
-  "Gitlab": {
-    "cp": 57575,
     "font": "lucide"
   },
   "GitMerge": {
@@ -559,10 +523,6 @@
     "cp": 57593,
     "font": "lucide"
   },
-  "Instagram": {
-    "cp": 57594,
-    "font": "lucide"
-  },
   "Italic": {
     "cp": 57595,
     "font": "lucide"
@@ -589,10 +549,6 @@
   },
   "Link2": {
     "cp": 57603,
-    "font": "lucide"
-  },
-  "Linkedin": {
-    "cp": 57605,
     "font": "lucide"
   },
   "List": {
@@ -803,10 +759,6 @@
     "cp": 57715,
     "font": "lucide"
   },
-  "Pocket": {
-    "cp": 57662,
-    "font": "lucide"
-  },
   "Power": {
     "cp": 57664,
     "font": "lucide"
@@ -915,10 +867,6 @@
     "cp": 57889,
     "font": "lucide"
   },
-  "Slack": {
-    "cp": 57697,
-    "font": "lucide"
-  },
   "Slash": {
     "cp": 58653,
     "font": "lucide"
@@ -1015,10 +963,6 @@
     "cp": 57742,
     "font": "lucide"
   },
-  "Trello": {
-    "cp": 57743,
-    "font": "lucide"
-  },
   "TrendingDown": {
     "cp": 57744,
     "font": "lucide"
@@ -1037,14 +981,6 @@
   },
   "Tv": {
     "cp": 57749,
-    "font": "lucide"
-  },
-  "Twitch": {
-    "cp": 57750,
-    "font": "lucide"
-  },
-  "Twitter": {
-    "cp": 57751,
     "font": "lucide"
   },
   "Type": {
@@ -1157,10 +1093,6 @@
   },
   "XSquare": {
     "cp": 57717,
-    "font": "lucide"
-  },
-  "Youtube": {
-    "cp": 57779,
     "font": "lucide"
   },
   "Zap": {

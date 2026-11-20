@@ -14,5 +14,10 @@
       Link="Fonts/%(Filename)%(Extension)"
       CopyToOutputDirectory="PreserveNewest"
     />
+    <None
+      Include="../Icons/IconCodepoints.json"
+      Link="Icons/IconCodepoints.json"
+      CopyToOutputDirectory="PreserveNewest"
+    />
   </ItemGroup>
 </Project>
