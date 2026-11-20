@@ -13,4 +13,4 @@ RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListR
 RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Item[0]/Box[0]: box 0,0 240x32 radius 3,3,3,3 fill #bfc7d21a
 RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Item[0]/Box[0]/Box[2]/Box[0]/Text[0]: glyphs 15 in -0.78,2.16 131.24x12.7 #bfc7d2
 RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Item[0]/Box[0]/Box[2]/Box[0]/Badge[1]/Box[0]: box 0,0 16x14 radius 7,7,7,7 fill #97bcff
-RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Item[0]/Box[0]/Box[2]/Box[0]/Badge[1]/Box[0]/Text[0]: glyphs 1 in -0.44,1.85 8.44x10.67 #000000
+RootComponent[0]/Box[0]/Box[0]/Tree[0]/Box[0]/Box[0]/VirtualList[0]/VirtualListRow[4]/Item[0]/Box[0]/Box[2]/Box[0]/Badge[1]/Box[0]/Text[0]: glyphs 1 in -0.44,1.85 8.44x10.67 #090f16

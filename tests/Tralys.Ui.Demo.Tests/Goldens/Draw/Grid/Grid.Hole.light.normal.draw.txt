@@ -1,10 +1,10 @@
 RootComponent[0]/Box[0]/Grid[0]/Box[0]: box 0,0 864x696 fill #ecf4ff
 RootComponent[0]/Box[0]/Grid[0]/Box[0]/Button[0]/Box[1]: box 0,0 125x32 radius 3,3,3,3 fill #113478
-RootComponent[0]/Box[0]/Grid[0]/Box[0]/Button[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 12 in -0.26,2.16 101.11x12.7 #000000
+RootComponent[0]/Box[0]/Grid[0]/Box[0]/Button[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 12 in -0.26,2.16 101.11x12.7 #ecf4ff
 RootComponent[0]/Box[0]/Grid[0]/Grid[1]/Box[0]: box 0,0 1272x48 fill #dbe3ef
 RootComponent[0]/Box[0]/Grid[0]/Grid[1]/Box[0]/Text[0]: glyphs 55 in -0.78,1.64 445.78x16.07 #454c55
 RootComponent[0]/Box[0]/Grid[0]/Grid[1]/Box[1]: box 0,0 288x696 fill #dbe3ef
 RootComponent[0]/Box[0]/Grid[0]/Grid[1]/Box[1]/Button[0]/Box[1]: box 0,0 113x32 radius 3,3,3,3 fill #113478
-RootComponent[0]/Box[0]/Grid[0]/Grid[1]/Box[1]/Button[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 10 in -0.52,1.64 89.93x13.22 #000000
+RootComponent[0]/Box[0]/Grid[0]/Grid[1]/Box[1]/Button[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 10 in -0.52,1.64 89.93x13.22 #ecf4ff
 RootComponent[0]/Box[0]/Grid[0]/Grid[1]/Box[3]: box 0,0 120x696 fill #dbe3ef
 RootComponent[0]/Box[0]/Grid[0]/Grid[1]/Box[4]: box 0,0 1272x64 fill #dbe3ef

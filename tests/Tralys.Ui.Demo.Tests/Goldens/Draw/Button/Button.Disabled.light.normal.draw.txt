@@ -1,6 +1,6 @@
 RootComponent[0]/Box[0]/Box[0]/Button[0]/Box[1]: layer 0.5
 RootComponent[0]/Box[0]/Box[0]/Button[0]/Box[1]: box 0,0 78x32 radius 3,3,3,3 fill #113478
-RootComponent[0]/Box[0]/Box[0]/Button[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 7 in -0.26,1.64 55.04x16.07 #000000
+RootComponent[0]/Box[0]/Box[0]/Button[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 7 in -0.26,1.64 55.04x16.07 #ecf4ff
 RootComponent[0]/Box[0]/Box[0]/Button[1]/Box[1]: layer 0.5
 RootComponent[0]/Box[0]/Box[0]/Button[1]/Box[1]: box 0,0 83x32 radius 3,3,3,3 fill #005121 border 1,1,1,1 #005121
 RootComponent[0]/Box[0]/Box[0]/Button[1]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 7 in -0.52,2.16 59.61x12.7 #ffffff

@@ -32,4 +32,4 @@ RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[10]/Box[1]/Box[0]
 RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[11]/Box[1]: box 0,0 52x28 radius 3,3,3,3 fill #bfc7d229 border 1,1,1,1 #3c434c
 RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Grid[0]/Key[11]/Box[1]/Box[0]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.52,1.67 15.04x11.93 #bfc7d2
 RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Key[1]/Box[1]: box 0,0 52x124 radius 3,3,3,3 fill #73a4ff
-RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Key[1]/Box[1]/Box[0]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0.52,2.44 12.96x9.85 #000000
+RootComponent[0]/Box[0]/NumberPad[0]/Box[0]/Box[1]/Key[1]/Box[1]/Box[0]/Fragment[0]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 0.52,2.44 12.96x9.85 #090f16

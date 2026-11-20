@@ -1,5 +1,5 @@
 RootComponent[0]/Box[0]/Box[0]/Box[0]/IconButton[0]/Box[1]: box 0,0 32x32 radius 3,3,3,3 fill #85b0ff
-RootComponent[0]/Box[0]/Box[0]/Box[0]/IconButton[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.19x16.59 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[0]/IconButton[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.19x16.59 #090f16
 RootComponent[0]/Box[0]/Box[0]/Box[0]/IconButton[1]/Box[1]: box 0,0 32x32 radius 3,3,3,3 fill #272d36 border 1,1,1,1 #3c434c
 RootComponent[0]/Box[0]/Box[0]/Box[0]/IconButton[1]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.19x16.59 #bfc7d2
 RootComponent[0]/Box[0]/Box[0]/Box[0]/IconButton[2]/Box[1]: box 0,0 32x32 radius 3,3,3,3 fill #63bd79 border 1,1,1,1 #42a95f
@@ -7,7 +7,7 @@ RootComponent[0]/Box[0]/Box[0]/Box[0]/IconButton[2]/Box[1]/Icon[0]/Box[0]/Text[0
 RootComponent[0]/Box[0]/Box[0]/Box[0]/IconButton[3]/Box[1]: box 0,0 32x32 radius 3,3,3,3 fill #d93639 border 1,1,1,1 #f8635e
 RootComponent[0]/Box[0]/Box[0]/Box[0]/IconButton[3]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.19x16.59 #ffffff
 RootComponent[0]/Box[0]/Box[0]/Box[1]/IconButton[0]/Box[1]: box 0,0 32x32 radius 3,3,3,3 fill #85b0ff
-RootComponent[0]/Box[0]/Box[0]/Box[1]/IconButton[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.19x16.59 #000000
+RootComponent[0]/Box[0]/Box[0]/Box[1]/IconButton[0]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.19x16.59 #090f16
 RootComponent[0]/Box[0]/Box[0]/Box[1]/IconButton[1]/Box[1]: box 0,0 32x32 radius 3,3,3,3 fill #ffffff00 border 1,1,1,1 #85b0ff
 RootComponent[0]/Box[0]/Box[0]/Box[1]/IconButton[1]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in -0.59,0.13 17.19x16.59 #a8c7ff
 RootComponent[0]/Box[0]/Box[0]/Box[1]/IconButton[2]/Box[1]: box 0,0 32x32 radius 3,3,3,3 fill #bfc7d21a

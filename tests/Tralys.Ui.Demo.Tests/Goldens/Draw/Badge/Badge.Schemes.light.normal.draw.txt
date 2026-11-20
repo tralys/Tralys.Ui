@@ -1,8 +1,8 @@
 RootComponent[0]/Box[0]/Box[0]/Badge[0]/Box[0]: box 0,0 16x14 radius 7,7,7,7 fill #113478
-RootComponent[0]/Box[0]/Box[0]/Badge[0]/Box[0]/Text[0]: glyphs 1 in -0.44,1.85 8.67x10.89 #000000
+RootComponent[0]/Box[0]/Box[0]/Badge[0]/Box[0]/Text[0]: glyphs 1 in -0.44,1.85 8.67x10.89 #ecf4ff
 RootComponent[0]/Box[0]/Box[0]/Badge[1]/Box[0]: box 0,0 23x14 radius 7,7,7,7 fill #dbe3ef border 1,1,1,1 #bfc7d2
 RootComponent[0]/Box[0]/Box[0]/Badge[1]/Box[0]/Text[0]: glyphs 2 in -0.44,1.85 13.62x10.67 #2a313a
 RootComponent[0]/Box[0]/Box[0]/Badge[2]/Box[0]: box 0,0 16x14 radius 7,7,7,7 fill #c01925
 RootComponent[0]/Box[0]/Box[0]/Badge[2]/Box[0]/Text[0]: glyphs 1 in -0.44,1.85 8.44x10.89 #ffffff
 RootComponent[0]/Box[0]/Box[0]/Badge[3]/Box[0]: box 0,0 28x14 radius 7,7,7,7 fill #113478
-RootComponent[0]/Box[0]/Box[0]/Badge[3]/Box[0]/Text[0]: glyphs 2 in -0.44,1.85 20.64x13.33 #000000
+RootComponent[0]/Box[0]/Box[0]/Badge[3]/Box[0]/Text[0]: glyphs 2 in -0.44,1.85 20.64x13.33 #ecf4ff

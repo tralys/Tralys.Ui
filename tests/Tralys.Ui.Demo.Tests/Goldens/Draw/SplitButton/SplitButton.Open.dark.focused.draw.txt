@@ -1,9 +1,9 @@
 RootComponent[0]/Box[0]/Box[0]/SplitButton[0]/Box[0]/SplitButtonPart[0]/Box[1]: box 0,0 112x32 radius 3,0,0,3 fill #97bcff
-RootComponent[0]/Box[0]/Box[0]/SplitButton[0]/Box[0]/SplitButtonPart[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 12 in -0.52,2.16 87.88x12.7 #000000
-RootComponent[0]/Box[0]/Box[0]/SplitButton[0]/Box[0]/Box[1]: box 0,0 1x32 fill #00000040
+RootComponent[0]/Box[0]/Box[0]/SplitButton[0]/Box[0]/SplitButtonPart[0]/Box[1]/Box[0]/Fragment[0]/Text[0]: glyphs 12 in -0.52,2.16 87.88x12.7 #090f16
+RootComponent[0]/Box[0]/Box[0]/SplitButton[0]/Box[0]/Box[1]: box 0,0 1x32 fill #090f1640
 RootComponent[0]/Box[0]/Box[0]/SplitButton[0]/Box[0]/SplitButtonPart[2]/Box[1]: box 0,0 32x32 radius 0,3,3,0 fill #97bcff
 RootComponent[0]/Box[0]/Box[0]/SplitButton[0]/Box[0]/SplitButtonPart[2]/Box[1]/Icon[0]/Box[0]: matrix 1,0,0,-1,8,25
-RootComponent[0]/Box[0]/Box[0]/SplitButton[0]/Box[0]/SplitButtonPart[2]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #000000
+RootComponent[0]/Box[0]/Box[0]/SplitButton[0]/Box[0]/SplitButtonPart[2]/Box[1]/Icon[0]/Box[0]/Text[0]: glyphs 1 in 2.07,4.87 11.85x7.7 #090f16
 RootComponent[0]/Box[0]/Box[0]/SplitButton[0]/Box[0]/Box[3]: box 0,0 149x36 radius 5,5,5,5 fill none border 2,2,2,2 #97bcff
 RootComponent[0]/Box[0]/Box[0]/SplitButton[0]/Menu[1]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]: shadow 0,0 196x94 radius 3,3,3,3 offset 0,2 blur 10 spread 0 #00000099
 RootComponent[0]/Box[0]/Box[0]/SplitButton[0]/Menu[1]/Layer[0]/MenuPanel[0]/Box[0]/Frame[0]/Box[0]: box 0,0 196x94 radius 3,3,3,3 fill #1a2028 border 1,1,1,1 #585f69

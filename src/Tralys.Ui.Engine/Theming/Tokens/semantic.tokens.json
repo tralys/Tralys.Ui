@@ -55,7 +55,7 @@
       "disabled": {"$value": "{color.neutral.32}"},
       "on-accent": {"$value": "{color.neutral.4}"},
       "on-media": {"$value": "{color.white}"},
-      "filled-accent": {"$value": "{color.black}"},
+      "filled-accent": {"$value": "{color.neutral.4}"},
       "filled-danger": {"$value": "{color.white}"},
       "filled-success": {"$value": "{color.white}"},
       "filled-warning": {"$value": "{color.black}"},
