@@ -6,6 +6,8 @@ namespace Tralys.Ui.Gallery.Stories;
 [Stories<RepeatButton>("Buttons")]
 static class RepeatButtonStories
 {
+    /// <summary>A stepper whose buttons repeat while held: minus and plus at the default rate, and one adding every 100
+    /// ms after a quarter second.</summary>
     [FramePath]
     public static void Stepper(Ui ui)
     {

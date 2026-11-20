@@ -47,6 +47,7 @@ static class StoryMenus
 [Stories<MenuButton>("Buttons")]
 static class MenuButtonStories
 {
+    /// <summary>An outlined menu button with a chevron; pressing it opens an account menu.</summary>
     [FramePath]
     public static void Default(Ui ui)
     {
@@ -61,6 +62,7 @@ static class MenuButtonStories
             );
     }
 
+    /// <summary>A ghost menu button at the foot of its space, open above itself.</summary>
     [FramePath]
     public static void Above(Ui ui)
     {

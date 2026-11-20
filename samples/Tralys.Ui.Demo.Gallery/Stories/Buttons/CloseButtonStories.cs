@@ -6,6 +6,7 @@ namespace Tralys.Ui.Gallery.Stories;
 [Stories<CloseButton>("Buttons")]
 static class CloseButtonStories
 {
+    /// <summary>A close button pinned to a panel's top right corner.</summary>
     [FramePath]
     public static void Default(Ui ui)
     {

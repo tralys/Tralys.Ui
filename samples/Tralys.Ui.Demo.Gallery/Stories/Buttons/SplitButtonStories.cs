@@ -22,6 +22,7 @@ static class SplitButtonStories
 
     static readonly string[] Names = Enum.GetNames<ColorScheme>();
 
+    /// <summary>A split button: its main part sells the selection, and its arrow opens more ways to sell.</summary>
     [FramePath]
     public static void Default(Ui ui)
     {
@@ -33,6 +34,8 @@ static class SplitButtonStories
             );
     }
 
+    /// <summary>Split buttons in the Filled, Outlined and Subtle looks across the Primary, Secondary and Danger
+    /// schemes.</summary>
     [FramePath]
     public static void Variants(Ui ui)
     {
@@ -49,6 +52,7 @@ static class SplitButtonStories
                         );
     }
 
+    /// <summary>A split button with its menu open.</summary>
     [FramePath]
     public static void Open(Ui ui)
     {

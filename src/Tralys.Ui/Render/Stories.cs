@@ -14,4 +14,16 @@ public sealed class StoriesAttribute<T>(string category) : Attribute
 
 /// <summary>A registered story: its key, the category it's listed under, the type it shows, and the render a gallery
 /// mounts as its root.</summary>
-public readonly record struct Story(string Key, string Category, Type Component, Action<Ui> Render);
+public readonly record struct Story(string Key, string Category, Type Component, Action<Ui> Render)
+{
+    /// <summary>What the story shows: the summary of its method's doc comment as plain text, or null without
+    /// one.</summary>
+    public string? Description { get; init; }
+
+    /// <summary>The story method's file, with forward slashes, relative to the <c>TralysStoryRoot</c> build property;
+    /// null when the project sets no root or the file lies outside it.</summary>
+    public string? SourcePath { get; init; }
+
+    /// <summary>The line, counted from 1, of the story method's name in <see cref="SourcePath"/>.</summary>
+    public int SourceLine { get; init; }
+}

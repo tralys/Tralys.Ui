@@ -1,4 +1,5 @@
 using Microsoft.CodeAnalysis;
+using Tralys.Ui.Generators.Stories;
 
 namespace Tralys.Ui.Generators.Tests;
 
@@ -38,6 +39,41 @@ public sealed class GeneratorTests
                 ("TRL3013", Harness.LineOf(source, "Plain(Ui ui) { }")),
                 ("TRL3013", Harness.LineOf(source, "Plain(Ui ui) =>")),
             ]);
+    }
+
+    [Test]
+    public async Task A_story_carries_its_doc_summary_as_plain_text_and_its_file_and_line_under_the_story_root()
+    {
+        const string source = """
+            using Tralys.Ui;
+
+            namespace Sample;
+
+            public sealed class Gauge;
+
+            [Stories<Gauge>("Samples")]
+            static class GaugeStories
+            {
+                /// <summary>A <see cref="Gauge"/> drawn in
+                /// <c>two</c> lines.</summary>
+                [FramePath]
+                public static void Plain(Ui ui) { }
+            }
+            """;
+
+        var registry = Harness
+            .Load(
+                new StoryRegistryGenerator(),
+                source,
+                buildProperties: new Dictionary<string, string> { ["TralysStoryRoot"] = "/repo/" },
+                path: "/repo/samples/GaugeStories.cs"
+            )
+            .GetType("StoryRegistry")!;
+        var story = ((IReadOnlyList<Story>)registry.GetProperty("All")!.GetValue(null)!).Single();
+
+        await Assert.That(story.Description).IsEqualTo("A Gauge drawn in two lines.");
+        await Assert.That(story.SourcePath).IsEqualTo("samples/GaugeStories.cs");
+        await Assert.That(story.SourceLine).IsEqualTo(Harness.LineOf(source, "Plain(Ui ui)") + 1);
     }
 
     [Test]

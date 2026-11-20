@@ -64,12 +64,19 @@ static class Harness
     public static System.Reflection.Assembly Load(
         IIncrementalGenerator generator,
         string source,
-        ImmutableArray<AdditionalText> additionalTexts
+        ImmutableArray<AdditionalText> additionalTexts = default,
+        IReadOnlyDictionary<string, string>? buildProperties = null,
+        string path = "Sample.cs"
     )
     {
         CSharpGeneratorDriver
-            .Create([generator.AsSourceGenerator()], additionalTexts, Parse)
-            .RunGeneratorsAndUpdateCompilation(Compile(source), out var output, out _);
+            .Create(
+                [generator.AsSourceGenerator()],
+                additionalTexts.IsDefault ? [] : additionalTexts,
+                Parse,
+                buildProperties is null ? null : new BuildProperties(buildProperties)
+            )
+            .RunGeneratorsAndUpdateCompilation(Compile((path, source)), out var output, out _);
 
         using var image = new MemoryStream();
         var emitted = output.Emit(image);

@@ -5,6 +5,8 @@ namespace Tralys.Ui.Gallery.Stories;
 [Stories<ImageButton>("Buttons")]
 static class ImageButtonStories
 {
+    /// <summary>Image buttons: one showing its pressed image while held, one plain, and one showing its active
+    /// image.</summary>
     [FramePath]
     public static void Default(Ui ui)
     {

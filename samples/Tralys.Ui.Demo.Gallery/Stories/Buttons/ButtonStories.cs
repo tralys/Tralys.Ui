@@ -24,6 +24,8 @@ static class ButtonStories
 
     static readonly ComponentSize[] AllSizes = Enum.GetValues<ComponentSize>();
 
+    /// <summary>Each look in a row, Filled, Outlined, Text, Subtle, Ghost and GhostOutlined, across every colour
+    /// scheme.</summary>
     [FramePath]
     public static void Variants(Ui ui)
     {
@@ -39,6 +41,7 @@ static class ButtonStories
                         );
     }
 
+    /// <summary>Disabled buttons in the Primary, Success and Danger schemes.</summary>
     [FramePath]
     public static void Disabled(Ui ui)
     {
@@ -50,6 +53,7 @@ static class ButtonStories
         }
     }
 
+    /// <summary>Ghost buttons marking the active page; pressing the other makes it the active one.</summary>
     [FramePath]
     public static void Active(Ui ui)
     {
@@ -73,6 +77,7 @@ static class ButtonStories
         }
     }
 
+    /// <summary>Every size from Xxs to Lg: text alone, with an icon before it, and with an icon after it.</summary>
     [FramePath]
     public static void Sizes(Ui ui)
     {
@@ -100,6 +105,7 @@ static class ButtonStories
         }
     }
 
+    /// <summary>An outlined button flashing to draw the eye; pressing it stops and starts the flash.</summary>
     [FramePath]
     public static void Flashing(Ui ui)
     {
@@ -114,6 +120,7 @@ static class ButtonStories
             );
     }
 
+    /// <summary>Link buttons: plain, with a trailing icon, in the Primary scheme, and disabled.</summary>
     [FramePath]
     public static void Link(Ui ui)
     {
@@ -134,6 +141,7 @@ static class ButtonStories
         }
     }
 
+    /// <summary>Link buttons with a leading icon at the small, medium and large sizes.</summary>
     [FramePath]
     public static void LinkSizes(Ui ui)
     {

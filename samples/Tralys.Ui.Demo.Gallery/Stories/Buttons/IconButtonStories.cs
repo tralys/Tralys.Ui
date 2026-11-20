@@ -24,6 +24,8 @@ static class IconButtonStories
 
     static readonly ComponentSize[] AllSizes = Enum.GetValues<ComponentSize>();
 
+    /// <summary>An icon button in the Primary, Secondary, Success and Danger schemes, then in the Filled, Outlined,
+    /// Ghost and GhostOutlined looks.</summary>
     [FramePath]
     public static void Variants(Ui ui)
     {
@@ -38,6 +40,7 @@ static class IconButtonStories
         }
     }
 
+    /// <summary>An icon button at every size.</summary>
     [FramePath]
     public static void Sizes(Ui ui)
     {

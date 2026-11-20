@@ -24,6 +24,7 @@ static class ToggleStories
         Gallery.Icons.Star,
     ];
 
+    /// <summary>Toggle buttons: one to press on and off, one held on, and one disabled.</summary>
     [FramePath]
     public static void Default(Ui ui)
     {
@@ -36,6 +37,7 @@ static class ToggleStories
         }
     }
 
+    /// <summary>A toggle held on in each colour scheme.</summary>
     [FramePath]
     public static void Checked(Ui ui)
     {
@@ -49,6 +51,7 @@ static class ToggleStories
                 );
     }
 
+    /// <summary>Disabled toggles, off and on.</summary>
     [FramePath]
     public static void Disabled(Ui ui)
     {
@@ -59,6 +62,7 @@ static class ToggleStories
         }
     }
 
+    /// <summary>Heart, bell and bookmark icon toggles, each pressed on and off.</summary>
     [FramePath]
     public static void Icons(Ui ui)
     {
@@ -77,6 +81,7 @@ static class ToggleStories
         }
     }
 
+    /// <summary>Icon toggles held on in each colour scheme, filled and then outlined.</summary>
     [FramePath]
     public static void IconsChecked(Ui ui)
     {
@@ -102,6 +107,8 @@ static class ToggleStories
         }
     }
 
+    /// <summary>Icon toggles that change when on: play turns to pause in Success, and a star takes the Primary colour;
+    /// each pair has one to press and one held on.</summary>
     [FramePath]
     public static void ActiveIcon(Ui ui)
     {

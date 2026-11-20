@@ -4,10 +4,12 @@
     <IsAotCompatible>true</IsAotCompatible>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <TralysIconFonts>lucide=lucide</TralysIconFonts>
+    <TralysStoryRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', '..', '..'))</TralysStoryRoot>
   </PropertyGroup>
 
   <ItemGroup>
     <CompilerVisibleProperty Include="TralysIconFonts" />
+    <CompilerVisibleProperty Include="TralysStoryRoot" />
     <AdditionalFiles Include="../../tests/Icons/IconCodepoints.json" />
   </ItemGroup>
 

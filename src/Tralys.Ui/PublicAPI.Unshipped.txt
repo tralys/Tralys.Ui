@@ -1,1 +1,7 @@
 #nullable enable
+Tralys.Ui.Story.Description.get -> string?
+Tralys.Ui.Story.Description.init -> void
+Tralys.Ui.Story.SourceLine.get -> int
+Tralys.Ui.Story.SourceLine.init -> void
+Tralys.Ui.Story.SourcePath.get -> string?
+Tralys.Ui.Story.SourcePath.init -> void
