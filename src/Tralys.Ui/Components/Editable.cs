@@ -59,7 +59,7 @@ public sealed class Editable : Component<EditableProps>
         ui.Effect(model, within, static (m, within, _) => m.FocusWithin(within));
 
         var hovered = ui.IsHovered && !editing && !disabled;
-        var focused = ui.IsFocused && !editing;
+        var focused = ui.IsFocusVisible && !editing;
         var shown = !p.Value.Span.IsEmpty;
         using (
             ui.Box(

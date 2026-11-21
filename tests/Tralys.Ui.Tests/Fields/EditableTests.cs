@@ -53,6 +53,24 @@ public sealed class EditableTests
     }
 
     [Test]
+    public async Task A_click_outlines_only_its_input_which_wears_its_focus_border_from_its_first_frame()
+    {
+        var entry = new Entry("Old");
+        using var driver = Render(entry);
+        var editable = driver.Get("editable");
+
+        var held = driver.Hold(editable);
+        var pressed = Display(editable).Visual.BorderPaint;
+        held.Release(settle: false);
+        driver.Frame();
+
+        await Assert.That(pressed).IsEqualTo(default(Paint));
+        await Assert
+            .That(driver.RootOf().Visual.BorderPaint)
+            .IsEqualTo(Dark(ColorToken.BorderFocus));
+    }
+
+    [Test]
     public async Task Enter_or_f2_opens_it_selecting_all_enter_commits_escape_drops_the_edit_and_the_focus_leaving_commits()
     {
         var entry = new Entry("Old");
@@ -204,7 +222,7 @@ public sealed class EditableTests
         driver.Hover(driver.Get("long"));
         var lit = (display.Visual.Background, text.Inherit.Color);
         driver.Unhover();
-        driver.Focus(driver.Get("long"));
+        driver.Press(Key.Tab);
 
         await Assert.That(rest).IsEqualTo((default(Paint), Dark(ColorToken.FgMuted)));
         await Assert.That(lit).IsEqualTo((Dark(ColorToken.StateHover), Dark(ColorToken.FgStrong)));
