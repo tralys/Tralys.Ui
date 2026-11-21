@@ -26,7 +26,11 @@ static class Harness
         nullableContextOptions: NullableContextOptions.Enable
     );
 
-    public static Compilation Generate(string source, out ImmutableArray<Diagnostic> reported)
+    public static Compilation Generate(
+        string source,
+        out ImmutableArray<Diagnostic> reported,
+        NullableContextOptions nullable = NullableContextOptions.Enable
+    )
     {
         CSharpGeneratorDriver
             .Create(
@@ -36,7 +40,11 @@ static class Harness
                 ],
                 parseOptions: Parse
             )
-            .RunGeneratorsAndUpdateCompilation(Compile(source), out var output, out reported);
+            .RunGeneratorsAndUpdateCompilation(
+                Compile(source).WithOptions(Options.WithNullableContextOptions(nullable)),
+                out var output,
+                out reported
+            );
         return output;
     }
 
@@ -157,9 +165,11 @@ static class Harness
             )
         );
         var document = workspace.AddDocument(project.Id, "Sample.cs", SourceText.From(source));
-        var compilation = await document.Project.GetCompilationAsync();
+        var compilation = await Assert
+            .That(await document.Project.GetCompilationAsync())
+            .IsNotNull();
         var diagnostic = (
-            await compilation!.WithAnalyzers([analyzer]).GetAnalyzerDiagnosticsAsync()
+            await compilation.WithAnalyzers([analyzer]).GetAnalyzerDiagnosticsAsync()
         ).Single();
 
         var actions = new List<CodeAction>();
@@ -167,10 +177,14 @@ static class Harness
             new CodeFixContext(document, diagnostic, (action, _) => actions.Add(action), default)
         );
         var operations = await actions.Single().GetOperationsAsync(default);
-        var fixedDocument = operations
-            .OfType<ApplyChangesOperation>()
-            .Single()
-            .ChangedSolution.GetDocument(document.Id)!;
+        var fixedDocument = await Assert
+            .That(
+                operations
+                    .OfType<ApplyChangesOperation>()
+                    .Single()
+                    .ChangedSolution.GetDocument(document.Id)
+            )
+            .IsNotNull();
         return (await fixedDocument.GetTextAsync()).ToString();
     }
 

@@ -281,7 +281,7 @@ public sealed class InspectorTests
         inspector.Held = InputStates.Hovered;
         driver.Settle();
         inspector.Update();
-        var shown = inspector.Model.SelectedEnvironment!.Value;
+        var shown = await Assert.That(inspector.Model.SelectedEnvironment).IsNotNull();
 
         await Assert.That(shown.Theme).IsSameReferenceAs(Themes.Light);
         await Assert.That(shown.Disabled).IsTrue();
@@ -323,10 +323,14 @@ public sealed class InspectorTests
 
         inspector.Selected = driver.Get("high");
         inspector.Update();
-        var below = Find.Id(inspector.View.Root, "environment")!.ViewBounds;
+        var below = (
+            await Assert.That(Find.Id(inspector.View.Root, "environment")).IsNotNull()
+        ).ViewBounds;
         inspector.Selected = driver.Get("low");
         inspector.Update();
-        var above = Find.Id(inspector.View.Root, "environment")!.ViewBounds;
+        var above = (
+            await Assert.That(Find.Id(inspector.View.Root, "environment")).IsNotNull()
+        ).ViewBounds;
 
         await Assert.That(below.X).IsEqualTo(high.X);
         await Assert.That(below.Y).IsGreaterThanOrEqualTo(high.Bottom);
@@ -363,7 +367,7 @@ public sealed class InspectorTests
         using var inspector = Beside(driver);
         Click(inspector, Find.Centre(driver.Get("field")));
         inspector.Update();
-        var row = Find.Text(inspector.View.Root, "Box")!;
+        var row = await Assert.That(Find.Text(inspector.View.Root, "Box")).IsNotNull();
 
         inspector.KeyDown(Key.Space, default, repeat: false);
         Click(inspector, Find.Centre(row));

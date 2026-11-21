@@ -130,7 +130,14 @@ public sealed class ListBoxGridTests
                             height: 60,
                             onDrop: Handler<DropEvent>.Of(
                                 dropped,
-                                static (d, ref e) => d.Add((string)e.Data!)
+                                static (d, ref e) =>
+                                {
+                                    if (e.Data is not string data)
+                                        throw new InvalidOperationException(
+                                            "The drop carried no text."
+                                        );
+                                    d.Add(data);
+                                }
                             ),
                             onDragOver: Handler<DropEvent>.Of(
                                 static (ref DropEvent e) => e.Effect = DragEffect.Move
@@ -329,16 +336,17 @@ public sealed class ListBoxGridTests
             },
             new Size(600, 400)
         );
-        var extent = scroll.Handle!.Extent.Height;
-        scroll.Handle.ScrollToEnd();
+        var handle = await Assert.That(scroll.Handle).IsNotNull();
+        var extent = handle.Extent.Height;
+        handle.ScrollToEnd();
         driver.Settle();
         shelf.Filter(static text =>
             int.Parse(text, System.Globalization.CultureInfo.InvariantCulture) % 7 == 0
         );
         driver.Settle();
         var filtered = (
-            scroll.Handle.Extent.Height,
-            scroll.Handle.Offset.Y,
+            handle.Extent.Height,
+            handle.Offset.Y,
             Of(driver, "392").ViewBounds.X - Of(driver, "385").ViewBounds.X
         );
         shelf.Filter(static _ => false);
@@ -440,7 +448,12 @@ public sealed class ListBoxGridTests
         await Assert.That(pick.Reports).IsEmpty();
     }
 
-    static Node CardOf(UiDriver driver, string text) => driver.GetText(text).Parent!;
+    static Node CardOf(UiDriver driver, string text)
+    {
+        if (driver.GetText(text).Parent is not { } card)
+            throw new InvalidOperationException($"The text '{text}' sits in no card.");
+        return card;
+    }
 
     static int FirstShown(UiDriver driver)
     {

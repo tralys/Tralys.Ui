@@ -3,7 +3,7 @@ namespace Tralys.Ui;
 public sealed partial class UiContext
 {
     static readonly TimeSpan MaxWait = TimeSpan.FromDays(1);
-    static readonly TimerCallback Ring = static state => ((UiContext)state!).Rang();
+    static readonly TimerCallback Ring = static state => (state as UiContext)?.Rang();
 
     TimeProvider _time = TimeProvider.System;
     ValueList<ComponentHost> _clockReaders;

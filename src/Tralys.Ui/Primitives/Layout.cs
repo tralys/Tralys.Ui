@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using Tralys.Ui.Rendering;
@@ -195,8 +196,11 @@ internal abstract class LayoutPayload : NodePayload
 internal sealed class LayoutPayload<TState> : LayoutPayload
 {
     LayoutAlgorithm<TState>? _algorithm;
-    TState _state = default!;
+    TState? _state;
     HeldText _held;
+
+    [MemberNotNullWhen(true, nameof(_algorithm), nameof(_state))]
+    bool Written => _algorithm is not null;
 
     internal bool Write(LayoutAlgorithm<TState> algorithm, TState state)
     {
@@ -210,21 +214,28 @@ internal sealed class LayoutPayload<TState> : LayoutPayload
         return true;
     }
 
-    internal override Type AlgorithmType => _algorithm!.GetType();
+    internal override Type AlgorithmType => Written ? _algorithm.GetType() : throw Unwritten();
 
     internal override Size Measure(
         ref LayoutContext cx,
         AvailableSpace width,
         AvailableSpace height
-    ) => _algorithm!.Measure(ref cx, _state, width, height);
+    ) => Written ? _algorithm.Measure(ref cx, _state, width, height) : throw Unwritten();
 
-    internal override void Arrange(ref LayoutContext cx, Size size) =>
-        _algorithm!.Arrange(ref cx, _state, size);
+    internal override void Arrange(ref LayoutContext cx, Size size)
+    {
+        if (!Written)
+            throw Unwritten();
+        _algorithm.Arrange(ref cx, _state, size);
+    }
+
+    static InvalidOperationException Unwritten() =>
+        new("A custom layout lays out only after its primitive wrote it.");
 
     public override void Release(UiView view)
     {
         _algorithm = null;
-        _state = default!;
+        _state = default;
         Pool<LayoutPayload<TState>>.Return(this);
     }
 }

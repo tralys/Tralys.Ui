@@ -24,7 +24,7 @@ internal abstract class Motion : Hook
     {
         if (Host is { } host)
         {
-            host.View.StopMotion(this);
+            host.View?.StopMotion(this);
             Detach(host);
         }
         Host = null;
@@ -97,7 +97,8 @@ internal struct Tween<T, TBlend>
             return From;
         if (elapsed >= _duration)
             return Target;
-        return TBlend.Blend(From, Target, (float)_easing!.Ease(elapsed / _duration));
+        var linear = elapsed / _duration;
+        return TBlend.Blend(From, Target, (float)(_easing?.Ease(linear) ?? linear));
     }
 
     public readonly Step Advance(double time, bool reduced)
@@ -177,7 +178,7 @@ internal sealed class LoopHook : Motion
     protected override void Detach(ComponentHost host)
     {
         if (Resting)
-            host.View.Unrest(this);
+            host.View?.Unrest(this);
     }
 
     protected override void Release()
@@ -205,7 +206,7 @@ internal sealed class PresenceHook : Motion
     internal override void Ended()
     {
         if (Tween.Target == 0f && Host is { } host && UiView.ExitingWith(host) is { } node)
-            host.View.ExitEnded(node);
+            host.View?.ExitEnded(node);
     }
 
     protected override void Detach(ComponentHost host)
@@ -215,7 +216,7 @@ internal sealed class PresenceHook : Motion
         var node = UiView.ExitingWith(host);
         host.Presence = null;
         if (node is not null)
-            host.View.ExitEnded(node);
+            host.View?.ExitEnded(node);
     }
 
     protected override void Release()

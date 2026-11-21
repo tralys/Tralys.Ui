@@ -57,7 +57,7 @@ sealed class SmokeForest : ITreeChildren<SmokeBranch>
 
 readonly record struct SmokeProps
 {
-    public SmokeModel? Model { get; init; }
+    public required SmokeModel Model { get; init; }
 }
 
 readonly record struct Meter(SmokeModel Model, int Tick, Color Fill);
@@ -111,7 +111,7 @@ sealed class SmokeRoot : Component<SmokeProps>
 
     protected override void Render(Ui ui, in SmokeProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         var t = ui.Theme;
         var pulse = ui.Loop(1f, alternate: true, easing: Easings.CubicInOut);
         model.LowestPulse = MathF.Min(model.LowestPulse, pulse);

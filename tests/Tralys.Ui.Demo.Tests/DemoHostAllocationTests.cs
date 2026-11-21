@@ -52,7 +52,8 @@ public sealed class DemoHostAllocationTests
         // One unbroken window, so a late first-time spike is not forgiven; feed rows warm over many appends.
         var worst = AllocationGate.WorstFrameBytes(Frame, frames: 600, windows: 1, warmup: 900);
         var unclicked = new List<int>();
-        foreach (var action in host.Workload!.Model.Actions)
+        var workload = await Assert.That(host.Workload).IsNotNull();
+        foreach (var action in workload.Model.Actions)
         {
             if (action.Clicks == 0)
                 unclicked.Add(action.Number);
@@ -76,8 +77,10 @@ public sealed class DemoHostAllocationTests
             }
         );
         host.Frame();
-        var feed = Find(host.View.Root, typeof(WorkloadFeed))!.Parent!;
-        host.Inspector!.Selected = feed;
+        var shown = await Assert.That(Find(host.View.Root, typeof(WorkloadFeed))).IsNotNull();
+        var feed = await Assert.That(shown.Parent).IsNotNull();
+        var inspector = await Assert.That(host.Inspector).IsNotNull();
+        inspector.Selected = feed;
         var frame = 0;
 
         void Frame()
@@ -90,14 +93,15 @@ public sealed class DemoHostAllocationTests
 
         var worst = AllocationGate.WorstFrameBytes(Frame, frames: 600, windows: 1, warmup: 900);
         var unclicked = new List<int>();
-        foreach (var action in host.Workload!.Model.Actions)
+        var workload = await Assert.That(host.Workload).IsNotNull();
+        foreach (var action in workload.Model.Actions)
         {
             if (action.Clicks == 0)
                 unclicked.Add(action.Number);
         }
 
         await Assert.That(worst).IsEqualTo(0L);
-        await Assert.That(host.Inspector.Selected).IsSameReferenceAs(feed);
+        await Assert.That(inspector.Selected).IsSameReferenceAs(feed);
         await Assert.That(unclicked).IsEmpty();
     }
 

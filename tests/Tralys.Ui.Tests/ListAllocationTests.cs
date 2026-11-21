@@ -327,7 +327,8 @@ public sealed class ListAllocationTests
         var state = new ListState();
         using var driver = Render(lines, state, new Size(200, 300));
         driver.Focus(driver.Get("line 1"));
-        state.Scroll!.ScrollTo(null, 4000);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 4000);
         driver.Settle();
         var kept = new Replacements(lines, new LinePool(64, 5000));
 
@@ -353,7 +354,8 @@ public sealed class ListAllocationTests
         var lines = Line.Many(1000);
         var state = new ListState();
         using var driver = Render(lines, state, new Size(300, 200));
-        state.Scroll!.ScrollTo(null, 2000);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 2000);
         driver.Settle();
         var above = driver.Get("line 98").ViewBounds.Bottom;
         var toggle = new Toggle(lines[98], driver.Get("line 100"));
@@ -394,9 +396,10 @@ public sealed class ListAllocationTests
             lines.Add(pool.Next());
         var state = new ListState();
         using var driver = Render(lines, state, new Size(300, 244));
-        state.Scroll!.ScrollToEnd();
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollToEnd();
         driver.Settle();
-        var ring = new Ring(lines, pool, driver.Get("list"), state.Scroll);
+        var ring = new Ring(lines, pool, driver.Get("list"), scroll);
 
         var bytes = driver.WorstFrameBytes(
             ring,

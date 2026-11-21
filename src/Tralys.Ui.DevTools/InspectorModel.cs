@@ -109,9 +109,11 @@ internal sealed partial class InspectorModel : ObservableObject
         ShowsFrameBytes = true;
     }
 
-    public UiView Target => _target ?? _rootRef!.Node!.View!;
+    public UiView Target => _target ?? Root.View ?? throw NotMounted();
 
-    public Node Root => _rootRef is { } root ? root.Node! : _target!.Root;
+    public Node Root => _target?.Root ?? _rootRef?.Node ?? throw NotMounted();
+
+    static InvalidOperationException NotMounted() => new("The inspected root is not mounted.");
 
     public ElementTree Tree { get; }
 
@@ -239,8 +241,8 @@ internal sealed partial class InspectorModel : ObservableObject
 
     public void Open()
     {
-        if (Selected is { File: not null } node)
-            OpenSource?.Invoke(SourceLink(node));
+        if (Selected is { File: { } file } node)
+            OpenSource?.Invoke(SourceLink(file, node.Line));
     }
 
     public void Toggle(InputStates state)
@@ -413,10 +415,10 @@ internal sealed partial class InspectorModel : ObservableObject
         return null;
     }
 
-    public string SourceLink(Node node)
+    public static string SourceLink(string file, int line)
     {
-        var path = new StringBuilder(node.File!.Length + 24).Append("vscode://file");
-        var file = node.File.Replace('\\', '/');
+        var path = new StringBuilder(file.Length + 24).Append("vscode://file");
+        file = file.Replace('\\', '/');
         if (!file.StartsWith('/'))
             path.Append('/');
         foreach (var c in file)
@@ -427,7 +429,7 @@ internal sealed partial class InspectorModel : ObservableObject
                 foreach (var b in Encoding.UTF8.GetBytes(c.ToString()))
                     path.Append('%').Append(b.ToString("X2", CultureInfo.InvariantCulture));
         }
-        return path.Append(':').Append(node.Line.ToString(CultureInfo.InvariantCulture)).ToString();
+        return path.Append(':').Append(line.ToString(CultureInfo.InvariantCulture)).ToString();
     }
 
     public string Names(InputStates states)

@@ -143,26 +143,27 @@ public sealed class ListTests
         var mounts = new Dictionary<Node, long>();
         for (var i = 0; i < 10; i++)
         {
-            var row = driver.Get(lines[i].Name);
-            driver.Click(row);
-            mounts[row.Parent!] = driver.MountId(row.Parent!);
+            driver.Click(driver.Get(lines[i].Name));
+            var row = driver.Get<LineRow>(lines[i].Name);
+            mounts[row] = driver.MountId(row);
         }
         driver.Focus(driver.Get("list"));
 
-        state.Scroll!.ScrollTo(null, 4000);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 4000);
         driver.Settle();
-        state.Scroll.ScrollTo(null, 4400);
+        scroll.ScrollTo(null, 4400);
         driver.Settle();
 
         var reused = 0;
         for (var i = 220; i < 230; i++)
         {
-            var row = driver.Get(lines[i].Name);
-            await Assert.That(Texts(row)[1]).IsEqualTo("clicks 0");
-            if (mounts.TryGetValue(row.Parent!, out var before))
+            await Assert.That(Texts(driver.Get(lines[i].Name))[1]).IsEqualTo("clicks 0");
+            var row = driver.Get<LineRow>(lines[i].Name);
+            if (mounts.TryGetValue(row, out var before))
             {
                 reused++;
-                await Assert.That(driver.MountId(row.Parent!)).IsNotEqualTo(before);
+                await Assert.That(driver.MountId(row)).IsNotEqualTo(before);
             }
         }
         await Assert.That(reused).IsGreaterThan(0);
@@ -175,7 +176,8 @@ public sealed class ListTests
         var state = new ListState();
         using var driver = Render(lines, state);
 
-        state.Scroll!.ScrollTo(null, 4000);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 4000);
         driver.Settle();
         lines[0].Name = "renamed";
         driver.Frame();
@@ -250,7 +252,8 @@ public sealed class ListTests
         var row = driver.Get("line 1");
         driver.Focus(row);
 
-        state.Scroll!.ScrollTo(null, 4000);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 4000);
         driver.Settle();
 
         await Assert.That(driver.Focused).IsSameReferenceAs(row);
@@ -270,7 +273,8 @@ public sealed class ListTests
         var state = new ListState();
         using var driver = Render(lines, state);
         driver.Focus(driver.Get("line 1"));
-        state.Scroll!.ScrollTo(null, 4000);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 4000);
         driver.Settle();
 
         lines.Clear();
@@ -287,7 +291,8 @@ public sealed class ListTests
         var state = new ListState();
         using var driver = Render(lines, state);
         driver.Focus(driver.Get("line 1"));
-        state.Scroll!.ScrollTo(null, 4000);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 4000);
         driver.Settle();
 
         lines[1] = new Line { Id = 5000, Name = "fresh" };
@@ -297,7 +302,7 @@ public sealed class ListTests
         lines[1] = new Line { Id = 5000, Name = "renamed" };
         driver.Settle();
         var renamed = driver.Get("renamed");
-        state.Scroll.ScrollTo(null, 0);
+        scroll.ScrollTo(null, 0);
         driver.Settle();
 
         await Assert.That(focused).IsSameReferenceAs(fresh);
@@ -312,7 +317,8 @@ public sealed class ListTests
         var lines = Line.Many(1000);
         var state = new ListState();
         using var driver = Render(lines, state);
-        state.Scroll!.ScrollTo(null, 400);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 400);
         driver.Settle();
         var top = driver.Get("line 20").ViewBounds;
 
@@ -320,7 +326,7 @@ public sealed class ListTests
         driver.Settle();
 
         await Assert.That(driver.Get("line 20").ViewBounds).IsEqualTo(top);
-        await Assert.That(state.Scroll.Offset.Y).IsEqualTo(430f);
+        await Assert.That(scroll.Offset.Y).IsEqualTo(430f);
     }
 
     [Test]
@@ -329,7 +335,8 @@ public sealed class ListTests
         var lines = Line.Many(1000);
         var state = new ListState();
         using var driver = Render(lines, state);
-        state.Scroll!.ScrollTo(null, 2000);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 2000);
         driver.Settle();
 
         for (var i = 0; i < 5; i++)
@@ -337,7 +344,7 @@ public sealed class ListTests
         driver.Settle();
 
         await Assert.That(driver.Get("line 100").ViewBounds.Y).IsEqualTo(0f);
-        await Assert.That(state.Scroll.Offset.Y).IsEqualTo(2100f);
+        await Assert.That(scroll.Offset.Y).IsEqualTo(2100f);
     }
 
     [Test]
@@ -349,7 +356,8 @@ public sealed class ListTests
         var state = new ListState();
         using var driver = Render(lines, state);
 
-        state.Scroll!.ScrollToIndex(600);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollToIndex(600);
         driver.Settle();
 
         var shown = driver.Get("line 600").ViewBounds;
@@ -523,7 +531,8 @@ public sealed class ListTests
 
         driver.Click(driver.Get("line 1"));
         var pressedInside = state.Selection.Count;
-        driver.Click(driver.Get("line 1").Parent!, new Vector2(100, 10));
+        var row = await Assert.That(driver.Get("line 1").Parent).IsNotNull();
+        driver.Click(row, new Vector2(100, 10));
 
         await Assert.That(pressedInside).IsEqualTo(0);
         await Assert.That(state.Selection.Single).IsEqualTo((UiKey)1);
@@ -575,7 +584,8 @@ public sealed class ListTests
             View
         );
 
-        state.Scroll!.ScrollToIndex(150);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollToIndex(150);
         driver.Settle();
 
         await Assert.That(seen.All(static id => id % 2 == 0)).IsTrue();
@@ -646,7 +656,8 @@ public sealed class ListTests
         );
         var before = driver.Get("list").ViewBounds.Width;
 
-        state.Scroll!.ScrollTo(null, 10000);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 10000);
         driver.Settle();
 
         await Assert.That((before, driver.Get("list").ViewBounds.Width)).IsEqualTo((300f, 300f));
@@ -956,10 +967,11 @@ public sealed class ListTests
         driver.Click(driver.Get("line 2"));
         driver.Focus(driver.Get("list"));
 
-        state.Scroll!.ScrollTo(null, 1500);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 1500);
         driver.Settle();
         var far = Selected(driver.Get("list"));
-        state.Scroll.ScrollTo(null, 0);
+        scroll.ScrollTo(null, 0);
         driver.Settle();
 
         await Assert.That(far).IsEmpty();
@@ -1014,7 +1026,7 @@ public sealed class ListTests
         driver.Click(driver.Get("line 8"));
         var rows = new Dictionary<string, long>();
         foreach (var line in lines)
-            rows[line.Name] = driver.MountId(driver.Get(line.Name).Parent!);
+            rows[line.Name] = driver.MountId(driver.Get<LineRow>(line.Name));
         var order = new[] { 8, 0, 1, 3, 4, 5, 6, -1, 7, 9 };
         var kept = new List<Line>(lines);
 
@@ -1026,7 +1038,7 @@ public sealed class ListTests
         var moved = 0;
         foreach (var at in order)
         {
-            if (at >= 0 && driver.MountId(driver.Get("line " + at).Parent!) != rows["line " + at])
+            if (at >= 0 && driver.MountId(driver.Get<LineRow>("line " + at)) != rows["line " + at])
                 moved++;
         }
         var expected = new List<string?>();
@@ -1107,13 +1119,14 @@ public sealed class ListTests
         var lines = Line.Many(50);
         var state = new ListState();
         using var driver = Render(lines, state);
-        var before = state.Scroll!.Extent.Height;
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        var before = scroll.Extent.Height;
 
         for (var i = 50; i < 60; i++)
             lines.Add(new Line { Id = i, Name = "line " + i });
         driver.Settle();
 
-        await Assert.That((before, state.Scroll.Extent.Height)).IsEqualTo((1000f, 1200f));
+        await Assert.That((before, scroll.Extent.Height)).IsEqualTo((1000f, 1200f));
     }
 
     [Test]
@@ -1145,10 +1158,11 @@ public sealed class ListTests
             View
         );
 
-        state.Scroll!.ScrollTo(1000, null);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(1000, null);
         driver.Settle();
 
-        await Assert.That(state.Scroll.Extent.Width).IsEqualTo(10_000f);
+        await Assert.That(scroll.Extent.Width).IsEqualTo(10_000f);
         await Assert.That(driver.Get("line 10").ViewBounds).IsEqualTo(new Rect(0, 0, 100, 20));
         await Assert.That(driver.Get("line 11").ViewBounds.X).IsEqualTo(100f);
         await Assert.That(ListAllocationTests.Shown(driver.Get("list")).Count).IsLessThan(6);
@@ -1160,7 +1174,8 @@ public sealed class ListTests
         var lines = Line.Many(1000);
         var state = new ListState();
         using var driver = Render(lines, state);
-        state.Scroll!.ScrollTo(null, 2000);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 2000);
         driver.Settle();
         var top = driver.Get("line 100");
 
@@ -1169,7 +1184,7 @@ public sealed class ListTests
 
         await Assert.That(driver.Get("line 100")).IsSameReferenceAs(top);
         await Assert.That(top.ViewBounds.Y).IsEqualTo(0f);
-        await Assert.That(state.Scroll.Offset.Y).IsEqualTo(2000f);
+        await Assert.That(scroll.Offset.Y).IsEqualTo(2000f);
     }
 
     [Test]
@@ -1196,12 +1211,13 @@ public sealed class ListTests
             },
             View
         );
-        state.Scroll!.ScrollTo(null, 3000);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 3000);
         driver.Settle();
         var name = InView(driver);
         var row = driver.Get(name);
         var y = row.ViewBounds.Y;
-        var offset = state.Scroll.Offset.Y;
+        var offset = scroll.Offset.Y;
         var moves = new List<string>();
         void Still(string step)
         {
@@ -1215,7 +1231,7 @@ public sealed class ListTests
         var sameRow = driver.Get(name) == row;
         lines.RemoveAt(0);
         Still("remove");
-        var back = state.Scroll.Offset.Y;
+        var back = scroll.Offset.Y;
         var first = FirstShown(driver, lines);
         lines[first] = new Line
         {
@@ -1311,11 +1327,13 @@ public sealed class ListTests
             View
         );
 
+        var allScroll = await Assert.That(allState.Scroll).IsNotNull();
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
         all.Add(new Line { Id = 10, Name = "line 10" });
-        allState.Scroll!.ScrollToIndex(10);
+        allScroll.ScrollToIndex(10);
         stack.Settle();
         lines[6] = new Line { Id = 600, Name = "line 600" };
-        state.Scroll!.ScrollToIndex(6);
+        scroll.ScrollToIndex(6);
         driver.Settle();
 
         await Assert.That(stack.Get("line 10").ViewBounds.Y).IsEqualTo(80f);
@@ -1333,18 +1351,19 @@ public sealed class ListTests
         driver.Click(driver.Get("line 2"));
         var two = driver.Get("line 2");
 
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
         driver.WindowFocus(false);
-        state.Scroll!.ScrollTo(null, 1000);
+        scroll.ScrollTo(null, 1000);
         driver.Settle();
-        state.Scroll.ScrollTo(null, 2000);
+        scroll.ScrollTo(null, 2000);
         driver.Settle();
         driver.WindowFocus(true);
         var away = (driver.Focused == two, driver.Get("line 2") == two);
-        state.Scroll.ScrollTo(null, 1000);
+        scroll.ScrollTo(null, 1000);
         driver.Settle();
         var fiftyTwo = driver.Get("line 52");
         driver.Focus(fiftyTwo);
-        state.Scroll.ScrollTo(null, 4000);
+        scroll.ScrollTo(null, 4000);
         driver.Settle();
 
         await Assert.That(away).IsEqualTo((true, true));
@@ -1362,7 +1381,8 @@ public sealed class ListTests
             lines[i].Height = 60;
         var state = new ListState();
         using var driver = Render(lines, state);
-        state.Scroll!.ScrollTo(null, 700);
+        var scroll = await Assert.That(state.Scroll).IsNotNull();
+        scroll.ScrollTo(null, 700);
         driver.Settle();
         var row = driver.Get("line 40");
         driver.Focus(row);
@@ -1370,7 +1390,7 @@ public sealed class ListTests
 
         for (var y = 1000f; y <= 12_000f; y += 50f)
         {
-            state.Scroll.ScrollTo(null, y);
+            scroll.ScrollTo(null, y);
             driver.Settle();
             if (row.ViewBounds.Bottom > 0f && row.ViewBounds.Y < 200f)
                 shownAt.Add(y);
@@ -1466,7 +1486,9 @@ internal sealed class ListState
     public void Apply(in SelectionChange change)
     {
         Reports++;
-        Selection.Apply(change, Items!, Line.ById);
+        if (Items is not { } items)
+            throw new InvalidOperationException("A list that selects needs its items.");
+        Selection.Apply(change, items, Line.ById);
     }
 }
 
@@ -1550,12 +1572,12 @@ internal sealed class CountedLines(ObservableList<Line> lines)
 
 public readonly record struct SourceCountProps
 {
-    public IItemsSource? Source { get; init; }
+    public required IItemsSource Source { get; init; }
 }
 
 /// <summary>Writes how many items its source holds as it renders.</summary>
 public sealed class SourceCount : Component<SourceCountProps>
 {
     protected override void Render(Ui ui, in SourceCountProps p) =>
-        ui.Text(ui.Format($"{p.Source!.Count}"));
+        ui.Text(ui.Format($"{p.Source.Count}"));
 }

@@ -1,14 +1,17 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Tralys.Ui.Mvvm;
 
 sealed class Watcher<T> : IChangeObserver, IDisposable
 {
-    static readonly Action<Watcher<T>> React = static watcher => watcher._react(watcher._value);
+    static readonly Action<(Watcher<T> Watcher, T Value)> React = static reacting =>
+        reacting.Watcher._react(reacting.Value);
 
     readonly Func<T> _select;
     readonly Action<T> _react;
     readonly Action<Exception>? _onFault;
     Dependencies _dependencies;
-    T _value;
+    T? _value;
     bool _disposed;
 
     public Watcher(
@@ -23,8 +26,11 @@ sealed class Watcher<T> : IChangeObserver, IDisposable
         _react = react;
         _onFault = onFault;
         _dependencies = new Dependencies(dispatcher);
-        if (TrySelect(out _value) && now)
-            RunReact();
+        if (!TrySelect(out var first))
+            return;
+        _value = first;
+        if (now)
+            RunReact(first);
     }
 
     ref Dependencies IChangeObserver.Dependencies => ref _dependencies;
@@ -38,7 +44,7 @@ sealed class Watcher<T> : IChangeObserver, IDisposable
             return;
 
         _value = next;
-        RunReact();
+        RunReact(next);
     }
 
     public void Dispose()
@@ -49,7 +55,7 @@ sealed class Watcher<T> : IChangeObserver, IDisposable
         _dependencies.Clear();
     }
 
-    bool TrySelect(out T value)
+    bool TrySelect([MaybeNullWhen(false)] out T value)
     {
         var scope = Observation.Track(this);
         try
@@ -62,18 +68,18 @@ sealed class Watcher<T> : IChangeObserver, IDisposable
             if (_onFault is null)
                 throw;
             _onFault(e);
-            value = default!;
+            value = default;
             return false;
         }
         scope.Dispose();
         return true;
     }
 
-    void RunReact()
+    void RunReact(T value)
     {
         try
         {
-            Observation.Untracked(this, React);
+            Observation.Untracked((this, value), React);
         }
         catch (Exception e) when (_onFault is not null)
         {

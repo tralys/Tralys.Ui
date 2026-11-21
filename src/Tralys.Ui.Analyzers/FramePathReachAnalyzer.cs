@@ -122,7 +122,7 @@ public sealed class FramePathReachAnalyzer : DiagnosticAnalyzer
                 case ILocalFunctionOperation local:
                     if (member is not null)
                     {
-                        member = new Member(Normalize(local.Symbol)!, root: false);
+                        member = new Member(Definition(local.Symbol), root: false);
                         _members.Add(member);
                         follows = true;
                     }
@@ -269,8 +269,7 @@ public sealed class FramePathReachAnalyzer : DiagnosticAnalyzer
             switch (symbol)
             {
                 case IMethodSymbol method:
-                    method = (method.ReducedFrom ?? method).OriginalDefinition;
-                    symbol = method.PartialImplementationPart ?? method;
+                    symbol = Definition(method);
                     break;
                 case IPropertySymbol property:
                     symbol =
@@ -286,6 +285,12 @@ public sealed class FramePathReachAnalyzer : DiagnosticAnalyzer
             return SymbolEqualityComparer.Default.Equals(symbol.ContainingAssembly, _assembly)
                 ? symbol
                 : null;
+        }
+
+        static IMethodSymbol Definition(IMethodSymbol method)
+        {
+            method = (method.ReducedFrom ?? method).OriginalDefinition;
+            return method.PartialImplementationPart ?? method;
         }
 
         static bool ChainsToThis(IMethodSymbol constructor, ImmutableArray<IOperation> blocks)

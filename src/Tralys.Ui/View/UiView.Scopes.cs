@@ -62,8 +62,9 @@ public sealed partial class UiView
     {
         for (var i = _activeModals.Count - 1; i >= 0; i--)
         {
-            if (_activeModals[i].IsLive && Reaches(_activeModals[i].Node))
-                return _activeModals[i].Node;
+            var scope = _activeModals[i];
+            if (scope.IsLive && Reaches(scope.Node))
+                return scope.Node;
         }
         return null;
     }
@@ -129,9 +130,9 @@ public sealed partial class UiView
         for (var i = 0; i < _modalBoxes.Count; i++)
         {
             var scope = _modalBoxes[i];
-            var live = scope.IsLive;
-            var modal = live && scope.Node.Interaction?.Props.Modal == true;
-            SyncModal(scope, modal && Drawn(scope.Node), live);
+            var node = scope.IsLive ? scope.Node : null;
+            var modal = node?.Interaction?.Props.Modal == true;
+            SyncModal(scope, node is not null && modal && Drawn(node), live: node is not null);
             if (modal)
                 continue;
             _modalBoxes.RemoveAt(i--);
@@ -171,14 +172,14 @@ public sealed partial class UiView
             return;
         }
         _activeModals.RemoveAt(_activeModals.IndexOf(scope));
-        if (live && scope.Layer is null && FocusInside(scope.Node))
+        if (live && scope.Layer is null && scope.Node is { } node && FocusInside(node))
             ReturnFocus(scope);
     }
 
     void Activate(FocusScope scope)
     {
         _activeModals.Add(scope);
-        if (_focused is { } focused && !scope.Node.IsAncestorOrSelfOf(focused))
+        if (_focused is { } focused && scope.Node is { } node && !node.IsAncestorOrSelfOf(focused))
         {
             scope.Opened(focused);
             MoveFocus(null, FocusCause.Code, visible: false);
@@ -244,7 +245,7 @@ public sealed partial class UiView
         {
             var layer = _layers[i];
             var payload = PayloadOf(layer);
-            var within = FocusInside(layer._parent!);
+            var within = layer._parent is { } owner && FocusInside(owner);
             var left = payload.FocusWithinOwner && !within;
             payload.FocusWithinOwner = within;
             if (
@@ -307,7 +308,7 @@ public sealed partial class UiView
             }
             return;
         }
-        var owner = scope.Node._parent;
+        var owner = scope.Node?._parent;
         _return.Opener = owner;
         _return.OpenerGeneration = owner?.Generation ?? 0;
         for (var a = owner?._parent; a is not null; a = a._parent)

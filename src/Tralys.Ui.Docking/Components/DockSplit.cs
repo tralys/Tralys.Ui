@@ -13,10 +13,13 @@ internal sealed class DockSplit : Component<DockSplitProps>
 {
     protected override void Render(Ui ui, in DockSplitProps p)
     {
-        var split = ui.Remember(static () => new SplitEntry());
+        var boxRef = ui.Ref();
+        var liveState = ui.State(float.NaN);
+        var split = ui.Remember(
+            (boxRef, liveState),
+            static h => new SplitEntry(h.boxRef, h.liveState)
+        );
         split.Host = ui.Self(p);
-        split.Box = ui.Ref();
-        split.Live = ui.State(float.NaN);
         split.Dock = ui.Use(Dock.Context).Dock;
         if (p.Group is not { } group)
             return;
@@ -79,13 +82,15 @@ internal sealed class SplitEntry
 {
     internal readonly Callback<float> Change;
     internal readonly Callback<float> Commit;
+    internal readonly NodeRef Box;
+    internal readonly State<float> Live;
     internal Host<DockSplitProps> Host;
-    internal NodeRef Box = null!;
-    internal State<float> Live = null!;
     internal DockModel? Dock;
 
-    public SplitEntry()
+    public SplitEntry(NodeRef box, State<float> live)
     {
+        Box = box;
+        Live = live;
         Change = Callback<float>.Of(this, static (s, size) => s.Changed(size));
         Commit = Callback<float>.Of(this, static (s, size) => s.Committed(size));
     }

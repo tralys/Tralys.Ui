@@ -38,7 +38,6 @@ public sealed partial class TextLayout
     [ThreadStatic]
     static Scratch? t_scratch;
 
-    Scratch _work = null!;
     float[] _pen = [];
     LayoutGlyph[] _glyphs = [];
     TextLine[] _lines = [];
@@ -158,9 +157,9 @@ public sealed partial class TextLayout
         ArgumentNullException.ThrowIfNull(atlas);
         ThrowIfNotLaidOut();
 
-        ResolveQuads(atlas, origin);
+        var runs = _buffer.Runs;
+        ResolveQuads(runs, atlas, origin);
 
-        var runs = _buffer!.Runs;
         var start = -1;
         for (var i = 0; i <= _quadCount; i++)
         {
@@ -183,10 +182,9 @@ public sealed partial class TextLayout
         }
     }
 
-    void ResolveQuads(GlyphAtlas atlas, Vector2 origin)
+    void ResolveQuads(ReadOnlySpan<TextRun> runs, GlyphAtlas atlas, Vector2 origin)
     {
         _quadCount = 0;
-        var runs = _buffer!.Runs;
         SharedArrays<GlyphQuad>.Reserve(ref _quads, _glyphCount * 2);
         SharedArrays<QuadSource>.Reserve(ref _quadSources, _glyphCount * 2);
         for (var pass = 0; pass < 2; pass++)
@@ -232,18 +230,17 @@ public sealed partial class TextLayout
         var runs = buffer.Runs;
         var length = text.Length;
 
-        _work = t_scratch ??= new Scratch();
-        ValueList.EnsureCapacity(ref _work.Shaped, length);
-        ValueList.EnsureCapacity(ref _work.FirstShaped, length + 1);
+        var work = t_scratch ??= new Scratch();
+        ValueList.EnsureCapacity(ref work.Shaped, length);
+        ValueList.EnsureCapacity(ref work.FirstShaped, length + 1);
         SharedArrays<float>.Reserve(ref _pen, length + 1);
 
-        Shape(text, runs);
-        FindBreaks(text);
-        MinContentWidth = WidestSegment(length);
-        BreakLines(text, runs, buffer.Style);
-        var kept = TrimLines(text, runs);
-        Emit(kept);
-        _work = null!;
+        Shape(work, text, runs);
+        FindBreaks(work, text);
+        MinContentWidth = WidestSegment(work, length);
+        BreakLines(work, text, runs, buffer.Style);
+        var kept = TrimLines(work, text, runs);
+        Emit(work, kept);
     }
 
     internal void Release()
@@ -260,7 +257,7 @@ public sealed partial class TextLayout
         MinContentWidth = 0f;
     }
 
-    void Shape(ReadOnlySpan<char> text, ReadOnlySpan<TextRun> runs)
+    void Shape(Scratch work, ReadOnlySpan<char> text, ReadOnlySpan<TextRun> runs)
     {
         _shapedCount = 0;
         var pen = 0f;
@@ -311,7 +308,7 @@ public sealed partial class TextLayout
 
                     if (previous >= 0 && !tabular)
                     {
-                        ref readonly var prior = ref _work.Shaped[previous];
+                        ref readonly var prior = ref work.Shaped[previous];
                         if (prior.Font == used && prior.PixelSize == pixelSize)
                             pen += used.GetKerning(prior.Glyph, glyph, pixelSize) / _scale;
                     }
@@ -320,7 +317,7 @@ public sealed partial class TextLayout
                 for (var k = 0; k < consumed; k++)
                 {
                     _pen[i + k] = pen;
-                    _work.FirstShaped[i + k] = _shapedCount;
+                    work.FirstShaped[i + k] = _shapedCount;
                 }
 
                 if (kind == CharKind.Ignored)
@@ -329,7 +326,7 @@ public sealed partial class TextLayout
                 }
                 else
                 {
-                    _work.Shaped[_shapedCount] = new Shaped(
+                    work.Shaped[_shapedCount] = new Shaped(
                         used,
                         glyph,
                         r,
@@ -353,7 +350,7 @@ public sealed partial class TextLayout
         }
 
         _pen[text.Length] = pen;
-        _work.FirstShaped[text.Length] = _shapedCount;
+        work.FirstShaped[text.Length] = _shapedCount;
     }
 
     float DigitCell(Font font, float pixelSize)
@@ -373,22 +370,22 @@ public sealed partial class TextLayout
         return widest;
     }
 
-    void FindBreaks(ReadOnlySpan<char> text)
+    void FindBreaks(Scratch work, ReadOnlySpan<char> text)
     {
-        _work.Breaks.Clear();
+        work.Breaks.Clear();
         if (text.IsEmpty)
             return;
 
         var breaker = new LineBreakEnumerator(text);
         while (breaker.MoveNext(out var lineBreak))
-            _work.Breaks.Add(lineBreak);
+            work.Breaks.Add(lineBreak);
     }
 
-    float WidestSegment(int length)
+    float WidestSegment(Scratch work, int length)
     {
         var widest = 0f;
         var start = 0;
-        foreach (ref readonly var candidate in _work.Breaks.AsSpan())
+        foreach (ref readonly var candidate in work.Breaks.AsSpan())
         {
             widest = MathF.Max(widest, Width(start, Math.Max(candidate.PositionMeasure, start)));
             start = Math.Max(start, candidate.PositionWrap);
@@ -396,9 +393,14 @@ public sealed partial class TextLayout
         return MathF.Max(widest, Width(start, length));
     }
 
-    void BreakLines(ReadOnlySpan<char> text, ReadOnlySpan<TextRun> runs, in TextStyle fallback)
+    void BreakLines(
+        Scratch work,
+        ReadOnlySpan<char> text,
+        ReadOnlySpan<TextRun> runs,
+        in TextStyle fallback
+    )
     {
-        _work.Pending.Clear();
+        work.Pending.Clear();
         var length = text.Length;
         var limit = _wrapping == TextWrapping.Wrap ? _maxWidth + Tolerance : float.PositiveInfinity;
         var start = 0;
@@ -409,9 +411,9 @@ public sealed partial class TextLayout
             var chosen = -1;
             var overflowing = -1;
             var overflow = length;
-            while (next < _work.Breaks.Count)
+            while (next < work.Breaks.Count)
             {
-                ref readonly var candidate = ref _work.Breaks[next];
+                ref readonly var candidate = ref work.Breaks[next];
                 if (candidate.PositionWrap <= start)
                 {
                     next++;
@@ -450,23 +452,30 @@ public sealed partial class TextLayout
             }
             else
             {
-                ref readonly var taken = ref _work.Breaks[chosen];
+                ref readonly var taken = ref work.Breaks[chosen];
                 end = Math.Max(taken.PositionMeasure, start);
                 wrap = taken.PositionWrap;
                 endedHard = taken.Required;
             }
 
-            AddPending(runs, fallback, start, end, wrap);
+            AddPending(work, runs, fallback, start, end, wrap);
             start = wrap;
         }
 
         if (length == 0 || endedHard)
-            AddPending(runs, fallback, length, length, length);
+            AddPending(work, runs, fallback, length, length, length);
     }
 
-    void AddPending(ReadOnlySpan<TextRun> runs, in TextStyle fallback, int start, int end, int wrap)
+    void AddPending(
+        Scratch work,
+        ReadOnlySpan<TextRun> runs,
+        in TextStyle fallback,
+        int start,
+        int end,
+        int wrap
+    )
     {
-        ref var line = ref _work.Pending.AddDefault();
+        ref var line = ref work.Pending.AddDefault();
         line.Start = start;
         line.End = end;
         line.Wrap = wrap;
@@ -504,9 +513,9 @@ public sealed partial class TextLayout
         line.Gap = MathF.Max(line.Gap, metrics.LineGap / _scale);
     }
 
-    int TrimLines(ReadOnlySpan<char> text, ReadOnlySpan<TextRun> runs)
+    int TrimLines(Scratch work, ReadOnlySpan<char> text, ReadOnlySpan<TextRun> runs)
     {
-        var kept = _work.Pending.Count;
+        var kept = work.Pending.Count;
         if (_trimming == TextTrimming.None)
             return kept;
 
@@ -514,9 +523,9 @@ public sealed partial class TextLayout
         {
             var height = 0f;
             kept = 0;
-            while (kept < _work.Pending.Count)
+            while (kept < work.Pending.Count)
             {
-                var lineHeight = _work.Pending[kept].Height;
+                var lineHeight = work.Pending[kept].Height;
                 if (kept > 0 && height + lineHeight > _maxHeight + Tolerance)
                     break;
                 height += lineHeight;
@@ -526,23 +535,28 @@ public sealed partial class TextLayout
 
         for (var i = 0; i < kept; i++)
         {
-            ref var line = ref _work.Pending[i];
-            var cut = i == kept - 1 && kept < _work.Pending.Count;
+            ref var line = ref work.Pending[i];
+            var cut = i == kept - 1 && kept < work.Pending.Count;
             if (cut || line.Width > _maxWidth + Tolerance)
-                Trim(ref line, text, runs);
+                Trim(work, ref line, text, runs);
         }
         return kept;
     }
 
-    void Trim(ref PendingLine line, ReadOnlySpan<char> text, ReadOnlySpan<TextRun> runs)
+    void Trim(
+        Scratch work,
+        ref PendingLine line,
+        ReadOnlySpan<char> text,
+        ReadOnlySpan<TextRun> runs
+    )
     {
         var run = RunAt(runs, line.End > line.Start ? line.End - 1 : line.Start);
-        var end = Cut(ref line, text, runs[run].Style);
+        var end = Cut(work, ref line, text, runs[run].Style);
         var cutRun = RunAt(runs, end > line.Start ? end - 1 : line.Start);
         if (cutRun != run)
         {
             run = cutRun;
-            end = Cut(ref line, text, runs[run].Style);
+            end = Cut(work, ref line, text, runs[run].Style);
         }
 
         line.End = end;
@@ -550,7 +564,7 @@ public sealed partial class TextLayout
         line.EllipsisRun = run;
     }
 
-    int Cut(ref PendingLine line, ReadOnlySpan<char> text, in TextStyle style)
+    int Cut(Scratch work, ref PendingLine line, ReadOnlySpan<char> text, in TextStyle style)
     {
         var pixelSize = style.Size * _scale;
         var count = 1;
@@ -567,7 +581,9 @@ public sealed partial class TextLayout
         if (Width(line.Start, end) > available)
         {
             var word =
-                _trimming == TextTrimming.WordEllipsis ? WordCut(line.Start, end, available) : -1;
+                _trimming == TextTrimming.WordEllipsis
+                    ? WordCut(work, line.Start, end, available)
+                    : -1;
             end = word >= 0 ? word : CharacterCut(text, line.Start, end, available);
         }
 
@@ -581,12 +597,12 @@ public sealed partial class TextLayout
         return end;
     }
 
-    int WordCut(int start, int end, float available)
+    int WordCut(Scratch work, int start, int end, float available)
     {
         var cut = -1;
-        for (var i = 0; i < _work.Breaks.Count; i++)
+        for (var i = 0; i < work.Breaks.Count; i++)
         {
-            var measure = _work.Breaks[i].PositionMeasure;
+            var measure = work.Breaks[i].PositionMeasure;
             if (measure <= start)
                 continue;
             if (measure >= end || Width(start, measure) > available)
@@ -622,11 +638,11 @@ public sealed partial class TextLayout
         return end;
     }
 
-    void Emit(int kept)
+    void Emit(Scratch work, int kept)
     {
         var widest = 0f;
         for (var i = 0; i < kept; i++)
-            widest = MathF.Max(widest, _work.Pending[i].Width);
+            widest = MathF.Max(widest, work.Pending[i].Width);
 
         var span = float.IsFinite(_maxWidth) ? _maxWidth : widest;
         SharedArrays<TextLine>.Reserve(ref _lines, kept);
@@ -636,7 +652,7 @@ public sealed partial class TextLayout
         var top = 0f;
         for (var i = 0; i < kept; i++)
         {
-            ref readonly var line = ref _work.Pending[i];
+            ref readonly var line = ref work.Pending[i];
             var x = _alignment switch
             {
                 TextAlignment.Center => (span - line.Width) * 0.5f,
@@ -645,9 +661,9 @@ public sealed partial class TextLayout
             };
             var baseline = top + line.Ascent;
             var left = _pen[line.Start];
-            for (var s = _work.FirstShaped[line.Start]; s < _work.FirstShaped[line.End]; s++)
+            for (var s = work.FirstShaped[line.Start]; s < work.FirstShaped[line.End]; s++)
             {
-                ref readonly var shaped = ref _work.Shaped[s];
+                ref readonly var shaped = ref work.Shaped[s];
                 if (shaped.IsDrawn)
                     _glyphs[_glyphCount++] = new LayoutGlyph(
                         shaped.Font,
@@ -658,15 +674,18 @@ public sealed partial class TextLayout
                     );
             }
 
-            var ellipsisX = x + Width(line.Start, line.End);
-            for (var k = 0; k < line.EllipsisCount; k++)
-                _glyphs[_glyphCount++] = new LayoutGlyph(
-                    line.EllipsisFont!,
-                    line.EllipsisGlyph,
-                    ellipsisX + k * line.EllipsisAdvance,
-                    baseline,
-                    line.EllipsisRun
-                );
+            if (line.EllipsisFont is { } ellipsisFont)
+            {
+                var ellipsisX = x + Width(line.Start, line.End);
+                for (var k = 0; k < line.EllipsisCount; k++)
+                    _glyphs[_glyphCount++] = new LayoutGlyph(
+                        ellipsisFont,
+                        line.EllipsisGlyph,
+                        ellipsisX + k * line.EllipsisAdvance,
+                        baseline,
+                        line.EllipsisRun
+                    );
+            }
 
             _lines[_lineCount++] = new TextLine(
                 line.Start,

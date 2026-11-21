@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -23,6 +24,8 @@ struct ValueList<T>
 
     public ValueList(int capacity) => _items = new T[capacity];
 
+    readonly T[] Items => _items ?? [];
+
     public readonly int Count
     {
         [FramePath]
@@ -39,7 +42,7 @@ struct ValueList<T>
             if ((uint)index >= (uint)_count)
                 ThrowIndex();
             // Reaches past the covariance check a reference type's element address would otherwise pay on every read.
-            return ref Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(_items!), index);
+            return ref Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(Items), index);
         }
     }
 
@@ -62,7 +65,7 @@ struct ValueList<T>
     {
         if (_items is null || _count == _items.Length)
             Grow();
-        _items![_count++] = item;
+        _items[_count++] = item;
     }
 
     [FramePath]
@@ -70,9 +73,8 @@ struct ValueList<T>
     {
         if (_items is null || _count == _items.Length)
             Grow();
-        ref T slot = ref _items![_count++];
-        slot = default!;
-        return ref slot;
+        _items.AsSpan(_count, 1).Clear();
+        return ref _items[_count++];
     }
 
     [FramePath]
@@ -80,40 +82,42 @@ struct ValueList<T>
     {
         if (_items is null || _count == _items.Length)
             Grow();
-        Array.Copy(_items!, index, _items!, index + 1, _count - index);
-        _items![index] = item;
+        Array.Copy(_items, index, _items, index + 1, _count - index);
+        _items[index] = item;
         _count++;
     }
 
     [FramePath]
     public void RemoveAt(int index)
     {
-        _count--;
-        Array.Copy(_items!, index + 1, _items!, index, _count - index);
-        _items![_count] = default!;
+        var items = Items;
+        Array.Copy(items, index + 1, items, index, _count - index - 1);
+        Truncate(_count - 1);
     }
 
     [FramePath]
     public void RemoveAtSwap(int index)
     {
-        _items![index] = _items[--_count];
-        _items[_count] = default!;
+        var items = Items;
+        items[index] = items[_count - 1];
+        Truncate(_count - 1);
     }
 
     [FramePath]
     public T Pop()
     {
-        var item = _items![--_count];
-        _items[_count] = default!;
+        var item = Items[_count - 1];
+        Truncate(_count - 1);
         return item;
     }
 
     // Into a new array, leaving the old one intact for a pass already walking it.
     public void RemoveAtDetached(int index)
     {
-        var items = new T[_items!.Length];
-        Array.Copy(_items, items, index);
-        Array.Copy(_items, index + 1, items, index, _count - index - 1);
+        var old = Items;
+        var items = new T[old.Length];
+        Array.Copy(old, items, index);
+        Array.Copy(old, index + 1, items, index, _count - index - 1);
         _items = items;
         _count--;
     }
@@ -128,12 +132,13 @@ struct ValueList<T>
     [FramePath]
     public readonly void Move(int from, int to)
     {
-        var item = _items![from];
+        var items = Items;
+        var item = items[from];
         if (from > to)
-            Array.Copy(_items, to, _items, to + 1, from - to);
+            Array.Copy(items, to, items, to + 1, from - to);
         else
-            Array.Copy(_items, from + 1, _items, from, to - from);
-        _items[to] = item;
+            Array.Copy(items, from + 1, items, from, to - from);
+        items[to] = item;
     }
 
     [FramePath]
@@ -143,7 +148,7 @@ struct ValueList<T>
     public void Truncate(int count)
     {
         if (RuntimeHelpers.IsReferenceOrContainsReferences<T>() && _count > count)
-            Array.Clear(_items!, count, _count - count);
+            Array.Clear(Items, count, _count - count);
         _count = count;
     }
 
@@ -152,16 +157,16 @@ struct ValueList<T>
     {
         var kept = _count - count;
         if (kept > 0)
-            Array.Copy(_items!, count, _items!, 0, kept);
+            Array.Copy(Items, count, Items, 0, kept);
         Truncate(kept);
     }
 
     [FramePath]
-    public readonly int IndexOf(T item) =>
-        _count == 0 ? -1 : Array.IndexOf(_items!, item, 0, _count);
+    public readonly int IndexOf(T item) => _count == 0 ? -1 : Array.IndexOf(Items, item, 0, _count);
 
     [MethodImpl(MethodImplOptions.NoInlining)]
     [FramePath]
+    [MemberNotNull(nameof(_items))]
     void Grow() => Array.Resize(ref _items, Math.Max(MinCapacity, _count * 2));
 
     static void ThrowIndex() => throw new IndexOutOfRangeException();

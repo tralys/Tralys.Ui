@@ -20,12 +20,15 @@ internal sealed class DockFloat : Component<DockFloatProps>
     {
         var c = ui.Use(Dock.Context);
         var t = ui.Theme;
-        var f = ui.Remember(static () => new FloatEntry());
+        var panelRef = ui.Ref();
+        var titleRef = ui.Ref();
+        var f = ui.Remember(
+            (panelRef, titleRef),
+            static refs => new FloatEntry(refs.panelRef, refs.titleRef)
+        );
         f.Host = ui.Self(p);
         f.Sink = c.Sink;
         f.Dock = c.Dock;
-        f.Panel = ui.Ref();
-        f.Title = ui.Ref();
         if (p.Window is not { } window)
             return;
 
@@ -147,15 +150,17 @@ internal sealed class FloatEntry : IDisposable
     internal readonly Handler<DragEvent> HandleDrag;
     internal readonly Handler<DragEvent> TitleDrag;
     internal readonly Callback Close;
+    internal readonly NodeRef Panel;
+    internal readonly NodeRef Title;
     internal Host<DockFloatProps> Host;
     internal IDockDragSink? Sink;
     internal DockModel? Dock;
-    internal NodeRef Panel = null!;
-    internal NodeRef Title = null!;
     bool _dragging;
 
-    public FloatEntry()
+    public FloatEntry(NodeRef panel, NodeRef title)
     {
+        Panel = panel;
+        Title = title;
         Bounds = Callback<Rect>.Of(this, static (f, bounds) => f.Moved(bounds));
         HandleDrag = Handler<DragEvent>.Of(this, static (f, ref e) => f.Dragged(ref e));
         TitleDrag = Handler<DragEvent>.Of(this, static (f, ref e) => f.Dragged(ref e));

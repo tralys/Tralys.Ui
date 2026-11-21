@@ -27,9 +27,10 @@ public sealed class IconTests
         var drawn = TestIcons.Set.Glyph(IconRole.Search);
 
         await Assert.That(before).IsEqualTo((default(Size), 0f));
+        var family = await Assert.That(drawn.FontFamily).IsNotNull();
         await Assert
             .That((glyph.Text.ToString(), glyph.Env.FontFamily))
-            .IsEqualTo((drawn.Text.ToString(), drawn.FontFamily!));
+            .IsEqualTo((drawn.Text.ToString(), family));
     }
 
     [Test]

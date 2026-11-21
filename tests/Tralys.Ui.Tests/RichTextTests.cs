@@ -7,7 +7,12 @@ namespace Tralys.Ui.Tests;
 
 public sealed class RichTextTests
 {
-    static TextPayload TextOf(Node node) => (TextPayload)node.Payload!;
+    static TextPayload TextOf(Node node)
+    {
+        if (node.Payload is not TextPayload text)
+            throw new InvalidOperationException("The node holds no text.");
+        return text;
+    }
 
     [Test]
     public async Task Spans_lay_out_as_one_paragraph_that_follows_their_text()
@@ -135,8 +140,9 @@ public sealed class RichTextTests
 
         await Assert.That(driver.Cursor).IsEqualTo(Cursors.Hand);
         await Assert.That(driver.Stats.Layouts).IsEqualTo(0);
+        var line = await Assert.That(on.Parent).IsNotNull();
         await Assert
-            .That(TextOf(on.Parent!).Buffer.Runs[0].Style.Fill)
+            .That(TextOf(line).Buffer.Runs[0].Style.Fill)
             .IsEqualTo((Paint)Themes.Dark.Color(ColorToken.FgAccentHover));
 
         var off = driver.Get("off");

@@ -94,9 +94,9 @@ internal sealed class TableHeaderCell : Component<TableHeaderCellProps>
                     bottom: 0f
                 );
         }
-        if (content is not null)
+        if (layout is not null && content is not null)
             ui.Effect(
-                layout!,
+                layout,
                 new Grown(p.Index, content.Size.Width),
                 static (l, g, _) => l.Grow(g.Column, g.Width)
             );
@@ -161,12 +161,12 @@ internal sealed class TableLayout
 
     internal readonly Handler<DragEvent> HeaderDrag;
     internal readonly Handler<WheelEvent> HeaderWheel;
-    internal State<int> Version = null!;
+    internal readonly State<int> Version;
     internal State<DropLine>? Drop;
-    internal ScrollHandle Own = null!;
-    internal ScrollHandle Sideways = null!;
-    internal ScrollHandle Rows = null!;
-    internal NodeRef HeaderRow = null!;
+    internal readonly ScrollHandle Own;
+    internal readonly ScrollHandle Sideways;
+    internal ScrollHandle Rows;
+    internal readonly NodeRef HeaderRow;
     internal Callback<UiKey> OnSort;
     internal bool Sorts;
     internal bool Reorderable;
@@ -193,8 +193,18 @@ internal sealed class TableLayout
         Pan,
     }
 
-    public TableLayout()
+    public TableLayout(
+        State<int> version,
+        ScrollHandle own,
+        ScrollHandle sideways,
+        NodeRef headerRow
+    )
     {
+        Version = version;
+        Own = own;
+        Sideways = sideways;
+        Rows = own;
+        HeaderRow = headerRow;
         HeaderDrag = Handler<DragEvent>.Of(this, static (l, ref e) => l.DragHeader(ref e));
         HeaderWheel = Handler<WheelEvent>.Of(this, static (l, ref e) => l.Wheel(ref e));
     }

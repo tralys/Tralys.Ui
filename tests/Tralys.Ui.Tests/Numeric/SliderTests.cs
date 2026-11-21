@@ -278,13 +278,24 @@ public sealed class SliderTests
 
     sealed class RowItems
     {
-        public IItemsSource<int> Items = null!;
+        public required IItemsSource<int> Items;
     }
 }
 
 internal sealed class SliderOwner
 {
-    public State<float> Value = null!;
+    State<float>? _value;
+
+    public State<float> Value
+    {
+        get
+        {
+            if (_value is not { } value)
+                throw new InvalidOperationException("The owner has not rendered yet.");
+            return value;
+        }
+    }
+
     public readonly List<bool> Ends = [];
     public float Min;
     public float? Max;
@@ -301,14 +312,14 @@ internal sealed class SliderOwner
     public UiDriver Render(float value, float width = 216f, float height = 200f) =>
         UiDriver.Render(ui =>
         {
-            Value = ui.State(value);
+            var state = _value = ui.State(value);
             using (ui.Box(direction: Direction.Column, align: Align.Start, gap: 8))
             {
                 if (Focusable)
                     using (ui.Box(width: 40, height: 20, focusable: true, id: "before")) { }
                 ui.Slider(
-                    value: Value.Value,
-                    onValueChange: Value.Setter,
+                    value: state.Value,
+                    onValueChange: state.Setter,
                     min: Min,
                     max: Max,
                     step: Step,
@@ -345,8 +356,7 @@ internal static class Sliders
 
     public static Node Kid(Node node, int index) => Kids(node)[index];
 
-    public static float Value(UiDriver driver) =>
-        ((ComponentHost<SliderProps>)driver.Get<Slider>().Host!).Value.Value;
+    public static float Value(UiDriver driver) => driver.Get<Slider>().Props<SliderProps>().Value;
 
     public static Node Thumb(UiDriver driver) =>
         Nodes.Find(driver.Get<SliderThumb>(), NodeKind.Box);

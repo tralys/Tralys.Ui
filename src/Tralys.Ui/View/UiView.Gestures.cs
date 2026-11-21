@@ -167,7 +167,7 @@ public sealed partial class UiView
             return false;
 
         g.Held = wasHeld;
-        if (!node.Interaction!.Props.OnDrag.IsEmpty)
+        if (node.Interaction?.Props.OnDrag is { IsEmpty: false })
         {
             if (DeliverDrag(node, DragPhase.Start, state, default) || !node.IsMounted)
                 return false;
@@ -349,7 +349,7 @@ public sealed partial class UiView
             press.Owner is { IsMounted: true } owner
             && (owner._states & InputStates.Disabled) == 0
             && owner.IsAncestorOrSelfOf(hit)
-            && owner.Interaction!.Props.OnLongPress is { IsEmpty: false } longPress
+            && owner.Interaction?.Props.OnLongPress is { IsEmpty: false } longPress
         )
         {
             Invoke(longPress);

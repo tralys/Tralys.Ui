@@ -15,7 +15,7 @@ public sealed class DrawGoldenTests
     [MethodDataSource(nameof(Stories))]
     public async Task The_story_draws_as_its_goldens_say_in_each_theme_and_held_state(string key)
     {
-        var story = DemoOptions.Find(key)!.Value;
+        var story = await Assert.That(DemoOptions.Find(key)).IsNotNull();
         var failures = new List<string?>();
         var normal = Draw(story, Themes.Dark, StoryState.Normal);
         failures.Add(Golden.Text(Golden.DrawPath(story, "dark", StoryState.Normal), normal));

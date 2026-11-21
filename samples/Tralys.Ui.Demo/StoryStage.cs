@@ -17,9 +17,7 @@ sealed class StoryStage : IDisposable
     const int MostFrames = 600;
 
     readonly GalleryFonts _fonts;
-    readonly Action<UiView>? _draw;
-    readonly GradientRampAtlas? _ramps;
-    readonly DrawList? _list;
+    readonly Action<UiView> _draw;
     readonly Slot[] _held = new Slot[StoryStates.All.Length];
     TimeSpan _now;
     bool _showing;
@@ -44,12 +42,7 @@ sealed class StoryStage : IDisposable
             Icons = Icons.Set,
         };
         View = new UiView(Context, new StageHost()) { Size = new Size(Width, Height) };
-        _draw = draw;
-        if (draw is null)
-        {
-            _ramps = new GradientRampAtlas();
-            _list = new DrawList(_ramps);
-        }
+        _draw = draw ?? new Recorder().Record;
         Context.Advance(_now);
     }
 
@@ -83,14 +76,7 @@ sealed class StoryStage : IDisposable
             View.Mount(_held[(int)_shown]);
         }
         View.Update();
-        if (_draw is { } draw)
-        {
-            draw(View);
-            return;
-        }
-        _ramps!.BeginFrame();
-        _list!.ClearPatchedRanges();
-        View.Render(_list);
+        _draw(View);
     }
 
     /// <summary>Shows <paramref name="story"/> and runs frames until two in a row leave the view idle.</summary>
@@ -122,6 +108,22 @@ sealed class StoryStage : IDisposable
         View.Dispose();
         Context.Dispose();
         _fonts.Dispose();
+    }
+
+    sealed class Recorder
+    {
+        readonly GradientRampAtlas _ramps = new();
+        readonly DrawList _list;
+
+        public Recorder() => _list = new DrawList(_ramps);
+
+        [FramePath]
+        public void Record(UiView view)
+        {
+            _ramps.BeginFrame();
+            _list.ClearPatchedRanges();
+            view.Render(_list);
+        }
     }
 
     sealed class StageHost : IViewHost

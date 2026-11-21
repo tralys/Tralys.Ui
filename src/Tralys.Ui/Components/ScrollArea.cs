@@ -76,8 +76,7 @@ public sealed class ScrollArea : Component<ScrollAreaProps>
     protected override void Render(Ui ui, in ScrollAreaProps p)
     {
         var handle = p.Scroll ?? ui.ScrollHandle();
-        var wheel = ui.Remember(static () => new Wheel());
-        wheel.Handle = handle;
+        var wheel = ui.Remember(handle, static h => new Wheel(h));
         var shown = ui.IsHovered || ui.IsFocusWithin || ui.IsCapturing;
         var acrossX = p.Horizontal != ScrollbarVisibility.Disabled;
         var acrossY = p.Vertical != ScrollbarVisibility.Disabled;
@@ -141,11 +140,13 @@ public sealed class ScrollArea : Component<ScrollAreaProps>
     sealed class Wheel
     {
         internal readonly Handler<WheelEvent> Turned;
-        internal ScrollHandle Handle = null!;
+        internal readonly ScrollHandle Handle;
         internal bool X;
         internal bool Y;
 
-        public Wheel() =>
+        public Wheel(ScrollHandle handle)
+        {
+            Handle = handle;
             Turned = Handler<WheelEvent>.Of(
                 this,
                 static (w, ref e) =>
@@ -154,6 +155,7 @@ public sealed class ScrollArea : Component<ScrollAreaProps>
                         e.StopPropagation();
                 }
             );
+        }
 
         bool Takes(Vector2 notches)
         {
@@ -258,7 +260,7 @@ public sealed class ScrollAreaBar : Component<ScrollAreaBarProps>
     {
         internal readonly Callback<ScrollbarChange> Moved;
         internal readonly Handler<WheelEvent> Turned;
-        internal ScrollHandle Handle = null!;
+        internal ScrollHandle? Handle;
         internal bool Vertical;
 
         public AreaBar()
@@ -271,13 +273,15 @@ public sealed class ScrollAreaBar : Component<ScrollAreaBarProps>
 
         public void Dispose()
         {
-            Handle = null!;
+            Handle = null;
             Pool<AreaBar>.Return(this);
         }
 
         void Move(ScrollbarChange change)
         {
-            var page = Vertical ? Handle.Viewport.Height : Handle.Viewport.Width;
+            if (Handle is not { } handle)
+                return;
+            var page = Vertical ? handle.Viewport.Height : handle.Viewport.Width;
             var by = change.Step switch
             {
                 ScrollbarStep.LineDecrease => -LineStep,
@@ -289,17 +293,20 @@ public sealed class ScrollAreaBar : Component<ScrollAreaBarProps>
             if (float.IsNaN(by))
             {
                 if (Vertical)
-                    Handle.ScrollTo(null, change.Value);
+                    handle.ScrollTo(null, change.Value);
                 else
-                    Handle.ScrollTo(change.Value, null);
+                    handle.ScrollTo(change.Value, null);
                 return;
             }
-            Handle.ScrollBy(Vertical ? new Vector2(0f, by) : new Vector2(by, 0f), animate: true);
+            handle.ScrollBy(Vertical ? new Vector2(0f, by) : new Vector2(by, 0f), animate: true);
         }
 
         void Wheel(ref WheelEvent e)
         {
-            if (Handle.Node is { View: { } view } scroller && view.WheelScroll(scroller, e.Notches))
+            if (
+                Handle?.Node is { View: { } view } scroller
+                && view.WheelScroll(scroller, e.Notches)
+            )
             {
                 e.StopPropagation();
                 e.PreventDefault();

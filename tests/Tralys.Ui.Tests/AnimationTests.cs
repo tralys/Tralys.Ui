@@ -417,7 +417,8 @@ public sealed class AnimationTests
         items.Remove(2);
         driver.Frame(0.1f);
         driver.Frame(0.5f);
-        var box = exiting.Parent!.ViewBounds;
+        var exitingBox = await Assert.That(exiting.Parent).IsNotNull();
+        var box = exitingBox.ViewBounds;
         var hit = driver.View.HitTest(
             new System.Numerics.Vector2(box.X + box.Width / 2f, box.Y + box.Height / 2f)
         );
@@ -430,7 +431,7 @@ public sealed class AnimationTests
         await Assert.That(notices).IsEqualTo(3);
         await Assert.That(flagged).IsTrue();
         await Assert.That(shown).IsEqualTo(0.5f).Within(1e-3f);
-        await Assert.That(hit is not null && exiting.Parent!.IsAncestorOrSelfOf(hit)).IsFalse();
+        await Assert.That(hit is not null && exitingBox.IsAncestorOrSelfOf(hit)).IsFalse();
         await Assert.That(thirdWhileExiting).IsEqualTo(third);
         await Assert.That(driver.All<Notice>().Count).IsEqualTo(2);
         await Assert.That(driver.GetText("notice 3").ViewBounds.Y).IsLessThan(third);

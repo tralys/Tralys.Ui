@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Tralys.Ui.Mvvm;
 
 namespace Tralys.Ui.DevTools;
@@ -6,7 +7,7 @@ internal sealed class InspectorRow : TreeRow
 {
     const int NodeProperty = 3;
 
-    Node _node = null!;
+    Node _node;
     internal readonly InspectorModel Model;
     internal readonly Callback<bool> Hover;
     internal bool Hovered;
@@ -17,10 +18,11 @@ internal sealed class InspectorRow : TreeRow
     internal char[] Shown = new char[16];
     internal int ShownLength;
 
-    public InspectorRow(InspectorModel model)
+    public InspectorRow(InspectorModel model, Node node, int key)
     {
         Model = model;
         Hover = Callback<bool>.Of(this, static (row, hovered) => row.HoverChanged(hovered));
+        Bind(node, key);
     }
 
     public Node Node
@@ -34,6 +36,7 @@ internal sealed class InspectorRow : TreeRow
 
     internal Node Peek => _node;
 
+    [MemberNotNull(nameof(_node))]
     internal void Bind(Node node, int key)
     {
         _node = node;
@@ -192,8 +195,10 @@ internal sealed class ElementTree : ITreeChildren<InspectorRow>
             row.Bind(node, ++_nextKey);
             return row;
         }
-        row = _spare.Count > 0 ? _spare.Pop() : new InspectorRow(_model);
-        row.Bind(node, ++_nextKey);
+        if (_spare.TryPop(out row))
+            row.Bind(node, ++_nextKey);
+        else
+            row = new InspectorRow(_model, node, ++_nextKey);
         _rows[node] = row;
         return row;
     }

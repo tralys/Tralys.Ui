@@ -48,7 +48,8 @@ public sealed class ScrollingAllocationTests
         );
 
         await Assert.That(bytes).IsEqualTo(0L);
-        await Assert.That(area.Handle!.Offset.Y).IsGreaterThan(0f);
+        var handle = await Assert.That(area.Handle).IsNotNull();
+        await Assert.That(handle.Offset.Y).IsGreaterThan(0f);
     }
 
     [Test]
@@ -56,10 +57,11 @@ public sealed class ScrollingAllocationTests
     {
         var area = new AreaFixture { ContentHeight = 100000f };
         using var driver = area.Render();
+        var handle = await Assert.That(area.Handle).IsNotNull();
 
         var down = driver.Hold(Bars.Arrow(driver, forward: true), settle: false);
         var downBytes = driver.WorstFrameBytes(static d => d.Frame());
-        var stepped = area.Handle!.Offset.Y;
+        var stepped = handle.Offset.Y;
         down.Release(settle: false);
         var up = driver.Hold(Bars.Arrow(driver, forward: false), settle: false);
         var upBytes = driver.WorstFrameBytes(static d => d.Frame());
@@ -67,7 +69,7 @@ public sealed class ScrollingAllocationTests
 
         await Assert.That((downBytes, upBytes)).IsEqualTo((0L, 0L));
         await Assert.That(stepped).IsGreaterThan(16f);
-        await Assert.That(area.Handle.Offset.Y).IsLessThan(stepped);
+        await Assert.That(handle.Offset.Y).IsLessThan(stepped);
     }
 
     [Test]
@@ -75,12 +77,13 @@ public sealed class ScrollingAllocationTests
     {
         var area = new AreaFixture { ContentHeight = 2000f };
         using var driver = area.Render();
+        var handle = await Assert.That(area.Handle).IsNotNull();
         var held = driver.Hold(Bars.Thumb(driver));
         var moves = new Moves(held, new Vector2(0f, 2f));
         var seen = new Counter();
 
         var bytes = driver.WorstFrameBytes(
-            (moves, area, seen),
+            (moves, handle, seen),
             static (d, s) =>
             {
                 s.moves.Press.MoveBy(
@@ -88,7 +91,7 @@ public sealed class ScrollingAllocationTests
                     settle: false
                 );
                 d.Frame();
-                if (s.area.Handle!.Offset.Y > 0f)
+                if (s.handle.Offset.Y > 0f)
                     s.seen.Value++;
             }
         );
@@ -125,7 +128,8 @@ public sealed class ScrollingAllocationTests
     {
         var area = new AreaFixture { ContentHeight = 100000f };
         using var driver = area.Render();
-        area.Handle!.ScrollTo(null, 50000f);
+        var handle = await Assert.That(area.Handle).IsNotNull();
+        handle.ScrollTo(null, 50000f);
         driver.Settle();
         var walk = new Walk(driver.Get("content"));
 
@@ -168,7 +172,9 @@ public sealed class ScrollingAllocationTests
         mouse.Release();
 
         await Assert.That(bytes).IsEqualTo(0L);
-        await Assert.That(follow.Header!.Offset.X).IsEqualTo(follow.Lead!.Offset.X);
+        var header = await Assert.That(follow.Header).IsNotNull();
+        var lead = await Assert.That(follow.Lead).IsNotNull();
+        await Assert.That(header.Offset.X).IsEqualTo(lead.Offset.X);
     }
 
     [Test]
@@ -176,13 +182,15 @@ public sealed class ScrollingAllocationTests
     {
         var chat = new Chat();
         using var driver = chat.Render();
+        var handle = await Assert.That(chat.Handle).IsNotNull();
+        var first = await Assert.That(chat.First).IsNotNull();
 
         var bytes = driver.WorstFrameBytes(
-            chat,
+            (first, handle),
             static (d, c) =>
             {
-                c.First.Value++;
-                c.Handle!.ScrollToEnd();
+                c.first.Value++;
+                c.handle.ScrollToEnd();
                 d.Frame();
             }
         );
@@ -190,14 +198,12 @@ public sealed class ScrollingAllocationTests
 
         await Assert.That(bytes).IsEqualTo(0L);
         await Assert.That(driver.All<Scrollbar>().Count).IsEqualTo(2);
-        await Assert
-            .That(vertical.Max)
-            .IsEqualTo(chat.Handle!.Extent.Height - chat.Handle.Viewport.Height);
-        await Assert.That(vertical.Value).IsEqualTo(chat.Handle.Offset.Y);
+        await Assert.That(vertical.Max).IsEqualTo(handle.Extent.Height - handle.Viewport.Height);
+        await Assert.That(vertical.Value).IsEqualTo(handle.Offset.Y);
         await Assert.That(vertical.Value).IsEqualTo(vertical.Max);
         await Assert
             .That(driver.Get("last").ViewBounds.Bottom)
-            .IsEqualTo(driver.Get("area").ViewBounds.Y + chat.Handle.Viewport.Height);
+            .IsEqualTo(driver.Get("area").ViewBounds.Y + handle.Viewport.Height);
     }
 
     [Test]
@@ -205,23 +211,24 @@ public sealed class ScrollingAllocationTests
     {
         var growing = new Growing();
         using var driver = growing.Render();
+        var tall = await Assert.That(growing.Tall).IsNotNull();
 
         var bytes = driver.WorstFrameBytes(
-            growing,
-            static (d, g) =>
+            tall,
+            static (d, t) =>
             {
-                g.Tall.Value = !g.Tall.Peek;
+                t.Value = !t.Peek;
                 d.Frame();
             }
         );
-        growing.Tall.Value = true;
+        tall.Value = true;
         driver.Settle();
-        var tall = driver.All<Scrollbar>().Count;
-        growing.Tall.Value = false;
+        var bars = driver.All<Scrollbar>().Count;
+        tall.Value = false;
         driver.Settle();
 
         await Assert.That(bytes).IsEqualTo(0L);
-        await Assert.That(tall).IsEqualTo(1);
+        await Assert.That(bars).IsEqualTo(1);
         await Assert.That(driver.All<Scrollbar>()).IsEmpty();
     }
 
@@ -376,7 +383,7 @@ internal sealed class Walk(Node target)
 /// <summary>A scroll area 100 high over content 50 or 1000 high.</summary>
 internal sealed class Growing
 {
-    public State<bool> Tall = null!;
+    public State<bool>? Tall;
 
     public UiDriver Render() =>
         UiDriver.Render(
@@ -397,7 +404,7 @@ internal sealed class Chat
     static readonly string[] Lines = Make();
 
     public ScrollHandle? Handle;
-    public State<int> First = null!;
+    public State<int>? First;
 
     public UiDriver Render() =>
         UiDriver.Render(

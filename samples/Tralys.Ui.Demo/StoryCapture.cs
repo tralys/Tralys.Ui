@@ -21,9 +21,10 @@ static class StoryCapture
     /// <returns>The process's exit code.</returns>
     public static int Run(string directory, string? key, Action<Story, string> capture)
     {
-        IReadOnlyList<Story> stories = key is null
-            ? StoryRegistry.All
-            : [DemoOptions.Find(key)!.Value];
+        IReadOnlyList<Story> stories =
+            key is null ? StoryRegistry.All
+            : DemoOptions.Find(key) is { } found ? [found]
+            : throw new DemoException($"--story {key} names no story.");
         var failed = 0;
         for (var i = 0; i < stories.Count; i++)
         {

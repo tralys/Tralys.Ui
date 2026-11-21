@@ -151,7 +151,7 @@ public sealed partial class UiView
         }
         if (paused || hook.Done)
             StopMotion(hook);
-        else if (!Seen(hook.Host!))
+        else if (hook.Host is not { } host || !Seen(host))
             Rest(hook);
         else if (!hook.IsRunning)
         {
@@ -197,7 +197,8 @@ public sealed partial class UiView
 
     internal float Presence(Builder builder, in Transition enter, in Transition exit)
     {
-        var host = builder.CurrentHost!;
+        if (builder.CurrentHost is not { } host)
+            return 1f;
         var hook = builder.UseHook<PresenceHook>(default, PresenceHook.Site, 0, out var created);
         hook.Enter = enter;
         hook.Exit = exit;

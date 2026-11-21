@@ -36,10 +36,14 @@ public sealed partial class DataTableTests
     static Node Step(UiDriver driver, IconRole icon) =>
         driver.All<IconButton>().Single(n => n.Props<IconButtonProps>().Icon.Role == icon);
 
-    static ScrollHandle Rows(UiDriver driver) =>
-        Walk(Root(driver.Get<DataTable<Member>>()))
-            .First(n => n.Kind == NodeKind.VirtualList)
-            .Scroller!;
+    static ScrollHandle Rows(UiDriver driver)
+    {
+        var list = Walk(Root(driver.Get<DataTable<Member>>()))
+            .First(n => n.Kind == NodeKind.VirtualList);
+        if (list.Scroller is not { } rows)
+            throw new InvalidOperationException("The data table's rows have no scroller.");
+        return rows;
+    }
 
     static string? EmptyText(UiDriver driver)
     {

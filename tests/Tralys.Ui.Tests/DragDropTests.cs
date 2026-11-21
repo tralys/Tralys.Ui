@@ -40,7 +40,14 @@ public sealed class DragDropTests
                             ),
                             onDrop: Handler<DropEvent>.Of(
                                 log,
-                                static (Log l, ref DropEvent e) => l.Add((string)e.Data!)
+                                static (Log l, ref DropEvent e) =>
+                                {
+                                    if (e.Data is not string data)
+                                        throw new InvalidOperationException(
+                                            "The drop carried no text."
+                                        );
+                                    l.Add(data);
+                                }
                             ),
                             id: "inner"
                         )
@@ -148,7 +155,14 @@ public sealed class DragDropTests
                         onDragLeave: Callback.Of(log, static l => l.Add("leave")),
                         onDrop: Handler<DropEvent>.Of(
                             log,
-                            static (Log l, ref DropEvent e) => l.Add((string)e.Data!)
+                            static (Log l, ref DropEvent e) =>
+                            {
+                                if (e.Data is not string data)
+                                    throw new InvalidOperationException(
+                                        "The drop carried no text."
+                                    );
+                                l.Add(data);
+                            }
                         ),
                         onPointerUp: Handler<PointerEvent>.Of(
                             log,
@@ -315,7 +329,13 @@ public sealed class DragDropTests
                             onDragLeave: Callback.Of(
                                 heard,
                                 static h =>
-                                    h.Log.Add(h.Target!.IsMounted ? "leave in view" : "leave")
+                                {
+                                    if (h.Target is not { } target)
+                                        throw new InvalidOperationException(
+                                            "Left before the probe had its target."
+                                        );
+                                    h.Log.Add(target.IsMounted ? "leave in view" : "leave");
+                                }
                             ),
                             onDrop: Handler<DropEvent>.Of(
                                 heard,
@@ -372,7 +392,11 @@ public sealed class DragDropTests
                             static h =>
                             {
                                 h.Log.Add("leave");
-                                h.View!.CancelDrag();
+                                if (h.View is not { } view)
+                                    throw new InvalidOperationException(
+                                        "Left before the probe had its view."
+                                    );
+                                view.CancelDrag();
                             }
                         ),
                         onDrop: Handler<DropEvent>.Of(

@@ -334,7 +334,7 @@ public sealed class EditableTextTests
         var field = driver.Get("field");
 
         driver.Focus(field);
-        var input = driver.TextInput!.Value;
+        var input = await Assert.That(driver.TextInput).IsNotNull();
         await Assert.That(input.Kind).IsEqualTo(TextInputKind.Name);
         await Assert.That(input.ByContact).IsFalse();
         await Assert
@@ -359,18 +359,19 @@ public sealed class EditableTextTests
             }
         });
         driver.Focus(driver.Get("field"));
-        var focused = driver.TextInput!.Value;
+        var focused = await Assert.That(driver.TextInput).IsNotNull();
 
         driver.Type("abc");
-        var typed = driver.TextInput!.Value;
+        var typed = await Assert.That(driver.TextInput).IsNotNull();
         driver.Tap(driver.Get("field"));
-        var tapped = driver.TextInput!.Value;
+        var tapped = await Assert.That(driver.TextInput).IsNotNull();
         driver.Tap(driver.Get("other"));
 
         await Assert.That(typed.Area.X).IsGreaterThan(focused.Area.X);
         await Assert.That((focused.ByContact, typed.Starts)).IsEqualTo((false, 1));
         await Assert.That((tapped.ByContact, tapped.Starts)).IsEqualTo((true, 2));
-        await Assert.That(driver.TextInput!.Value.ByContact).IsTrue();
+        var switched = await Assert.That(driver.TextInput).IsNotNull();
+        await Assert.That(switched.ByContact).IsTrue();
     }
 
     [Test]
@@ -382,7 +383,7 @@ public sealed class EditableTextTests
         );
         var field = driver.Get("field");
         driver.Focus(field);
-        var editor = (EditorPayload)field.Payload!;
+        var editor = await Assert.That(field.Payload as EditorPayload).IsNotNull();
 
         driver.Frame(0.6f);
         await Assert.That(editor.CaretOn).IsFalse();
@@ -486,7 +487,8 @@ public sealed class EditableTextTests
 
         driver.Press(Key.End);
 
-        var area = driver.TextInput!.Value.Area;
+        var input = await Assert.That(driver.TextInput).IsNotNull();
+        var area = input.Area;
         await Assert.That(area.Right).IsLessThanOrEqualTo(field.ViewBounds.Right);
         await Assert.That(area.X).IsGreaterThan(field.ViewBounds.X);
     }

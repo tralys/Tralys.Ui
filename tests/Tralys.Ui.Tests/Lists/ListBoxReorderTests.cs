@@ -69,7 +69,8 @@ public sealed class ListBoxReorderTests
             },
             new Size(400, 400)
         );
-        var frame = List(driver).Parent!.ViewBounds;
+        var around = await Assert.That(List(driver).Parent).IsNotNull();
+        var frame = around.ViewBounds;
         var c = Of(driver, "c").ViewBounds;
 
         var mouse = driver.Hold(Of(driver, "a"));
@@ -100,7 +101,8 @@ public sealed class ListBoxReorderTests
     {
         using var driver = Render(new Moves(), Words.Of("a", "b", "c", "d"));
         var row = Of(driver, "a").ViewBounds;
-        var list = List(driver).Parent!.ViewBounds;
+        var frame = await Assert.That(List(driver).Parent).IsNotNull();
+        var list = frame.ViewBounds;
         var inside = new Vector2(row.Right - 1, row.Y + row.Height / 2);
         var justOut = new Vector2(list.Right + 1, inside.Y);
         var farOut = justOut + new Vector2(20, 0);
@@ -136,7 +138,7 @@ public sealed class ListBoxReorderTests
     {
         var moves = new Moves();
         using var driver = Render(moves, Words.Of("a", "b", "c", "d"), height: 40);
-        var scroll = moves.Scroll!;
+        var scroll = await Assert.That(moves.Scroll).IsNotNull();
         var overflow = scroll.Extent.Height - scroll.Viewport.Height;
 
         driver.Drag(Of(driver, "b"), new Vector2(0, -overflow), PointerKind.Touch);

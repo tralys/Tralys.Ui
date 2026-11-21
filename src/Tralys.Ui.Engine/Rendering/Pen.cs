@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Tralys.Ui.Rendering;
 
 public enum PenLineJoin : byte
@@ -48,5 +50,6 @@ public readonly record struct Pen(
 
     /// <summary>Whether the stroke is cut into dashes: <see cref="DashArray"/> is set and its lengths sum to more
     /// than zero.</summary>
+    [MemberNotNullWhen(true, nameof(DashArray))]
     public bool IsDashed => DashArray is { Period: > 0f };
 }

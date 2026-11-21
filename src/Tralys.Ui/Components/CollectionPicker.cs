@@ -80,15 +80,25 @@ public sealed partial class CollectionPicker<TItem> : Component<CollectionPicker
     protected override void Render(Ui ui, in CollectionPickerProps<TItem> p)
     {
         var items = p.Items ?? throw Missing(nameof(p.Items));
-        _ = p.ItemKey ?? throw Missing(nameof(p.ItemKey));
+        var itemKey = p.ItemKey ?? throw Missing(nameof(p.ItemKey));
         var itemText = p.ItemText ?? throw Missing(nameof(p.ItemText));
-        var model = ui.Remember(static () => new CollectionPickerModel<TItem>());
+        var model = ui.Remember(
+            (
+                Own: ui.State(p.DefaultOpen),
+                OwnLayout: ui.State(p.DefaultLayout ?? ListLayout.Grid),
+                Scroll: ui.ScrollHandle(),
+                List: ui.Ref(),
+                Search: ui.Ref()
+            ),
+            static hooks => new CollectionPickerModel<TItem>(
+                hooks.Own,
+                hooks.OwnLayout,
+                hooks.Scroll,
+                hooks.List,
+                hooks.Search
+            )
+        );
         model.Host = ui.Self(p);
-        model.Own = ui.State(p.DefaultOpen);
-        model.OwnLayout = ui.State(p.DefaultLayout ?? ListLayout.Grid);
-        model.Scroll = ui.ScrollHandle();
-        model.List = ui.Ref();
-        model.Search = ui.Ref();
         model.Shown.Bind(items, itemText);
         var size = p.Size ?? ComponentSize.Md;
         ui.Effect(model, ui.IsDisabled, CollectionPickerModel<TItem>.ShutWhenDisabled);
@@ -121,6 +131,7 @@ public sealed partial class CollectionPicker<TItem> : Component<CollectionPicker
         )
             ui.CollectionPickerPopup<TItem>(
                 model: model,
+                itemKey: itemKey,
                 layout: p.Layout ?? model.OwnLayout.Value,
                 size: size
             );
@@ -132,7 +143,9 @@ public sealed partial class CollectionPicker<TItem> : Component<CollectionPicker
 
 internal readonly record struct CollectionPickerPopupProps<TItem>
 {
-    public CollectionPickerModel<TItem>? Model { get; init; }
+    public required CollectionPickerModel<TItem> Model { get; init; }
+
+    public required KeyOf<TItem> ItemKey { get; init; }
 
     public ListLayout Layout { get; init; }
 
@@ -144,7 +157,7 @@ internal sealed partial class CollectionPickerPopup<TItem>
 {
     protected override void Render(Ui ui, in CollectionPickerPopupProps<TItem> p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         var props = model.Host.Props;
         var t = ui.Theme;
         var m = t.Metrics(p.Size);
@@ -188,7 +201,7 @@ internal sealed partial class CollectionPickerPopup<TItem>
             }
             ui.ListBox(
                 items: model.Shown,
-                itemKey: props.ItemKey!,
+                itemKey: p.ItemKey,
                 itemText: props.ItemText,
                 item: model.Row,
                 card: model.Tile,
@@ -210,9 +223,9 @@ internal sealed partial class CollectionPickerPopup<TItem>
 
 internal readonly record struct CollectionPickerEntryProps<TItem>
 {
-    public CollectionPickerModel<TItem>? Model { get; init; }
+    public required CollectionPickerModel<TItem> Model { get; init; }
 
-    public TItem Item { get; init; }
+    public required TItem Item { get; init; }
 
     public int Index { get; init; }
 
@@ -226,7 +239,7 @@ internal sealed partial class CollectionPickerEntry<TItem>
 {
     protected override void Render(Ui ui, in CollectionPickerEntryProps<TItem> p)
     {
-        var props = p.Model!.Host.Props;
+        var props = p.Model.Host.Props;
         var slot = p.Tile && !props.Card.IsEmpty ? props.Card : props.Item;
         using (
             ui.Box(
@@ -234,15 +247,15 @@ internal sealed partial class CollectionPickerEntry<TItem>
                 align: Align.Center,
                 justify: p.Tile ? Justify.Center : default,
                 focusable: false,
-                onClick: Callback.Of(ui.Self(p), static h => h.Props.Model!.Pick(h.Props.Item))
+                onClick: Callback.Of(ui.Self(p), static h => h.Props.Model.Pick(h.Props.Item))
             )
         )
         {
             if (!slot.IsEmpty)
                 slot.Render(ui, p.Item, p.Index);
-            else
+            else if (props.ItemText is { } itemText)
                 ui.Text(
-                    props.ItemText!(p.Item),
+                    itemText(p.Item),
                     grow: p.Tile ? 0f : 1f,
                     textAlign: p.Tile ? TextAlign.Center : default,
                     trimming: TextTrimming.CharacterEllipsis
@@ -265,16 +278,27 @@ internal sealed class CollectionPickerModel<TItem> : IDisposable
     internal readonly Slot<TItem> Row;
     internal readonly Slot<TItem> Tile;
     internal Host<CollectionPickerProps<TItem>> Host;
-    internal State<bool> Own = null!;
-    internal State<ListLayout> OwnLayout = null!;
-    internal ScrollHandle Scroll = null!;
-    internal NodeRef List = null!;
-    internal NodeRef Search = null!;
+    internal readonly State<bool> Own;
+    internal readonly State<ListLayout> OwnLayout;
+    internal readonly ScrollHandle Scroll;
+    internal readonly NodeRef List;
+    internal readonly NodeRef Search;
     internal readonly ObservableText Query = new();
     int _picked = -1;
 
-    public CollectionPickerModel()
+    public CollectionPickerModel(
+        State<bool> own,
+        State<ListLayout> ownLayout,
+        ScrollHandle scroll,
+        NodeRef list,
+        NodeRef search
+    )
     {
+        Own = own;
+        OwnLayout = ownLayout;
+        Scroll = scroll;
+        List = list;
+        Search = search;
         Toggle = Callback.Of(this, static m => m.SetOpen(!m.IsOpen));
         Close = Callback.Of(this, static m => m.SetOpen(false));
         Typed = Callback.Of(this, static m => m.Shown.Match(m.Query.Span));
@@ -316,17 +340,21 @@ internal sealed class CollectionPickerModel<TItem> : IDisposable
     internal TextValue PickedText()
     {
         ref readonly var p = ref Props;
-        if (!p.Value.IsKeyed || p.Items is not { } items)
+        if (
+            !p.Value.IsKeyed
+            || p.Items is not { } items
+            || p.ItemKey is not { } key
+            || p.ItemText is not { } text
+        )
             return default;
-        var key = p.ItemKey!;
         if (_picked >= 0 && _picked < items.Count && key(items.ItemAt(_picked)) == p.Value)
-            return p.ItemText!(items.ItemAt(_picked));
+            return text(items.ItemAt(_picked));
         for (var i = 0; i < items.Count; i++)
         {
             if (key(items.ItemAt(i)) != p.Value)
                 continue;
             _picked = i;
-            return p.ItemText!(items.ItemAt(i));
+            return text(items.ItemAt(i));
         }
         _picked = -1;
         return default;
@@ -334,9 +362,12 @@ internal sealed class CollectionPickerModel<TItem> : IDisposable
 
     internal void Pick(TItem item)
     {
-        var key = Props.ItemKey!(item);
-        if (key != Props.Value)
-            Props.OnValueChange.Invoke(key);
+        if (Props.ItemKey is { } itemKey)
+        {
+            var key = itemKey(item);
+            if (key != Props.Value)
+                Props.OnValueChange.Invoke(key);
+        }
         SetOpen(false);
     }
 

@@ -276,7 +276,7 @@ public sealed class TreeRows<T>
     [FramePath]
     int CompareSiblings(Sibling a, Sibling b)
     {
-        var order = _comparer!.Compare(a.Row, b.Row);
+        var order = _comparer is { } comparer ? comparer.Compare(a.Row, b.Row) : 0;
         return order != 0 ? order : a.Order.CompareTo(b.Order);
     }
 

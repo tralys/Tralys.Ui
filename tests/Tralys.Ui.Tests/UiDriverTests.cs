@@ -62,9 +62,13 @@ public sealed class UiDriverTests
     {
         using var backend = new FreeTypeBackend();
         using var fonts = new FontCollection(backend);
-        using var stream = typeof(UiDriver).Assembly.GetManifestResourceStream(
-            "Tralys.Ui.Testing.Inter-Regular.otf"
-        )!;
+        using var stream = await Assert
+            .That(
+                typeof(UiDriver).Assembly.GetManifestResourceStream(
+                    "Tralys.Ui.Testing.Inter-Regular.otf"
+                )
+            )
+            .IsNotNull();
         var face = new byte[stream.Length];
         stream.ReadExactly(face);
         using var text = new TextServices(fonts, fonts.Add(face), new Texels(), atlasPageSize: 512);

@@ -41,8 +41,7 @@ sealed unsafe class DemoHost : IDisposable
     readonly float? _scale;
     readonly bool _headless;
     readonly string _rendererName;
-    Inspector? _inspector;
-    BgfxViewRenderer? _inspectorRenderer;
+    InspectorPane? _inspector;
     Theme? _cleared;
     TimeSpan _now;
     long _previousFrame;
@@ -73,7 +72,7 @@ sealed unsafe class DemoHost : IDisposable
         {
             DemoScene.Workload => new WorkloadScene(),
             DemoScene.Panel => new PanelScene(device.Rendering, _context),
-            DemoScene.Story => new StoryScene(options.Story!, _dockWindows),
+            DemoScene.Story when options.Story is { } story => new StoryScene(story, _dockWindows),
             _ => new GalleryScene(options.Story, options.States, _dockWindows, window),
         };
         if (options.Headless && device.Renderer != RendererType.Noop)
@@ -129,7 +128,7 @@ sealed unsafe class DemoHost : IDisposable
 
     /// <summary>The inspector over the view while it is open: from the start with <c>--devtools</c>, and as F12
     /// toggles it.</summary>
-    public Inspector? Inspector => _inspector;
+    public Inspector? Inspector => _inspector?.Inspector;
 
     public FrameTiming LastFrame => _last;
 
@@ -168,7 +167,7 @@ sealed unsafe class DemoHost : IDisposable
         _scene.Frame(_view, _rendererName, _last);
         _images.Pump();
         _view.Update();
-        _inspector?.Update();
+        _inspector?.Inspector.Update();
         _dockWindows?.Update();
         var updated = Stopwatch.GetTimestamp();
 
@@ -179,7 +178,7 @@ sealed unsafe class DemoHost : IDisposable
             ReportDropped(panel.Renderer, ref _droppedInPanel, "panel");
         }
         var rebuilt = _view.Render(_renderer.DrawList);
-        _inspector?.Render(_inspectorRenderer!.DrawList);
+        _inspector?.Inspector.Render(_inspector.Renderer.DrawList);
         var rendered = Stopwatch.GetTimestamp();
 
         Clear();
@@ -191,8 +190,8 @@ sealed unsafe class DemoHost : IDisposable
             BgfxDevice.LayerViews
         );
         ReportDropped(_renderer, ref _droppedInView, "view");
-        if (_inspector is { View: var inspectorView })
-            _inspectorRenderer!.Submit(
+        if (_inspector is { Inspector.View: var inspectorView } pane)
+            pane.Renderer.Submit(
                 InspectorViewId,
                 inspectorView.PixelWidth,
                 inspectorView.PixelHeight,
@@ -228,8 +227,8 @@ sealed unsafe class DemoHost : IDisposable
                 ToggleInspector();
             return;
         }
-        var taken = _inspector is { } inspector
-            ? _input.Deliver(inspector, input)
+        var taken = _inspector is { } pane
+            ? _input.Deliver(pane.Inspector, input)
             : _input.Deliver(_view, input);
         if (
             !taken
@@ -242,11 +241,13 @@ sealed unsafe class DemoHost : IDisposable
 
     void OpenInspector()
     {
-        _inspector = new Inspector(_view, new SdlViewHost(_window))
-        {
-            OpenSource = static link => SDL3.SDL_OpenURL(link),
-        };
-        _inspectorRenderer = new BgfxViewRenderer(_device.Rendering);
+        _inspector = new InspectorPane(
+            new Inspector(_view, new SdlViewHost(_window))
+            {
+                OpenSource = static link => SDL3.SDL_OpenURL(link),
+            },
+            new BgfxViewRenderer(_device.Rendering)
+        );
     }
 
     void ToggleInspector()
@@ -257,8 +258,6 @@ sealed unsafe class DemoHost : IDisposable
         {
             _inspector.Dispose();
             _inspector = null;
-            _inspectorRenderer!.Dispose();
-            _inspectorRenderer = null;
         }
         ApplySize();
     }
@@ -313,7 +312,8 @@ sealed unsafe class DemoHost : IDisposable
     {
         const int MostFrames = 8;
         var written = path + ".tga";
-        Directory.CreateDirectory(Path.GetDirectoryName(written)!);
+        if (Path.GetDirectoryName(written) is { } directory)
+            Directory.CreateDirectory(directory);
         File.Delete(written);
         if (_target is { } target)
         {
@@ -356,8 +356,8 @@ sealed unsafe class DemoHost : IDisposable
         var scale = _scale ?? _window.DisplayScale;
         _view.Scale = scale;
         var size = new Size(_window.PixelWidth / scale, _window.PixelHeight / scale);
-        if (_inspector is { } inspector)
-            inspector.Resize(size);
+        if (_inspector is { } pane)
+            pane.Inspector.Resize(size);
         else
             _view.Size = size;
     }
@@ -370,7 +370,6 @@ sealed unsafe class DemoHost : IDisposable
         _disposed = true;
         _dockWindows?.Dispose();
         _inspector?.Dispose();
-        _inspectorRenderer?.Dispose();
         _view.Dispose();
         _scene.Dispose();
         _context.Dispose();
@@ -381,6 +380,19 @@ sealed unsafe class DemoHost : IDisposable
         _device.Dispose();
         _dockWindows?.DestroyClosed();
         _window.Dispose();
+    }
+
+    sealed class InspectorPane(Inspector inspector, BgfxViewRenderer renderer) : IDisposable
+    {
+        public Inspector Inspector { get; } = inspector;
+
+        public BgfxViewRenderer Renderer { get; } = renderer;
+
+        public void Dispose()
+        {
+            Inspector.Dispose();
+            Renderer.Dispose();
+        }
     }
 }
 

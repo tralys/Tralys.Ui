@@ -52,7 +52,7 @@ public readonly record struct CheckListContext(Callback<UiKey> Toggle, Component
 /// <summary>A <see cref="CheckList{TItem}"/>'s context key and parts.</summary>
 public static partial class CheckList
 {
-    public static readonly ContextKey<CheckListContext> Context = new("CheckList");
+    public static readonly ContextKey<CheckListContext> Context = new("CheckList", default);
 
     /// <summary>One check box of a check list, under a caption naming its group when it opens one.</summary>
     public sealed class Item : Component<CheckListItemProps>
@@ -96,9 +96,8 @@ public sealed partial class CheckList<TItem> : Component<CheckListProps<TItem>>
     {
         var items = p.Items ?? throw Missing(nameof(p.Items));
         var itemKey = p.ItemKey ?? throw Missing(nameof(p.ItemKey));
-        var model = ui.Remember(static () => new CheckListModel<TItem>());
+        var model = ui.Remember(ui.State(0), static changes => new CheckListModel<TItem>(changes));
         model.Host = ui.Self(p);
-        model.Changes = ui.State(0);
         model.Listen(items);
         _ = model.Changes.Value;
         ui.Provide(
@@ -162,10 +161,12 @@ internal sealed class CheckListModel<TItem> : IItemsSourceListener, IDisposable
 {
     internal readonly Callback<UiKey> Toggle;
     internal Host<CheckListProps<TItem>> Host;
-    internal State<int> Changes = null!;
+    internal readonly State<int> Changes;
     IItemsSource<TItem>? _items;
 
-    public CheckListModel() =>
+    public CheckListModel(State<int> changes)
+    {
+        Changes = changes;
         Toggle = Callback<UiKey>.Of(
             this,
             static (m, key) =>
@@ -173,6 +174,7 @@ internal sealed class CheckListModel<TItem> : IItemsSourceListener, IDisposable
                     new SelectionChange(SelectionAction.Toggle, key, key)
                 )
         );
+    }
 
     internal void Listen(IItemsSource<TItem> items)
     {

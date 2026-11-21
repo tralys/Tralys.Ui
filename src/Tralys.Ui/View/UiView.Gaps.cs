@@ -25,10 +25,10 @@ public sealed partial class UiView
 
     List<Rect>? GapsOf(Node container)
     {
-        if (container != _gapsOf)
+        if (container != _gapsOf || _gaps is not { } gaps)
             return null;
-        _gaps!.Clear();
-        return _gaps;
+        gaps.Clear();
+        return gaps;
     }
 
     void Gap(List<Rect> gaps, Rect content, in Matrix3x2 toView) =>

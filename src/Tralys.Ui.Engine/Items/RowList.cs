@@ -70,9 +70,7 @@ public sealed class RowList<T> : IItemsSource<T>, IReadOnlyList<T>, IObservable
     public int IndexOf(object? item)
     {
         Observation.Read(this, 0);
-        return item is T row ? _rows.IndexOf(row)
-            : item is null ? _rows.IndexOf(default!)
-            : -1;
+        return ((IList)_rows).IndexOf(item);
     }
 
     public void AddListener(IItemsSourceListener listener) => _listeners.Add(listener);

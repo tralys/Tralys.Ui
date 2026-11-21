@@ -483,16 +483,27 @@ public sealed partial class TooltipTests
         return driver.View.Layers.Length == 1;
     }
 
-    static Rect Frame(UiDriver driver) =>
-        OverlayProbes
-            .FirstOf(
-                driver.View.Layers[0],
-                static n => n.Kind == NodeKind.Box && n.Layout.Border.Left > 0f
-            )!
-            .ViewBounds;
+    static Rect Frame(UiDriver driver)
+    {
+        var frame = OverlayProbes.FirstOf(
+            driver.View.Layers[0],
+            static n => n.Kind == NodeKind.Box && n.Layout.Border.Left > 0f
+        );
+        if (frame is null)
+            throw new InvalidOperationException("The tip has no framed box.");
+        return frame.ViewBounds;
+    }
 
-    static Node Text(UiDriver driver) =>
-        OverlayProbes.FirstOf(driver.View.Layers[0], static n => n.Kind == NodeKind.Text)!;
+    static Node Text(UiDriver driver)
+    {
+        var text = OverlayProbes.FirstOf(
+            driver.View.Layers[0],
+            static n => n.Kind == NodeKind.Text
+        );
+        if (text is null)
+            throw new InvalidOperationException("The tip shows no text.");
+        return text;
+    }
 
     [Test]
     public async Task A_tip_opens_above_its_trigger_4_off_and_below_when_there_is_no_room_above()
@@ -584,6 +595,7 @@ public sealed partial class TooltipTests
     public async Task A_trigger_whose_rich_tip_showed_its_data_can_be_collected_once_it_hides_and_leaves()
     {
         var model = new TipModel { Shown = true };
+        var data = Track(model);
         using var driver = UiDriver.Render(ui =>
         {
             using (ui.Box(direction: Direction.Column, align: Align.Start, padding: 60))
@@ -593,7 +605,6 @@ public sealed partial class TooltipTests
                 using (ui.Box(width: 40, height: 20, id: "blank")) { }
             }
         });
-        var data = Track(model);
         driver.Hover(driver.Get("owner"), settle: false);
         driver.Frame(Wait);
         var shown = Shown(driver);
@@ -629,9 +640,11 @@ public sealed partial class TooltipTests
         [CallerLineNumber] int line = 0
     )
     {
+        if (model.Data is not { } data)
+            throw new InvalidOperationException("The owner shows its tip only while it has data.");
         using (
             ui.Tooltip(
-                content: Slot.Of(model.Data!, static (ui, d) => ui.Text(d.Name)),
+                content: Slot.Of(data, static (ui, d) => ui.Text(d.Name)),
                 key: key,
                 file: file,
                 line: line

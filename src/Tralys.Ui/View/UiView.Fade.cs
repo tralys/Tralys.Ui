@@ -57,10 +57,7 @@ public sealed partial class UiView
             || node.Kind == NodeKind.EditableText
         )
             return false;
-        var size = FrameSize(node);
-        if (NeedsRecord(node, size))
-            Record(node, size);
-        foreach (ref readonly var command in node.Commands!.Commands)
+        foreach (ref readonly var command in CommandsOf(node, FrameSize(node)).Commands)
         {
             switch (command.Op)
             {
@@ -159,21 +156,26 @@ public sealed partial class UiView
     {
         if (top.FadeOwner is not { } owner)
             return true;
-        if (!owner.IsMounted || owner.Span < 0 || owner.SpanList != list.Generation)
+        if (
+            !owner.IsMounted
+            || owner.Span < 0
+            || owner.SpanList != list.Generation
+            || owner.Commands is not { } commands
+        )
             return false;
         var under = top.FadeBase * Math.Clamp(top.Visual.Opacity ?? 1f, 0f, 1f);
         if (!list.BeginPatchAtOpacity(owner.Span, OpacityAt(owner, top, under)))
             return false;
-        list.Draw(owner.Commands!);
+        list.Draw(commands);
         return list.EndPatch();
     }
 
     // Multiplied top-down, as the pushes of a rebuild are, so the patch lands on the same floats.
     static float OpacityAt(Node node, Node top, float underTop)
     {
-        if (node == top)
+        if (node == top || node._parent is not { } parent)
             return underTop;
-        var above = OpacityAt(node._parent!, top, underTop);
+        var above = OpacityAt(parent, top, underTop);
         var opacity = node.Visual.Opacity ?? 1f;
         return opacity < 1f ? above * Math.Clamp(opacity, 0f, 1f) : above;
     }

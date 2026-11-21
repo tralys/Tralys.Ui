@@ -62,6 +62,7 @@ internal sealed class EditCommandSource : IObservable
     void Run()
     {
         _view.VerifyAccess();
-        _view.EditTarget()!.Run(_view, _command);
+        if (_view.EditTarget() is { } target)
+            target.Run(_view, _command);
     }
 }

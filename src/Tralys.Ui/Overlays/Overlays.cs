@@ -217,7 +217,7 @@ public static class Overlays
         var view = b.View;
         if (mounted)
             view.LayerOpened(node);
-        var changed = ((LayerPayload)node.Payload!).Write(view, props);
+        var changed = node.PayloadOf<LayerPayload>().Write(view, props);
         changed |= node.WriteLayout(layout);
         changed |= node.WriteVisual(visual);
         changed |= node.WriteInteraction(new InteractionProps { Modal = modal });

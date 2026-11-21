@@ -154,9 +154,8 @@ public sealed partial class UiView
 
     Vector2 SnapOffset(Vector2 offset) => new(SnapEdge(offset.X), SnapEdge(offset.Y));
 
-    void ScrollerArranged(Node node)
+    void ScrollerArranged(Node node, ScrollHandle handle)
     {
-        var handle = node.Scroller!;
         var border = node.Layout.Border;
         var content = node.ContentExtent;
         var extent = new Size(

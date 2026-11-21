@@ -143,8 +143,9 @@ public sealed partial class ColorPicker : Component<ColorPickerProps>
         model.Host = ui.Self(p);
         model.Knob = m.IconSize;
         model.Swatched = ui.Use(Swatched);
-        model.Changes = ui.State(0);
-        _ = model.Changes.Value;
+        var changes = ui.State(0);
+        model.Changes = changes;
+        _ = changes.Value;
         model.Follow(p.Value);
         var hsv = model.Hsv;
         var knob = m.IconSize;
@@ -251,7 +252,7 @@ public sealed partial class ColorPicker : Component<ColorPickerProps>
                                 value: value,
                                 alpha: p.ShowAlpha,
                                 size: p.Size,
-                                changes: model.Changes.Value,
+                                changes: changes.Value,
                                 grow: 1f
                             );
                     }
@@ -415,10 +416,12 @@ public sealed partial class ColorPicker : Component<ColorPickerProps>
             var t = ui.Theme;
             var side = t.Metrics(p.Size ?? ComponentSize.Xxs).Height;
             var radius = t.Radius(RadiusToken.Lg);
-            var disclosure = ui.Remember(static () => new Disclosure());
+            var disclosure = ui.Remember(
+                ui.State(p.DefaultOpen),
+                static own => new Disclosure(own)
+            );
             disclosure.Open = p.Open;
             disclosure.OnOpenChange = p.OnOpenChange;
-            disclosure.Own = ui.State(p.DefaultOpen);
             var disabled = ui.IsDisabled;
             ui.Provide(SelectContext, new ColorPickerSelectContext(p, disclosure.Close));
             using (
@@ -465,7 +468,8 @@ public sealed partial class ColorPicker : Component<ColorPickerProps>
         }
 
         internal static readonly ContextKey<ColorPickerSelectContext> SelectContext = new(
-            "ColorPicker.Select"
+            "ColorPicker.Select",
+            default
         );
 
         static readonly Slot Body = Slot.Of(static ui => ui.ColorPickerSelectBody());
@@ -499,7 +503,7 @@ internal sealed class ColorPickerSelectBody : Component<ColorPickerSelectBodyPro
 
 internal readonly record struct ColorPickerHexProps
 {
-    public ColorPickerModel? Model { get; init; }
+    public required ColorPickerModel Model { get; init; }
 
     public Color Value { get; init; }
 
@@ -516,7 +520,7 @@ internal sealed class ColorPickerHex : Component<ColorPickerHexProps>
 {
     protected override void Render(Ui ui, in ColorPickerHexProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         if (!ui.IsFocusWithin)
             model.Drafting = false;
         if (!model.Drafting)
@@ -640,7 +644,7 @@ internal sealed class ColorPickerModel : IDisposable
     internal readonly Handler<KeyEvent> HexKey;
     internal Host<ColorPickerProps> Host;
     internal Callback Swatched;
-    internal State<int> Changes = null!;
+    internal State<int>? Changes;
     internal float Knob;
     internal HsvColor Hsv = new(60f, 0f, 0f, 255);
     internal Color Previous;
@@ -691,7 +695,7 @@ internal sealed class ColorPickerModel : IDisposable
     {
         Host = default;
         Swatched = default;
-        Changes = null!;
+        Changes = null;
         Hsv = new(60f, 0f, 0f, 255);
         Previous = _shown = default;
         Drafting = false;
@@ -770,7 +774,7 @@ internal sealed class ColorPickerModel : IDisposable
         if (hsv != Hsv)
         {
             Hsv = hsv;
-            Changes.Value++;
+            Changed();
         }
         Report((Hsv with { A = EditedAlpha }).ToColor(), rederive: false);
     }
@@ -785,7 +789,7 @@ internal sealed class ColorPickerModel : IDisposable
     void Typed()
     {
         Drafting = true;
-        Changes.Value++;
+        Changed();
         if (ColorPicker.TryParseHex(HexDraft.Span, Props.ShowAlpha, EditedAlpha, out var color))
             Report(color, rederive: true);
     }
@@ -795,7 +799,13 @@ internal sealed class ColorPickerModel : IDisposable
         if (!Drafting)
             return;
         Drafting = false;
-        Changes.Value++;
+        Changed();
+    }
+
+    void Changed()
+    {
+        if (Changes is { } changes)
+            changes.Value++;
     }
 
     void Report(Color color, bool rederive)

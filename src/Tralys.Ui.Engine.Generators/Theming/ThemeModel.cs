@@ -179,8 +179,8 @@ sealed class ThemeModel
     void Build(TokenLayer[] layers)
     {
         if (
-            Modifier(layers, ThemeModifier) is not { } themes
-            || Modifier(layers, DensityModifier) is not { } densities
+            Modifier(layers, ThemeModifier) is not { Default: { } defaultTheme } themes
+            || Modifier(layers, DensityModifier) is not { Default: { } defaultDensity } densities
         )
             return;
 
@@ -208,7 +208,7 @@ sealed class ThemeModel
         foreach (var layer in layers)
             CheckDensitySetsDimensions(layer);
 
-        DefaultTheme = themes.Default!;
+        DefaultTheme = defaultTheme;
         foreach (var context in themes.Contexts.Keys)
         {
             var member = Pascal(context);
@@ -224,7 +224,7 @@ sealed class ThemeModel
             }
 
             var theme = new ThemeData(context, member);
-            var flat = Flatten(layers, context, densities.Default!, out var palettePaths);
+            var flat = Flatten(layers, context, defaultDensity, out var palettePaths);
             if (flat is null)
                 continue;
 
@@ -235,7 +235,7 @@ sealed class ThemeModel
             foreach (var (densityMember, densityContext) in densityContexts)
             {
                 var dense =
-                    densityContext == densities.Default
+                    densityContext == defaultDensity
                         ? flat
                         : Flatten(layers, context, densityContext, out _);
                 if (dense is null)
@@ -279,10 +279,10 @@ sealed class ThemeModel
         var flat = new Dictionary<string, Token>(StringComparer.Ordinal);
         foreach (var layer in layers)
         {
-            var inputs = new Dictionary<string, string>(StringComparer.Ordinal)
+            var inputs = new Dictionary<string, string?>(StringComparer.Ordinal)
             {
-                [ThemeModifier] = layer.Context(ThemeModifier, theme)!,
-                [DensityModifier] = layer.Context(DensityModifier, density)!,
+                [ThemeModifier] = layer.Context(ThemeModifier, theme),
+                [DensityModifier] = layer.Context(DensityModifier, density),
             };
             if (layer.Resolver.Order(inputs, out var error) is not { } order)
             {

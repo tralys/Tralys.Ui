@@ -20,7 +20,7 @@ public sealed class StoryPixelsTests
     [NotInParallel([nameof(DemoHost), nameof(StoryPixels)])]
     public async Task A_captured_frame_shows_a_storys_image_where_its_layout_places_it_beside_the_layout_a_capture_without_a_gpu_writes()
     {
-        var story = DemoOptions.Find("Image.Fit")!.Value;
+        var story = await Assert.That(DemoOptions.Find("Image.Fit")).IsNotNull();
         var directory = Path.Combine(
             Path.GetTempPath(),
             $"tralys-story-pixels-{Environment.ProcessId}"

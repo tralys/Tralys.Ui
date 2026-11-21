@@ -66,7 +66,7 @@ public sealed class GalleryTests
     {
         var model = new GalleryModel("Input.Default", false, null);
         using var driver = Open(model);
-        var field = Field(driver.Root, "Hello")!;
+        var field = await Assert.That(Field(driver.Root, "Hello")).IsNotNull();
         driver.Click(field);
 
         driver.KeyDown(Key.OemQuestion);
@@ -103,10 +103,9 @@ public sealed class GalleryTests
 
         var tree = driver.Get<Tree<GalleryEntry>>();
         var shown = tree.Children[0].ViewBounds;
-        var row = Selected(tree);
+        var row = await Assert.That(Selected(tree)).IsNotNull();
 
-        await Assert.That(row).IsNotNull();
-        await Assert.That(row!.ViewBounds.Y).IsGreaterThanOrEqualTo(shown.Y);
+        await Assert.That(row.ViewBounds.Y).IsGreaterThanOrEqualTo(shown.Y);
         await Assert.That(row.ViewBounds.Bottom).IsLessThanOrEqualTo(shown.Bottom);
     }
 

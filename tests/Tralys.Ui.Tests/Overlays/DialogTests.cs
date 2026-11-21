@@ -425,7 +425,8 @@ public sealed partial class DialogTests
         await Assert.That(titled).IsEqualTo((17f, 32f, 24f, 17f));
         await Assert.That(accent).IsEqualTo((Paint)t.Color(ColorToken.FgAccent));
         await Assert.That(bare).IsEqualTo((17f, 17f, 17f));
-        await Assert.That(driver.Get("body").Parent!.ViewBounds.Width).IsEqualTo(320f);
+        var widened = await Assert.That(driver.Get("body").Parent).IsNotNull();
+        await Assert.That(widened.ViewBounds.Width).IsEqualTo(320f);
     }
 
     [Test]

@@ -151,12 +151,14 @@ internal sealed class Builder
     {
         ref var frame = ref _frames[_frames.Count - 1];
 #if DEBUG
-        if (frame.Mode == FrameMode.Outlet)
-            throw Faults.InChildren(CurrentHost!.ComponentType, file, line);
+        if (frame.Mode == FrameMode.Outlet && CurrentHost is { } host)
+            throw Faults.InChildren(host.ComponentType, file, line);
 #endif
         mounted = false;
-        Node? node = null;
-        if (!frame.Slow)
+        Node node;
+        if (frame.Map is { } map)
+            node = ClaimSlow(ref frame, map, kind, type, key, file, line, out mounted);
+        else
         {
             var cursor = SkipExiting(frame.Prev is null ? frame.Parent._first : frame.Prev._next);
             if (cursor is null)
@@ -178,36 +180,16 @@ internal sealed class Builder
             )
                 node = cursor;
             else
-                EnterSlow(ref frame, cursor);
-        }
-
-        if (node is null)
-        {
-            var occurrence = Occurrence(ref frame, key, file, line);
-#if DEBUG
-            if (key.IsKeyed && occurrence == 0 && HasClaimed(ref frame, key, file, line))
-                throw Faults.DuplicateKey(key, file, line);
-#endif
-            if (frame.Map!.Remove(new Identity(file, line, key, occurrence), out var hit))
-            {
-                if (!Matches(hit, kind, type))
-                {
-                    View.Unmount(hit);
-                    node = Mount(ref frame, kind, type, key, file, line, occurrence, out mounted);
-                }
-                else
-                {
-                    node = hit;
-                    if (LivePrevious(hit) != frame.Prev)
-                    {
-                        frame.Parent.Unlink(hit);
-                        frame.Parent.InsertAfter(frame.Prev, hit);
-                        View.ChildrenChanged(frame.Parent);
-                    }
-                }
-            }
-            else
-                node = Mount(ref frame, kind, type, key, file, line, occurrence, out mounted);
+                node = ClaimSlow(
+                    ref frame,
+                    EnterSlow(ref frame, cursor),
+                    kind,
+                    type,
+                    key,
+                    file,
+                    line,
+                    out mounted
+                );
         }
 
         frame.Prev = node;
@@ -216,11 +198,44 @@ internal sealed class Builder
         return node;
     }
 
+    Node ClaimSlow(
+        ref Frame frame,
+        Dictionary<Identity, Node> map,
+        NodeKind kind,
+        Type? type,
+        UiKey key,
+        string file,
+        int line,
+        out bool mounted
+    )
+    {
+        var occurrence = Occurrence(ref frame, key, file, line);
+#if DEBUG
+        if (key.IsKeyed && occurrence == 0 && HasClaimed(ref frame, key, file, line))
+            throw Faults.DuplicateKey(key, file, line);
+#endif
+        if (!map.Remove(new Identity(file, line, key, occurrence), out var hit))
+            return Mount(ref frame, kind, type, key, file, line, occurrence, out mounted);
+        if (!Matches(hit, kind, type))
+        {
+            View.Unmount(hit);
+            return Mount(ref frame, kind, type, key, file, line, occurrence, out mounted);
+        }
+        mounted = false;
+        if (LivePrevious(hit) != frame.Prev)
+        {
+            frame.Parent.Unlink(hit);
+            frame.Parent.InsertAfter(frame.Prev, hit);
+            View.ChildrenChanged(frame.Parent);
+        }
+        return hit;
+    }
+
     static bool Matches(Node node, NodeKind kind, Type? type) =>
-        node.Kind == kind && (kind != NodeKind.Component || node.Host!.ComponentType == type);
+        node.Kind == kind && (kind != NodeKind.Component || node.Host?.ComponentType == type);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    static bool SameFile(string? a, string b) =>
+    static bool SameFile(string? a, string? b) =>
         ReferenceEquals(a, b) || string.Equals(a, b, StringComparison.Ordinal);
 
     static int Occurrence(ref Frame frame, UiKey key, string file, int line)
@@ -248,7 +263,7 @@ internal sealed class Builder
     }
 #endif
 
-    void EnterSlow(ref Frame frame, Node cursor)
+    Dictionary<Identity, Node> EnterSlow(ref Frame frame, Node cursor)
     {
         if (!_maps.TryPop(out var map))
         {
@@ -260,7 +275,7 @@ internal sealed class Builder
         for (var n = start; n is not null; n = n._next)
         {
             if (!n.Exiting)
-                map.TryAdd(new Identity(n.File!, n.Line, n.Key, n.Occurrence), n);
+                map.TryAdd(new Identity(n.File, n.Line, n.Key, n.Occurrence), n);
             if (order is null && (n.Exiting || UiView.PresenceOf(n) is not null))
             {
                 if (!_orders.TryPop(out order))
@@ -268,15 +283,15 @@ internal sealed class Builder
                     PoolMisses.Add();
                     order = [];
                 }
-                for (var m = start; m != n; m = m!._next)
-                    order.Add(m!);
+                for (var m = start; m is not null && m != n; m = m._next)
+                    order.Add(m);
             }
             order?.Add(n);
         }
         frame.Map = map;
         frame.Order = order;
         frame.SlowStart = frame.Prev;
-        frame.Slow = true;
+        return map;
     }
 
     Node Mount(
@@ -370,14 +385,14 @@ internal sealed class Builder
         if (Discarding)
             return null;
 
-        var node = Claim(NodeKind.Component, typeof(TComponent), key, file, line, out var mounted);
-        ComponentHost<TProps> host;
-        if (mounted)
+        var node = Claim(NodeKind.Component, typeof(TComponent), key, file, line, out _);
+        if (node.Host is not ComponentHost<TProps> host)
         {
-            host = Pool<ComponentHost<TProps>>.TryRent() ?? new ComponentHost<TProps>();
-            host.Component = Singleton<TComponent>.Instance;
-            host.Type = typeof(TComponent);
-            host.Id = ComponentType<TComponent>.Id;
+            host = ComponentHost<TProps>.Rent(
+                Singleton<TComponent>.Instance,
+                typeof(TComponent),
+                ComponentType<TComponent>.Id
+            );
             host.Placement = place;
             host.PassesPlacement = typeof(TComponent) == typeof(RootComponent);
             node.Host = host;
@@ -388,7 +403,6 @@ internal sealed class Builder
             return host;
         }
 
-        host = (ComponentHost<TProps>)node.Host!;
         if (!host.Placement.Equals(place))
         {
             host.Placement = place;
@@ -408,6 +422,8 @@ internal sealed class Builder
 
     internal void Render(ComponentHost host, bool fromCaller)
     {
+        if (!host.IsMounted)
+            return;
         var view = View;
         if (host.RenderStamp != view.UpdateStamp)
         {
@@ -515,8 +531,8 @@ internal sealed class Builder
                 host.Caller?.Invalidate();
         }
 
-        if (!fromCaller && host.Root != oldRoot)
-            OwnerOf(host.Node)?.Invalidate();
+        if (!fromCaller && host.Root != oldRoot && host.Node is { } node)
+            OwnerOf(node)?.Invalidate();
 
         for (var i = 0; i < host.PendingEffects.Count; i++)
             View.QueueEffect(host.PendingEffects[i]);
@@ -630,7 +646,6 @@ internal sealed class Builder
         public Dictionary<Identity, Node>? Map;
         public List<Node>? Order;
         public Node? SlowStart;
-        public bool Slow;
         public FrameMode Mode;
     }
 
@@ -640,10 +655,10 @@ internal sealed class Builder
         public int Cursor;
     }
 
-    readonly struct Identity(string file, int line, UiKey key, int occurrence)
+    readonly struct Identity(string? file, int line, UiKey key, int occurrence)
         : IEquatable<Identity>
     {
-        readonly string _file = file;
+        readonly string? _file = file;
         readonly int _line = line;
         readonly UiKey _key = key;
         readonly int _occurrence = occurrence;
@@ -684,6 +699,9 @@ static class Faults
 
     static string NameOf(Type component) =>
         component.Name.IndexOf('`') is >= 0 and var tick ? component.Name[..tick] : component.Name;
+
+    public static InvalidOperationException Missing(NodeKind kind, Type part) =>
+        new($"A {kind} node carries no {NameOf(part)}.");
 
     public static InvalidOperationException DuplicateKey(UiKey key, string file, int line) =>
         new($"Two siblings share the key '{key}' at {file}:{line}.");

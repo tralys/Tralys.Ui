@@ -135,9 +135,8 @@ public readonly ref partial struct Ui
             return true;
         var b = Builder;
         var hook = b.UseHook<CanRunHook>(default, CanRunHook.Site, 0, out _);
-        hook.View = b.View;
         var can = action.CanRun;
-        hook.Refuse(can ? null : b.CurrentHost?.Node);
+        hook.Refuse(b.View, can ? null : b.CurrentHost?.Node);
         return can;
     }
 }

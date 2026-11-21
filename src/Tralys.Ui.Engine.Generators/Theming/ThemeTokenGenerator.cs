@@ -202,7 +202,11 @@ public sealed class ThemeTokenGenerator : IIncrementalGenerator
             if (!name.StartsWith(EmbeddedTokens, StringComparison.Ordinal))
                 continue;
 
-            using var stream = assembly.GetManifestResourceStream(name)!;
+            using var stream =
+                assembly.GetManifestResourceStream(name)
+                ?? throw new InvalidOperationException(
+                    $"The listed resource '{name}' does not open."
+                );
             using var reader = new StreamReader(stream);
             var path = name.Substring(EmbeddedTokens.Length).Replace('\\', '/');
             if (path.EndsWith(".resolver.json", StringComparison.OrdinalIgnoreCase))

@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Tralys.Ui.Fonts;
 using Tralys.Ui.Rendering;
@@ -425,10 +426,10 @@ internal sealed class TextPayload : NodePayload
         _scale = scale;
     }
 
-    internal Size Measure(UiView view, Avail width)
+    internal Size Measure(UiView view, Node node, Avail width)
     {
         if (EnsureContent())
-            view.MarkPaint(Owner!);
+            view.MarkPaint(node);
         var scale = view.Scale;
         EnsureContentWidths(scale);
         switch (width.Kind)
@@ -460,14 +461,14 @@ internal sealed class TextPayload : NodePayload
         return lines.Length > 0 ? lines[0].Baseline : _layout.Size.Height;
     }
 
-    internal void Arrange(UiView view, float width)
+    internal void Arrange(UiView view, Node node, float width)
     {
         _arranged = width;
         if (EnsureContent())
-            view.MarkPaint(Owner!);
+            view.MarkPaint(node);
         Lay(_layout, Drawn(width), view.Scale);
         if (HasLinks)
-            PlaceLinks(Owner!);
+            PlaceLinks(node);
     }
 
     void PlaceLinks(Node owner)
@@ -664,8 +665,8 @@ internal abstract class CanvasPayload : NodePayload, Mvvm.IChangeObserver
 
     public void OnChanged(object source, int property)
     {
-        if (Node is { IsMounted: true } node)
-            View!.MarkPaint(node);
+        if (Node is { IsMounted: true } node && View is { } view)
+            view.MarkPaint(node);
     }
 
     internal void Attach(UiView view, Node node)
@@ -688,10 +689,13 @@ internal abstract class CanvasPayload : NodePayload, Mvvm.IChangeObserver
 [FramePath]
 internal sealed class CanvasPayload<TState> : CanvasPayload
 {
-    TState _state = default!;
+    TState? _state;
     HeldText _held;
     CanvasDraw<TState>? _draw;
     CanvasHit<TState>? _hit;
+
+    [MemberNotNullWhen(true, nameof(_state), nameof(_draw))]
+    bool Written => _draw is not null;
 
     internal bool Write(TState state, CanvasDraw<TState> draw, CanvasHit<TState>? hit)
     {
@@ -709,11 +713,13 @@ internal sealed class CanvasPayload<TState> : CanvasPayload
 
     internal override void Draw(DrawingContext dc, Size size, float scale, CanvasPaths paths)
     {
+        if (!Written)
+            throw Unwritten();
         paths.Reset();
         var tracking = Mvvm.Observation.Track(this);
         try
         {
-            _draw!(dc, _state, new CanvasInfo(size, scale, paths));
+            _draw(dc, _state, new CanvasInfo(size, scale, paths));
         }
         finally
         {
@@ -723,12 +729,16 @@ internal sealed class CanvasPayload<TState> : CanvasPayload
 
     internal override bool HasHitTest => _hit is not null;
 
-    internal override bool HitTest(Vector2 point, Size size) => _hit!(_state, point, size);
+    internal override bool HitTest(Vector2 point, Size size) =>
+        Written && _hit is { } hit ? hit(_state, point, size) : throw Unwritten();
+
+    static InvalidOperationException Unwritten() =>
+        new("A canvas draws and hit-tests only after its primitive wrote it.");
 
     public override void Release(UiView view)
     {
         _dependencies.Clear();
-        _state = default!;
+        _state = default;
         _draw = null;
         _hit = null;
         Node = null;

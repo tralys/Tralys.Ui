@@ -286,7 +286,7 @@ public sealed partial class DrawList
                 EmitLine(command);
                 break;
             case RenderOp.Image:
-                EmitImage(command.Texture!, command.Rect, command.Source, command.Opacity);
+                EmitImage(command.DrawnTexture, command.Rect, command.Source, command.Opacity);
                 break;
             case RenderOp.NineSlice:
                 EmitNineSlice(command);
@@ -506,7 +506,7 @@ public sealed partial class DrawList
 
     void EmitGlyphs(in RenderCommand command, ReadOnlySpan<GlyphQuad> glyphs)
     {
-        var atlas = command.Texture!;
+        var atlas = command.DrawnTexture;
         float width = atlas.Width;
         float height = atlas.Height;
         if (!(width > 0f && height > 0f) || command.Generation != atlas.Generation)

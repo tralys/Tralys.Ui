@@ -133,18 +133,28 @@ internal readonly record struct TabsContext(
 [Children]
 public sealed class Tabs : Component<TabsProps>
 {
-    internal static readonly ContextKey<TabsContext> Context = new("Tabs");
+    internal static readonly ContextKey<TabsContext> Context = new("Tabs", default);
 
     protected override void Render(Ui ui, in TabsProps p)
     {
         var t = ui.Theme;
-        var model = ui.Remember(static () => new TabsModel());
+        var model = ui.Remember(
+            (
+                Own: ui.State(p.DefaultValue),
+                Version: ui.State(0),
+                Seam: ui.State<TabSeam>(default),
+                Root: ui.Ref(),
+                List: ui.Ref()
+            ),
+            static hooks => new TabsModel(
+                hooks.Own,
+                hooks.Version,
+                hooks.Seam,
+                hooks.Root,
+                hooks.List
+            )
+        );
         model.Props = p;
-        model.Own = ui.State(p.DefaultValue);
-        model.Version = ui.State(0);
-        model.Seam = ui.State<TabSeam>(default);
-        model.Root = ui.Ref();
-        model.List = ui.Ref();
         model.Join(p.DragGroup);
         ui.Effect(model, 0, static (m, _, cx) => m.View = cx.View);
         ui.Effect(model, model.Losses, static (m, _, _) => m.ReportLost());

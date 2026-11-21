@@ -297,14 +297,14 @@ internal record struct ScrollProps
 [FramePath]
 internal sealed class ScrollHandleHook : Hook
 {
-    public ScrollHandle Handle = null!;
+    public ScrollHandle? Handle;
 
     public static ScrollHandle Rent() => Pool<ScrollHandle>.TryRent() ?? new ScrollHandle();
 
     public override void Discard()
     {
-        Handle.Release();
-        Handle = null!;
+        Handle?.Release();
+        Handle = null;
         Pool<ScrollHandleHook>.Return(this);
     }
 }

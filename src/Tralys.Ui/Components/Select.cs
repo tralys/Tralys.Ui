@@ -92,9 +92,9 @@ internal readonly record struct SelectRows<TItem>(Slot<TItem> Item, Func<TItem, 
 /// <summary>A <see cref="Select{TItem}"/>'s parts.</summary>
 public static partial class Select
 {
-    internal static readonly ContextKey<SelectContext> Context = new("Select");
+    internal static readonly ContextKey<SelectContext> Context = new("Select", default);
 
-    internal static readonly ContextKey<SelectRowContext> RowContext = new("Select.Row");
+    internal static readonly ContextKey<SelectRowContext> RowContext = new("Select.Row", default);
 
     /// <summary>A row of a select's dropdown in the shared row look: selected while it holds the value, lit while it
     /// has the focus, which a pointer moving over it gives it. A click on it, or Enter or Space while it has the
@@ -204,11 +204,11 @@ public sealed partial class Select<TItem> : Component<SelectProps<TItem>>
         if (p.ItemText is null && p.Item.IsEmpty)
             throw Missing(nameof(p.ItemText));
         var size = p.Size ?? ComponentSize.Md;
-        var model = ui.Remember(static () => new SelectModel<TItem>());
+        var model = ui.Remember(
+            (OpenState: ui.State(p.DefaultOpen), Moves: ui.State(0), Scroll: ui.ScrollHandle()),
+            static hooks => new SelectModel<TItem>(hooks.OpenState, hooks.Moves, hooks.Scroll)
+        );
         model.Host = ui.Self(p);
-        model.OpenState = ui.State(p.DefaultOpen);
-        model.Moves = ui.State(0);
-        model.Scroll = ui.ScrollHandle();
         model.Shown.Bind(items, p.ItemText ?? SelectModel<TItem>.NoText);
         ui.Effect(model, 0, static (m, _, cx) => m.View = cx.View);
         _ = model.Moves.Value;
@@ -229,7 +229,9 @@ public sealed partial class Select<TItem> : Component<SelectProps<TItem>>
         var field = ui.Ref();
         ui.PickerBox(
             open: open,
-            text: selected >= 0 && !face ? p.ItemText!(items.ItemAt(selected)) : default,
+            text: selected >= 0 && !face && p.ItemText is { } itemText
+                ? itemText(items.ItemAt(selected))
+                : default,
             placeholder: p.Placeholder,
             sublabel: p.Sublabel,
             hasArrow: p.HasArrow ?? true,
@@ -271,11 +273,11 @@ public sealed partial class Select<TItem> : Component<SelectProps<TItem>>
 
 internal readonly record struct SelectPopupProps<TItem>
 {
-    public SelectModel<TItem>? Model { get; init; }
+    public required SelectModel<TItem> Model { get; init; }
 
-    public IItemsSource<TItem>? Items { get; init; }
+    public required IItemsSource<TItem> Items { get; init; }
 
-    public KeyOf<TItem>? ItemKey { get; init; }
+    public required KeyOf<TItem> ItemKey { get; init; }
 
     public ComponentSize Size { get; init; }
 
@@ -292,10 +294,11 @@ internal sealed partial class SelectPopup<TItem> : Component<SelectPopupProps<TI
 
     protected override void Render(Ui ui, in SelectPopupProps<TItem> p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         var m = ui.Theme.Metrics(p.Size);
-        model.SearchText = ui.Ref();
-        var count = p.Searchable ? model.Shown.ShownCount : p.Items!.Count;
+        var searchText = ui.Ref();
+        model.SearchText = searchText;
+        var count = p.Searchable ? model.Shown.ShownCount : p.Items.Count;
         var extent = model.Scroll.Extent.Height;
         var most = Select<TItem>.MaxPopupHeight - Frame - (p.Searchable ? m.Height : 0f);
         var rows = (count + p.Columns - 1) / p.Columns;
@@ -317,7 +320,7 @@ internal sealed partial class SelectPopup<TItem> : Component<SelectPopupProps<TI
                         variant: FieldVariant.Flush,
                         size: p.Size,
                         autoFocus: true,
-                        nodeRef: model.SearchText
+                        nodeRef: searchText
                     );
                 }
             if (count == 0 && model.Shown.Query.Length > 0)
@@ -326,8 +329,8 @@ internal sealed partial class SelectPopup<TItem> : Component<SelectPopupProps<TI
                 using (ui.Box(direction: Direction.Column, height: height))
                 {
                     ui.VirtualList(
-                        items: p.Items!,
-                        itemKey: p.ItemKey!,
+                        items: p.Items,
+                        itemKey: p.ItemKey,
                         row: SelectModel<TItem>.Row,
                         columns: p.Columns,
                         padding: new Thickness(
@@ -356,7 +359,7 @@ internal sealed class SelectModel<TItem> : IDisposable
 
     internal static readonly TextOf<TItem> NoText = static _ => "";
 
-    internal static readonly ContextKey<SelectRows<TItem>> Rows = new("Select.Rows");
+    internal static readonly ContextKey<SelectRows<TItem>> Rows = new("Select.Rows", default);
 
     internal static readonly Slot<TItem> Row = Slot<TItem>.Of(
         static (ui, item, index) =>
@@ -383,10 +386,10 @@ internal sealed class SelectModel<TItem> : IDisposable
     internal readonly Slot<TItem> DefaultItem;
     internal readonly Slot Face;
     internal Host<SelectProps<TItem>> Host;
-    internal State<bool> OpenState = null!;
-    internal State<int> Moves = null!;
-    internal ScrollHandle Scroll = null!;
-    internal NodeRef SearchText = null!;
+    internal readonly State<bool> OpenState;
+    internal readonly State<int> Moves;
+    internal readonly ScrollHandle Scroll;
+    internal NodeRef? SearchText;
     internal readonly ObservableText Query = new();
     internal UiView? View;
     internal UiKey Target;
@@ -398,8 +401,11 @@ internal sealed class SelectModel<TItem> : IDisposable
     int _typedLength;
     TimeSpan _typedAt;
 
-    public SelectModel()
+    public SelectModel(State<bool> openState, State<int> moves, ScrollHandle scroll)
     {
+        OpenState = openState;
+        Moves = moves;
+        Scroll = scroll;
         Toggle = Callback.Of(this, static m => m.SetOpen(!m.IsOpen));
         Close = Callback.Of(this, static m => m.SetOpen(false));
         Pick = Callback<UiKey>.Of(
@@ -419,7 +425,11 @@ internal sealed class SelectModel<TItem> : IDisposable
         DefaultItem = Slot<TItem>.Of(
             this,
             static (ui, m, item, _) =>
-                ui.SelectItem(value: m.Props.ItemKey!(item), text: m.Props.ItemText!(item))
+            {
+                ref readonly var p = ref m.Props;
+                if (p.ItemKey is { } itemKey && p.ItemText is { } itemText)
+                    ui.SelectItem(value: itemKey(item), text: itemText(item));
+            }
         );
         Face = Slot.Of(this, static (ui, m) => m.RenderFace(ui));
     }
@@ -428,7 +438,7 @@ internal sealed class SelectModel<TItem> : IDisposable
 
     bool IsOpen => Props.Open ?? OpenState.Peek;
 
-    IItemsSource<TItem> Listed => Props.Searchable ? Shown : Props.Items!;
+    IItemsSource<TItem>? Listed => Props.Searchable ? Shown : Props.Items;
 
     internal void Follow(bool open)
     {
@@ -441,19 +451,19 @@ internal sealed class SelectModel<TItem> : IDisposable
         if (!open)
             return;
         Shown.Match("");
-        if (Props.Searchable)
+        if (Props.Searchable || Listed is not { } listed || Props.ItemKey is not { } itemKey)
             return;
-        var listed = Listed;
         var at = IndexOf(listed, Props.Value, -1);
         if (at < 0 || !Enabled(listed.ItemAt(at)))
             at = Navigable(listed, 0, 1);
         if (at < 0)
             return;
-        Target = Props.ItemKey!(listed.ItemAt(at));
+        Target = itemKey(listed.ItemAt(at));
         Scroll.ScrollToIndex(at);
     }
 
-    internal int SelectedIndex() => _selected = IndexOf(Props.Items!, Props.Value, _selected);
+    internal int SelectedIndex() =>
+        _selected = Props.Items is { } items ? IndexOf(items, Props.Value, _selected) : -1;
 
     int IndexOf(IItemsSource<TItem> source, UiKey key, int hint)
     {
@@ -469,13 +479,15 @@ internal sealed class SelectModel<TItem> : IDisposable
         return -1;
     }
 
-    bool Is(TItem item, UiKey key) => item is not null && Props.ItemKey!(item) == key;
+    bool Is(TItem item, UiKey key) =>
+        item is not null && Props.ItemKey is { } itemKey && itemKey(item) == key;
 
     void RenderFace(Ui ui)
     {
         ref readonly var p = ref Props;
         var slot = p.ValueContent.IsEmpty ? p.Item : p.ValueContent;
-        slot.Render(ui, p.Items!.ItemAt(_selected), _selected);
+        if (p.Items is { } items)
+            slot.Render(ui, items.ItemAt(_selected), _selected);
     }
 
     void OnBox(ref KeyEvent e)
@@ -499,15 +511,16 @@ internal sealed class SelectModel<TItem> : IDisposable
             OnOpen(ref e);
             return;
         }
-        var items = Props.Items!;
+        if (Props.Items is not { } items)
+            return;
         var from = SelectedIndex();
         var to = Step(e.Key, items, from);
         if (to == NotTyped)
             to = Typeahead(e.Key, items, from);
         if (to == NotTyped)
             return;
-        if (to >= 0 && to != from)
-            Choose(Props.ItemKey!(items.ItemAt(to)));
+        if (to >= 0 && to != from && Props.ItemKey is { } itemKey)
+            Choose(itemKey(items.ItemAt(to)));
         Take(ref e);
     }
 
@@ -528,8 +541,9 @@ internal sealed class SelectModel<TItem> : IDisposable
 
     void OnOpen(ref KeyEvent e)
     {
+        if (Listed is not { } listed)
+            return;
         var lit = LitIndex();
-        var listed = Listed;
         switch (e.Key)
         {
             case Key.Tab:
@@ -540,7 +554,7 @@ internal sealed class SelectModel<TItem> : IDisposable
                 if (next >= 0)
                     Light(next);
                 else if (back && Props.Searchable)
-                    SearchText.Focus(visible: true);
+                    SearchText?.Focus(visible: true);
                 break;
             case Key.Down or Key.Up or Key.Home or Key.End or Key.PageDown or Key.PageUp:
                 if (lit < 0)
@@ -613,9 +627,9 @@ internal sealed class SelectModel<TItem> : IDisposable
             return;
         }
         var only = Navigable(Shown, 0, 1);
-        if (only >= 0 && Navigable(Shown, only + 1, 1) < 0)
+        if (only >= 0 && Navigable(Shown, only + 1, 1) < 0 && Props.ItemKey is { } itemKey)
         {
-            Choose(Props.ItemKey!(Shown.ItemAt(only)));
+            Choose(itemKey(Shown.ItemAt(only)));
             SetOpen(false);
         }
     }
@@ -693,12 +707,14 @@ internal sealed class SelectModel<TItem> : IDisposable
         return -1;
     }
 
-    int LitIndex() => _litAt = IndexOf(Listed, _lit, _litAt);
+    int LitIndex() => _litAt = Listed is { } listed ? IndexOf(listed, _lit, _litAt) : -1;
 
     void Light(int index)
     {
+        if (Listed is not { } listed || Props.ItemKey is not { } itemKey)
+            return;
         Scroll.ScrollToIndex(index, ScrollAlign.Nearest);
-        var key = Props.ItemKey!(Listed.ItemAt(index));
+        var key = itemKey(listed.ItemAt(index));
         if (key == _lit)
             return;
         Target = key;

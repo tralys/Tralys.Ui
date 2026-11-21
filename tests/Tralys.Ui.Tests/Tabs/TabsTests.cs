@@ -73,17 +73,18 @@ public sealed class TabsTests
         using var driver = UiDriver.Render(
             ui =>
             {
-                strip.Scroll = ui.ScrollHandle();
+                var scroll = ui.ScrollHandle();
+                strip.Scroll = scroll;
                 using (ui.Tabs(width: 120))
                 using (
                     ui.TabsList(
-                        scroll: strip.Scroll,
+                        scroll: scroll,
                         onWheel: Handler<WheelEvent>.Of(
-                            strip,
+                            scroll,
                             static (s, ref e) =>
                             {
                                 e.PreventDefault();
-                                s.Scroll.ScrollTo(37f, null);
+                                s.ScrollTo(37f, null);
                             }
                         )
                     )
@@ -94,16 +95,17 @@ public sealed class TabsTests
             new Size(300, 100)
         );
         driver.View.Context.SmoothScrolling = false;
-        var overflows = strip.Scroll.Extent.Width > strip.Scroll.Viewport.Width;
+        var handle = await Assert.That(strip.Scroll).IsNotNull();
+        var overflows = handle.Extent.Width > handle.Viewport.Width;
 
         driver.Wheel(driver.Get("first"), new System.Numerics.Vector2(0f, -1f));
 
-        await Assert.That((overflows, strip.Scroll.Offset.X)).IsEqualTo((true, 37f));
+        await Assert.That((overflows, handle.Offset.X)).IsEqualTo((true, 37f));
     }
 
     sealed class Strip
     {
-        public ScrollHandle Scroll = null!;
+        public ScrollHandle? Scroll;
     }
 
     [Test]
@@ -125,7 +127,8 @@ public sealed class TabsTests
         await Assert
             .That(string.Join(", ", steps))
             .IsEqualTo("1/1, 2/2, 3/3, 1/1, 3/3, 2/2, 3/3, 1/1");
-        await Assert.That(TabLog.Ringed(driver.Focused!)).IsTrue();
+        var focused = await Assert.That(driver.Focused).IsNotNull();
+        await Assert.That(TabLog.Ringed(focused)).IsTrue();
     }
 
     [Test]

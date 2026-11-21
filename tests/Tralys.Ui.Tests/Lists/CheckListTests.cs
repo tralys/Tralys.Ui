@@ -102,14 +102,17 @@ public sealed class CheckListTests
     public async Task Rows_past_its_most_height_scroll_down_and_never_sideways()
     {
         using var driver = Render(new CheckListFilter(), maxHeight: 60);
-        var scroller = driver.GetText("Images").Parent!;
-        for (; scroller.Scroller is null; scroller = scroller.Parent!) { }
+        var around = driver.GetText("Images").Parent;
+        while (around is { Scroller: null })
+            around = around.Parent;
+        var scroller = await Assert.That(around).IsNotNull();
+        var handle = await Assert.That(scroller.Scroller).IsNotNull();
 
         driver.Wheel(scroller, new Vector2(-3, -3));
 
         await Assert.That(scroller.ViewBounds.Height).IsEqualTo(60f);
-        await Assert.That(scroller.Scroller!.Offset.Y).IsGreaterThan(0f);
-        await Assert.That(scroller.Scroller.Offset.X).IsEqualTo(0f);
+        await Assert.That(handle.Offset.Y).IsGreaterThan(0f);
+        await Assert.That(handle.Offset.X).IsEqualTo(0f);
     }
 
     [Test]

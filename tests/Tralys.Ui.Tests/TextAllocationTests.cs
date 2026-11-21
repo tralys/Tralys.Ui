@@ -257,7 +257,8 @@ public sealed class TextAllocationTests
         driver.View.Context.Theme = Themes.Light;
         driver.Frame();
         var fills = new List<Paint>();
-        foreach (var run in ((TextPayload)driver.Get("rich").Payload!).Buffer.Runs)
+        var rich = await Assert.That(driver.Get("rich").Payload as TextPayload).IsNotNull();
+        foreach (var run in rich.Buffer.Runs)
             fills.Add(run.Style.Fill);
         var light = Themes.Light;
 
@@ -370,20 +371,20 @@ public sealed class TextAllocationTests
                 ui.Link("WW", onClick: Callback.Of(run, static r => r.Clicks++), id: "link");
             }
         });
-        run.Link = driver.Get("link");
-        driver.Hover(run.Link);
+        var link = driver.Get("link");
+        driver.Hover(link);
 
         var bytes = driver.WorstFrameBytes(
-            run,
-            static (d, r) =>
+            (run, link),
+            static (d, s) =>
             {
-                r.Model.Count++;
+                s.run.Model.Count++;
                 d.Frame();
-                var under = r.Model.Count % 4 < 2;
-                if (((r.Link!.States & InputStates.Hovered) != 0) != under)
-                    r.Wrong++;
-                if (r.Model.Count % 4 == 0)
-                    d.Click(r.Link, settle: false);
+                var under = s.run.Model.Count % 4 < 2;
+                if (((s.link.States & InputStates.Hovered) != 0) != under)
+                    s.run.Wrong++;
+                if (s.run.Model.Count % 4 == 0)
+                    d.Click(s.link, settle: false);
             }
         );
 
@@ -413,7 +414,6 @@ public sealed class TextAllocationTests
     sealed class LinkRun
     {
         public readonly Model Model = new();
-        public Node? Link;
         public int Clicks;
         public int Wrong;
     }
@@ -442,7 +442,7 @@ public sealed partial class ChatLog : Tralys.Ui.Mvvm.ObservableObject
 
 public readonly record struct ChatRingProps
 {
-    public ChatLog? Chat { get; init; }
+    public required ChatLog Chat { get; init; }
 }
 
 /// <summary>A 280-wide column of the chat's wrapping lines, oldest first: a grey stamp, a gold sender, a grey colon and
@@ -461,7 +461,7 @@ public sealed class ChatRing : Component<ChatRingProps>
 
     protected override void Render(Ui ui, in ChatRingProps p)
     {
-        var chat = p.Chat!;
+        var chat = p.Chat;
         var tick = chat.Tick;
         using (ui.Box(direction: Direction.Column, width: 280))
         {

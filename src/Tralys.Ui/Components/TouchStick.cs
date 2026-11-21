@@ -45,9 +45,8 @@ public sealed class TouchStick : Component<TouchStickProps>
     protected override void Render(Ui ui, in TouchStickProps p)
     {
         var t = ui.Theme;
-        var model = ui.Remember(static () => new Steering());
+        var model = ui.Remember(ui.State(Vector2.Zero), static knob => new Steering(knob));
         model.Host = ui.Self(p);
-        model.Knob = ui.State(Vector2.Zero);
         ui.Effect(model, ui.IsCapturing, static (m, capturing, _) => m.Captured(capturing));
         var knob = model.Knob.Value;
         var muted = t.Color(ColorToken.FgMuted);
@@ -136,13 +135,14 @@ public sealed class TouchStick : Component<TouchStickProps>
         internal readonly Handler<PointerEvent> Up;
         internal readonly Handler<PointerEvent> Cancel;
         internal Host<TouchStickProps> Host;
-        internal State<Vector2> Knob = null!;
+        internal readonly State<Vector2> Knob;
         Pointer _pointer;
         bool _held;
         StickStep _step;
 
-        public Steering()
+        public Steering(State<Vector2> knob)
         {
+            Knob = knob;
             Down = Handler<PointerEvent>.Of(this, static (m, ref e) => m.Pressed(ref e));
             Move = Handler<PointerEvent>.Of(this, static (m, ref e) => m.Moved(ref e));
             Up = Handler<PointerEvent>.Of(this, static (m, ref e) => m.Lifted(ref e));

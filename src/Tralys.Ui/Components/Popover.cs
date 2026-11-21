@@ -45,14 +45,13 @@ public readonly record struct PopoverCloseProps
 [Children]
 public sealed class Popover : Component<PopoverProps>
 {
-    public static readonly ContextKey<PopoverContext> Context = new("Popover");
+    public static readonly ContextKey<PopoverContext> Context = new("Popover", default);
 
     protected override void Render(Ui ui, in PopoverProps p)
     {
-        var disclosure = ui.Remember(static () => new Disclosure());
+        var disclosure = ui.Remember(ui.State(p.DefaultOpen), static own => new Disclosure(own));
         disclosure.Open = p.Open;
         disclosure.OnOpenChange = p.OnOpenChange;
-        disclosure.Own = ui.State(p.DefaultOpen);
         var open = p.Open ?? disclosure.Own.Value;
         var anchor = ui.Ref();
         ui.Provide(Context, new PopoverContext(open, disclosure.Toggle, disclosure.Close));

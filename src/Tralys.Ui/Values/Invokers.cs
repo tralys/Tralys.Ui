@@ -27,5 +27,7 @@ internal static class Invokers<T>
     }
 
     [FramePath]
-    public static T At(int id) => Volatile.Read(ref s_items)[id]!;
+    public static T At(int id) =>
+        Volatile.Read(ref s_items)[id]
+        ?? throw new ArgumentOutOfRangeException(nameof(id), "No invoker was added under this id.");
 }

@@ -10,7 +10,7 @@ public sealed partial class UiView
         _rowBarrier = node;
         try
         {
-            return ((ListPayload)node.Payload!).Measure(width, height);
+            return node.PayloadOf<ListPayload>().Measure(width, height);
         }
         finally
         {
@@ -25,7 +25,7 @@ public sealed partial class UiView
         bool remeasure;
         try
         {
-            remeasure = ((ListPayload)node.Payload!).Arrange(size);
+            remeasure = node.PayloadOf<ListPayload>().Arrange(size);
         }
         finally
         {
@@ -59,7 +59,7 @@ public sealed partial class UiView
 
     internal void RenderRow(Node list, Node row)
     {
-        Builder.Render(row.Host!, fromCaller: true);
+        Builder.Render(row.HostOf<ComponentHost>(), fromCaller: true);
         ResolveEnv(row, list.Env, force: false);
     }
 
@@ -103,7 +103,7 @@ public sealed partial class UiView
         row.Place = default;
         row.Key = key;
         Reuse(row, caller);
-        row.Host!.Caller = caller;
+        row.HostOf<ComponentHost>().Caller = caller;
         _compositeDirty = true;
     }
 

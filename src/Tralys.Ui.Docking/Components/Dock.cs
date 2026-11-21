@@ -57,17 +57,20 @@ public sealed class Dock : Component<DockProps>
     internal const float HandleSize = 4f;
     internal const float MinPanel = 50f;
 
-    internal static readonly ContextKey<DockContext> Context = new("Dock");
+    internal static readonly ContextKey<DockContext> Context = new("Dock", default);
 
     protected override void Render(Ui ui, in DockProps p)
     {
-        var model = ui.Remember(static () => new DockModel());
+        var root = ui.Ref();
+        var regions = ui.Ref();
+        var center = ui.Ref();
+        var sizing = ui.State(0);
+        var torn = ui.State(0);
+        var model = ui.Remember(
+            (root, regions, center, sizing, torn),
+            static h => new DockModel(h.root, h.regions, h.center, h.sizing, h.torn)
+        );
         model.Host = ui.Self(p);
-        model.Root = ui.Ref();
-        model.Regions = ui.Ref();
-        model.Center = ui.Ref();
-        model.Sizing = ui.State(0);
-        model.Torn = ui.State(0);
         ui.Effect(model, 0, static (m, _, cx) => m.View = cx.View);
         var manager = p.Manager;
         ui.Effect(model, manager, static (m, manager, _) => m.Attach(manager));

@@ -701,9 +701,9 @@ public sealed partial class UiView
         }
         UpdatePressed(state);
 
-        if (owner is null)
+        if (owner is not { Interaction: { } interaction })
             return false;
-        switch (ModeOf(owner, state))
+        switch (ModeOf(interaction, state))
         {
             case PressMode.Press:
                 Click(owner);
@@ -715,8 +715,8 @@ public sealed partial class UiView
         return true;
     }
 
-    static PressMode ModeOf(Node owner, PointerState state) =>
-        owner.Interaction!.Props.PressMode switch
+    static PressMode ModeOf(Interaction interaction, PointerState state) =>
+        interaction.Props.PressMode switch
         {
             PressMode.PressOrTap when state.Pointer.Kind == PointerKind.Mouse => PressMode.Press,
             PressMode.PressOrTap => PressMode.Release,
@@ -779,9 +779,13 @@ public sealed partial class UiView
     bool Release(PointerState state, MouseButton button, Node? hit, bool overClicks)
     {
         var clicked = false;
-        if (state.Pressing && state.Press is { Owner: { } owner } press && press.Button == button)
+        if (
+            state.Pressing
+            && state.Press is { Owner: { Interaction: { } interaction } owner } press
+            && press.Button == button
+        )
         {
-            var mode = ModeOf(owner, state);
+            var mode = ModeOf(interaction, state);
             var tapped = state.Pointer.Kind == PointerKind.Mouse || !press.Strayed;
             if (
                 mode == PressMode.Release
@@ -798,8 +802,7 @@ public sealed partial class UiView
         {
             var over = hit is null ? null : PressableOf(hit);
             if (
-                over is not null
-                && over.Interaction!.Props.PressMode == PressMode.ReleaseOver
+                over is { Interaction.Props.PressMode: PressMode.ReleaseOver }
                 && (over._states & InputStates.Disabled) == 0
             )
             {
@@ -1040,11 +1043,12 @@ public sealed partial class UiView
             for (var i = from; i < _notices.Count; i++)
             {
                 var notice = _notices[i];
-                if (notice.Kind == kind && notice.Node.Generation == notice.Generation)
-                    Invoke(
-                        notice.Node.Interaction!.Props.OnHoverChange,
-                        kind == NoticeKind.Entered
-                    );
+                if (
+                    notice.Kind == kind
+                    && notice.Node.Generation == notice.Generation
+                    && notice.Node.Interaction is { } interaction
+                )
+                    Invoke(interaction.Props.OnHoverChange, kind == NoticeKind.Entered);
             }
         }
         _notices.Truncate(from);

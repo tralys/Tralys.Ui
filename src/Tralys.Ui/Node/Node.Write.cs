@@ -43,7 +43,7 @@ public sealed partial class Node
         if (Layout.Equals(style))
             return false;
         Layout = style;
-        var view = View!;
+        var view = MountedView;
         view.InvalidateSize(this);
         view.MarkPaint(this);
         view.MarkComposite();
@@ -64,11 +64,11 @@ public sealed partial class Node
         var was = Visual.Opacity ?? 1f;
         Visual = style;
         if (!draws)
-            View!.MarkPaint(this);
+            MountedView.MarkPaint(this);
         if (fades)
-            View!.OpacityChanged(this, was, style.Opacity ?? 1f);
+            MountedView.OpacityChanged(this, was, style.Opacity ?? 1f);
         else if (!composites)
-            View!.MarkComposite();
+            MountedView.MarkComposite();
         return true;
     }
 
@@ -82,7 +82,7 @@ public sealed partial class Node
             return false;
         var old = Inherit;
         Inherit = style;
-        var view = View!;
+        var view = MountedView;
         if (!old.StylesLike(style))
         {
             Dirty |= Dirty.Env;
@@ -126,7 +126,7 @@ public sealed partial class Node
         var wasShown = !(Place.Hidden || Place.Collapsed);
         var isShown = !(place.Hidden || place.Collapsed);
         Place = place;
-        var view = View!;
+        var view = MountedView;
         if (wasShown != isShown)
             UiView.VisibilityFlipped(this);
         if (isShown && !wasShown)
@@ -148,13 +148,13 @@ public sealed partial class Node
                 Debug.Assert(props == default);
                 return false;
             }
-            Interaction = View!.RentInteraction();
+            Interaction = MountedView.RentInteraction();
         }
         if (Interaction.Props.Equals(props))
             return false;
         var old = Interaction.Props;
         Interaction.Props = props;
-        View!.InteractionChanged(this, old, props);
+        MountedView.InteractionChanged(this, old, props);
         return true;
     }
 

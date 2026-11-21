@@ -10,7 +10,7 @@ public sealed class DockManagerTests
     )
     {
         var m = DockView.NewManager(id);
-        var e = m.GetElement(id)!;
+        var e = m.Element(id);
         m.Dock(e, pos);
         return (m, e);
     }
@@ -20,8 +20,8 @@ public sealed class DockManagerTests
     {
         var m = new DockManager();
 
-        await Assert.That(m.LeftGroup!.Elements.Count).IsEqualTo(0);
-        await Assert.That(m.CenterGroup!.Elements.Count).IsEqualTo(0);
+        await Assert.That(m.LeftGroup.Elements.Count).IsEqualTo(0);
+        await Assert.That(m.CenterGroup.Elements.Count).IsEqualTo(0);
         await Assert.That(m.Elements.Count).IsEqualTo(0);
         await Assert.That(m.FloatingWindows.Count).IsEqualTo(0);
     }
@@ -34,7 +34,7 @@ public sealed class DockManagerTests
         await Assert.That(e.State).IsEqualTo(DockState.Docked);
         await Assert.That(e.Position).IsEqualTo(DockPosition.Left);
         await Assert.That(ReferenceEquals(e.Parent, m.LeftGroup)).IsTrue();
-        await Assert.That(m.LeftGroup!.Elements.Count).IsEqualTo(1);
+        await Assert.That(m.LeftGroup.Elements.Count).IsEqualTo(1);
     }
 
     [Test]
@@ -53,7 +53,7 @@ public sealed class DockManagerTests
         var changes = 0;
         m.LayoutChanged += (_, _) => changes++;
 
-        m.LeftGroup.MoveTo(m.GetElement("b")!, 0);
+        m.LeftGroup.MoveTo(m.Element("b"), 0);
 
         await Assert.That(changes).IsEqualTo(1);
     }
@@ -67,7 +67,7 @@ public sealed class DockManagerTests
 
         await Assert.That(removed).IsTrue();
         await Assert.That(m.Elements.Count).IsEqualTo(0);
-        await Assert.That(m.RightGroup!.Elements.Count).IsEqualTo(0);
+        await Assert.That(m.RightGroup.Elements.Count).IsEqualTo(0);
         await Assert.That(e.Parent).IsNull();
     }
 
@@ -81,8 +81,9 @@ public sealed class DockManagerTests
         m.DockRelativeTo(b, a, DockDirection.Center);
 
         await Assert.That(ReferenceEquals(a.Parent, b.Parent)).IsTrue();
-        await Assert.That(a.Parent!.Elements.Count).IsEqualTo(2);
-        await Assert.That(a.Parent!.IsTabbedGroup).IsTrue();
+        var group = await Assert.That(a.Parent).IsNotNull();
+        await Assert.That(group.Elements.Count).IsEqualTo(2);
+        await Assert.That(group.IsTabbedGroup).IsTrue();
     }
 
     [Test]
@@ -94,7 +95,7 @@ public sealed class DockManagerTests
 
         m.DockRelativeTo(b, a, DockDirection.Right);
 
-        var root = m.LeftGroup!;
+        var root = m.LeftGroup;
         await Assert.That(root.IsSplitGroup).IsTrue();
         await Assert.That(root.Children.Count).IsEqualTo(2);
         await Assert.That(root.Orientation).IsEqualTo(SplitOrientation.Horizontal);
@@ -111,7 +112,7 @@ public sealed class DockManagerTests
 
         m.DockRelativeTo(b, a, DockDirection.Bottom);
 
-        var root = m.CenterGroup!;
+        var root = m.CenterGroup;
         await Assert.That(root.IsSplitGroup).IsTrue();
         await Assert.That(root.Orientation).IsEqualTo(SplitOrientation.Vertical);
         await Assert.That(ReferenceEquals(root.Children[0].Elements[0], a)).IsTrue();
@@ -130,7 +131,7 @@ public sealed class DockManagerTests
         await Assert.That(a.Position).IsEqualTo(DockPosition.Floating);
         await Assert.That(ReferenceEquals(fw.Group, a.Parent)).IsTrue();
         await Assert.That(fw.Group.Position).IsEqualTo(DockPosition.Floating);
-        await Assert.That(m.LeftGroup!.Elements.Count).IsEqualTo(0);
+        await Assert.That(m.LeftGroup.Elements.Count).IsEqualTo(0);
     }
 
     [Test]
@@ -166,9 +167,9 @@ public sealed class DockManagerTests
 
         b.Hide(); // empties b's side → model must collapse the wrapper immediately
 
-        await Assert.That(m.LeftGroup!.IsSplitGroup).IsFalse();
-        await Assert.That(m.LeftGroup!.Elements.Count).IsEqualTo(1);
-        await Assert.That(ReferenceEquals(m.LeftGroup!.Elements[0], a)).IsTrue();
+        await Assert.That(m.LeftGroup.IsSplitGroup).IsFalse();
+        await Assert.That(m.LeftGroup.Elements.Count).IsEqualTo(1);
+        await Assert.That(ReferenceEquals(m.LeftGroup.Elements[0], a)).IsTrue();
         await Assert.That(ReferenceEquals(a.Parent, m.LeftGroup)).IsTrue();
     }
 
@@ -185,7 +186,7 @@ public sealed class DockManagerTests
 
         c.Close();
 
-        var root = m.CenterGroup!;
+        var root = m.CenterGroup;
         await Assert.That(root.IsSplitGroup).IsTrue();
         await Assert.That(root.Children.Count).IsEqualTo(2);
         await Assert.That(root.Children[0].Elements[0].Id).IsEqualTo("a");
@@ -209,7 +210,7 @@ public sealed class DockManagerTests
 
         d.Close(); // chain: (c|d) → c; then (b/c) stays a split; check intermediate shape.
 
-        var root = m.CenterGroup!;
+        var root = m.CenterGroup;
         await Assert.That(root.IsSplitGroup).IsTrue();
         await Assert.That(root.Children.Count).IsEqualTo(2);
         await Assert.That(root.Children[0].Elements[0].Id).IsEqualTo("a");
@@ -242,7 +243,7 @@ public sealed class DockManagerTests
         int adds = 0,
             removes = 0;
         int? lastAddIndex = null;
-        m.LeftGroup!.ElementsChanged += (_, e) =>
+        m.LeftGroup.ElementsChanged += (_, e) =>
         {
             if (e.Change == DockElementsChange.Added)
             {
@@ -269,18 +270,18 @@ public sealed class DockManagerTests
         var (m, a) = DockedManager("a", DockPosition.Center);
         var b = Element("b");
         m.Register(b);
-        m.DockToGroup(b, m.CenterGroup!); // [a, b]
+        m.DockToGroup(b, m.CenterGroup); // [a, b]
 
         int moves = 0;
-        m.CenterGroup!.ElementsChanged += (_, e) =>
+        m.CenterGroup.ElementsChanged += (_, e) =>
         {
             if (e.Change == DockElementsChange.Moved)
                 moves++;
         };
 
-        m.CenterGroup!.MoveTo(b, 0);
+        m.CenterGroup.MoveTo(b, 0);
         await Assert.That(moves).IsEqualTo(1);
-        await Assert.That(m.CenterGroup!.Elements[0].Id).IsEqualTo("b");
+        await Assert.That(m.CenterGroup.Elements[0].Id).IsEqualTo("b");
     }
 
     [Test]
@@ -292,7 +293,7 @@ public sealed class DockManagerTests
         m.ResetLayout();
 
         await Assert.That(ReferenceEquals(m.LeftGroup, leftBefore)).IsTrue();
-        await Assert.That(m.LeftGroup!.Elements.Count).IsEqualTo(0);
+        await Assert.That(m.LeftGroup.Elements.Count).IsEqualTo(0);
         await Assert.That(a.State).IsEqualTo(DockState.Hidden);
         await Assert.That(m.Elements.Count).IsEqualTo(1);
     }
@@ -353,13 +354,13 @@ public sealed class DockManagerTests
         m.DockRelativeTo(b, a, DockDirection.Right); // splits Center: [a | b]
 
         b.Activate(); // user clicked b → manager-level active = b
-        var bLeaf = b.Parent!;
+        var bLeaf = await Assert.That(b.Parent).IsNotNull();
 
         m.Dock(c, DockPosition.Center);
 
-        await Assert.That(m.CenterGroup!.Elements.Count).IsEqualTo(0); // no orphan on root
+        await Assert.That(m.CenterGroup.Elements.Count).IsEqualTo(0); // no orphan on root
         await Assert.That(ReferenceEquals(c.Parent, bLeaf)).IsTrue(); // shared leaf with b
-        await Assert.That(c.Parent!.Elements.Contains(c)).IsTrue();
+        await Assert.That(bLeaf.Elements.Contains(c)).IsTrue();
     }
 
     [Test]
@@ -380,8 +381,8 @@ public sealed class DockManagerTests
 
         m.Dock(c, DockPosition.Center);
 
-        await Assert.That(m.CenterGroup!.Elements.Count).IsEqualTo(0);
-        await Assert.That(ReferenceEquals(c.Parent, m.CenterGroup!.Children[0])).IsTrue();
+        await Assert.That(m.CenterGroup.Elements.Count).IsEqualTo(0);
+        await Assert.That(ReferenceEquals(c.Parent, m.CenterGroup.Children[0])).IsTrue();
     }
 
     [Test]
@@ -401,8 +402,8 @@ public sealed class DockManagerTests
 
         await Assert.That(m.CenterGroup.Elements.Count).IsEqualTo(0);
         await Assert.That(m.CenterGroup.Children.Count).IsEqualTo(2);
-        await Assert.That(c.Parent!.IsTabbedGroup).IsTrue();
-        await Assert.That(d.Parent!.IsTabbedGroup).IsTrue();
+        await Assert.That(c.Parent?.IsTabbedGroup).IsTrue();
+        await Assert.That(d.Parent?.IsTabbedGroup).IsTrue();
     }
 
     [Test]
@@ -414,21 +415,21 @@ public sealed class DockManagerTests
             ("c", DockPosition.Center),
             ("d", DockPosition.Center)
         );
-        var b = m.GetElement("b")!;
-        var c = m.GetElement("c")!;
+        var b = m.Element("b");
+        var c = m.Element("c");
         b.Activate();
 
         m.DockBySplit(b, m.CenterGroup, DockDirection.Right);
 
-        await Assert.That(c.Parent!.ActiveElement).IsSameReferenceAs(c);
-        await Assert.That(b.Parent!.ActiveElement).IsSameReferenceAs(b);
+        await Assert.That(c.Parent?.ActiveElement).IsSameReferenceAs(c);
+        await Assert.That(b.Parent?.ActiveElement).IsSameReferenceAs(b);
     }
 
     [Test]
     public async Task SplittingAnEmptyRegion_TabsTheElementIntoIt()
     {
         var m = DockView.NewManager("a");
-        var a = m.GetElement("a")!;
+        var a = m.Element("a");
 
         m.DockBySplit(a, m.CenterGroup, DockDirection.Right);
 
@@ -471,7 +472,7 @@ public sealed class DockManagerTests
     public async Task UnregisteringTheActiveElement_ActivatesItsNeighbour()
     {
         var m = DockView.Docked(("a", DockPosition.Center), ("b", DockPosition.Center));
-        var a = m.GetElement("a")!;
+        var a = m.Element("a");
         a.Activate();
 
         m.Unregister(a);

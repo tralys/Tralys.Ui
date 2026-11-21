@@ -213,8 +213,8 @@ public sealed class DockManager : IObservable
             closedHere = true;
         }
 
-        if (handed is not null)
-            handler!.RequestClose(handed);
+        if (handler is not null && handed is not null)
+            handler.RequestClose(handed);
         return closedHere;
     }
 
@@ -229,7 +229,7 @@ public sealed class DockManager : IObservable
     {
         ArgumentNullException.ThrowIfNull(element);
         RequireRegistered(element);
-        var root = RootGroup(position) ?? throw new ArgumentOutOfRangeException(nameof(position));
+        var root = RootRegion(position);
 
         // A split group's own elements never show, so the element goes to a leaf.
         ResolveLeafFor(root).Insert(element);
@@ -442,9 +442,12 @@ public sealed class DockManager : IObservable
         foreach (var document in documents)
         {
             if (document.Parent is null && document.Manager == this)
-                ResolveLeafFor(RootGroup(document.ResolveShowPosition())!).Insert(document);
+                ResolveLeafFor(RootRegion(document.ResolveShowPosition())).Insert(document);
         }
     }
+
+    DockGroup RootRegion(DockPosition position) =>
+        RootGroup(position) ?? throw new ArgumentOutOfRangeException(nameof(position));
 
     internal bool IsRootGroup(DockGroup group) => ReferenceEquals(RootGroup(group.Position), group);
 

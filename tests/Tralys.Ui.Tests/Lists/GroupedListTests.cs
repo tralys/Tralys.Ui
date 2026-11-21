@@ -538,7 +538,12 @@ public sealed class GroupedListTests
         throw new InvalidOperationException("No chevron.");
     }
 
-    static float OffsetOf(UiDriver driver) => List(driver).Scroller!.Offset.Y;
+    static float OffsetOf(UiDriver driver)
+    {
+        if (List(driver).Scroller is not { } scroller)
+            throw new InvalidOperationException("The list has no scroller.");
+        return scroller.Offset.Y;
+    }
 
     static HashSet<Node> RowNodes(UiDriver driver) => [.. AllRows(driver)];
 }

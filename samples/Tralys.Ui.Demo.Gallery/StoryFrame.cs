@@ -51,5 +51,5 @@ public static class StoryFrame
 /// <summary>The windows a story's docks tear panels out into, which the app showing the stories provides.</summary>
 public readonly record struct StoryWindows(IDockWindowHost? Host)
 {
-    public static readonly ContextKey<StoryWindows> Key = new("StoryWindows");
+    public static readonly ContextKey<StoryWindows> Key = new("StoryWindows", default);
 }

@@ -6,8 +6,8 @@ public sealed class LayoutSerializerTests
     public async Task RoundTrip_PreservesTabbedGroupAndActiveElement()
     {
         var m = DockView.NewManager("a", "b");
-        var a = m.GetElement("a")!;
-        var b = m.GetElement("b")!;
+        var a = m.Element("a");
+        var b = m.Element("b");
         m.Dock(a, DockPosition.Left);
         m.DockRelativeTo(b, a, DockDirection.Center); // tab b alongside a
         a.Activate();
@@ -16,17 +16,17 @@ public sealed class LayoutSerializerTests
         var m2 = DockView.NewManager("a", "b");
         m2.LoadLayout(json);
 
-        await Assert.That(m2.LeftGroup!.Elements.Count).IsEqualTo(2);
-        await Assert.That(m2.LeftGroup!.IsTabbedGroup).IsTrue();
-        await Assert.That(m2.ActiveElement!.Id).IsEqualTo("a");
+        await Assert.That(m2.LeftGroup.Elements.Count).IsEqualTo(2);
+        await Assert.That(m2.LeftGroup.IsTabbedGroup).IsTrue();
+        await Assert.That(m2.ActiveElement?.Id).IsEqualTo("a");
     }
 
     [Test]
     public async Task RestoreFloatingWindow_MissingFirstElement_KeepsSurvivingTab()
     {
         var m = DockView.NewManager("a", "b");
-        var a = m.GetElement("a")!;
-        var b = m.GetElement("b")!;
+        var a = m.Element("a");
+        var b = m.Element("b");
         m.Dock(a, DockPosition.Left);
         var fw = m.Float(a, 10, 10, 300, 200);
         m.DockToGroup(b, fw.Group);
@@ -37,18 +37,18 @@ public sealed class LayoutSerializerTests
 
         await Assert.That(m2.FloatingWindows.Count).IsEqualTo(1);
         await Assert.That(m2.FloatingWindows[0].Group.Elements.Count).IsEqualTo(1);
-        await Assert.That(m2.GetElement("b")!.State).IsEqualTo(DockState.Floating);
+        await Assert.That(m2.Element("b").State).IsEqualTo(DockState.Floating);
     }
 
     [Test]
     public async Task Load_PrunesASplitSideWhoseIdsAreGone()
     {
         var m = DockView.NewManager("a", "b", "c");
-        var a = m.GetElement("a")!;
-        var b = m.GetElement("b")!;
+        var a = m.Element("a");
+        var b = m.Element("b");
         m.Dock(a, DockPosition.Center);
         m.DockRelativeTo(b, a, DockDirection.Right);
-        m.DockRelativeTo(m.GetElement("c")!, b, DockDirection.Bottom);
+        m.DockRelativeTo(m.Element("c"), b, DockDirection.Bottom);
         var json = m.SaveLayout();
 
         var m2 = DockView.NewManager("a", "c");
@@ -68,9 +68,9 @@ public sealed class LayoutSerializerTests
     public async Task Load_DropsEverySplitSideWhenNoIdResolves()
     {
         var m = DockView.NewManager("a", "b");
-        var a = m.GetElement("a")!;
+        var a = m.Element("a");
         m.Dock(a, DockPosition.Left);
-        m.DockRelativeTo(m.GetElement("b")!, a, DockDirection.Bottom);
+        m.DockRelativeTo(m.Element("b"), a, DockDirection.Bottom);
         var json = m.SaveLayout();
 
         var m2 = DockView.NewManager();
@@ -98,7 +98,7 @@ public sealed class LayoutSerializerTests
 
         await Assert.That(m.CenterGroup.Elements.Count).IsEqualTo(0);
         await Assert.That(m.CenterGroup.Children.Count).IsEqualTo(2);
-        await Assert.That(m.GetElement("c")!.State).IsEqualTo(DockState.Hidden);
+        await Assert.That(m.Element("c").State).IsEqualTo(DockState.Hidden);
     }
 
     [Test]
@@ -119,11 +119,11 @@ public sealed class LayoutSerializerTests
     public async Task PanelsRegisteredAfterALoad_TakeTheirSavedPlaces_EvenThroughASaveMadeBeforeThey()
     {
         var saved = DockView.NewManager("a", "b", "f", "h");
-        saved.Dock(saved.GetElement("a")!, DockPosition.Left);
-        saved.DockToGroup(saved.GetElement("b")!, saved.LeftGroup);
-        saved.Float(saved.GetElement("f")!, 10f, 20f, 300f, 200f);
-        saved.Dock(saved.GetElement("h")!, DockPosition.Right);
-        saved.GetElement("h")!.Hide();
+        saved.Dock(saved.Element("a"), DockPosition.Left);
+        saved.DockToGroup(saved.Element("b"), saved.LeftGroup);
+        saved.Float(saved.Element("f"), 10f, 20f, 300f, 200f);
+        saved.Dock(saved.Element("h"), DockPosition.Right);
+        saved.Element("h").Hide();
         var early = DockView.NewManager("a");
         early.LoadLayout(saved.SaveLayout());
         var m = DockView.NewManager("a");
@@ -134,10 +134,10 @@ public sealed class LayoutSerializerTests
         m.Register(new DockElement("b", "b"));
 
         await Assert.That(m.LeftGroup.Elements.Select(e => e.Id)).IsEquivalentTo(["a", "b"]);
-        await Assert.That(m.GetElement("f")!.State).IsEqualTo(DockState.Floating);
+        await Assert.That(m.Element("f").State).IsEqualTo(DockState.Floating);
         await Assert.That(m.FloatingWindows.Single().Width).IsEqualTo(300f);
-        await Assert.That(m.GetElement("h")!.State).IsEqualTo(DockState.Hidden);
-        await Assert.That(m.GetElement("h")!.Position).IsEqualTo(DockPosition.Right);
+        await Assert.That(m.Element("h").State).IsEqualTo(DockState.Hidden);
+        await Assert.That(m.Element("h").Position).IsEqualTo(DockPosition.Right);
     }
 
     [Test]
@@ -165,13 +165,13 @@ public sealed class LayoutSerializerTests
     public async Task Load_RefusesALayoutOfAnotherFormat_LeavingTheDockAsItWas(string layout)
     {
         var m = DockView.NewManager("a");
-        m.Dock(m.GetElement("a")!, DockPosition.Right);
+        m.Dock(m.Element("a"), DockPosition.Right);
         var changes = 0;
         m.LayoutChanged += (_, _) => changes++;
 
         await Assert.That(() => m.LoadLayout(layout)).Throws<InvalidDataException>();
 
-        await Assert.That(m.GetElement("a")!.Position).IsEqualTo(DockPosition.Right);
+        await Assert.That(m.Element("a").Position).IsEqualTo(DockPosition.Right);
         await Assert.That(m.RightGroup.Elements.Count).IsEqualTo(1);
         await Assert.That(changes).IsEqualTo(0);
     }

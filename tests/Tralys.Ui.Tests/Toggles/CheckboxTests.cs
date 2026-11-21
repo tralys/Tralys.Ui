@@ -244,9 +244,10 @@ public sealed class CheckboxTests
 
         var checkedRows = new HashSet<Node>(driver.All<Checkbox<bool>>());
 
-        scroll.Handle!.ScrollTo(null, 24f * 30f);
+        var handle = await Assert.That(scroll.Handle).IsNotNull();
+        handle.ScrollTo(null, 24f * 30f);
         driver.Settle();
-        scroll.Handle.ScrollToEnd();
+        handle.ScrollToEnd();
         driver.Frame();
         var ticks = new List<float>();
         var reused = 0;

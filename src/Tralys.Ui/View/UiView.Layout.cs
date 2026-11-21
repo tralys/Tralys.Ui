@@ -201,8 +201,8 @@ public sealed partial class UiView
             NodeKind.Box or NodeKind.Layer => Flex(node, width, height, perform: false),
             NodeKind.Grid => GridLayout(node, width, height, perform: false),
             NodeKind.Layout => CustomLayout(node, width, height, perform: false),
-            NodeKind.Text => ((TextPayload)node.Payload!).Measure(this, width),
-            NodeKind.EditableText => ((EditorPayload)node.Payload!).Measure(this, width),
+            NodeKind.Text => node.PayloadOf<TextPayload>().Measure(this, node, width),
+            NodeKind.EditableText => node.PayloadOf<EditorPayload>().Measure(this, width),
             NodeKind.Canvas or NodeKind.Image => node.Layout.IntrinsicSize,
             NodeKind.VirtualList => ListMeasured(node, width, height),
             _ => default,
@@ -266,17 +266,17 @@ public sealed partial class UiView
                 );
                 break;
             case NodeKind.Text:
-                ((TextPayload)node.Payload!).Arrange(this, size.Width);
+                node.PayloadOf<TextPayload>().Arrange(this, node, size.Width);
                 break;
             case NodeKind.EditableText:
-                ((EditorPayload)node.Payload!).Arrange(this, node, size);
+                node.PayloadOf<EditorPayload>().Arrange(this, node, size);
                 break;
             case NodeKind.VirtualList:
                 ListArranged(node, size);
                 break;
         }
-        if (node.Scroller is not null && node.Kind is NodeKind.Box or NodeKind.Grid)
-            ScrollerArranged(node);
+        if (node.Scroller is { } scroller && node.Kind is NodeKind.Box or NodeKind.Grid)
+            ScrollerArranged(node, scroller);
     }
 
     internal static Matrix3x2 Turn(Node node, Size bounds) =>

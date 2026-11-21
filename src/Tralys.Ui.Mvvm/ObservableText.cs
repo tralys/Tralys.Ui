@@ -12,7 +12,7 @@ public sealed class ObservableText : IObservable
     int _length;
     int _version;
     Index? _caret;
-    string? _string;
+    string _string = "";
     int _stringVersion = -1;
     ObserverSet _observers;
 
@@ -73,7 +73,7 @@ public sealed class ObservableText : IObservable
             _string = _length == 0 ? "" : new string(_chars, 0, _length);
             _stringVersion = _version;
         }
-        return _string!;
+        return _string;
     }
 
     /// <summary>Counts its changes, so a field showing it can tell whether it changed since it last looked.</summary>

@@ -38,7 +38,7 @@ public sealed partial class Line : ObservableObject
 
 public readonly record struct LineRowProps
 {
-    public Line? Item { get; init; }
+    public required Line Item { get; init; }
 }
 
 /// <summary>A row: its line's name, as tall as its line, keeping a click count of its own.</summary>
@@ -46,7 +46,7 @@ public sealed class LineRow : Component<LineRowProps>
 {
     protected override void Render(Ui ui, in LineRowProps p)
     {
-        var line = p.Item!;
+        var line = p.Item;
         var clicks = ui.State(0);
         using (
             ui.Box(
@@ -71,7 +71,7 @@ public static class LineSlots
 
 public readonly record struct CountBoxProps
 {
-    public Model? Model { get; init; }
+    public required Model Model { get; init; }
 }
 
 /// <summary>A box as tall as its model's count.</summary>
@@ -79,6 +79,6 @@ public sealed class CountBox : Component<CountBoxProps>
 {
     protected override void Render(Ui ui, in CountBoxProps p)
     {
-        using (ui.Box(height: p.Model!.Count)) { }
+        using (ui.Box(height: p.Model.Count)) { }
     }
 }

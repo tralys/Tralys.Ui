@@ -107,8 +107,8 @@ static class EventsStories
     public static void DragDrop(Ui ui)
     {
         var t = ui.Theme;
-        var board = ui.Remember(static () => new CardBoard());
-        board.Swaps = ui.State(0);
+        var swaps = ui.State(0);
+        var board = ui.Remember(swaps, static s => new CardBoard(s));
         using (
             ui.Box(
                 direction: Direction.Column,
@@ -171,9 +171,9 @@ static class EventsStories
 
     /// <summary>The cards in their slots, by index into <see cref="CardNames"/>; a swap counts in
     /// <see cref="Swaps"/>, which the slots read.</summary>
-    internal sealed class CardBoard
+    internal sealed class CardBoard(State<int> swaps)
     {
-        public State<int>? Swaps { get; set; }
+        public State<int> Swaps { get; } = swaps;
 
         public int[] Order { get; } = [0, 1, 2, 3, 4, 5];
 
@@ -183,7 +183,7 @@ static class EventsStories
         public void Swap(int from, int to)
         {
             (Order[from], Order[to]) = (Order[to], Order[from]);
-            Swaps!.Value = Swaps.Peek + 1;
+            Swaps.Value = Swaps.Peek + 1;
         }
     }
 }
@@ -254,7 +254,7 @@ internal sealed class HoverLift : Component<HoverLiftProps>
 
 internal readonly record struct CardSlotProps
 {
-    public EventsStories.CardBoard? Board { get; init; }
+    public required EventsStories.CardBoard Board { get; init; }
     public int At { get; init; }
 }
 
@@ -268,8 +268,8 @@ internal sealed class CardSlot : Component<CardSlotProps>
 
     protected override void Render(Ui ui, in CardSlotProps p)
     {
-        var board = p.Board!;
-        _ = board.Swaps!.Value;
+        var board = p.Board;
+        _ = board.Swaps.Value;
         var name = board.NameAt(p.At);
         var self = ui.Self(p);
         using (
@@ -289,7 +289,7 @@ internal sealed class CardSlot : Component<CardSlotProps>
                     static (Host<CardSlotProps> h, ref DropEvent e) =>
                     {
                         if (e.Data is int from)
-                            h.Props.Board!.Swap(from, h.Props.At);
+                            h.Props.Board.Swap(from, h.Props.At);
                     }
                 )
             )

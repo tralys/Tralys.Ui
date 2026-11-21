@@ -45,11 +45,11 @@ public sealed class Editable : Component<EditableProps>
         var t = ui.Theme;
         var size = p.Size ?? ComponentSize.Md;
         var m = t.Metrics(size);
-        var model = ui.Remember(static () => new EditableModel());
+        var model = ui.Remember(
+            (Own: ui.State(p.DefaultEditing), Root: ui.Ref(), Text: ui.Ref()),
+            static hooks => new EditableModel(hooks.Own, hooks.Root, hooks.Text)
+        );
         model.Host = ui.Self(p);
-        model.Own = ui.State(p.DefaultEditing);
-        model.Root = ui.Ref();
-        model.Text = ui.Ref();
         var disabled = ui.IsDisabled;
         var editing = model.IsEditing && !disabled;
         if (!model.IsOpen)
@@ -125,14 +125,17 @@ internal sealed class EditableModel
     internal readonly Handler<KeyEvent> Keys;
     internal readonly ObservableText Draft = new();
     internal Host<EditableProps> Host;
-    internal State<bool> Own = null!;
-    internal NodeRef Root = null!;
-    internal NodeRef Text = null!;
+    internal readonly State<bool> Own;
+    internal readonly NodeRef Root;
+    internal readonly NodeRef Text;
     bool _open;
     bool _within;
 
-    public EditableModel()
+    public EditableModel(State<bool> own, NodeRef root, NodeRef text)
     {
+        Own = own;
+        Root = root;
+        Text = text;
         Begin = Callback.Of(this, static m => m.Start());
         Keys = Handler<KeyEvent>.Of(this, static (m, ref e) => m.KeyDown(ref e));
     }

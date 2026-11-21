@@ -30,8 +30,12 @@ public sealed class StoryRegistryGenerator : IIncrementalGenerator
                 static (node, _) => node is ClassDeclarationSyntax,
                 static (ctx, ct) => Read(ctx, ct)
             )
-            .Where(static model => model is not null)
-            .Select(static (model, _) => model!.Value)
+            .SelectMany(
+                static (model, _) =>
+                    model is { } found
+                        ? ImmutableArray.Create(found)
+                        : ImmutableArray<StoriesClass>.Empty
+            )
             .Collect();
 
         var root = context.AnalyzerConfigOptionsProvider.Select(

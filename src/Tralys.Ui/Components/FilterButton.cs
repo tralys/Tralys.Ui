@@ -38,10 +38,9 @@ public sealed class FilterButton : Component<FilterButtonProps>
     protected override void Render(Ui ui, in FilterButtonProps p)
     {
         var t = ui.Theme;
-        var disclosure = ui.Remember(static () => new Disclosure());
+        var disclosure = ui.Remember(ui.State(p.DefaultOpen), static own => new Disclosure(own));
         disclosure.Open = p.Open;
         disclosure.OnOpenChange = p.OnOpenChange;
-        disclosure.Own = ui.State(p.DefaultOpen);
         ui.Effect(disclosure, ui.IsDisabled, Disclosure.ShutWhenDisabled);
         var size = p.Size ?? ComponentSize.Sm;
         using (

@@ -158,13 +158,13 @@ sealed record DemoOptions
             var value = args[++i];
             switch (arg)
             {
-                case "--story" when Find(value) is null:
+                case "--story" when Find(value) is { } story:
+                    options = options with { Story = story.Key };
+                    break;
+                case "--story":
                     error =
                         $"--story {value} names no story; keys are Component.Name, such as Switch.States.";
                     return false;
-                case "--story":
-                    options = options with { Story = Find(value)!.Value.Key };
-                    break;
                 case "--theme" when ParseTheme(value) is { } theme:
                     options = options with { Theme = theme };
                     break;

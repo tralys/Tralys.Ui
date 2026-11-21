@@ -117,14 +117,17 @@ public sealed partial class UiView
                 ? editor
                 : null;
         focused?.Blink(this, Context.Now);
-        if (focused is not { Editable: true } typing || typing.InputKind == TextInputKind.None)
+        if (
+            focused is not { Editable: true, Node: { } at } typing
+            || typing.InputKind == TextInputKind.None
+        )
         {
             if (_typing is { } stopped)
                 StopTyping(stopped);
             return;
         }
 
-        var area = typing.CaretArea(this, typing.Node!);
+        var area = typing.CaretArea(this, at);
         var kind = typing.InputKind;
         if (ReferenceEquals(_typing, typing) && kind == _typingKind)
         {
@@ -163,9 +166,9 @@ public sealed partial class UiView
 
     void DrawCaret(EditorPayload editor, DrawList list, Size size)
     {
-        RecordCaret(editor, size);
+        var commands = RecordCaret(editor, size);
         var span = list.BeginSpan();
-        list.Draw(editor.CaretCommands!);
+        list.Draw(commands);
         list.EndSpan(span);
         if (!list.RecordsSpans)
             return;
@@ -179,14 +182,14 @@ public sealed partial class UiView
             return true;
         if (editor.CaretSpan < 0 || editor.CaretSpanList != list.Generation)
             return false;
-        RecordCaret(editor, FrameSize(node));
+        var commands = RecordCaret(editor, FrameSize(node));
         if (!list.BeginPatch(editor.CaretSpan))
             return false;
-        list.Draw(editor.CaretCommands!);
+        list.Draw(commands);
         return list.EndPatch();
     }
 
-    void RecordCaret(EditorPayload editor, Size size)
+    RenderCommandBuffer RecordCaret(EditorPayload editor, Size size)
     {
         var buffer = editor.CaretCommands ??= new RenderCommandBuffer();
         var dc = buffer.Open();
@@ -204,5 +207,6 @@ public sealed partial class UiView
                 _compositeDirty = true;
             }
         }
+        return buffer;
     }
 }

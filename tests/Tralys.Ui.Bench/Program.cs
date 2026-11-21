@@ -125,9 +125,9 @@ static class Program
                         )
                 )
             ),
-            "dense-mount" => (dense, null!),
-            "rows-mount" => (rows, null!),
-            "list-mount" => (list, null!),
+            "dense-mount" => (dense, null),
+            "rows-mount" => (rows, null),
+            "list-mount" => (list, null),
             _ => throw new ArgumentException($"Unknown profile {profile}."),
         };
         var until = Stopwatch.GetTimestamp() + Stopwatch.Frequency * 10;

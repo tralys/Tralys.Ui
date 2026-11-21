@@ -99,7 +99,8 @@ public sealed class FieldAllocationTests
                 )
             )
             .WithIcons();
-        var clear = driver.Get<InputClear>().Host!.Root!.ViewBounds;
+        var clearRoot = await Assert.That(driver.Get<InputClear>().Host?.Root).IsNotNull();
+        var clear = clearRoot.ViewBounds;
         var state = new Clearing(
             report,
             new Vector2(clear.X + clear.Width / 2f, clear.Y + clear.Height / 2f)

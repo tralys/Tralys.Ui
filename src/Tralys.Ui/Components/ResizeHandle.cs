@@ -136,9 +136,11 @@ public sealed class ResizeHandle : Component<ResizeHandleProps>
     protected override void Render(Ui ui, in ResizeHandleProps p)
     {
         var t = ui.Theme;
-        var model = ui.Remember(static () => new Resizer());
+        var model = ui.Remember(
+            ui.State(default(PreviewShade)),
+            static shade => new Resizer(shade)
+        );
         model.Host = ui.Self(p);
-        model.Shade = ui.State(default(PreviewShade));
         var root = ui.Ref();
         var sizes = !p.OnValueChange.IsEmpty;
         var dragged = ui.IsCapturing;
@@ -273,13 +275,14 @@ public sealed class ResizeHandle : Component<ResizeHandleProps>
         internal readonly Handler<KeyEvent> KeyDown;
         internal readonly Callback<FocusChange> FocusChange;
         internal Host<ResizeHandleProps> Host;
-        internal State<PreviewShade> Shade = null!;
+        internal readonly State<PreviewShade> Shade;
         bool _active;
         float _start;
         float _at;
 
-        public Resizer()
+        public Resizer(State<PreviewShade> shade)
         {
+            Shade = shade;
             Drag = Handler<DragEvent>.Of(this, static (m, ref e) => m.Dragged(ref e));
             KeyDown = Handler<KeyEvent>.Of(this, static (m, ref e) => m.Pressed(ref e));
             FocusChange = Callback<FocusChange>.Of(

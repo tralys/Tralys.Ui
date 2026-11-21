@@ -110,14 +110,15 @@ public sealed class TreeAllocationTests
         var grove = new Grove(branches) { Logs = false };
         var scores = new Threshold();
         grove.Rows.Comparer = Comparer<Leaf>.Create(static (a, b) => a.Score.CompareTo(b.Score));
-        grove.Rows.Filter = new RowFilter<Leaf>(scores.Passes);
+        var filter = new RowFilter<Leaf>(scores.Passes);
+        grove.Rows.Filter = filter;
         var row = Slot<Leaf>.Of(static (ui, leaf, _) => ui.Text(leaf.Name));
         using var driver = UiDriver
             .Render(ui =>
                 ui.VirtualList(items: grove.Rows, itemKey: Leaf.Key, row: row, height: 400)
             )
             .WithIcons();
-        var churn = (grove, scores, walk: new Walk());
+        var churn = (grove, scores, filter, walk: new Walk());
 
         var bytes = driver.WorstFrameBytes(churn, Churn);
 
@@ -125,7 +126,10 @@ public sealed class TreeAllocationTests
         await Assert.That(churn.walk.Most).IsGreaterThan(churn.walk.Fewest);
     }
 
-    static void Churn(UiDriver driver, (Grove grove, Threshold scores, Walk walk) s)
+    static void Churn(
+        UiDriver driver,
+        (Grove grove, Threshold scores, RowFilter<Leaf> filter, Walk walk) s
+    )
     {
         var step = s.walk.Step++;
         var branch = s.grove.Roots[step % s.grove.Roots.Count];
@@ -133,7 +137,7 @@ public sealed class TreeAllocationTests
         if (step % 3 == 0)
         {
             s.scores.Least = (s.scores.Least + 11) % 40;
-            s.grove.Rows.Filter!.Refresh();
+            s.filter.Refresh();
         }
         if (step % 5 == 0)
         {

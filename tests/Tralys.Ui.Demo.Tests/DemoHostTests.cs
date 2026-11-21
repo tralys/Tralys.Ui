@@ -83,11 +83,11 @@ public sealed class DemoHostTests
     [Test]
     public async Task A_headless_screenshot_holds_what_the_view_drew()
     {
-        var path = Path.Combine(
+        var directory = Path.Combine(
             Path.GetTempPath(),
-            $"tralys-screenshot-{Environment.ProcessId}",
-            "shot"
+            $"tralys-screenshot-{Environment.ProcessId}"
         );
+        var path = Path.Combine(directory, "shot");
         try
         {
             using (
@@ -118,7 +118,7 @@ public sealed class DemoHostTests
         }
         finally
         {
-            Directory.Delete(Path.GetDirectoryName(path)!, recursive: true);
+            Directory.Delete(directory, recursive: true);
         }
     }
 

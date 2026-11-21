@@ -43,12 +43,11 @@ public sealed partial class DrawList
     ResolvedPaint Resolve(in Paint paint, Rect bounds, in Matrix3x2 absoluteToLocal)
     {
         var opacity = paint.Opacity * _state.Opacity;
-        switch (paint.Kind)
+        switch (paint)
         {
-            case PaintKind.Solid:
+            case { Kind: PaintKind.Solid }:
                 return new ResolvedPaint(paint.Color.ToPremultipliedRgba(opacity), UiPaint.Solid);
-            case PaintKind.LinearGradient or PaintKind.RadialGradient:
-                var stops = paint.Stops!;
+            case { Kind: PaintKind.LinearGradient or PaintKind.RadialGradient, Stops: { } stops }:
                 var row = _ramps.Acquire(stops);
                 if (row < 0)
                     return new ResolvedPaint(
@@ -65,16 +64,15 @@ public sealed partial class DrawList
                     GradientGeometry(paint, bounds, absoluteToLocal),
                     (row + 0.5f) / _ramps.Rows
                 );
-            case PaintKind.Image:
-                return MapImage(paint, bounds, opacity);
+            case { Kind: PaintKind.Image, Image: { } image }:
+                return MapImage(paint, image, bounds, opacity);
             default:
                 return default;
         }
     }
 
-    ResolvedPaint MapImage(in Paint paint, Rect bounds, float opacity)
+    ResolvedPaint MapImage(in Paint paint, PaintImage image, Rect bounds, float opacity)
     {
-        var image = paint.Image!;
         var texture = image.Source.Resolve(Textures);
         if (texture is null)
             return default;

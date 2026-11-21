@@ -75,11 +75,11 @@ sealed class DockView
     {
         var manager = NewManager([.. docked.Select(entry => entry.Id)]);
         foreach (var (id, position) in docked)
-            manager.Dock(manager.GetElement(id)!, position);
+            manager.Dock(manager.Element(id), position);
         return manager;
     }
 
-    public DockElement this[string id] => Manager.GetElement(id)!;
+    public DockElement this[string id] => Manager.Element(id);
 
     /// <summary>The tab of the element titled <paramref name="title"/>.</summary>
     public Node Tab(string title) => Tab(Ui.Root, title);
@@ -100,7 +100,12 @@ sealed class DockView
 
     /// <summary>The tab group that shows <paramref name="element"/>'s tab.</summary>
     public Node Strip(DockElement element) =>
-        RootOf(Above(Tab(element.Title), typeof(DockTabGroup))!);
+        RootOf(
+            Above(Tab(element.Title), typeof(DockTabGroup))
+                ?? throw new InvalidOperationException(
+                    $"The tab of '{element.Title}' is in no group."
+                )
+        );
 
     /// <summary>The title bar of the one floating panel, or of the one with <paramref name="title"/>.</summary>
     public Node Title(string? title = null) => Title(Ui.Root, title);
@@ -248,4 +253,11 @@ sealed class DockView
             ? found[0]
             : throw new InvalidOperationException($"Found {found.Count} matches, not one.");
     }
+}
+
+static class DockManagerLookup
+{
+    public static DockElement Element(this DockManager manager, string id) =>
+        manager.GetElement(id)
+        ?? throw new InvalidOperationException($"No element '{id}' is registered.");
 }

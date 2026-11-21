@@ -35,7 +35,7 @@ sealed class WorkloadScene : IScene
 
 readonly record struct WorkloadViewProps
 {
-    public WorkloadModel? Model { get; init; }
+    public required WorkloadModel Model { get; init; }
 }
 
 sealed class WorkloadView : Component<WorkloadViewProps>
@@ -44,7 +44,7 @@ sealed class WorkloadView : Component<WorkloadViewProps>
 
     protected override void Render(Ui ui, in WorkloadViewProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         var weight = ui.Theme.Weight(WeightToken.Interface);
         using (ui.Box(direction: Direction.Column, padding: 24))
         {
@@ -106,7 +106,7 @@ sealed class WorkloadView : Component<WorkloadViewProps>
 
 readonly record struct WorkloadFeedProps
 {
-    public ActivityFeed? Feed { get; init; }
+    public required ActivityFeed Feed { get; init; }
 }
 
 sealed class WorkloadFeed : Component<WorkloadFeedProps>
@@ -119,8 +119,7 @@ sealed class WorkloadFeed : Component<WorkloadFeedProps>
     {
         var t = ui.Theme;
         var scroll = ui.ScrollHandle();
-        var bar = ui.Remember(static () => new FeedBar());
-        bar.Handle = scroll;
+        var bar = ui.Remember(scroll, static s => new FeedBar(s));
         var extent = scroll.Extent.Height;
         var viewport = scroll.Viewport.Height;
         using (
@@ -132,7 +131,7 @@ sealed class WorkloadFeed : Component<WorkloadFeedProps>
         )
         {
             ui.VirtualList(
-                items: p.Feed!.Rows,
+                items: p.Feed.Rows,
                 itemKey: FeedRow.ById,
                 row: Line,
                 scroll: scroll,
@@ -157,10 +156,13 @@ sealed class FeedBar
     public const float LineStep = 16f;
 
     public readonly Callback<ScrollbarChange> Moved;
-    public ScrollHandle Handle = null!;
+    public readonly ScrollHandle Handle;
 
-    public FeedBar() =>
+    public FeedBar(ScrollHandle handle)
+    {
+        Handle = handle;
         Moved = Callback<ScrollbarChange>.Of(this, static (b, change) => b.Move(change));
+    }
 
     void Move(ScrollbarChange change)
     {
@@ -181,7 +183,7 @@ sealed class FeedBar
 
 readonly record struct WorkloadFeedLineProps
 {
-    public FeedRow? Entry { get; init; }
+    public required FeedRow Entry { get; init; }
 }
 
 sealed class WorkloadFeedLine : Component<WorkloadFeedLineProps>
@@ -189,13 +191,13 @@ sealed class WorkloadFeedLine : Component<WorkloadFeedLineProps>
     protected override void Render(Ui ui, in WorkloadFeedLineProps p)
     {
         using (ui.Box(padding: new Thickness(4f, 0f, 4f, 0f)))
-            ui.Text(p.Entry!.Text, fontWeight: ui.Theme.Weight(WeightToken.Interface), wrap: true);
+            ui.Text(p.Entry.Text, fontWeight: ui.Theme.Weight(WeightToken.Interface), wrap: true);
     }
 }
 
 readonly record struct WorkloadMeterProps
 {
-    public Meter? Meter { get; init; }
+    public required Meter Meter { get; init; }
 }
 
 sealed class WorkloadMeter : Component<WorkloadMeterProps>
@@ -206,7 +208,7 @@ sealed class WorkloadMeter : Component<WorkloadMeterProps>
         using (ui.Box(direction: Direction.Column, gap: 16))
         {
             ui.Text(
-                p.Meter!.Label,
+                p.Meter.Label,
                 variant: TextVariant.Caption,
                 color: t.Color(ColorToken.FgMuted),
                 fontWeight: t.Weight(WeightToken.Interface)
@@ -218,14 +220,14 @@ sealed class WorkloadMeter : Component<WorkloadMeterProps>
 
 readonly record struct WorkloadStatsLineProps
 {
-    public FrameStats? Stats { get; init; }
+    public required FrameStats Stats { get; init; }
 }
 
 sealed class WorkloadStatsLine : Component<WorkloadStatsLineProps>
 {
     protected override void Render(Ui ui, in WorkloadStatsLineProps p)
     {
-        var s = p.Stats!;
+        var s = p.Stats;
         var t = ui.Theme;
         Span<char> milliseconds = stackalloc char[24];
         ui.Text(

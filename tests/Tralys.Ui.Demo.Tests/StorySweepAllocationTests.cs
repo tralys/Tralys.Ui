@@ -48,7 +48,7 @@ public sealed class StorySweepAllocationTests
         Input input
     )
     {
-        var story = DemoOptions.Find(key)!.Value;
+        var story = await Assert.That(DemoOptions.Find(key)).IsNotNull();
         using var stage = new StoryStage();
         if (input == Input.TouchDensity)
             stage.Context.Density = Density.Touch;
@@ -72,7 +72,7 @@ public sealed class StorySweepAllocationTests
         Input input
     )
     {
-        var story = DemoOptions.Find(key)!.Value;
+        var story = await Assert.That(DemoOptions.Find(key)).IsNotNull();
         using var stage = new StoryStage();
         if (input == Input.TouchDensity)
             stage.Context.Density = Density.Touch;

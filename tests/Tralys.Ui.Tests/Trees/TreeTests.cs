@@ -286,7 +286,8 @@ public sealed class TreeTests
         var t = Themes.Dark;
 
         driver.Hover(staff);
-        var lit = (staff.Visual.Background, staff.Interaction!.Props.Cursor);
+        var staffInteraction = await Assert.That(staff.Interaction).IsNotNull();
+        var lit = (staff.Visual.Background, staffInteraction.Props.Cursor);
         driver.Hover(Arrow(staff));
         var arrow = Glyph(staff);
         driver.Unhover();

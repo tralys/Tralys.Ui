@@ -74,7 +74,8 @@ public sealed class ToggleAllocationTests
         );
 
         await Assert.That(bytes).IsEqualTo(0L);
-        await Assert.That(driver.Focused!.Id).IsEqualTo(Labels[(int)Number(choices.Picked)]);
+        var focused = await Assert.That(driver.Focused).IsNotNull();
+        await Assert.That(focused.Id).IsEqualTo(Labels[(int)Number(choices.Picked)]);
     }
 
     [Test]
@@ -132,7 +133,7 @@ public sealed class ToggleAllocationTests
                 ui.Text("After");
             }
         });
-        var header = ToggleLooks.Tick(driver.Get("tall")).Parent!;
+        var header = await Assert.That(ToggleLooks.Tick(driver.Get("tall")).Parent).IsNotNull();
         var state = new Targets([header]);
 
         var bytes = driver.WorstFrameBytes(

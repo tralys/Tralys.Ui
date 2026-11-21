@@ -61,15 +61,23 @@ public sealed class GeneratorTests
             }
             """;
 
-        var registry = Harness
-            .Load(
-                new StoryRegistryGenerator(),
-                source,
-                buildProperties: new Dictionary<string, string> { ["TralysStoryRoot"] = "/repo/" },
-                path: "/repo/samples/GaugeStories.cs"
+        var registry = await Assert
+            .That(
+                Harness
+                    .Load(
+                        new StoryRegistryGenerator(),
+                        source,
+                        buildProperties: new Dictionary<string, string>
+                        {
+                            ["TralysStoryRoot"] = "/repo/",
+                        },
+                        path: "/repo/samples/GaugeStories.cs"
+                    )
+                    .GetType("StoryRegistry")
             )
-            .GetType("StoryRegistry")!;
-        var story = ((IReadOnlyList<Story>)registry.GetProperty("All")!.GetValue(null)!).Single();
+            .IsNotNull();
+        var all = await Assert.That(registry.GetProperty("All")?.GetValue(null)).IsNotNull();
+        var story = ((IReadOnlyList<Story>)all).Single();
 
         await Assert.That(story.Description).IsEqualTo("A Gauge drawn in two lines.");
         await Assert.That(story.SourcePath).IsEqualTo("samples/GaugeStories.cs");
@@ -121,6 +129,48 @@ public sealed class GeneratorTests
 
         await Assert
             .That(compiled.GetDiagnostics().Where(d => d.Severity == DiagnosticSeverity.Error))
+            .IsEmpty();
+    }
+
+    [Test]
+    public async Task A_caller_with_nullable_disabled_compiles_its_generic_and_reference_props_calls_without_a_warning()
+    {
+        const string source = """
+            using Tralys.Ui;
+
+            namespace Sample;
+
+            public readonly record struct TagProps<TItem>
+            {
+                public TItem Item { get; init; }
+
+                public string Label { get; init; }
+            }
+
+            public sealed partial class Tag<TItem> : Component<TagProps<TItem>>
+            {
+                protected override void Render(Ui ui, in TagProps<TItem> p) { }
+            }
+
+            public sealed class Board : Component<TagProps<string>>
+            {
+                protected override void Render(Ui ui, in TagProps<string> p)
+                {
+                    ui.Tag<string>();
+                    ui.Tag<string>(item: null, label: null);
+                }
+            }
+            """;
+
+        var compiled = Harness.Generate(source, out _, NullableContextOptions.Disable);
+
+        await Assert
+            .That(
+                compiled
+                    .GetDiagnostics()
+                    .Where(d => d.Severity >= DiagnosticSeverity.Warning)
+                    .Select(d => d.ToString())
+            )
             .IsEmpty();
     }
 

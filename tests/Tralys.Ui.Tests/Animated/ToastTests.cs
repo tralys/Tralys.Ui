@@ -132,7 +132,9 @@ public sealed class ToastTests
         Rect Stack()
         {
             driver.Rerender();
-            return Toast(driver, "Saved").Parent!.ViewBounds;
+            if (Toast(driver, "Saved").Parent is not { } stack)
+                throw new InvalidOperationException("The toast sits in no stack.");
+            return stack.ViewBounds;
         }
 
         var topEnd = Stack();

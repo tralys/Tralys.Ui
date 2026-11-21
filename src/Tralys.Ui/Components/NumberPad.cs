@@ -73,7 +73,7 @@ public readonly record struct NumberPadContext(Callback<NumberPadKeyKind> OnKey)
 /// its press through <see cref="NumberPadProps.OnKey"/>; the field does the arithmetic.</summary>
 public sealed class NumberPad : Component<NumberPadProps>
 {
-    public static readonly ContextKey<NumberPadContext> Context = new("NumberPad");
+    public static readonly ContextKey<NumberPadContext> Context = new("NumberPad", default);
 
     const float KeyWidth = 52f;
 

@@ -88,7 +88,11 @@ public sealed partial class UiDriver : IDisposable
                 {
                     var running = test(driver);
                     running.ContinueWith(
-                        static (_, state) => ((Pump)state!).Complete(),
+                        static (_, state) =>
+                        {
+                            if (state is Pump waiting)
+                                waiting.Complete();
+                        },
                         pump,
                         TaskScheduler.Default
                     );

@@ -84,7 +84,8 @@ public sealed class DockAllocationTests
     public async Task A_tab_of_a_torn_out_window_dragged_over_a_root_indicator_allocates_nothing_per_move()
     {
         var (dock, desktop) = DockTearOutTests.TornOut();
-        dock.Manager.DockToGroup(dock["c"], dock["a"].Parent!);
+        var torn = await Assert.That(dock["a"].Parent).IsNotNull();
+        dock.Manager.DockToGroup(dock["c"], torn);
         var window = desktop.Opened[0];
         window.Ui.Settle();
         desktop.CursorPosition = new Vector2(1060f, 400f);

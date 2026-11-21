@@ -54,10 +54,9 @@ public sealed class MenuButton : Component<MenuButtonProps>
     {
         var t = ui.Theme;
         var m = t.Metrics(p.Size ?? ComponentSize.Md);
-        var menu = ui.Remember(static () => new Disclosure());
+        var menu = ui.Remember(ui.State(p.DefaultOpen), static own => new Disclosure(own));
         menu.Open = p.Open;
         menu.OnOpenChange = p.OnOpenChange;
-        menu.Own = ui.State(p.DefaultOpen);
         ui.Effect(menu, ui.IsDisabled, Disclosure.ShutWhenDisabled);
         var open = (p.Open ?? menu.Own.Value) && !ui.IsDisabled;
         var anchor = ui.Ref();
@@ -125,11 +124,12 @@ internal sealed class Disclosure
     internal readonly Handler<PointerEvent> Requested;
     internal bool? Open;
     internal Callback<bool> OnOpenChange;
-    internal State<bool> Own = null!;
+    internal readonly State<bool> Own;
     internal bool Offered;
 
-    public Disclosure()
+    public Disclosure(State<bool> own)
     {
+        Own = own;
         Toggle = Callback.Of(this, static d => d.Set(!d.IsOpen));
         Close = Callback.Of(this, static d => d.Set(false));
         SetOpen = Callback<bool>.Of(this, static (d, open) => d.Set(open));

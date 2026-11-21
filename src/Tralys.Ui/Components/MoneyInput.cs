@@ -57,12 +57,13 @@ public sealed class MoneyInput : Component<MoneyInputProps>
 {
     protected override void Render(Ui ui, in MoneyInputProps p)
     {
-        var model = ui.Remember(static () => new MoneyInputModel());
         var own = ui.Ref();
+        var model = ui.Remember(
+            (Text: own, Field: ui.Ref(), Rewrites: ui.State(0)),
+            static hooks => new MoneyInputModel(hooks.Text, hooks.Field, hooks.Rewrites)
+        );
         model.Host = ui.Self(p);
         model.Text = p.NodeRef ?? own;
-        model.Field = ui.Ref();
-        model.Rewrites = ui.State(0);
         var focused = ui.IsFocusWithin;
         ui.Effect(model, focused, static (m, focused, _) => m.FocusMoved(focused));
         var pad = ui.Density == Density.Touch && !p.ReadOnly;
@@ -100,7 +101,8 @@ public sealed class MoneyInput : Component<MoneyInputProps>
 }
 
 [FramePath]
-internal sealed class MoneyInputModel : NumberFieldModel
+internal sealed class MoneyInputModel(NodeRef text, NodeRef field, State<int> rewrites)
+    : NumberFieldModel(text, field, rewrites)
 {
     internal Host<MoneyInputProps> Host;
     long _settled;

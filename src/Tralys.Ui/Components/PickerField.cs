@@ -54,10 +54,9 @@ public sealed class PickerField : Component<PickerFieldProps>
 {
     protected override void Render(Ui ui, in PickerFieldProps p)
     {
-        var disclosure = ui.Remember(static () => new Disclosure());
+        var disclosure = ui.Remember(ui.State(p.DefaultOpen), static own => new Disclosure(own));
         disclosure.Open = p.Open;
         disclosure.OnOpenChange = p.OnOpenChange;
-        disclosure.Own = ui.State(p.DefaultOpen);
         ui.Effect(disclosure, ui.IsDisabled, Disclosure.ShutWhenDisabled);
         var open = (p.Open ?? disclosure.Own.Value) && !ui.IsDisabled;
         var field = ui.Ref();

@@ -18,7 +18,7 @@ public sealed class LayoutGoldenTests
     [MethodDataSource(nameof(Cases))]
     public async Task The_story_lays_out_as_its_golden_says(string key, Density density)
     {
-        var story = DemoOptions.Find(key)!.Value;
+        var story = await Assert.That(DemoOptions.Find(key)).IsNotNull();
         var layout = StoryCapture.Capture(story, density: density).ToJson();
 
         await Assert.That(Golden.Text(Golden.LayoutPath(story, density), layout)).IsNull();

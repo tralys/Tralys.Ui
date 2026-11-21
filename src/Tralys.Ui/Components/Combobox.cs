@@ -64,7 +64,7 @@ public readonly record struct ComboboxItemProps
 /// <summary>A <see cref="Combobox{TItem}"/>'s context key and parts.</summary>
 public static partial class Combobox
 {
-    public static readonly ContextKey<ComboboxContext> Context = new("Combobox");
+    public static readonly ContextKey<ComboboxContext> Context = new("Combobox", default);
 
     /// <summary>A row of a combobox's popup in the shared row look: lit while highlighted, selected while it holds the
     /// value. A pointer moving over it highlights it, and a click on it picks it, leaving the focus in the combobox's
@@ -146,13 +146,23 @@ public sealed partial class Combobox<TItem> : Component<ComboboxProps<TItem>>
         var t = ui.Theme;
         var size = p.Size ?? ComponentSize.Md;
         var m = t.Metrics(size);
-        var model = ui.Remember(static () => new ComboboxModel<TItem>());
+        var model = ui.Remember(
+            (
+                OpenState: ui.State(p.DefaultOpen),
+                Filtering: ui.State(false),
+                Active: ui.State<UiKey>(default),
+                Scroll: ui.ScrollHandle(),
+                Text: ui.Ref()
+            ),
+            static hooks => new ComboboxModel<TItem>(
+                hooks.OpenState,
+                hooks.Filtering,
+                hooks.Active,
+                hooks.Scroll,
+                hooks.Text
+            )
+        );
         model.Host = ui.Self(p);
-        model.OpenState = ui.State(p.DefaultOpen);
-        model.Filtering = ui.State(false);
-        model.Active = ui.State<UiKey>(default);
-        model.Scroll = ui.ScrollHandle();
-        model.Text = ui.Ref();
         model.Shown.Bind(items, itemText);
         var field = ui.Ref();
 
@@ -259,11 +269,11 @@ public sealed partial class Combobox<TItem> : Component<ComboboxProps<TItem>>
 
 internal readonly record struct ComboboxPopupProps<TItem>
 {
-    public ComboboxModel<TItem>? Model { get; init; }
+    public required ComboboxModel<TItem> Model { get; init; }
 
     public Slot<TItem> Item { get; init; }
 
-    public KeyOf<TItem>? ItemKey { get; init; }
+    public required KeyOf<TItem> ItemKey { get; init; }
 
     public ComponentSize Size { get; init; }
 
@@ -278,7 +288,7 @@ internal sealed partial class ComboboxPopup<TItem> : Component<ComboboxPopupProp
 {
     protected override void Render(Ui ui, in ComboboxPopupProps<TItem> p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         using (
             ui.Box(
                 direction: Direction.Column,
@@ -296,7 +306,7 @@ internal sealed partial class ComboboxPopup<TItem> : Component<ComboboxPopupProp
                 {
                     ui.VirtualList(
                         items: model.Shown,
-                        itemKey: p.ItemKey!,
+                        itemKey: p.ItemKey,
                         row: p.Item,
                         rowHeight: p.RowHeight,
                         fixedRowHeight: true,
@@ -331,17 +341,28 @@ internal sealed class ComboboxModel<TItem> : IDisposable
     internal readonly Handler<PointerEvent> PressField;
     internal readonly Slot<TItem> DefaultRow;
     internal Host<ComboboxProps<TItem>> Host;
-    internal State<bool> OpenState = null!;
-    internal State<bool> Filtering = null!;
-    internal State<UiKey> Active = null!;
-    internal ScrollHandle Scroll = null!;
-    internal NodeRef Text = null!;
+    internal readonly State<bool> OpenState;
+    internal readonly State<bool> Filtering;
+    internal readonly State<UiKey> Active;
+    internal readonly ScrollHandle Scroll;
+    internal readonly NodeRef Text;
     internal readonly ObservableText Search = new();
     int _selected = -1;
     int _lit = -1;
 
-    public ComboboxModel()
+    public ComboboxModel(
+        State<bool> openState,
+        State<bool> filtering,
+        State<UiKey> active,
+        ScrollHandle scroll,
+        NodeRef text
+    )
     {
+        OpenState = openState;
+        Filtering = filtering;
+        Active = active;
+        Scroll = scroll;
+        Text = text;
         Select = Callback<UiKey>.Of(this, static (m, key) => m.Pick(key, close: true));
         Activate = Callback<UiKey>.Of(this, static (m, key) => m.Light(key));
         Typed = Callback.Of(this, static m => m.Type());
@@ -352,7 +373,11 @@ internal sealed class ComboboxModel<TItem> : IDisposable
         DefaultRow = Slot<TItem>.Of(
             this,
             static (ui, m, item, _) =>
-                ui.ComboboxItem(value: m.Props.ItemKey!(item), text: m.Props.ItemText!(item))
+            {
+                ref readonly var p = ref m.Props;
+                if (p.ItemKey is { } itemKey && p.ItemText is { } itemText)
+                    ui.ComboboxItem(value: itemKey(item), text: itemText(item));
+            }
         );
     }
 
@@ -363,17 +388,21 @@ internal sealed class ComboboxModel<TItem> : IDisposable
     internal TextValue SelectedText()
     {
         ref readonly var p = ref Props;
-        if (!p.Value.IsKeyed || p.Items is not { } items)
+        if (
+            !p.Value.IsKeyed
+            || p.Items is not { } items
+            || p.ItemKey is not { } key
+            || p.ItemText is not { } text
+        )
             return default;
-        var key = p.ItemKey!;
         if (_selected >= 0 && _selected < items.Count && key(items.ItemAt(_selected)) == p.Value)
-            return p.ItemText!(items.ItemAt(_selected));
+            return text(items.ItemAt(_selected));
         for (var i = 0; i < items.Count; i++)
         {
             if (key(items.ItemAt(i)) != p.Value)
                 continue;
             _selected = i;
-            return p.ItemText!(items.ItemAt(i));
+            return text(items.ItemAt(i));
         }
         _selected = -1;
         return default;
@@ -439,7 +468,7 @@ internal sealed class ComboboxModel<TItem> : IDisposable
     {
         Filtering.Value = false;
         Shown.Match("");
-        var at = Shown.IndexOfKey(Props.Value, Props.ItemKey!);
+        var at = Props.ItemKey is { } itemKey ? Shown.IndexOfKey(Props.Value, itemKey) : -1;
         LightAt(
             at >= 0 ? at
             : down ? 0
@@ -466,7 +495,8 @@ internal sealed class ComboboxModel<TItem> : IDisposable
     void LightAt(int index)
     {
         _lit = index;
-        Active.Value = index >= 0 ? Props.ItemKey!(Shown.ItemAt(index)) : default;
+        Active.Value =
+            index >= 0 && Props.ItemKey is { } itemKey ? itemKey(Shown.ItemAt(index)) : default;
         if (index >= 0)
             Scroll.ScrollToIndex(index);
     }
@@ -474,9 +504,8 @@ internal sealed class ComboboxModel<TItem> : IDisposable
     int LitIndex()
     {
         var key = Active.Peek;
-        if (!key.IsKeyed)
+        if (!key.IsKeyed || Props.ItemKey is not { } itemKey)
             return -1;
-        var itemKey = Props.ItemKey!;
         if (_lit >= 0 && _lit < Shown.Count && itemKey(Shown.ItemAt(_lit)) == key)
             return _lit;
         return _lit = Shown.IndexOfKey(key, itemKey);
@@ -550,9 +579,15 @@ internal sealed class TextMatches<TItem>
         }
     }
 
-    public object? this[int index] => _source![_map[index]];
+    public object? this[int index] =>
+        _source is { } source
+            ? source[_map[index]]
+            : throw new ArgumentOutOfRangeException(nameof(index));
 
-    public TItem ItemAt(int index) => _source!.ItemAt(_map[index]);
+    public TItem ItemAt(int index) =>
+        _source is { } source
+            ? source.ItemAt(_map[index])
+            : throw new ArgumentOutOfRangeException(nameof(index));
 
     public int IndexOf(object? item)
     {
@@ -604,22 +639,27 @@ internal sealed class TextMatches<TItem>
     void Refilter()
     {
         var source = _source;
+        var text = _text;
         var count = source?.Count ?? 0;
         if (_map.Length < count)
             _map = new int[Math.Max(count, _map.Length * 2)];
         var shown = 0;
         var query = _query.AsSpan(0, _queryLength);
-        for (var i = 0; i < count; i++)
+        if (source is not null)
         {
-            var item = source!.ItemAt(i);
-            if (
-                item is not null
-                && (
-                    query.IsEmpty
-                    || _text!(item).Span.Contains(query, StringComparison.OrdinalIgnoreCase)
+            for (var i = 0; i < count; i++)
+            {
+                var item = source.ItemAt(i);
+                if (
+                    item is not null
+                    && (
+                        query.IsEmpty
+                        || text is not null
+                            && text(item).Span.Contains(query, StringComparison.OrdinalIgnoreCase)
+                    )
                 )
-            )
-                _map[shown++] = i;
+                    _map[shown++] = i;
+            }
         }
         _count = shown;
         _listeners.Raise(this, ItemsChange.Reset);

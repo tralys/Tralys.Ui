@@ -62,13 +62,13 @@ public sealed class InputFieldTests
         var x = text.X - root.X + 30;
 
         driver.Click(input, new Vector2(x, text.Y - root.Y + 4));
-        var first = driver.TextInput!.Value.Area;
+        var first = (await Assert.That(driver.TextInput).IsNotNull()).Area;
         driver.Click(input, new Vector2(x, 3));
-        var above = driver.TextInput!.Value.Area;
+        var above = (await Assert.That(driver.TextInput).IsNotNull()).Area;
         driver.Click(input, new Vector2(x, text.Bottom - root.Y - 4));
-        var last = driver.TextInput!.Value.Area;
+        var last = (await Assert.That(driver.TextInput).IsNotNull()).Area;
         driver.Click(input, new Vector2(x, root.Height - 3));
-        var below = driver.TextInput!.Value.Area;
+        var below = (await Assert.That(driver.TextInput).IsNotNull()).Area;
 
         await Assert.That(above).IsEqualTo(first);
         await Assert.That(below).IsEqualTo(last);

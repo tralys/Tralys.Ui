@@ -426,7 +426,18 @@ public sealed class NumberInputTests
 
 internal sealed class NumberOwner
 {
-    public State<double> Value = null!;
+    State<double>? _value;
+
+    public State<double> Value
+    {
+        get
+        {
+            if (_value is not { } value)
+                throw new InvalidOperationException("The owner has not rendered yet.");
+            return value;
+        }
+    }
+
     public readonly List<double> Reports = [];
     public readonly List<double> Submits = [];
     public NumberMode Mode;
@@ -458,7 +469,7 @@ internal sealed class NumberOwner
         UiDriver.Render(
             ui =>
             {
-                Value = ui.State(start);
+                _value = ui.State(start);
                 using (
                     ui.Box(
                         direction: Direction.Column,
@@ -484,6 +495,10 @@ internal static class Numbers
     public static string Shown(UiDriver driver, string id = "field") =>
         Text(driver, id).Text.ToString();
 
-    public static int Caret(UiDriver driver, string id = "field") =>
-        ((EditorPayload)Text(driver, id).Payload!).Selection.Caret;
+    public static int Caret(UiDriver driver, string id = "field")
+    {
+        if (Text(driver, id).Payload is not EditorPayload editor)
+            throw new InvalidOperationException("The field holds no editor.");
+        return editor.Selection.Caret;
+    }
 }

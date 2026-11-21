@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Tralys.Ui.Theming;
 
 namespace Tralys.Ui.Components;
@@ -70,9 +71,11 @@ public sealed partial class GroupedList<TGroup, TItem> : Component<GroupedListPr
         var groupKey = p.GroupKey ?? throw Missing(nameof(p.GroupKey));
         var groupItems = p.GroupItems ?? throw Missing(nameof(p.GroupItems));
         var itemKey = p.ItemKey ?? throw Missing(nameof(p.ItemKey));
-        var model = ui.Remember(static () => new GroupedListModel<TGroup, TItem>());
+        var model = ui.Remember(
+            ui.State(-1L),
+            static picked => new GroupedListModel<TGroup, TItem>(picked)
+        );
         model.Host = ui.Self(p);
-        model.Picked = ui.State(-1L);
         var folds = p.CollapsedGroups ?? model.OwnFolds;
         var rows = model.Rows;
         rows.Bind(ui.Builder.View, groups, groupKey, groupItems, itemKey, folds, folds.Version);
@@ -139,7 +142,8 @@ internal readonly record struct GroupedRowsContext<TGroup, TItem>(
 internal sealed class GroupedListModel<TGroup, TItem> : IDisposable
 {
     internal static readonly ContextKey<GroupedRowsContext<TGroup, TItem>> Context = new(
-        "GroupedList"
+        "GroupedList",
+        default
     );
 
     internal readonly GroupedRows<TGroup, TItem> Rows = new();
@@ -151,11 +155,12 @@ internal sealed class GroupedListModel<TGroup, TItem> : IDisposable
     internal readonly Callback<SelectionChange> Pick;
     internal readonly Callback<UiKey> Activate;
     internal Host<GroupedListProps<TGroup, TItem>> Host;
-    internal State<long> Picked = null!;
+    internal readonly State<long> Picked;
     internal UiKey Revealed;
 
-    public GroupedListModel()
+    public GroupedListModel(State<long> picked)
     {
+        Picked = picked;
         _one = new SelectedRow<TGroup, TItem>(Rows);
         _other = new SelectedRow<TGroup, TItem>(Rows);
         _shown = _one;
@@ -164,10 +169,10 @@ internal sealed class GroupedListModel<TGroup, TItem> : IDisposable
             static (ui, m, entry, _) =>
             {
                 // A row the list has yet to rebind, as one a closed collapsible holds, can outlive its entry.
-                if (entry.Released)
+                if (!entry.HasGroup)
                     return;
                 var c = ui.Use(Context);
-                if (entry.IsHeader)
+                if (!entry.HasItem)
                 {
                     using (
                         ui.ListBoxRow(
@@ -301,8 +306,14 @@ internal sealed class GroupedEntry<TGroup, TItem>
     internal bool Released;
     internal UiKey GroupKey;
     internal UiKey ItemKey;
-    internal TGroup Group = default!;
-    internal TItem Item = default!;
+    internal TGroup? Group;
+    internal TItem? Item;
+
+    [MemberNotNullWhen(true, nameof(Group))]
+    internal bool HasGroup => !Released;
+
+    [MemberNotNullWhen(true, nameof(Group), nameof(Item))]
+    internal bool HasItem => !Released && !IsHeader;
 }
 
 /// <summary>The rows of a grouped list, flattened: each group's header, then its items while it is open. One entry per
@@ -432,9 +443,14 @@ internal sealed class GroupedRows<TGroup, TItem>
 
     void Rebuild()
     {
-        var groups = _groups!;
-        var groupKey = _groupKey!;
-        var itemKey = _itemKey!;
+        if (
+            _groups is not { } groups
+            || _groupKey is not { } groupKey
+            || _groupItems is not { } groupItems
+            || _itemKey is not { } itemKey
+            || _folds is not { } folds
+        )
+            return;
         _stamp++;
         _rows.Clear();
         _holding.Clear();
@@ -442,11 +458,11 @@ internal sealed class GroupedRows<TGroup, TItem>
         {
             var group = groups.ItemAt(g);
             var key = groupKey(group);
-            var open = !_folds!.Contains(key);
-            var header = Entry(key, default, header: true, group, default!, shown: true);
+            var open = !folds.Contains(key);
+            var header = Entry(key, default, header: true, group, default, shown: true);
             header.Open = open;
             _rows.Add(header);
-            if (_groupItems!(group) is not { } items)
+            if (groupItems(group) is not { } items)
                 continue;
             if (!_holding.Contains(items))
                 _holding.Add(items);
@@ -488,7 +504,7 @@ internal sealed class GroupedRows<TGroup, TItem>
         UiKey key,
         bool header,
         TGroup owner,
-        TItem item,
+        TItem? item,
         bool shown
     )
     {
@@ -525,8 +541,8 @@ internal sealed class GroupedRows<TGroup, TItem>
         while (_dropped.TryPeek(out var dropped) && Settled(dropped.DroppedAt))
         {
             _dropped.Dequeue();
-            dropped.Entry.Group = default!;
-            dropped.Entry.Item = default!;
+            dropped.Entry.Group = default;
+            dropped.Entry.Item = default;
             dropped.Entry.Released = true;
             _free.Push(dropped.Entry);
         }

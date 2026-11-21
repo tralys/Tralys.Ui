@@ -179,8 +179,12 @@ public struct Dependencies
 
     public readonly IUiDispatcher? Dispatcher => _dispatcher;
 
+    readonly Entry[] Entries => _entries ?? [];
+
+    readonly Entry[] Next => _next ?? [];
+
     /// <summary>The source of the link at <paramref name="index"/>, from 0 below <see cref="Count"/>.</summary>
-    public readonly IObservable SourceAt(int index) => Link(index).Source!;
+    public readonly IObservable SourceAt(int index) => Link(index).Source;
 
     /// <summary>The properties the observer read of <see cref="SourceAt"/>'s source, a bit each; bit 63 stands for
     /// 63 and up.</summary>
@@ -190,17 +194,18 @@ public struct Dependencies
     {
         ArgumentOutOfRangeException.ThrowIfNegative(index);
         ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(index, _count);
-        return ref _entries![index];
+        return ref Entries[index];
     }
 
     /// <summary>Unlinks the observer from every source.</summary>
     public void Clear()
     {
+        var entries = Entries;
         for (var i = 0; i < _count; i++)
         {
-            ref var entry = ref _entries![i];
+            ref var entry = ref entries[i];
             if (entry.Slot >= 0)
-                entry.Source!.Observers.Remove(entry.Slot);
+                entry.Source.Observers.Remove(entry.Slot);
             entry = default;
         }
         _count = 0;
@@ -220,12 +225,12 @@ public struct Dependencies
         ref var observers = ref source.Observers;
         if (observers.StampedBy(self, _epoch, out var at) && at < _nextCount)
         {
-            _next![at].Mask |= bit;
+            Next[at].Mask |= bit;
             return;
         }
 
         Grow(ref _next, _nextCount + 1, _nextCount);
-        _next![_nextCount] = new Entry(source, bit, -1);
+        _next[_nextCount] = new Entry(source, bit, -1);
         observers.Stamp(self, _epoch, _nextCount);
         _nextCount++;
     }
@@ -234,17 +239,18 @@ public struct Dependencies
     {
         _epoch++;
         var written = 0;
+        var next = Next;
         for (var read = 0; read < _nextCount; read++)
         {
-            var entry = _next![read];
-            ref var observers = ref entry.Source!.Observers;
+            var entry = next[read];
+            ref var observers = ref entry.Source.Observers;
             if (observers.StampedBy(self, _epoch, out var at))
             {
-                _next[at].Mask |= entry.Mask;
+                next[at].Mask |= entry.Mask;
                 continue;
             }
             observers.Stamp(self, _epoch, written);
-            _next[written++] = entry with { Slot = -1 };
+            next[written++] = entry with { Slot = -1 };
         }
         if (_next is not null)
             Array.Clear(_next, written, _nextCount - written);
@@ -258,16 +264,17 @@ public struct Dependencies
 
         for (var i = 0; i < _count; i++)
         {
-            var old = _entries![i];
-            ref var observers = ref old.Source!.Observers;
+            var old = Entries[i];
+            ref var observers = ref old.Source.Observers;
             if (observers.StampedBy(self, _epoch, out var at))
             {
+                ref var kept = ref Next[at];
                 if (keepDropped)
-                    _next![at].Mask |= old.Mask;
+                    kept.Mask |= old.Mask;
                 if (old.Slot >= 0)
                 {
-                    _next![at].Slot = old.Slot;
-                    observers.Update(old.Slot, _next[at].Mask, at);
+                    kept.Slot = old.Slot;
+                    observers.Update(old.Slot, kept.Mask, at);
                 }
             }
             else if (keepDropped)
@@ -275,7 +282,7 @@ public struct Dependencies
                 if (old.Slot >= 0)
                 {
                     Grow(ref _next, _nextCount + 1, _nextCount);
-                    _next![_nextCount] = old;
+                    _next[_nextCount] = old;
                     observers.Update(old.Slot, old.Mask, _nextCount);
                     _nextCount++;
                 }
@@ -286,9 +293,9 @@ public struct Dependencies
 
         for (var i = 0; i < _nextCount; i++)
         {
-            ref var entry = ref _next![i];
+            ref var entry = ref Next[i];
             if (entry.Slot < 0)
-                entry.Slot = entry.Source!.Observers.Add(self, _dispatcher, entry.Mask, i);
+                entry.Slot = entry.Source.Observers.Add(self, _dispatcher, entry.Mask, i);
         }
 
         var dropped = _count;
@@ -308,15 +315,15 @@ public struct Dependencies
             return false;
         for (var i = 0; i < _count; i++)
         {
-            ref readonly var old = ref _entries![i];
-            ref readonly var now = ref _next![i];
+            ref readonly var old = ref Entries[i];
+            ref readonly var now = ref Next[i];
             if (old.Slot < 0 || !ReferenceEquals(old.Source, now.Source) || old.Mask != now.Mask)
                 return false;
         }
         return true;
     }
 
-    internal readonly void SetSlot(int entry, int slot) => _entries![entry].Slot = slot;
+    internal readonly void SetSlot(int entry, int slot) => Entries[entry].Slot = slot;
 
     void ClearNext()
     {
@@ -325,7 +332,7 @@ public struct Dependencies
         _nextCount = 0;
     }
 
-    static void Grow(ref Entry[]? array, int needed, int count)
+    static void Grow([NotNull] ref Entry[]? array, int needed, int count)
     {
         if (array is not null && array.Length >= needed)
             return;
@@ -346,7 +353,7 @@ public struct Dependencies
         array = null;
     }
 
-    internal record struct Entry(IObservable? Source, ulong Mask, int Slot);
+    internal record struct Entry(IObservable Source, ulong Mask, int Slot);
 }
 
 /// <summary>A source's links to the observers that read it: each with the bits it read and the thread it runs on. A
@@ -473,7 +480,7 @@ public struct ObserverSet
     }
 
     [UnscopedRef]
-    ref Link At(int slot) => ref slot == 0 ? ref _head : ref _links![slot - 1];
+    ref Link At(int slot) => ref slot == 0 ? ref _head : ref (_links ?? [])[slot - 1];
 
     internal readonly bool StampedBy(IChangeObserver observer, int epoch, out int index)
     {
@@ -525,7 +532,7 @@ public struct ObserverSet
         {
             var moved = At(last);
             At(slot) = moved;
-            moved.Observer!.Dependencies.SetSlot(moved.Entry, slot);
+            moved.Observer?.Dependencies.SetSlot(moved.Entry, slot);
         }
         At(last) = default;
         Volatile.Write(ref _count, last);

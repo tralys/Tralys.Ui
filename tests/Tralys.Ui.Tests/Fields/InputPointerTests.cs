@@ -93,9 +93,9 @@ public sealed class InputPointerTests
         var hello = new ObservableText("hello world");
         using var driver = UiDriver.Render(ui => ui.Input(text: hello, width: width));
         driver.CaretAt(4);
-        var before = driver.TextInput!.Value.Area.X;
+        var before = (await Assert.That(driver.TextInput).IsNotNull()).Area.X;
         driver.Press(Key.Right);
-        var after = driver.TextInput!.Value.Area.X;
+        var after = (await Assert.That(driver.TextInput).IsNotNull()).Area.X;
         var root = driver.RootOf().ViewBounds;
 
         width = 2f * (before + (after - before) * 0.75f - root.X);
@@ -151,7 +151,8 @@ public sealed class InputPointerTests
         driver.Drag(driver.TextOf(), new Vector2(-60f, -30f), PointerKind.Touch);
 
         var selection = driver.Selection();
-        await Assert.That(scroll.Value!.Offset).IsEqualTo(Vector2.Zero);
+        var handle = await Assert.That(scroll.Value).IsNotNull();
+        await Assert.That(handle.Offset).IsEqualTo(Vector2.Zero);
         await Assert.That(selection.Caret).IsNotEqualTo(selection.Anchor);
     }
 }

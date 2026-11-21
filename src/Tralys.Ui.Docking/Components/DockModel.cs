@@ -119,12 +119,12 @@ internal sealed class DockModel : IDockDragSink, IDisposable
     internal readonly Callback<float> EdgeCommit;
     readonly Dictionary<FloatingWindow, TornOut> _tornOut = [];
     readonly EventHandler<FloatingWindowEventArgs> _onFloatRemoved;
+    internal readonly NodeRef Root;
+    internal readonly NodeRef Regions;
+    internal readonly NodeRef Center;
+    internal readonly State<int> Sizing;
+    internal readonly State<int> Torn;
     internal Host<DockProps> Host;
-    internal NodeRef Root = null!;
-    internal NodeRef Regions = null!;
-    internal NodeRef Center = null!;
-    internal State<int> Sizing = null!;
-    internal State<int> Torn = null!;
     internal State<DockLook>? Look;
     internal UiView? View;
     DockManager? _attached;
@@ -141,8 +141,19 @@ internal sealed class DockModel : IDockDragSink, IDisposable
     bool _dragging;
     bool _leftWindow;
 
-    public DockModel()
+    public DockModel(
+        NodeRef root,
+        NodeRef regions,
+        NodeRef center,
+        State<int> sizing,
+        State<int> torn
+    )
     {
+        Root = root;
+        Regions = regions;
+        Center = center;
+        Sizing = sizing;
+        Torn = torn;
         for (var i = 0; i < EdgeChange.Length; i++)
             EdgeChange[i] = Callback<float>.Of(
                 this,
@@ -547,7 +558,8 @@ internal sealed class DockModel : IDockDragSink, IDisposable
         if (Manager is not { } manager)
             return;
 
-        DockElement[] tabs = byTitle ? [.. element.Parent!.Elements] : [element];
+        DockElement[] tabs =
+            byTitle && element.Parent is { } group ? [.. group.Elements] : [element];
         var first = tabs[0];
         int? gap = null;
 
@@ -593,9 +605,11 @@ internal sealed class DockModel : IDockDragSink, IDisposable
             return;
         }
 
-        var landed = first.Parent!;
-        for (var i = 1; i < tabs.Length; i++)
-            manager.DockToGroup(tabs[i], landed, gap + i);
+        if (first.Parent is { } landed)
+        {
+            for (var i = 1; i < tabs.Length; i++)
+                manager.DockToGroup(tabs[i], landed, gap + i);
+        }
         element.Activate();
     }
 
@@ -654,9 +668,8 @@ internal sealed class DockModel : IDockDragSink, IDisposable
         Untear(window);
     }
 
-    Vector2 MainLocal(Vector2 desktop)
+    Vector2 MainLocal(IDockWindowHost host, Vector2 desktop)
     {
-        var host = Host.Props.WindowHost!;
         var bounds = host.MainWindowBounds;
         var viewPoint =
             (desktop - new Vector2(bounds.X, bounds.Y))
@@ -690,7 +703,7 @@ internal sealed class DockModel : IDockDragSink, IDisposable
         if (byTitle)
             source.MoveTo(cursor, host.MainWindowDensity);
         if (!overStrip && host.MainWindowBounds.Contains(cursor))
-            UpdateTargets(MainLocal(cursor));
+            UpdateTargets(MainLocal(host, cursor));
         else
             ClearTargets();
         Publish();
@@ -716,7 +729,7 @@ internal sealed class DockModel : IDockDragSink, IDisposable
 
         var cursor = host.CursorPosition;
         if (host.MainWindowBounds.Contains(cursor))
-            DropOn(byTitle, element, MainLocal(cursor));
+            DropOn(byTitle, element, MainLocal(host, cursor));
         else
             TearOut(byTitle, element, cursor);
     }

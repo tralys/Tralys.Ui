@@ -14,15 +14,18 @@ internal readonly record struct DockTabGroupContext(TabGroupEntry? Entry);
 /// and its tabs reorder, move to another strip, or drag out to dock elsewhere.</summary>
 internal sealed class DockTabGroup : Component<DockTabGroupProps>
 {
-    internal static readonly ContextKey<DockTabGroupContext> Context = new("DockTabGroup");
+    internal static readonly ContextKey<DockTabGroupContext> Context = new("DockTabGroup", default);
 
     protected override void Render(Ui ui, in DockTabGroupProps p)
     {
         var c = ui.Use(Dock.Context);
-        var entry = ui.Remember(c.Dock, static dock => new TabGroupEntry(dock));
+        var groupRef = ui.Ref();
+        var entry = ui.Remember(
+            (c.Dock, groupRef),
+            static d => new TabGroupEntry(d.Dock, d.groupRef)
+        );
         entry.Group = p.Group;
         entry.Sink = c.Sink;
-        entry.Ref = ui.Ref();
         ui.Provide(Context, new DockTabGroupContext(entry));
         if (p.Group is not { } group)
             return;
@@ -191,16 +194,17 @@ internal sealed class TabGroupEntry : IDisposable
     internal readonly Callback<TabTearOff> TearOff;
     internal readonly Callback<TabDrag> Drag;
     internal readonly Callback<UiKey> DragEnd;
+    internal readonly NodeRef Ref;
     readonly DockModel? _dock;
     internal DockGroup? Group;
     internal IDockDragSink? Sink;
-    internal NodeRef Ref = null!;
     internal DockElement? Pressed;
     bool _dragging;
 
-    public TabGroupEntry(DockModel? dock)
+    public TabGroupEntry(DockModel? dock, NodeRef groupRef)
     {
         _dock = dock;
+        Ref = groupRef;
         dock?.Groups.Add(this);
         Select = Callback<UiKey>.Of(this, static (g, key) => g.Selected(key));
         Press = Handler<PointerEvent>.Of(this, static (g, ref e) => g.Pressing());

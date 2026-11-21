@@ -134,13 +134,13 @@ sealed class DrawTrace(Action<object?, string> line)
                     .Paint(command.Fill);
                 break;
             case RenderOp.Image:
-                Start("image").Box(command.Rect).Texels(command.Source, command.Texture!);
+                Start("image").Box(command.Rect).Texels(command.Source, command.DrawnTexture);
                 Faded(command.Opacity);
                 break;
             case RenderOp.NineSlice:
                 Start("nine-slice")
                     .Box(command.Rect)
-                    .Texels(command.Source, command.Texture!)
+                    .Texels(command.Source, command.DrawnTexture)
                     .Word("slice")
                     .Edges(command.Border)
                     .Word("scale")
@@ -285,26 +285,25 @@ sealed class DrawTrace(Action<object?, string> line)
 
     DrawTrace Paint(in Paint paint)
     {
-        switch (paint.Kind)
+        switch (paint)
         {
-            case PaintKind.None:
+            case { Kind: PaintKind.None }:
                 Word("none");
                 break;
-            case PaintKind.Solid:
+            case { Kind: PaintKind.Solid }:
                 Color(paint.Color);
                 break;
-            case PaintKind.LinearGradient or PaintKind.RadialGradient:
+            case { Kind: PaintKind.LinearGradient or PaintKind.RadialGradient, Stops: { } stops }:
                 Word(paint.Kind == PaintKind.LinearGradient ? "linear" : "radial")
                     .Point(paint.Start.X, paint.Start.Y)
                     .Number(paint.End.X)
                     .Comma(paint.End.Y);
                 if (paint.Space == GradientSpace.Absolute)
                     Word("absolute");
-                foreach (var stop in paint.Stops!.Stops)
+                foreach (var stop in stops.Stops)
                     Number(stop.Offset).Color(stop.Color);
                 break;
-            case PaintKind.Image:
-                var image = paint.Image!;
+            case { Kind: PaintKind.Image, Image: { } image }:
                 Word("image");
                 _text.Append(' ').Append(image.Source.ToString());
                 Word("viewbox").Box(image.Viewbox);

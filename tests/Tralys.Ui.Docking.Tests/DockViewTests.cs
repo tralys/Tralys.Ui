@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Tralys.Ui.Components;
 using Tralys.Ui.Mvvm;
 using Tralys.Ui.Testing;
+using TUnit.Assertions.Enums;
 
 namespace Tralys.Ui.Docking.Tests;
 
@@ -67,7 +68,7 @@ public sealed class DockViewTests
         var mouse = dock.Ui.Hold(dock.Handles(nested: false)[0]);
         mouse.MoveBy(new Vector2(88f, 0f));
 
-        manager.Dock(manager.GetElement("c")!, DockPosition.Center);
+        manager.Dock(manager.Element("c"), DockPosition.Center);
         dock.Ui.Settle();
 
         await Assert.That(dock.WidthOf(dock["a"])).IsEqualTo(500f);
@@ -105,7 +106,9 @@ public sealed class DockViewTests
         await Assert
             .That(stops)
             .IsEquivalentTo(
-                new Node?[] { dock.Tab("t"), handles[0], dock.Tab("l"), handles[1], dock.Tab("c") }
+                new Node?[] { dock.Tab("t"), handles[0], dock.Tab("l"), handles[1], dock.Tab("c") },
+                ReferenceEqualityComparer.Instance,
+                CollectionOrdering.Matching
             );
     }
 
@@ -176,7 +179,7 @@ public sealed class DockViewTests
             node => node.Kind == NodeKind.Text && node.Text.SequenceEqual("Nothing open")
         );
 
-        manager.Dock(manager.GetElement("c")!, DockPosition.Center);
+        manager.Dock(manager.Element("c"), DockPosition.Center);
         ui.Settle();
 
         await Assert.That(empty).IsTrue();
@@ -214,7 +217,7 @@ public sealed class DockViewTests
     public async Task An_unmounted_dock_leaves_nothing_of_it_on_its_manager()
     {
         var manager = DockView.Docked(("a", DockPosition.Left), ("c", DockPosition.Center));
-        var window = manager.Float(manager.GetElement("a")!);
+        var window = manager.Float(manager.Element("a"));
         var dock = new DockView(manager);
 
         dock.Mounted = false;
@@ -225,21 +228,20 @@ public sealed class DockViewTests
             window,
             window.Group,
             manager.CenterGroup,
-            manager.GetElement("a")!,
-            manager.GetElement("c")!,
+            manager.Element("a"),
+            manager.Element("c"),
         ];
 
         await Assert.That(sources.Sum(source => source.Observers.Count)).IsEqualTo(0);
-        await Assert
+        var removed = await Assert
             .That(
-                typeof(DockManager)
-                    .GetField(
-                        nameof(DockManager.FloatingWindowRemoved),
-                        BindingFlags.NonPublic | BindingFlags.Instance
-                    )!
-                    .GetValue(manager)
+                typeof(DockManager).GetField(
+                    nameof(DockManager.FloatingWindowRemoved),
+                    BindingFlags.NonPublic | BindingFlags.Instance
+                )
             )
-            .IsNull();
+            .IsNotNull();
+        await Assert.That(removed.GetValue(manager)).IsNull();
     }
 
     sealed class Reader : IChangeObserver
@@ -279,7 +281,7 @@ public sealed class DockViewTests
     public async Task A_float_made_before_the_docks_first_layout_shows()
     {
         var manager = DockView.Docked(("a", DockPosition.Left), ("c", DockPosition.Center));
-        manager.Float(manager.GetElement("a")!, 100f, 100f, 300f, 200f);
+        manager.Float(manager.Element("a"), 100f, 100f, 300f, 200f);
 
         var dock = new DockView(manager);
 
@@ -290,11 +292,14 @@ public sealed class DockViewTests
     public async Task Setting_a_splits_proportions_resizes_its_halves_in_the_dock()
     {
         var dock = new DockView(("c", DockPosition.Center), ("d", DockPosition.Center));
-        dock.Manager.DockBySplit(dock["d"], dock["c"].Parent!, DockDirection.Right);
+        var centre = await Assert.That(dock["c"].Parent).IsNotNull();
+        dock.Manager.DockBySplit(dock["d"], centre, DockDirection.Right);
         dock.Ui.Settle();
+        var left = await Assert.That(dock["c"].Parent).IsNotNull();
+        var right = await Assert.That(dock["d"].Parent).IsNotNull();
 
-        dock["c"].Parent!.SizeProportion = 0.8f;
-        dock["d"].Parent!.SizeProportion = 0.2f;
+        left.SizeProportion = 0.8f;
+        right.SizeProportion = 0.2f;
         dock.Ui.Settle();
 
         await Assert.That(dock.WidthOf(dock["c"])).IsGreaterThan(3f * dock.WidthOf(dock["d"]));
@@ -304,7 +309,8 @@ public sealed class DockViewTests
     public async Task A_group_split_to_the_bottom_stacks_its_halves_and_its_handle_trades_their_heights()
     {
         var dock = new DockView(("c", DockPosition.Center), ("d", DockPosition.Center));
-        dock.Manager.DockBySplit(dock["d"], dock["c"].Parent!, DockDirection.Bottom);
+        var centre = await Assert.That(dock["c"].Parent).IsNotNull();
+        dock.Manager.DockBySplit(dock["d"], centre, DockDirection.Bottom);
         dock.Ui.Settle();
         var c = dock.Tab("c").ViewBounds;
         var d = dock.Tab("d").ViewBounds;
@@ -313,15 +319,15 @@ public sealed class DockViewTests
 
         var mouse = dock.Ui.Hold(dock.Handles(nested: true)[0]);
         mouse.MoveBy(new Vector2(0f, 60f));
-        var mid = dock["c"].Parent!.SizeProportion;
+        var mid = dock["c"].Parent?.SizeProportion;
         mouse.Release();
 
         await Assert.That(d.X).IsEqualTo(c.X);
         await Assert.That(d.Y).IsGreaterThan(c.Y);
         await Assert.That(mid).IsEqualTo(0.5f);
-        await Assert
-            .That(dock["c"].Parent!.SizeProportion)
-            .IsGreaterThan(dock["d"].Parent!.SizeProportion);
+        var upper = await Assert.That(dock["c"].Parent).IsNotNull();
+        var lower = await Assert.That(dock["d"].Parent).IsNotNull();
+        await Assert.That(upper.SizeProportion).IsGreaterThan(lower.SizeProportion);
         await Assert.That(changes).IsEqualTo(1);
         await Assert.That(dock.Resizes).IsEqualTo(1);
     }
@@ -334,7 +340,8 @@ public sealed class DockViewTests
             ("c", DockPosition.Center),
             ("d", DockPosition.Center)
         );
-        dock.Manager.DockBySplit(dock["d"], dock["c"].Parent!, DockDirection.Right);
+        var centre = await Assert.That(dock["c"].Parent).IsNotNull();
+        dock.Manager.DockBySplit(dock["d"], centre, DockDirection.Right);
         dock.Ui.Settle();
         static string Fill(DockView dock, bool nested) =>
             dock
@@ -360,15 +367,16 @@ public sealed class DockViewTests
     public async Task An_arrow_key_on_a_splits_handle_trades_its_groups_proportions()
     {
         var dock = new DockView(("c", DockPosition.Center), ("d", DockPosition.Center));
-        dock.Manager.DockBySplit(dock["d"], dock["c"].Parent!, DockDirection.Right);
+        var centre = await Assert.That(dock["c"].Parent).IsNotNull();
+        dock.Manager.DockBySplit(dock["d"], centre, DockDirection.Right);
         dock.Ui.Settle();
 
         dock.Ui.Click(dock.Handles(nested: true)[0]);
         dock.Ui.Press(Key.Right);
 
-        await Assert
-            .That(dock["c"].Parent!.SizeProportion)
-            .IsGreaterThan(dock["d"].Parent!.SizeProportion);
+        var left = await Assert.That(dock["c"].Parent).IsNotNull();
+        var right = await Assert.That(dock["d"].Parent).IsNotNull();
+        await Assert.That(left.SizeProportion).IsGreaterThan(right.SizeProportion);
     }
 
     [Test]
@@ -461,7 +469,8 @@ public sealed class DockViewTests
         dock.Ui.Settle();
         var refused = Close(dock, "a");
         dock.Ui.Hover(dock.Tab("b"));
-        dock.Ui.Click(Close(dock, "b")!);
+        var closeB = await Assert.That(Close(dock, "b")).IsNotNull();
+        dock.Ui.Click(closeB);
 
         await Assert.That(unhovered).IsNull();
         await Assert.That(hovered).IsNotNull();
@@ -510,14 +519,18 @@ public sealed class DockViewTests
         var dock = new DockView(("a", DockPosition.Left), ("c", DockPosition.Center));
         var window = dock.Manager.Float(dock["a"], 200f, 200f, 300f, 200f);
         dock.Ui.Settle();
-        var corner = DockView
-            .All(
-                dock.Ui.Root,
-                node =>
-                    node.ViewBounds is { Right: 500f, Bottom: 400f, Width: > 0f and < 30f }
-                    && node.ViewBounds.Height < 30f
+        var corner = await Assert
+            .That(
+                DockView
+                    .All(
+                        dock.Ui.Root,
+                        node =>
+                            node.ViewBounds is { Right: 500f, Bottom: 400f, Width: > 0f and < 30f }
+                            && node.ViewBounds.Height < 30f
+                    )
+                    .MinBy(node => node.ViewBounds.Width)
             )
-            .MinBy(node => node.ViewBounds.Width)!;
+            .IsNotNull();
 
         var mouse = dock.Ui.Hold(corner);
         mouse.MoveBy(new Vector2(40f, 30f));

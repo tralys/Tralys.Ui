@@ -85,10 +85,9 @@ public sealed class DockTearOutTests
         await Assert
             .That(DockView.Any(dock.Ui.Root, node => node.Component == typeof(DockFloat)))
             .IsFalse();
-        await Assert
-            .That(new Vector2(dock["a"].Parent!.Window!.Width, dock["a"].Parent!.Window!.Height))
-            .IsEqualTo(window.Size);
-        await Assert.That(dock["a"].Parent!.Position).IsEqualTo(DockPosition.Floating);
+        var floating = await Assert.That(dock["a"].Parent?.Window).IsNotNull();
+        await Assert.That(new Vector2(floating.Width, floating.Height)).IsEqualTo(window.Size);
+        await Assert.That(dock["a"].Parent?.Position).IsEqualTo(DockPosition.Floating);
     }
 
     [Test]
@@ -159,7 +158,8 @@ public sealed class DockTearOutTests
     public async Task A_tab_dragged_out_of_a_two_tab_torn_out_window_leaves_the_window_where_it_is_and_tears_out_alone()
     {
         var (dock, desktop) = TornOut();
-        dock.Manager.DockToGroup(dock["c"], dock["a"].Parent!);
+        var torn = await Assert.That(dock["a"].Parent).IsNotNull();
+        dock.Manager.DockToGroup(dock["c"], torn);
         var window = desktop.Opened[0];
         var at = window.Position;
         window.Ui.Settle();
@@ -174,8 +174,8 @@ public sealed class DockTearOutTests
         await Assert.That(whileDragging).IsEqualTo(at);
         await Assert.That(window.Position).IsEqualTo(at);
         await Assert.That(desktop.Opened.Count).IsEqualTo(2);
-        await Assert.That(dock["a"].Parent!.Elements).IsEquivalentTo(new[] { dock["a"] });
-        await Assert.That(dock["c"].Parent!.Elements).IsEquivalentTo(new[] { dock["c"] });
+        await Assert.That(dock["a"].Parent?.Elements).IsEquivalentTo(new[] { dock["a"] });
+        await Assert.That(dock["c"].Parent?.Elements).IsEquivalentTo(new[] { dock["c"] });
     }
 
     [Test]
@@ -213,13 +213,14 @@ public sealed class DockTearOutTests
     public async Task A_layout_saved_while_a_panel_is_torn_out_loads_it_as_a_float_at_its_bounds()
     {
         var (dock, _) = DockTearOutTests.TornOut();
-        dock["a"].Parent!.Window!.X = 40f;
+        var torn = await Assert.That(dock["a"].Parent?.Window).IsNotNull();
+        torn.X = 40f;
         var layout = dock.Manager.SaveLayout();
 
         dock.Manager.LoadLayout(layout);
         dock.Ui.Settle();
 
         await Assert.That(dock.Title("a").ViewBounds.X).IsEqualTo(41f);
-        await Assert.That(dock["a"].Parent!.Window!.Width).IsEqualTo(300f);
+        await Assert.That(dock["a"].Parent?.Window?.Width).IsEqualTo(300f);
     }
 }

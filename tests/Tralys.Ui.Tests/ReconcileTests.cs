@@ -398,7 +398,7 @@ public sealed class ReconcileTests
 
 public readonly record struct ThrowerProps
 {
-    public Model? Model { get; init; }
+    public required Model Model { get; init; }
 }
 
 /// <summary>Renders a ticker, then throws while its model's count is 1.</summary>
@@ -406,7 +406,7 @@ public sealed class Thrower : Component<ThrowerProps>
 {
     protected override void Render(Ui ui, in ThrowerProps p)
     {
-        var count = p.Model!.Count;
+        var count = p.Model.Count;
         using (ui.Box())
         {
             ui.Ticker(id: "ticker");

@@ -49,10 +49,9 @@ public sealed class Collapsible : Component<CollapsibleProps>
     protected override void Render(Ui ui, in CollapsibleProps p)
     {
         var t = ui.Theme;
-        var disclosure = ui.Remember(static () => new Disclosure());
+        var disclosure = ui.Remember(ui.State(p.DefaultOpen), static own => new Disclosure(own));
         disclosure.Open = p.Open;
         disclosure.OnOpenChange = p.OnOpenChange;
-        disclosure.Own = ui.State(p.DefaultOpen);
         var open = p.Open ?? disclosure.Own.Value;
         var shown = ui.Animate(
             open ? 1f : 0f,

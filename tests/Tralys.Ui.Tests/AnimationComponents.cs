@@ -22,7 +22,7 @@ public readonly record struct MoverProps
 
     public Transition Transition { get; init; }
 
-    public Probe? Probe { get; init; }
+    public required Probe Probe { get; init; }
 }
 
 public sealed class Mover : Component<MoverProps>
@@ -31,7 +31,7 @@ public sealed class Mover : Component<MoverProps>
     {
         var value = ui.Animate(p.Target, p.Transition);
         var color = ui.Animate(p.Color, p.Transition);
-        var probe = p.Probe!;
+        var probe = p.Probe;
         if (float.IsNaN(probe.First))
             probe.First = value;
         probe.Value = value;
@@ -50,23 +50,23 @@ public readonly record struct LooperProps
 
     public bool Paused { get; init; }
 
-    public Probe? Probe { get; init; }
+    public required Probe Probe { get; init; }
 }
 
 public sealed class Looper : Component<LooperProps>
 {
     protected override void Render(Ui ui, in LooperProps p)
     {
-        p.Probe!.Value = ui.Loop(p.Period, p.Count, p.Alternate, paused: p.Paused);
+        p.Probe.Value = ui.Loop(p.Period, p.Count, p.Alternate, paused: p.Paused);
         using (ui.Box(width: 20, height: 20)) { }
     }
 }
 
 public readonly record struct BrittleLooperProps
 {
-    public Model? Model { get; init; }
+    public required Model Model { get; init; }
 
-    public Probe? Probe { get; init; }
+    public required Probe Probe { get; init; }
 }
 
 /// <summary>Holds a looper, then throws while its model's count is 1.</summary>
@@ -74,7 +74,7 @@ public sealed class BrittleLooper : Component<BrittleLooperProps>
 {
     protected override void Render(Ui ui, in BrittleLooperProps p)
     {
-        var count = p.Model!.Count;
+        var count = p.Model.Count;
         using (ui.Box())
         {
             ui.Looper(period: 1f, probe: p.Probe);

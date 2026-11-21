@@ -273,16 +273,17 @@ public sealed class ListBoxTests
             new Size(400, 300)
         );
 
-        scroll.Handle!.ScrollTo(null, 300f);
+        var handle = await Assert.That(scroll.Handle).IsNotNull();
+        handle.ScrollTo(null, 300f);
         driver.Settle();
         shelf.Reverse();
         driver.Settle();
-        var kept = scroll.Handle.Offset.Y;
+        var kept = handle.Offset.Y;
         items = new Shelf(200);
         driver.Rerender();
 
         await Assert.That(kept).IsEqualTo(300f);
-        await Assert.That(scroll.Handle.Offset.Y).IsEqualTo(0f);
+        await Assert.That(handle.Offset.Y).IsEqualTo(0f);
     }
 
     [Test]
@@ -324,7 +325,8 @@ public sealed class ListBoxTests
             .IsEqualTo((list.Y, list.Right, list.Bottom));
         await Assert.That(row.Right).IsEqualTo(bar.X);
         await Assert.That(hidden.All<Scrollbar>()).IsEmpty();
-        await Assert.That(List(hidden).Scroller!.Offset.Y).IsGreaterThan(0f);
+        var scroller = await Assert.That(List(hidden).Scroller).IsNotNull();
+        await Assert.That(scroller.Offset.Y).IsGreaterThan(0f);
     }
 
     [Test]

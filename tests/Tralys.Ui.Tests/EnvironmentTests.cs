@@ -212,7 +212,7 @@ public sealed class ViewSizeProbe : Component<ViewSizeProbeProps>
 
 public readonly record struct StateProbeProps
 {
-    public string? Name { get; init; }
+    public required string Name { get; init; }
 
     public bool Focusable { get; init; }
 }
@@ -237,7 +237,7 @@ public sealed class StateProbe : Component<StateProbeProps>
 
     protected override void Render(Ui ui, in StateProbeProps p)
     {
-        Seen[p.Name!] = new States(
+        Seen[p.Name] = new States(
             ui.IsDisabled,
             ui.IsPressed,
             ui.IsHovered,
@@ -277,7 +277,7 @@ public sealed class ThemedSwatch : Component<ThemedSwatchProps>
 
 public readonly record struct ShownProbeProps
 {
-    public string? Name { get; init; }
+    public required string Name { get; init; }
 }
 
 /// <summary>Records whether each render saw itself shown, through a component its root belongs to.</summary>
@@ -290,14 +290,14 @@ public sealed class ShownProbe : Component<ShownProbeProps>
 
     protected override void Render(Ui ui, in ShownProbeProps p)
     {
-        Seen[p.Name!] = ui.IsShown;
+        Seen[p.Name] = ui.IsShown;
         ui.Label(model: Shown);
     }
 }
 
 public readonly record struct FocusedProbeProps
 {
-    public string? Name { get; init; }
+    public required string Name { get; init; }
 }
 
 /// <summary>Records the id of the node inside it that each render saw holding the focus.</summary>
@@ -310,7 +310,7 @@ public sealed class FocusedProbe : Component<FocusedProbeProps>
 
     protected override void Render(Ui ui, in FocusedProbeProps p)
     {
-        Seen[p.Name!] = ui.FocusedWithin?.Id;
+        Seen[p.Name] = ui.FocusedWithin?.Id;
         using (ui.Box(gap: 4))
         {
             using (ui.Box(width: 20, height: 20, focusable: true, id: "first")) { }

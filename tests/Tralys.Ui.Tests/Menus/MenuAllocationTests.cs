@@ -122,7 +122,13 @@ public sealed class MenuAllocationTests
             {
                 var step = c.Step++ % 28;
                 if (step == 0)
-                    d.Focus(c.Target!, settle: false);
+                {
+                    if (c.Target is not { } bar)
+                        throw new InvalidOperationException(
+                            "A bar walk needs the bar's first item."
+                        );
+                    d.Focus(bar, settle: false);
+                }
                 else if (step % 4 == 0)
                     d.Press(BarWalk[step / 4 - 1], settle: false);
                 d.Frame();
@@ -173,7 +179,11 @@ public sealed class MenuAllocationTests
         switch (c.Step++ % 60)
         {
             case 0:
-                d.Click(c.Target!, MouseButton.Right, settle: false);
+                if (c.Target is not { } area)
+                    throw new InvalidOperationException(
+                        "A rest walk needs the area its menu opens on."
+                    );
+                d.Click(area, MouseButton.Right, settle: false);
                 break;
             case 2 when FindIn(d, "arrange") is { } arrange:
                 d.Hover(arrange, settle: false);
@@ -182,7 +192,9 @@ public sealed class MenuAllocationTests
                 d.Click(cairo, settle: false);
                 break;
             case 44:
-                d.Hover(c.Off!, settle: false);
+                if (c.Off is not { } off)
+                    throw new InvalidOperationException("A rest walk needs a node off the menu.");
+                d.Hover(off, settle: false);
                 break;
         }
         d.Frame();

@@ -160,8 +160,9 @@ public sealed class SplitButtonTests
         await Assert
             .That((primaryRoot.Layout.Border, chevronRoot.Layout.Border))
             .IsEqualTo((new Thickness(1f, 1f, 0f, 1f), new Thickness(0f, 1f, 1f, 1f)));
+        var line = await Assert.That(divider).IsNotNull();
         await Assert
-            .That((divider!.Bounds.Width, divider.Visual.Background))
+            .That((line.Bounds.Width, line.Visual.Background))
             .IsEqualTo((1f, (Paint)look.Foreground.WithOpacity(0.25f)));
         await Assert.That(primaryRoot.Visual.Background).IsEqualTo((Paint)look.Background);
         await Assert.That(ButtonLooks.Images(driver.Get("split"))).IsEqualTo(0);

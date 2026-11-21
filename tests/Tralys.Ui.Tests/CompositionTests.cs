@@ -147,6 +147,25 @@ public sealed class CompositionTests
     }
 
     [Test]
+    public async Task A_key_of_a_nullable_reference_reads_its_null_fallback_until_a_provider_gives_it_a_value()
+    {
+        string? name = null;
+        using var driver = UiDriver.Render(ui =>
+        {
+            if (name is not null)
+                ui.Provide(NameReader.Key, name);
+            ui.NameReader(id: "reader");
+        });
+        var unprovided = ReconcileTests.TextIn(driver.Get("reader"));
+
+        name = "Ada";
+        driver.Rerender();
+
+        await Assert.That(unprovided).IsEqualTo("none");
+        await Assert.That(ReconcileTests.TextIn(driver.Get("reader"))).IsEqualTo("Ada");
+    }
+
+    [Test]
     public async Task An_effect_queued_by_a_component_its_owner_drops_in_the_same_update_does_not_run()
     {
         var model = new Model();
@@ -225,7 +244,7 @@ public sealed class Disclosure : Component<DisclosureProps>
 
 public readonly record struct ProviderProps
 {
-    public Model? Model { get; init; }
+    public required Model Model { get; init; }
 }
 
 /// <summary>Provides its model's count while it is not negative, to a reader and a bystander.</summary>
@@ -235,7 +254,7 @@ public sealed class Provider : Component<ProviderProps>
 
     protected override void Render(Ui ui, in ProviderProps p)
     {
-        var count = p.Model!.Count;
+        var count = p.Model.Count;
         if (count >= 0)
             ui.Provide(Count, count);
         using (ui.Box())
@@ -262,7 +281,7 @@ public sealed class Reader : Component<ReaderProps>
 
 public readonly record struct EffectParentProps
 {
-    public ValueLog<(string Who, Size? Laid)>? Log { get; init; }
+    public required ValueLog<(string Who, Size? Laid)> Log { get; init; }
 }
 
 /// <summary>Logs, from an effect, its box's size as laid out; its child does the same, and each one's remembered value
@@ -271,7 +290,7 @@ public sealed class EffectParent : Component<EffectParentProps>
 {
     protected override void Render(Ui ui, in EffectParentProps p)
     {
-        var log = p.Log!;
+        var log = p.Log;
         var box = ui.Ref();
         ui.Remember(log, static log => new Logged(log, "parent"));
         ui.Effect(log, box, static (log, box, cx) => log.Add(("parent", cx.BoundsOf(box).Size)));
@@ -297,8 +316,8 @@ public sealed class EffectChild : Component<EffectParentProps>
     protected override void Render(Ui ui, in EffectParentProps p)
     {
         var box = ui.Ref();
-        ui.Remember(p.Log!, static log => new EffectParent.Logged(log, "child"));
-        ui.Effect(p.Log!, box, static (log, box, cx) => log.Add(("child", cx.BoundsOf(box).Size)));
+        ui.Remember(p.Log, static log => new EffectParent.Logged(log, "child"));
+        ui.Effect(p.Log, box, static (log, box, cx) => log.Add(("child", cx.BoundsOf(box).Size)));
         using (ui.Box(width: 10, height: 10, nodeRef: box)) { }
     }
 }
@@ -316,11 +335,23 @@ public sealed class TextReader : Component<TextReaderProps>
     protected override void Render(Ui ui, in TextReaderProps p) => ui.Text(ui.Use(Key));
 }
 
+public readonly record struct NameReaderProps
+{
+    public int Tag { get; init; }
+}
+
+public sealed class NameReader : Component<NameReaderProps>
+{
+    public static readonly ContextKey<string?> Key = new("Name", null);
+
+    protected override void Render(Ui ui, in NameReaderProps p) => ui.Text(ui.Use(Key) ?? "none");
+}
+
 public readonly record struct RootFlipperProps
 {
-    public Model? Model { get; init; }
+    public required Model Model { get; init; }
 
-    public List<int>? Runs { get; init; }
+    public required List<int> Runs { get; init; }
 }
 
 /// <summary>Logs each count it renders from an effect, and swaps its root node as the count leaves 0.</summary>
@@ -328,8 +359,8 @@ public sealed class RootFlipper : Component<RootFlipperProps>
 {
     protected override void Render(Ui ui, in RootFlipperProps p)
     {
-        var count = p.Model!.Count;
-        ui.Effect(p.Runs!, count, static (runs, count, _) => runs.Add(count));
+        var count = p.Model.Count;
+        ui.Effect(p.Runs, count, static (runs, count, _) => runs.Add(count));
         if (count == 0)
             using (ui.Box(width: 10, height: 10)) { }
         else
@@ -339,13 +370,13 @@ public sealed class RootFlipper : Component<RootFlipperProps>
 
 public readonly record struct SizeWatcherProps
 {
-    public NodeRef? Target { get; init; }
+    public required NodeRef Target { get; init; }
 
-    public List<Size>? Sizes { get; init; }
+    public required List<Size> Sizes { get; init; }
 }
 
 /// <summary>Records each size it reads from its target's ref.</summary>
 public sealed class SizeWatcher : Component<SizeWatcherProps>
 {
-    protected override void Render(Ui ui, in SizeWatcherProps p) => p.Sizes!.Add(p.Target!.Size);
+    protected override void Render(Ui ui, in SizeWatcherProps p) => p.Sizes.Add(p.Target.Size);
 }

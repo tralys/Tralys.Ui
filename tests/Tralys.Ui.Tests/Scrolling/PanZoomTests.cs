@@ -89,7 +89,8 @@ public sealed class PanZoomTests
         await Assert.That(least).IsEqualTo(0.5f);
         await Assert.That(view.Zooms.Count).IsEqualTo(reports + 1);
         await Assert.That(view.Zooms[^1]).IsEqualTo(0.5f * MathF.Sqrt(1.1f)).Within(0.0001f);
-        await Assert.That(outer.Outer!.Offset).IsEqualTo(Vector2.Zero);
+        var around = await Assert.That(outer.Outer).IsNotNull();
+        await Assert.That(around.Offset).IsEqualTo(Vector2.Zero);
     }
 
     [Test]
@@ -336,17 +337,18 @@ public sealed class PanZoomTests
         var inner = new ScrollState();
         var view = new PanFixture { Inner = inner };
         using var driver = view.Render();
+        var scroll = await Assert.That(inner.Outer).IsNotNull();
         var list = driver.Get("list");
 
         driver.Drag(list, new Vector2(0f, -30f), PointerKind.Touch);
-        var along = (inner.Outer!.Offset, view.Offset(driver));
+        var along = (scroll.Offset, view.Offset(driver));
         driver.Drag(list, new Vector2(-30f, 0f), PointerKind.Touch);
-        var across = (inner.Outer.Offset, view.Offset(driver));
+        var across = (scroll.Offset, view.Offset(driver));
         driver.Wheel(list, new Vector2(0f, -1f));
 
         await Assert.That(along).IsEqualTo((new Vector2(0f, 30f), Vector2.Zero));
         await Assert.That(across).IsEqualTo((new Vector2(0f, 30f), new Vector2(30f, 0f)));
-        await Assert.That(inner.Outer.Offset).IsEqualTo(new Vector2(0f, 78f));
+        await Assert.That(scroll.Offset).IsEqualTo(new Vector2(0f, 78f));
         await Assert.That(view.Zooms).IsEmpty();
     }
 
@@ -356,6 +358,7 @@ public sealed class PanZoomTests
         var outer = new ScrollState();
         var view = new PanFixture { Around = outer };
         using var driver = view.Render();
+        var around = await Assert.That(outer.Outer).IsNotNull();
         var root = driver.Get("pz");
 
         var turning = driver.Hold(root, PointerKind.Touch);
@@ -363,9 +366,9 @@ public sealed class PanZoomTests
         turning.MoveBy(new Vector2(0f, -40f));
         driver.Frame(0.2f);
         turning.Release();
-        var turned = (view.Offset(driver), outer.Outer!.Offset);
+        var turned = (view.Offset(driver), around.Offset);
         driver.Drag(root, new Vector2(0f, -300f), PointerKind.Touch);
-        var dragged = (view.Offset(driver), outer.Outer.Offset);
+        var dragged = (view.Offset(driver), around.Offset);
         var first = driver.Hold(root, PointerKind.Touch);
         first.MoveBy(new Vector2(-30f, 0f));
         var before = view.Offset(driver);
@@ -384,7 +387,7 @@ public sealed class PanZoomTests
         await Assert.That(view.Shown(driver)).IsEqualTo(2f);
         await Assert.That(pinched.X).IsEqualTo((before.X + middle.X) * 2f - middle.X).Within(0.5f);
         await Assert.That(pinched.Y).IsEqualTo((before.Y + middle.Y) * 2f - middle.Y).Within(0.5f);
-        await Assert.That(outer.Outer.Offset).IsEqualTo(new Vector2(0f, 90f));
+        await Assert.That(around.Offset).IsEqualTo(new Vector2(0f, 90f));
     }
 
     [Test]
@@ -397,7 +400,8 @@ public sealed class PanZoomTests
         driver.Drag(driver.Get("pz"), new Vector2(-30f, -40f));
 
         await Assert.That(view.Offset(driver)).IsEqualTo(new Vector2(30f, 40f));
-        await Assert.That(outer.Outer!.Offset).IsEqualTo(Vector2.Zero);
+        var around = await Assert.That(outer.Outer).IsNotNull();
+        await Assert.That(around.Offset).IsEqualTo(Vector2.Zero);
     }
 
     [Test]
@@ -407,12 +411,13 @@ public sealed class PanZoomTests
         using var driver = view.Render();
         var started = view.Offset(driver);
 
-        view.Handle!.ScrollBy(new Vector2(-10f, 30f));
+        var handle = await Assert.That(view.Handle).IsNotNull();
+        handle.ScrollBy(new Vector2(-10f, 30f));
         driver.Settle();
 
         await Assert.That(started).IsEqualTo(new Vector2(30f, 20f));
         await Assert.That(view.Offset(driver)).IsEqualTo(new Vector2(20f, 50f));
-        await Assert.That(view.Handle.Offset).IsEqualTo(new Vector2(20f, 50f));
+        await Assert.That(handle.Offset).IsEqualTo(new Vector2(20f, 50f));
     }
 
     [Test]
@@ -674,6 +679,10 @@ internal sealed class PanFixture
     }
 
     /// <summary>The zoom it shows: the zoomed content's width over its own.</summary>
-    public float Shown(UiDriver driver) =>
-        driver.Get("content").Parent!.Parent!.ViewBounds.Width / ContentWidth;
+    public float Shown(UiDriver driver)
+    {
+        if (driver.Get("content").Parent?.Parent is not { } zoomed)
+            throw new InvalidOperationException("The content sits in no zoomed layer.");
+        return zoomed.ViewBounds.Width / ContentWidth;
+    }
 }

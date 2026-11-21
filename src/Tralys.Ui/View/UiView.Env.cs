@@ -63,14 +63,13 @@ public sealed partial class UiView
 
     internal static InputStates ReadStateSet(Builder builder, InputStates mask)
     {
-        if (builder.CurrentHost is not { } host)
+        if (builder.CurrentHost is not { Node: { } node } host)
             return InputStates.None;
         host.StateReads |= mask | Implied(mask);
         host.EnvReads |= EnvReads.Held | EnvReads.Disabled;
         var root = host.Root;
-        var states =
-            (root?._states ?? InputStates.None) | (host.Node._states & InputStates.Disabled);
-        return states | Held(root ?? host.Node);
+        var states = (root?._states ?? InputStates.None) | (node._states & InputStates.Disabled);
+        return states | Held(root ?? node);
     }
 
     static InputStates Implied(InputStates mask)
@@ -218,7 +217,7 @@ public sealed partial class UiView
     }
 
     internal void Provide<T>(Builder builder, ContextKey<T> key, T value)
-        where T : IEquatable<T>
+        where T : IEquatable<T>?
     {
         ArgumentNullException.ThrowIfNull(key);
         if (builder.CurrentHost is not { } host)
@@ -243,11 +242,12 @@ public sealed partial class UiView
         added.Value = added.Held.Hold(value);
         added.Touched = true;
         host.Provided.Add(added);
-        ContextLookup.Appeared(host.Node, key);
+        if (host.Node is { } node)
+            ContextLookup.Appeared(node, key);
     }
 
     internal T Use<T>(Builder builder, ContextKey<T> key)
-        where T : IEquatable<T>
+        where T : IEquatable<T>?
     {
         ArgumentNullException.ThrowIfNull(key);
         var value = ContextLookup.Find(builder.OpenNode, key, out var entry);

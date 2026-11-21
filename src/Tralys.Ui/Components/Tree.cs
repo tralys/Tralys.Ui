@@ -95,7 +95,7 @@ public static partial class Tree
         new TreeContext(null, ComponentSize.Md)
     );
 
-    internal static readonly ContextKey<TreeRowContext> RowContext = new("TreeRow");
+    internal static readonly ContextKey<TreeRowContext> RowContext = new("TreeRow", default);
 
     /// <summary>A row of a tree: indented by its depth, then the arrow that opens it while it has children, then its
     /// text. It lights under the pointer, fills with the selected-row look while selected, and outlines itself while
@@ -115,7 +115,8 @@ public static partial class Tree
             var hasChildren = p.HasChildren ?? row?.HasChildren ?? false;
             var expanded = p.Expanded ?? row?.IsExpanded ?? false;
             var entry = ui.Remember(static () => TreeItemEntry.Rent());
-            entry.Bind(tree.Model, row, at.Key, ui.Self(p), ui.Ref());
+            var node = ui.Ref();
+            entry.Bind(tree.Model, row, at.Key, ui.Self(p), node);
             ui.Effect(entry, at.Key, static (e, _, _) => e.Shown());
             var disabled = ui.IsDisabled;
             var selected = ui.IsSelected;
@@ -139,7 +140,7 @@ public static partial class Tree
                     pressKeys: PressKeys.Space,
                     onKeyDown: entry.KeyDown,
                     onFocusChange: entry.FocusChange,
-                    nodeRef: entry.Ref
+                    nodeRef: node
                 )
             )
             {
@@ -195,9 +196,10 @@ public sealed partial class Tree<TRow> : Component<TreeProps<TRow>>
         var itemKey = p.ItemKey ?? throw Missing(nameof(p.ItemKey));
         var t = ui.Theme;
         var size = p.Size ?? ComponentSize.Md;
-        var model = ui.Remember(static () => new TreeModel<TRow>());
+        var ownScroll = ui.ScrollHandle();
+        var model = ui.Remember(ownScroll, static scroll => new TreeModel<TRow>(scroll));
         model.Host = ui.Self(p);
-        model.Scroll = p.Scroll ?? ui.ScrollHandle();
+        model.Scroll = p.Scroll ?? ownScroll;
         var selects = p.SelectionMode != SelectionMode.None;
         model.Selects = selects;
         ui.Provide(Tree.Context, new TreeContext(model, size));
@@ -289,9 +291,11 @@ internal abstract class TreeModel
 {
     readonly Dictionary<UiKey, TreeItemEntry> _shown = [];
     internal readonly ShownKey Selection = new();
-    internal ScrollHandle Scroll = null!;
+    internal ScrollHandle Scroll;
     internal bool Selects;
     UiKey _pendingFocus;
+
+    protected TreeModel(ScrollHandle scroll) => Scroll = scroll;
 
     internal abstract int Count { get; }
 
@@ -334,7 +338,7 @@ internal abstract class TreeModel
         if (!_pendingFocus.IsKeyed || entry.Key != _pendingFocus)
             return;
         _pendingFocus = default;
-        entry.Ref.Focus(visible: true);
+        entry.Ref?.Focus(visible: true);
     }
 
     internal void Pressed(TreeItemEntry entry, ref KeyEvent e)
@@ -421,7 +425,7 @@ internal abstract class TreeModel
 
     bool Reachable(TreeRow row) =>
         !_shown.TryGetValue(KeyOf(row), out var entry)
-        || entry.Ref.Node is not { } node
+        || entry.Ref?.Node is not { } node
         || (node.States & InputStates.Disabled) == 0;
 
     void MoveTo(int index)
@@ -431,8 +435,8 @@ internal abstract class TreeModel
         var key = KeyOf(At(index));
         Select(key);
         Scroll.ScrollToIndex(index);
-        if (_shown.TryGetValue(key, out var entry) && entry.Ref.Node is { IsMounted: true })
-            entry.Ref.Focus(visible: true);
+        if (_shown.TryGetValue(key, out var entry) && entry.Ref is { Node.IsMounted: true } shown)
+            shown.Focus(visible: true);
         else
             _pendingFocus = key;
     }
@@ -446,7 +450,8 @@ internal sealed class TreeModel<TRow> : TreeModel
     internal readonly Callback<SelectionChange> Picked;
     internal Host<TreeProps<TRow>> Host;
 
-    public TreeModel()
+    public TreeModel(ScrollHandle scroll)
+        : base(scroll)
     {
         Row = Slot<TRow>.Of(this, static (ui, m, row, index) => m.RenderRow(ui, row, index));
         Picked = Callback<SelectionChange>.Of(this, static (m, change) => m.Select(change.Key));
@@ -456,11 +461,19 @@ internal sealed class TreeModel<TRow> : TreeModel
 
     internal override int Count => Props.Items?.Count ?? 0;
 
-    internal override TreeRow At(int index) => Props.Items![index];
+    internal override TreeRow At(int index) =>
+        Props.Items is { } items
+            ? items[index]
+            : throw new ArgumentOutOfRangeException(nameof(index));
 
     internal override int IndexOf(TreeRow row) => Props.Items?.IndexOf(row) ?? -1;
 
-    internal override UiKey KeyOf(TreeRow row) => Props.ItemKey!((TRow)row);
+    internal override UiKey KeyOf(TreeRow row) =>
+        Props.ItemKey is { } itemKey
+            ? itemKey((TRow)row)
+            : throw new InvalidOperationException(
+                "A tree keys its rows only while it has its ItemKey."
+            );
 
     internal override UiKey Value => Props.Value;
 
@@ -478,7 +491,9 @@ internal sealed class TreeModel<TRow> : TreeModel
     )
     {
         ref readonly var p = ref Props;
-        ui.Provide(Tree.RowContext, new TreeRowContext(row, p.ItemKey!(row)));
+        if (p.ItemKey is not { } itemKey)
+            return;
+        ui.Provide(Tree.RowContext, new TreeRowContext(row, itemKey(row)));
         if (!p.Item.IsEmpty)
             p.Item.Render(ui, row, index);
         else
@@ -498,7 +513,7 @@ internal sealed class TreeItemEntry : IResettable, IDisposable
     internal TreeRow? Row;
     internal UiKey Key;
     internal Host<TreeItemProps> Host;
-    internal NodeRef Ref = null!;
+    internal NodeRef? Ref;
 
     TreeItemEntry()
     {
@@ -556,7 +571,7 @@ internal sealed class TreeItemEntry : IResettable, IDisposable
         if (e.Pointer.Kind == PointerKind.Mouse && e.Button != MouseButton.Left)
             return;
         e.StopPropagation();
-        Ref.Focus();
+        Ref?.Focus();
     }
 
     public void Reset()
@@ -571,7 +586,7 @@ internal sealed class TreeItemEntry : IResettable, IDisposable
     {
         Reset();
         Host = default;
-        Ref = null!;
+        Ref = null;
         Pool<TreeItemEntry>.Return(this);
     }
 }

@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 
 namespace Tralys.Ui;
@@ -40,8 +41,6 @@ internal sealed class LayerPayload : NodePayload
     public bool AnchorLostPosted;
     public bool FocusWithinOwner;
 
-    public Node Node => Scope.Node;
-
     public bool Write(UiView view, in LayerProps props)
     {
         if (Props == props)
@@ -66,7 +65,7 @@ internal sealed class LayerPayload : NodePayload
 [FramePath]
 internal sealed class FocusScope
 {
-    public Node Node = null!;
+    public Node? Node;
     public int Generation;
     public UiView? View;
     public LayerPayload? Layer;
@@ -80,6 +79,7 @@ internal sealed class FocusScope
     public bool Active;
     public bool EnterPending;
 
+    [MemberNotNullWhen(true, nameof(Node))]
     public bool IsLive => Node is not null && Node.Generation == Generation && Node.IsMounted;
 
     public void Init(UiView view, Node node, LayerPayload? layer)
@@ -108,7 +108,7 @@ internal sealed class FocusScope
 
     public void Clear()
     {
-        Node = null!;
+        Node = null;
         View = null;
         Layer = null;
         Generation = 0;

@@ -3,10 +3,11 @@ namespace Tralys.Ui;
 // A mutable struct: keep it in a field that is not readonly, and never copy it.
 [FramePath]
 struct HandlerList<T>
+    where T : class
 {
     const int MinCapacity = 4;
 
-    T[]? _items;
+    T?[]? _items;
     int _count;
     int _raising;
     bool _holes;
@@ -15,13 +16,15 @@ struct HandlerList<T>
 
     public readonly bool IsRaising => _raising > 0;
 
-    public readonly T this[int index] => _items![index];
+    readonly T?[] Items => _items ?? [];
+
+    public readonly T? this[int index] => Items[index];
 
     public void Add(T handler)
     {
         if (_items is null || _count == _items.Length)
             Array.Resize(ref _items, Math.Max(MinCapacity, _count * 2));
-        _items![_count++] = handler;
+        _items[_count++] = handler;
     }
 
     public void RemoveAt(int index)
@@ -32,10 +35,10 @@ struct HandlerList<T>
             return;
         }
 
-        var items = _items!;
+        var items = Items;
         _count--;
         Array.Copy(items, index + 1, items, index, _count - index);
-        items[_count] = default!;
+        items[_count] = null;
     }
 
     public void RemoveAtSwap(int index)
@@ -46,9 +49,9 @@ struct HandlerList<T>
             return;
         }
 
-        var items = _items!;
+        var items = Items;
         items[index] = items[--_count];
-        items[_count] = default!;
+        items[_count] = null;
     }
 
     public int Enter()
@@ -62,11 +65,11 @@ struct HandlerList<T>
         if (--_raising > 0 || !_holes)
             return false;
 
-        var items = _items!;
+        var items = Items;
         var kept = 0;
         for (var i = 0; i < _count; i++)
         {
-            if (!EqualityComparer<T>.Default.Equals(items[i], default!))
+            if (items[i] is not null)
                 items[kept++] = items[i];
         }
         Array.Clear(items, kept, _count - kept);
@@ -77,7 +80,7 @@ struct HandlerList<T>
 
     void PunchHole(int index)
     {
-        _items![index] = default!;
+        Items[index] = null;
         _holes = true;
     }
 }

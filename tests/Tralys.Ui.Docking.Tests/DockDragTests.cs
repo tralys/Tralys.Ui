@@ -113,7 +113,7 @@ public sealed class DockDragTests
         await Assert.That(dock.Compass.Count).IsEqualTo(0);
         await Assert.That(a.X).IsLessThan(c.X);
         await Assert.That(a.Y).IsEqualTo(c.Y);
-        await Assert.That(dock["a"].Parent!.Parent).IsSameReferenceAs(dock.Manager.CenterGroup);
+        await Assert.That(dock["a"].Parent?.Parent).IsSameReferenceAs(dock.Manager.CenterGroup);
     }
 
     [Test]
@@ -137,7 +137,7 @@ public sealed class DockDragTests
             dock.Overlay,
             node => node.Kind == NodeKind.Text && node.Text.SequenceEqual("a")
         )[0];
-        var labelAt = label.Parent!.ViewBounds;
+        var labelAt = (await Assert.That(label.Parent).IsNotNull()).ViewBounds;
         mouse.Release();
 
         await Assert.That(preview).IsEqualTo(new Rect(750f, 0f, 250f, 700f));
@@ -163,7 +163,7 @@ public sealed class DockDragTests
         mouse.Release();
 
         await Assert.That(dock["a"].State).IsEqualTo(DockState.Floating);
-        await Assert.That(dock["a"].Parent!.Window!.X).IsEqualTo(500f);
+        await Assert.That(dock["a"].Parent?.Window?.X).IsEqualTo(500f);
         await Assert.That(dock.Manager.ActiveElement).IsSameReferenceAs(dock["a"]);
     }
 
@@ -183,7 +183,7 @@ public sealed class DockDragTests
     {
         var inner = DockView.Docked(("i", DockPosition.Center));
         var manager = DockView.Docked(("a", DockPosition.Left), ("c", DockPosition.Center));
-        manager.GetElement("a")!.Content = inner;
+        manager.Element("a").Content = inner;
         var dock = new DockView(
             manager,
             content: Slot<DockElement>.Of(
@@ -194,7 +194,7 @@ public sealed class DockDragTests
                 }
             )
         );
-        manager.GetElement("c")!.Activate();
+        manager.Element("c").Activate();
 
         dock.Ui.Click(dock.Tab("i"));
 
@@ -310,7 +310,8 @@ public sealed class DockDragTests
             ("c", DockPosition.Center),
             ("d", DockPosition.Center)
         );
-        dock.Manager.DockBySplit(dock["d"], dock["d"].Parent!, DockDirection.Right);
+        var centre = await Assert.That(dock["d"].Parent).IsNotNull();
+        dock.Manager.DockBySplit(dock["d"], centre, DockDirection.Right);
         dock.Ui.Settle();
 
         var mouse = dock.Ui.Hold(dock.Tab("d"));
@@ -356,7 +357,7 @@ public sealed class DockDragTests
         dock.Ui.Click(dock.Tab("d"), MouseButton.Right);
         dock.Ui.Click(dock.Ui.GetText("Close Others"));
 
-        await Assert.That(dock["d"].Parent!.Elements).IsEquivalentTo(new[] { dock["d"] });
+        await Assert.That(dock["d"].Parent?.Elements).IsEquivalentTo(new[] { dock["d"] });
         await Assert.That(dock.Manager.LeftGroup.Elements).Contains(dock["a"]);
     }
 
@@ -368,7 +369,7 @@ public sealed class DockDragTests
             ("d", DockPosition.Center),
             ("e", DockPosition.Center)
         );
-        var group = dock["d"].Parent!;
+        var group = await Assert.That(dock["d"].Parent).IsNotNull();
 
         dock.Ui.Click(dock.Tab("d"), MouseButton.Right);
         dock.Ui.Press(Key.Escape);
@@ -414,7 +415,7 @@ public sealed class DockDragTests
 
         var empty = Shown(dockable);
         var refused = Shown(refusing);
-        manager.Dock(manager.GetElement("b")!, DockPosition.Center);
+        manager.Dock(manager.Element("b"), DockPosition.Center);
         dockable.Ui.Settle();
         var filled = Shown(dockable);
 

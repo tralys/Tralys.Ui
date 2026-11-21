@@ -76,7 +76,8 @@ public sealed class ScrollGestureTests
         mouse.LoseRelease();
         driver.Hover(driver.Get("pane"));
 
-        await Assert.That(state.Outer!.Offset).IsEqualTo(new Vector2(0, 30));
+        var scroll = await Assert.That(state.Outer).IsNotNull();
+        await Assert.That(scroll.Offset).IsEqualTo(new Vector2(0, 30));
     }
 
     [Test]
@@ -91,7 +92,8 @@ public sealed class ScrollGestureTests
         driver.WindowFocus(true);
         mouse.MoveBy(new Vector2(0, -30));
 
-        await Assert.That(state.Outer!.Offset).IsEqualTo(new Vector2(0, 30));
+        var scroll = await Assert.That(state.Outer).IsNotNull();
+        await Assert.That(scroll.Offset).IsEqualTo(new Vector2(0, 30));
     }
 
     [Test]
@@ -102,7 +104,8 @@ public sealed class ScrollGestureTests
 
         driver.Fling(driver.Get("row2"), new Vector2(0, -60));
 
-        await Assert.That(state.Outer!.Offset.Y).IsGreaterThan(60f);
+        var scroll = await Assert.That(state.Outer).IsNotNull();
+        await Assert.That(scroll.Offset.Y).IsGreaterThan(60f);
     }
 
     [Test]
@@ -117,7 +120,8 @@ public sealed class ScrollGestureTests
         finger.MoveBy(new Vector2(0, -56), seconds: 0.05f, settle: false);
         finger.Release();
 
-        await Assert.That(state.Outer!.Offset.Y).IsGreaterThan(60f);
+        var scroll = await Assert.That(state.Outer).IsNotNull();
+        await Assert.That(scroll.Offset.Y).IsGreaterThan(60f);
     }
 
     [Test]
@@ -125,14 +129,15 @@ public sealed class ScrollGestureTests
     {
         var state = new ScrollState();
         using var driver = Feed(state);
+        var scroll = await Assert.That(state.Outer).IsNotNull();
 
         driver.Fling(driver.Get("row2"), new Vector2(0, -60), settle: false);
         driver.Frame();
-        var coasting = state.Outer!.Offset.Y;
+        var coasting = scroll.Offset.Y;
         driver.Tap(driver.Get("row4"));
 
         await Assert.That(coasting).IsGreaterThan(60f);
-        await Assert.That(state.Outer.Offset.Y).IsEqualTo(coasting);
+        await Assert.That(scroll.Offset.Y).IsEqualTo(coasting);
         await Assert.That(state.Clicks).IsEmpty();
     }
 
@@ -161,16 +166,17 @@ public sealed class ScrollGestureTests
             View
         );
 
+        var scroll = await Assert.That(state.Outer).IsNotNull();
         var mouse = driver.Hold(driver.Get("source"));
         mouse.MoveBy(new Vector2(0, 176), settle: false);
         driver.Frame(0.1f);
-        var scrolled = state.Outer!.Offset.Y;
+        var scrolled = scroll.Offset.Y;
         mouse.MoveBy(new Vector2(0, -96), settle: false);
         driver.Frame(0.1f);
         driver.Frame(0.1f);
 
         await Assert.That(scrolled).IsGreaterThan(0f);
-        await Assert.That(state.Outer.Offset.Y).IsEqualTo(scrolled);
+        await Assert.That(scroll.Offset.Y).IsEqualTo(scrolled);
     }
 
     [Test]

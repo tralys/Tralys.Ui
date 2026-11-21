@@ -69,10 +69,11 @@ public sealed partial class MultiSelect<TItem> : Component<MultiSelectProps<TIte
         var items = p.Items ?? throw Missing(nameof(p.Items));
         var itemKey = p.ItemKey ?? throw Missing(nameof(p.ItemKey));
         var size = p.Size ?? ComponentSize.Md;
-        var model = ui.Remember(static () => new MultiSelectModel<TItem>());
+        var model = ui.Remember(
+            (Own: ui.State(p.DefaultOpen), Changes: ui.State(0)),
+            static hooks => new MultiSelectModel<TItem>(hooks.Own, hooks.Changes)
+        );
         model.Host = ui.Self(p);
-        model.Own = ui.State(p.DefaultOpen);
-        model.Changes = ui.State(0);
         model.Listen(items);
         _ = model.Changes.Value;
         ui.Effect(model, ui.IsDisabled, MultiSelectModel<TItem>.ShutWhenDisabled);
@@ -137,13 +138,13 @@ public sealed partial class MultiSelect<TItem> : Component<MultiSelectProps<TIte
 
 internal readonly record struct MultiSelectPopupProps<TItem>
 {
-    public MultiSelectModel<TItem>? Model { get; init; }
+    public required MultiSelectModel<TItem> Model { get; init; }
 
     public ISelection? Value { get; init; }
 
-    public IItemsSource<TItem>? Items { get; init; }
+    public required IItemsSource<TItem> Items { get; init; }
 
-    public KeyOf<TItem>? ItemKey { get; init; }
+    public required KeyOf<TItem> ItemKey { get; init; }
 
     public ComponentSize Size { get; init; }
 
@@ -156,8 +157,8 @@ internal sealed partial class MultiSelectPopup<TItem> : Component<MultiSelectPop
 
     protected override void Render(Ui ui, in MultiSelectPopupProps<TItem> p)
     {
-        var model = p.Model!;
-        var items = p.Items!;
+        var model = p.Model;
+        var items = p.Items;
         var t = ui.Theme;
         var scroll = ui.ScrollHandle();
         var props = model.Host.Props;
@@ -167,9 +168,9 @@ internal sealed partial class MultiSelectPopup<TItem> : Component<MultiSelectPop
             if (props.ItemDisabled is not { } off || !off(items.ItemAt(i)))
                 model.FirstEnabled = i;
         }
-        model.PopupShown = ui.State(false);
-        model.Opening = !model.PopupShown.Peek;
-        ui.Effect(model, 0, static (m, _, _) => m.PopupShown.Value = true);
+        var shown = ui.State(false);
+        model.Opening = !shown.Peek;
+        ui.Effect(shown, 0, static (s, _, _) => s.Value = true);
         var most = MathF.Max(0f, p.MaxHeight - 2f * Inset - 2f);
         var extent = scroll.Extent.Height;
         var height = MathF.Min(extent > 0f ? extent : items.Count * t.Metrics(p.Size).Height, most);
@@ -186,7 +187,7 @@ internal sealed partial class MultiSelectPopup<TItem> : Component<MultiSelectPop
         {
             ui.VirtualList(
                 items: items,
-                itemKey: p.ItemKey!,
+                itemKey: p.ItemKey,
                 row: model.Row,
                 padding: new Thickness(
                     0f,
@@ -239,17 +240,18 @@ internal sealed class MultiSelectModel<TItem> : IItemsSourceListener, IDisposabl
     internal readonly Callback<UiKey> Activate;
     internal readonly Handler<KeyEvent> FieldKey;
     internal Host<MultiSelectProps<TItem>> Host;
-    internal State<bool> Own = null!;
-    internal State<int> Changes = null!;
+    internal readonly State<bool> Own;
+    internal readonly State<int> Changes;
     internal int FirstEnabled = -1;
     internal int First;
     internal int Ticked;
     internal bool Opening;
-    internal State<bool> PopupShown = null!;
     IItemsSource<TItem>? _items;
 
-    public MultiSelectModel()
+    public MultiSelectModel(State<bool> own, State<int> changes)
     {
+        Own = own;
+        Changes = changes;
         Row = Slot<TItem>.Of(
             this,
             static (ui, m, item, index) =>
@@ -288,7 +290,9 @@ internal sealed class MultiSelectModel<TItem> : IItemsSourceListener, IDisposabl
             static (ui, m) =>
             {
                 ref readonly var p = ref m.Host.Props;
-                var item = p.Items!.ItemAt(m.First);
+                if (p.Items is not { } items)
+                    return;
+                var item = items.ItemAt(m.First);
                 using (ui.Box(align: Align.Center, grow: 1f))
                 {
                     if (!p.Item.IsEmpty)

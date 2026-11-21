@@ -1,10 +1,13 @@
+using System.Diagnostics.CodeAnalysis;
 using Tralys.Ui.Mvvm;
 
 namespace Tralys.Ui;
 
 /// <summary>A value a component provides to the components below it, read with <see cref="Ui.Use"/>.</summary>
-public sealed class ContextKey<T>(string name, T fallback = default!)
-    where T : IEquatable<T>
+/// <remarks>A key of a reference type that a read may find unprovided is a <c>ContextKey&lt;T?&gt;</c> with a null
+/// fallback.</remarks>
+public sealed class ContextKey<T>(string name, T fallback)
+    where T : IEquatable<T>?
 {
     public string Name { get; } = name;
 
@@ -18,7 +21,7 @@ public sealed class ContextKey<T>(string name, T fallback = default!)
 internal abstract class ProvidedEntry : IObservable
 {
     internal ObserverSet _observers;
-    public object Key = null!;
+    public object? Key;
     public bool Touched;
 
     public ref ObserverSet Observers => ref _observers;
@@ -35,15 +38,16 @@ internal abstract class ProvidedEntry : IObservable
 
 [FramePath]
 internal sealed class ProvidedEntry<T> : ProvidedEntry
-    where T : IEquatable<T>
+    where T : IEquatable<T>?
 {
-    public T Value = default!;
+    [AllowNull]
+    public T Value;
     public HeldText Held;
 
     protected override void Release()
     {
-        Value = default!;
-        Key = null!;
+        Value = default;
+        Key = null;
         Pool<ProvidedEntry<T>>.Return(this);
     }
 }
@@ -52,7 +56,7 @@ internal sealed class ProvidedEntry<T> : ProvidedEntry
 internal static class ContextLookup
 {
     public static T Find<T>(Node? from, ContextKey<T> key, out ProvidedEntry<T>? entry)
-        where T : IEquatable<T>
+        where T : IEquatable<T>?
     {
         for (var node = from; node is not null; node = node._parent)
         {

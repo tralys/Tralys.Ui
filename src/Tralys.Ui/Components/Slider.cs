@@ -96,15 +96,16 @@ public sealed class Slider : Component<SliderProps>
             p.Max is { } top && float.IsFinite(top) ? MathF.Max(min, top) : MathF.Max(min, 10f);
         var value = float.IsFinite(p.Value) ? Math.Clamp(p.Value, min, max) : min;
         var share = max > min ? (value - min) / (max - min) : 0f;
-        var model = ui.Remember(static () => new SliderModel());
+        var model = ui.Remember(
+            (Root: ui.Ref(), Track: ui.Ref()),
+            static refs => new SliderModel(refs.Root, refs.Track)
+        );
         model.Host = ui.Self(p);
         model.Shown = value;
         model.Min = min;
         model.Max = max;
         model.Vertical = vertical;
         model.Inverted = p.Inverted;
-        model.Root = ui.Ref();
-        model.Track = ui.Ref();
         ui.Effect(model, 0, static (m, _, cx) => m.View = cx.View);
 
         var disabled = ui.IsDisabled;
@@ -353,8 +354,8 @@ internal sealed class SliderModel
     internal readonly Handler<PointerEvent> TrackUp;
     internal readonly Handler<PointerEvent> TrackCancel;
     internal Host<SliderProps> Host;
-    internal NodeRef Root = null!;
-    internal NodeRef Track = null!;
+    internal readonly NodeRef Root;
+    internal readonly NodeRef Track;
     internal UiView? View;
     internal float Shown;
     internal float Min;
@@ -369,8 +370,10 @@ internal sealed class SliderModel
     bool _ticking;
     TimeSpan _next;
 
-    public SliderModel()
+    public SliderModel(NodeRef root, NodeRef track)
     {
+        Root = root;
+        Track = track;
         Keys = Handler<KeyEvent>.Of(this, static (m, ref e) => m.KeyDown(ref e));
         TrackDown = Handler<PointerEvent>.Of(this, static (m, ref e) => m.Pressed(ref e));
         TrackMove = Handler<PointerEvent>.Of(

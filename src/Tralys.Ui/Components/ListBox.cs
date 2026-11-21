@@ -184,7 +184,7 @@ public readonly record struct ListBoxRowContext(bool Selected, bool Lit);
 public static partial class ListBox
 {
     /// <summary>The nearest row's state, for content a row holds; outside a row, neither selected nor lit.</summary>
-    public static readonly ContextKey<ListBoxRowContext> RowContext = new("ListBox.Row");
+    public static readonly ContextKey<ListBoxRowContext> RowContext = new("ListBox.Row", default);
 
     internal const float CardGap = 8f;
     internal const float CardFrame = 2f;
@@ -437,7 +437,7 @@ internal readonly record struct GridFit(int Columns, float SlotHeight, float Spa
 [FramePath]
 internal sealed class ListBoxModel<TItem> : RowReorder, IDisposable
 {
-    internal static readonly ContextKey<ListBoxRows<TItem>> Rows = new("ListBox");
+    internal static readonly ContextKey<ListBoxRows<TItem>> Rows = new("ListBox", default);
 
     static readonly Thickness CardInset = new(ListBox.CardGap / 2f);
 

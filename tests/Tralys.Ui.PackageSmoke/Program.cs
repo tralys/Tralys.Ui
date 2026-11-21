@@ -26,14 +26,15 @@ sealed partial class ShellViewModel : ObservableObject
 
 readonly record struct CounterProps
 {
-    public ShellViewModel? Shell { get; init; }
+    public required ShellViewModel Shell { get; init; }
 }
 
 sealed class CounterView : Component<CounterProps>
 {
     protected override void Render(Ui ui, in CounterProps p)
     {
-        var counter = p.Shell!.Counter!;
+        if (p.Shell.Counter is not { } counter)
+            return;
         using (ui.Box(direction: Direction.Column, gap: 8, padding: 8))
         {
             ui.Tally(count: counter.Count, id: "count");
@@ -126,7 +127,8 @@ static class Program
         }
 
         Frame();
-        var add = Find(view.Root, "add")!.ViewBounds;
+        if (Find(view.Root, "add") is not { ViewBounds: var add })
+            return "no Add button";
         var at = new Vector2(add.X + add.Width / 2f, add.Y + add.Height / 2f);
         view.PointerMove(Pointer.Mouse, at, MouseButtons.None, false, ModifierKeys.None, now);
         view.PointerDown(Pointer.Mouse, at, MouseButton.Left, ModifierKeys.None, now);
@@ -136,7 +138,9 @@ static class Program
         using var inspector = new Inspector(view, new SmokeHost());
         inspector.Update();
         return renderer.DrawList.QuadCount > 0 && HasText(inspector.View.Root)
-            ? Shown(Find(view.Root, "count")!)
+            ? Find(view.Root, "count") is { } count
+                ? Shown(count)
+                : "no count"
             : "nothing drawn or inspected";
     }
 

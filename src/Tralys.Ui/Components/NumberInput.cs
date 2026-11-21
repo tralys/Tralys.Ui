@@ -94,12 +94,13 @@ public sealed class NumberInput : Component<NumberInputProps>
 {
     protected override void Render(Ui ui, in NumberInputProps p)
     {
-        var model = ui.Remember(static () => new NumberInputModel());
         var own = ui.Ref();
+        var model = ui.Remember(
+            (Text: own, Field: ui.Ref(), Rewrites: ui.State(0)),
+            static hooks => new NumberInputModel(hooks.Text, hooks.Field, hooks.Rewrites)
+        );
         model.Host = ui.Self(p);
         model.Text = p.NodeRef ?? own;
-        model.Field = ui.Ref();
-        model.Rewrites = ui.State(0);
         var focused = ui.IsFocusWithin;
         ui.Effect(model, focused, static (m, focused, _) => m.FocusMoved(focused));
         var pad =
@@ -160,7 +161,8 @@ internal sealed class NumberInputModel : NumberFieldModel
     double _settled;
     double _echo;
 
-    public NumberInputModel()
+    public NumberInputModel(NodeRef text, NodeRef field, State<int> rewrites)
+        : base(text, field, rewrites)
     {
         _stepDown = Callback.Of(this, static m => m.Clicked(-1));
         _stepUp = Callback.Of(this, static m => m.Clicked(1));

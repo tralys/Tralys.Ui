@@ -128,7 +128,7 @@ sealed class TokenResolver
         return resolver;
     }
 
-    public List<string>? Order(Dictionary<string, string> inputs, out string? error)
+    public List<string>? Order(Dictionary<string, string?> inputs, out string? error)
     {
         var files = new List<string>();
         foreach (var (isSet, name) in _order)

@@ -366,7 +366,13 @@ public sealed class FocusNavigationTests
                         onPointerDown: Handler<PointerEvent>.Of(
                             probe,
                             static (PressProbe p, ref PointerEvent e) =>
-                                p.Seen = p.View!.Focused?.Id
+                            {
+                                if (p.View is not { } view)
+                                    throw new InvalidOperationException(
+                                        "Pressed before the probe had its view."
+                                    );
+                                p.Seen = view.Focused?.Id;
+                            }
                         ),
                         id: "chrome"
                     )
@@ -379,7 +385,13 @@ public sealed class FocusNavigationTests
                         onPointerDown: Handler<PointerEvent>.Of(
                             probe,
                             static (PressProbe p, ref PointerEvent e) =>
-                                p.View!.Focus(p.Other!, FocusCause.Code, false)
+                            {
+                                if (p.View is not { } view || p.Other is not { } other)
+                                    throw new InvalidOperationException(
+                                        "Pressed before the probe had its view and target."
+                                    );
+                                view.Focus(other, FocusCause.Code, false);
+                            }
                         ),
                         id: "mover"
                     )

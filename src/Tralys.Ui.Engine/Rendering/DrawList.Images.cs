@@ -126,7 +126,7 @@ public sealed partial class DrawList
 
     void EmitNineSlice(in RenderCommand command)
     {
-        var texture = command.Texture!;
+        var texture = command.DrawnTexture;
         var destination = command.Rect;
         var source = command.Source;
         var slice = command.Border;

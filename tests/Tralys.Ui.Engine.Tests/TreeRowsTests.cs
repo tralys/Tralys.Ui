@@ -158,7 +158,8 @@ sealed class Forest : ITreeChildren<Node>
         return rows;
     }
 
-    public Node Find(string name) => Find(_roots, name)!;
+    public Node Find(string name) =>
+        Find(_roots, name) ?? throw new InvalidOperationException($"No node is named {name}.");
 
     public int ChildCount(Node? parent) => (parent?.Children ?? _roots).Length;
 

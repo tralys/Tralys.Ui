@@ -117,11 +117,11 @@ internal static class LayoutSerializer
         || HasNullEntry(layout.Top)
         || HasNullEntry(layout.Bottom)
         || HasNullEntry(layout.Center)
-        || layout.HiddenElements.Contains(null!)
-        || layout.FloatingWindows.Any(w => w is null || w.Elements.Contains(null!));
+        || layout.HiddenElements.Any(hidden => hidden is null)
+        || layout.FloatingWindows.Any(w => w is null || w.Elements.Any(id => id is null));
 
     private static bool HasNullEntry(SavedGroup group) =>
-        group.Elements.Contains(null!)
+        group.Elements.Any(id => id is null)
         || group.Children.Any(child => child is null || HasNullEntry(child));
 
     // A load shows none of a splitting group's own elements, only its children's.

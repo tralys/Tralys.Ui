@@ -178,8 +178,12 @@ internal static class TableNodes
     }
 
     /// <summary>The box scrolling a table's columns sideways.</summary>
-    public static ScrollHandle Sideways(UiDriver driver) =>
-        Root(Root(driver.Get<Table<Member>>())).Scroller!;
+    public static ScrollHandle Sideways(UiDriver driver)
+    {
+        if (Root(Root(driver.Get<Table<Member>>())).Scroller is not { } sideways)
+            throw new InvalidOperationException("The table scrolls no columns sideways.");
+        return sideways;
+    }
 
     /// <summary>The text of <paramref name="row"/>'s cell showing <paramref name="text"/>.</summary>
     public static Node Cell(Node row, string text) =>

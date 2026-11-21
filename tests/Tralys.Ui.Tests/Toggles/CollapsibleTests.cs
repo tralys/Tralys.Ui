@@ -116,7 +116,7 @@ public sealed class CollapsibleTests
                 driver.View.Context.Theme = Themes.Light;
             driver.Frame();
             var turn = Turn(driver.Get("tall"));
-            var reveal = driver.Get("content").Parent!.Parent!;
+            var reveal = await Assert.That(driver.Get("content").Parent?.Parent).IsNotNull();
             var share = reveal.Place.Collapsed ? 0f : reveal.Bounds.Height / 136f;
             var y = driver.Get("after").ViewBounds.Y;
             if (y > closedY + 1f && y < openY - 1f)
@@ -296,7 +296,12 @@ public sealed class CollapsibleTests
 
     static readonly string[] Names = Enum.GetNames<ExpandDirection>();
 
-    static Node Header(Node collapsible) => Tick(collapsible).Parent!.Parent!;
+    static Node Header(Node collapsible)
+    {
+        if (Tick(collapsible).Parent?.Parent is not { } header)
+            throw new InvalidOperationException("The tick sits in no header.");
+        return header;
+    }
 
     static float Turn(Node collapsible)
     {

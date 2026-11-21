@@ -233,7 +233,7 @@ public sealed class DockCloseHandlerTests
         return (new DockManager { CloseHandler = owner }, owner);
     }
 
-    private static CountingSource Docked(
+    private static Panel Docked(
         DockManager m,
         string id,
         DockType type,
@@ -241,9 +241,14 @@ public sealed class DockCloseHandlerTests
     )
     {
         var source = new CountingSource(id);
-        m.Register(source, type);
-        m.Dock(source.Element, position);
-        return source;
+        var element = m.Register(source, type);
+        m.Dock(element, position);
+        return new Panel(source, element);
+    }
+
+    private sealed record Panel(CountingSource Source, DockElement Element)
+    {
+        public int ClosedCalls => Source.ClosedCalls;
     }
 
     private sealed class RecordingOwner : IDockCloseHandler
@@ -258,8 +263,6 @@ public sealed class DockCloseHandlerTests
 
     private sealed class CountingSource(string id) : DockSource(id, id)
     {
-        public DockElement Element => DockElement!;
-
         public override DockPosition DefaultPosition => DockPosition.Center;
 
         public int ClosedCalls { get; private set; }

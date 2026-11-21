@@ -42,6 +42,12 @@ internal struct RenderCommand
     public int Count;
     public DashRange Dash;
 
+    public readonly RenderTexture DrawnTexture =>
+        Texture
+        ?? throw new InvalidOperationException(
+            "An image, nine-slice or glyph command always carries its texture."
+        );
+
     public readonly PenLineJoin LineJoin => (PenLineJoin)Data.X;
 
     public readonly PenLineCap StartCap => (PenLineCap)Data.Y;
@@ -117,7 +123,7 @@ public sealed class RenderCommandBuffer
             {
                 if (
                     command.Op == RenderOp.Glyphs
-                    && command.Generation != command.Texture!.Generation
+                    && command.Generation != command.DrawnTexture.Generation
                 )
                     return true;
             }
@@ -223,7 +229,7 @@ public sealed class RenderCommandBuffer
         if (!pen.IsDashed)
             return default;
 
-        var lengths = pen.DashArray!.Lengths;
+        var lengths = pen.DashArray.Lengths;
         SharedArrays<float>.Grow(ref _dashes, _dashCount + lengths.Length, _dashCount);
 
         var thickness = pen.Thickness;

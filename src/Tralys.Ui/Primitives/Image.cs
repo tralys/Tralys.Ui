@@ -294,7 +294,8 @@ internal sealed class ImagePayload : NodePayload
 
     internal bool Turn(double time, bool reduced)
     {
-        var sprite = _sprite!.Value;
+        if (_sprite is not { } sprite)
+            return false;
         var frame = reduced
             ? 0
             : (int)((Step(time, sprite.FramesPerSecond) - _start) % sprite.FrameCount);

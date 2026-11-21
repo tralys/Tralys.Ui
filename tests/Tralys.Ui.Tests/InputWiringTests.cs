@@ -239,7 +239,8 @@ public sealed class InputWiringTests
 
         driver.Press(Key.A, ModifierKeys.Control);
         var after = can.Value;
-        command.Value!.Run();
+        var copy = await Assert.That(command.Value).IsNotNull();
+        copy.Run();
 
         await Assert.That(before).IsFalse();
         await Assert.That(after).IsTrue();
@@ -273,11 +274,13 @@ public sealed class InputWiringTests
         driver.Rerender();
         driver.Click(driver.Get("inside"));
         var before = can.Value;
-        command.Value!.Run();
+        var copyNothing = await Assert.That(command.Value).IsNotNull();
+        copyNothing.Run();
         var copied = driver.Clipboard;
 
         driver.Press(Key.A, ModifierKeys.Control);
-        command.Value!.Run();
+        var copyInside = await Assert.That(command.Value).IsNotNull();
+        copyInside.Run();
 
         await Assert.That(before).IsFalse();
         await Assert.That(copied).IsNull();
@@ -370,9 +373,9 @@ public sealed class InputWiringTests
 
 public readonly record struct CopyProbeProps
 {
-    public Seen<Command?>? Command { get; init; }
+    public required Seen<Command?> Command { get; init; }
 
-    public Seen<bool>? Can { get; init; }
+    public required Seen<bool> Can { get; init; }
 }
 
 /// <summary>Records the view's Copy command and whether it can run now.</summary>
@@ -381,7 +384,7 @@ public sealed class CopyProbe : Component<CopyProbeProps>
     protected override void Render(Ui ui, in CopyProbeProps p)
     {
         var copy = ui.Command(EditCommand.Copy);
-        p.Command!.Value = copy;
-        p.Can!.Value = ui.CanRun(copy);
+        p.Command.Value = copy;
+        p.Can.Value = ui.CanRun(copy);
     }
 }

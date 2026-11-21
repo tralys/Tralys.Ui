@@ -169,7 +169,8 @@ public sealed class CollectionPickerTests
         driver.Click(driver.All<InputClear>()[0]);
 
         await Assert.That(searched).IsEqualTo(5);
-        await Assert.That(driver.Focused!.Text.ToString()).IsEqualTo("");
+        var search = await Assert.That(driver.Focused).IsNotNull();
+        await Assert.That(search.Text.ToString()).IsEqualTo("");
         await Assert.That(Shown(driver)).IsEquivalentTo(every);
     }
 
@@ -273,18 +274,29 @@ public sealed class CollectionPickerTests
     public async Task Its_popup_is_as_wide_as_the_field_or_360_at_its_edge_with_80_by_96_tiles_and_never_shows_a_null_item()
     {
         var picked = new Picked();
-        using var narrow = Render(
-            picked,
-            ItemsSource.From((string[])["Cape", null!, "Hood"]),
-            width: 200
-        );
+        IItemsSource<string?> holed = ItemsSource.From((string?[])["Cape", null, "Hood"]);
+        using var narrow = UiDriver
+            .Render(ui =>
+            {
+                using (ui.Box(align: Align.Start))
+                    ui.CollectionPicker(
+                        items: holed,
+                        itemKey: static name => name,
+                        itemText: static name => name,
+                        value: picked.Value,
+                        onValueChange: picked.OnValueChange,
+                        onOpenChange: picked.OnOpenChange,
+                        width: 200
+                    );
+            })
+            .WithIcons();
         using var wide = Render(picked, width: 390);
 
-        narrow.Click(narrow.RootOf<CollectionPicker<string>>());
+        narrow.Click(narrow.RootOf<CollectionPicker<string?>>());
         wide.Click(wide.RootOf<CollectionPicker<string>>());
-        var field = narrow.RootOf<CollectionPicker<string>>().ViewBounds;
+        var field = narrow.RootOf<CollectionPicker<string?>>().ViewBounds;
         var frame = narrow.RootOf<Overlay.Frame>().ViewBounds;
-        var list = narrow.Get<ListBox<string>>().Props<ListBoxProps<string>>();
+        var list = narrow.Get<ListBox<string?>>().Props<ListBoxProps<string?>>();
         narrow.Click(new System.Numerics.Vector2(frame.X + 20f, frame.Bottom - 1f));
 
         await Assert.That((frame.X, frame.Width)).IsEqualTo((field.X, 360f));

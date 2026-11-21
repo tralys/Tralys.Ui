@@ -94,8 +94,9 @@ internal static class Fields
 
     public static (int Anchor, int Caret) Selection(this UiDriver driver, string? id = null)
     {
-        var selection = ((EditorPayload)driver.TextOf(id).Payload!).Selection;
-        return (selection.Anchor, selection.Caret);
+        if (driver.TextOf(id).Payload is not EditorPayload editor)
+            throw new InvalidOperationException("The field holds no editor.");
+        return (editor.Selection.Anchor, editor.Selection.Caret);
     }
 
     /// <summary>Focuses the input's text from code, then puts the caret at <paramref name="caret"/> by key.</summary>

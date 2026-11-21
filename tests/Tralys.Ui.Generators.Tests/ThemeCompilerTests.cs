@@ -38,9 +38,9 @@ public sealed class ThemeCompilerTests
             ),
         ];
 
-        var themes = Harness.Load(new ThemeTokenGenerator(), Source, files).GetType("Themes")!;
-        var dark = (Theme)themes.GetProperty("Dark")!.GetValue(null)!;
-        var light = (Theme)themes.GetProperty("Light")!.GetValue(null)!;
+        var themes = await Generated(files);
+        var dark = await ThemeOf(themes, "Dark");
+        var light = await ThemeOf(themes, "Light");
 
         await Assert.That(dark.Color(ColorToken.BgAccent)).IsEqualTo(Color.FromRgb(255, 0, 0));
         await Assert.That(dark.Color(ColorToken.Bg)).IsEqualTo(Themes.Dark.Color(ColorToken.Bg));
@@ -52,7 +52,7 @@ public sealed class ThemeCompilerTests
     [Test]
     public async Task ACurveWithAnXOrYOutsideZeroToOne_IsAnErrorNamingThatToken()
     {
-        var files = TokenFiles(static semantic =>
+        var files = await TokenFiles(static semantic =>
             semantic["curve"] = JsonNode.Parse(
                 """
                 {
@@ -79,7 +79,7 @@ public sealed class ThemeCompilerTests
     [Test]
     public async Task AWeightOver999_IsAnErrorNamingThatToken()
     {
-        var files = TokenFiles(static semantic =>
+        var files = await TokenFiles(static semantic =>
             semantic["heft"] = JsonNode.Parse(
                 """
                 {
@@ -104,7 +104,7 @@ public sealed class ThemeCompilerTests
     [Test]
     public async Task ANumberBeyondADouble_IsAnError()
     {
-        var files = TokenFiles(static semantic =>
+        var files = await TokenFiles(static semantic =>
             semantic["reach"] = JsonNode.Parse(
                 """
                 {
@@ -125,8 +125,14 @@ public sealed class ThemeCompilerTests
     [Test]
     public async Task AColourComposedFromATranslucentOne_WithoutAnAlphaOfItsOwn_IsOpaque()
     {
-        var files = TokenFiles(static semantic =>
-            semantic["color"]!["bg"]!["text-selection"]!["$value"] = JsonNode.Parse(
+        var files = await TokenFiles(static semantic =>
+        {
+            var selection =
+                semantic["color"]?["bg"]?["text-selection"]
+                ?? throw new InvalidOperationException(
+                    "The semantic tokens hold color.bg.text-selection."
+                );
+            selection["$value"] = JsonNode.Parse(
                 """
                 {
                   "colorSpace": "srgb",
@@ -134,11 +140,11 @@ public sealed class ThemeCompilerTests
                   "hex": {"$ref": "#/color/state/hover/$value/hex"}
                 }
                 """
-            )
-        );
+            );
+        });
 
-        var themes = Harness.Load(new ThemeTokenGenerator(), Source, files).GetType("Themes")!;
-        var dark = (Theme)themes.GetProperty("Dark")!.GetValue(null)!;
+        var themes = await Generated(files);
+        var dark = await ThemeOf(themes, "Dark");
         var hover = dark.Color(ColorToken.StateHover);
 
         await Assert.That(hover.A).IsLessThan((byte)255);
@@ -156,19 +162,19 @@ public sealed class ThemeCompilerTests
               "data": {"$type": "number", "pointer-only": {"$value": 1}}
             }
             """;
-        var files = WithResolver(
-                TokenFiles(null),
-                static file => new Harness.Text(
-                    file.Path,
-                    file.GetText()!
-                        .ToString()
-                        .Replace(
+        var files = (
+            await WithResolver(
+                await TokenFiles(null),
+                static (path, text) =>
+                    new Harness.Text(
+                        path,
+                        text.Replace(
                             "\"pointer\": []",
                             "\"pointer\": [{\"$ref\": \"platforms/client-pointer.tokens.json\"}]"
                         )
-                )
+                    )
             )
-            .Add(new Harness.Text("/app/tokens/platforms/client-pointer.tokens.json", pointer));
+        ).Add(new Harness.Text("/app/tokens/platforms/client-pointer.tokens.json", pointer));
 
         var errors = Harness
             .Diagnostics(new ThemeTokenGenerator(), Source, files)
@@ -188,15 +194,14 @@ public sealed class ThemeCompilerTests
     [Test]
     public async Task AResolverOutsideTheTokensFolder_NamesThemByRelativePath()
     {
-        var files = WithResolver(
-            TokenFiles(null),
-            static file => new Harness.Text(
-                "/app/host/theme/" + Path.GetFileName(file.Path),
-                file.GetText()!
-                    .ToString()
-                    .Replace("\"$ref\": \"", "\"$ref\": \"../../tokens/")
-                    .Replace("../../tokens/#", "#")
-            )
+        var files = await WithResolver(
+            await TokenFiles(null),
+            static (path, text) =>
+                new Harness.Text(
+                    "/app/host/theme/" + Path.GetFileName(path),
+                    text.Replace("\"$ref\": \"", "\"$ref\": \"../../tokens/")
+                        .Replace("../../tokens/#", "#")
+                )
         );
 
         var errors = Harness
@@ -207,22 +212,34 @@ public sealed class ThemeCompilerTests
         await Assert.That(errors).IsEmpty();
     }
 
-    static ImmutableArray<AdditionalText> WithResolver(
+    static async Task<Type> Generated(ImmutableArray<AdditionalText> files) =>
+        await Assert
+            .That(Harness.Load(new ThemeTokenGenerator(), Source, files).GetType("Themes"))
+            .IsNotNull();
+
+    static async Task<Theme> ThemeOf(Type themes, string name) =>
+        await Assert.That(themes.GetProperty(name)?.GetValue(null) as Theme).IsNotNull();
+
+    static async Task<ImmutableArray<AdditionalText>> WithResolver(
         ImmutableArray<AdditionalText> files,
-        Func<AdditionalText, AdditionalText> rewrite
+        Func<string, string, AdditionalText> rewrite
     )
     {
         var rewritten = ImmutableArray.CreateBuilder<AdditionalText>(files.Length);
         foreach (var file in files)
-            rewritten.Add(
-                file.Path.EndsWith(".resolver.json", StringComparison.Ordinal)
-                    ? rewrite(file)
-                    : file
-            );
+        {
+            if (!file.Path.EndsWith(".resolver.json", StringComparison.Ordinal))
+            {
+                rewritten.Add(file);
+                continue;
+            }
+            var text = await Assert.That(file.GetText()).IsNotNull();
+            rewritten.Add(rewrite(file.Path, text.ToString()));
+        }
         return rewritten.ToImmutable();
     }
 
-    static ImmutableArray<AdditionalText> TokenFiles(Action<JsonNode>? editSemantic)
+    static async Task<ImmutableArray<AdditionalText>> TokenFiles(Action<JsonNode>? editSemantic)
     {
         var root = Path.Combine(AppContext.BaseDirectory, "Tokens");
         var files = ImmutableArray.CreateBuilder<AdditionalText>();
@@ -232,7 +249,7 @@ public sealed class ThemeCompilerTests
             var text = File.ReadAllText(path);
             if (editSemantic is not null && relative == "semantic.tokens.json")
             {
-                var semantic = JsonNode.Parse(text)!;
+                var semantic = await Assert.That(JsonNode.Parse(text)).IsNotNull();
                 editSemantic(semantic);
                 text = semantic.ToJsonString();
             }

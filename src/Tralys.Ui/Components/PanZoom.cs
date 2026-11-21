@@ -58,13 +58,14 @@ public sealed class PanZoom : Component<PanZoomProps>
 
     protected override void Render(Ui ui, in PanZoomProps p)
     {
-        var model = ui.Remember(static () => new PanZoomModel());
         var own = ui.State(Valid(p.DefaultZoom) ?? 1f);
+        var ownScroll = ui.ScrollHandle();
+        var model = ui.Remember(
+            (Own: own, Scroll: ownScroll, Root: ui.Ref(), Content: ui.Ref()),
+            static hooks => new PanZoomModel(hooks.Own, hooks.Scroll, hooks.Root, hooks.Content)
+        );
         model.Host = ui.Self(p);
-        model.Own = own;
-        model.Handle = p.Scroll ?? ui.ScrollHandle();
-        model.Root = ui.Ref();
-        model.Content = ui.Ref();
+        model.Handle = p.Scroll ?? ownScroll;
         ui.Effect(model, 0, static (m, _, cx) => m.View = cx.View);
         var (min, max) = Range(p);
         var zoom = Math.Clamp(Valid(p.Zoom) ?? own.Value, min, max);
@@ -142,10 +143,10 @@ internal sealed class PanZoomModel
     internal readonly Handler<KeyEvent> Key;
     internal readonly Handler<GamepadEvent> Gamepad;
     internal Host<PanZoomProps> Host;
-    internal State<float> Own = null!;
-    internal ScrollHandle Handle = null!;
-    internal NodeRef Root = null!;
-    internal NodeRef Content = null!;
+    internal readonly State<float> Own;
+    internal ScrollHandle Handle;
+    internal readonly NodeRef Root;
+    internal readonly NodeRef Content;
     internal UiView? View;
 
     float _zoom;
@@ -181,8 +182,12 @@ internal sealed class PanZoomModel
     TimeSpan _stickTime;
     bool _ticking;
 
-    public PanZoomModel()
+    public PanZoomModel(State<float> own, ScrollHandle handle, NodeRef root, NodeRef content)
     {
+        Own = own;
+        Handle = handle;
+        Root = root;
+        Content = content;
         Down = Handler<PointerEvent>.Of(this, static (m, ref e) => m.Pressed(ref e));
         Move = Handler<PointerEvent>.Of(this, static (m, ref e) => m.Moved(ref e));
         Up = Handler<PointerEvent>.Of(this, static (m, ref e) => m.Released(ref e));

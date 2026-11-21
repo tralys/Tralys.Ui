@@ -111,7 +111,7 @@ public sealed class ItemsTests
         foreach (var on in (bool[])[true, true])
             flags.Add(new Flag { On = on });
         var rows = flags.ToView().Filter(static flag => flag.On);
-        var shown = ItemsSource.Matching<Flag>(rows)!;
+        var shown = ItemsSource.Matching<Flag>(rows);
 
         rows.Dispose();
         flags.Clear();

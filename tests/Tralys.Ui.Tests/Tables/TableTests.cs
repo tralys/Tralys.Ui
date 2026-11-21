@@ -475,9 +475,10 @@ public sealed class TableTests
             );
         });
         driver.View.Context.SmoothScrolling = false;
+        var handle = await Assert.That(rows.Handle).IsNotNull();
 
         driver.Wheel(Header(driver, "Name"), new Vector2(0f, -1f));
-        var down = rows.Handle!.Offset.Y;
+        var down = handle.Offset.Y;
         driver.Wheel(Header(driver, "Name"), new Vector2(0.5f, -1f));
         var name = Root(Header(driver, "Name")).ViewBounds;
         var row = driver.All<Table.Row<Member>>()[0];
@@ -493,7 +494,7 @@ public sealed class TableTests
         ).ViewBounds;
 
         await Assert.That(down).IsGreaterThan(0f);
-        await Assert.That(rows.Handle.Offset.Y).IsGreaterThan(down);
+        await Assert.That(handle.Offset.Y).IsGreaterThan(down);
         await Assert.That(Sideways(driver).Offset.X).IsGreaterThan(0f);
         await Assert.That(cell.X).IsEqualTo(name.X + 6f);
         await Assert.That(end.X).IsEqualTo(end.Max);
@@ -534,7 +535,8 @@ public sealed class TableTests
 
         driver.Wheel(driver.All<Combobox.Item>()[2], new Vector2(0f, -1f));
 
-        await Assert.That(rows.Handle!.Offset.Y).IsEqualTo(0f);
+        var handle = await Assert.That(rows.Handle).IsNotNull();
+        await Assert.That(handle.Offset.Y).IsEqualTo(0f);
     }
 
     [Test]
@@ -562,8 +564,10 @@ public sealed class TableTests
         finger.MoveBy(new Vector2(0f, -60f), steps: 6);
         finger.Release();
 
-        await Assert.That(rows.Handle!.Offset.Y).IsGreaterThan(0f);
-        await Assert.That(board.Handle!.Offset).IsEqualTo(Vector2.Zero);
+        var rowsHandle = await Assert.That(rows.Handle).IsNotNull();
+        var boardHandle = await Assert.That(board.Handle).IsNotNull();
+        await Assert.That(rowsHandle.Offset.Y).IsGreaterThan(0f);
+        await Assert.That(boardHandle.Offset).IsEqualTo(Vector2.Zero);
     }
 
     [Test]
@@ -590,7 +594,8 @@ public sealed class TableTests
         finger.MoveBy(new Vector2(0f, -200f));
         finger.Release();
         var dropped = Headers(driver);
-        var still = rows.Handle!.Offset.Y;
+        var handle = await Assert.That(rows.Handle).IsNotNull();
+        var still = handle.Offset.Y;
         role.Count = 1;
         driver.Settle();
         finger = driver.Hold(Header(driver, "Role"), PointerKind.Touch);
@@ -788,13 +793,14 @@ public sealed class TableTests
         await Assert.That((bar.Y, bar.Right)).IsEqualTo((header.Bottom, header.Right));
         await Assert.That(row.Right).IsEqualTo(bar.X);
         await Assert.That(hidden.All<Scrollbar>()).IsEmpty();
-        await Assert
+        var scroller = await Assert
             .That(
                 Walk(Root(hidden.Get<Table<Member>>()))
                     .First(n => n.Kind == NodeKind.VirtualList)
-                    .Scroller!.Offset.Y
+                    .Scroller
             )
-            .IsGreaterThan(0f);
+            .IsNotNull();
+        await Assert.That(scroller.Offset.Y).IsGreaterThan(0f);
     }
 
     [Test]
@@ -863,7 +869,8 @@ public sealed class TableTests
         var fitted = Root(Header(driver, "Name")).ViewBounds.Width;
         var role = Cell(Row(driver, members[1].Name), members[1].Role).ViewBounds;
 
-        rows.Handle!.ScrollTo(null, 2000f);
+        var handle = await Assert.That(rows.Handle).IsNotNull();
+        handle.ScrollTo(null, 2000f);
         driver.Settle();
 
         await Assert.That(role.X).IsEqualTo(Root(Header(driver, "Role")).ViewBounds.X + 6f);
@@ -1034,7 +1041,8 @@ public sealed class TableTests
             )
         );
         var row = Root(Row(driver, "Bram")).ViewBounds;
-        var spanning = driver.Get("spanning").Parent!.ViewBounds;
+        var cell = await Assert.That(driver.Get("spanning").Parent).IsNotNull();
+        var spanning = cell.ViewBounds;
         var at = driver.Get("spanning").ViewBounds.X;
 
         inset.Count = 0;

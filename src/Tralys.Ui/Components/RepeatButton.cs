@@ -56,9 +56,8 @@ public sealed class RepeatButton : Component<RepeatButtonProps>
         var t = ui.Theme;
         var m = t.Metrics(p.Size ?? ComponentSize.Md);
         ui.CanRun(p.OnClick);
-        var model = ui.Remember(static () => new Repeater());
+        var model = ui.Remember(ui.Ref(), static root => new Repeater(root));
         model.Host = ui.Self(p);
-        model.Root = ui.Ref();
         ui.Effect(model, 0, static (m, _, cx) => m.View = cx.View);
         var look = ui.Animated(
             t.Palette(p.Scheme ?? ColorScheme.Primary, p.Variant, ui.ComponentState)
@@ -118,15 +117,16 @@ public sealed class RepeatButton : Component<RepeatButtonProps>
         internal readonly Handler<KeyEvent> KeyUp;
         internal readonly Callback<FocusChange> FocusChange;
         internal Host<RepeatButtonProps> Host;
-        internal NodeRef Root = null!;
+        internal readonly NodeRef Root;
         internal UiView? View;
         TimeSpan _next;
         bool _pointer;
         bool _space;
         bool _ticking;
 
-        public Repeater()
+        public Repeater(NodeRef root)
         {
+            Root = root;
             Click = Callback.Of(this, static m => m.Run());
             PointerDown = Handler<PointerEvent>.Of(this, static (m, ref e) => m.Pressed(ref e));
             PointerUp = Handler<PointerEvent>.Of(this, static (m, ref e) => m._pointer = false);

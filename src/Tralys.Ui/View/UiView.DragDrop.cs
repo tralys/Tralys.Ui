@@ -90,8 +90,7 @@ public sealed partial class UiView
         {
             Button = session.Button,
         };
-        var over = target.Interaction!.Props.OnDragOver;
-        if (!over.IsEmpty)
+        if (target.Interaction?.Props.OnDragOver is { IsEmpty: false } over)
         {
             try
             {
@@ -147,7 +146,7 @@ public sealed partial class UiView
         };
         try
         {
-            target.Interaction!.Props.OnDrop.Invoke(ref e);
+            target.Interaction?.Props.OnDrop.Invoke(ref e);
         }
         catch (Exception fault) when (Context.OnFault is not null)
         {

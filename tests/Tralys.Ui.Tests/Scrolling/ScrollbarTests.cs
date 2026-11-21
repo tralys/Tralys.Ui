@@ -14,7 +14,7 @@ public sealed class ScrollbarTests
         var owner = new BarOwner();
         using var driver = owner.Render(value: 0f, max: 300f, viewport: 100f, height: 224f);
         var thumb = Bars.Thumb(driver);
-        var track = thumb.Parent!.Parent!;
+        var track = Bars.TrackOf(thumb);
         var length = thumb.ViewBounds.Height;
 
         var held = driver.Hold(thumb);
@@ -126,7 +126,7 @@ public sealed class ScrollbarTests
         var owner = new BarOwner();
         using var driver = owner.Render(value: 0f, max: 100000f, viewport: 20f, height: 160f);
         var thumb = Bars.Thumb(driver);
-        var track = thumb.Parent!.Parent!;
+        var track = Bars.TrackOf(thumb);
         var length = thumb.ViewBounds.Height;
 
         var held = driver.Hold(thumb);
@@ -151,7 +151,7 @@ public sealed class ScrollbarTests
 
         await Assert
             .That(thumb.ViewBounds.Height)
-            .IsEqualTo(thumb.Parent!.Parent!.ViewBounds.Height / 2f);
+            .IsEqualTo(Bars.TrackOf(thumb).ViewBounds.Height / 2f);
     }
 }
 
@@ -159,7 +159,18 @@ public sealed class ScrollbarTests
 internal sealed class BarOwner
 {
     public readonly List<ScrollbarChange> Log = [];
-    public State<float> Value = null!;
+    State<float>? _value;
+
+    public State<float> Value
+    {
+        get
+        {
+            if (_value is not { } value)
+                throw new InvalidOperationException("The owner has not rendered yet.");
+            return value;
+        }
+    }
+
     public bool Applies = true;
     public float Min;
     public float Max;
@@ -177,14 +188,14 @@ internal sealed class BarOwner
         Max = max;
         return UiDriver.Render(ui =>
         {
-            Value = ui.State(value);
+            var state = _value = ui.State(value);
             Shortest = ui.Theme.Metrics(ComponentSize.Xs).Height;
             using (ui.Box(direction: Direction.Column, align: Align.Start, gap: 8))
             {
                 if (focusable)
                     using (ui.Box(width: 40, height: 20, focusable: true, id: "before")) { }
                 ui.Scrollbar(
-                    value: Value.Value,
+                    value: state.Value,
                     onValueChange: Callback<ScrollbarChange>.Of(
                         this,
                         static (o, change) =>
@@ -226,14 +237,23 @@ internal static class Bars
     public static Node Track(UiDriver driver, int bar = 0)
     {
         var arrow = driver.All<ScrollbarArrow>()[bar * 2];
+        if (arrow.Parent is not { } around)
+            throw new InvalidOperationException("The arrow sits in no bar.");
         var next = false;
-        foreach (var child in arrow.Parent!.Children)
+        foreach (var child in around.Children)
         {
             if (next)
                 return child;
             next = child == arrow;
         }
         throw new InvalidOperationException("No track.");
+    }
+
+    public static Node TrackOf(Node thumb)
+    {
+        if (thumb.Parent?.Parent is not { } track)
+            throw new InvalidOperationException("The thumb sits in no track.");
+        return track;
     }
 
     public static Node Page(UiDriver driver, bool forward, int bar = 0)
@@ -246,14 +266,16 @@ internal static class Bars
                 return child;
             last = child;
         }
-        return last!;
+        if (last is null)
+            throw new InvalidOperationException("The track holds no page.");
+        return last;
     }
 
     /// <summary>How far down its track the thumb sits, as a share of the room it moves in.</summary>
     public static float Share(UiDriver driver, int bar = 0)
     {
         var thumb = Thumb(driver, bar);
-        var track = thumb.Parent!.Parent!.ViewBounds;
+        var track = TrackOf(thumb).ViewBounds;
         var room = track.Height - thumb.ViewBounds.Height;
         return room > 0f ? (thumb.ViewBounds.Y - track.Y) / room : 0f;
     }

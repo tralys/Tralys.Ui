@@ -14,15 +14,15 @@ public sealed class LayoutFormatTests
     static DockManager NestedSplits()
     {
         var m = DockView.NewManager("a", "b", "c", "d");
-        var a = m.GetElement("a")!;
-        var b = m.GetElement("b")!;
+        var a = m.Element("a");
+        var b = m.Element("b");
         m.Dock(a, DockPosition.Center);
         m.DockRelativeTo(b, a, DockDirection.Right);
-        m.DockRelativeTo(m.GetElement("c")!, b, DockDirection.Bottom);
-        m.DockRelativeTo(m.GetElement("d")!, a, DockDirection.Top);
+        m.DockRelativeTo(m.Element("c"), b, DockDirection.Bottom);
+        m.DockRelativeTo(m.Element("d"), a, DockDirection.Top);
         m.CenterGroup.Children[0].SizeProportion = 0.3f;
         m.CenterGroup.Children[1].SizeProportion = 0.7f;
-        b.Parent!.Parent!.Children[0].SizeProportion = 0.123456f;
+        m.CenterGroup.Children[1].Children[0].SizeProportion = 0.123456f;
         m.PanelSizes = new DockPanelSizes
         {
             LeftWidth = 412,
@@ -35,12 +35,12 @@ public sealed class LayoutFormatTests
     static DockManager Floats()
     {
         var m = DockView.NewManager("a", "b", "c", "d");
-        var a = m.GetElement("a")!;
+        var a = m.Element("a");
         m.Dock(a, DockPosition.Left);
         var window = m.Float(a, 50, 60, 320, 240);
-        m.DockToGroup(m.GetElement("b")!, window.Group);
-        m.DockToGroup(m.GetElement("c")!, window.Group, 0);
-        m.Float(m.GetElement("d")!, 1.5f, 2.25f, 333.3f, 99.9f);
+        m.DockToGroup(m.Element("b"), window.Group);
+        m.DockToGroup(m.Element("c"), window.Group, 0);
+        m.Float(m.Element("d"), 1.5f, 2.25f, 333.3f, 99.9f);
         m.FloatingWindows[1].X = 77;
         return m;
     }
@@ -48,11 +48,11 @@ public sealed class LayoutFormatTests
     static DockManager Hidden()
     {
         var m = DockView.NewManager("a", "b", "c", "d");
-        m.Dock(m.GetElement("a")!, DockPosition.Left);
-        m.Dock(m.GetElement("b")!, DockPosition.Right);
-        m.GetElement("b")!.Hide();
-        m.Dock(m.GetElement("c")!, DockPosition.Bottom);
-        m.GetElement("c")!.Close();
+        m.Dock(m.Element("a"), DockPosition.Left);
+        m.Dock(m.Element("b"), DockPosition.Right);
+        m.Element("b").Hide();
+        m.Dock(m.Element("c"), DockPosition.Bottom);
+        m.Element("c").Close();
         return m;
     }
 

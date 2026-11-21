@@ -40,9 +40,10 @@ internal static class TestFonts
 
     static byte[] Load()
     {
-        using var stream = typeof(TestFonts).Assembly.GetManifestResourceStream(
-            "Tralys.Ui.Testing.Inter-Regular.otf"
-        )!;
+        using var stream =
+            typeof(TestFonts).Assembly.GetManifestResourceStream(
+                "Tralys.Ui.Testing.Inter-Regular.otf"
+            ) ?? throw new InvalidOperationException("Tralys.Ui.Testing embeds Inter-Regular.otf.");
         var bytes = new byte[stream.Length];
         stream.ReadExactly(bytes);
         return bytes;

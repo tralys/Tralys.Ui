@@ -10,7 +10,7 @@ public sealed class ObservablePropertyTests
     public async Task ASet_RunsTheHook_ThenRaisesTheProperty_ThenItsDependents_AndAnEqualSetDoesNothing()
     {
         var reading = new Reading();
-        reading.PropertyChanged += (_, e) => reading.Log.Add(e.PropertyName!);
+        reading.PropertyChanged += (_, e) => reading.Log.Add(e.PropertyName);
 
         reading.Score = 30;
         reading.Score = 30;
@@ -25,7 +25,7 @@ public sealed class ObservablePropertyTests
     public async Task ASet_RunsTheChangingHookFirst_SoAValueItClampsToTheOneHeldRaisesNothing()
     {
         var reading = new Reading();
-        reading.PropertyChanged += (_, e) => reading.Log.Add(e.PropertyName!);
+        reading.PropertyChanged += (_, e) => reading.Log.Add(e.PropertyName);
 
         reading.Level = 30;
         reading.Level = 50;
@@ -34,7 +34,7 @@ public sealed class ObservablePropertyTests
         await Assert
             .That(reading.Log)
             .IsEquivalentTo(
-                ["OnLevelChanging 0 30", "Level", "OnLevelChanging 10 50"],
+                (string?[])["OnLevelChanging 0 30", "Level", "OnLevelChanging 10 50"],
                 TUnit.Assertions.Enums.CollectionOrdering.Matching
             );
     }
@@ -96,7 +96,7 @@ public sealed class ObservablePropertyTests
 
 sealed partial class Reading : ObservableObject
 {
-    public readonly List<string> Log = [];
+    public readonly List<string?> Log = [];
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(Ratio))]

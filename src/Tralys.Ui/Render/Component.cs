@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Tralys.Ui.Mvvm;
 
@@ -43,16 +44,18 @@ public readonly struct Host<TProps> : IEquatable<Host<TProps>>
     internal int Generation => _generation;
 
     /// <summary>The props as of the latest render; default once the handle is stale.</summary>
-    public ref readonly TProps Props => ref Current ? ref _host!.PropsRef : ref Unmounted;
+    public ref readonly TProps Props => ref Current ? ref _host.PropsRef : ref Unmounted;
 
-    public bool IsMounted => Current && _host!.IsMounted;
+    public bool IsMounted => Current && _host.IsMounted;
 
+    [MemberNotNullWhen(true, nameof(_host))]
     bool Current => _host is not null && _host.Generation == _generation;
 
     /// <summary>The value of the nearest provider of <paramref name="key"/> above the component, as it is now; the
     /// read is not tracked.</summary>
     public T Use<T>(ContextKey<T> key)
-        where T : IEquatable<T> => ContextLookup.Find(IsMounted ? _host!.Node : null, key, out _);
+        where T : IEquatable<T>? =>
+        ContextLookup.Find(Current && _host.IsMounted ? _host.Node : null, key, out _);
 
     public bool Equals(Host<TProps> other) =>
         ReferenceEquals(_host, other._host) && _generation == other._generation;
@@ -77,7 +80,7 @@ static class Singleton<T>
 internal abstract partial class ComponentHost : IChangeObserver
 {
     internal Dependencies _dependencies;
-    internal Node Node = null!;
+    internal Node? Node;
     internal Node? Root;
     internal ComponentHost? Caller;
     internal Placement Placement;
@@ -86,7 +89,7 @@ internal abstract partial class ComponentHost : IChangeObserver
     internal bool Dirty;
     internal bool Faulted;
     internal bool RootAssigned;
-    internal bool IsMounted;
+    bool _mounted;
     internal bool PassesPlacement;
     internal int Generation;
     internal long MountId;
@@ -101,11 +104,14 @@ internal abstract partial class ComponentHost : IChangeObserver
     internal int RenderCount;
     internal long WakeAt = long.MaxValue;
     internal int ClockSlot = -1;
-    internal UiView View = null!;
+    internal UiView? View;
 
     static long s_mounts;
 
     public ref Dependencies Dependencies => ref _dependencies;
+
+    [MemberNotNullWhen(true, nameof(Node), nameof(View))]
+    internal bool IsMounted => _mounted;
 
     internal abstract Type ComponentType { get; }
 
@@ -128,7 +134,7 @@ internal abstract partial class ComponentHost : IChangeObserver
         View = view;
         Node = node;
         Caller = caller;
-        IsMounted = true;
+        _mounted = true;
         MountId = Interlocked.Increment(ref s_mounts);
         UiView.ComponentMounted(node, ComponentType);
         if (!ReferenceEquals(_dependencies.Dispatcher, view.Context.Dispatcher))
@@ -137,11 +143,11 @@ internal abstract partial class ComponentHost : IChangeObserver
 
     internal virtual void Unmounted()
     {
-        IsMounted = false;
+        _mounted = false;
         Generation++;
         Dirty = false;
         _dependencies.Clear();
-        View.Context.Unwatch(this);
+        View?.Context.Unwatch(this);
         WakeAt = long.MaxValue;
         for (var i = 0; i < Provided.Count; i++)
             Provided[i].Withdraw();
@@ -162,8 +168,8 @@ internal abstract partial class ComponentHost : IChangeObserver
 
     internal virtual void Release()
     {
-        Node = null!;
-        View = null!;
+        Node = null;
+        View = null;
     }
 }
 
@@ -172,9 +178,26 @@ internal sealed partial class ComponentHost<TProps> : ComponentHost, IPropsHost<
     where TProps : struct, IEquatable<TProps>
 {
     internal TProps Value;
-    internal Component<TProps> Component = null!;
-    internal Type Type = null!;
+    internal Component<TProps> Component;
+    internal Type Type;
     internal int Id;
+
+    ComponentHost(Component<TProps> component, Type type, int id)
+    {
+        Component = component;
+        Type = type;
+        Id = id;
+    }
+
+    internal static ComponentHost<TProps> Rent(Component<TProps> component, Type type, int id)
+    {
+        if (Pool<ComponentHost<TProps>>.TryRent() is not { } host)
+            return new ComponentHost<TProps>(component, type, id);
+        host.Component = component;
+        host.Type = type;
+        host.Id = id;
+        return host;
+    }
 
     public TProps Props => Value;
 
@@ -192,7 +215,6 @@ internal sealed partial class ComponentHost<TProps> : ComponentHost, IPropsHost<
     {
         base.Release();
         Value = default;
-        Component = null!;
         Pool<ComponentHost<TProps>>.Return(this);
     }
 }

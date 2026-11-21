@@ -381,21 +381,26 @@ public sealed partial class UiView : IRenderedView, IDisposable, ITextureResolve
     internal void Mounted(Node node)
     {
         node.IsMounted = true;
-        if (node._parent is { } parent && (parent._states & InputStates.Disabled) != 0)
+        var parent = node._parent;
+        if (parent is not null && (parent._states & InputStates.Disabled) != 0)
             node._states |= InputStates.Disabled;
         node.Dirty |= Dirty.Measure | Dirty.Layout | Dirty.Env | Dirty.Paint;
         MarkEnvBelow(node);
-        ChildrenChanged(node._parent!);
+        if (parent is not null)
+            ChildrenChanged(parent);
         Stats.Mounts++;
     }
 
     internal void Unmount(Node node)
     {
-        var parent = node._parent!;
+        var parent = node._parent;
         Departed(node);
         Detach(node);
-        parent.Unlink(node);
-        ChildrenChanged(parent);
+        if (parent is not null)
+        {
+            parent.Unlink(node);
+            ChildrenChanged(parent);
+        }
         _unmounted.Add(node);
     }
 
@@ -472,19 +477,22 @@ public sealed partial class UiView : IRenderedView, IDisposable, ITextureResolve
     internal void Faulted(ComponentHost host)
     {
         host.Faulted = true;
-        if (host.Node.FaultHidden)
+        if (host.Node is not { FaultHidden: false } node)
             return;
-        host.Node.FaultHidden = true;
+        node.FaultHidden = true;
         _compositeDirty = true;
-        ShownBelowChanged(host.Node);
+        ShownBelowChanged(node);
     }
 
     internal void Unfaulted(ComponentHost host)
     {
         host.Faulted = false;
-        host.Node.FaultHidden = false;
-        _compositeDirty = true;
-        ShownBelowChanged(host.Node);
+        if (host.Node is { } node)
+        {
+            node.FaultHidden = false;
+            _compositeDirty = true;
+            ShownBelowChanged(node);
+        }
         WakeResting();
     }
 

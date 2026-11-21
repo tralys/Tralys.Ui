@@ -179,14 +179,14 @@ sealed partial class PanelImage : IViewHost, IDisposable
 
 readonly record struct PanelViewProps
 {
-    public PanelImage? Image { get; init; }
+    public required PanelImage Image { get; init; }
 }
 
 sealed class PanelView : Component<PanelViewProps>
 {
     protected override void Render(Ui ui, in PanelViewProps p)
     {
-        var image = p.Image!;
+        var image = p.Image;
         using (ui.Box(align: Align.Center, justify: Justify.Center))
         {
             using (
@@ -213,14 +213,14 @@ sealed class PanelView : Component<PanelViewProps>
 
 readonly record struct PanelContentProps
 {
-    public PanelModel? Model { get; init; }
+    public required PanelModel Model { get; init; }
 }
 
 sealed class PanelContent : Component<PanelContentProps>
 {
     protected override void Render(Ui ui, in PanelContentProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         var t = ui.Theme;
         var weight = t.Weight(WeightToken.Interface);
         using (

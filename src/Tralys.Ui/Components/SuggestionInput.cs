@@ -93,12 +93,14 @@ public sealed class SuggestionInput : Component<SuggestionInputProps>
 {
     protected override void Render(Ui ui, in SuggestionInputProps p)
     {
-        var model = ui.Remember(static () => new SuggestionInputModel());
         var own = ui.Ref();
+        var model = ui.Remember(
+            (Text: own, Field: ui.Ref()),
+            static refs => new SuggestionInputModel(refs.Text, refs.Field)
+        );
         model.Host = ui.Self(p);
         model.Bind(p);
         model.Text = p.NodeRef ?? own;
-        model.Field = ui.Ref();
         ui.Effect(model, p.Source, static (m, source, _) => m.SourceChanged(source));
         ui.Effect(model, Math.Max(1, p.MaxSuggestions ?? 5), static (m, max, _) => m.Resize(max));
         ui.Effect(
@@ -198,28 +200,31 @@ public sealed class SuggestionRows : Component<SuggestionRowsProps>
         var t = ui.Theme;
         var m = t.Metrics(ComponentSize.Sm);
         var rows = p.Rows;
-        var count = rows is { IsOpen: true } ? rows.Count : 0;
         var weight = t.Weight(WeightToken.Content);
         using (ui.Box(direction: Direction.Column, width: p.Width, onPointerDown: KeepFocus))
         using (ui.OverlayFrame(size: ComponentSize.Sm))
         using (ui.ScrollArea(horizontal: ScrollbarVisibility.Disabled, maxHeight: p.MaxHeight))
         using (ui.Box(direction: Direction.Column))
         {
-            for (var i = 0; i < count; i++)
+            if (rows is { IsOpen: true } open)
             {
-                var slot = rows!.Slots[i];
-                ui.SuggestionRow(
-                    slot: slot,
-                    text: slot.Text,
-                    header: slot.Header,
-                    detail: slot.Detail,
-                    item: p.Item,
-                    index: i,
-                    lit: rows.IsLit(slot),
-                    rows: rows,
-                    onAccept: p.OnAccept,
-                    key: i
-                );
+                var count = open.Count;
+                for (var i = 0; i < count; i++)
+                {
+                    var slot = open.Slots[i];
+                    ui.SuggestionRow(
+                        slot: slot,
+                        text: slot.Text,
+                        header: slot.Header,
+                        detail: slot.Detail,
+                        item: p.Item,
+                        index: i,
+                        lit: open.IsLit(slot),
+                        rows: open,
+                        onAccept: p.OnAccept,
+                        key: i
+                    );
+                }
             }
             if (rows is { IsEmpty: true } && !p.EmptyText.Span.IsEmpty)
                 ui.Text(
@@ -372,12 +377,14 @@ internal sealed class SuggestionInputModel : IDisposable
     internal readonly Callback<SuggestionSlot> Accept;
     internal readonly Handler<KeyEvent> Keys;
     internal Host<SuggestionInputProps> Host;
-    internal NodeRef Text = null!;
-    internal NodeRef Field = null!;
+    internal NodeRef Text;
+    internal readonly NodeRef Field;
     ISuggestionSource? _source;
 
-    public SuggestionInputModel()
+    public SuggestionInputModel(NodeRef text, NodeRef field)
     {
+        Text = text;
+        Field = field;
         Rows = _own;
         Typed = Callback.Of(this, static m => m.Edited());
         Accept = Callback<SuggestionSlot>.Of(this, static (m, _) => m.AcceptLit());

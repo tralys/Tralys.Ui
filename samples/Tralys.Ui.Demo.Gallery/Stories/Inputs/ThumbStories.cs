@@ -11,10 +11,10 @@ static class ThumbStories
     public static void Drag(Ui ui)
     {
         var t = ui.Theme;
-        var first = ui.Remember(static () => new Placed());
-        var second = ui.Remember(static () => new Placed());
-        first.At = ui.State(new Vector2(40f, 40f));
-        second.At = ui.State(new Vector2(200f, 120f));
+        var firstAt = ui.State(new Vector2(40f, 40f));
+        var secondAt = ui.State(new Vector2(200f, 120f));
+        var first = ui.Remember(firstAt, static at => new Placed(at));
+        var second = ui.Remember(secondAt, static at => new Placed(at));
         first.LaidOut = first.At.Value;
         second.LaidOut = second.At.Value;
         using (ui.Box(direction: Direction.Column, gap: 8))
@@ -69,10 +69,13 @@ static class ThumbStories
     sealed class Placed
     {
         internal readonly Callback<Vector2> Moved;
-        internal State<Vector2> At = null!;
+        internal readonly State<Vector2> At;
         internal Vector2 LaidOut;
 
-        public Placed() =>
+        public Placed(State<Vector2> at)
+        {
+            At = at;
             Moved = Callback<Vector2>.Of(this, static (p, by) => p.At.Value = p.LaidOut + by);
+        }
     }
 }

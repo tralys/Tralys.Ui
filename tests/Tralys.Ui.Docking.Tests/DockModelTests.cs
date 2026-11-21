@@ -47,7 +47,7 @@ public sealed class DockModelTests
             ("c", DockPosition.Left)
         );
         var group = manager.LeftGroup;
-        var a = manager.GetElement("a")!;
+        var a = manager.Element("a");
         var changes = 0;
         manager.LayoutChanged += (_, _) => changes++;
 

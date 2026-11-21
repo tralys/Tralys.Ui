@@ -7,7 +7,7 @@ namespace Tralys.Ui.Gallery;
 
 public readonly record struct GalleryShellProps
 {
-    public GalleryModel? Model { get; init; }
+    public required GalleryModel Model { get; init; }
 }
 
 /// <summary>The gallery's sidebar of stories, its bar naming the shown story with the theme and density menus, and
@@ -27,7 +27,7 @@ public sealed class GalleryShell : Component<GalleryShellProps>
 
     protected override void Render(Ui ui, in GalleryShellProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         var t = ui.Theme;
         ui.Effect(model, 0, static (m, _, cx) => m.View = cx.View);
         ui.Provide(StoryWindows.Key, new StoryWindows(model.Windows));
@@ -51,7 +51,7 @@ public sealed class GalleryShell : Component<GalleryShellProps>
 
 readonly record struct GalleryPartProps
 {
-    public GalleryModel? Model { get; init; }
+    public required GalleryModel Model { get; init; }
 }
 
 sealed class GallerySidebar : Component<GalleryPartProps>
@@ -71,7 +71,7 @@ sealed class GallerySidebar : Component<GalleryPartProps>
 
     protected override void Render(Ui ui, in GalleryPartProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         var t = ui.Theme;
         var scroll = ui.ScrollHandle();
         ui.Effect(model, (Scroll: scroll, model.Shown), static (m, at, _) => m.Reveal(at.Scroll));
@@ -228,7 +228,7 @@ sealed class GalleryBar : Component<GalleryPartProps>
 
     protected override void Render(Ui ui, in GalleryPartProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         var t = ui.Theme;
         var story = model.Stories[model.Shown];
         var density = (int)ui.Density;
@@ -370,7 +370,7 @@ sealed class GalleryStage : Component<GalleryPartProps>
 
     protected override void Render(Ui ui, in GalleryPartProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         var story = model.Stories[model.Shown];
         var t = ui.Theme;
         if (!model.States)

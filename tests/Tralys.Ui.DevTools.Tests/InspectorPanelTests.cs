@@ -56,7 +56,8 @@ public sealed class InspectorPanelTests
         h.Panel.Click(h.Panel.GetText("Meter"));
         h.Model.Refresh();
 
-        await Assert.That(revealed).IsEqualTo(h.Model.Tree.RowOf(app.GetText("tick 0"))!.Key);
+        var row = await Assert.That(h.Model.Tree.RowOf(app.GetText("tick 0"))).IsNotNull();
+        await Assert.That(revealed).IsEqualTo(row.Key);
         await Assert.That(h.Model.Selected).IsSameReferenceAs(app.Get<Meter>());
     }
 
@@ -94,7 +95,8 @@ public sealed class InspectorPanelTests
         var hovered = h.Model.HoverBox;
         h.Panel.Unhover();
 
-        await Assert.That(hovered).IsEqualTo(InspectorModel.Boxed(app.Get<Dial>())!.ViewBounds);
+        var dial = await Assert.That(InspectorModel.Boxed(app.Get<Dial>())).IsNotNull();
+        await Assert.That(hovered).IsEqualTo(dial.ViewBounds);
         await Assert.That(h.Model.HoverBox).IsNull();
     }
 

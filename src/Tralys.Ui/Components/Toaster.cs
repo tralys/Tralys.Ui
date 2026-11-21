@@ -19,7 +19,7 @@ public readonly record struct ToasterProps
 [Children]
 public sealed class Toaster : Component<ToasterProps>
 {
-    internal static readonly ContextKey<ToasterContext> Context = new("Toaster");
+    internal static readonly ContextKey<ToasterContext> Context = new("Toaster", default);
 
     const float DefaultDuration = 4f;
     const float Edge = 16f;

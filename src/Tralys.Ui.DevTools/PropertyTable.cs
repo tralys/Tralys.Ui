@@ -43,7 +43,7 @@ internal sealed class PropRow
         return null;
     }
 
-    public PropSlot<T> Make<T>(int stamp)
+    public PropSlot<T> Make<T>(in T value, int stamp)
     {
         PropSlot<T>? reused = null;
         var oldest = -1;
@@ -56,12 +56,14 @@ internal sealed class PropRow
         }
         if (reused is null || _slots.Count < MostSlots)
         {
-            reused = new PropSlot<T>();
+            reused = new PropSlot<T>(value);
             if (_slots.Count < MostSlots)
                 _slots.Add(reused);
             else
                 _slots[oldest] = reused;
         }
+        else
+            reused.Value = value;
         reused.Used = stamp;
         return reused;
     }
@@ -82,9 +84,9 @@ internal abstract class PropSlot
     }
 }
 
-internal sealed class PropSlot<T> : PropSlot
+internal sealed class PropSlot<T>(T value) : PropSlot
 {
-    public T Value = default!;
+    public T Value = value;
 }
 
 internal sealed class PropertyTable : IPropsVisitor
@@ -167,8 +169,7 @@ internal sealed class PropertyTable : IPropsVisitor
             var slot = row.Find(in value, stamp);
             if (slot is null)
             {
-                slot = row.Make<T>(stamp);
-                slot.Value = value;
+                slot = row.Make(in value, stamp);
                 slot.Keep(Format(in value));
             }
             row.Last = slot;
@@ -176,7 +177,7 @@ internal sealed class PropertyTable : IPropsVisitor
         }
         row.Name = name;
         row.Shown = true;
-        row.IsDefault = EqualityComparer<T>.Default.Equals(value, default!);
+        row.IsDefault = EqualityComparer<T>.Default.Equals(value, default);
         _changed = true;
         if (again && _model.Watching && ReferenceEquals(_model.WatchedProp, name))
         {
@@ -279,7 +280,7 @@ internal static class ValueText
         else if (typeof(T) == typeof(Rect))
             Box(a, Unsafe.As<T, Rect>(ref v));
         else if (!typeof(T).IsEnum || !EnumText<T>.TryAppend(a, value, default))
-            a.Append(value!.ToString() ?? "");
+            a.Append(value?.ToString() ?? "");
     }
 
     public static void Number(FrameArena a, float value)

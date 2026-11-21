@@ -6,7 +6,7 @@ public sealed partial class UiView
 {
     Size CustomLayout(Node node, Avail width, Avail height, bool perform)
     {
-        var payload = (LayoutPayload)node.Payload!;
+        var payload = node.PayloadOf<LayoutPayload>();
         ref readonly var style = ref node.Layout;
         var pad = style.Padding;
         var border = style.Border;

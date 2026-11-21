@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -28,8 +29,12 @@ public sealed class ComponentCallGenerator : IIncrementalGenerator
                     && !declaration.Modifiers.Any(SyntaxKind.AbstractKeyword),
                 static (ctx, ct) => Read(ctx, ct)
             )
-            .Where(static model => model is not null)
-            .Select(static (model, _) => model!.Value);
+            .SelectMany(
+                static (model, _) =>
+                    model is { } found
+                        ? ImmutableArray.Create(found)
+                        : ImmutableArray<CallModel>.Empty
+            );
 
         context.RegisterSourceOutput(
             calls,
@@ -103,8 +108,8 @@ public sealed class ComponentCallGenerator : IIncrementalGenerator
             UiShapes.Chain(type, "") + "Calls",
             UiShapes.Chain(type, ""),
             reach == UiShapes.Reach.Public ? "public" : "internal",
-            type.Fq(),
-            props.Fq(),
+            ObliviousArgs(props) ? Annotated(type).FqNullable() : type.Fq(),
+            ObliviousArgs(props) ? Annotated(props).FqNullable() : props.Fq(),
             type.Fq().Replace('<', '{').Replace('>', '}'),
             new([.. typeParameters.Select(p => Literals.Identifier(p.Name))]),
             new([.. typeParameters.Select(Constraint).OfType<string>()]),
@@ -121,33 +126,44 @@ public sealed class ComponentCallGenerator : IIncrementalGenerator
         );
     }
 
-    static Arg ArgOf(IPropertySymbol member) =>
-        new(
+    // The call is written with nullable enabled, where an oblivious type would read as non-nullable.
+    static bool Oblivious(ITypeSymbol type) =>
+        type is { NullableAnnotation: NullableAnnotation.None, IsValueType: false };
+
+    static bool ObliviousArgs(INamedTypeSymbol props) => props.TypeArguments.Any(Oblivious);
+
+    static INamedTypeSymbol Annotated(INamedTypeSymbol type) =>
+        type.TypeArguments.IsEmpty
+            ? type
+            : type.ConstructedFrom.Construct(
+                type.TypeArguments,
+                [
+                    .. type.TypeArguments.Select(a =>
+                        Oblivious(a) ? NullableAnnotation.Annotated : a.NullableAnnotation
+                    ),
+                ]
+            );
+
+    static Arg ArgOf(IPropertySymbol member)
+    {
+        var type = Oblivious(member.Type)
+            ? member.Type.WithNullableAnnotation(NullableAnnotation.Annotated)
+            : member.Type;
+        return new(
             Literals.Identifier(member.Name),
             Literals.Identifier(UiShapes.Camel(member.Name)),
-            member.Type.FqNullable(),
-            DefaultOf(member.Type),
+            type.FqNullable(),
+            DefaultOf(type),
             member.IsRequired
         );
+    }
 
     static string DefaultOf(ITypeSymbol type) =>
-        type is ITypeParameterSymbol
-            ? type.NullableAnnotation == NullableAnnotation.Annotated
-                ? "default"
-                : "default!"
-            : type.NullableOf() is not null
-                ? "null"
-                : type.IsReferenceType
-                    ? type.NullableAnnotation == NullableAnnotation.NotAnnotated
-                        ? "default!"
-                        : "null"
-                    : type.SpecialType == SpecialType.System_Boolean
-                        ? "false"
-                        : type.SpecialType
-                            is >= SpecialType.System_SByte
-                                and <= SpecialType.System_Double
-                            ? "0"
-                            : "default";
+        type is ITypeParameterSymbol ? "default"
+        : type.IsReferenceType || type.NullableOf() is not null ? "null"
+        : type.SpecialType == SpecialType.System_Boolean ? "false"
+        : type.SpecialType is >= SpecialType.System_SByte and <= SpecialType.System_Double ? "0"
+        : "default";
 
     // A borrowed text is kept wherever a struct the props hold, at any depth, can be rebuilt with `with`.
     static string? Kept(

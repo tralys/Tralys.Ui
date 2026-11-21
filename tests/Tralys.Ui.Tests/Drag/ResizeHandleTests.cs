@@ -255,7 +255,7 @@ public sealed class ResizeHandleTests
         foreach (var edge in Enum.GetValues<ResizeEdge>())
         {
             driver.Hover(driver.Get(edge.ToString()));
-            cursors.Add(driver.Cursor!);
+            cursors.Add(await Assert.That(driver.Cursor).IsNotNull());
         }
         driver.Unhover();
         var right = driver.Get(nameof(ResizeEdge.Right));
@@ -431,7 +431,15 @@ internal sealed class SplitBoard
 
     public SplitBoard()
     {
-        _change = Callback<float>.Of(this, static (b, v) => b._state!.Value = v);
+        _change = Callback<float>.Of(
+            this,
+            static (b, v) =>
+            {
+                if (b._state is not { } state)
+                    throw new InvalidOperationException("The board changed before it rendered.");
+                state.Value = v;
+            }
+        );
         _commit = Callback<float>.Of(
             this,
             static (b, v) =>

@@ -14,18 +14,19 @@ public sealed class ScrollAreaTests
     {
         var area = new AreaFixture();
         using var driver = area.Render();
+        var handle = await Assert.That(area.Handle).IsNotNull();
         var down = Bars.Arrow(driver, forward: true);
 
         driver.Click(down, settle: false);
         driver.Frame();
         driver.Frame();
-        var gliding = area.Handle!.Offset.Y;
+        var gliding = handle.Offset.Y;
         driver.Settle();
-        var glided = area.Handle.Offset.Y;
+        var glided = handle.Offset.Y;
         var held = driver.Hold(Bars.Thumb(driver));
         held.MoveBy(new Vector2(0f, 2f), settle: false);
         driver.Frame();
-        var dragged = area.Handle.Offset.Y;
+        var dragged = handle.Offset.Y;
         held.Release();
         driver.View.Context.SmoothScrolling = false;
         driver.Click(down, settle: false);
@@ -36,7 +37,7 @@ public sealed class ScrollAreaTests
         await Assert.That(gliding).IsGreaterThan(0f).And.IsLessThan(16f);
         await Assert.That(glided).IsEqualTo(16f);
         await Assert.That(dragged).IsEqualTo(16f + 2f * 900f / room).Within(0.01f);
-        await Assert.That(area.Handle.Offset.Y).IsEqualTo(dragged + 16f).Within(0.01f);
+        await Assert.That(handle.Offset.Y).IsEqualTo(dragged + 16f).Within(0.01f);
     }
 
     [Test]
@@ -44,15 +45,16 @@ public sealed class ScrollAreaTests
     {
         var area = new AreaFixture();
         using var driver = area.Render();
+        var handle = await Assert.That(area.Handle).IsNotNull();
         driver.View.Context.SmoothScrolling = false;
 
         var held = driver.Hold(Bars.Page(driver, forward: true), settle: false);
         driver.Frame();
-        var pressed = area.Handle!.Offset.Y;
+        var pressed = handle.Offset.Y;
         driver.Frame(0.2f);
-        var waiting = area.Handle.Offset.Y;
+        var waiting = handle.Offset.Y;
         driver.Frame(0.1f);
-        var repeated = area.Handle.Offset.Y;
+        var repeated = handle.Offset.Y;
         for (var i = 0; i < 180; i++)
             driver.Frame();
         var thumb = Bars.Thumb(driver).ViewBounds;
@@ -60,7 +62,7 @@ public sealed class ScrollAreaTests
         driver.Frame(0.7f);
 
         await Assert.That((pressed, waiting, repeated)).IsEqualTo((100f, 100f, 200f));
-        await Assert.That(area.Handle.Offset.Y).IsGreaterThan(200f).And.IsLessThan(900f);
+        await Assert.That(handle.Offset.Y).IsGreaterThan(200f).And.IsLessThan(900f);
         await Assert.That(thumb.Y).IsLessThanOrEqualTo(held.Position.Y);
         await Assert.That(thumb.Bottom).IsGreaterThan(held.Position.Y);
     }
@@ -95,12 +97,13 @@ public sealed class ScrollAreaTests
         driver.Settle();
         area.ContentHeight = 2000f;
         driver.Rerender();
-        area.Handle!.ScrollToEnd();
+        var handle = await Assert.That(area.Handle).IsNotNull();
+        handle.ScrollToEnd();
         driver.Settle();
 
         await Assert.That((resting, hovered, pausing, faded)).IsEqualTo((0.35f, 1f, 1f, 0.35f));
         await Assert.That((focused, dragged, released)).IsEqualTo((1f, 1f, 1f));
-        await Assert.That(area.Handle.Offset.Y).IsGreaterThan(900f);
+        await Assert.That(handle.Offset.Y).IsGreaterThan(900f);
         await Assert.That(Shown()).IsEqualTo(0.35f);
     }
 
@@ -109,18 +112,19 @@ public sealed class ScrollAreaTests
     {
         var area = new AreaFixture { ContentHeight = 50f, Padding = 12f };
         using var driver = area.Render();
-        var fitting = (Bars.Shown(driver), area.Handle!.Viewport);
+        var handle = await Assert.That(area.Handle).IsNotNull();
+        var fitting = (Bars.Shown(driver), handle.Viewport);
         area.ContentHeight = 300f;
         driver.Rerender();
-        var overflowing = (Bars.Shown(driver), area.Handle.Viewport);
+        var overflowing = (Bars.Shown(driver), handle.Viewport);
         var origin = driver.Get("area").ViewBounds;
         var bar = Bars.Root(driver.All<Scrollbar>()[0]).ViewBounds;
         var content = driver.Get("content").ViewBounds;
         area.Vertical = ScrollbarVisibility.Hidden;
         driver.Rerender();
-        var hidden = (Bars.Shown(driver), area.Handle.Viewport);
+        var hidden = (Bars.Shown(driver), handle.Viewport);
         driver.Wheel(driver.Get("content"), new Vector2(0f, -1f));
-        var wheeled = area.Handle.Offset.Y;
+        var wheeled = handle.Offset.Y;
         area.ContentHeight = 50f;
         area.Vertical = ScrollbarVisibility.Visible;
         driver.Rerender();
@@ -147,7 +151,8 @@ public sealed class ScrollAreaTests
 
         await Assert.That(bar).IsEqualTo(new Rect(origin.X + 182f, origin.Y + 2f, 16f, 96f));
         await Assert.That((content.X - origin.X, content.Y - origin.Y)).IsEqualTo((2f, 2f));
-        await Assert.That(area.Handle!.Viewport).IsEqualTo(new Size(180f, 96f));
+        var handle = await Assert.That(area.Handle).IsNotNull();
+        await Assert.That(handle.Viewport).IsEqualTo(new Size(180f, 96f));
     }
 
     [Test]
@@ -167,7 +172,8 @@ public sealed class ScrollAreaTests
         await Assert.That(Bars.Shown(driver)).IsEqualTo(0);
         await Assert.That(driver.GetText(area.Text).ViewBounds.Width).IsLessThanOrEqualTo(200f);
         await Assert.That(driver.GetText(area.Text).ViewBounds.Height).IsGreaterThan(40f);
-        await Assert.That(area.Handle!.Offset.X).IsEqualTo(0f);
+        var handle = await Assert.That(area.Handle).IsNotNull();
+        await Assert.That(handle.Offset.X).IsEqualTo(0f);
     }
 
     [Test]
@@ -178,7 +184,8 @@ public sealed class ScrollAreaTests
 
         driver.Wheel(driver.Get("area"), new Vector2(0f, -1f));
 
-        await Assert.That(area.Handle!.Offset.Y).IsEqualTo(48f);
+        var handle = await Assert.That(area.Handle).IsNotNull();
+        await Assert.That(handle.Offset.Y).IsEqualTo(48f);
     }
 
     [Test]
@@ -189,7 +196,8 @@ public sealed class ScrollAreaTests
 
         driver.Wheel(Bars.Track(driver), new Vector2(0f, -1f));
 
-        await Assert.That(area.Handle!.Offset.Y).IsEqualTo(48f);
+        var handle = await Assert.That(area.Handle).IsNotNull();
+        await Assert.That(handle.Offset.Y).IsEqualTo(48f);
     }
 
     [Test]
@@ -245,25 +253,23 @@ public sealed class ScrollAreaTests
     {
         var area = new AreaFixture { ContentHeight = 4000f };
         using var driver = area.Render();
+        var handle = await Assert.That(area.Handle).IsNotNull();
         var content = driver.Get("content");
 
         var slow = driver.Hold(content, PointerKind.Touch, settle: false);
         slow.MoveBy(new Vector2(0f, -20f), steps: 20, seconds: 1f, settle: false);
         slow.Release();
-        var crept = area.Handle!.Offset.Y;
+        var crept = handle.Offset.Y;
         var still = driver.Hold(content, PointerKind.Touch, settle: false);
         still.MoveBy(new Vector2(0f, -100f), steps: 5, seconds: 0.08f, settle: false);
         driver.Frame(0.15f);
         still.Release();
-        var held = area.Handle.Offset.Y;
+        var held = handle.Offset.Y;
         driver.Fling(content, new Vector2(0f, -40f), seconds: 0.1f);
 
         await Assert.That(crept).IsEqualTo(20f);
         await Assert.That(held).IsEqualTo(120f);
-        await Assert
-            .That(area.Handle.Offset.Y)
-            .IsGreaterThan(160f + 40f)
-            .And.IsLessThan(160f + 120f);
+        await Assert.That(handle.Offset.Y).IsGreaterThan(160f + 40f).And.IsLessThan(160f + 120f);
     }
 
     [Test]
@@ -301,14 +307,16 @@ public sealed class ScrollAreaTests
             new Size(400, 300)
         );
 
+        var inner = await Assert.That(outer.Inner).IsNotNull();
+        var around = await Assert.That(outer.Outer).IsNotNull();
         driver.Fling(driver.Get("strip"), new Vector2(-40f, 4f));
-        var across = (outer.Inner!.Offset, outer.Outer!.Offset);
+        var across = (inner.Offset, around.Offset);
         driver.Drag(driver.Get("strip"), new Vector2(4f, -40f), PointerKind.Touch);
 
         await Assert.That(across.Item1.X).IsGreaterThan(40f);
         await Assert.That(across.Item2).IsEqualTo(Vector2.Zero);
-        await Assert.That(outer.Outer.Offset).IsEqualTo(new Vector2(0f, 40f));
-        await Assert.That(outer.Inner.Offset).IsEqualTo(across.Item1);
+        await Assert.That(around.Offset).IsEqualTo(new Vector2(0f, 40f));
+        await Assert.That(inner.Offset).IsEqualTo(across.Item1);
     }
 
     [Test]
@@ -322,6 +330,7 @@ public sealed class ScrollAreaTests
             Cursor = Cursors.Hand,
         };
         using var driver = area.Render();
+        var handle = await Assert.That(area.Handle).IsNotNull();
         var content = driver.Get("content");
 
         driver.Hover(content);
@@ -330,15 +339,15 @@ public sealed class ScrollAreaTests
         var overBar = driver.Cursor;
         var mouse = driver.Hold(content);
         mouse.MoveBy(new Vector2(-3f, 0f));
-        var jittered = area.Handle!.Offset;
+        var jittered = handle.Offset;
         mouse.MoveBy(new Vector2(0f, -3f));
-        var crossed = area.Handle.Offset;
+        var crossed = handle.Offset;
         mouse.MoveBy(new Vector2(-17f, -17f));
         var panning = driver.Cursor;
         mouse.Release(settle: false);
         for (var i = 0; i < 30; i++)
             driver.Frame();
-        var released = area.Handle.Offset;
+        var released = handle.Offset;
         area.DragToPan = false;
         driver.Rerender();
         driver.Hover(content);
@@ -376,9 +385,10 @@ public sealed class ScrollAreaTests
         bar.MoveBy(new Vector2(0f, 10f));
         bar.Release();
 
+        var handle = await Assert.That(area.Handle).IsNotNull();
         await Assert.That(area.Dragged).IsEqualTo(new Vector2(80f, 32f));
-        await Assert.That(area.Handle!.Offset.X).IsEqualTo(0f);
-        await Assert.That(area.Handle.Offset.Y).IsGreaterThan(0f);
+        await Assert.That(handle.Offset.X).IsEqualTo(0f);
+        await Assert.That(handle.Offset.Y).IsGreaterThan(0f);
     }
 
     [Test]
@@ -403,8 +413,10 @@ public sealed class ScrollAreaTests
         mouse.Release();
         driver.Hover(driver.Get("inner"));
 
-        await Assert.That(outer.Inner!.Offset).IsEqualTo(new Vector2(10f, 0f));
-        await Assert.That(outer.Outer!.Offset).IsEqualTo(Vector2.Zero);
+        var inner = await Assert.That(outer.Inner).IsNotNull();
+        var around = await Assert.That(outer.Outer).IsNotNull();
+        await Assert.That(inner.Offset).IsEqualTo(new Vector2(10f, 0f));
+        await Assert.That(around.Offset).IsEqualTo(Vector2.Zero);
     }
 
     [Test]
@@ -412,19 +424,22 @@ public sealed class ScrollAreaTests
     {
         var follow = new FollowFixture();
         using var driver = follow.Render();
+        var lead = await Assert.That(follow.Lead).IsNotNull();
+        var header = await Assert.That(follow.Header).IsNotNull();
+        var footer = await Assert.That(follow.Footer).IsNotNull();
 
         driver.Drag(driver.Get("board"), new Vector2(-30f, 0f));
-        var panned = (follow.Lead!.Offset.X, follow.Header!.Offset.X, follow.Footer!.Offset.X);
-        follow.Header.ScrollTo(150f, null);
+        var panned = (lead.Offset.X, header.Offset.X, footer.Offset.X);
+        header.ScrollTo(150f, null);
         driver.Settle();
-        var asked = (follow.Lead.Offset.X, follow.Header.Offset.X);
-        follow.Lead.ScrollTo(1000f, null);
+        var asked = (lead.Offset.X, header.Offset.X);
+        lead.ScrollTo(1000f, null);
         driver.Settle();
 
         await Assert.That(panned).IsEqualTo((30f, 30f, 30f));
         await Assert.That(asked).IsEqualTo((150f, 150f));
-        await Assert.That(follow.Lead.Offset.X).IsEqualTo(500f);
-        await Assert.That(follow.Header.Offset.X).IsEqualTo(500f);
+        await Assert.That(lead.Offset.X).IsEqualTo(500f);
+        await Assert.That(header.Offset.X).IsEqualTo(500f);
     }
 
     [Test]
@@ -432,13 +447,14 @@ public sealed class ScrollAreaTests
     {
         var area = new AreaFixture { ContentHeight = 2000f, WithMarks = true };
         using var driver = area.Render();
+        var handle = await Assert.That(area.Handle).IsNotNull();
         var offsets = new List<float>();
 
         void Reveal(string id)
         {
             area.Mark(id).ScrollIntoView();
             driver.Settle();
-            offsets.Add(area.Handle!.Offset.Y);
+            offsets.Add(handle.Offset.Y);
         }
 
         Reveal("shown");
@@ -451,7 +467,7 @@ public sealed class ScrollAreaTests
         driver.Settle();
 
         await Assert.That(offsets).IsEquivalentTo([0f, 140f, 100f, 400f]);
-        await Assert.That(area.Handle!.Offset.Y).IsEqualTo(940f);
+        await Assert.That(handle.Offset.Y).IsEqualTo(940f);
     }
 
     [Test]
@@ -459,7 +475,7 @@ public sealed class ScrollAreaTests
     {
         var area = new AreaFixture();
         using var driver = area.Render();
-        var handle = area.Handle!;
+        var handle = await Assert.That(area.Handle).IsNotNull();
         var offsets = new List<float>();
 
         void Then()
@@ -521,8 +537,10 @@ public sealed class ScrollAreaTests
             }
         });
 
-        await Assert.That(pair.Outer!.Offset.Y).IsEqualTo(300f);
-        await Assert.That(pair.Inner!.Offset.Y).IsEqualTo(300f);
+        var first = await Assert.That(pair.Outer).IsNotNull();
+        var second = await Assert.That(pair.Inner).IsNotNull();
+        await Assert.That(first.Offset.Y).IsEqualTo(300f);
+        await Assert.That(second.Offset.Y).IsEqualTo(300f);
     }
 
     [Test]
@@ -584,7 +602,12 @@ internal sealed class AreaFixture
     static readonly float[] MarkTops = [40f, 200f, 100f, 400f, 1000f];
     static readonly float[] MarkHeights = [20f, 40f, 20f, 300f, 40f];
 
-    public NodeRef Mark(string id) => Marks[Array.IndexOf(MarkIds, id)]!;
+    public NodeRef Mark(string id)
+    {
+        if (Marks[Array.IndexOf(MarkIds, id)] is not { } mark)
+            throw new InvalidOperationException($"No mark '{id}' rendered; it needs WithMarks.");
+        return mark;
+    }
 
     [FramePath]
     void Area(Ui ui, [CallerFilePath] string file = "", [CallerLineNumber] int line = 0)

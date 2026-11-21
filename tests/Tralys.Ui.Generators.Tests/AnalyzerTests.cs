@@ -159,6 +159,45 @@ public sealed partial class AnalyzerTests
     }
 
     [Test]
+    public async Task A_prop_a_call_may_omit_has_a_nullable_or_value_type()
+    {
+        const string source =
+            Preamble
+            + """
+                public readonly record struct TagProps<TItem>
+                {
+                    public string Label { get; init; }
+
+                    public TItem Item { get; init; }
+
+                    public required string Title { get; init; }
+
+                    public required TItem Pinned { get; init; }
+
+                    public string? Hint { get; init; }
+
+                    public TItem? Picked { get; init; }
+
+                    public int Count { get; init; }
+                }
+
+                public sealed partial class Tag<TItem> : Component<TagProps<TItem>>
+                {
+                    protected override void Render(Ui ui, in TagProps<TItem> p) { }
+                }
+                """;
+
+        var reported = await Harness.Analyze(new ComponentShapeAnalyzer(), source);
+
+        await Assert
+            .That(reported)
+            .IsEquivalentTo([
+                ("TRL3001", Harness.LineOf(source, "string Label")),
+                ("TRL3001", Harness.LineOf(source, "TItem Item")),
+            ]);
+    }
+
+    [Test]
     public async Task Callback_and_draw_lambdas_must_be_static()
     {
         const string source =

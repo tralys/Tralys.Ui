@@ -67,7 +67,8 @@ public sealed class InputLookTests
 
         driver.CaretAt(3);
 
-        var area = driver.TextInput!.Value.Area;
+        var input = await Assert.That(driver.TextInput).IsNotNull();
+        var area = input.Area;
         await Assert.That(area.X).IsEqualTo(MathF.Round(area.X)).Within(0.001f);
         await Assert.That(area.Width).IsEqualTo(MathF.Round(area.Width)).Within(0.001f);
         await Assert.That(area.Width).IsGreaterThanOrEqualTo(1f);
@@ -382,16 +383,16 @@ public sealed class InputLookTests
         driver.CaretAt(0, "line");
         driver.Press(Key.End);
         driver.Type(" ");
-        var spaced = driver.TextInput!.Value.Area;
+        var spaced = (await Assert.That(driver.TextInput).IsNotNull()).Area;
         var shown = Editor(driver, "line").CaretShown;
         var clipped = driver.Draw().Lines.First(static l => l.Contains("/EditableText"));
         driver.Press(Key.A, ModifierKeys.Control);
         driver.Type("a");
-        var restarted = driver.TextInput!.Value.Area;
+        var restarted = (await Assert.That(driver.TextInput).IsNotNull()).Area;
         driver.CaretAt(0, "lines");
         driver.Press(Key.End, ModifierKeys.Control);
         var lines = driver.TextOf("lines").ViewBounds;
-        var bottom = driver.TextInput!.Value.Area;
+        var bottom = (await Assert.That(driver.TextInput).IsNotNull()).Area;
         driver.Click(
             driver.RootOf("lines"),
             new Vector2(14f, driver.RootOf("lines").Bounds.Height - 8f)
@@ -454,8 +455,12 @@ public sealed class InputLookTests
         await Assert.That(driver.Focused).IsSameReferenceAs(driver.Get("other"));
     }
 
-    static EditorPayload Editor(UiDriver driver, string? id = null) =>
-        (EditorPayload)driver.TextOf(id).Payload!;
+    static EditorPayload Editor(UiDriver driver, string? id = null)
+    {
+        if (driver.TextOf(id).Payload is not EditorPayload editor)
+            throw new InvalidOperationException("The field holds no editor.");
+        return editor;
+    }
 
     static List<string> Fills(UiDriver driver)
     {

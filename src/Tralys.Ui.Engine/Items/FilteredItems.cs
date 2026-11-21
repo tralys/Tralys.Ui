@@ -28,8 +28,8 @@ sealed class FilteredItems(IItemFilter filter, IItemsSource? source) : IItemsSou
     {
         [FramePath]
         get =>
-            (uint)index < (uint)Count
-                ? _source![SourceIndex(index)]
+            (uint)index < (uint)Count && _source is { } source
+                ? source[SourceIndex(index)]
                 : throw new ArgumentOutOfRangeException(nameof(index));
     }
 

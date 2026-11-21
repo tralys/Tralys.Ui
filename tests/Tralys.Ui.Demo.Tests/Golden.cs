@@ -122,7 +122,8 @@ static class Golden
 
     static void Write(string path, string text)
     {
-        Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+        if (Path.GetDirectoryName(path) is { } directory)
+            Directory.CreateDirectory(directory);
         File.WriteAllText(path, text);
     }
 
@@ -132,6 +133,8 @@ static class Golden
     static string Metadata(string key) =>
         typeof(Golden)
             .Assembly.GetCustomAttributes<AssemblyMetadataAttribute>()
-            .First(a => a.Key == key)
-            .Value!;
+            .Where(a => a.Key == key)
+            .Select(a => a.Value)
+            .OfType<string>()
+            .First();
 }

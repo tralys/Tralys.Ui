@@ -187,9 +187,9 @@ public sealed class NumericAllocationTests
         using var driver = owner.Render();
         driver.Focus(Suggests.Text(driver));
         driver.Type("d");
-        var rows = ((ComponentHost<SuggestionRowsProps>)driver.Get<SuggestionRows>().Host!)
-            .Value
-            .Rows!;
+        var rows = await Assert
+            .That(driver.Get<SuggestionRows>().Props<SuggestionRowsProps>().Rows)
+            .IsNotNull();
         var cycle = new Filtering(source, rows);
 
         var bytes = AllocationGate.WorstFrameBytes(
@@ -214,9 +214,9 @@ public sealed class NumericAllocationTests
         driver.Frame(0f);
         server.Answer(0, "Dragonfire", "Dragonfire Keep");
         driver.Frame(0f);
-        var rows = ((ComponentHost<SuggestionRowsProps>)driver.Get<SuggestionRows>().Host!)
-            .Value
-            .Rows!;
+        var rows = await Assert
+            .That(driver.Get<SuggestionRows>().Props<SuggestionRowsProps>().Rows)
+            .IsNotNull();
         var cycle = new Retyping(source, rows);
 
         var bytes = driver.WorstFrameBytes(cycle, Retyping.Frame);

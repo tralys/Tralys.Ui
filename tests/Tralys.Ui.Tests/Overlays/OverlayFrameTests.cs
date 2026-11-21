@@ -99,7 +99,9 @@ public sealed partial class OverlayFrameTests
         var edged = probe.Parent;
         while (edged is not null && !(edged.Kind == NodeKind.Box && edged.Layout.Border.Left > 0f))
             edged = edged.Parent;
-        var frame = edged!.ViewBounds;
+        if (edged is null)
+            throw new InvalidOperationException($"No edged box holds '{id}'.");
+        var frame = edged.ViewBounds;
         var inner = probe.ViewBounds;
         return new Thickness(
             inner.X - frame.X,

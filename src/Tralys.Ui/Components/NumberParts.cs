@@ -36,9 +36,9 @@ internal abstract class NumberFieldModel
     internal readonly Handler<KeyEvent> Keys;
     internal readonly Callback<NumberPadKeyKind> PadKey;
     internal readonly Callback Edit;
-    internal NodeRef Text = null!;
-    internal NodeRef Field = null!;
-    internal State<int> Rewrites = null!;
+    internal NodeRef Text;
+    internal readonly NodeRef Field;
+    internal readonly State<int> Rewrites;
     internal readonly ObservableText Draft = new();
     char[] _buffer = new char[MaxChars];
     int _shown;
@@ -51,8 +51,11 @@ internal abstract class NumberFieldModel
     long _typed;
     bool _hasTyped;
 
-    protected NumberFieldModel()
+    protected NumberFieldModel(NodeRef text, NodeRef field, State<int> rewrites)
     {
+        Text = text;
+        Field = field;
+        Rewrites = rewrites;
         Keys = Handler<KeyEvent>.Of(this, static (m, ref e) => m.KeyDown(ref e));
         PadKey = Callback<NumberPadKeyKind>.Of(this, static (m, key) => m.Pad(key));
         Edit = Callback.Of(this, static m => m.Typed());

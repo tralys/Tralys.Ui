@@ -147,7 +147,7 @@ public readonly record struct TableHeaderRowProps<TItem>
 
 public readonly record struct TableRowProps<TItem>
 {
-    public TItem Item { get; init; }
+    public required TItem Item { get; init; }
 
     public int Index { get; init; }
 
@@ -178,7 +178,7 @@ internal readonly record struct TableContext(
 /// <summary>A <see cref="Table{TItem}"/>'s context key and parts.</summary>
 public static partial class Table
 {
-    internal static readonly ContextKey<TableContext> Context = new("Table");
+    internal static readonly ContextKey<TableContext> Context = new("Table", default);
 
     internal static readonly Thickness CellPadding = new(6f, 0f, 6f, 0f);
 
@@ -358,9 +358,9 @@ public static partial class Table
                     else
                         Content(ui, column, item, index);
                 }
-                if (measure is not null)
+                if (layout is not null && measure is not null)
                     ui.Effect(
-                        layout!,
+                        layout,
                         new Grown(at, measure.Size.Width + CellPadding.Left + CellPadding.Right),
                         static (l, g, _) => l.Grow(g.Column, g.Width),
                         key: at
@@ -425,17 +425,24 @@ public sealed partial class Table<TItem> : Component<TableProps<TItem>>
         var itemKey = p.ItemKey ?? throw Missing(nameof(p.ItemKey));
         var columns = p.Columns ?? throw Missing(nameof(p.Columns));
         var t = ui.Theme;
-        var model = ui.Remember(static () => new TableModel<TItem>());
+        var model = ui.Remember(
+            (
+                Emptied: ui.State(0),
+                Version: ui.State(0),
+                Own: ui.ScrollHandle(),
+                Sideways: ui.ScrollHandle(),
+                HeaderRow: ui.Ref()
+            ),
+            static hooks => new TableModel<TItem>(
+                hooks.Emptied,
+                new TableLayout(hooks.Version, hooks.Own, hooks.Sideways, hooks.HeaderRow)
+            )
+        );
         model.Host = ui.Self(p);
-        model.Emptied = ui.State(0);
         model.Listen(items);
         model.Choose(p.Selectable ? p.Value : default);
         var layout = model.Layout;
-        layout.Version = ui.State(0);
-        layout.Own = ui.ScrollHandle();
-        layout.Sideways = ui.ScrollHandle();
         layout.Rows = p.Scroll ?? layout.Own;
-        layout.HeaderRow = ui.Ref();
         layout.Sync(columns);
         layout.Sorts = !p.OnSortChange.IsEmpty;
         layout.Reorderable = p.Reorderable ?? true;
@@ -521,12 +528,12 @@ public sealed partial class Table<TItem> : Component<TableProps<TItem>>
 [FramePath]
 internal sealed class TableModel<TItem> : ISelection, IObservable, IItemsSourceListener, IDisposable
 {
-    internal readonly TableLayout Layout = new();
+    internal readonly TableLayout Layout;
     internal readonly Slot<TItem> Row;
     internal readonly Callback<SelectionChange> Selected;
     internal readonly Callback<UiKey> SortClicked;
     internal Host<TableProps<TItem>> Host;
-    internal State<int> Emptied = null!;
+    internal readonly State<int> Emptied;
     IItemsSource<TItem>? _items;
     bool _empty;
     UiKey _value;
@@ -535,8 +542,10 @@ internal sealed class TableModel<TItem> : ISelection, IObservable, IItemsSourceL
     TableRowShape<TItem> _rowShape;
     int _rowsVersion;
 
-    public TableModel()
+    public TableModel(State<int> emptied, TableLayout layout)
     {
+        Emptied = emptied;
+        Layout = layout;
         Row = Slot<TItem>.Of(
             this,
             static (ui, m, item, index) =>

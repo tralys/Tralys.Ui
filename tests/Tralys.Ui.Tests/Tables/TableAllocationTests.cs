@@ -106,14 +106,13 @@ public sealed class TableAllocationTests
                 height: 320
             )
         );
-        var walk = new Steps(Gripper(driver, "Name"));
-        walk.Held = driver.Hold(walk.Target);
+        var moves = new Moves(driver.Hold(Gripper(driver, "Name")), new Vector2(3f, 0f));
 
         var bytes = driver.WorstFrameBytes(
-            walk,
-            static (d, w) =>
+            moves,
+            static (d, m) =>
             {
-                w.Held!.MoveBy(new Vector2(w.Tick++ % 16 < 8 ? 3f : -3f, 0f), settle: false);
+                m.Press.MoveBy(m.Tick++ % 16 < 8 ? m.By : -m.By, settle: false);
                 d.Frame();
             }
         );
@@ -186,7 +185,6 @@ public sealed class TableAllocationTests
     sealed class Steps(Node target)
     {
         public readonly Node Target = target;
-        public HeldPointer? Held;
         public int Tick;
     }
 

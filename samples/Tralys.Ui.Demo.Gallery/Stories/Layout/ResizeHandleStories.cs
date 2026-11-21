@@ -55,8 +55,7 @@ static class ResizeHandleStories
     public static void Edges(Ui ui)
     {
         var bounds = ui.State(new Rect(80f, 40f, 240f, 160f));
-        var corners = ui.Remember(static () => new Corners());
-        corners.Bounds = bounds;
+        var corners = ui.Remember(bounds, static b => new Corners(b));
         var b = bounds.Value;
         using (ui.Box(width: Sizable.Area.Width, height: Sizable.Area.Height))
         using (
@@ -223,11 +222,12 @@ sealed class Corners
     public readonly Handler<DragEvent> TopRight;
     public readonly Handler<DragEvent> BottomLeft;
     public readonly Handler<DragEvent> BottomRight;
-    public State<Rect> Bounds = null!;
+    public readonly State<Rect> Bounds;
     Rect _start;
 
-    public Corners()
+    public Corners(State<Rect> bounds)
     {
+        Bounds = bounds;
         TopLeft = Handler<DragEvent>.Of(this, static (c, ref e) => c.Dragged(ref e, true, true));
         TopRight = Handler<DragEvent>.Of(this, static (c, ref e) => c.Dragged(ref e, false, true));
         BottomLeft = Handler<DragEvent>.Of(

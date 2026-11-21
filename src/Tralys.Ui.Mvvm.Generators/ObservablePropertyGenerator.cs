@@ -129,16 +129,17 @@ public sealed class ObservablePropertyGenerator : IIncrementalGenerator
         else if (dependents.FirstOrDefault(name => !HasProperty(owner, name)) is { } unknown)
             problem = new Problem(UnknownDependent, location, property.Name, unknown);
 
-        var writable = property.SetMethod is { IsInitOnly: false };
+        var setter = property.SetMethod is { IsInitOnly: false } method ? method : null;
+        var writable = setter is not null;
         var callbackName = GeneratedMembers.Setter(property.Name);
         Problem? warning = null;
         string? callback = null;
-        if (problem is null && writable && hasCallback)
+        if (problem is null && setter is not null && hasCallback)
         {
             if (HasMember(owner, callbackName))
                 warning = new Problem(SetterCallbackTaken, location, property.Name, callbackName);
             else
-                callback = SyntaxFacts.GetText(property.SetMethod!.DeclaredAccessibility);
+                callback = SyntaxFacts.GetText(setter.DeclaredAccessibility);
         }
 
         return new Model(

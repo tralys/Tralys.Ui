@@ -61,7 +61,9 @@ public sealed class NumberPadTests
                         static (o, v) =>
                         {
                             o.Reports.Add(v);
-                            o.Value.Value = Math.Clamp(v, o.Min, o.Max!.Value);
+                            if (o.Max is not { } max)
+                                throw new InvalidOperationException("Clamping needs a maximum.");
+                            o.Value.Value = Math.Clamp(v, o.Min, max);
                         }
                     ),
                     max: o.Max,
@@ -177,7 +179,7 @@ internal static class Pads
     {
         foreach (var key in driver.All<NumberPad.Key>())
         {
-            if (((ComponentHost<NumberPadKeyProps>)key.Host!).Value.Kind == kind)
+            if (key.Props<NumberPadKeyProps>().Kind == kind)
                 return key;
         }
         throw new InvalidOperationException($"No {kind} key.");
@@ -187,7 +189,7 @@ internal static class Pads
     {
         var shown = new List<NumberPadKeyKind>();
         foreach (var key in driver.All<NumberPad.Key>())
-            shown.Add(((ComponentHost<NumberPadKeyProps>)key.Host!).Value.Kind);
+            shown.Add(key.Props<NumberPadKeyProps>().Kind);
         return shown;
     }
 }

@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 
 namespace Tralys.Ui.Fonts;
@@ -59,7 +60,7 @@ public sealed partial class TextLayout
         while (line < _lineCount - 1 && point.Y >= _lines[line].Top + _lines[line].Height)
             line++;
 
-        var text = _buffer!.Text;
+        var text = _buffer.Text;
         var start = _lines[line].Start;
         var end = LineEnd(line);
         var index = start;
@@ -139,7 +140,7 @@ public sealed partial class TextLayout
         if (found.DrawnLength < found.Length)
             return found.Start + found.DrawnLength;
 
-        var text = _buffer!.Text;
+        var text = LaidOut.Text;
         var last = text[end - 1];
         if (!TextClusters.IsLineBreak(last))
             return end;
@@ -149,6 +150,16 @@ public sealed partial class TextLayout
     bool WrapsAt(int line) =>
         line < _lineCount - 1 && LineEnd(line) == _lines[line].Start + _lines[line].Length;
 
+    TextBuffer LaidOut
+    {
+        get
+        {
+            ThrowIfNotLaidOut();
+            return _buffer;
+        }
+    }
+
+    [MemberNotNull(nameof(_buffer))]
     void ThrowIfNotLaidOut()
     {
         if (_buffer is null)

@@ -110,7 +110,8 @@ public sealed class SizeClassTests
         var told = new List<SizeClass>();
         driver.View.SizeClassChanged += (sender, _) =>
         {
-            var view = (UiView)sender!;
+            if (sender is not UiView view)
+                throw new InvalidOperationException("A size class change came from no view.");
             told.Add(view.SizeClass);
             model.Count = (int)view.SizeClass;
         };

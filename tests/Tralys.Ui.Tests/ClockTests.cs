@@ -103,14 +103,14 @@ public readonly record struct ClockFaceProps
 {
     public TimeSpan Granularity { get; init; }
 
-    public ClockProbe? Probe { get; init; }
+    public required ClockProbe Probe { get; init; }
 }
 
 public sealed class ClockFace : Component<ClockFaceProps>
 {
     protected override void Render(Ui ui, in ClockFaceProps p)
     {
-        var probe = p.Probe!;
+        var probe = p.Probe;
         probe.Shown = ui.Now(p.Granularity);
         probe.Renders++;
         using (ui.Box(width: 20, height: 20)) { }

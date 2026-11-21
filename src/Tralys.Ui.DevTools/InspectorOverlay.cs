@@ -18,7 +18,7 @@ internal sealed class InspectorOverlay : Component<InspectorProps>
 
     protected override void Render(Ui ui, in InspectorProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         using (ui.Box(width: Length.Full, height: Length.Full, pointerEvents: PointerEvents.None))
         {
             ui.RepaintFlashes(
@@ -114,7 +114,7 @@ internal sealed class RepaintFlashes : Component<InspectorProps>
 {
     protected override void Render(Ui ui, in InspectorProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         _ = model.FlashRevision;
         var flashes = model.Flashes;
         using (ui.Box(pointerEvents: PointerEvents.None))
@@ -139,7 +139,7 @@ internal sealed class GapBands : Component<InspectorProps>
 {
     protected override void Render(Ui ui, in InspectorProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         _ = model.GapRevision;
         var gaps = model.Gaps;
         using (ui.Box(pointerEvents: PointerEvents.None))
@@ -156,7 +156,7 @@ internal sealed class EnvironmentTag : Component<InspectorProps>
 
     protected override void Render(Ui ui, in InspectorProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         var box = model.SelectedBox;
         var environment = model.SelectedEnvironment;
         using (ui.Layout(algorithm: TagPlacement.Instance, state: box?.MarginBox ?? default))
@@ -319,7 +319,7 @@ internal sealed class FrameBytesBadge : Component<InspectorProps>
 {
     protected override void Render(Ui ui, in InspectorProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         var t = ui.Theme;
         using (
             ui.Box(

@@ -68,9 +68,10 @@ public sealed class RadioGroup : Component<RadioGroupProps>
     protected override void Render(Ui ui, in RadioGroupProps p)
     {
         var t = ui.Theme;
-        var members = ui.Remember(static () => new Members());
-        members.Count = ui.State(0);
-        members.Root = ui.Ref();
+        var members = ui.Remember(
+            (Count: ui.State(0), Root: ui.Ref()),
+            static hooks => new Members(hooks.Count, hooks.Root)
+        );
         var count = Math.Max(1, members.Count.Value);
         ui.Provide(
             Context,
@@ -145,11 +146,15 @@ public sealed class RadioGroup : Component<RadioGroupProps>
     internal sealed class Members
     {
         internal readonly Handler<KeyEvent> Edges;
-        internal State<int> Count = null!;
-        internal NodeRef Root = null!;
+        internal readonly State<int> Count;
+        internal readonly NodeRef Root;
 
-        internal Members() =>
+        internal Members(State<int> count, NodeRef root)
+        {
+            Count = count;
+            Root = root;
             Edges = Handler<KeyEvent>.Of(this, static (m, ref e) => m.Edge(ref e));
+        }
 
         internal void Join() => Count.Value = Count.Peek + 1;
 

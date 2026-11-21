@@ -40,10 +40,10 @@ public sealed class Command
     {
         if (!CanRun)
             return;
-        if (_inFlight is null)
-            _run!();
-        else
-            _inFlight.Start(_runAsync!);
+        if (_run is { } run)
+            run();
+        else if (_runAsync is { } runAsync && _inFlight is { } inFlight)
+            inFlight.Start(runAsync);
     }
 }
 
@@ -88,9 +88,9 @@ public sealed class Command<T>
     {
         if (!CanRun(parameter))
             return;
-        if (_inFlight is null)
-            _run!(parameter);
-        else
-            _inFlight.Start(_runAsync!, parameter);
+        if (_run is { } run)
+            run(parameter);
+        else if (_runAsync is { } runAsync && _inFlight is { } inFlight)
+            inFlight.Start(runAsync, parameter);
     }
 }

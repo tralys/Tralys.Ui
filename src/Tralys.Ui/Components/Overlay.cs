@@ -65,12 +65,11 @@ public sealed class Overlay : Component<OverlayProps>
 {
     protected override void Render(Ui ui, in OverlayProps p)
     {
-        var modal = ui.Remember(static () => new Modal());
+        var modal = ui.Remember(ui.Ref(), static panel => new Modal(panel));
         modal.OnOpenChange = p.OnOpenChange;
         modal.ClosesOnEscape = true;
         modal.ClosesOnScrim = p.ClosesOnScrimClick;
         modal.OnSubmit = default;
-        modal.Panel = ui.Ref();
         if (!p.Open)
             return;
         var t = ui.Theme;
@@ -160,10 +159,11 @@ internal sealed class Modal
     internal bool SubmitDisabled;
     internal bool ClosesOnEscape;
     internal bool ClosesOnScrim;
-    internal NodeRef Panel = null!;
+    internal readonly NodeRef Panel;
 
-    public Modal()
+    public Modal(NodeRef panel)
     {
+        Panel = panel;
         Close = Callback.Of(this, static m => m.OnOpenChange.Invoke(false));
         Submit = Callback.Of(this, static m => m.RunSubmit());
         Keys = Handler<KeyEvent>.Of(this, static (m, ref e) => m.KeyDown(ref e));

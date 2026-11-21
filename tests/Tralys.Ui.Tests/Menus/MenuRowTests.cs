@@ -142,7 +142,8 @@ public sealed class MenuRowTests
         await Assert.That(Ink("Ctrl+P")).IsEqualTo(Color(ColorToken.FgMuted));
         await Assert.That(chevron.Bounds.Width).IsEqualTo(md.IconSize - 4f);
         await Assert.That(Menus.RootOf(chevron).Inherit.Color).IsEqualTo(Color(ColorToken.Icon));
-        await Assert.That(driver.Get("plain").Interaction!.Props.Cursor).IsEqualTo(Cursors.Hand);
+        var plain = await Assert.That(driver.Get("plain").Interaction).IsNotNull();
+        await Assert.That(plain.Props.Cursor).IsEqualTo(Cursors.Hand);
         await Assert.That(Menus.Background(driver.Get("checked"))).IsEqualTo(Menus.Selected);
         await Assert
             .That(driver.Get("checked").Inherit.Color)

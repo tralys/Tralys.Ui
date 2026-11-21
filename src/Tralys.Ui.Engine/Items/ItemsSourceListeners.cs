@@ -11,7 +11,7 @@ namespace Tralys.Ui;
 /// and the field go on apart.</para></remarks>
 public struct ItemsSourceListeners
 {
-    HandlerList<IItemsSourceListener?> _listeners;
+    HandlerList<IItemsSourceListener> _listeners;
 
     internal readonly bool IsEmpty
     {

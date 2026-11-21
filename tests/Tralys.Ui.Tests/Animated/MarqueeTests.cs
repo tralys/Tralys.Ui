@@ -93,5 +93,10 @@ public sealed class MarqueeTests
         return driver;
     }
 
-    static float Offset(UiDriver driver) => -Shift(driver.Get("child").Parent!);
+    static float Offset(UiDriver driver)
+    {
+        if (driver.Get("child").Parent is not { } track)
+            throw new InvalidOperationException("The marquee's child sits in no track.");
+        return -Shift(track);
+    }
 }

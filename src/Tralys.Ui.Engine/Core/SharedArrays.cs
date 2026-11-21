@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
@@ -69,13 +70,15 @@ struct SharedList<T>
 
     public readonly int Count => _count;
 
+    readonly T[] Items => _items ?? [];
+
     public readonly ref T this[int index]
     {
         get
         {
             if ((uint)index >= (uint)_count)
                 ThrowIndex();
-            return ref _items![index];
+            return ref Items[index];
         }
     }
 
@@ -84,32 +87,33 @@ struct SharedList<T>
     public void Add(T item)
     {
         Reserve(_count + 1);
-        _items![_count++] = item;
+        _items[_count++] = item;
     }
 
     public void Insert(int index, T item)
     {
         Reserve(_count + 1);
-        Array.Copy(_items!, index, _items!, index + 1, _count - index);
-        _items![index] = item;
+        Array.Copy(_items, index, _items, index + 1, _count - index);
+        _items[index] = item;
         _count++;
     }
 
     public void RemoveAt(int index)
     {
-        _count--;
-        Array.Copy(_items!, index + 1, _items!, index, _count - index);
-        _items![_count] = default!;
+        var items = Items;
+        Array.Copy(items, index + 1, items, index, _count - index - 1);
+        Truncate(_count - 1);
     }
 
     public readonly void Move(int from, int to)
     {
-        var item = _items![from];
+        var items = Items;
+        var item = items[from];
         if (from > to)
-            Array.Copy(_items, to, _items, to + 1, from - to);
+            Array.Copy(items, to, items, to + 1, from - to);
         else
-            Array.Copy(_items, from + 1, _items, from, to - from);
-        _items[to] = item;
+            Array.Copy(items, from + 1, items, from, to - from);
+        items[to] = item;
     }
 
     public void Clear() => Truncate(0);
@@ -119,7 +123,7 @@ struct SharedList<T>
         if (count >= _count)
             return;
         if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
-            Array.Clear(_items!, count, _count - count);
+            Array.Clear(Items, count, _count - count);
         _count = count;
     }
 
@@ -147,6 +151,7 @@ struct SharedList<T>
         SharedArrays<T>.Return(old);
     }
 
+    [MemberNotNull(nameof(_items))]
     void Reserve(int needed)
     {
         if (_items is null)

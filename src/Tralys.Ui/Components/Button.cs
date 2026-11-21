@@ -171,7 +171,7 @@ public sealed class Button : Component<ButtonProps>
                 iconSize: m.FontSize,
                 gap: m.Gap,
                 color: color,
-                justify: spreads ? p.Justify!.Value : Justify.Start,
+                justify: spreads && p.Justify is { } spread ? spread : Justify.Start,
                 grow: spreads ? 1f : 0f
             );
             if (ui.IsFocusVisible)

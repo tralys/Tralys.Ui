@@ -74,17 +74,16 @@ public readonly record struct DialogSubmitProps
 [Children]
 public sealed class Dialog : Component<DialogProps>
 {
-    public static readonly ContextKey<DialogContext> Context = new("Dialog");
+    public static readonly ContextKey<DialogContext> Context = new("Dialog", default);
 
     protected override void Render(Ui ui, in DialogProps p)
     {
-        var modal = ui.Remember(static () => new Modal());
+        var modal = ui.Remember(ui.Ref(), static panel => new Modal(panel));
         modal.OnOpenChange = p.OnOpenChange;
         modal.ClosesOnEscape = false;
         modal.ClosesOnScrim = false;
         modal.OnSubmit = p.OnSubmit;
         modal.SubmitDisabled = p.SubmitDisabled;
-        modal.Panel = ui.Ref();
         if (!p.Open)
             return;
         var t = ui.Theme;

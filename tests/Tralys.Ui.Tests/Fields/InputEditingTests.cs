@@ -706,18 +706,20 @@ internal sealed class EditProbe
 
     public void Run(UiDriver driver, EditCommand command)
     {
-        _commands[(int)command]!.Run();
+        if (_commands[(int)command] is not { } run)
+            throw new InvalidOperationException("No render has read the edit commands yet.");
+        run.Run();
         driver.Settle();
     }
 }
 
 internal readonly record struct EditCommandsProps
 {
-    public EditProbe? Probe { get; init; }
+    public required EditProbe Probe { get; init; }
 }
 
 /// <summary>Reads the view's edit commands into its probe as it renders.</summary>
 internal sealed class EditCommands : Component<EditCommandsProps>
 {
-    protected override void Render(Ui ui, in EditCommandsProps p) => p.Probe!.Read(ui);
+    protected override void Render(Ui ui, in EditCommandsProps p) => p.Probe.Read(ui);
 }

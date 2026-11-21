@@ -205,18 +205,19 @@ public sealed partial class GalleryModel : ObservableObject, ITreeChildren<Galle
 
     void ShowSource()
     {
-        if (Stories[Shown].SourcePath is not null)
-            OpenLink?.Invoke(_sources[Shown] ??= SourceOf(Stories[Shown]));
+        var story = Stories[Shown];
+        if (story.SourcePath is { } path)
+            OpenLink?.Invoke(_sources[Shown] ??= SourceOf(path, story.SourceLine));
     }
 
     [ColdPath]
-    static string SourceOf(Story story)
+    static string SourceOf(string path, int line)
     {
-        var file = string.Join('/', story.SourcePath!.Split('/').Select(Uri.EscapeDataString));
+        var file = string.Join('/', path.Split('/').Select(Uri.EscapeDataString));
         var at = Commit.Length > 0 ? Commit : "HEAD";
         return string.Create(
             CultureInfo.InvariantCulture,
-            $"{Repository}/blob/{at}/{file}#L{story.SourceLine}"
+            $"{Repository}/blob/{at}/{file}#L{line}"
         );
     }
 

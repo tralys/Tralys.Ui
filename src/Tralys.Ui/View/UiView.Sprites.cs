@@ -54,8 +54,8 @@ public sealed partial class UiView
                 sprite.Resting = true;
                 _restingSprites.Add(sprite);
             }
-            else if (sprite.Turn(time, reduced))
-                MarkPaint(sprite.Node!);
+            else if (sprite.Turn(time, reduced) && sprite.Node is { } node)
+                MarkPaint(node);
         }
         _spritesHeld = reduced;
     }

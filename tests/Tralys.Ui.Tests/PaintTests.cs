@@ -507,7 +507,7 @@ public sealed class PaintTests
 
 public readonly record struct SwatchProps
 {
-    public Model? Model { get; init; }
+    public required Model Model { get; init; }
 }
 
 /// <summary>A box whose colour follows its model's count.</summary>
@@ -515,7 +515,7 @@ public sealed class Swatch : Component<SwatchProps>
 {
     protected override void Render(Ui ui, in SwatchProps p)
     {
-        var shade = (byte)(p.Model!.Count * 40);
+        var shade = (byte)(p.Model.Count * 40);
         using (ui.Box(width: 30, height: 30, radius: 4, background: Color.FromRgb(shade, 100, 100)))
         { }
     }

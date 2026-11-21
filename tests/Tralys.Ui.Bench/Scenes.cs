@@ -22,7 +22,9 @@ abstract class ViewScene : Scene
         _context.Advance(_now);
     }
 
-    protected UiView View => _view!;
+    protected UiView View =>
+        _view
+        ?? throw new InvalidOperationException("A scene has its view from Prepare to Unmount.");
 
     public override void Prepare() =>
         _view = new UiView(_context, new BenchHost()) { Size = _size };
@@ -93,7 +95,7 @@ sealed class ListScene(Item[] items) : ViewScene(800, 600)
             new ListProps { Items = ItemsSource.From(items), Scroll = _scroll }
         );
 
-    public override void ScrollTo(float offset) => _scroll.Handle!.ScrollTo(null, offset);
+    public override void ScrollTo(float offset) => _scroll.Handle?.ScrollTo(null, offset);
 
     public override float ScrollOffset => _scroll.Handle?.Offset.Y ?? 0f;
 
@@ -119,9 +121,9 @@ static class Paints
 
 readonly record struct DenseProps
 {
-    public Cell[]? Cells { get; init; }
+    public required Cell[] Cells { get; init; }
 
-    public Ticker? Ticker { get; init; }
+    public required Ticker Ticker { get; init; }
 }
 
 /// <summary>Read by a root that shows nothing of it, so a tick renders the root again with unchanged output.</summary>
@@ -136,8 +138,8 @@ sealed class DenseView : Component<DenseProps>
 {
     protected override void Render(Ui ui, in DenseProps p)
     {
-        var cells = p.Cells!;
-        _ = p.Ticker!.Tick;
+        var cells = p.Cells;
+        _ = p.Ticker.Tick;
         using (ui.Box(direction: Direction.Column, gap: 4, align: Align.Start))
         {
             for (var r = 0; r < DenseShape.Rows; r++)
@@ -173,7 +175,7 @@ sealed class DenseView : Component<DenseProps>
 
 readonly record struct RowsProps
 {
-    public Line[]? Lines { get; init; }
+    public required Line[] Lines { get; init; }
 }
 
 sealed class RowsView : Component<RowsProps>
@@ -182,7 +184,7 @@ sealed class RowsView : Component<RowsProps>
     {
         using (ui.Box(direction: Direction.Column, align: Align.Start))
         {
-            var lines = p.Lines!;
+            var lines = p.Lines;
             for (var i = 0; i < lines.Length; i++)
                 ui.LineRow(item: lines[i], key: i);
         }
@@ -191,7 +193,7 @@ sealed class RowsView : Component<RowsProps>
 
 readonly record struct LineRowProps
 {
-    public Line? Item { get; init; }
+    public required Line Item { get; init; }
 }
 
 /// <summary>A row of its own line: it alone renders again when the line changes.</summary>
@@ -199,7 +201,7 @@ sealed class LineRow : Component<LineRowProps>
 {
     protected override void Render(Ui ui, in LineRowProps p)
     {
-        var line = p.Item!;
+        var line = p.Item;
         using (
             ui.Box(
                 gap: 8,
@@ -222,9 +224,9 @@ sealed class ScrollState
 
 readonly record struct ListProps
 {
-    public IItemsSource<Item>? Items { get; init; }
+    public required IItemsSource<Item> Items { get; init; }
 
-    public ScrollState? Scroll { get; init; }
+    public required ScrollState Scroll { get; init; }
 }
 
 sealed class ListView : Component<ListProps>
@@ -234,14 +236,14 @@ sealed class ListView : Component<ListProps>
     protected override void Render(Ui ui, in ListProps p)
     {
         var scroll = ui.ScrollHandle();
-        p.Scroll!.Handle = scroll;
-        ui.VirtualList(items: p.Items!, itemKey: Item.ById, row: Row, scroll: scroll);
+        p.Scroll.Handle = scroll;
+        ui.VirtualList(items: p.Items, itemKey: Item.ById, row: Row, scroll: scroll);
     }
 }
 
 readonly record struct ItemRowProps
 {
-    public Item? Item { get; init; }
+    public required Item Item { get; init; }
 }
 
 sealed class ItemRow : Component<ItemRowProps>
@@ -249,6 +251,6 @@ sealed class ItemRow : Component<ItemRowProps>
     protected override void Render(Ui ui, in ItemRowProps p)
     {
         using (ui.Box(padding: new Thickness(12, 4, 12, 4)))
-            ui.Text(p.Item!.Label, fontSize: 12);
+            ui.Text(p.Item.Label, fontSize: 12);
     }
 }

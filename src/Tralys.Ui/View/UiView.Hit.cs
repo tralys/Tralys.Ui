@@ -114,7 +114,7 @@ public sealed partial class UiView
             case NodeKind.EditableText:
                 return true;
             case NodeKind.Image:
-                return ((ImagePayload)node.Payload!).Texture is not null;
+                return node.PayloadOf<ImagePayload>().Texture is not null;
             case NodeKind.Box
             or NodeKind.Grid
             or NodeKind.Layer
@@ -142,12 +142,12 @@ public sealed partial class UiView
             case NodeKind.Box or NodeKind.Grid or NodeKind.Layer or NodeKind.Layout:
                 return InRounded(rect, node.Visual.Radius, point);
             case NodeKind.Canvas:
-                var canvas = (CanvasPayload)node.Payload!;
+                var canvas = node.PayloadOf<CanvasPayload>();
                 return canvas.HasHitTest
                     ? CanvasHits(canvas, point, size)
                     : node.Commands is { } commands && Drawn(commands, point);
             case NodeKind.Image:
-                return ((ImagePayload)node.Payload!).Hits(point, size);
+                return node.PayloadOf<ImagePayload>().Hits(point, size);
             default:
                 return true;
         }

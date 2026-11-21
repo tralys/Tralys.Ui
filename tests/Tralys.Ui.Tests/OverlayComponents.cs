@@ -25,7 +25,7 @@ public readonly record struct FooterProps;
 [Children]
 public sealed class Dialog : Component<DialogProps>
 {
-    public static readonly ContextKey<DialogContext> Context = new("Dialog");
+    public static readonly ContextKey<DialogContext> Context = new("Dialog", default);
 
     protected override void Render(Ui ui, in DialogProps p)
     {

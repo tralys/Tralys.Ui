@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Tralys.Ui.Mvvm;
 
@@ -7,7 +8,8 @@ namespace Tralys.Ui;
 [FramePath]
 public sealed class State<T> : IObservable
 {
-    T _value = default!;
+    [AllowNull]
+    T _value;
     HeldText _held;
     ObserverSet _observers;
     bool _byReference;
@@ -50,7 +52,7 @@ public sealed class State<T> : IObservable
     /// <summary>A callback that sets the value.</summary>
     public Callback<T> Setter => _setter;
 
-    internal void Init(ComponentHost owner, T value, bool byReference)
+    internal void Init(ComponentHost? owner, T value, bool byReference)
     {
         Owner = owner;
         _value = _held.Hold(value);
@@ -61,7 +63,7 @@ public sealed class State<T> : IObservable
     {
         _observers.Clear();
         Owner = null;
-        _value = default!;
+        _value = default;
         Pool<State<T>>.Return(this);
     }
 }
@@ -194,12 +196,12 @@ internal abstract class Hook
 [FramePath]
 internal sealed class StateHook<T> : Hook
 {
-    public State<T> Cell = null!;
+    public State<T>? Cell;
 
     public override void Discard()
     {
-        Cell.Release();
-        Cell = null!;
+        Cell?.Release();
+        Cell = null;
         Pool<StateHook<T>>.Return(this);
     }
 }
@@ -224,7 +226,7 @@ internal sealed class RememberHook : Hook
 [FramePath]
 internal sealed class RememberHook<TDep> : Hook
 {
-    public TDep Dep = default!;
+    public TDep? Dep;
     public HeldText Held;
     public object? Value;
 
@@ -236,7 +238,7 @@ internal sealed class RememberHook<TDep> : Hook
     {
         (Value as IDisposable)?.Dispose();
         Value = null;
-        Dep = default!;
+        Dep = default;
         Pool<RememberHook<TDep>>.Return(this);
     }
 }
@@ -244,12 +246,12 @@ internal sealed class RememberHook<TDep> : Hook
 [FramePath]
 internal sealed class RefHook : Hook
 {
-    public NodeRef Ref = null!;
+    public NodeRef? Ref;
 
     public override void Discard()
     {
-        Ref.Release();
-        Ref = null!;
+        Ref?.Release();
+        Ref = null;
         Pool<RefHook>.Return(this);
     }
 }
@@ -258,7 +260,6 @@ internal sealed class RefHook : Hook
 internal abstract class EffectHook : Hook
 {
     public bool Pending;
-    public bool Live;
     public ComponentHost? Host;
 
     public abstract void Run(UiView view);
@@ -268,10 +269,23 @@ internal abstract class EffectHook : Hook
 internal sealed class EffectHook<TState, TDep> : EffectHook
     where TState : class
 {
-    public TState State = null!;
-    public TDep Dep = default!;
+    public TState? State;
+    public TDep? Dep;
     public HeldText Held;
-    public EffectFn<TState, TDep> Fn = null!;
+    public EffectFn<TState, TDep>? Fn;
+    bool _live;
+
+    [MemberNotNullWhen(true, nameof(State), nameof(Dep), nameof(Fn))]
+    bool Live => _live;
+
+    public void Bind(ComponentHost? host, TState state, TDep dep, EffectFn<TState, TDep> fn)
+    {
+        _live = true;
+        Host = host;
+        State = state;
+        Dep = Held.Hold(dep);
+        Fn = fn;
+    }
 
     [FramePath]
     public override void Run(UiView view)
@@ -283,12 +297,12 @@ internal sealed class EffectHook<TState, TDep> : EffectHook
 
     public override void Discard()
     {
-        Live = false;
+        _live = false;
         Pending = false;
         Host = null;
-        State = null!;
-        Dep = default!;
-        Fn = null!;
+        State = null;
+        Dep = default;
+        Fn = null;
         Pool<EffectHook<TState, TDep>>.Return(this);
     }
 }

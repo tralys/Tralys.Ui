@@ -71,7 +71,8 @@ public sealed class ThumbTests
         await Assert
             .That(thumb.Log.ToString())
             .IsEqualTo("start -10,-7.5 -20,-15 -30,-22.5 -40,-30 end");
-        await Assert.That(scroll.Outer!.Offset).IsEqualTo(Vector2.Zero);
+        var outer = await Assert.That(scroll.Outer).IsNotNull();
+        await Assert.That(outer.Offset).IsEqualTo(Vector2.Zero);
     }
 }
 
@@ -81,7 +82,6 @@ internal sealed class Dragged(Vector2 start)
     public readonly ValueLog<(string? Word, Vector2 By)> Log = new(static step =>
         step.Word ?? $"{step.By.X},{step.By.Y}"
     );
-    public State<Vector2> At = null!;
     public Vector2 LaidOut;
 
     public UiDriver Render() =>
@@ -95,12 +95,12 @@ internal sealed class Dragged(Vector2 start)
     public void Thumb(Ui ui, [CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
     {
         using var fragment = ui.Fragment(file: file, line: line);
-        At = ui.State(start);
-        LaidOut = At.Value;
+        var at = ui.State(start);
+        LaidOut = at.Value;
         using (
             ui.Thumb(
                 onDragStart: Callback.Of(this, static d => d.Log.Add(("start", default))),
-                onDragDelta: Callback<Vector2>.Of(this, static (d, by) => d.Moved(by)),
+                onDragDelta: Callback<Vector2>.Of(this, at, static (d, at, by) => d.Moved(at, by)),
                 onDragEnd: Callback<bool>.Of(
                     this,
                     static (d, cancelled) => d.Log.Add((cancelled ? "cancelled" : "end", default))
@@ -109,16 +109,16 @@ internal sealed class Dragged(Vector2 start)
                 height: 40,
                 margin: 5,
                 position: Position.Absolute,
-                left: At.Value.X,
-                top: At.Value.Y,
+                left: at.Value.X,
+                top: at.Value.Y,
                 id: "thumb"
             )
         ) { }
     }
 
-    void Moved(Vector2 by)
+    void Moved(State<Vector2> at, Vector2 by)
     {
         Log.Add((null, by));
-        At.Value = LaidOut + by;
+        at.Value = LaidOut + by;
     }
 }

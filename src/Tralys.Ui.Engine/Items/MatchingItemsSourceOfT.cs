@@ -21,7 +21,9 @@ sealed class MatchingItemsSource<T> : MatchingRows, IItemsSource<T>, IShownIndex
     }
 
     [FramePath]
-    public T ItemAt(int index) => (T)Shown(index)!;
+    public T ItemAt(int index) =>
+        Shown(index) as T
+        ?? throw new InvalidOperationException("Only a row that is a T is shown.");
 
     [FramePath]
     protected override bool Matches(IFilteredRows source, int index) =>

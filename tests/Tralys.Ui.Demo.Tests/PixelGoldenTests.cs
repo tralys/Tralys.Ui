@@ -70,8 +70,9 @@ public sealed class PixelGoldenTests
         }
         foreach (var key in Rendered)
         {
+            var story = await Assert.That(DemoOptions.Find(key)).IsNotNull();
             foreach (var (_, name) in Golden.EachTheme)
-                expected.Add(Golden.PixelPath(DemoOptions.Find(key)!.Value, name));
+                expected.Add(Golden.PixelPath(story, name));
         }
 
         var orphans = Directory

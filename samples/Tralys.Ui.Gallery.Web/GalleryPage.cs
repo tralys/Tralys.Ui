@@ -21,13 +21,7 @@ static unsafe partial class GalleryPage
     static readonly BrowserHost Host = new();
     static SwapChain _swapChain;
     static uint _resetFlags;
-    static GalleryFonts _fonts = null!;
-    static AssetTextures _images = null!;
-    static UiContext _context = null!;
-    static UiView _view = null!;
-    static GalleryModel _model = null!;
-    static BgfxRenderDevice _device = null!;
-    static BgfxViewRenderer _renderer = null!;
+    static Session? _session;
     static Theme? _cleared;
     static int _addressed = -1;
     static TimeSpan _now;
@@ -44,21 +38,26 @@ static unsafe partial class GalleryPage
     {
         LandAssets();
         StartRenderer(width, height);
-        _device = new BgfxRenderDevice();
-        _renderer = new BgfxViewRenderer(_device);
-        _fonts = new GalleryFonts(new BgfxTextureFactory());
-        _images = new AssetTextures();
-        _context = new UiContext(_fonts.Services, _images) { Icons = Icons.Set };
-        _view = new UiView(_context, Host, (float)scale);
-        _model = new GalleryModel(story, states: false, windows: null)
+        var device = new BgfxRenderDevice();
+        var renderer = new BgfxViewRenderer(device);
+        var fonts = new GalleryFonts(new BgfxTextureFactory());
+        var images = new AssetTextures();
+        var context = new UiContext(fonts.Services, images) { Icons = Icons.Set };
+        var view = new UiView(context, Host, (float)scale);
+        var model = new GalleryModel(story, states: false, windows: null)
         {
             Copy = static text => Host.SetClipboardText(text),
             OpenLink = static url => OpenTab(url),
         };
+        _session = new Session(device, renderer, fonts, images, context, view, model);
         Resize(width, height, scale);
-        _context.Advance(_now);
-        _view.Mount(Slot.Of(_model, GalleryShell.Root));
+        context.Advance(_now);
+        view.Mount(Slot.Of(model, GalleryShell.Root));
     }
+
+    static Session Started =>
+        _session
+        ?? throw new InvalidOperationException("The page starts the gallery before it calls it.");
 
     [JSExport]
     [FramePath]
@@ -67,17 +66,18 @@ static unsafe partial class GalleryPage
         var elapsed = _previousFrame == 0 ? 0 : seconds - _previousFrame;
         _previousFrame = seconds;
         _now += TimeSpan.FromSeconds(Math.Clamp(elapsed, 0, LongestFrameSeconds));
-        _context.Advance(_now);
-        _images.Pump();
-        _view.Update();
-        _device.BeginFrame();
-        Clear();
-        _renderer.Render(_view, ViewId, 0, LayerViews);
+        var session = Started;
+        session.Context.Advance(_now);
+        session.Images.Pump();
+        session.View.Update();
+        session.Device.BeginFrame();
+        Clear(session.Context);
+        session.Renderer.Render(session.View, ViewId, 0, LayerViews);
         Bx.Frame(0);
-        if (_model.Shown != _addressed)
+        if (session.Model.Shown != _addressed)
         {
-            _addressed = _model.Shown;
-            ShowStory(_model.Stories[_addressed].Key);
+            _addressed = session.Model.Shown;
+            ShowStory(session.Model.Stories[_addressed].Key);
         }
     }
 
@@ -89,13 +89,14 @@ static unsafe partial class GalleryPage
         _swapChain.Height = (uint)height;
         fixed (SwapChain* swapChain = &_swapChain)
             Bx.Reset(_resetFlags, swapChain);
-        _view.Scale = (float)scale;
-        _view.Size = new Size(width / (float)scale, height / (float)scale);
+        var view = Started.View;
+        view.Scale = (float)scale;
+        view.Size = new Size(width / (float)scale, height / (float)scale);
     }
 
     [JSExport]
     internal static void PointerMove(double x, double y, int buttons, int modifiers) =>
-        _view.PointerMove(
+        Started.View.PointerMove(
             Pointer.Mouse,
             At(x, y),
             Buttons(buttons),
@@ -106,7 +107,7 @@ static unsafe partial class GalleryPage
 
     [JSExport]
     internal static void PointerDown(double x, double y, int button, int modifiers, int clicks) =>
-        _view.PointerDown(
+        Started.View.PointerDown(
             Pointer.Mouse,
             At(x, y),
             (MouseButton)button,
@@ -117,7 +118,7 @@ static unsafe partial class GalleryPage
 
     [JSExport]
     internal static void PointerUp(double x, double y, int button, int modifiers) =>
-        _view.PointerUp(
+        Started.View.PointerUp(
             Pointer.Mouse,
             At(x, y),
             (MouseButton)button,
@@ -126,19 +127,25 @@ static unsafe partial class GalleryPage
         );
 
     [JSExport]
-    internal static void PointerLeave() => _view.PointerLeave(Pointer.Mouse);
+    internal static void PointerLeave() => Started.View.PointerLeave(Pointer.Mouse);
 
     [JSExport]
     internal static void Wheel(double x, double y, double right, double up, int modifiers) =>
-        _view.Wheel(At(x, y), new Vector2((float)right, (float)up), (ModifierKeys)modifiers);
+        Started.View.Wheel(At(x, y), new Vector2((float)right, (float)up), (ModifierKeys)modifiers);
 
     [JSExport]
     internal static void TouchDown(int finger, double x, double y, int modifiers) =>
-        _view.PointerDown(Touch(finger), At(x, y), MouseButton.Left, (ModifierKeys)modifiers, _now);
+        Started.View.PointerDown(
+            Touch(finger),
+            At(x, y),
+            MouseButton.Left,
+            (ModifierKeys)modifiers,
+            _now
+        );
 
     [JSExport]
     internal static void TouchMove(int finger, double x, double y, int modifiers) =>
-        _view.PointerMove(
+        Started.View.PointerMove(
             Touch(finger),
             At(x, y),
             MouseButtons.Left,
@@ -149,38 +156,46 @@ static unsafe partial class GalleryPage
 
     [JSExport]
     internal static void TouchUp(int finger, double x, double y, int modifiers) =>
-        _view.PointerUp(Touch(finger), At(x, y), MouseButton.Left, (ModifierKeys)modifiers, _now);
+        Started.View.PointerUp(
+            Touch(finger),
+            At(x, y),
+            MouseButton.Left,
+            (ModifierKeys)modifiers,
+            _now
+        );
 
     [JSExport]
-    internal static void TouchCancel(int finger) => _view.PointerCancel(Touch(finger));
+    internal static void TouchCancel(int finger) => Started.View.PointerCancel(Touch(finger));
 
     [JSExport]
     internal static bool KeyDown(string code, string name, int modifiers, bool repeat, string text)
     {
-        var taken = _view.KeyDown(BrowserKeys.ToKey(code, name), (ModifierKeys)modifiers, repeat);
+        var view = Started.View;
+        var taken = view.KeyDown(BrowserKeys.ToKey(code, name), (ModifierKeys)modifiers, repeat);
         if (text.Length > 0)
-            taken |= _view.TextInput(text);
+            taken |= view.TextInput(text);
         return taken;
     }
 
     [JSExport]
     internal static void KeyUp(string code, string name, int modifiers) =>
-        _view.KeyUp(BrowserKeys.ToKey(code, name), (ModifierKeys)modifiers);
+        Started.View.KeyUp(BrowserKeys.ToKey(code, name), (ModifierKeys)modifiers);
 
     // A paste event is the one way a page reads the clipboard without awaiting.
     [JSExport]
     internal static void Paste(string text)
     {
         Host.Paste(text);
-        _view.KeyDown(Key.V, ModifierKeys.Control, false);
-        _view.KeyUp(Key.V, ModifierKeys.Control);
+        var view = Started.View;
+        view.KeyDown(Key.V, ModifierKeys.Control, false);
+        view.KeyUp(Key.V, ModifierKeys.Control);
     }
 
     [JSExport]
-    internal static void Activate() => _view.WindowFocus(true);
+    internal static void Activate() => Started.View.WindowFocus(true);
 
     [JSExport]
-    internal static void Deactivate() => _view.WindowFocus(false);
+    internal static void Deactivate() => Started.View.WindowFocus(false);
 
     static Vector2 At(double x, double y) => new((float)x, (float)y);
 
@@ -193,12 +208,12 @@ static unsafe partial class GalleryPage
         | ((buttons & 4) != 0 ? MouseButtons.Middle : 0);
 
     [FramePath]
-    static void Clear()
+    static void Clear(UiContext context)
     {
-        if (ReferenceEquals(_cleared, _context.Theme))
+        if (ReferenceEquals(_cleared, context.Theme))
             return;
 
-        _cleared = _context.Theme;
+        _cleared = context.Theme;
         var color = _cleared.Color(ColorToken.Bg);
         Bx.SetViewClear(
             ViewId,
@@ -207,6 +222,31 @@ static unsafe partial class GalleryPage
             1f,
             0
         );
+    }
+
+    sealed class Session(
+        BgfxRenderDevice device,
+        BgfxViewRenderer renderer,
+        GalleryFonts fonts,
+        AssetTextures images,
+        UiContext context,
+        UiView view,
+        GalleryModel model
+    )
+    {
+        public BgfxRenderDevice Device { get; } = device;
+
+        public BgfxViewRenderer Renderer { get; } = renderer;
+
+        public GalleryFonts Fonts { get; } = fonts;
+
+        public AssetTextures Images { get; } = images;
+
+        public UiContext Context { get; } = context;
+
+        public UiView View { get; } = view;
+
+        public GalleryModel Model { get; } = model;
     }
 
     static void StartRenderer(int width, int height)
@@ -236,8 +276,13 @@ static unsafe partial class GalleryPage
         foreach (var name in assembly.GetManifestResourceNames())
         {
             var path = Path.Combine(AppContext.BaseDirectory, name);
-            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-            using var resource = assembly.GetManifestResourceStream(name)!;
+            if (Path.GetDirectoryName(path) is { } directory)
+                Directory.CreateDirectory(directory);
+            using var resource =
+                assembly.GetManifestResourceStream(name)
+                ?? throw new InvalidOperationException(
+                    $"The listed resource {name} does not open."
+                );
             using var file = File.Create(path);
             resource.CopyTo(file);
         }

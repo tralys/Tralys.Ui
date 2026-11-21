@@ -68,8 +68,10 @@ public sealed class ScrollTests
 
         driver.Wheel(driver.Get("item0"), new Vector2(0, -1));
 
-        await Assert.That(state.Inner!.Offset).IsEqualTo(new Vector2(0, 48));
-        await Assert.That(state.Outer!.Offset).IsEqualTo(Vector2.Zero);
+        var inner = await Assert.That(state.Inner).IsNotNull();
+        var outer = await Assert.That(state.Outer).IsNotNull();
+        await Assert.That(inner.Offset).IsEqualTo(new Vector2(0, 48));
+        await Assert.That(outer.Offset).IsEqualTo(Vector2.Zero);
         await Assert.That(driver.Get("item1").ViewBounds.Y).IsEqualTo(2f);
 
         driver.Click(new Vector2(100, 10));
@@ -78,12 +80,12 @@ public sealed class ScrollTests
         driver.Wheel(driver.Get("item3"), new Vector2(0, -10));
         driver.Wheel(driver.Get("item5"), new Vector2(0, -1));
 
-        await Assert.That(state.Inner.Offset).IsEqualTo(new Vector2(0, 100));
-        await Assert.That(state.Outer.Offset).IsEqualTo(new Vector2(0, 48));
+        await Assert.That(inner.Offset).IsEqualTo(new Vector2(0, 100));
+        await Assert.That(outer.Offset).IsEqualTo(new Vector2(0, 48));
 
         driver.Wheel(driver.Get("item5"), new Vector2(0, 1));
 
-        await Assert.That(state.Inner.Offset).IsEqualTo(new Vector2(0, 52));
+        await Assert.That(inner.Offset).IsEqualTo(new Vector2(0, 52));
     }
 
     [Test]
@@ -114,13 +116,15 @@ public sealed class ScrollTests
             View
         );
 
+        var outer = await Assert.That(state.Outer).IsNotNull();
+        var inner = await Assert.That(state.Inner).IsNotNull();
         driver.Wheel(driver.Get("inner"), new Vector2(2, -0.5f));
-        var sideways = (state.Outer!.Offset, state.Inner!.Offset);
+        var sideways = (outer.Offset, inner.Offset);
         driver.Wheel(driver.Get("inner"), new Vector2(0.25f, -2));
 
         await Assert.That(sideways).IsEqualTo((new Vector2(96, 0), Vector2.Zero));
         await Assert
-            .That((state.Outer.Offset, state.Inner.Offset))
+            .That((outer.Offset, inner.Offset))
             .IsEqualTo((new Vector2(96, 0), new Vector2(0, 96)));
     }
 
@@ -150,11 +154,12 @@ public sealed class ScrollTests
 
         model.Remember = false;
         driver.Settle();
-        state.Outer!.ScrollTo(null, 50);
+        var given = await Assert.That(state.Outer).IsNotNull();
+        given.ScrollTo(null, 50);
         driver.Settle();
 
-        await Assert.That(state.Outer.Offset.Y).IsEqualTo(0f);
-        await Assert.That(driver.Get("box").Scroller).IsNotSameReferenceAs(state.Outer);
+        await Assert.That(given.Offset.Y).IsEqualTo(0f);
+        await Assert.That(driver.Get("box").Scroller).IsNotSameReferenceAs(given);
     }
 
     [Test]
@@ -163,15 +168,16 @@ public sealed class ScrollTests
         var state = new ScrollState();
         using var driver = Nested(state);
         var item = driver.Get("item0");
+        var inner = await Assert.That(state.Inner).IsNotNull();
 
         driver.Wheel(item, new Vector2(0, -1), settle: false);
         driver.Frame();
-        var midway = state.Inner!.Offset.Y;
+        var midway = inner.Offset.Y;
         driver.Wheel(item, new Vector2(0, -1), settle: false);
         driver.Settle();
 
         await Assert.That(midway).IsGreaterThan(0f).And.IsLessThan(48f);
-        await Assert.That(state.Inner.Offset.Y).IsEqualTo(96f);
+        await Assert.That(inner.Offset.Y).IsEqualTo(96f);
     }
 
     [Test]
@@ -202,7 +208,8 @@ public sealed class ScrollTests
         );
         changes.Clear();
 
-        state.Outer!.ScrollTo(null, 1000);
+        var scroll = await Assert.That(state.Outer).IsNotNull();
+        scroll.ScrollTo(null, 1000);
         driver.Settle();
 
         await Assert.That(changes.Count).IsEqualTo(1);
@@ -228,12 +235,13 @@ public sealed class ScrollTests
             View
         );
 
-        state.Outer!.ScrollToEnd();
+        var scroll = await Assert.That(state.Outer).IsNotNull();
+        scroll.ScrollToEnd();
         driver.Settle();
         model.Count = 500;
         driver.Settle();
 
-        await Assert.That(state.Outer.Offset).IsEqualTo(new Vector2(0, 400));
+        await Assert.That(scroll.Offset).IsEqualTo(new Vector2(0, 400));
     }
 
     [Test]
@@ -244,12 +252,13 @@ public sealed class ScrollTests
 
         driver.Drag(driver.Get("item1"), new Vector2(0, -30), PointerKind.Touch);
 
-        await Assert.That(state.Inner!.Offset).IsEqualTo(new Vector2(0, 30));
+        var inner = await Assert.That(state.Inner).IsNotNull();
+        await Assert.That(inner.Offset).IsEqualTo(new Vector2(0, 30));
         await Assert.That(state.Clicks).IsEmpty();
 
         driver.Drag(driver.Get("item2"), new Vector2(0, -4), PointerKind.Touch);
 
-        await Assert.That(state.Inner.Offset).IsEqualTo(new Vector2(0, 30));
+        await Assert.That(inner.Offset).IsEqualTo(new Vector2(0, 30));
         await Assert.That(state.Clicks).IsEquivalentTo([2]);
     }
 
@@ -261,7 +270,8 @@ public sealed class ScrollTests
 
         driver.Drag(driver.Get("item1"), new Vector2(0, -30), PointerKind.Touch);
 
-        await Assert.That(state.Inner!.Offset).IsEqualTo(new Vector2(0, 30));
+        var inner = await Assert.That(state.Inner).IsNotNull();
+        await Assert.That(inner.Offset).IsEqualTo(new Vector2(0, 30));
         await Assert.That(state.Clicks).IsEmpty();
 
         driver.Drag(driver.Get("item2"), new Vector2(0, -4), PointerKind.Touch);
@@ -277,8 +287,10 @@ public sealed class ScrollTests
 
         driver.Drag(driver.Get("item3"), new Vector2(0, -150), PointerKind.Touch);
 
-        await Assert.That(state.Inner!.Offset).IsEqualTo(new Vector2(0, 100));
-        await Assert.That(state.Outer!.Offset).IsEqualTo(new Vector2(0, 50));
+        var inner = await Assert.That(state.Inner).IsNotNull();
+        var outer = await Assert.That(state.Outer).IsNotNull();
+        await Assert.That(inner.Offset).IsEqualTo(new Vector2(0, 100));
+        await Assert.That(outer.Offset).IsEqualTo(new Vector2(0, 50));
     }
 
     [Test]
@@ -289,8 +301,10 @@ public sealed class ScrollTests
 
         driver.Drag(driver.Get("item1"), new Vector2(0, -60), PointerKind.Touch);
 
-        await Assert.That(state.Inner!.Offset).IsEqualTo(Vector2.Zero);
-        await Assert.That(state.Outer!.Offset).IsEqualTo(new Vector2(0, 60));
+        var inner = await Assert.That(state.Inner).IsNotNull();
+        var outer = await Assert.That(state.Outer).IsNotNull();
+        await Assert.That(inner.Offset).IsEqualTo(Vector2.Zero);
+        await Assert.That(outer.Offset).IsEqualTo(new Vector2(0, 60));
     }
 
     [Test]
@@ -327,7 +341,8 @@ public sealed class ScrollTests
 
         driver.Drag(driver.Get("grip"), new Vector2(0, -60), PointerKind.Touch);
 
-        await Assert.That(state.Outer!.Offset).IsEqualTo(Vector2.Zero);
+        var scroll = await Assert.That(state.Outer).IsNotNull();
+        await Assert.That(scroll.Offset).IsEqualTo(Vector2.Zero);
     }
 
     [Test]
@@ -368,11 +383,12 @@ public sealed class ScrollTests
 
         driver.Drag(driver.Get("button"), new Vector2(0, -30));
 
-        await Assert.That(state.Outer!.Offset).IsEqualTo(Vector2.Zero);
+        var scroll = await Assert.That(state.Outer).IsNotNull();
+        await Assert.That(scroll.Offset).IsEqualTo(Vector2.Zero);
 
         driver.Drag(driver.Get("pane"), new Vector2(0, -30));
 
-        await Assert.That(state.Outer.Offset).IsEqualTo(new Vector2(0, 30));
+        await Assert.That(scroll.Offset).IsEqualTo(new Vector2(0, 30));
     }
 
     [Test]
@@ -416,11 +432,14 @@ public sealed class ScrollTests
             View
         );
 
-        target.Ref!.ScrollIntoView();
+        var targetRef = await Assert.That(target.Ref).IsNotNull();
+        targetRef.ScrollIntoView();
         driver.Settle();
 
-        await Assert.That(state.Inner!.Offset).IsEqualTo(new Vector2(0, 150));
-        await Assert.That(state.Outer!.Offset).IsEqualTo(new Vector2(0, 130));
+        var inner = await Assert.That(state.Inner).IsNotNull();
+        var outer = await Assert.That(state.Outer).IsNotNull();
+        await Assert.That(inner.Offset).IsEqualTo(new Vector2(0, 150));
+        await Assert.That(outer.Offset).IsEqualTo(new Vector2(0, 130));
         await Assert.That(driver.Get("target").ViewBounds).IsEqualTo(new Rect(0, 70, 200, 30));
     }
 
@@ -460,10 +479,12 @@ public sealed class ScrollTests
             View
         );
 
-        target.Ref!.ScrollIntoView();
+        var targetRef = await Assert.That(target.Ref).IsNotNull();
+        targetRef.ScrollIntoView();
         driver.Settle();
 
-        await Assert.That(state.Outer!.Offset.Y).IsEqualTo(80f).Within(0.5f);
+        var scroll = await Assert.That(state.Outer).IsNotNull();
+        await Assert.That(scroll.Offset.Y).IsEqualTo(80f).Within(0.5f);
     }
 
     [Test]
@@ -494,14 +515,16 @@ public sealed class ScrollTests
             View
         );
 
-        state.Outer!.ScrollTo(120, null);
+        var lead = await Assert.That(state.Outer).IsNotNull();
+        lead.ScrollTo(120, null);
         driver.Settle();
 
-        await Assert.That(driver.Get("header").Scroller!.Offset.X).IsEqualTo(120f);
+        var header = await Assert.That(driver.Get("header").Scroller).IsNotNull();
+        await Assert.That(header.Offset.X).IsEqualTo(120f);
 
         driver.Wheel(driver.Get("header"), new Vector2(1, 0));
 
-        await Assert.That(state.Outer.Offset.X).IsEqualTo(168f);
+        await Assert.That(lead.Offset.X).IsEqualTo(168f);
     }
 
     [Test]
@@ -535,13 +558,14 @@ public sealed class ScrollTests
         for (var i = 0; i < 4; i++)
             driver.Tab();
 
+        var scroll = await Assert.That(state.Outer).IsNotNull();
         await Assert.That(driver.Focused).IsSameReferenceAs(driver.Get("b3"));
-        await Assert.That(state.Outer!.Offset).IsEqualTo(new Vector2(0, 60));
+        await Assert.That(scroll.Offset).IsEqualTo(new Vector2(0, 60));
 
         driver.Click(driver.Get("b1"));
 
         await Assert.That(driver.Focused).IsSameReferenceAs(driver.Get("b1"));
-        await Assert.That(state.Outer.Offset).IsEqualTo(new Vector2(0, 60));
+        await Assert.That(scroll.Offset).IsEqualTo(new Vector2(0, 60));
     }
 
     [Test]
@@ -623,7 +647,8 @@ public sealed class ScrollTests
         );
         var resting = driver.Get("row").ViewBounds;
 
-        state.Outer!.ScrollTo(null, 20);
+        var scroll = await Assert.That(state.Outer).IsNotNull();
+        scroll.ScrollTo(null, 20);
         driver.Settle();
 
         await Assert
@@ -667,7 +692,8 @@ public sealed class ScrollTests
 
         driver.Drag(driver.Get("grip"), new Vector2(0, -60), PointerKind.Touch);
 
-        await Assert.That(state.Outer!.Offset).IsEqualTo(Vector2.Zero);
+        var scroll = await Assert.That(state.Outer).IsNotNull();
+        await Assert.That(scroll.Offset).IsEqualTo(Vector2.Zero);
         await Assert.That(moves.Value).IsGreaterThan(0);
     }
 }

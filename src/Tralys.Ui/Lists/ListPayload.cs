@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Tralys.Ui.Mvvm;
 
@@ -24,8 +25,8 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
     readonly Handler<PointerEvent> _onUp;
     readonly Handler<PointerEvent> _onCancel;
     readonly Handler<KeyEvent> _onKey;
-    UiView _view = null!;
-    Node _node = null!;
+    UiView? _view;
+    Node? _node;
     ComponentHost? _owner;
     string _file = "";
     int _line;
@@ -79,13 +80,24 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
 
     public ref Dependencies Dependencies => ref _dependencies;
 
-    ScrollHandle Handle => _node.Scroller!;
+    UiView View => _view ?? throw Detached();
+
+    Node ListNode => _node ?? throw Detached();
+
+    ScrollHandle Handle =>
+        ListNode.Scroller
+        ?? throw new InvalidOperationException(
+            "A virtual list scrolls with its own handle, which another scroll container has taken."
+        );
+
+    static InvalidOperationException Detached() =>
+        new("A virtual list's payload is used only while attached to its node.");
 
     bool Horizontal => _props.Horizontal;
 
     int Columns => _props.Columns;
 
-    float Gap => _node.Layout.RowGap;
+    float Gap => ListNode.Layout.RowGap;
 
     internal void Attach(UiView view, Node node, ComponentHost? owner, string file, int line)
     {
@@ -128,7 +140,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
             || _listening is null
         )
             _selectionStale = true;
-        _view.InvalidateMeasure(_node);
+        View.InvalidateMeasure(ListNode);
         return true;
     }
 
@@ -140,7 +152,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         Loosen(stale: true);
         _heldLine = -1;
         _widest = 0f;
-        if (_node.Scroller is { } handle)
+        if (ListNode.Scroller is { } handle)
         {
             handle.StopMotion();
             handle.ClearRequests();
@@ -173,7 +185,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         host.At = -1;
     }
 
-    static RowHost<TItem> HostOf(Node row) => (RowHost<TItem>)row.Host!;
+    static RowHost<TItem> HostOf(Node row) => row.HostOf<RowHost<TItem>>();
 
     UiKey KeyAt(int index) => _props.ItemKey(_props.Items.ItemAt(index));
 
@@ -187,7 +199,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
 
     void ShiftOffset(float by)
     {
-        if (by == 0f || _node.Scroller is not { } handle)
+        if (by == 0f || ListNode.Scroller is not { } handle)
             return;
         var shift = Horizontal ? new Vector2(by, 0f) : new Vector2(0f, by);
         handle.Current = Vector2.Max(default, handle.Current + shift);
@@ -200,7 +212,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
 
     Geometry Measuring(float viewportU, float viewportV, bool crossExact, bool widest)
     {
-        var layout = _node.Layout;
+        var layout = ListNode.Layout;
         var pad = layout.Padding;
         var count = _props.Items.Count;
         var columns = Columns;
@@ -233,7 +245,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         var horizontal = Horizontal;
         var main = horizontal ? width : height;
         var cross = horizontal ? height : width;
-        var layout = _node.Layout;
+        var layout = ListNode.Layout;
         var border = layout.Border;
         var pad = layout.Padding;
         var pbU = horizontal
@@ -249,7 +261,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         if (unbounded && !_props.RealizeAll && !_reportedUnbounded)
         {
             _reportedUnbounded = true;
-            _view.Context.Report(Faults.UnboundedList(horizontal, _file, _line, _owner));
+            View.Context.Report(Faults.UnboundedList(horizontal, _file, _line, _owner));
         }
         if (!unbounded || !_props.RealizeAll)
         {
@@ -282,7 +294,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
     internal override bool Arrange(Size size)
     {
         var horizontal = Horizontal;
-        var border = _node.Layout.Border;
+        var border = ListNode.Layout.Border;
         var viewport = new Size(
             MathF.Max(0f, size.Width - border.Left - border.Right),
             MathF.Max(0f, size.Height - border.Top - border.Bottom)
@@ -313,7 +325,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         {
             HideEmpty();
             var estimatedMax = MathF.Max(0f, ExtentU(g) - g.ViewportU);
-            _view.ResolveRequests(_node, handle, MainVector(estimatedMax));
+            View.ResolveRequests(ListNode, handle, MainVector(estimatedMax));
             if (!ScrollToIndex(ref g))
                 Realize(ref g);
             for (var round = 0; round < 3; round++)
@@ -337,7 +349,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         handle.ExtentSize = horizontal
             ? new Size(extentU, viewport.Height)
             : new Size(viewport.Width, extentU);
-        _view.SettleOffset(_node, handle, MainVector(MathF.Max(0f, extentU - g.ViewportU)));
+        View.SettleOffset(ListNode, handle, MainVector(MathF.Max(0f, extentU - g.ViewportU)));
         ArrangeRows(ref g, viewport);
         Order();
         Trim(ref g);
@@ -556,13 +568,13 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         {
             row = _spares.Pop();
             host = HostOf(row);
-            _view.ReuseRow(row, key, _owner);
+            View.ReuseRow(row, key, _owner);
             host.Stale = true;
         }
         else
         {
             host = Pool<RowHost<TItem>>.TryRent() ?? new RowHost<TItem>();
-            row = _view.MountRow(_node, host, _owner, _file, _line, key);
+            row = View.MountRow(ListNode, host, _owner, _file, _line, key);
             host.Stale = true;
         }
         host.At = index;
@@ -572,10 +584,10 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
             host.Index = index;
             host.Row = _props.Row;
             host.Stale = false;
-            _view.RenderRow(_node, row);
+            View.RenderRow(ListNode, row);
         }
         if (FlagRoot(row, host))
-            _view.RenderRow(_node, row);
+            View.RenderRow(ListNode, row);
         return row;
     }
 
@@ -624,13 +636,13 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
             ? UiView.Stretched(node, horizontal, cellV)
             : Avail.MaxContent;
         var size = horizontal
-            ? _view.Measure(node, mainAvail, crossAvail)
-            : _view.Measure(node, crossAvail, mainAvail);
+            ? View.Measure(node, mainAvail, crossAvail)
+            : View.Measure(node, crossAvail, mainAvail);
         if (g.Widest)
         {
             var natural = horizontal
-                ? _view.Measure(node, mainAvail, Avail.MaxContent).Height
-                : _view.Measure(node, Avail.MaxContent, mainAvail).Width;
+                ? View.Measure(node, mainAvail, Avail.MaxContent).Height
+                : View.Measure(node, Avail.MaxContent, mainAvail).Width;
             _nextWidest = MathF.Max(_nextWidest, natural + marginV);
         }
         return size;
@@ -651,19 +663,19 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
 
     void ArrangeRows(ref Geometry g, Size viewport)
     {
-        var toView = UiView.ContentToView(_node);
-        var snapped = UiView.ContentSnappedToView(_node);
+        var toView = UiView.ContentToView(ListNode);
+        var snapped = UiView.ContentSnappedToView(ListNode);
         if (_empty is { } empty)
         {
             _rowNodes.Clear();
             UiView.CollectChildren(empty, ref _rowNodes);
-            var border = _node.Layout.Border;
+            var border = ListNode.Layout.Border;
             for (var i = 0; i < _rowNodes.Count; i++)
             {
                 var node = _rowNodes[i];
                 node.PctBasis = new Vector2(viewport.Width, viewport.Height);
-                _view.Measure(node, Avail.Exact(viewport.Width), Avail.Exact(viewport.Height));
-                _view.Arrange(
+                View.Measure(node, Avail.Exact(viewport.Width), Avail.Exact(viewport.Height));
+                View.Arrange(
                     node,
                     new Rect(border.Left, border.Top, viewport.Width, viewport.Height),
                     toView,
@@ -727,7 +739,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
             var rect = horizontal
                 ? new Rect(g.BorderU + stack + m.Left, g.BorderV + v + m.Top, main, cross)
                 : new Rect(g.BorderV + v + m.Left, g.BorderU + stack + m.Top, cross, main);
-            _view.Arrange(node, rect, toView, snapped);
+            View.Arrange(node, rect, toView, snapped);
             stack += main + marginU;
         }
     }
@@ -739,7 +751,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         if (index < 0 || g.ViewportU <= 0f)
             return false;
         var align = handle.ToIndexAlign;
-        var animate = handle.ToIndexAnimate && _view.Context.SmoothScrolling;
+        var animate = handle.ToIndexAnimate && View.Context.SmoothScrolling;
         handle.ToIndex = -1;
         if (!handle.ToIndexShown && _props.Items is IShownIndexes shown)
             index = shown.ShownIndex(index);
@@ -782,7 +794,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         SetMainOffset(from);
         Realize(ref g);
         var current = Handle.Current;
-        _view.GlideFor(
+        View.GlideFor(
             handle,
             Horizontal ? new Vector2(target, current.Y) : new Vector2(current.X, target)
         );
@@ -805,13 +817,13 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         if (_empty is null)
         {
             var host = Pool<SlotHost>.TryRent() ?? new SlotHost();
-            _empty = _view.MountRow(_node, host, _owner, _file, _line, default);
+            _empty = View.MountRow(ListNode, host, _owner, _file, _line, default);
         }
-        var slotHost = (SlotHost)_empty.Host!;
+        var slotHost = _empty.HostOf<SlotHost>();
         if (slotHost.Dirty || slotHost.Content != _props.Empty)
         {
             slotHost.Content = _props.Empty;
-            _view.RenderRow(_node, _empty);
+            View.RenderRow(ListNode, _empty);
         }
     }
 
@@ -820,7 +832,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         if (_empty is not { } empty)
             return;
         _empty = null;
-        _view.Unmount(empty);
+        View.Unmount(empty);
     }
 
     void FocusPending()
@@ -843,9 +855,9 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         if (target is null || HostOf(target).Root is not { } root)
             return;
         if (_pendingHandoff)
-            _view.HandFocus(root, _pendingFocusVisible);
+            View.HandFocus(root, _pendingFocusVisible);
         else
-            _view.Focus(root, FocusCause.Arrow, _pendingFocusVisible);
+            View.Focus(root, FocusCause.Arrow, _pendingFocusVisible);
     }
 
     Node? Keep(UiKey key)
@@ -871,7 +883,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         for (var i = 0; i < _loose.Count; i++)
         {
             var row = _loose[i];
-            if (_kept is null && _view.HoldsFocus(row))
+            if (_kept is null && View.HoldsFocus(row))
             {
                 var host = HostOf(row);
                 if (host.At < 0)
@@ -884,7 +896,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
                         host.Item = _props.Items.ItemAt(host.At);
                         host.Index = host.At;
                         host.Stale = false;
-                        _view.RenderRow(_node, row);
+                        View.RenderRow(ListNode, row);
                     }
                     continue;
                 }
@@ -899,7 +911,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         var host = HostOf(row);
         host.FlaggedRoot = null;
         host.At = -1;
-        _view.RetireRow(row);
+        View.RetireRow(row);
         _spares.Add(row);
     }
 
@@ -926,16 +938,16 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
     void Order()
     {
         Node? previous = null;
-        var keptBefore = _kept is { } kept && HostOf(kept).At / Columns < _first;
-        if (keptBefore)
-            Place(_kept!, ref previous);
+        var keptBefore = _kept is { } kept && HostOf(kept).At / Columns < _first ? kept : null;
+        if (keptBefore is not null)
+            Place(keptBefore, ref previous);
         for (var i = 0; i < _cells.Count; i++)
         {
             if (_cells[i] is { } row)
                 Place(row, ref previous);
         }
-        if (_kept is not null && !keptBefore)
-            Place(_kept, ref previous);
+        if (_kept is { } keptAfter && keptBefore is null)
+            Place(keptAfter, ref previous);
         if (_empty is { } empty)
             Place(empty, ref previous);
         for (var i = 0; i < _spares.Count; i++)
@@ -946,9 +958,9 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
     {
         if (node._prev != previous)
         {
-            _node.Unlink(node);
-            _node.InsertAfter(previous, node);
-            _view.MarkComposite();
+            ListNode.Unlink(node);
+            ListNode.InsertAfter(previous, node);
+            View.MarkComposite();
         }
         previous = node;
     }
@@ -968,7 +980,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
                 : realized;
         _poolWindow = window;
         while (_spares.Count > _poolKeeps)
-            _view.Unmount(_spares.Pop());
+            View.Unmount(_spares.Pop());
     }
 
     void TrackSelection()
@@ -1002,7 +1014,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
 
     public void OnItemsChanged(IItemsSource source, in ItemsChange change)
     {
-        if (!ReferenceEquals(source, _props.Items) || !_node.IsMounted)
+        if (!ReferenceEquals(source, _props.Items) || !ListNode.IsMounted)
             return;
         Follow(change);
         if (
@@ -1037,7 +1049,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
                     break;
             }
         }
-        _view.InvalidateMeasure(_node);
+        View.InvalidateMeasure(ListNode);
     }
 
     void Follow(in ItemsChange change)
@@ -1058,7 +1070,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
                 Retire(kept);
             }
         }
-        if (_node.Scroller is { } handle && handle.ToIndex >= 0)
+        if (ListNode.Scroller is { } handle && handle.ToIndex >= 0)
         {
             if (change.Kind == ItemsChangeKind.Reset)
                 handle.ToIndex = -1;
@@ -1080,7 +1092,8 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         if (_first >= 0 && _sizes.Count > 0)
         {
             var viewStart =
-                MainOffset() - (Horizontal ? _node.Layout.Padding.Left : _node.Layout.Padding.Top);
+                MainOffset()
+                - (Horizontal ? ListNode.Layout.Padding.Left : ListNode.Layout.Padding.Top);
             _heldLine = LinePast(viewStart, Gap, out _heldU);
         }
         Loosen(stale: false);
@@ -1127,12 +1140,12 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
     void ReplaceRow(Node row, int at)
     {
         HostOf(row).Stale = true;
-        if (_view.HoldsFocus(row))
+        if (View.HoldsFocus(row))
         {
             _pendingFocus = KeyAt(at);
             _pendingHandoff = true;
             _pendingFocusVisible =
-                _view.Focused is { } focused && (focused._states & InputStates.FocusVisible) != 0;
+                View.Focused is { } focused && (focused._states & InputStates.FocusVisible) != 0;
         }
     }
 
@@ -1171,7 +1184,8 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
             var start = Math.Max(startIndex, 0);
             var end = Math.Min(endIndex, _sizes.Count);
             var viewStart =
-                MainOffset() - (Horizontal ? _node.Layout.Padding.Left : _node.Layout.Padding.Top);
+                MainOffset()
+                - (Horizontal ? ListNode.Layout.Padding.Left : ListNode.Layout.Padding.Top);
             var u = _startU;
             for (var i = 0; i < end; i++)
             {
@@ -1222,7 +1236,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         }
         Pick(row.Key, e.Modifiers);
         if (e.ClickCount == 2 && !pressable && !_props.OnAction.IsEmpty)
-            _view.Report(_props.OnAction, row.Key);
+            View.Report(_props.OnAction, row.Key);
     }
 
     void PointerUp(ref PointerEvent e)
@@ -1250,9 +1264,9 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
     {
         pressable = inner = false;
         Node? last = null;
-        for (var n = _view.HitAt(viewPosition); n is not null && n != _node; n = n._parent)
+        for (var n = View.HitAt(viewPosition); n is not null && n != ListNode; n = n._parent)
         {
-            if (n._parent == _node)
+            if (n._parent == ListNode)
             {
                 if (n.Host is not RowHost<TItem> host || n.SpareRow)
                     return null;
@@ -1302,7 +1316,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
             if (same)
                 return;
         }
-        _view.Report(_props.OnSelectionChange, new SelectionChange(action, key, anchor));
+        View.Report(_props.OnSelectionChange, new SelectionChange(action, key, anchor));
     }
 
     void KeyDown(ref KeyEvent e)
@@ -1381,7 +1395,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
                     || FocusedPressablePresses(byKeyboardEnter: !e.FromGamepad)
                 )
                     return;
-                _view.Report(_props.OnAction, KeyAt(current));
+                View.Report(_props.OnAction, KeyAt(current));
                 Take(ref e);
                 return;
             case Key.A when control && !other && _props.SelectionMode == SelectionMode.Multiple:
@@ -1406,16 +1420,16 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
     }
 
     bool FocusedPressablePresses(bool byKeyboardEnter) =>
-        _view.Focused is { Interaction: { } interaction } focused
+        View.Focused is { Interaction: { } interaction } focused
         && !focused.RowFocusable
         && (byKeyboardEnter ? interaction.Props.EnterPresses : interaction.Props.SpacePresses);
 
     int Current(out bool rowFocused)
     {
         rowFocused = false;
-        for (var n = _view.Focused; n is not null && n != _node; n = n._parent)
+        for (var n = View.Focused; n is not null && n != ListNode; n = n._parent)
         {
-            if (n._parent == _node && n.Host is RowHost<TItem> host && !n.SpareRow)
+            if (n._parent == ListNode && n.Host is RowHost<TItem> host && !n.SpareRow)
             {
                 rowFocused = true;
                 return host.At;
@@ -1450,7 +1464,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
             return down ? count - 1 : 0;
         var columns = Columns;
         var gap = Gap;
-        var pad = Horizontal ? _node.Layout.Padding.Left : _node.Layout.Padding.Top;
+        var pad = Horizontal ? ListNode.Layout.Padding.Left : ListNode.Layout.Padding.Top;
         var viewport = Horizontal ? Handle.ViewportSize.Width : Handle.ViewportSize.Height;
         var viewStart = MainOffset() - pad;
         var viewEnd = viewStart + viewport;
@@ -1494,7 +1508,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
             typed = (char)('0' + (key - Key.D0));
         else
             return -1;
-        var now = _view.Context.Now;
+        var now = View.Context.Now;
         if (now - _typedAt > TypeaheadPause)
             _typedLength = 0;
         _typedAt = now;
@@ -1537,7 +1551,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         if (RealizedRoot(target) is { } root && root.IsMounted)
         {
             _pendingFocus = default;
-            _view.Focus(root, FocusCause.Arrow, visible: true);
+            View.Focus(root, FocusCause.Arrow, visible: true);
         }
         else
         {
@@ -1549,8 +1563,8 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
 
     internal override void UnmountRows()
     {
-        while (_node._first is { } row)
-            _view.Unmount(row);
+        while (ListNode._first is { } row)
+            View.Unmount(row);
     }
 
     public override void Release(UiView view)
@@ -1581,8 +1595,8 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
         _tapping = false;
         _typedLength = 0;
         _owner = null;
-        _view = null!;
-        _node = null!;
+        _view = null;
+        _node = null;
         Pool<ListPayload<TItem>>.Return(this);
     }
 
@@ -1612,7 +1626,7 @@ internal sealed class ListPayload<TItem> : ListPayload, IItemsSourceListener, IC
 internal sealed class RowHost<TItem> : ComponentHost
 {
     internal Slot<TItem> Row;
-    internal TItem Item = default!;
+    internal TItem? Item;
     internal int Index = -1;
     internal int At = -1;
     internal bool Stale;
@@ -1623,7 +1637,14 @@ internal sealed class RowHost<TItem> : ComponentHost
 
     internal override int TypeId => ComponentType<VirtualListRow>.Id;
 
-    internal override void Invoke(Ui ui) => Row.Render(ui, Item, Index);
+    [MemberNotNullWhen(true, nameof(Item))]
+    bool Bound => Index >= 0;
+
+    internal override void Invoke(Ui ui)
+    {
+        if (Bound)
+            Row.Render(ui, Item, Index);
+    }
 
     internal override bool DescribeProps(IPropsVisitor visitor) => false;
 
@@ -1631,7 +1652,7 @@ internal sealed class RowHost<TItem> : ComponentHost
     {
         base.Release();
         Row = default;
-        Item = default!;
+        Item = default;
         Index = At = -1;
         Stale = false;
         FlaggedRoot = null;

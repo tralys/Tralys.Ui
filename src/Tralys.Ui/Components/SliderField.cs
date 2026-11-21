@@ -58,10 +58,9 @@ public sealed class SliderField : Component<SliderFieldProps>
     protected override void Render(Ui ui, in SliderFieldProps p)
     {
         var t = ui.Theme;
-        var model = ui.Remember(static () => new SliderFieldModel());
-        model.Host = ui.Self(p);
         var draft = ui.State<float?>(null);
-        model.Draft = draft;
+        var model = ui.Remember(draft, static d => new SliderFieldModel(d));
+        model.Host = ui.Self(p);
         var max = p.Max ?? 100.0;
         var step = (float)(p.Step ?? 1.0);
         using (ui.Field(label: p.Label, labelWidth: p.LabelWidth))
@@ -118,11 +117,12 @@ internal sealed class SliderFieldModel
     internal readonly Callback Started;
     internal readonly Callback<bool> Ended;
     internal Host<SliderFieldProps> Host;
-    internal State<float?> Draft = null!;
+    internal readonly State<float?> Draft;
     bool _dragging;
 
-    public SliderFieldModel()
+    public SliderFieldModel(State<float?> draft)
     {
+        Draft = draft;
         Slid = Callback<float>.Of(this, static (m, value) => m.Moved(value));
         Started = Callback.Of(this, static m => m._dragging = true);
         Ended = Callback<bool>.Of(this, static (m, cancelled) => m.Let(cancelled));

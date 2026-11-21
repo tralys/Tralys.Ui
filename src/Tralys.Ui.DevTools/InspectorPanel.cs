@@ -8,7 +8,7 @@ namespace Tralys.Ui.DevTools;
 
 internal readonly record struct InspectorProps
 {
-    public InspectorModel? Model { get; init; }
+    public required InspectorModel Model { get; init; }
 }
 
 internal sealed class InspectorRoot : Component<InspectorProps>
@@ -28,7 +28,7 @@ internal sealed class InspectorPanel : Component<InspectorProps>
 {
     protected override void Render(Ui ui, in InspectorProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         var t = ui.Theme;
         using (
             ui.Box(
@@ -83,7 +83,7 @@ internal sealed class InspectorToolbar : Component<InspectorProps>
 {
     protected override void Render(Ui ui, in InspectorProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         using (ui.Box(align: Align.Center, gap: 4, padding: 6))
         {
             using (ui.Tooltip(text: "Pick an element · Ctrl+Shift+C"))
@@ -131,7 +131,7 @@ internal sealed class ElementTreePane : Component<InspectorProps>
 
     protected override void Render(Ui ui, in InspectorProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         model.TreeScroll = ui.ScrollHandle();
         ui.Tree(
             items: model.Tree.Rows,
@@ -152,18 +152,18 @@ internal sealed class ElementTreePane : Component<InspectorProps>
 
 internal readonly record struct ElementRowProps
 {
-    public InspectorRow? Item { get; init; }
+    public required InspectorRow Item { get; init; }
 
-    public InspectorModel? Model { get; init; }
+    public required InspectorModel Model { get; init; }
 }
 
 internal sealed class ElementRow : Component<ElementRowProps>
 {
     protected override void Render(Ui ui, in ElementRowProps p)
     {
-        var row = p.Item!;
+        var row = p.Item;
         var entry = ui.Remember(static () => ShownRow.Rent());
-        entry.Bind(p.Model!, row);
+        entry.Bind(p.Model, row);
         ui.TreeItem(content: Slot.Of(row, static (ui, r) => RowLabel(ui, r)));
     }
 
@@ -251,7 +251,7 @@ internal sealed class SelectionDetails : Component<InspectorProps>
 {
     protected override void Render(Ui ui, in InspectorProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         _ = model.Revision;
         var t = ui.Theme;
         var muted = t.Color(ColorToken.FgMuted);
@@ -411,7 +411,7 @@ internal sealed class PropertyList : Component<InspectorProps>
 {
     protected override void Render(Ui ui, in InspectorProps p)
     {
-        var model = p.Model!;
+        var model = p.Model;
         _ = model.Revision;
         var t = ui.Theme;
         var defaults = model.ShowsDefaults;
@@ -474,10 +474,10 @@ internal static class Names
     public static string? IdOf(Node node) => node.Host is { Root: { } root } ? root.Id : node.Id;
 
     public static string Layer(Node layer) =>
-        ((LayerPayload)layer.Payload!).Props.Tier switch
+        layer.Payload switch
         {
-            LayerTier.Toast => "layer · toast",
-            LayerTier.Tooltip => "layer · tooltip",
+            LayerPayload { Props.Tier: LayerTier.Toast } => "layer · toast",
+            LayerPayload { Props.Tier: LayerTier.Tooltip } => "layer · tooltip",
             _ => "layer",
         };
 }

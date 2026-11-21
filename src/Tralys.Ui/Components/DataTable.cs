@@ -86,15 +86,15 @@ public sealed partial class DataTable<TItem> : Component<DataTableProps<TItem>>
         var items = p.Items ?? throw Missing(nameof(p.Items));
         var itemKey = p.ItemKey ?? throw Missing(nameof(p.ItemKey));
         var columns = p.Columns ?? throw Missing(nameof(p.Columns));
-        var model = ui.Remember(static () => new DataTableModel<TItem>());
+        var model = ui.Remember(
+            (Changed: ui.State(0), Scroll: ui.ScrollHandle()),
+            static hooks => new DataTableModel<TItem>(hooks.Changed, hooks.Scroll)
+        );
         model.Host = ui.Self(p);
-        model.Changed = ui.State(0);
-        model.Scroll = ui.ScrollHandle();
         var holds = p.TotalItems is null;
         model.Listen(holds ? items : null);
-        var total = holds
-            ? model.Rows.Query(items, columns, p.SearchText, p.Filter, p.Sort)
-            : p.TotalItems!.Value;
+        var total =
+            p.TotalItems ?? model.Rows.Query(items, columns, p.SearchText, p.Filter, p.Sort);
         var pages = DataTableModel<TItem>.PagesFor(total, p.PageSize);
         var page = Math.Clamp(
             Math.Max(1, p.Page),
@@ -178,8 +178,8 @@ internal sealed class DataTableModel<TItem> : IItemsSourceListener, IDisposable
 {
     internal readonly DataTableRows<TItem> Rows = new();
     internal Host<DataTableProps<TItem>> Host;
-    internal State<int> Changed = null!;
-    internal ScrollHandle Scroll = null!;
+    internal readonly State<int> Changed;
+    internal readonly ScrollHandle Scroll;
     IItemsSource<TItem>? _listening;
     object? _items;
     object? _filter;
@@ -188,6 +188,12 @@ internal sealed class DataTableModel<TItem> : IItemsSourceListener, IDisposable
     int _searchLength = -1;
     int _query;
     DataTablePage _settled = new(-1, 0, 0, false);
+
+    internal DataTableModel(State<int> changed, ScrollHandle scroll)
+    {
+        Changed = changed;
+        Scroll = scroll;
+    }
 
     internal static int PagesFor(int total, int perPage) =>
         perPage <= 0 ? 1 : Math.Max(1, (total + perPage - 1) / perPage);
@@ -269,15 +275,19 @@ internal sealed class DataTableRows<TItem> : IItemsSource<TItem>
     int _start;
     int _count;
     bool _stale = true;
-    TableColumn<TItem>? _sortBy;
-    bool _descending;
     ItemsSourceListeners _listeners;
 
     public int Count => _count;
 
-    public object? this[int index] => _source![_order[_start + index]];
+    public object? this[int index] =>
+        _source is { } source
+            ? source[_order[_start + index]]
+            : throw new ArgumentOutOfRangeException(nameof(index));
 
-    public TItem ItemAt(int index) => _source!.ItemAt(_order[_start + index]);
+    public TItem ItemAt(int index) =>
+        _source is { } source
+            ? source.ItemAt(_order[_start + index])
+            : throw new ArgumentOutOfRangeException(nameof(index));
 
     public int IndexOf(object? item)
     {
@@ -322,12 +332,7 @@ internal sealed class DataTableRows<TItem> : IItemsSource<TItem>
             _order[_matched++] = i;
         }
         if (sort.Direction != SortDirection.None && SortedBy(columns, sort.Key) is { } column)
-        {
-            _sortBy = column;
-            _descending = sort.Direction == SortDirection.Descending;
-            Sort();
-            _sortBy = null;
-        }
+            Sort(new Ordering(source, column, sort.Direction == SortDirection.Descending));
         return _matched;
     }
 
@@ -375,7 +380,7 @@ internal sealed class DataTableRows<TItem> : IItemsSource<TItem>
     }
 
     // A bottom-up merge sort over a buffer kept between sorts, as the runtime's sorts allocate a comparer each call.
-    void Sort()
+    void Sort(in Ordering by)
     {
         var count = _matched;
         if (_merged.Length < _order.Length)
@@ -392,7 +397,7 @@ internal sealed class DataTableRows<TItem> : IItemsSource<TItem>
                 var right = middle;
                 for (var at = start; at < end; at++)
                     to[at] =
-                        left < middle && (right >= end || Compare(from[left], from[right]) <= 0)
+                        left < middle && (right >= end || by.Compare(from[left], from[right]) <= 0)
                             ? from[left++]
                             : from[right++];
             }
@@ -402,23 +407,26 @@ internal sealed class DataTableRows<TItem> : IItemsSource<TItem>
             Array.Copy(from, _order, count);
     }
 
-    int Compare(int x, int y)
+    readonly struct Ordering(IItemsSource<TItem> source, TableColumn<TItem> column, bool descending)
     {
-        var a = _source!.ItemAt(x);
-        var b = _source.ItemAt(y);
-        var by = _sortBy!.Compare is { } compare ? compare(a, b) : CompareText(a, b);
-        if (by == 0)
-            return x.CompareTo(y);
-        return _descending ? -by : by;
-    }
+        public int Compare(int x, int y)
+        {
+            var a = source.ItemAt(x);
+            var b = source.ItemAt(y);
+            var by = column.Compare is { } compare ? compare(a, b) : CompareText(a, b);
+            if (by == 0)
+                return x.CompareTo(y);
+            return descending ? -by : by;
+        }
 
-    int CompareText(TItem a, TItem b)
-    {
-        if (_sortBy!.Text is not { } text)
-            return 0;
-        var left = text(a).Span;
-        var right = text(b).Span;
-        var folded = left.CompareTo(right, StringComparison.OrdinalIgnoreCase);
-        return folded != 0 ? folded : left.CompareTo(right, StringComparison.Ordinal);
+        int CompareText(TItem a, TItem b)
+        {
+            if (column.Text is not { } text)
+                return 0;
+            var left = text(a).Span;
+            var right = text(b).Span;
+            var folded = left.CompareTo(right, StringComparison.OrdinalIgnoreCase);
+            return folded != 0 ? folded : left.CompareTo(right, StringComparison.Ordinal);
+        }
     }
 }

@@ -33,14 +33,14 @@ public sealed class DragLog
 
 public sealed class Seen<T>
 {
-    public T Value = default!;
+    public T? Value;
 }
 
 public readonly record struct KeyedProps
 {
-    public string? Name { get; init; }
+    public required string Name { get; init; }
 
-    public Log? Log { get; init; }
+    public required Log Log { get; init; }
 
     public Chord Chord { get; init; }
 
@@ -60,7 +60,7 @@ public sealed class Keyed : Component<KeyedProps>
             p.Chord,
             p.Command is { } command
                 ? command
-                : Callback.Of(ui.Self(p), static h => h.Props.Log!.Add(h.Props.Name!)),
+                : Callback.Of(ui.Self(p), static h => h.Props.Log.Add(h.Props.Name)),
             p.Scope
         );
         using (
@@ -78,9 +78,9 @@ public sealed class Keyed : Component<KeyedProps>
 
 public readonly record struct ScreenProps
 {
-    public string? Name { get; init; }
+    public required string Name { get; init; }
 
-    public Log? Log { get; init; }
+    public required Log Log { get; init; }
 
     public bool Active { get; init; }
 
@@ -99,12 +99,12 @@ public sealed class Screen : Component<ScreenProps>
                 UiAction.Confirm,
                 p.Command is { } command
                     ? command
-                    : Callback.Of(ui.Self(p), static h => h.Props.Log!.Add(h.Props.Name!)),
+                    : Callback.Of(ui.Self(p), static h => h.Props.Log.Add(h.Props.Name)),
                 label: p.Name
             );
             ui.Action(
                 UiAction.Back,
-                Callback.Of(ui.Self(p), static h => h.Props.Log!.Add("back")),
+                Callback.Of(ui.Self(p), static h => h.Props.Log.Add("back")),
                 hidden: true
             );
             using (ui.Box(width: 10, height: 10)) { }
@@ -137,7 +137,7 @@ public sealed class ActionBarProbe : Component<ActionBarProbeProps>
 
 public readonly record struct DeviceProbeProps
 {
-    public Seen<InputDevice>? Seen { get; init; }
+    public required Seen<InputDevice> Seen { get; init; }
 }
 
 /// <summary>Records the input device each render sees.</summary>
@@ -145,7 +145,7 @@ public sealed class DeviceProbe : Component<DeviceProbeProps>
 {
     protected override void Render(Ui ui, in DeviceProbeProps p)
     {
-        p.Seen!.Value = ui.InputDevice;
+        p.Seen.Value = ui.InputDevice;
         using (ui.Box(width: 20, height: 20, background: Color.FromRgb(5, 5, 5))) { }
     }
 }
@@ -154,7 +154,7 @@ public readonly record struct CommandButtonProps
 {
     public Callback OnClick { get; init; }
 
-    public Seen<bool>? Disabled { get; init; }
+    public required Seen<bool> Disabled { get; init; }
 }
 
 /// <summary>A box that runs its click, disabled while the command it was made from can't run.</summary>
@@ -163,14 +163,14 @@ public sealed class CommandButton : Component<CommandButtonProps>
     protected override void Render(Ui ui, in CommandButtonProps p)
     {
         ui.CanRun(p.OnClick);
-        p.Disabled!.Value = ui.IsDisabled;
+        p.Disabled.Value = ui.IsDisabled;
         using (ui.Box(width: 40, height: 40, onClick: p.OnClick)) { }
     }
 }
 
 public readonly record struct GestureStripProps
 {
-    public Model? Model { get; init; }
+    public required Model Model { get; init; }
 }
 
 /// <summary>A strip that keeps the system's edge gestures off it, placed by its model's count.</summary>
@@ -183,7 +183,7 @@ public sealed class GestureStrip : Component<GestureStripProps>
             using (
                 ui.Box(
                     position: Position.Absolute,
-                    left: p.Model!.Count,
+                    left: p.Model.Count,
                     width: 20,
                     height: 20,
                     excludeSystemGestures: true
@@ -195,7 +195,7 @@ public sealed class GestureStrip : Component<GestureStripProps>
 
 public readonly record struct AutoFocusProbeProps
 {
-    public Model? Gate { get; init; }
+    public required Model Gate { get; init; }
 }
 
 /// <summary>A button beside an autofocusing box that its gate hides.</summary>
@@ -214,7 +214,7 @@ public sealed class AutoFocusProbe : Component<AutoFocusProbeProps>
                     height: 20,
                     focusable: true,
                     autoFocus: true,
-                    hidden: p.Gate!.Remember
+                    hidden: p.Gate.Remember
                 )
             ) { }
         }

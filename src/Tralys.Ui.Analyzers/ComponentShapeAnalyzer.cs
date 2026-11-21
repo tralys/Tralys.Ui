@@ -13,7 +13,9 @@ namespace Tralys.Ui.Analyzers;
 /// static constructor of its own, since the generator writes one that registers the props' shape (TRL3006). Its props
 /// are a <c>readonly record struct</c> of <c>{ get; init; }</c> members with no initializers or positional parameters,
 /// each a reference type, a primitive, an enum, a <c>Nullable&lt;T&gt;</c> or an <c>IEquatable&lt;T&gt;</c> struct,
-/// and none taking the argument name of a placement or call-site argument (TRL3001).</summary>
+/// and none taking the argument name of a placement or call-site argument; a member of a non-nullable reference type,
+/// or of a type parameter that may be one, is <c>required</c>, since a call that omits it leaves it null
+/// (TRL3001).</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public sealed class ComponentShapeAnalyzer : DiagnosticAnalyzer
 {
@@ -193,6 +195,11 @@ public sealed class ComponentShapeAnalyzer : DiagnosticAnalyzer
                             at,
                             $"has '{property.Name}' of type '{property.Type.ToDisplayString()}', a struct that isn't IEquatable<{property.Type.ToDisplayString()}>, so comparing props would box it"
                         );
+                    if (Omittable(property))
+                        Report(
+                            at,
+                            $"has '{property.Name}' of non-nullable type '{property.Type.ToDisplayString()}', which a call may omit; mark it required, or declare it '{property.Type.ToDisplayString()}?'"
+                        );
                     var argument = UiShapes.Camel(property.Name);
                     if (core.Reserved.Contains(argument))
                         Report(
@@ -210,6 +217,12 @@ public sealed class ComponentShapeAnalyzer : DiagnosticAnalyzer
             }
         }
     }
+
+    static bool Omittable(IPropertySymbol property) =>
+        !property.IsRequired
+        && property.Type
+            is { NullableAnnotation: NullableAnnotation.NotAnnotated, IsValueType: false }
+        && (property.Type.IsReferenceType || property.Type is ITypeParameterSymbol);
 
     static bool Allowed(ITypeSymbol type, UiCore core) =>
         type.IsReferenceType

@@ -21,7 +21,7 @@ public sealed partial class Node
 
     internal bool WriteScroll(in ScrollProps props, ScrollHandle? handle, bool scrolls)
     {
-        var view = View!;
+        var view = MountedView;
         var changed = false;
         if (!scrolls && handle is null)
         {

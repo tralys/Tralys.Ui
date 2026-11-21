@@ -55,8 +55,11 @@ public sealed class ComponentLeakTests
     [MethodImpl(MethodImplOptions.NoInlining)]
     static WeakReference MountedAndClosed(Type component, List<ObservableText> texts)
     {
-        var props = component.BaseType!.GetGenericArguments()[0];
-        var value = Activator.CreateInstance(props)!;
+        if (component.BaseType is not { } host)
+            throw new InvalidOperationException($"{component.Name} derives from nothing.");
+        var props = host.GetGenericArguments()[0];
+        if (Activator.CreateInstance(props) is not { } value)
+            throw new InvalidOperationException($"{props.Name} made no instance.");
         foreach (var property in props.GetProperties())
         {
             if (property.PropertyType != typeof(ObservableText))

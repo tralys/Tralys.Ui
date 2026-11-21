@@ -695,7 +695,7 @@ public sealed class SelectTests
 
 public readonly record struct RowProbeProps
 {
-    public string? Name { get; init; }
+    public required string Name { get; init; }
 }
 
 /// <summary>Shows its name and records whether the row holding it showed selected.</summary>
@@ -707,7 +707,7 @@ public sealed class RowProbe : Component<RowProbeProps>
 
     protected override void Render(Ui ui, in RowProbeProps p)
     {
-        Seen[p.Name!] = ui.Use(ListBox.RowContext).Selected;
+        Seen[p.Name] = ui.Use(ListBox.RowContext).Selected;
         ui.Text(p.Name);
     }
 }

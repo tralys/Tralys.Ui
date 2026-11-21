@@ -30,7 +30,7 @@ public sealed class HoverProbe
 
 public readonly record struct LampProps
 {
-    public HoverProbe? Probe { get; init; }
+    public required HoverProbe Probe { get; init; }
 }
 
 public sealed class Lamp : Component<LampProps>
@@ -38,7 +38,7 @@ public sealed class Lamp : Component<LampProps>
     protected override void Render(Ui ui, in LampProps p)
     {
         var hovered = ui.IsHovered;
-        p.Probe!.Hovered = hovered;
+        p.Probe.Hovered = hovered;
         p.Probe.Pressed = ui.IsPressed;
         using (
             ui.Box(
@@ -95,14 +95,14 @@ public sealed class Meter : Component<MeterProps>
 
 public readonly record struct DialProps
 {
-    public Gauge? Gauge { get; init; }
+    public required Gauge Gauge { get; init; }
 }
 
 public sealed class Dial : Component<DialProps>
 {
     protected override void Render(Ui ui, in DialProps p)
     {
-        var gauge = p.Gauge!;
+        var gauge = p.Gauge;
         using (ui.Box(direction: Direction.Column, gap: 4, padding: 4))
         {
             ui.Meter(level: gauge.Level, caption: ui.Format($"tick {gauge.Tick}"), id: "meter");

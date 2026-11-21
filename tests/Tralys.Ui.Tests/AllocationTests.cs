@@ -256,8 +256,8 @@ public sealed class AllocationTests
     {
         using var driver = UiDriver.Render(static ui => ui.Text("posts"));
         using var posts = new Posts(driver.View.Context.Dispatcher);
-        var worker = new Thread(static p => ((Posts)p!).Work()) { IsBackground = true };
-        worker.Start(posts);
+        var worker = new Thread(posts.Work) { IsBackground = true };
+        worker.Start();
 
         long bytes;
         try
@@ -818,14 +818,14 @@ internal sealed class Sketch(Model model)
 
 public readonly record struct DriftProps
 {
-    public Model? Model { get; init; }
+    public required Model Model { get; init; }
 }
 
 public sealed class Drift : Component<DriftProps>
 {
     protected override void Render(Ui ui, in DriftProps p)
     {
-        var step = p.Model!.Count + 1;
+        var step = p.Model.Count + 1;
         using (ui.Box(letterSpacing: step))
         using (
             ui.Box(

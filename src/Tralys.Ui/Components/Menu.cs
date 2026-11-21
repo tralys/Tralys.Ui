@@ -134,7 +134,8 @@ public sealed class Menu : Component<MenuProps>
             var m = t.Metrics(c.Size);
             var entry = ui.Remember(c.Level, static level => MenuEntry.Rent(level));
             entry.Host = ui.Self(p);
-            entry.Ref = ui.Ref();
+            var node = ui.Ref();
+            entry.Ref = node;
             entry.Update(
                 hasItems: !p.Items.IsEmpty,
                 wantsIcon: !p.Icon.IsEmpty || p.Checkable || p.Checked
@@ -175,7 +176,7 @@ public sealed class Menu : Component<MenuProps>
                     pressMode: PressMode.ReleaseOver,
                     onPointerMove: entry.PointerMove,
                     onHoverChange: entry.HoverChange,
-                    nodeRef: entry.Ref
+                    nodeRef: node
                 )
             )
             {
@@ -219,7 +220,7 @@ public sealed class Menu : Component<MenuProps>
             if (open && entry.HasItems && !disabled)
                 using (
                     ui.Positioner(
-                        anchor: entry.Ref,
+                        anchor: node,
                         placement: PlacementMode.RightStart,
                         restoreFocus: true,
                         dismissOn: Dismiss.Escape,
@@ -317,10 +318,12 @@ public sealed class Menubar : Component<MenubarProps>
         var size = p.Size ?? ComponentSize.Md;
         var bar = ui.Remember(static () => MenuLevel.Rent());
         bar.Bind(null, null, default, isBar: true);
-        bar.OpenRow = ui.RefState<MenuEntry>();
+        var openRow = ui.RefState<MenuEntry>();
+        bar.OpenRow = openRow;
         var closed = ui.State(0);
         bar.Closed = closed;
-        bar.Panel = ui.Ref();
+        var panel = ui.Ref();
+        bar.Panel = panel;
         ui.Effect(bar, closed.Value, static (b, _, _) => b.DropdownClosed());
         ui.Effect(
             bar,
@@ -335,16 +338,16 @@ public sealed class Menubar : Component<MenubarProps>
             Menu.Context,
             new MenuContext(bar, size, false, InBar: true, MenuLook.MaxRowsHeight)
         );
-        using (ui.Box(onKeyDown: bar.KeyDown, nodeRef: bar.Panel))
+        using (ui.Box(onKeyDown: bar.KeyDown, nodeRef: panel))
             ui.Children();
-        if (bar.OpenRow.Value is not { HasItems: true } open || ui.IsDisabled)
+        if (openRow.Value is not { HasItems: true, Ref: { } anchor } open || ui.IsDisabled)
             return;
         using (
             ui.Positioner(
-                anchor: open.Ref,
+                anchor: anchor,
                 restoreFocus: true,
                 dismissOn: Dismiss.Escape | Dismiss.OutsidePress,
-                dismissExempt: bar.Panel,
+                dismissExempt: panel,
                 onDismiss: bar.CloseAll,
                 direction: Direction.Column
             )
@@ -392,10 +395,9 @@ public sealed class ContextMenu : Component<ContextMenuProps>
 {
     protected override void Render(Ui ui, in ContextMenuProps p)
     {
-        var menu = ui.Remember(static () => new Disclosure());
+        var menu = ui.Remember(ui.State(p.DefaultOpen), static own => new Disclosure(own));
         menu.Open = p.Open;
         menu.OnOpenChange = p.OnOpenChange;
-        menu.Own = ui.State(p.DefaultOpen);
         menu.Offered = !p.Menu.IsEmpty;
         var open = (p.Open ?? menu.Own.Value) && !p.Menu.IsEmpty;
         using (ui.Box(direction: Direction.Column, onContextMenu: menu.Requested))
@@ -442,7 +444,8 @@ internal sealed class MenuPanel : Component<MenuPanelProps>
         level.OpenRow = ui.RefState<MenuEntry>();
         var reserve = ui.State(false);
         level.Reserve = reserve;
-        level.Panel = ui.Ref();
+        var panel = ui.Ref();
+        level.Panel = panel;
         level.FocusFirst = p.FocusFirst;
         level.TakesFocus = p.TakesFocus;
         var scroll = ui.ScrollHandle();
@@ -458,7 +461,7 @@ internal sealed class MenuPanel : Component<MenuPanelProps>
                 focusable: true,
                 onKeyDown: level.KeyDown,
                 onPointerDown: MenuLook.StopPress,
-                nodeRef: level.Panel
+                nodeRef: panel
             )
         )
         using (ui.OverlayFrame(size: p.Size))

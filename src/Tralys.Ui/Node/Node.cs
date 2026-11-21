@@ -110,6 +110,15 @@ public sealed partial class Node
     internal bool IsTransparent =>
         Kind is NodeKind.Component or NodeKind.Fragment or NodeKind.ActionScope;
 
+    internal UiView MountedView =>
+        View ?? throw new InvalidOperationException("A node is written only while it is mounted.");
+
+    internal T PayloadOf<T>()
+        where T : NodePayload => Payload as T ?? throw Faults.Missing(Kind, typeof(T));
+
+    internal T HostOf<T>()
+        where T : ComponentHost => Host as T ?? throw Faults.Missing(Kind, typeof(T));
+
     internal Node? LayoutParent
     {
         get
@@ -222,7 +231,9 @@ public sealed partial class Node
             _started = false;
         }
 
-        public readonly Node Current => _current!;
+        /// <exception cref="InvalidOperationException">The walk has not started, or has passed the last child.</exception>
+        public readonly Node Current =>
+            _current ?? throw new InvalidOperationException("The enumerator is not on a child.");
 
         /// <summary>How many children there are, counted by walking them.</summary>
         public readonly int Count

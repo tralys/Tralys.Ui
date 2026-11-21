@@ -35,6 +35,8 @@ internal abstract partial class ComponentHost
 
     private protected void WriteDisabled(bool disabled)
     {
+        if (!IsMounted)
+            return;
         var inherit = Node.Inherit;
         if (inherit.Disabled == disabled)
             return;

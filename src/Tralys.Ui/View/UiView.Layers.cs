@@ -28,7 +28,7 @@ public sealed partial class UiView
         return false;
     }
 
-    static LayerPayload PayloadOf(Node layer) => (LayerPayload)layer.Payload!;
+    static LayerPayload PayloadOf(Node layer) => layer.PayloadOf<LayerPayload>();
 
     internal void LayerOpened(Node node)
     {
@@ -39,7 +39,8 @@ public sealed partial class UiView
         if (_focused is { } focused)
         {
             payload.Scope.Opened(focused);
-            payload.FocusWithinOwner = node._parent!.IsAncestorOrSelfOf(focused);
+            payload.FocusWithinOwner =
+                node._parent is { } owner && owner.IsAncestorOrSelfOf(focused);
         }
         _layers.Add(node);
         _compositeDirty = true;
@@ -379,8 +380,8 @@ public sealed partial class UiView
         if (
             payload.Scope.IsLive
             && !payload.AnchorValid
-            && Drawn(payload.Node)
-            && !ExitingLayer(payload.Node)
+            && Drawn(payload.Scope.Node)
+            && !ExitingLayer(payload.Scope.Node)
         )
             DismissLayer(payload);
     }

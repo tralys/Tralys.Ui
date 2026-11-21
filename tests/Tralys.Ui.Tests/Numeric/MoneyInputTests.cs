@@ -118,7 +118,18 @@ public sealed class MoneyInputTests
 
 internal sealed class MoneyOwner
 {
-    public State<long> Value = null!;
+    State<long>? _value;
+
+    public State<long> Value
+    {
+        get
+        {
+            if (_value is not { } value)
+                throw new InvalidOperationException("The owner has not rendered yet.");
+            return value;
+        }
+    }
+
     public readonly List<long> Reports = [];
     public readonly List<long> Submits = [];
     public long Min;
@@ -146,7 +157,7 @@ internal sealed class MoneyOwner
         UiDriver.Render(
             ui =>
             {
-                Value = ui.State(start);
+                _value = ui.State(start);
                 using (ui.Box(direction: Direction.Column, align: Align.Start, gap: 8))
                 {
                     field(ui, this);

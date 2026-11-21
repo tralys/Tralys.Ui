@@ -55,13 +55,11 @@ public sealed class SplitButton : Component<SplitButtonProps>
         var size = p.Size ?? ComponentSize.Md;
         var m = t.Metrics(size);
         var scheme = p.Scheme ?? ColorScheme.Primary;
-        var menu = ui.Remember(static () => new Disclosure());
+        var menu = ui.Remember(ui.State(p.DefaultOpen), static own => new Disclosure(own));
         menu.Open = p.Open;
         menu.OnOpenChange = p.OnOpenChange;
-        menu.Own = ui.State(p.DefaultOpen);
-        var split = ui.Remember(static () => new Split());
+        var split = ui.Remember(menu, static m => new Split(m));
         split.Host = ui.Self(p);
-        split.Menu = menu;
         split.ChevronWidth = m.Height;
         var disabled = ui.IsDisabled;
         ui.Effect(menu, disabled, Disclosure.ShutWhenDisabled);
@@ -129,12 +127,13 @@ public sealed class SplitButton : Component<SplitButtonProps>
         internal readonly Handler<PointerEvent> Aim;
         internal readonly Handler<KeyEvent> KeyDown;
         internal Host<SplitButtonProps> Host;
-        internal Disclosure Menu = null!;
+        internal readonly Disclosure Menu;
         internal float ChevronWidth;
         bool _chevron;
 
-        public Split()
+        public Split(Disclosure menu)
         {
+            Menu = menu;
             Click = Callback.Of(this, static s => s.Clicked());
             Aim = Handler<PointerEvent>.Of(
                 this,

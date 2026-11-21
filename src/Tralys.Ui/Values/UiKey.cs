@@ -45,7 +45,7 @@ public readonly struct UiKey : IEquatable<UiKey>
 
     public bool TryGetString(out string? value)
     {
-        value = _kind == KeyKind.String ? (string)_object! : null;
+        value = _kind == KeyKind.String ? (string?)_object : null;
         return _kind == KeyKind.String;
     }
 
@@ -55,8 +55,8 @@ public readonly struct UiKey : IEquatable<UiKey>
         {
             KeyKind.Long => _long == other._long,
             KeyKind.String => string.Equals(
-                (string)_object!,
-                (string)other._object!,
+                (string?)_object,
+                (string?)other._object,
                 StringComparison.Ordinal
             ),
             KeyKind.Reference => ReferenceEquals(_object, other._object),
@@ -69,7 +69,7 @@ public readonly struct UiKey : IEquatable<UiKey>
         _kind switch
         {
             KeyKind.Long => _long.GetHashCode(),
-            KeyKind.String => StringComparer.Ordinal.GetHashCode((string)_object!),
+            KeyKind.String when _object is string text => StringComparer.Ordinal.GetHashCode(text),
             KeyKind.Reference => RuntimeHelpers.GetHashCode(_object),
             _ => 0,
         };
@@ -82,8 +82,8 @@ public readonly struct UiKey : IEquatable<UiKey>
         _kind switch
         {
             KeyKind.Long => _long.ToString(System.Globalization.CultureInfo.InvariantCulture),
-            KeyKind.String => (string)_object!,
-            KeyKind.Reference => _object!.ToString() ?? "",
+            KeyKind.String when _object is string text => text,
+            KeyKind.Reference when _object is { } reference => reference.ToString() ?? "",
             _ => "",
         };
 

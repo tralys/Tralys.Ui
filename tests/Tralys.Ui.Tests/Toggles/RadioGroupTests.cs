@@ -253,8 +253,12 @@ public sealed class RadioGroupTests
             }
         });
         var scrim = Dark(ColorToken.BgScrim);
-        float Dim(string id) =>
-            First(driver.Get(id), n => n.Visual.Background == scrim)!.Visual.Opacity ?? 1f;
+        float Dim(string id)
+        {
+            if (First(driver.Get(id), n => n.Visual.Background == scrim) is not { } dim)
+                throw new InvalidOperationException($"'{id}' wears no scrim.");
+            return dim.Visual.Opacity ?? 1f;
+        }
         Border Frame(string id)
         {
             var edged = Edged(driver.Get(id));

@@ -72,15 +72,16 @@ public readonly struct Callback : IEquatable<Callback>
     public bool IsEmpty => _fn is null;
 
     /// <summary>Whether <see cref="Invoke"/> runs now: false only while the command it runs can't. Tracked.</summary>
-    public bool CanRun => _invoker == 0 || Invokers<Invoker>.At(_invoker).CanRun(_fn!, _a, _value);
+    public bool CanRun =>
+        _fn is not { } fn || Invokers<Invoker>.At(_invoker).CanRun(fn, _a, _value);
 
     internal bool IsGated => _invoker != 0 && Invokers<Invoker>.At(_invoker).IsGated;
 
     /// <summary>Runs it; one made from a command does nothing while the command can't run.</summary>
     public void Invoke()
     {
-        if (_invoker != 0)
-            Invokers<Invoker>.At(_invoker).Invoke(_fn!, _a, _b, _value);
+        if (_fn is { } fn)
+            Invokers<Invoker>.At(_invoker).Invoke(fn, _a, _b, _value);
     }
 
     public bool Equals(Callback other) =>
@@ -130,7 +131,10 @@ public readonly struct Callback : IEquatable<Callback>
         public static readonly int Id = Invokers<Invoker>.Add(new Two<T1, T2>());
 
         public override void Invoke(object fn, object? a, object? b, long value) =>
-            Unsafe.As<Action<T1, T2>>(fn)(Unsafe.As<T1>(a)!, Unsafe.As<T2>(b)!);
+            Unsafe.As<Action<T1, T2>>(fn)(
+                CallbackState.Reference<T1>(a),
+                CallbackState.Reference<T2>(b)
+            );
     }
 
     sealed class OfHost<TProps> : Invoker
@@ -241,8 +245,8 @@ public readonly struct Callback<TArg> : IEquatable<Callback<TArg>>
     /// <paramref name="arg"/>.</summary>
     public void Invoke(TArg arg)
     {
-        if (_invoker != 0)
-            Invokers<Invoker>.At(_invoker).Invoke(_fn!, _a, _b, _value, arg);
+        if (_fn is { } fn)
+            Invokers<Invoker>.At(_invoker).Invoke(fn, _a, _b, _value, arg);
     }
 
     public bool Equals(Callback<TArg> other) =>
@@ -288,7 +292,11 @@ public readonly struct Callback<TArg> : IEquatable<Callback<TArg>>
         public static readonly int Id = Invokers<Invoker>.Add(new Two<T1, T2>());
 
         public override void Invoke(object fn, object? a, object? b, long value, TArg arg) =>
-            Unsafe.As<Action<T1, T2, TArg>>(fn)(Unsafe.As<T1>(a)!, Unsafe.As<T2>(b)!, arg);
+            Unsafe.As<Action<T1, T2, TArg>>(fn)(
+                CallbackState.Reference<T1>(a),
+                CallbackState.Reference<T2>(b),
+                arg
+            );
     }
 
     sealed class OfHost<TProps> : Invoker
@@ -396,8 +404,8 @@ public readonly struct Handler<TEvent> : IEquatable<Handler<TEvent>>
 
     internal void Invoke(ref TEvent e)
     {
-        if (_invoker != 0)
-            Invokers<Invoker>.At(_invoker).Invoke(_fn!, _a, _b, _value, ref e);
+        if (_fn is { } fn)
+            Invokers<Invoker>.At(_invoker).Invoke(fn, _a, _b, _value, ref e);
     }
 
     public bool Equals(Handler<TEvent> other) =>
@@ -443,7 +451,11 @@ public readonly struct Handler<TEvent> : IEquatable<Handler<TEvent>>
         public static readonly int Id = Invokers<Invoker>.Add(new Two<T1, T2>());
 
         public override void Invoke(object fn, object? a, object? b, long value, ref TEvent e) =>
-            Unsafe.As<RefAction<T1, T2, TEvent>>(fn)(Unsafe.As<T1>(a)!, Unsafe.As<T2>(b)!, ref e);
+            Unsafe.As<RefAction<T1, T2, TEvent>>(fn)(
+                CallbackState.Reference<T1>(a),
+                CallbackState.Reference<T2>(b),
+                ref e
+            );
     }
 
     sealed class OfHost<TProps> : Invoker
@@ -487,4 +499,13 @@ static class CallbackState
         typeof(T).IsValueType
             ? Unsafe.ReadUnaligned<T>(ref Unsafe.As<long, byte>(ref value))
             : Unsafe.As<object?, T>(ref reference);
+
+    public static T Reference<T>(object? reference)
+        where T : class =>
+        Unsafe.As<T>(
+            reference
+                ?? throw new InvalidOperationException(
+                    "A callback or slot made with a class state holds that state, and it is null."
+                )
+        );
 }

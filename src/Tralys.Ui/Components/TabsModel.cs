@@ -8,11 +8,11 @@ internal sealed class TabsModel : IDisposable
     readonly List<TabEntry> _tabs = [];
     internal readonly Handler<KeyEvent> KeyDown;
     internal TabsProps Props;
-    internal State<UiKey> Own = null!;
-    internal State<int> Version = null!;
-    internal State<TabSeam> Seam = null!;
-    internal NodeRef Root = null!;
-    internal NodeRef List = null!;
+    internal readonly State<UiKey> Own;
+    internal readonly State<int> Version;
+    internal readonly State<TabSeam> Seam;
+    internal readonly NodeRef Root;
+    internal readonly NodeRef List;
     internal UiView? View;
     internal int Losses;
     UiKey _selected;
@@ -21,8 +21,21 @@ internal sealed class TabsModel : IDisposable
     TabEntry? _dragged;
     int _reorderedFrom = -1;
 
-    public TabsModel() =>
+    public TabsModel(
+        State<UiKey> own,
+        State<int> version,
+        State<TabSeam> seam,
+        NodeRef root,
+        NodeRef list
+    )
+    {
+        Own = own;
+        Version = version;
+        Seam = seam;
+        Root = root;
+        List = list;
         KeyDown = Handler<KeyEvent>.Of(this, static (m, ref e) => m.Pressed(ref e));
+    }
 
     internal TabActivation Activation => Props.ActivationMode;
 
@@ -397,7 +410,7 @@ internal sealed class TabsModel : IDisposable
         {
             var tab = _tabs[i];
             var j = i - 1;
-            while (j >= 0 && TreeOrder.Before(tab.Ref!.Node!, _tabs[j].Ref!.Node!))
+            while (j >= 0 && TreeOrder.Before(tab.Ref?.Node, _tabs[j].Ref?.Node))
             {
                 _tabs[j + 1] = _tabs[j];
                 j--;
@@ -485,16 +498,18 @@ internal sealed class TabEntry : IDisposable
 [FramePath]
 internal static class TreeOrder
 {
-    public static bool Before(Node a, Node b)
+    public static bool Before(Node? a, Node? b)
     {
+        if (a is null || b is null)
+            return false;
         var depthA = Depth(a);
         var depthB = Depth(b);
         var x = a;
         var y = b;
-        for (; depthA > depthB; depthA--)
-            x = x.Parent!;
-        for (; depthB > depthA; depthB--)
-            y = y.Parent!;
+        for (; depthA > depthB && x.Parent is { } up; depthA--)
+            x = up;
+        for (; depthB > depthA && y.Parent is { } up; depthB--)
+            y = up;
         if (ReferenceEquals(x, y))
             return ReferenceEquals(a, x) && !ReferenceEquals(a, b);
         while (!ReferenceEquals(x.Parent, y.Parent))

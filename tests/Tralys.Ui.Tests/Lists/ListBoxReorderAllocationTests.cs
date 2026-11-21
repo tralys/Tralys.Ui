@@ -78,7 +78,8 @@ public sealed class ListBoxReorderAllocationTests
     {
         using var driver = Render(Words.Of("a", "b", "c", "d"));
         var row = Of(driver, "a").ViewBounds;
-        var list = List(driver).Parent!.ViewBounds;
+        var frame = await Assert.That(List(driver).Parent).IsNotNull();
+        var list = frame.ViewBounds;
         var inside = new Vector2(row.Right - 1, row.Y + row.Height / 2);
         var path = new Path(inside, new Vector2(list.Right + 1, inside.Y));
 

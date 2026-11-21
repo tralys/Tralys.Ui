@@ -147,24 +147,25 @@ public sealed partial class ListsAllocationTests
                 ),
             new Size(600, 400)
         );
-        var walk = new Walk { List = Nodes.Find(driver.Root, NodeKind.VirtualList) };
+        var list = Nodes.Find(driver.Root, NodeKind.VirtualList);
+        var walk = new Walk();
         // Recycled cards grow text storage to their longest label; warm until every card has shown each one.
         while (scroll.Offset.Y < scroll.Extent.Height - scroll.Viewport.Height - 0.5f)
         {
-            driver.Wheel(walk.List!, new Vector2(0, -1), settle: false);
+            driver.Wheel(list, new Vector2(0, -1), settle: false);
             driver.Frame();
         }
         while (scroll.Offset.Y > 0.5f)
         {
-            driver.Wheel(walk.List!, new Vector2(0, 1), settle: false);
+            driver.Wheel(list, new Vector2(0, 1), settle: false);
             driver.Frame();
         }
 
         var bytes = driver.WorstFrameBytes(
-            walk,
-            static (d, w) =>
+            (walk, list),
+            static (d, s) =>
             {
-                d.Wheel(w.List!, new Vector2(0, w.Tick++ % 40 < 30 ? -1 : 1), settle: false);
+                d.Wheel(s.list, new Vector2(0, s.walk.Tick++ % 40 < 30 ? -1 : 1), settle: false);
                 d.Frame();
             }
         );
@@ -202,7 +203,7 @@ public sealed partial class ListsAllocationTests
             walk,
             static (d, w) =>
             {
-                d.Press(w.Keys![w.Tick++ % w.Keys.Length], settle: false);
+                d.Press(w.Keys[w.Tick++ % w.Keys.Length], settle: false);
                 d.Frame();
             }
         );
@@ -323,23 +324,20 @@ public sealed partial class ListsAllocationTests
                 ),
             new Size(400, 400)
         );
-        var walk = new Walk
-        {
-            List = Nodes.Find(driver.Root, NodeKind.VirtualList),
-            Rows = [Rows.Of(driver, "g0")],
-        };
+        var list = Nodes.Find(driver.Root, NodeKind.VirtualList);
+        var walk = new Walk { Rows = [Rows.Of(driver, "g0")] };
         driver.Focus(walk.Rows[0]);
 
         var bytes = driver.WorstFrameBytes(
-            walk,
-            static (d, w) =>
+            (walk, list),
+            static (d, s) =>
             {
-                var step = w.Tick % 30;
+                var step = s.walk.Tick % 30;
                 if (step == 29)
                     d.Press(Key.Space, settle: false);
                 else
-                    d.Wheel(w.List!, new Vector2(0, step < 15 ? -1 : 1), settle: false);
-                w.Tick++;
+                    d.Wheel(s.list, new Vector2(0, step < 15 ? -1 : 1), settle: false);
+                s.walk.Tick++;
                 d.Frame();
             }
         );
@@ -395,8 +393,7 @@ public sealed partial class ListsAllocationTests
     {
         public int Tick;
         public Node[] Rows = [];
-        public Node? List;
-        public Key[]? Keys;
+        public Key[] Keys = [];
     }
 
     sealed class Refilters(Shelf[] shelves, Func<string, bool>?[] filters)

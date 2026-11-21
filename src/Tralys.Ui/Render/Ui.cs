@@ -96,31 +96,30 @@ public readonly ref partial struct Ui
 
     /// <summary>A cell of state, kept from mount to unmount, compared with <see cref="EqualityComparer{T}.Default"/>.</summary>
     public State<T> State<T>(
-        T initial = default!,
+        T initial,
         UiKey key = default,
         [CallerFilePath] string file = "",
         [CallerLineNumber] int line = 0
     ) => Cell(initial, byReference: false, key, file, line);
 
     /// <summary>A cell of a class, compared by reference.</summary>
-    public State<T> RefState<T>(
+    public State<T?> RefState<T>(
         T? initial = null,
         UiKey key = default,
         [CallerFilePath] string file = "",
         [CallerLineNumber] int line = 0
     )
-        where T : class => Cell(initial!, byReference: true, key, file, line);
+        where T : class => Cell<T?>(initial, byReference: true, key, file, line);
 
     State<T> Cell<T>(T initial, bool byReference, UiKey key, string file, int line)
     {
-        var hook = Builder.UseHook<StateHook<T>>(key, file, line, out var created);
-        if (created)
-        {
-            var cell = Pool<State<T>>.TryRent() ?? new State<T>();
-            cell.Init(Builder.CurrentHost!, initial, byReference);
-            hook.Cell = cell;
-        }
-        return hook.Cell;
+        var hook = Builder.UseHook<StateHook<T>>(key, file, line, out _);
+        if (hook.Cell is { } kept)
+            return kept;
+        var cell = Pool<State<T>>.TryRent() ?? new State<T>();
+        cell.Init(Builder.CurrentHost, initial, byReference);
+        hook.Cell = cell;
+        return cell;
     }
 
     /// <summary>A value made once, on mount, and kept until unmount; an <see cref="IDisposable"/> is disposed then.</summary>
@@ -132,10 +131,12 @@ public readonly ref partial struct Ui
     )
         where T : class
     {
-        var hook = Builder.UseHook<RememberHook>(key, file, line, out var created);
-        if (created)
-            hook.Value = create();
-        return Unsafe.As<T>(hook.Value!);
+        var hook = Builder.UseHook<RememberHook>(key, file, line, out _);
+        if (hook.Value is { } kept)
+            return Unsafe.As<T>(kept);
+        var made = create();
+        hook.Value = made;
+        return made;
     }
 
     /// <summary>A value made from <paramref name="dep"/>, made again when it changes.</summary>
@@ -148,14 +149,14 @@ public readonly ref partial struct Ui
     )
         where T : class
     {
-        var hook = Builder.UseHook<RememberHook<TDep>>(key, file, line, out var created);
-        if (created || !EqualityComparer<TDep>.Default.Equals(hook.Dep, dep))
-        {
-            (hook.Value as IDisposable)?.Dispose();
-            hook.Dep = hook.Held.Hold(dep);
-            hook.Value = create(dep);
-        }
-        return Unsafe.As<T>(hook.Value!);
+        var hook = Builder.UseHook<RememberHook<TDep>>(key, file, line, out _);
+        if (hook.Value is { } kept && EqualityComparer<TDep>.Default.Equals(hook.Dep, dep))
+            return Unsafe.As<T>(kept);
+        (hook.Value as IDisposable)?.Dispose();
+        hook.Dep = hook.Held.Hold(dep);
+        var made = create(dep);
+        hook.Value = made;
+        return made;
     }
 
     /// <summary>A handle to pass a primitive as its <c>nodeRef</c>.</summary>
@@ -165,10 +166,8 @@ public readonly ref partial struct Ui
         [CallerLineNumber] int line = 0
     )
     {
-        var hook = Builder.UseHook<RefHook>(key, file, line, out var created);
-        if (created)
-            hook.Ref = Pool<NodeRef>.TryRent() ?? new NodeRef();
-        return hook.Ref;
+        var hook = Builder.UseHook<RefHook>(key, file, line, out _);
+        return hook.Ref ??= Pool<NodeRef>.TryRent() ?? new NodeRef();
     }
 
     /// <summary>A handle to pass a scroll container as its <c>scroll</c>, to read and move its offset.</summary>
@@ -178,10 +177,8 @@ public readonly ref partial struct Ui
         [CallerLineNumber] int line = 0
     )
     {
-        var hook = Builder.UseHook<ScrollHandleHook>(key, file, line, out var created);
-        if (created)
-            hook.Handle = ScrollHandleHook.Rent();
-        return hook.Handle;
+        var hook = Builder.UseHook<ScrollHandleHook>(key, file, line, out _);
+        return hook.Handle ??= ScrollHandleHook.Rent();
     }
 
     /// <summary>Runs <paramref name="run"/> after the update's layout, on mount and whenever <paramref name="dep"/>
@@ -198,11 +195,7 @@ public readonly ref partial struct Ui
     {
         var hook = Builder.UseHook<EffectHook<TState, TDep>>(key, file, line, out var created);
         var changed = created || !EqualityComparer<TDep>.Default.Equals(hook.Dep, dep);
-        hook.Live = true;
-        hook.Host = Builder.CurrentHost;
-        hook.State = state;
-        hook.Dep = hook.Held.Hold(dep);
-        hook.Fn = run;
+        hook.Bind(Builder.CurrentHost, state, dep, run);
         if (changed && !hook.Pending)
         {
             hook.Pending = true;
@@ -220,11 +213,11 @@ public readonly ref partial struct Ui
     /// <summary>Provides <paramref name="value"/> under <paramref name="key"/> to what this component renders; a change
     /// re-renders only its readers.</summary>
     public void Provide<T>(ContextKey<T> key, T value)
-        where T : IEquatable<T> => Builder.View.Provide(Builder, key, value);
+        where T : IEquatable<T>? => Builder.View.Provide(Builder, key, value);
 
     /// <summary>The nearest provided value of <paramref name="key"/> above, else its fallback. Tracked.</summary>
     public T Use<T>(ContextKey<T> key)
-        where T : IEquatable<T> => Builder.View.Use(Builder, key);
+        where T : IEquatable<T>? => Builder.View.Use(Builder, key);
 
     /// <summary>This component's host, for callbacks that read its latest props.</summary>
     public Host<TProps> Self<TProps>(in TProps props)

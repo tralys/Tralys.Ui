@@ -78,15 +78,16 @@ public readonly record struct FloatingProps
 [Children]
 public sealed class Floating : Component<FloatingProps>
 {
-    internal static readonly ContextKey<FloatingContext> Context = new("Floating");
+    internal static readonly ContextKey<FloatingContext> Context = new("Floating", default);
 
     protected override void Render(Ui ui, in FloatingProps p)
     {
         var t = ui.Theme;
-        var model = ui.Remember(static () => new Floater());
+        var model = ui.Remember(
+            (Area: ui.Ref(), Surface: ui.Ref()),
+            static refs => new Floater(refs.Area, refs.Surface)
+        );
         model.Host = ui.Self(p);
-        model.Area = ui.Ref();
-        model.Surface = ui.Ref();
         ui.Provide(Context, new FloatingContext(model));
         var b = p.Bounds;
         using (
@@ -230,8 +231,8 @@ internal sealed class Floater
 
     internal readonly Handler<DragEvent>[] Grips = new Handler<DragEvent>[8];
     internal Host<FloatingProps> Host;
-    internal NodeRef Area = null!;
-    internal NodeRef Surface = null!;
+    internal readonly NodeRef Area;
+    internal readonly NodeRef Surface;
     Vector2 _origin;
     Vector2 _extent;
     Rect _at;
@@ -240,8 +241,10 @@ internal sealed class Floater
     bool _resizing;
     bool _changed;
 
-    public Floater()
+    public Floater(NodeRef area, NodeRef surface)
     {
+        Area = area;
+        Surface = surface;
         for (var i = 0; i < Grips.Length; i++)
             Grips[i] = Handler<DragEvent>.Of(
                 this,

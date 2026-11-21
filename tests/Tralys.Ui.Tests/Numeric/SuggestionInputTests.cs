@@ -493,7 +493,8 @@ public sealed class SuggestionInputTests
 
         await Assert.That(before).IsEqualTo(0);
         await Assert.That(written).IsEqualTo((view, 1));
-        await Assert.That(thrown!.Message).IsEqualTo("drx");
+        var failure = await Assert.That(thrown).IsNotNull();
+        await Assert.That(failure.Message).IsEqualTo("drx");
     }
 
     [Test]
@@ -724,8 +725,7 @@ internal static class Suggests
     public static Node Text(UiDriver driver) =>
         Nodes.Find(driver.Get("field"), NodeKind.EditableText);
 
-    static SuggestionRowProps Props(Node row) =>
-        ((ComponentHost<SuggestionRowProps>)row.Host!).Value;
+    static SuggestionRowProps Props(Node row) => row.Props<SuggestionRowProps>();
 
     public static List<string> Rows(UiDriver driver)
     {
@@ -756,7 +756,8 @@ internal static class Suggests
 
     public static (int Anchor, int Caret) Selection(UiDriver driver)
     {
-        var selection = ((EditorPayload)Text(driver).Payload!).Selection;
-        return (selection.Anchor, selection.Caret);
+        if (Text(driver).Payload is not EditorPayload editor)
+            throw new InvalidOperationException("The field holds no editor.");
+        return (editor.Selection.Anchor, editor.Selection.Caret);
     }
 }

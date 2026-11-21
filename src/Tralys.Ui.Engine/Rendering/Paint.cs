@@ -147,14 +147,15 @@ public readonly struct Paint : IEquatable<Paint>
         var size = new Vector2(bounds.Width, bounds.Height);
         if (Kind == PaintKind.Image)
             return new(Kind, default, null, origin, size, GradientSpace.Absolute, Opacity, Image);
-        return Kind == PaintKind.LinearGradient
-            ? Linear(
-                Stops!,
-                origin + Start * size,
-                origin + End * size,
-                GradientSpace.Absolute,
-                Opacity
-            )
-            : Radial(Stops!, origin + Start * size, End * size, GradientSpace.Absolute, Opacity);
+        var end = Kind == PaintKind.LinearGradient ? origin + End * size : End * size;
+        return new(
+            Kind,
+            default,
+            Stops,
+            origin + Start * size,
+            end,
+            GradientSpace.Absolute,
+            Opacity
+        );
     }
 }

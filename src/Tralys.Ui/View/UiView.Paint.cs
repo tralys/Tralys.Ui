@@ -107,10 +107,10 @@ public sealed partial class UiView
                 continue;
             if (node.Span < 0 || node.SpanList != list.Generation)
                 return false;
-            Record(node, FrameSize(node));
+            var commands = Record(node, FrameSize(node));
             if (!list.BeginPatch(node.Span))
                 return false;
-            list.Draw(node.Commands!);
+            list.Draw(commands);
             if (!list.EndPatch())
                 return false;
         }
@@ -237,8 +237,7 @@ public sealed partial class UiView
     {
         var outer = list.Trace?.Enter(node);
         var size = FrameSize(node);
-        if (NeedsRecord(node, size))
-            Record(node, size);
+        var commands = CommandsOf(node, size);
 
         list.PushTransform(LocalTransform(node));
         var visual = node.Visual;
@@ -254,7 +253,7 @@ public sealed partial class UiView
         if (shadow is { } drop)
             list.PushDropShadow(drop);
         var span = list.BeginSpan();
-        list.Draw(node.Commands!);
+        list.Draw(commands);
         list.EndSpan(span);
         if (shadow is not null)
             list.Pop();
@@ -306,7 +305,10 @@ public sealed partial class UiView
         || node.RecordedSize != size
         || node.Commands.IsStale;
 
-    void Record(Node node, Size size)
+    RenderCommandBuffer CommandsOf(Node node, Size size) =>
+        node.Commands is { } commands && !NeedsRecord(node, size) ? commands : Record(node, size);
+
+    RenderCommandBuffer Record(Node node, Size size)
     {
         var buffer = node.Commands ??=
             Pool<RenderCommandBuffer>.TryRent() ?? new RenderCommandBuffer();
@@ -320,16 +322,16 @@ public sealed partial class UiView
                     RecordBox(dc, node, size);
                     break;
                 case NodeKind.Text:
-                    ((TextPayload)node.Payload!).Record(dc, this);
+                    node.PayloadOf<TextPayload>().Record(dc, this);
                     break;
                 case NodeKind.EditableText:
-                    ((EditorPayload)node.Payload!).Record(dc, this, size);
+                    node.PayloadOf<EditorPayload>().Record(dc, this, size);
                     break;
                 case NodeKind.Canvas:
-                    DrawCanvas(buffer, dc, (CanvasPayload)node.Payload!, size);
+                    DrawCanvas(buffer, dc, node.PayloadOf<CanvasPayload>(), size);
                     break;
                 case NodeKind.Image:
-                    ((ImagePayload)node.Payload!).Record(dc, size);
+                    node.PayloadOf<ImagePayload>().Record(dc, size);
                     break;
             }
             recorded = true;
@@ -349,6 +351,7 @@ public sealed partial class UiView
                 _compositeDirty = true;
             }
         }
+        return buffer;
     }
 
     void DrawCanvas(RenderCommandBuffer buffer, DrawingContext dc, CanvasPayload canvas, Size size)

@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Tralys.Ui.Components;
 
 [FramePath]
@@ -12,9 +14,9 @@ internal sealed class MenuLevel : IDisposable
     internal MenuEntry? Header;
     internal Callback OnClose;
     internal bool IsBar;
-    internal State<MenuEntry> OpenRow = null!;
+    internal State<MenuEntry?>? OpenRow;
     internal State<bool>? Reserve;
-    internal NodeRef Panel = null!;
+    internal NodeRef? Panel;
     internal UiView? View;
     internal bool FocusFirst;
     internal bool TakesFocus;
@@ -50,6 +52,7 @@ internal sealed class MenuLevel : IDisposable
         }
     }
 
+    [MemberNotNullWhen(true, nameof(Parent))]
     bool InDropdown => Parent is { IsBar: true };
 
     internal void Bind(MenuLevel? parent, MenuEntry? header, Callback onClose, bool isBar)
@@ -78,8 +81,8 @@ internal sealed class MenuLevel : IDisposable
             _hovered = null;
         if (ReferenceEquals(_pendingHeader, entry))
             _pendingHeader = null;
-        if (ReferenceEquals(OpenRow.Peek, entry))
-            OpenRow.Value = null!;
+        if (OpenRow is { } openRow && ReferenceEquals(openRow.Peek, entry))
+            openRow.Value = null;
         RefreshReserve();
     }
 
@@ -93,13 +96,15 @@ internal sealed class MenuLevel : IDisposable
         reserve.Value = any;
     }
 
-    internal bool IsOpen(MenuEntry entry) => ReferenceEquals(OpenRow.Value, entry);
+    internal bool IsOpen(MenuEntry entry) => ReferenceEquals(OpenRow?.Value, entry);
 
-    internal bool IsOpenNow(MenuEntry entry) => ReferenceEquals(OpenRow.Peek, entry);
+    internal bool IsOpenNow(MenuEntry entry) => ReferenceEquals(OpenRow?.Peek, entry);
 
     internal void SetOpen(MenuEntry? entry)
     {
-        var was = OpenRow.Peek;
+        if (OpenRow is not { } openRow)
+            return;
+        var was = openRow.Peek;
         if (ReferenceEquals(was, entry))
             return;
         if (
@@ -107,7 +112,7 @@ internal sealed class MenuLevel : IDisposable
             && (ReferenceEquals(hovered, was) || ReferenceEquals(hovered, entry))
         )
             _hovered = null;
-        OpenRow.Value = entry!;
+        openRow.Value = entry;
     }
 
     internal void Open(MenuEntry entry, bool focusFirst)
@@ -138,11 +143,11 @@ internal sealed class MenuLevel : IDisposable
         if (FocusFirst)
             FocusFirstRow();
         else if (TakesFocus)
-            Panel.Focus();
+            Panel?.Focus();
     }
 
     // A header asked to take the focus while the dropdown holds it would wait for the dropdown to give it back.
-    internal void CloseTo(MenuEntry header, bool visible)
+    internal void CloseTo(MenuEntry? header, bool visible)
     {
         _pendingHeader = header;
         _pendingVisible = visible;
@@ -156,7 +161,7 @@ internal sealed class MenuLevel : IDisposable
         if (_pendingHeader is not { } header)
             return;
         _pendingHeader = null;
-        header.Ref.Focus(visible: _pendingVisible);
+        header.Ref?.Focus(visible: _pendingVisible);
     }
 
     internal void FocusFirstRow()
@@ -169,19 +174,19 @@ internal sealed class MenuLevel : IDisposable
     {
         if (entry is null)
             return;
-        entry.Ref.Focus(visible: true);
-        entry.Ref.ScrollIntoView();
+        entry.Ref?.Focus(visible: true);
+        entry.Ref?.ScrollIntoView();
     }
 
     internal void Hovered(MenuEntry entry)
     {
         if (IsBar)
         {
-            if (OpenRow.Peek is { } open && !ReferenceEquals(open, entry))
+            if (OpenRow?.Peek is { } open && !ReferenceEquals(open, entry))
                 Switch(entry, focusFirst: false, keys: false);
             return;
         }
-        entry.Ref.Focus();
+        entry.Ref?.Focus();
         if (View is not { } view)
             return;
         _hovered = entry;
@@ -209,7 +214,7 @@ internal sealed class MenuLevel : IDisposable
         }
         _hovered = null;
         if (
-            entry.Ref.Node is not { } node
+            entry.Ref?.Node is not { } node
             || (node.States & InputStates.Hovered) == 0
             || (node.States & InputStates.Disabled) != 0
         )
@@ -245,16 +250,16 @@ internal sealed class MenuLevel : IDisposable
         SetOpen(entry);
     }
 
-    void Move(MenuEntry from, int step)
+    void Move(MenuEntry? from, int step)
     {
         Order();
         var at = IndexOf(from);
         if (Step(at, step) is not { } target)
             return;
-        if (OpenRow.Peek is not null)
+        if (OpenRow?.Peek is not null)
             Switch(target, focusFirst: true, keys: true);
         else
-            target.Ref.Focus(visible: true);
+            target.Ref?.Focus(visible: true);
     }
 
     void Pressed(ref KeyEvent e)
@@ -273,7 +278,7 @@ internal sealed class MenuLevel : IDisposable
         {
             if (e.Key == Key.Right && InDropdown)
             {
-                Parent!.Move(Header!, 1);
+                Parent.Move(Header, 1);
                 Take(ref e);
             }
             return;
@@ -322,20 +327,20 @@ internal sealed class MenuLevel : IDisposable
                 Open(focused, focusFirst: true);
                 return true;
             case Key.Right when InDropdown:
-                Parent!.Move(Header!, 1);
+                Parent.Move(Header, 1);
                 return true;
             case Key.Left when focused is not null && IsOpenNow(focused):
                 SetOpen(null);
                 return true;
             case Key.Left when InDropdown:
-                Parent!.Move(Header!, -1);
+                Parent.Move(Header, -1);
                 return true;
             case Key.Left when Parent is not null:
-                Header?.Ref.Focus(visible: true);
+                Header?.Ref?.Focus(visible: true);
                 Parent.SetOpen(null);
                 return true;
-            case Key.Escape when InDropdown && OpenRow.Peek is null:
-                Parent!.CloseTo(Header!, visible: true);
+            case Key.Escape when InDropdown && OpenRow?.Peek is null:
+                Parent.CloseTo(Header, visible: true);
                 return true;
             case Key.Left or Key.Right when Parent is null:
                 return true;
@@ -354,13 +359,13 @@ internal sealed class MenuLevel : IDisposable
     {
         for (var i = 0; i < _rows.Count; i++)
         {
-            if (_rows[i].Ref.Node is { } node && (node.States & InputStates.Focused) != 0)
+            if (_rows[i].Ref?.Node is { } node && (node.States & InputStates.Focused) != 0)
                 return _rows[i];
         }
         return null;
     }
 
-    bool PanelFocused() => Panel.Node is { } panel && (panel.States & InputStates.Focused) != 0;
+    bool PanelFocused() => Panel?.Node is { } panel && (panel.States & InputStates.Focused) != 0;
 
     MenuEntry? Step(int from, int step)
     {
@@ -376,11 +381,11 @@ internal sealed class MenuLevel : IDisposable
 
     bool Eligible(MenuEntry entry)
     {
-        if (entry.Ref.Node is not { Parent: not null } node)
+        if (entry.Ref?.Node is not { Parent: not null } node)
             return false;
         if ((node.States & InputStates.Disabled) != 0)
             return false;
-        for (var at = node; at is not null && !ReferenceEquals(at, Panel.Node); at = at.Parent)
+        for (var at = node; at is not null && !ReferenceEquals(at, Panel?.Node); at = at.Parent)
         {
             if (at.Placement.Hidden || at.Placement.Collapsed)
                 return false;
@@ -388,7 +393,7 @@ internal sealed class MenuLevel : IDisposable
         return true;
     }
 
-    int IndexOf(MenuEntry entry)
+    int IndexOf(MenuEntry? entry)
     {
         for (var i = 0; i < _rows.Count; i++)
         {
@@ -402,14 +407,14 @@ internal sealed class MenuLevel : IDisposable
     {
         for (var i = 0; i < _rows.Count; i++)
         {
-            if (_rows[i].Ref.Node is not { Parent: not null })
+            if (_rows[i].Ref?.Node is not { Parent: not null })
                 return;
         }
         for (var i = 1; i < _rows.Count; i++)
         {
             var row = _rows[i];
             var j = i - 1;
-            while (j >= 0 && TreeOrder.Before(row.Ref.Node!, _rows[j].Ref.Node!))
+            while (j >= 0 && TreeOrder.Before(row.Ref?.Node, _rows[j].Ref?.Node))
             {
                 _rows[j + 1] = _rows[j];
                 j--;
@@ -432,10 +437,10 @@ internal sealed class MenuLevel : IDisposable
         Header = null;
         OnClose = default;
         IsBar = FocusFirst = TakesFocus = false;
-        OpenRow = null!;
+        OpenRow = null;
         Reserve = null;
         Closed = null;
-        Panel = null!;
+        Panel = null;
         View = null;
         Pool<MenuLevel>.Return(this);
     }
@@ -452,7 +457,7 @@ internal sealed class MenuEntry : IDisposable
     internal readonly Callback<bool> HoverChange;
     internal readonly Handler<PointerEvent> HeaderPress;
     internal Host<MenuItemProps> Host;
-    internal NodeRef Ref = null!;
+    internal NodeRef? Ref;
     internal MenuLevel? Child;
     internal bool FocusFirstOnOpen;
     internal bool HasItems;
@@ -551,7 +556,7 @@ internal sealed class MenuEntry : IDisposable
         _level?.Unregister(this);
         _level = null;
         Host = default;
-        Ref = null!;
+        Ref = null;
         Child = null;
         FocusFirstOnOpen = HasItems = WantsIcon = _rested = false;
         Pool<MenuEntry>.Return(this);

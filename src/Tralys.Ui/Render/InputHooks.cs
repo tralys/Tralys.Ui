@@ -9,20 +9,23 @@ internal sealed class CanRunHook : Hook
     public Node? Refusing;
 
     [FramePath]
-    public void Refuse(Node? node)
+    public void Refuse(UiView view, Node? node)
     {
+        View = view;
         if (Refusing == node)
             return;
         if (Refusing is { } old)
-            View!.SetCommandRefused(old, false);
+            view.SetCommandRefused(old, false);
         Refusing = node;
         if (node is not null)
-            View!.SetCommandRefused(node, true);
+            view.SetCommandRefused(node, true);
     }
 
     public override void Discard()
     {
-        Refuse(null);
+        if (Refusing is { } old)
+            View?.SetCommandRefused(old, false);
+        Refusing = null;
         View = null;
         Pool<CanRunHook>.Return(this);
     }

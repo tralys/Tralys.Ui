@@ -81,18 +81,30 @@ public sealed class Scrollbar : Component<ScrollbarProps>
         var value = float.IsFinite(p.Value) ? Math.Clamp(p.Value, min, max) : min;
         var viewport = float.IsFinite(p.ViewportSize) ? MathF.Max(0f, p.ViewportSize) : 0f;
         var range = max - min;
-        var bar = ui.Remember(static () => ScrollbarModel.Rent());
+        var bar = ui.Remember(
+            (
+                Track: ui.Ref(),
+                Grip: ui.Ref(),
+                BackArrow: ui.Ref(),
+                ForwardArrow: ui.Ref(),
+                BackPage: ui.Ref(),
+                ForwardPage: ui.Ref()
+            ),
+            static parts =>
+                ScrollbarModel.Rent(
+                    parts.Track,
+                    parts.Grip,
+                    parts.BackArrow,
+                    parts.ForwardArrow,
+                    parts.BackPage,
+                    parts.ForwardPage
+                )
+        );
         bar.Host = ui.Self(p);
         bar.Shown = value;
         bar.Min = min;
         bar.Max = max;
         bar.Vertical = vertical;
-        bar.Track = ui.Ref();
-        bar.Grip = ui.Ref();
-        bar.BackArrow = ui.Ref();
-        bar.ForwardArrow = ui.Ref();
-        bar.BackPage = ui.Ref();
-        bar.ForwardPage = ui.Ref();
         ui.Effect(bar, 0, static (b, _, cx) => b.View = cx.View);
         var shortest = t.Metrics(ComponentSize.Xs).Height;
         var length = vertical ? bar.Track.Size.Height : bar.Track.Size.Width;
@@ -321,12 +333,12 @@ internal sealed class ScrollbarModel : IDisposable
     internal readonly Handler<PointerEvent> Release;
     internal readonly ThumbDrag Drag = new();
     internal Host<ScrollbarProps> Host;
-    internal NodeRef Track = null!;
-    internal NodeRef Grip = null!;
-    internal NodeRef BackArrow = null!;
-    internal NodeRef ForwardArrow = null!;
-    internal NodeRef BackPage = null!;
-    internal NodeRef ForwardPage = null!;
+    internal NodeRef Track;
+    internal NodeRef Grip;
+    internal NodeRef BackArrow;
+    internal NodeRef ForwardArrow;
+    internal NodeRef BackPage;
+    internal NodeRef ForwardPage;
     internal UiView? View;
     internal float Shown;
     internal float Min;
@@ -337,8 +349,21 @@ internal sealed class ScrollbarModel : IDisposable
     bool _ticking;
     TimeSpan _next;
 
-    public ScrollbarModel()
+    ScrollbarModel(
+        NodeRef track,
+        NodeRef grip,
+        NodeRef backArrow,
+        NodeRef forwardArrow,
+        NodeRef backPage,
+        NodeRef forwardPage
+    )
     {
+        Track = track;
+        Grip = grip;
+        BackArrow = backArrow;
+        ForwardArrow = forwardArrow;
+        BackPage = backPage;
+        ForwardPage = forwardPage;
         LineBack = Callback.Of(this, static b => b.Step(ScrollbarStep.LineDecrease));
         LineForward = Callback.Of(this, static b => b.Step(ScrollbarStep.LineIncrease));
         PageBack = Callback.Of(this, static b => b.Step(ScrollbarStep.PageDecrease));
@@ -363,7 +388,25 @@ internal sealed class ScrollbarModel : IDisposable
         Drag.Moved = Callback<Vector2>.Of(this, static (b, moved) => b.Dragged(moved));
     }
 
-    internal static ScrollbarModel Rent() => Pool<ScrollbarModel>.TryRent() ?? new ScrollbarModel();
+    internal static ScrollbarModel Rent(
+        NodeRef track,
+        NodeRef grip,
+        NodeRef backArrow,
+        NodeRef forwardArrow,
+        NodeRef backPage,
+        NodeRef forwardPage
+    )
+    {
+        if (Pool<ScrollbarModel>.TryRent() is not { } model)
+            return new ScrollbarModel(track, grip, backArrow, forwardArrow, backPage, forwardPage);
+        model.Track = track;
+        model.Grip = grip;
+        model.BackArrow = backArrow;
+        model.ForwardArrow = forwardArrow;
+        model.BackPage = backPage;
+        model.ForwardPage = forwardPage;
+        return model;
+    }
 
     // A tick still posted keeps its flag, so it serves whichever bar rents the model next.
     public void Dispose()

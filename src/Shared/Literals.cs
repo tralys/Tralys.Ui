@@ -55,11 +55,12 @@ static class Literals
     {
         var name = type.Fq();
         var bits = Bits(value);
-        var members = type.GetMembers()
-            .OfType<IFieldSymbol>()
-            .Where(f => f.HasConstantValue && f.ConstantValue is not null)
-            .Select(f => (Name: Identifier(f.Name), Bits: Bits(f.ConstantValue!)))
-            .ToList();
+        var members = new List<(string Name, long Bits)>();
+        foreach (var member in type.GetMembers())
+        {
+            if (member is IFieldSymbol { HasConstantValue: true, ConstantValue: { } constant })
+                members.Add((Identifier(member.Name), Bits(constant)));
+        }
 
         foreach (var member in members)
         {

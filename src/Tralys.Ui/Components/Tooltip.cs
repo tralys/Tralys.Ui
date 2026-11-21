@@ -52,10 +52,11 @@ public sealed class Tooltip : Component<TooltipProps>
     {
         if (p.Delay is { } delay && !(delay >= 0f))
             throw Refused(nameof(p.Delay), delay);
-        var model = ui.Remember(static () => TooltipModel.Rent());
+        var model = ui.Remember(
+            (Shown: ui.State(false), Anchor: ui.Ref()),
+            static hooks => TooltipModel.Rent(hooks.Shown, hooks.Anchor)
+        );
         model.Host = ui.Self(p);
-        model.Shown = ui.State(false);
-        model.Anchor = ui.Ref();
         ui.Effect(model, 0, static (m, _, cx) => m.Attach(cx.View));
         var focused = p.Open is null && ui.IsFocusWithin && model.FocusVisible;
         ui.Effect(model, focused, static (m, f, _) => m.FocusMoved(f));
@@ -118,15 +119,17 @@ internal sealed class TooltipModel : IDisposable
     internal readonly Handler<PointerEvent> Up;
     internal readonly Callback Dismissed;
     internal Host<TooltipProps> Host;
-    internal State<bool> Shown = null!;
-    internal NodeRef Anchor = null!;
+    internal State<bool> Shown;
+    internal NodeRef Anchor;
     internal UiView? View;
     TooltipCoordinator? _coordinator;
     bool _hovered;
     bool _disposed;
 
-    public TooltipModel()
+    TooltipModel(State<bool> shown, NodeRef anchor)
     {
+        Shown = shown;
+        Anchor = anchor;
         Hover = Callback<bool>.Of(this, static (m, on) => m.Hovered(on));
         Down = Handler<PointerEvent>.Of(this, static (m, ref e) => m.Pressed(ref e));
         Move = Handler<PointerEvent>.Of(this, static (m, ref e) => m.Moved(ref e));
@@ -192,9 +195,12 @@ internal sealed class TooltipModel : IDisposable
             Host.Props.OnOpenChange.Invoke(false);
     }
 
-    internal static TooltipModel Rent()
+    internal static TooltipModel Rent(State<bool> shown, NodeRef anchor)
     {
-        var model = Pool<TooltipModel>.TryRent() ?? new TooltipModel();
+        if (Pool<TooltipModel>.TryRent() is not { } model)
+            return new TooltipModel(shown, anchor);
+        model.Shown = shown;
+        model.Anchor = anchor;
         model._disposed = false;
         return model;
     }
@@ -347,7 +353,7 @@ internal sealed class TooltipCoordinator
         if (_current == model && _touch == touch)
         {
             if (!delayed && !_revealed)
-                Reveal();
+                Reveal(model);
             return;
         }
         var now = Now;
@@ -362,13 +368,13 @@ internal sealed class TooltipCoordinator
             Tick();
         }
         else
-            Reveal();
+            Reveal(model);
     }
 
-    void Reveal()
+    void Reveal(TooltipModel model)
     {
         _revealed = true;
-        _current!.Report(true);
+        model.Report(true);
     }
 
     void Tick()
@@ -382,10 +388,10 @@ internal sealed class TooltipCoordinator
     void OnTick()
     {
         _ticking = false;
-        if (_current is null || _revealed)
+        if (_current is not { } current || _revealed)
             return;
         if (Now >= _revealAt)
-            Reveal();
+            Reveal(current);
         else
             Tick();
     }

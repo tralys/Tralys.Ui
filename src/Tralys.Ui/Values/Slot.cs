@@ -34,7 +34,11 @@ public readonly struct Slot : IEquatable<Slot>
     public bool IsEmpty => _fn is null;
 
     /// <summary>Renders the content at the open node.</summary>
-    public void Render(Ui ui) => _invoker?.Invoke(ui, _fn!, _state);
+    public void Render(Ui ui)
+    {
+        if (_fn is { } fn)
+            _invoker?.Invoke(ui, fn, _state);
+    }
 
     public bool Equals(Slot other) =>
         ReferenceEquals(_fn, other._fn) && ReferenceEquals(_state, other._state);
@@ -67,7 +71,7 @@ public readonly struct Slot : IEquatable<Slot>
         public static readonly One<T> Instance = new();
 
         public override void Invoke(Ui ui, object fn, object? state) =>
-            Unsafe.As<Action<Ui, T>>(fn)(ui, Unsafe.As<T>(state)!);
+            Unsafe.As<Action<Ui, T>>(fn)(ui, CallbackState.Reference<T>(state));
     }
 }
 
@@ -104,8 +108,11 @@ public readonly struct Slot<TItem> : IEquatable<Slot<TItem>>
 
     public bool IsEmpty => _fn is null;
 
-    public void Render(Ui ui, TItem item, int index) =>
-        _invoker?.Invoke(ui, _fn!, _state, item, index);
+    public void Render(Ui ui, TItem item, int index)
+    {
+        if (_fn is { } fn)
+            _invoker?.Invoke(ui, fn, _state, item, index);
+    }
 
     public bool Equals(Slot<TItem> other) =>
         ReferenceEquals(_fn, other._fn) && ReferenceEquals(_state, other._state);
@@ -138,6 +145,11 @@ public readonly struct Slot<TItem> : IEquatable<Slot<TItem>>
         public static readonly One<T> Instance = new();
 
         public override void Invoke(Ui ui, object fn, object? state, TItem item, int index) =>
-            Unsafe.As<Action<Ui, T, TItem, int>>(fn)(ui, Unsafe.As<T>(state)!, item, index);
+            Unsafe.As<Action<Ui, T, TItem, int>>(fn)(
+                ui,
+                CallbackState.Reference<T>(state),
+                item,
+                index
+            );
     }
 }

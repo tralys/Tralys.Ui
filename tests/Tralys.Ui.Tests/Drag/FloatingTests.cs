@@ -347,7 +347,8 @@ public sealed class FloatingTests
         driver.Wheel(driver.Get("scrolled"), new Vector2(0f, -1f));
 
         await Assert.That(scrolled).IsEqualTo(new Rect(0f, 30f, 200f, 70f));
-        await Assert.That(board.ContentScroll!.Offset.Y).IsGreaterThan(0f);
+        var content = await Assert.That(board.ContentScroll).IsNotNull();
+        await Assert.That(content.Offset.Y).IsGreaterThan(0f);
     }
 
     static int Ends(FloatBoard board) => board.Drags.Count(p => p == DragPhase.End);
@@ -404,7 +405,9 @@ internal sealed class FloatBoard
                 if (b.Kept)
                     return;
                 b.Bounds = r;
-                b._state!.Value = r;
+                if (b._state is not { } state)
+                    throw new InvalidOperationException("The board moved before it rendered.");
+                state.Value = r;
             }
         );
         _commit = Callback<Rect>.Of(this, static (b, r) => b.Commits.Add(r));
