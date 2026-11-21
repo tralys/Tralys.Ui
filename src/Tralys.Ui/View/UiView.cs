@@ -230,6 +230,7 @@ public sealed partial class UiView : IRenderedView, IDisposable, ITextureResolve
         finally
         {
             Builder.Reset();
+            _updatesDone++;
         }
     }
 

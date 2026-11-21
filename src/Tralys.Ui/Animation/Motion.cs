@@ -122,6 +122,7 @@ internal sealed class AnimateHook<T, TBlend> : Motion
     where TBlend : struct, IBlend<T>
 {
     internal Tween<T, TBlend> Tween;
+    internal int Born;
 
     internal override Step Advance(double time, bool reduced) => Tween.Advance(time, reduced);
 

@@ -14,7 +14,7 @@ public readonly ref partial struct Ui
 
     /// <summary>A value that moves to <c>target</c> whenever it changes: after the transition's delay, over its
     /// duration through its easing, from the value shown; the default transition takes the theme's. On mount it is
-    /// the target at once.</summary>
+    /// the target at once, and so is every target it takes before the update it mounted in ends.</summary>
     public float Animate(
         float target,
         Transition transition = default,

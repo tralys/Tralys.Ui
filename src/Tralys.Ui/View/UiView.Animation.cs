@@ -9,6 +9,7 @@ public sealed partial class UiView
     ValueList<Node> _exiting;
     ValueList<Node> _exitsDone;
     ValueList<LoopHook> _resting;
+    int _updatesDone;
 
     internal bool MotionsIdle => _finiteMotions == 0 && _exitsDone.Count == 0;
 
@@ -80,6 +81,7 @@ public sealed partial class UiView
         if (created)
         {
             hook.Host = builder.CurrentHost;
+            hook.Born = _updatesDone;
             hook.Tween.Rest(target);
             return target;
         }
@@ -87,7 +89,12 @@ public sealed partial class UiView
         {
             var shown = hook.Tween.Value(time, hook.IsRunning);
             var curve = Curve(transition, builder.OpenNode);
-            if (curve.IsInstant || Context.ReducedMotion || !Shown(builder.OpenNode))
+            if (
+                hook.Born == _updatesDone
+                || curve.IsInstant
+                || Context.ReducedMotion
+                || !Shown(builder.OpenNode)
+            )
             {
                 StopMotion(hook);
                 hook.Tween.Rest(target);
