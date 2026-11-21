@@ -4,6 +4,7 @@ public sealed partial class UiView
 {
     ValueList<FocusScope> _modalBoxes;
     ValueList<FocusScope> _activeModals;
+    ValueList<FocusScope> _entering;
     ValueList<Node> _returnAncestors;
     ValueList<int> _returnGenerations;
     FocusReturn _return;
@@ -185,18 +186,23 @@ public sealed partial class UiView
         if (scope.EnterPending)
             return;
         scope.EnterPending = true;
-        Context.Dispatcher.Post(scope, static s => s.View?.EnterModal(s));
+        _entering.Add(scope);
     }
 
-    void EnterModal(FocusScope scope)
+    void EnterModals()
     {
-        if (!scope.EnterPending)
-            return;
-        scope.EnterPending = false;
-        if (!scope.Active || !scope.IsLive || FocusInside(scope.Node))
-            return;
-        if (FirstStop(scope.Node) is { } first)
-            MoveFocus(first, FocusCause.Code, _keyboardLast);
+        for (var i = 0; i < _entering.Count; i++)
+        {
+            var scope = _entering[i];
+            if (!scope.EnterPending)
+                continue;
+            scope.EnterPending = false;
+            if (!scope.Active || !scope.IsLive || FocusInside(scope.Node))
+                continue;
+            if (FirstStop(scope.Node) is { } first)
+                MoveFocus(first, FocusCause.Code, _keyboardLast);
+        }
+        _entering.Clear();
     }
 
     void AutoFocus(Node layer, LayerPayload payload)

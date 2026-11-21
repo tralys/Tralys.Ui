@@ -7,6 +7,7 @@ namespace Tralys.Ui;
 public sealed partial class UiView : IRenderedView, IDisposable, ITextureResolver
 {
     const int MaxEffectRounds = 64;
+    const int MaxInputSettles = 4;
     static readonly int KindCount = Enum.GetValues<NodeKind>().Length;
 
     readonly IViewHost _host;
@@ -185,7 +186,7 @@ public sealed partial class UiView : IRenderedView, IDisposable, ITextureResolve
     }
 
     /// <summary>Runs posted work, renders what changed, lays out, runs effects, and settles input against the new
-    /// layout.</summary>
+    /// layout, rendering again what that changes, so the frame drawn next shows the focus and hover it settled.</summary>
     public void Update()
     {
         VerifyAccess();
@@ -196,23 +197,20 @@ public sealed partial class UiView : IRenderedView, IDisposable, ITextureResolve
             UpdateSizeClass();
             Arena.Reset();
             FinishExits();
-            for (var round = 0; ; round++)
-            {
-                RenderDirty();
-                ReconcileEditors();
-                Layout();
-                LayoutLayers();
-                SettleScroll();
-                if (!RunEffects())
-                    break;
-                if (round == MaxEffectRounds)
-                    throw new InvalidOperationException(
-                        "Effects kept invalidating renders for 64 rounds in one update."
-                    );
-            }
-            CleanUpUnmounted();
+            Settle();
+            var cleaned = CleanUpUnmounted(0);
             SyncScopes();
+            var waiting = _dirtyHosts.Count;
             InputStep();
+            // A hover that moves its own node never settles, so the cap stops without throwing.
+            for (var pass = 0; pass < MaxInputSettles && _dirtyHosts.Count > waiting; pass++)
+            {
+                Settle();
+                cleaned = CleanUpUnmounted(cleaned);
+                SyncScopes();
+                waiting = _dirtyHosts.Count;
+                InputSettle();
+            }
             UpdateEditors();
             ReleaseUnmounted();
             for (var i = 0; i < _layoutNotices.Count; i++)
@@ -231,6 +229,24 @@ public sealed partial class UiView : IRenderedView, IDisposable, ITextureResolve
         {
             Builder.Reset();
             _updatesDone++;
+        }
+    }
+
+    void Settle()
+    {
+        for (var round = 0; ; round++)
+        {
+            RenderDirty();
+            ReconcileEditors();
+            Layout();
+            LayoutLayers();
+            SettleScroll();
+            if (!RunEffects())
+                return;
+            if (round == MaxEffectRounds)
+                throw new InvalidOperationException(
+                    "Effects kept invalidating renders for 64 rounds in one update."
+                );
         }
     }
 
@@ -405,10 +421,11 @@ public sealed partial class UiView : IRenderedView, IDisposable, ITextureResolve
             Detach(child);
     }
 
-    void CleanUpUnmounted()
+    int CleanUpUnmounted(int from)
     {
-        for (var i = 0; i < _unmounted.Count; i++)
+        for (var i = from; i < _unmounted.Count; i++)
             CleanUp(_unmounted[i]);
+        return _unmounted.Count;
     }
 
     static void CleanUp(Node node)
@@ -522,7 +539,7 @@ public sealed partial class UiView : IRenderedView, IDisposable, ITextureResolve
             Unmount(node);
             node = next;
         }
-        CleanUpUnmounted();
+        CleanUpUnmounted(0);
         DeliverNotices();
         ReleaseUnmounted();
         _disposed = true;

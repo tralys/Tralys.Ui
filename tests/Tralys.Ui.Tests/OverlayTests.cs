@@ -754,8 +754,6 @@ public sealed class OverlayTests
 
         modal.A = true;
         driver.Frame();
-        await Assert.That(driver.Focused).IsNull();
-        driver.Settle();
         await Assert.That(driver.Focused).IsEqualTo(driver.Get("first"));
 
         driver.Click(under);

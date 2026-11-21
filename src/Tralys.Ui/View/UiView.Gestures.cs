@@ -495,6 +495,7 @@ public sealed partial class UiView
         }
         RepeatDPad(now);
         RunAutoFocus();
+        EnterModals();
         SendSystemGestures();
     }
 }

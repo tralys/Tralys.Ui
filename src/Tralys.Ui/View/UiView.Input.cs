@@ -1200,6 +1200,21 @@ public sealed partial class UiView
 
     void InputStep()
     {
+        FollowLayout();
+        InputStepGestures();
+        DeliverNotices();
+    }
+
+    void InputSettle()
+    {
+        FollowLayout();
+        RunAutoFocus();
+        EnterModals();
+        DeliverNotices();
+    }
+
+    void FollowLayout()
+    {
         DeliverNotices();
         ValidateFocus();
         ValidateCaptures();
@@ -1210,8 +1225,6 @@ public sealed partial class UiView
                 UpdatePressed(state);
             UpdateHover(state);
         }
-        InputStepGestures();
-        DeliverNotices();
     }
 
     PointerState StateOf(Pointer pointer)

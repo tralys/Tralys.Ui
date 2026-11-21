@@ -149,15 +149,14 @@ public sealed partial class DialogTests
         });
         driver.Focus(driver.Get("opener"));
         open.A = true;
-        driver.Frame();
-        var unfocused = driver.Focused;
+        driver.Settle();
+        driver.View.ClearFocus();
 
         driver.KeyDown(Key.Enter, settle: false);
         var enterBehind = behind.Keys;
         driver.Type("a", settle: false);
         driver.Tab(settle: false);
 
-        await Assert.That(unfocused).IsNull();
         await Assert.That(reports.Submits).IsEqualTo(1);
         await Assert.That(enterBehind).IsEqualTo(0);
         await Assert.That(OverlayProbes.Within(driver.Focused, driver.View.Layers[0])).IsTrue();
