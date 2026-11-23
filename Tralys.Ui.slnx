@@ -4,7 +4,6 @@
     <Project Path="src/Tralys.Ui.Engine/Tralys.Ui.Engine.csproj" />
     <Project Path="src/Tralys.Ui.Engine.Generators/Tralys.Ui.Engine.Generators.csproj" />
     <Project Path="src/Tralys.Ui.Bgfx/Tralys.Ui.Bgfx.csproj" />
-    <Project Path="src/Tralys.Ui.FreeType/Tralys.Ui.FreeType.csproj" />
     <Project Path="src/Tralys.Ui.Testing/Tralys.Ui.Testing.csproj" />
     <Project Path="src/Tralys.Ui.DevTools/Tralys.Ui.DevTools.csproj" />
     <Project Path="src/Tralys.Ui.Docking/Tralys.Ui.Docking.csproj" />

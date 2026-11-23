@@ -1,6 +1,5 @@
 using System.Text;
 using System.Text.Json;
-using Tralys.Ui.FreeType;
 
 namespace Tralys.Ui.Fonts.Tests;
 
@@ -9,8 +8,7 @@ public sealed class IconFontTests
     [Test]
     public async Task Every_icon_the_table_names_has_a_glyph_in_the_icon_font()
     {
-        using var backend = new FreeTypeBackend();
-        using var fonts = new FontCollection(backend);
+        using var fonts = new FontCollection();
         var lucide = fonts.Add(
             File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Fonts", "Lucide.ttf"))
         );

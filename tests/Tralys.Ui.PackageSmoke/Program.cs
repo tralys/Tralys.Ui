@@ -9,7 +9,6 @@ using Tralys.Ui.Components;
 using Tralys.Ui.DevTools;
 using Tralys.Ui.Docking;
 using Tralys.Ui.Fonts;
-using Tralys.Ui.FreeType;
 using Tralys.Ui.Mvvm;
 using Tralys.Ui.PackageSmoke.ViewModels;
 using Tralys.Ui.Testing;
@@ -100,8 +99,7 @@ static class Program
 
     static string ShownAfterOneClick()
     {
-        using var backend = new FreeTypeBackend();
-        using var fonts = new FontCollection(backend);
+        using var fonts = new FontCollection();
         using var text = new TextServices(
             fonts,
             fonts.Add(Embedded("Inter-Regular.otf")),

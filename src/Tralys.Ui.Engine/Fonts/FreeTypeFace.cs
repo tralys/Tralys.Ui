@@ -3,11 +3,10 @@ using System.Buffers.Binary;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
-using FreeTypeSharp;
-using Tralys.Ui.Fonts;
-using static FreeTypeSharp.FT;
+using FreeType.Net;
+using static FreeType.Net.FT;
 
-namespace Tralys.Ui.FreeType;
+namespace Tralys.Ui.Fonts;
 
 sealed unsafe class FreeTypeFace : IFontFace
 {
@@ -16,9 +15,6 @@ sealed unsafe class FreeTypeFace : IFontFace
 
     // A tricky face places its subglyphs by hinting, so it loads at one size and scales back to font units.
     const FT_LOAD HintedFlags = FT_LOAD.FT_LOAD_NO_BITMAP | FT_LOAD.FT_LOAD_NO_SVG;
-
-    const byte TagOn = 1;
-    const byte TagCubic = 2;
 
     const uint Os2Tag = 0x4F532F32;
     const uint TrueTypeVersion = 0x00010000;
@@ -35,7 +31,7 @@ sealed unsafe class FreeTypeFace : IFontFace
     readonly bool _tricky;
     readonly float _outlineScale = 1f;
     MemoryHandle _pin;
-    FT_FaceRec_* _face;
+    FT_FaceRec* _face;
 
     public FreeTypeFace(FreeTypeBackend backend, ReadOnlyMemory<byte> fontData, int faceIndex)
     {
@@ -43,12 +39,12 @@ sealed unsafe class FreeTypeFace : IFontFace
         _fontData = fontData;
         _pin = fontData.Pin();
 
-        FT_FaceRec_* face;
+        FT_FaceRec* face;
         var error = FT_New_Memory_Face(
             backend.Library,
             (byte*)_pin.Pointer,
-            fontData.Length,
-            faceIndex,
+            new CLong(fontData.Length),
+            new CLong(faceIndex),
             &face
         );
         if (error != FT_Error.FT_Err_Ok)
@@ -57,7 +53,7 @@ sealed unsafe class FreeTypeFace : IFontFace
             FreeTypeError.Check(error, nameof(FT_New_Memory_Face));
         }
 
-        if ((face->face_flags & (nint)FT_FACE_FLAG.FT_FACE_FLAG_SCALABLE) == 0)
+        if (!FT_IS_SCALABLE(face))
         {
             FT_Done_Face(face);
             _pin.Dispose();
@@ -65,10 +61,10 @@ sealed unsafe class FreeTypeFace : IFontFace
         }
 
         _face = face;
-        _tricky = (face->face_flags & (nint)FT_FACE_FLAG.FT_FACE_FLAG_TRICKY) != 0;
+        _tricky = FT_IS_TRICKY(face);
         _directory = FindDirectory(fontData.Span, faceIndex);
         FamilyName = Marshal.PtrToStringUTF8((nint)face->family_name) ?? string.Empty;
-        IsItalic = (face->style_flags & (nint)FT_STYLE_FLAG.FT_STYLE_FLAG_ITALIC) != 0;
+        IsItalic = (face->style_flags.Value & (nint)FT_STYLE_FLAG.FT_STYLE_FLAG_ITALIC) != 0;
         UnitsPerEm = face->units_per_EM;
         Metrics = new FaceMetrics(
             face->ascender,
@@ -80,7 +76,7 @@ sealed unsafe class FreeTypeFace : IFontFace
         if (_tricky)
         {
             var size = GlyphAtlas.EmSize * 64f;
-            error = FT_Set_Char_Size(face, 0, (nint)size, 0, 0);
+            error = FT_Set_Char_Size(face, new CLong(0), new CLong((nint)size), 0, 0);
             if (error != FT_Error.FT_Err_Ok)
             {
                 FT_Done_Face(face);
@@ -94,7 +90,7 @@ sealed unsafe class FreeTypeFace : IFontFace
         Weight =
             os2.Length >= 6
                 ? Math.Clamp((int)BinaryPrimitives.ReadUInt16BigEndian(os2[4..]), 1, 1000)
-            : (face->style_flags & (nint)FT_STYLE_FLAG.FT_STYLE_FLAG_BOLD) != 0 ? 700
+            : (face->style_flags.Value & (nint)FT_STYLE_FLAG.FT_STYLE_FLAG_BOLD) != 0 ? 700
             : 400;
     }
 
@@ -111,18 +107,17 @@ sealed unsafe class FreeTypeFace : IFontFace
     public int GetGlyphIndex(Rune rune)
     {
         ObjectDisposedException.ThrowIf(_face == null, this);
-        return (int)FT_Get_Char_Index(_face, (nuint)rune.Value);
+        return (int)FT_Get_Char_Index(_face, new CULong((nuint)rune.Value));
     }
 
     public float GetAdvance(int glyph)
     {
         ObjectDisposedException.ThrowIf(_face == null, this);
-        // FT_Fixed is 32 bits on Windows, so the upper half has to start at zero.
-        nint units = 0;
+        CLong units;
         return
             FT_Get_Advance(_face, (uint)glyph, FT_LOAD.FT_LOAD_NO_SCALE, &units)
             == FT_Error.FT_Err_Ok
-            ? units
+            ? units.Value
             : 0f;
     }
 
@@ -132,13 +127,13 @@ sealed unsafe class FreeTypeFace : IFontFace
         ObjectDisposedException.ThrowIf(_face == null, this);
         return FT_Load_Glyph(_face, (uint)glyph, _tricky ? HintedFlags : OutlineFlags)
                 == FT_Error.FT_Err_Ok
-            && _face->glyph->format == FT_Glyph_Format_.FT_GLYPH_FORMAT_OUTLINE
+            && _face->glyph->format == FT_Glyph_Format.FT_GLYPH_FORMAT_OUTLINE
             && _face->glyph->outline.n_contours > 0
             && Trace(&_face->glyph->outline, _outlineScale, ref sink);
     }
 
     [FramePath]
-    static bool Trace<TSink>(FT_Outline_* outline, float scale, ref TSink sink)
+    static bool Trace<TSink>(FT_Outline* outline, float scale, ref TSink sink)
         where TSink : IGlyphOutlineSink, allows ref struct
     {
         var points = outline->points;
@@ -154,12 +149,12 @@ sealed unsafe class FreeTypeFace : IFontFace
             var limit = last;
             var point = first;
             var tag = tags[first] & 3;
-            if (tag == TagCubic)
+            if (tag == FT_CURVE_TAG_CUBIC)
                 return false;
 
-            if (tag != TagOn)
+            if (tag != FT_CURVE_TAG_ON)
             {
-                if ((tags[last] & 3) == TagOn)
+                if ((tags[last] & 3) == FT_CURVE_TAG_ON)
                 {
                     start = Point(points, last, scale);
                     limit--;
@@ -177,15 +172,15 @@ sealed unsafe class FreeTypeFace : IFontFace
                 point++;
                 tag = tags[point] & 3;
                 var at = Point(points, point, scale);
-                if (tag == TagOn)
+                if (tag == FT_CURVE_TAG_ON)
                 {
                     sink.LineTo(at);
                     continue;
                 }
 
-                if (tag == TagCubic)
+                if (tag == FT_CURVE_TAG_CUBIC)
                 {
-                    if (point + 1 > limit || (tags[point + 1] & 3) != TagCubic)
+                    if (point + 1 > limit || (tags[point + 1] & 3) != FT_CURVE_TAG_CUBIC)
                         return false;
 
                     var second = Point(points, point + 1, scale);
@@ -201,14 +196,14 @@ sealed unsafe class FreeTypeFace : IFontFace
                     point++;
                     tag = tags[point] & 3;
                     at = Point(points, point, scale);
-                    if (tag == TagOn)
+                    if (tag == FT_CURVE_TAG_ON)
                     {
                         sink.QuadraticTo(control, at);
                         closed = false;
                         break;
                     }
 
-                    if (tag == TagCubic)
+                    if (tag == FT_CURVE_TAG_CUBIC)
                         return false;
 
                     sink.QuadraticTo(control, (control + at) / 2);
@@ -224,8 +219,8 @@ sealed unsafe class FreeTypeFace : IFontFace
         return true;
     }
 
-    static Vector2 Point(FT_Vector_* points, int index, float scale) =>
-        new Vector2(points[index].x, points[index].y) * scale;
+    static Vector2 Point(FT_Vector* points, int index, float scale) =>
+        new Vector2(points[index].x.Value, points[index].y.Value) * scale;
 
     public ReadOnlyMemory<byte> GetTable(uint tag)
     {

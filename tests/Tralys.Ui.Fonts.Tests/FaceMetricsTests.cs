@@ -1,5 +1,3 @@
-using Tralys.Ui.FreeType;
-
 namespace Tralys.Ui.Fonts.Tests;
 
 public sealed class FaceMetricsTests
@@ -7,8 +5,7 @@ public sealed class FaceMetricsTests
     [Test]
     public async Task AFaceWithALineGap_RoundsItsLineUpToAWholePixel()
     {
-        using var backend = new FreeTypeBackend();
-        using var fonts = new FontCollection(backend);
+        using var fonts = new FontCollection();
         var lucide = fonts.Add(
             File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Fonts", "Lucide.ttf"))
         );
@@ -21,8 +18,7 @@ public sealed class FaceMetricsTests
     [Test]
     public async Task AFace_SetsHalfItsOwnLineGapAboveTheBaseline()
     {
-        using var backend = new FreeTypeBackend();
-        using var fonts = new FontCollection(backend);
+        using var fonts = new FontCollection();
         var lucide = fonts.Add(
             File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Fonts", "Lucide.ttf"))
         );

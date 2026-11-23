@@ -2,15 +2,20 @@ using System.Text;
 
 namespace Tralys.Ui.Fonts;
 
-/// <summary>The faces text can be set in, opened through one <see cref="IFontBackend"/>, and the fallback chain tried,
-/// in order, for a character the requested face has no glyph for, such as a CJK face behind a Latin one.</summary>
+/// <summary>The faces text can be set in, opened through one <see cref="IFontBackend"/>, FreeType unless another is
+/// given, and the fallback chain tried, in order, for a character the requested face has no glyph for, such as a CJK
+/// face behind a Latin one.</summary>
 public sealed class FontCollection : IDisposable
 {
     static readonly Rune Space = new(' ');
 
     readonly IFontBackend _backend;
+    readonly FreeTypeBackend? _freeType;
     readonly List<Font> _fonts = [];
     readonly List<Font> _fallbacks = [];
+
+    /// <summary>A collection on FreeType, whose faces and their library belong to the thread that uses it.</summary>
+    public FontCollection() => _backend = _freeType = new FreeTypeBackend();
 
     public FontCollection(IFontBackend backend)
     {
@@ -112,7 +117,7 @@ public sealed class FontCollection : IDisposable
         return font;
     }
 
-    /// <summary>Disposes every face the collection opened.</summary>
+    /// <summary>Disposes every face the collection opened, and the FreeType library it opened them in.</summary>
     public void Dispose()
     {
         foreach (var font in _fonts)
@@ -120,5 +125,6 @@ public sealed class FontCollection : IDisposable
 
         _fonts.Clear();
         _fallbacks.Clear();
+        _freeType?.Dispose();
     }
 }

@@ -16,7 +16,6 @@
     <PublishDir>$(_TralysArtifacts)gallery/</PublishDir>
     <!-- The workload's own cache is read-only, and the ports compile into whichever is set. -->
     <WasmCachePath>$(_TralysArtifacts)emcache/</WasmCachePath>
-    <EmccExtraLDFlags>$(EmccExtraLDFlags) --use-port=$(MSBuildThisFileDirectory)ports/tralys_freetype.py</EmccExtraLDFlags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,7 +33,6 @@
       Include="../Tralys.Ui.Demo.Gallery/Assets/**"
       LogicalName="Assets/%(RecursiveDir)%(Filename)%(Extension)"
     />
-    <NativeFileReference Include="native/freetype.c" />
   </ItemGroup>
 
   <!-- PublishDir outlives a publish, and the fingerprinted names of an earlier one would ride along. -->

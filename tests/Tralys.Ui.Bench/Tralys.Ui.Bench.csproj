@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="../../src/Tralys.Ui/Tralys.Ui.csproj" />
-    <ProjectReference Include="../../src/Tralys.Ui.FreeType/Tralys.Ui.FreeType.csproj" />
     <ProjectReference Include="../../src/Tralys.Ui.Mvvm/Tralys.Ui.Mvvm.csproj" />
     <ProjectReference
       Include="../../src/Tralys.Ui.Mvvm.Generators/Tralys.Ui.Mvvm.Generators.csproj"

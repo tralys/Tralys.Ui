@@ -4,7 +4,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../src/Tralys.Ui.FreeType/Tralys.Ui.FreeType.csproj" />
     <ProjectReference Include="../../src/Tralys.Ui.Testing/Tralys.Ui.Testing.csproj" />
   </ItemGroup>
 

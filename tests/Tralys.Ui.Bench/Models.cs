@@ -1,6 +1,5 @@
 using Tralys.Ui;
 using Tralys.Ui.Fonts;
-using Tralys.Ui.FreeType;
 using Tralys.Ui.Mvvm;
 using Tralys.Ui.Rendering;
 
@@ -96,12 +95,11 @@ sealed class BenchFonts : IDisposable
 {
     static readonly byte[] Inter = Load();
 
-    readonly FreeTypeBackend _backend = new();
     readonly FontCollection _fonts;
 
     public BenchFonts()
     {
-        _fonts = new FontCollection(_backend);
+        _fonts = new FontCollection();
         Services = new TextServices(_fonts, _fonts.Add(Inter), new MemoryTextures());
     }
 
@@ -111,7 +109,6 @@ sealed class BenchFonts : IDisposable
     {
         Services.Dispose();
         _fonts.Dispose();
-        _backend.Dispose();
     }
 
     static byte[] Load()

@@ -1,5 +1,4 @@
 using Tralys.Ui.Fonts;
-using Tralys.Ui.FreeType;
 using Tralys.Ui.Rendering;
 
 namespace Tralys.Ui.Gallery;
@@ -17,7 +16,6 @@ public sealed class GalleryFonts : IDisposable
         "Lucide.ttf",
     ];
 
-    readonly FreeTypeBackend _backend = new();
     readonly FontCollection _fonts;
 
     /// <param name="textures">What the glyph atlas's pages are made with: a renderer's textures to draw, or memory
@@ -25,7 +23,7 @@ public sealed class GalleryFonts : IDisposable
     public GalleryFonts(ITextureFactory textures)
     {
         ArgumentNullException.ThrowIfNull(textures);
-        _fonts = new FontCollection(_backend);
+        _fonts = new FontCollection();
         var inter = _fonts.Add(Embedded("Inter-Regular.otf"));
         foreach (var name in Faces)
             _fonts.Add(Embedded(name));
@@ -48,6 +46,5 @@ public sealed class GalleryFonts : IDisposable
     {
         Services.Dispose();
         _fonts.Dispose();
-        _backend.Dispose();
     }
 }

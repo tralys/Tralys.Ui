@@ -7,7 +7,7 @@
   <ItemGroup>
     <PackageVersion Include="Bgfx.Net" Version="0.9.2" />
     <PackageVersion Include="Bgfx.Net.Tools" Version="0.9.2" />
-    <PackageVersion Include="FreeTypeSharp" Version="3.1.0" />
+    <PackageVersion Include="FreeType.Net" Version="0.1.0" />
     <PackageVersion Include="ppy.SDL3-CS" Version="2026.722.0" />
     <PackageVersion Include="StbImageSharp" Version="2.30.16" />
     <PackageVersion Include="StbImageWriteSharp" Version="1.16.7" />

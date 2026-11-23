@@ -1,5 +1,3 @@
-using Tralys.Ui.FreeType;
-
 namespace Tralys.Ui.Fonts.Tests;
 
 sealed class TestFonts : IDisposable
@@ -7,11 +5,9 @@ sealed class TestFonts : IDisposable
     static readonly byte[] InterData = Read("Inter-Regular.otf");
     static readonly byte[] CjkData = Read("NotoSansSC-Subset.otf");
 
-    readonly FreeTypeBackend _backend = new();
-
     public TestFonts()
     {
-        Collection = new FontCollection(_backend);
+        Collection = new FontCollection();
         Inter = Collection.Add(InterData);
         Cjk = Collection.Add(CjkData);
         Collection.AddFallback(Cjk);
@@ -33,7 +29,6 @@ sealed class TestFonts : IDisposable
     public void Dispose()
     {
         Collection.Dispose();
-        _backend.Dispose();
     }
 
     static byte[] Read(string name) =>

@@ -22,7 +22,6 @@
     <ProjectReference Include="../../src/Tralys.Ui.Bgfx/Tralys.Ui.Bgfx.csproj" />
     <ProjectReference Include="../../src/Tralys.Ui.DevTools/Tralys.Ui.DevTools.csproj" />
     <ProjectReference Include="../../src/Tralys.Ui.Docking/Tralys.Ui.Docking.csproj" />
-    <ProjectReference Include="../../src/Tralys.Ui.FreeType/Tralys.Ui.FreeType.csproj" />
     <ProjectReference
       Include="../../src/Tralys.Ui.Analyzers/Tralys.Ui.Analyzers.csproj"
       OutputItemType="Analyzer"

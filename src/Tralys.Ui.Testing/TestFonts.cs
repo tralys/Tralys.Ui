@@ -1,6 +1,5 @@
 using System.Runtime.InteropServices;
 using Tralys.Ui.Fonts;
-using Tralys.Ui.FreeType;
 using Tralys.Ui.Rendering;
 
 namespace Tralys.Ui.Testing;
@@ -13,17 +12,13 @@ internal static class TestFonts
     static TextServices? t_services;
 
     [ThreadStatic]
-    static FreeTypeBackend? t_backend;
-
-    [ThreadStatic]
     static FontCollection? t_fonts;
 
     public static TextServices ForThisThread()
     {
         if (t_services is { } services)
             return services;
-        t_backend = new FreeTypeBackend();
-        var fonts = t_fonts = new FontCollection(t_backend);
+        var fonts = t_fonts = new FontCollection();
         var face = fonts.Add(Inter);
         return t_services = new TextServices(fonts, face, new MemoryTextures(), atlasPageSize: 512);
     }
@@ -34,8 +29,6 @@ internal static class TestFonts
         t_services = null;
         t_fonts?.Dispose();
         t_fonts = null;
-        t_backend?.Dispose();
-        t_backend = null;
     }
 
     static byte[] Load()

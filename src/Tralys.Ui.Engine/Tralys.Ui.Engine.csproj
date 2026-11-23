@@ -3,9 +3,14 @@
     <RootNamespace>Tralys.Ui</RootNamespace>
     <IsAotCompatible>true</IsAotCompatible>
     <IsPackable>true</IsPackable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>$(NoWarn);TRL5001</NoWarn>
-    <Description>The engines under Tralys.Ui: drawing, text layout and editing, input contracts, items data, popup placement and themes.</Description>
+    <Description>The engines under Tralys.Ui: drawing, fonts on FreeType, text layout and editing, input contracts, items data, popup placement and themes.</Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FreeType.Net" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="../Tralys.Ui.Mvvm/Tralys.Ui.Mvvm.csproj" />

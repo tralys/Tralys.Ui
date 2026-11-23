@@ -1,6 +1,7 @@
 using System.Numerics;
-using FreeTypeSharp;
-using static FreeTypeSharp.FT;
+using System.Runtime.InteropServices;
+using FreeType.Net;
+using static FreeType.Net.FT;
 
 namespace Tralys.Ui.Fonts.Tests;
 
@@ -58,8 +59,7 @@ public sealed class GlyphFieldTests
     )
     {
         var data = File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Fonts", file));
-        using var backend = new FreeType.FreeTypeBackend();
-        using var fonts = new FontCollection(backend);
+        using var fonts = new FontCollection();
         var font = fonts.Add(data);
         using var atlas = new GlyphAtlas(new MemoryTextureFactory());
 
@@ -126,19 +126,25 @@ public sealed class GlyphFieldTests
     )
     {
         left = top = width = height = 0;
-        FT_LibraryRec_* library;
+        FT_LibraryRec* library;
         FT_Init_FreeType(&library);
         try
         {
             fixed (byte* font = data)
             {
-                FT_FaceRec_* face;
-                FT_New_Memory_Face(library, font, data.Length, 0, &face);
-                FT_Set_Char_Size(face, 0, (nint)(GlyphAtlas.EmSize * 64), 0, 0);
+                FT_FaceRec* face;
+                FT_New_Memory_Face(library, font, new CLong(data.Length), new CLong(0), &face);
+                FT_Set_Char_Size(
+                    face,
+                    new CLong(0),
+                    new CLong((nint)(GlyphAtlas.EmSize * 64)),
+                    0,
+                    0
+                );
                 if (
                     FT_Load_Glyph(face, (uint)glyph, FT_LOAD.FT_LOAD_NO_HINTING)
                         != FT_Error.FT_Err_Ok
-                    || FT_Render_Glyph(face->glyph, FT_Render_Mode_.FT_RENDER_MODE_NORMAL)
+                    || FT_Render_Glyph(face->glyph, FT_Render_Mode.FT_RENDER_MODE_NORMAL)
                         != FT_Error.FT_Err_Ok
                     || face->glyph->bitmap.width == 0
                 )

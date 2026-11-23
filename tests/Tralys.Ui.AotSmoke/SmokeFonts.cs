@@ -1,17 +1,15 @@
 using Tralys.Ui.Fonts;
-using Tralys.Ui.FreeType;
 using Tralys.Ui.Rendering;
 
 namespace Tralys.Ui.AotSmoke;
 
 sealed class SmokeFonts : IDisposable
 {
-    readonly FreeTypeBackend _backend = new();
     readonly FontCollection _fonts;
 
     public SmokeFonts(ITextureFactory textures)
     {
-        _fonts = new FontCollection(_backend);
+        _fonts = new FontCollection();
         Services = new TextServices(_fonts, _fonts.Add(Embedded("Inter-Regular.otf")), textures);
     }
 
@@ -31,7 +29,6 @@ sealed class SmokeFonts : IDisposable
     {
         Services.Dispose();
         _fonts.Dispose();
-        _backend.Dispose();
     }
 }
 

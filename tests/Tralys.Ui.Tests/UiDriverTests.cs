@@ -1,5 +1,4 @@
 using Tralys.Ui.Fonts;
-using Tralys.Ui.FreeType;
 using Tralys.Ui.Rendering;
 using Tralys.Ui.Testing;
 
@@ -60,8 +59,7 @@ public sealed class UiDriverTests
     [Test]
     public async Task A_driver_given_the_apps_fonts_lays_its_text_out_and_draws_it_in_them()
     {
-        using var backend = new FreeTypeBackend();
-        using var fonts = new FontCollection(backend);
+        using var fonts = new FontCollection();
         using var stream = await Assert
             .That(
                 typeof(UiDriver).Assembly.GetManifestResourceStream(

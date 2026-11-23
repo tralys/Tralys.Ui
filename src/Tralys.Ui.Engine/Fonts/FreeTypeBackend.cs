@@ -1,24 +1,23 @@
-using FreeTypeSharp;
-using Tralys.Ui.Fonts;
-using static FreeTypeSharp.FT;
+using FreeType.Net;
+using static FreeType.Net.FT;
 
-namespace Tralys.Ui.FreeType;
+namespace Tralys.Ui.Fonts;
 
 /// <summary>An <see cref="IFontBackend"/> on FreeType, which reads the faces' outlines and metrics in font units. A backend
 /// and its faces belong to one thread.</summary>
-public sealed unsafe class FreeTypeBackend : IFontBackend, IDisposable
+sealed unsafe class FreeTypeBackend : IFontBackend, IDisposable
 {
     readonly List<FreeTypeFace> _faces = [];
-    FT_LibraryRec_* _library;
+    FT_LibraryRec* _library;
 
     public FreeTypeBackend()
     {
-        FT_LibraryRec_* library;
+        FT_LibraryRec* library;
         FreeTypeError.Check(FT_Init_FreeType(&library), nameof(FT_Init_FreeType));
         _library = library;
     }
 
-    internal FT_LibraryRec_* Library => _library;
+    public FT_LibraryRec* Library => _library;
 
     /// <summary>Pins <paramref name="fontData"/> until the face is disposed. Disposing the backend disposes every face
     /// it opened.</summary>
@@ -32,7 +31,7 @@ public sealed unsafe class FreeTypeBackend : IFontBackend, IDisposable
         return face;
     }
 
-    internal void Release(FreeTypeFace face) => _faces.Remove(face);
+    public void Release(FreeTypeFace face) => _faces.Remove(face);
 
     public void Dispose()
     {

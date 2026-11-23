@@ -8,7 +8,6 @@
   <ItemGroup>
     <!-- None private: a package consumer of this one alone still gets Tralys.Ui's generators and analyzers. -->
     <ProjectReference Include="../Tralys.Ui/Tralys.Ui.csproj" PrivateAssets="none" ExactVersion="true" />
-    <ProjectReference Include="../Tralys.Ui.FreeType/Tralys.Ui.FreeType.csproj" />
     <ProjectReference
       Include="../Tralys.Ui.Analyzers/Tralys.Ui.Analyzers.csproj"
       OutputItemType="Analyzer"

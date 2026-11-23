@@ -1,1 +1,2 @@
 #nullable enable
+Tralys.Ui.Fonts.FontCollection.FontCollection() -> void

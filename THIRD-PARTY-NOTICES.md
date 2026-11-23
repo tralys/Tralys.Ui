@@ -208,7 +208,7 @@ authorization of the copyright holder.
 
 ## FreeType
 
-`Tralys.Ui.FreeType` runs on the FreeType library, which FreeTypeSharp (MIT, https://github.com/ryancheung/FreeTypeSharp)
+`Tralys.Ui.Engine` reads fonts with the FreeType library, which FreeType.Net (MIT, https://github.com/vrimar/FreeType.Net)
 ships as native binaries.
 
 Portions of this software are copyright © 2023 The FreeType Project (https://freetype.org). All rights reserved.

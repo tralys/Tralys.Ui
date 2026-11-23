@@ -9,7 +9,6 @@
   <ItemGroup>
     <PackageReference Include="Tralys.Ui" Version="$(TralysUiVersion)" />
     <PackageReference Include="Tralys.Ui.Bgfx" Version="$(TralysUiVersion)" />
-    <PackageReference Include="Tralys.Ui.FreeType" Version="$(TralysUiVersion)" />
     <PackageReference Include="Tralys.Ui.Mvvm" Version="$(TralysUiVersion)" />
     <PackageReference Include="Tralys.Ui.Testing" Version="$(TralysUiVersion)" />
     <PackageReference Include="Tralys.Ui.DevTools" Version="$(TralysUiVersion)" />
