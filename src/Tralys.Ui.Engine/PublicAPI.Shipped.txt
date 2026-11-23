@@ -26,6 +26,7 @@
 [TRL5001]Tralys.Ui.Rendering.DrawBatch.Deconstruct(out Tralys.Ui.Rendering.RenderTexture? Texture, out int FirstVertex, out int VertexCount, out int FirstIndex, out int IndexCount, out short Target, out short Source) -> void
 [TRL5001]Tralys.Ui.Rendering.DrawBatch.DrawBatch() -> void
 [TRL5001]Tralys.Ui.Rendering.DrawBatch.DrawBatch(Tralys.Ui.Rendering.RenderTexture? Texture, int FirstVertex, int VertexCount, int FirstIndex, int IndexCount, short Target = -1, short Source = -1) -> void
+Tralys.Ui.Fonts.FontCollection.FontCollection() -> void
 ~[TRL5001]override Tralys.Ui.Rendering.DrawBatch.Equals(object obj) -> bool
 [TRL5001]Tralys.Ui.Rendering.DrawBatch.Equals(Tralys.Ui.Rendering.DrawBatch other) -> bool
 [TRL5001]Tralys.Ui.Rendering.DrawBatch.FirstIndex.get -> int

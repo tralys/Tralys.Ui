@@ -5,16 +5,30 @@ All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.1.0] - 2026-11-23
 
 ### Added
 
 - `new FontCollection()`, a collection on FreeType that disposes its FreeType library with itself.
+- `Story.Description`, `Story.SourcePath` and `Story.SourceLine`: each story's doc summary and where it is declared.
 
 ### Changed
 
 - FreeType arrives from FreeType.Net: the same FreeType 2.13.2, loaded as `freetype_net`, whose Windows DLL needs no
   Visual C++ redistributable.
+- The library keeps the compiler's null checks on, and its public API says what can be null:
+  `Ui.State<T>` requires its initial value, `Ui.RefState<T>` returns `State<T?>`, `ContextKey<T>` requires its
+  fallback, `TableRow<TItem>` requires its item, and `Pen.IsDashed` carries `[MemberNotNullWhen]`.
+- TRL3001 rejects a non-nullable reference or type-parameter prop that is not `required`, since a call that omits it
+  leaves it null. Mark such a prop `required` or declare it nullable.
+
+### Fixed
+
+- Autofocus, hover over what mounts under the pointer and a modal's first focus stop land in the update that mounts
+  them, so the first frame shows them.
+- An animated value that changes in the update it mounted in snaps rather than animating from a value never drawn.
+- An `Editable` draws its focus outline only while its focus shows.
+- Filled accent text takes the palette's colour, so light-theme Primary buttons read; it was pinned to black.
 
 ### Removed
 

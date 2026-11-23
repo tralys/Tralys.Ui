@@ -27,8 +27,8 @@ Every component's stories run [in the browser](https://tralys.github.io/Tralys.U
 ## Install
 
 ```sh
-dotnet add package Tralys.Ui --prerelease
-dotnet add package Tralys.Ui.Bgfx --prerelease
+dotnet add package Tralys.Ui
+dotnet add package Tralys.Ui.Bgfx
 ```
 
 ## Use
