@@ -28,12 +28,6 @@
       PrivateAssets="all"
       TralysPackage="Tralys.Ui"
     />
-    <!-- Not referenced, only built first: the package carries it as a tool. -->
-    <ProjectReference
-      Include="../Tralys.Ui.Build/Tralys.Ui.Build.csproj"
-      ReferenceOutputAssembly="false"
-      PrivateAssets="all"
-    />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,26 +40,6 @@
   <ItemGroup>
     <None Include="buildTransitive/**" Pack="true" PackagePath="buildTransitive/" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackTralysCallerPathTool</TargetsForTfmSpecificContentInPackage>
-  </PropertyGroup>
-
-  <Target Name="PackTralysCallerPathTool">
-    <MSBuild
-      Projects="../Tralys.Ui.Build/Tralys.Ui.Build.csproj"
-      Targets="GetTargetPath"
-      RemoveProperties="TargetFramework;RuntimeIdentifier"
-    >
-      <Output TaskParameter="TargetOutputs" ItemName="_TralysCallerPathTool" />
-    </MSBuild>
-    <ItemGroup>
-      <TfmSpecificPackageFile
-        Include="@(_TralysCallerPathTool);@(_TralysCallerPathTool->'%(RootDir)%(Directory)%(Filename).runtimeconfig.json')"
-        PackagePath="tools/net11.0"
-      />
-    </ItemGroup>
-  </Target>
 
   <Import Project="../Shared/PackAnalyzers.targets" />
 </Project>

@@ -3,7 +3,6 @@
     <OutputType>Exe</OutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefaultItemExcludes>$(DefaultItemExcludes);ViewModels/**</DefaultItemExcludes>
-    <TralysStripCallerPaths>true</TralysStripCallerPaths>
   </PropertyGroup>
 
   <ItemGroup>

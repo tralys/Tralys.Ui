@@ -18,8 +18,6 @@ consumer-facing, and relative links break there. This file covers working in the
 - `Tralys.Ui.PackageSmoke` restores the `Tralys.Ui` IDs only from `artifacts/packages`, so pack first:
   `dotnet pack Tralys.Ui.slnx -c Release -o artifacts/packages`, then
   `dotnet run --project tests/Tralys.Ui.PackageSmoke -c Release -p:TralysUiVersion=<packed version>`.
-- `src/Tralys.Ui.Build` is the tool `TralysStripCallerPaths` runs; the Tralys.Ui package carries it under `tools/`, and
-  only `Tralys.Ui.PackageSmoke` turns it on.
 - The GPU vertex contract (`UiVertex`, `UiPrimitive`, `UiPaint`, `DrawBatch`, `DrawLayer`, `VertexRange` and the
   `DrawList` members exposing them) is `[Experimental("TRL5001")]`; `Tralys.Ui.Engine`, `Tralys.Ui.Bgfx`, `Tralys.Ui.Testing`,
   `samples/Tralys.Ui.Demo` and every project under `tests/` opt in with `NoWarn`.

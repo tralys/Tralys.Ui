@@ -12,7 +12,6 @@
     <Project Path="src/Tralys.Ui.Generators/Tralys.Ui.Generators.csproj" />
     <Project Path="src/Tralys.Ui.Mvvm/Tralys.Ui.Mvvm.csproj" />
     <Project Path="src/Tralys.Ui.Mvvm.Generators/Tralys.Ui.Mvvm.Generators.csproj" />
-    <Project Path="src/Tralys.Ui.Build/Tralys.Ui.Build.csproj" />
   </Folder>
   <Folder Name="/samples/">
     <Project Path="samples/Tralys.Ui.Demo/Tralys.Ui.Demo.csproj" />

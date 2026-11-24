@@ -129,8 +129,7 @@ test driver.
 ### Shipping builds
 
 - Nodes are told apart by their caller's source path, which the compiler writes into your assembly.
-- `<TralysStripCallerPaths>true</TralysStripCallerPaths>` replaces those paths with `AssemblyName#N` tokens.
-  - The build decodes them in `obj/AssemblyName.callerpaths.txt`.
+- A build step may replace each distinct path with a distinct token, and nodes stay apart.
   - The inspector can then no longer open the source.
 
 ### Custom renderers

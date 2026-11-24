@@ -5,6 +5,14 @@ All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-11-24
+
+### Removed
+
+- `TralysStripCallerPaths` and the caller-path tool the Tralys.Ui package carried under `tools/`. A build that sets the
+  property now keeps its source paths: strip them with a build step of your own, which may replace each distinct path
+  with a distinct token.
+
 ## [0.1.0] - 2026-11-23
 
 ### Added

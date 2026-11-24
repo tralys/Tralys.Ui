@@ -1,8 +1,4 @@
 using System.Numerics;
-using System.Reflection.Metadata;
-using System.Reflection.Metadata.Ecma335;
-using System.Reflection.PortableExecutable;
-using System.Runtime.InteropServices;
 using Bgfx.Net;
 using Tralys.Ui.Bgfx;
 using Tralys.Ui.Components;
@@ -86,13 +82,8 @@ static class Program
             Console.Error.WriteLine("The dock's layout did not save and load back.");
             return 1;
         }
-        if (CallerPathFault() is { } fault)
-        {
-            Console.Error.WriteLine(fault);
-            return 1;
-        }
         Console.WriteLine(
-            "A view built from the packages bound, commanded, drew and was inspected, and names no source file."
+            "A view built from the packages bound, commanded, drew and was inspected."
         );
         return 0;
     }
@@ -159,31 +150,6 @@ static class Program
         var layout = dock.SaveLayout();
         dock.LoadLayout(layout);
         return dock.SaveLayout() == layout && dock.LeftGroup.Elements.Count == 1;
-    }
-
-    static string? CallerPathFault()
-    {
-        // Both built at run time, so no literal of this method is what they find.
-        var source = typeof(Program).Name + ".cs";
-        var token = typeof(Program).Assembly.GetName().Name + "#";
-
-        var image = File.ReadAllBytes(typeof(Program).Assembly.Location);
-        if (image.AsSpan().IndexOf(MemoryMarshal.AsBytes(source.AsSpan())) >= 0)
-            return $"The assembly still names {source}.";
-
-        using var pe = new PEReader(new MemoryStream(image));
-        var metadata = pe.GetMetadataReader();
-        for (
-            var handle = metadata.GetNextHandle(default(UserStringHandle));
-            !handle.IsNil;
-            handle = metadata.GetNextHandle(handle)
-        )
-        {
-            if (metadata.GetUserString(handle).StartsWith(token, StringComparison.Ordinal))
-                return null;
-        }
-
-        return $"No {token}N token reads back in place of {source}.";
     }
 
     static Node? Find(Node node, string id)
